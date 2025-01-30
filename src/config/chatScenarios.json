@@ -1,0 +1,34 @@
+{
+  "scenarios": [
+    {
+      "id": 1,
+      "question": "To start, I would like to begin with a big question: tell me the story of your life. Start from the beginning -- from your childhood, to education, to family and relationships, and to any significant events that have shaped who you are today.",
+      "context": "opening",
+      "type": "narrative"
+    },
+    {
+      "id": 2,
+      "question": "Could you describe your typical daily commute? What transportation methods do you use and why?",
+      "context": "mobility",
+      "type": "experience"
+    },
+    {
+      "id": 3,
+      "question": "How would you describe your current neighborhood? What made you choose to live there?",
+      "context": "housing",
+      "type": "preference"
+    },
+    {
+      "id": 4,
+      "question": "What role do public spaces play in your daily life? How often do you use parks, plazas, or other community spaces?",
+      "context": "public_space",
+      "type": "behavior"
+    },
+    {
+      "id": 5,
+      "question": "If you could change one thing about your urban environment, what would it be and why?",
+      "context": "improvement",
+      "type": "opinion"
+    }
+  ]
+} 

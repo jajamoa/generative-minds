@@ -1,0 +1,114 @@
+{
+  "title": "Urban Life Survey",
+  "sections": [
+    {
+      "id": "housing_experience",
+      "title": "Housing Experience & Preferences",
+      "questions": [
+        {
+          "id": "housing_status",
+          "type": "radio",
+          "text": "What is your current housing status?",
+          "options": [
+            { "value": "homeowner", "label": "Homeowner" },
+            { "value": "renter", "label": "Renter" },
+            { "value": "living_with_family", "label": "Living with family/friends" },
+            { "value": "other", "label": "Other" }
+          ]
+        },
+        {
+          "id": "residence_duration",
+          "type": "radio",
+          "text": "How long have you lived in your current neighborhood?",
+          "options": [
+            { "value": "less_than_1", "label": "Less than 1 year" },
+            { "value": "1_to_5", "label": "1-5 years" },
+            { "value": "6_to_10", "label": "6-10 years" },
+            { "value": "more_than_10", "label": "More than 10 years" }
+          ]
+        },
+        {
+          "id": "housing_priorities",
+          "type": "radio",
+          "text": "Which factor most influences your housing choices?",
+          "options": [
+            { "value": "proximity", "label": "Proximity to job/school" },
+            { "value": "affordability", "label": "Housing affordability" },
+            { "value": "safety", "label": "Neighborhood safety" },
+            { "value": "amenities", "label": "Access to amenities" },
+            { "value": "community", "label": "Community/cultural factors" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "community_engagement",
+      "title": "Community & Urban Life",
+      "questions": [
+        {
+          "id": "transport_usage",
+          "type": "radio",
+          "text": "How do you primarily get around your neighborhood?",
+          "options": [
+            { "value": "walk", "label": "Walking" },
+            { "value": "bike", "label": "Biking" },
+            { "value": "public_transit", "label": "Public Transit" },
+            { "value": "car", "label": "Personal Vehicle" }
+          ]
+        },
+        {
+          "id": "public_space_frequency",
+          "type": "radio",
+          "text": "How often do you use public spaces in your neighborhood?",
+          "options": [
+            { "value": "daily", "label": "Daily" },
+            { "value": "weekly", "label": "Weekly" },
+            { "value": "monthly", "label": "Monthly" },
+            { "value": "rarely", "label": "Rarely" }
+          ]
+        },
+        {
+          "id": "community_satisfaction",
+          "type": "textarea",
+          "text": "What aspects of your neighborhood would you most like to see improved?",
+          "placeholder": "Please describe any changes you'd like to see..."
+        }
+      ]
+    },
+    {
+      "id": "urban_preferences",
+      "title": "Urban Development Views",
+      "questions": [
+        {
+          "id": "density_opinion",
+          "type": "radio",
+          "text": "How do you feel about increasing housing density in your neighborhood?",
+          "options": [
+            { "value": "strongly_support", "label": "Strongly Support" },
+            { "value": "somewhat_support", "label": "Somewhat Support" },
+            { "value": "neutral", "label": "Neutral" },
+            { "value": "somewhat_oppose", "label": "Somewhat Oppose" },
+            { "value": "strongly_oppose", "label": "Strongly Oppose" }
+          ]
+        },
+        {
+          "id": "development_priorities",
+          "type": "radio",
+          "text": "What should be the top priority for urban development in your area?",
+          "options": [
+            { "value": "affordability", "label": "Housing Affordability" },
+            { "value": "preservation", "label": "Neighborhood Character Preservation" },
+            { "value": "sustainability", "label": "Environmental Sustainability" },
+            { "value": "infrastructure", "label": "Infrastructure Improvements" }
+          ]
+        },
+        {
+          "id": "additional_thoughts",
+          "type": "textarea",
+          "text": "Do you have any additional thoughts about urban development in your area?",
+          "placeholder": "Share your perspective..."
+        }
+      ]
+    }
+  ]
+} 

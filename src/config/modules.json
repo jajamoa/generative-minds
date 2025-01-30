@@ -1,0 +1,94 @@
+{
+    "title": "Urban Context Agent Survey",
+    "modules": [
+      {
+        "id": 1,
+        "title": "Preparation Pt. 1",
+        "description": "Review the Consent Form",
+        "detail": "In this module, you will be providing consent to participate in this study.",
+        "status": "DO THIS NEXT!",
+        "estimatedTime": "Est. 2 minutes",
+        "steps": [
+          {
+            "id": "1-1",
+            "title": "Read Consent Form",
+            "description": "Please review the consent form carefully."
+          },
+          {
+            "id": "1-2",
+            "title": "Sign Agreement",
+            "description": "Provide your electronic signature if you agree."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Preparation Pt. 2",
+        "description": "Define Your Profile",
+        "detail": "Provide demographic and geographic details for analysis.",
+        "estimatedTime": "Est. 2 minutes",
+        "steps": [
+          {
+            "id": "2-1",
+            "title": "Demographic Information",
+            "description": "Report age, occupation, and household details."
+          },
+          {
+            "id": "2-2",
+            "title": "Geographic Information",
+            "description": "Specify residential location and mobility range."
+          },
+          {
+            "id": "2-3",
+            "title": "Customize Avatar",
+            "description": "Adjust features to match your identity."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Step 1: Structured Survey",
+        "description": "Assess urban lifestyle and housing preferences.",
+        "detail": "Collect data on mobility patterns, residential choices, and urban engagement.",
+        "required": true,
+        "estimatedTime": "Est. 5 minutes",
+        "steps": [
+          {
+            "id": "3-1",
+            "title": "Daily Mobility Patterns",
+            "description": "Document commute modes, frequency, and constraints."
+          },
+          {
+            "id": "3-2",
+            "title": "Residential Preferences",
+            "description": "Report housing conditions and neighborhood selection criteria."
+          },
+          {
+            "id": "3-3",
+            "title": "Public Spaces & Policy",
+            "description": "Evaluate access to green spaces, transit, and urban governance."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Step 2: Chatbot Interview",
+        "description": "Participate in a conversation with our AI interviewer to provide richer insights.",
+        "detail": "In this module, the chatbot will ask dynamic, follow-up questions based on your previous responses.",
+        "required": true,
+        "estimatedTime": "Est. 5-15 minutes",
+        "steps": [
+          {
+            "id": "4-1",
+            "title": "System Check",
+            "description": "Verify your audio and video settings before starting the chat."
+          },
+          {
+            "id": "4-2",
+            "title": "Join Chatbot Interview",
+            "description": "Start a conversation with our AI agent, which will ask follow-up questions based on your survey answers."
+          }
+        ]
+      }
+    ]
+  }
