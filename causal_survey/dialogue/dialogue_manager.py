@@ -116,26 +116,42 @@ class DialogueManager:
                     if msg["role"] == "user":
                         conversation_context += f"Q: {msg['question']}\nA: {msg['content']}\n"
             
-            prompt = f"""Based on the following dialogue history, if more information is needed to understand the user's decision process, generate a follow-up question.
+            # Truncate previous answer if too long
+            max_length = 4000  # Maximum tokens for context
+            if len(previous_answer) > max_length:
+                previous_answer = previous_answer[:max_length] + "..."
+            
+            prompt = f"""Based on the following dialogue history and the user's current answer, generate a follow-up question to better understand their decision process.
+            The question should be specific, relevant to the context, and help uncover additional causal relationships.
             If enough information has been collected to understand the decision process and causal relationships, return an empty string.
             Return only the question itself, no other explanation.
             
-            Dialogue history:
+            Previous dialogue history:
             {conversation_context}
             
-            Current answer: {previous_answer}"""
+            Current answer: {previous_answer}
+            
+            Requirements for the follow-up question:
+            1. Must be specific and focused
+            2. Should relate to previously mentioned factors
+            3. Should help uncover new causal relationships
+            4. Should be a complete, well-formed question
+            5. Should not repeat previously asked questions"""
             
             response = self.client.chat.completions.create(
                 model="gpt-4-turbo-preview",
                 messages=[
-                    {"role": "system", "content": "You are an AI assistant specialized in generating follow-up questions. Based on the complete dialogue history, determine if a follow-up is needed. If needed, return the question directly; if not, return an empty string."},
+                    {"role": "system", "content": "You are an AI assistant specialized in generating follow-up questions. Based on the complete dialogue history, determine if a follow-up is needed. If needed, return a specific, well-formed question; if not, return an empty string."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0
+                temperature=0,
+                max_tokens=150  # Limit response length
             )
             
             follow_up = response.choices[0].message.content.strip()
-            return follow_up if follow_up else None
+            if not follow_up or len(follow_up) < 10:  # Ensure question is not too short
+                return None
+            return follow_up
         except Exception as e:
             print(f"Error generating follow-up question: {e}")
             return None
