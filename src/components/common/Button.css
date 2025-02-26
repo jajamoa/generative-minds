@@ -1,0 +1,43 @@
+.button {
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.button-primary {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.button-primary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.button-start {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.button-start:hover {
+  background: rgba(255, 255, 255, 0.1);
+} 

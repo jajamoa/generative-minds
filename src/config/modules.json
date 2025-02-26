@@ -72,21 +72,26 @@
       },
       {
         "id": 4,
-        "title": "Step 2: Chatbot Interview",
-        "description": "Participate in a conversation with our AI interviewer to provide richer insights.",
-        "detail": "In this module, the chatbot will ask dynamic, follow-up questions based on your previous responses.",
+        "title": "Step 2: Causal Analysis",
+        "description": "Analyze the causal relationships in your urban decisions.",
+        "detail": "Through an interactive dialogue, we'll explore and visualize the cause-and-effect relationships in your urban lifestyle choices.",
         "required": true,
         "estimatedTime": "Est. 5-15 minutes",
         "steps": [
           {
             "id": "4-1",
-            "title": "System Check",
-            "description": "Verify your audio and video settings before starting the chat."
+            "title": "Decision Description",
+            "description": "Describe your recent urban lifestyle decisions and their motivations."
           },
           {
             "id": "4-2",
-            "title": "Join Chatbot Interview",
-            "description": "Start a conversation with our AI agent, which will ask follow-up questions based on your survey answers."
+            "title": "Causal Analysis",
+            "description": "Explore the relationships between different factors in your decisions through an interactive causal graph."
+          },
+          {
+            "id": "4-3",
+            "title": "Review Insights",
+            "description": "Understand the patterns and connections in your decision-making process."
           }
         ]
       }

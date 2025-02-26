@@ -1,0 +1,81 @@
+.module-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.module-info {
+  margin-bottom: 20px;
+}
+
+.module-info h3 {
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.module-info h4 {
+  color: #d1d5db;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.module-info p {
+  color: #9ca3af;
+  margin: 5px 0;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.estimated-time {
+  opacity: 0.8;
+}
+
+.steps-info {
+  margin-top: 15px;
+}
+
+.step-item {
+  margin: 10px 0;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-title {
+  display: block;
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.step-description {
+  display: block;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+} 

@@ -1,0 +1,81 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+.header-title {
+  position: relative;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header-title-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  transform: translateY(-50%);
+  color: #ffffff;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: opacity 0.3s ease;
+}
+
+/* Causal 特殊样式 */
+.page-header.causal {
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header.causal .header-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page-header.causal .header-title {
+  flex-shrink: 0;
+  padding: 32px 24px 16px;
+}
+
+.page-header.causal .header-title-content {
+  margin-top: 8px;
+}
+
+.page-header.causal .back-button {
+  top: -24px;
+  transform: none;
+}
+
+.back-button:hover {
+  opacity: 1;
+}
+
+.header-title h1 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 0.5px;
+} 

@@ -1,72 +1,86 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
-import './App.css'
-import moduleConfig from './config/modules.json'
-import aboutConfig from './config/about.json'
-import ChatInterface from './components/ChatInterface'
-import StructuredSurvey from './components/StructuredSurvey'
-import GeographicProfile from './components/GeographicProfile'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import PropTypes from 'prop-types';
+import './App.css';
+import moduleConfig from './config/modules.json';
+import aboutConfig from './config/about.json';
+import StructuredSurvey from './components/StructuredSurvey';
+import GeographicProfile from './components/GeographicProfile';
+import CausalSurvey from './components/CausalSurvey';
+import ModuleInfo from './components/common/ModuleInfo';
+import Button from './components/common/Button';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2196F3',
+    },
+    background: {
+      default: '#000000',
+    },
+  },
+});
 
 // Main layout component that includes header and sidebar
 function Layout({ children }) {
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:cli@mit.edu'
-  }
+    window.location.href = 'mailto:cli@mit.edu';
+  };
 
   return (
     <div className="app-container">
       <header className="header">
         <div className="user-info">
-          <span className="user-icon">G</span>
-          <span className="user-email">test_user@test.com</span>
+          <div className="user-icon">AI</div>
+          <span className="user-email" onClick={handleEmailClick} style={{ cursor: 'pointer' }}>
+            cli@mit.edu
+          </span>
         </div>
       </header>
-
       <div className="main-content">
         <nav className="sidebar">
           <div 
             className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}
             onClick={() => navigate('/')}
           >
-            <span>Home</span>
+            Home
           </div>
           <div 
             className={`nav-item ${location.pathname === '/about' ? 'active' : ''}`}
             onClick={() => navigate('/about')}
           >
-            <span>About the study</span>
-          </div>
-          <div 
-            className="nav-item"
-            onClick={handleEmailClick}
-          >
-            <span>Email the admin</span>
+            About
           </div>
         </nav>
-
-        <div className="content">
+        <main className="content">
           {children}
-        </div>
+        </main>
       </div>
     </div>
-  )
+  );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 // Home page component
 function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleStartModule = (moduleId) => {
-    if (moduleId === 2) { // Preparation Pt. 2 - Geographic Profile
-      navigate('/geographic')
-    } else if (moduleId === 3) { // Structured Survey
-      navigate('/survey')
-    } else if (moduleId === 4) { // Chatbot
-      navigate('/chat')
+    if (moduleId === 2) {
+      navigate('/geographic');
+    } else if (moduleId === 3) {
+      navigate('/survey');
+    } else if (moduleId === 4) {
+      navigate('/causal');
     }
-  }
+  };
 
   return (
     <>
@@ -74,35 +88,11 @@ function Home() {
       <div className="modules-container">
         <div className="modules-list">
           {moduleConfig.modules.map(module => (
-            <div key={module.id} className="module-card">
-              <div className="module-info">
-                <h3>{module.title}</h3>
-                <h4>{module.description}</h4>
-                <p>{module.detail}</p>
-                {module.required && <p className="required">(Required component)</p>}
-                <p className="estimated-time">{module.estimatedTime}</p>
-                
-                {/* 显示步骤信息 */}
-                {module.steps && (
-                  <div className="steps-info">
-                    {module.steps.map(step => (
-                      <div key={step.id} className="step-item">
-                        <span className="step-title">{step.title}</span>
-                        <span className="step-description">{step.description}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              <button 
-                className="start-button"
-                onClick={() => handleStartModule(module.id)}
-              >
-                Start the Module
-              </button>
-              {module.status && <span className="status-badge">{module.status}</span>}
-            </div>
+            <ModuleInfo
+              key={module.id}
+              {...module}
+              onStart={() => handleStartModule(module.id)}
+            />
           ))}
         </div>
 
@@ -113,7 +103,7 @@ function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 // About page component
@@ -127,22 +117,24 @@ function About() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-// Main App component
-function App() {
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/about" element={<Layout><About /></Layout>} />
-        <Route path="/geographic" element={<Layout><GeographicProfile /></Layout>} />
-        <Route path="/survey" element={<Layout><StructuredSurvey /></Layout>} />
-        <Route path="/chat" element={<Layout><ChatInterface /></Layout>} />
-      </Routes>
-    </Router>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout><Home /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
+          <Route path="/geographic" element={<Layout><GeographicProfile /></Layout>} />
+          <Route path="/survey" element={<Layout><StructuredSurvey /></Layout>} />
+          <Route path="/causal" element={<Layout><CausalSurvey /></Layout>} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
