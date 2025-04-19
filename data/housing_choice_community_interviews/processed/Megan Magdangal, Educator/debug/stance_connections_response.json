@@ -1,0 +1,53 @@
+
+{
+    "stance_connections": [
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The lack of affordable housing makes it difficult for educators to live near their workplaces, suggesting a need for policies that prioritize affordable housing to retain educators in local schools."
+        },
+        {
+            "node": "Educators find it difficult to stay near the schools they teach at",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "This difficulty highlights the need for housing policies that specifically support essential workers, like educators, to live near their workplaces."
+        },
+        {
+            "node": "Teachers having access to housing within the communities they teach",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Access to local housing allows teachers to connect better with students, supporting policies that provide housing for essential workers within their communities."
+        },
+        {
+            "node": "Teachers connect better with students and bring community elements into the classroom",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "This connection suggests that when teachers live in the community, they enhance educational outcomes, supporting housing policies for essential workers."
+        },
+        {
+            "node": "Major corporations taking over",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "supports",
+            "explanation": "The takeover by major corporations leads to local business closures, suggesting a need for policies that preserve neighborhood character and support local businesses."
+        },
+        {
+            "node": "Local businesses closing and San Francisco becoming less appealing",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "supports",
+            "explanation": "The closure of local businesses diminishes the city's appeal, supporting policies that aim to preserve neighborhood character and economic diversity."
+        },
+        {
+            "node": "Megan's family leaving San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The family's departure due to social pressures and poor school quality suggests a need for affordable housing to retain families in urban areas."
+        },
+        {
+            "node": "Low funding in South San Francisco schools",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Low funding affects educational quality, indicating a need for policies that support essential workers, like teachers, to ensure they can live and work effectively in their communities."
+        }
+    ]
+}

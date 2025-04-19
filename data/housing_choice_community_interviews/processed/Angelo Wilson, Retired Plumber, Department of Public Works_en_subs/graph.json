@@ -1,0 +1,276 @@
+{
+  "nodes": [
+    {
+      "name": "occupation",
+      "text": "occupation was City plumber",
+      "type": "intermediate"
+    },
+    {
+      "name": "retired",
+      "text": "retired City plumber",
+      "type": "intermediate"
+    },
+    {
+      "name": "born_kentucky",
+      "text": "born in Kentucky Fort Knox Kentucky",
+      "type": "intermediate"
+    },
+    {
+      "name": "army_brat",
+      "text": "army brat",
+      "type": "intermediate"
+    },
+    {
+      "name": "came_sf",
+      "text": "came to San Francisco in 64",
+      "type": "intermediate"
+    },
+    {
+      "name": "rising_rent_prices",
+      "text": "Rising rent prices",
+      "type": "intermediate"
+    },
+    {
+      "name": "move_to_cheaper_neighborhoods",
+      "text": "move to cheaper neighborhoods",
+      "type": "intermediate"
+    },
+    {
+      "name": "development",
+      "text": "development",
+      "type": "intermediate"
+    },
+    {
+      "name": "housing_affordability",
+      "text": "housing affordability",
+      "type": "intermediate"
+    },
+    {
+      "name": "city_planning",
+      "text": "city planning",
+      "type": "intermediate"
+    },
+    {
+      "name": "public_housing",
+      "text": "public housing",
+      "type": "intermediate"
+    },
+    {
+      "name": "housing_policy",
+      "text": "housing policy",
+      "type": "intermediate"
+    },
+    {
+      "name": "affordable_housing",
+      "text": "affordable housing",
+      "type": "intermediate"
+    },
+    {
+      "name": "neighborhood_development",
+      "text": "neighborhood development",
+      "type": "intermediate"
+    },
+    {
+      "name": "housing_market",
+      "text": "housing market",
+      "type": "intermediate"
+    },
+    {
+      "name": "housing_crisis",
+      "text": "housing crisis",
+      "type": "intermediate"
+    },
+    {
+      "name": "city_population",
+      "text": "city population",
+      "type": "intermediate"
+    },
+    {
+      "name": "nature_richmond",
+      "text": "changes the nature of the Richmond",
+      "type": "intermediate"
+    },
+    {
+      "name": "buy_six_units",
+      "text": "buy and put six units up",
+      "type": "intermediate"
+    },
+    {
+      "name": "move_cheaper_neighborhoods",
+      "text": "move to cheaper neighborhoods",
+      "type": "intermediate"
+    },
+    {
+      "name": "resources_not_put",
+      "text": "resources weren't put there",
+      "type": "intermediate"
+    },
+    {
+      "name": "poor_minorities_pushed_out",
+      "text": "poor minorities pushed out",
+      "type": "intermediate"
+    },
+    {
+      "name": "lack_of_resources",
+      "text": "lack of resources",
+      "type": "intermediate"
+    },
+    {
+      "name": "institutionalized_discrepancy_resources",
+      "text": "institutionalized discrepancy in resources",
+      "type": "intermediate"
+    },
+    {
+      "name": "ruined_school_district",
+      "text": "ruined school district",
+      "type": "intermediate"
+    },
+    {
+      "name": "big_buildings_development",
+      "text": "Building big buildings",
+      "type": "intermediate"
+    },
+    {
+      "name": "mixed_neighborhoods",
+      "text": "mixed neighborhoods",
+      "type": "intermediate"
+    },
+    {
+      "name": "subsidized_housing",
+      "text": "subsidized housing",
+      "type": "intermediate"
+    },
+    {
+      "name": "profit_not_the_motive",
+      "text": "profit was not the motive",
+      "type": "intermediate"
+    },
+    {
+      "name": "mixture_of_people",
+      "text": "mixture of people",
+      "type": "intermediate"
+    },
+    {
+      "name": "services_for_all",
+      "text": "services for all",
+      "type": "intermediate"
+    },
+    {
+      "name": "commitment_to_money",
+      "text": "everybody's committed to money",
+      "type": "intermediate"
+    },
+    {
+      "name": "giving_back_to_the_city",
+      "text": "rich people used to give back to the city",
+      "type": "intermediate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "occupation",
+      "target": "retired",
+      "relation": "causes"
+    },
+    {
+      "source": "born_kentucky",
+      "target": "army_brat",
+      "relation": "causes"
+    },
+    {
+      "source": "army_brat",
+      "target": "came_sf",
+      "relation": "causes"
+    },
+    {
+      "source": "rising_rent_prices",
+      "target": "move_to_cheaper_neighborhoods",
+      "relation": "causes"
+    },
+    {
+      "source": "development",
+      "target": "housing_affordability",
+      "relation": "affects"
+    },
+    {
+      "source": "city_planning",
+      "target": "housing_policy",
+      "relation": "influences"
+    },
+    {
+      "source": "housing_policy",
+      "target": "affordable_housing",
+      "relation": "aims to achieve"
+    },
+    {
+      "source": "neighborhood_development",
+      "target": "housing_market",
+      "relation": "impacts"
+    },
+    {
+      "source": "housing_market",
+      "target": "housing_crisis",
+      "relation": "contributes to"
+    },
+    {
+      "source": "housing_crisis",
+      "target": "city_population",
+      "relation": "results in"
+    },
+    {
+      "source": "nature_richmond",
+      "target": "buy_six_units",
+      "relation": "causes"
+    },
+    {
+      "source": "rising_rent_prices",
+      "target": "move_cheaper_neighborhoods",
+      "relation": "causes"
+    },
+    {
+      "source": "resources_not_put",
+      "target": "poor_minorities_pushed_out",
+      "relation": "causes"
+    },
+    {
+      "source": "lack_of_resources",
+      "target": "institutionalized_discrepancy_resources",
+      "relation": "causes"
+    },
+    {
+      "source": "institutionalized_discrepancy_resources",
+      "target": "ruined_school_district",
+      "relation": "causes"
+    },
+    {
+      "source": "big_buildings_development",
+      "target": "mixed_neighborhoods",
+      "relation": "causes"
+    },
+    {
+      "source": "subsidized_housing",
+      "target": "profit_not_the_motive",
+      "relation": "causes"
+    },
+    {
+      "source": "profit_not_the_motive",
+      "target": "mixture_of_people",
+      "relation": "causes"
+    },
+    {
+      "source": "mixture_of_people",
+      "target": "services_for_all",
+      "relation": "causes"
+    },
+    {
+      "source": "services_for_all",
+      "target": "commitment_to_money",
+      "relation": "causes"
+    },
+    {
+      "source": "commitment_to_money",
+      "target": "giving_back_to_the_city",
+      "relation": "causes"
+    }
+  ]
+}

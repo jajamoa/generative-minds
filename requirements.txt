@@ -1,0 +1,9 @@
+# Core requirements
+python-dotenv>=1.0.0
+openai>=1.0.0
+pathlib>=1.0.1
+requests>=2.28.1
+networkx>=3.0
+
+# Optional but recommended
+tqdm>=4.64.0  # For progress bars 

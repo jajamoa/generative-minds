@@ -1,0 +1,52 @@
+{
+    "causal_relationships": [
+        {
+            "cause": "Lack of affordable housing",
+            "effect": "Changes in social dynamics in San Francisco",
+            "explanation": "The availability of affordable housing affects where people live, which in turn influences their social interactions and relationships, shaping the culture and views on children and families in San Francisco.",
+            "confidence": "high",
+            "source_qa": "How does the availability of affordable housing affect the social dynamics in San Francisco?",
+            "stance_implications": "This relationship suggests that increasing affordable housing could foster more cohesive communities and improve social dynamics, supporting policies that prioritize affordable housing development."
+        },
+        {
+            "cause": "Lack of proposed and approved housing",
+            "effect": "Sunset District has not grown with the times",
+            "explanation": "Jessica Ho notes that the Sunset District has not seen significant housing development, which has prevented it from evolving to meet current needs.",
+            "confidence": "high",
+            "source_qa": "What are Jessica Ho's views on the housing situation in the Sunset District?",
+            "stance_implications": "This highlights the need for policies that encourage housing development in the Sunset District to ensure it meets modern demands."
+        },
+        {
+            "cause": "High housing prices",
+            "effect": "Difficulty for newcomers to afford rent",
+            "explanation": "Without rent control, newcomers face high rental prices, making it challenging to afford housing in San Francisco.",
+            "confidence": "high",
+            "source_qa": "What challenges do renters face in San Francisco?",
+            "stance_implications": "This suggests a need for rent control policies or affordable housing initiatives to make the city more accessible to newcomers."
+        },
+        {
+            "cause": "Inadequate public transportation",
+            "effect": "Reduced quality of life in the Sunset District",
+            "explanation": "Jessica Ho mentions that the lack of efficient public transportation makes it difficult to access other parts of the city, impacting residents' quality of life.",
+            "confidence": "high",
+            "source_qa": "What are your views on public transportation in San Francisco?",
+            "stance_implications": "Improving public transportation could enhance the quality of life and accessibility in the Sunset District, supporting investments in transit infrastructure."
+        },
+        {
+            "cause": "Jessica Ho's grandmother's real estate investments",
+            "effect": "Jessica Ho's housing experience in the Sunset District",
+            "explanation": "Jessica Ho lived in one of the homes her grandmother owned, which influenced her housing experience and connection to the Sunset District.",
+            "confidence": "medium",
+            "source_qa": "What was Jessica Ho's experience with housing in the Sunset District?",
+            "stance_implications": "This underscores the importance of family support and generational wealth in accessing housing, suggesting policies that support first-time homebuyers."
+        },
+        {
+            "cause": "Charm City bus program",
+            "effect": "Improved safety and access to resources for Jessica in Baltimore",
+            "explanation": "The free bus program allowed Jessica to access safer areas and necessary resources, significantly improving her quality of life.",
+            "confidence": "high",
+            "source_qa": "How did the Charm City bus program impact Jessica's life in Baltimore?",
+            "stance_implications": "This supports the idea that accessible public transportation can greatly enhance residents' safety and access to resources, advocating for similar programs in other cities."
+        }
+    ]
+}

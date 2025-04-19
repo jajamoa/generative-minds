@@ -1,0 +1,196 @@
+{
+  "nodes": [
+    {
+      "id": "Rising housing prices",
+      "type": "factor"
+    },
+    {
+      "id": "Jackie's family moved to more affordable neighborhoods like the Bayview and Visitacion Valley",
+      "type": "factor"
+    },
+    {
+      "id": "Kelly's family faced challenges moving back to San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Kelly's grandparents saving money",
+      "type": "factor"
+    },
+    {
+      "id": "Kelly's family was able to buy a house in the Emeryville area",
+      "type": "factor"
+    },
+    {
+      "id": "High cost of living",
+      "type": "factor"
+    },
+    {
+      "id": "Young people are forced to choose between careers they are interested in and those that offer higher salaries",
+      "type": "factor"
+    },
+    {
+      "id": "High housing prices",
+      "type": "factor"
+    },
+    {
+      "id": "The American Dream is harder to achieve",
+      "type": "factor"
+    },
+    {
+      "id": "Communities of color are often placed in less desirable areas",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of affordable housing",
+      "type": "factor"
+    },
+    {
+      "id": "Essential workers live far away",
+      "type": "factor"
+    },
+    {
+      "id": "Development and gentrification",
+      "type": "factor"
+    },
+    {
+      "id": "Displacement of residents",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Rising housing prices",
+      "target": "Jackie's family moved to more affordable neighborhoods like the Bayview and Visitacion Valley",
+      "explanation": "The increase in housing prices made it financially challenging for Jackie's family to remain in more expensive areas, prompting them to relocate to more affordable neighborhoods.",
+      "confidence": "high",
+      "source_qa": "What has been the impact of rising housing prices on Jackie's family?",
+      "stance_implications": "This relationship suggests a need for policies that stabilize housing prices or provide affordable housing options to prevent displacement of families."
+    },
+    {
+      "source": "Rising housing prices",
+      "target": "Kelly's family faced challenges moving back to San Francisco",
+      "explanation": "The significant rise in housing prices during the period between selling their house and finding a new one made it difficult for Kelly's family to afford a home in San Francisco.",
+      "confidence": "high",
+      "source_qa": "What challenges did Kelly's family face when trying to move back to San Francisco?",
+      "stance_implications": "This highlights the need for housing policies that protect middle-class families from being priced out of the market."
+    },
+    {
+      "source": "Rising housing prices",
+      "target": "Communities of color are often placed in less desirable areas",
+      "explanation": "The affordability issues caused by rising housing prices limit the housing options available to communities of color, often relegating them to less desirable areas.",
+      "confidence": "medium",
+      "source_qa": "How do housing prices affect communities of color in San Francisco?",
+      "stance_implications": "This suggests a need for equitable housing policies that ensure fair access to desirable neighborhoods for all communities."
+    },
+    {
+      "source": "Rising housing prices",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Rising housing prices lead to displacement and challenges for families trying to move back to San Francisco, indicating a need for more affordable housing options."
+    },
+    {
+      "source": "Rising housing prices",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Increasing housing supply through development could help stabilize or reduce housing prices, making it easier for families to afford homes."
+    },
+    {
+      "source": "Rising housing prices",
+      "target": "Preserve neighborhood character",
+      "connection_type": "opposes",
+      "explanation": "Efforts to preserve neighborhood character without increasing housing supply can exacerbate rising prices and displacement."
+    },
+    {
+      "source": "Kelly's grandparents saving money",
+      "target": "Kelly's family was able to buy a house in the Emeryville area",
+      "explanation": "The financial savings accumulated by Kelly's grandparents were passed down to her father, enabling the family to purchase a home.",
+      "confidence": "medium",
+      "source_qa": "How did Kelly's grandparents contribute to her family's housing situation?",
+      "stance_implications": "This underscores the importance of generational wealth and savings in securing housing, suggesting policies that support financial stability for families."
+    },
+    {
+      "source": "High cost of living",
+      "target": "Young people are forced to choose between careers they are interested in and those that offer higher salaries",
+      "explanation": "The high cost of living pressures young people to prioritize financial stability over personal interest in their career choices.",
+      "confidence": "high",
+      "source_qa": "What impact does the high cost of living have on young people's career choices?",
+      "stance_implications": "This suggests a need for policies that address the cost of living to allow young people more freedom in career choice."
+    },
+    {
+      "source": "High cost of living",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Addressing the high cost of living through affordable housing can give young people more freedom in career choices."
+    },
+    {
+      "source": "High housing prices",
+      "target": "The American Dream is harder to achieve",
+      "explanation": "The difficulty in securing affordable housing and high-paying jobs makes it challenging for immigrants and residents to achieve the American Dream.",
+      "confidence": "high",
+      "source_qa": "Is the American Dream becoming harder to achieve in San Francisco?",
+      "stance_implications": "This relationship indicates a need for policies that make housing and job opportunities more accessible to all residents."
+    },
+    {
+      "source": "High housing prices",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Increasing housing supply can help make the American Dream more attainable by reducing housing costs."
+    },
+    {
+      "source": "Communities of color are often placed in less desirable areas",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Affordable housing policies can help ensure that communities of color have access to more desirable areas, promoting equity."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Essential workers live far away",
+      "explanation": "The scarcity of affordable housing options forces essential workers to reside in distant areas, impacting their commute and quality of life.",
+      "confidence": "medium",
+      "source_qa": "What are Jason's views on housing policy and homelessness in San Francisco?",
+      "stance_implications": "This highlights the importance of developing affordable housing close to employment centers to support essential workers."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Providing affordable housing options near employment centers can reduce commute times and improve quality of life for essential workers."
+    },
+    {
+      "source": "Development and gentrification",
+      "target": "Displacement of residents",
+      "explanation": "The process of development and gentrification can increase neighborhood costs, leading to the displacement of existing residents.",
+      "confidence": "medium",
+      "source_qa": "What are your thoughts on the development and gentrification in San Francisco?",
+      "stance_implications": "This suggests the need for careful planning and policies that mitigate the negative impacts of gentrification."
+    },
+    {
+      "source": "Development and gentrification",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "Preserving neighborhood character can help mitigate the displacement effects of gentrification."
+    },
+    {
+      "source": "Development and gentrification",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Affordable housing policies can help prevent displacement caused by gentrification."
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "Eviction of Marcella Ortiz's grandfather",
+      "type": "factor"
+    },
+    {
+      "id": "Death of Marcella Ortiz's grandfather a couple of months later",
+      "type": "factor"
+    },
+    {
+      "id": "High cost of housing and difficulty qualifying for below-market-rate housing",
+      "type": "factor"
+    },
+    {
+      "id": "Marcella Ortiz and her husband faced challenges in buying a house in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Gentrification",
+      "type": "factor"
+    },
+    {
+      "id": "Evictions and displacement in Marcella Ortiz's community",
+      "type": "factor"
+    },
+    {
+      "id": "Tech industry influx",
+      "type": "factor"
+    },
+    {
+      "id": "Increased housing prices and demographic changes in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of social security number",
+      "type": "factor"
+    },
+    {
+      "id": "Inability to secure a lender for below-market-rate housing",
+      "type": "factor"
+    },
+    {
+      "id": "Redevelopment of housing projects",
+      "type": "factor"
+    },
+    {
+      "id": "Displacement of the black community",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Eviction of Marcella Ortiz's grandfather",
+      "target": "Death of Marcella Ortiz's grandfather a couple of months later",
+      "explanation": "The eviction of Marcella Ortiz's grandfather at an advanced age likely caused significant stress and disruption, contributing to his death shortly thereafter.",
+      "confidence": "medium",
+      "source_qa": "What happened to Marcella Ortiz's grandfather after he was evicted?",
+      "stance_implications": "This relationship highlights the severe impact of eviction on elderly individuals, suggesting a need for policies that protect vulnerable populations from eviction to prevent such outcomes."
+    },
+    {
+      "source": "Eviction of Marcella Ortiz's grandfather",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The eviction and subsequent death of Marcella Ortiz's grandfather highlight the need for affordable housing options that prevent vulnerable populations from facing eviction."
+    },
+    {
+      "source": "Eviction of Marcella Ortiz's grandfather",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Protecting essential workers and their families from eviction can prevent severe outcomes, such as the death of elderly family members due to stress and disruption."
+    },
+    {
+      "source": "High cost of housing and difficulty qualifying for below-market-rate housing",
+      "target": "Marcella Ortiz and her husband faced challenges in buying a house in San Francisco",
+      "explanation": "The high cost of housing and complex qualification processes for below-market-rate housing directly impeded Marcella Ortiz and her husband's ability to purchase a home.",
+      "confidence": "high",
+      "source_qa": "What challenges did Marcella Ortiz and her husband face in trying to buy a house in San Francisco?",
+      "stance_implications": "This relationship underscores the need for more accessible and affordable housing options, as well as simplified qualification processes to assist families in purchasing homes."
+    },
+    {
+      "source": "High cost of housing and difficulty qualifying for below-market-rate housing",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The challenges faced by Marcella Ortiz and her husband in buying a house due to high costs and complex qualification processes highlight the need for more affordable housing options."
+    },
+    {
+      "source": "Gentrification",
+      "target": "Evictions and displacement in Marcella Ortiz's community",
+      "explanation": "Gentrification often leads to increased property values and living costs, resulting in the eviction and displacement of long-standing residents who can no longer afford to live in their communities.",
+      "confidence": "high",
+      "source_qa": "What impact has gentrification had on Marcella Ortiz's community?",
+      "stance_implications": "This relationship suggests a need for policies that mitigate the negative effects of gentrification, such as rent control and affordable housing initiatives, to protect existing communities."
+    },
+    {
+      "source": "Gentrification",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "Gentrification leads to evictions and displacement, suggesting a need to preserve neighborhood character by protecting long-standing residents from being priced out."
+    },
+    {
+      "source": "Gentrification",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The displacement caused by gentrification underscores the importance of affordable housing initiatives to maintain community stability."
+    },
+    {
+      "source": "Tech industry influx",
+      "target": "Increased housing prices and demographic changes in San Francisco",
+      "explanation": "The arrival of the tech industry in San Francisco has driven up housing prices and altered the city's demographic, making it less affordable and changing the social fabric.",
+      "confidence": "high",
+      "source_qa": "How does Marcella Ortiz perceive the changes in San Francisco due to the tech industry?",
+      "stance_implications": "This relationship highlights the need for balanced urban development policies that accommodate economic growth while preserving affordability and community diversity."
+    },
+    {
+      "source": "Tech industry influx",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "The demographic changes and increased housing prices due to the tech industry influx suggest a need to preserve neighborhood character and affordability."
+    },
+    {
+      "source": "Tech industry influx",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The rise in housing prices due to the tech industry highlights the need for affordable housing to ensure diverse and inclusive communities."
+    },
+    {
+      "source": "Lack of social security number",
+      "target": "Inability to secure a lender for below-market-rate housing",
+      "explanation": "The requirement for a social security number in the lending process for below-market-rate housing excluded Marcella Ortiz's husband, preventing them from securing a loan.",
+      "confidence": "high",
+      "source_qa": "What issues does Marcella Ortiz highlight about the lending process for affordable housing?",
+      "stance_implications": "This relationship suggests the need for more inclusive lending policies that accommodate diverse financial backgrounds, including those with ITIN numbers, to improve access to affordable housing."
+    },
+    {
+      "source": "Lack of social security number",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The inability to secure a lender due to lack of a social security number suggests the need for inclusive policies that improve access to affordable housing for diverse financial backgrounds."
+    },
+    {
+      "source": "Redevelopment of housing projects",
+      "target": "Displacement of the black community",
+      "explanation": "Redevelopment projects often result in the displacement of existing residents, particularly marginalized communities, due to restrictive return policies and increased living costs.",
+      "confidence": "high",
+      "source_qa": "What is Marcella Ortiz's opinion on the redevelopment of housing projects in San Francisco?",
+      "stance_implications": "This relationship indicates a need for redevelopment policies that prioritize the rights and return of original residents to prevent community displacement."
+    },
+    {
+      "source": "Redevelopment of housing projects",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "The displacement of the black community due to redevelopment highlights the need to preserve neighborhood character by ensuring original residents can return."
+    },
+    {
+      "source": "Redevelopment of housing projects",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The displacement caused by redevelopment projects indicates a need for policies that prioritize affordable housing to prevent community disruption."
+    }
+  ]
+}

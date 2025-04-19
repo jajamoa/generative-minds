@@ -1,0 +1,166 @@
+{
+  "nodes": [
+    {
+      "id": "High housing prices in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "People become more price-sensitive and cut back on expenses like eating out",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of space in a 900 square feet, two-bedroom apartment",
+      "type": "factor"
+    },
+    {
+      "id": "Ming Tjong and his family were forced to buy a house in 2005",
+      "type": "factor"
+    },
+    {
+      "id": "Building new housing in dense communities without parking",
+      "type": "factor"
+    },
+    {
+      "id": "Frustration among residents",
+      "type": "factor"
+    },
+    {
+      "id": "Safety concerns",
+      "type": "factor"
+    },
+    {
+      "id": "People moving out of San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "COVID-19 pandemic",
+      "type": "factor"
+    },
+    {
+      "id": "Significant impact on Ming Tjong's business",
+      "type": "factor"
+    },
+    {
+      "id": "High costs of owning a house and a business in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Almost impossible for middle-class families to achieve",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High housing prices in San Francisco",
+      "target": "People become more price-sensitive and cut back on expenses like eating out",
+      "explanation": "Ming Tjong notes that when housing prices are high, people have less disposable income, leading them to reduce spending on non-essential items such as dining out, which impacts local businesses.",
+      "confidence": "high",
+      "source_qa": "What is Ming Tjong's view on the relationship between housing prices and business in San Francisco?",
+      "stance_implications": "This relationship suggests that policies aimed at reducing housing costs could help stimulate local economies by increasing consumer spending."
+    },
+    {
+      "source": "High housing prices in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "High housing prices reduce disposable income, leading to decreased spending on local businesses. Affordable housing could alleviate this issue by freeing up income for other expenses."
+    },
+    {
+      "source": "Lack of space in a 900 square feet, two-bedroom apartment",
+      "target": "Ming Tjong and his family were forced to buy a house in 2005",
+      "explanation": "The overcrowding in their apartment made it necessary for Ming Tjong's family to seek a larger living space, prompting them to purchase a house despite not being financially ready.",
+      "confidence": "high",
+      "source_qa": "Why did Ming Tjong decide to buy a house in 2005?",
+      "stance_implications": "This highlights the need for housing policies that ensure adequate living space for families, potentially through incentives for larger rental units or affordable homeownership options."
+    },
+    {
+      "source": "Lack of space in a 900 square feet, two-bedroom apartment",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "The need for larger living spaces suggests a demand for more diverse housing options, which could be addressed by increasing housing development."
+    },
+    {
+      "source": "Lack of space in a 900 square feet, two-bedroom apartment",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Ensuring adequate living space for families highlights the importance of affordable housing options that meet the needs of larger households."
+    },
+    {
+      "source": "Building new housing in dense communities without parking",
+      "target": "Frustration among residents",
+      "explanation": "Ming Tjong points out that the lack of parking in new housing developments can lead to significant frustration, as residents struggle with parking availability.",
+      "confidence": "medium",
+      "source_qa": "What is the issue with building new housing in dense communities in San Francisco?",
+      "stance_implications": "Housing policies should consider infrastructure needs, such as parking, to ensure community satisfaction and prevent backlash against new developments."
+    },
+    {
+      "source": "Building new housing in dense communities without parking",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "Frustration from lack of parking suggests that new developments should consider existing community needs to maintain neighborhood satisfaction and character."
+    },
+    {
+      "source": "Safety concerns",
+      "target": "People moving out of San Francisco",
+      "explanation": "Ming Tjong mentions that safety concerns are a primary reason for people leaving the city, indicating that perceived or actual safety issues can drive residents away.",
+      "confidence": "high",
+      "source_qa": "Why are people moving out of San Francisco?",
+      "stance_implications": "Improving public safety could be a key component of housing policy to retain residents and stabilize communities."
+    },
+    {
+      "source": "Safety concerns",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Addressing safety concerns could help retain essential workers in the city, ensuring they have secure and stable living conditions."
+    },
+    {
+      "source": "COVID-19 pandemic",
+      "target": "Significant impact on Ming Tjong's business",
+      "explanation": "The pandemic led to widespread economic disruptions, affecting businesses like Ming Tjong's, although conditions are now improving.",
+      "confidence": "high",
+      "source_qa": "How did the COVID-19 pandemic affect Ming Tjong's business?",
+      "stance_implications": "Housing policies should consider economic resilience strategies to support businesses during crises, potentially through rent relief or other financial assistance."
+    },
+    {
+      "source": "COVID-19 pandemic",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Economic resilience strategies, such as rent relief, could help businesses and residents weather crises, highlighting the need for affordable housing policies."
+    },
+    {
+      "source": "High costs of owning a house and a business in San Francisco",
+      "target": "Almost impossible for middle-class families to achieve",
+      "explanation": "Ming Tjong describes the financial burden of owning both a home and a business in San Francisco as nearly unattainable for middle-class families due to high costs.",
+      "confidence": "high",
+      "source_qa": "What challenges does Ming Tjong see in owning both a house and a business in San Francisco?",
+      "stance_implications": "Policies that reduce housing and business costs could make it more feasible for middle-class families to live and work in the city, supporting economic diversity."
+    },
+    {
+      "source": "High costs of owning a house and a business in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Reducing housing costs would make it more feasible for middle-class families to own homes and businesses, supporting economic diversity."
+    },
+    {
+      "source": "High costs of owning a house and a business in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Lowering housing costs could help essential workers afford to live in the city, ensuring they can continue to provide critical services."
+    }
+  ]
+}

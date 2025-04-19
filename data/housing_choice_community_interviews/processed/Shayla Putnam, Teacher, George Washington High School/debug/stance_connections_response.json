@@ -1,0 +1,46 @@
+{
+    "stance_connections": [
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The lack of affordable housing makes it difficult for youth to live independently, suggesting a need to prioritize affordable housing to support youth independence."
+        },
+        {
+            "node": "High housing costs",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "High housing costs prevent native residents from staying and contributing to the city, indicating a need to prioritize affordable housing to retain community members."
+        },
+        {
+            "node": "Overcrowding in small apartments",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Overcrowding negatively impacts quality of life, suggesting a need for more housing development to provide adequate living space."
+        },
+        {
+            "node": "Empty but unaffordable housing",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Empty but unaffordable housing exacerbates housing issues, indicating a need to make existing housing more affordable."
+        },
+        {
+            "node": "Income disparity",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Income disparity leads to privilege differences in living conditions, suggesting a need to address affordability to ensure equitable access to housing."
+        },
+        {
+            "node": "Lack of transportation options in the Sunset",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Improving transportation infrastructure could enhance accessibility, supporting housing development in suburban areas."
+        },
+        {
+            "node": "Lack of transportation options in the Sunset",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Improved transportation would make it easier for essential workers to commute, supporting housing development in areas with limited transport options."
+        }
+    ]
+}

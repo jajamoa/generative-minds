@@ -1,0 +1,42 @@
+[
+  {
+    "cause": "Lack of affordable housing",
+    "effect": "Educators find it difficult to stay near the schools they teach at",
+    "explanation": "The high cost of housing forces educators to live far from their workplaces, adding stress and potentially driving them away from the teaching field.",
+    "confidence": "high",
+    "source_qa": "How does the lack of affordable housing affect educators according to Megan?",
+    "stance_implications": "This relationship suggests that housing policies should focus on creating affordable housing options for educators to retain them in local schools and reduce their commuting stress."
+  },
+  {
+    "cause": "Teachers having access to housing within the communities they teach",
+    "effect": "Teachers connect better with students and bring community elements into the classroom",
+    "explanation": "When teachers live in the same community as their students, they are more familiar with the local culture and issues, which enhances their ability to relate to students and incorporate community aspects into their teaching.",
+    "confidence": "high",
+    "source_qa": "Why is it important for teachers to have access to housing within the communities they teach?",
+    "stance_implications": "This relationship supports policies that provide housing for teachers within the communities they serve, fostering stronger community ties and educational outcomes."
+  },
+  {
+    "cause": "Major corporations taking over",
+    "effect": "Local businesses closing and San Francisco becoming less appealing",
+    "explanation": "The dominance of major corporations can lead to increased rents and competition, which small local businesses cannot sustain, leading to closures and a loss of local charm.",
+    "confidence": "medium",
+    "source_qa": "What are Megan's views on the current state of San Francisco?",
+    "stance_implications": "This relationship suggests a need for policies that protect and support local businesses to maintain the cultural and economic diversity of San Francisco."
+  },
+  {
+    "cause": "Megan's family leaving San Francisco",
+    "effect": "Megan's mom was getting picked on by her siblings and schools weren't good",
+    "explanation": "The decision to leave was influenced by both social pressures and the quality of education, indicating a direct impact of these factors on residential decisions.",
+    "confidence": "medium",
+    "source_qa": "Why did Megan's family leave San Francisco?",
+    "stance_implications": "This relationship highlights the importance of improving school quality and addressing social issues to retain families in urban areas."
+  },
+  {
+    "cause": "Low funding in South San Francisco schools",
+    "effect": "Megan had to teach subjects she wasn't trained for and lack of extracurricular activities",
+    "explanation": "Insufficient funding leads to a lack of resources and staff, forcing teachers to cover multiple roles and limiting student opportunities.",
+    "confidence": "high",
+    "source_qa": "What was Megan's experience with teaching in South San Francisco?",
+    "stance_implications": "This relationship underscores the need for increased educational funding to ensure teachers are adequately supported and students have access to a broad range of activities."
+  }
+]

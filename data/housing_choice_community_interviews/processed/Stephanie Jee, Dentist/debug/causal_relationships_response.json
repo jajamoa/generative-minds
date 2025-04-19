@@ -1,0 +1,52 @@
+{
+    "causal_relationships": [
+        {
+            "cause": "Housing was more affordable in the past",
+            "effect": "Blue-collar workers like teachers and firefighters could own homes",
+            "explanation": "Stephanie notes that in the past, the affordability of housing allowed blue-collar workers to own homes, which is not the case now.",
+            "confidence": "high",
+            "source_qa": "How has the affordability of housing in San Francisco changed over time according to Stephanie?",
+            "stance_implications": "This relationship suggests that increasing housing affordability could enable essential workers to live in the city, supporting policies that aim to make housing more accessible for these groups."
+        },
+        {
+            "cause": "High cost of living in San Francisco",
+            "effect": "Difficulty in attracting good talent for city service jobs",
+            "explanation": "Stephanie suggests that the high cost of living makes it hard to attract good talent for city service jobs, as potential employees are deterred by the financial burden.",
+            "confidence": "high",
+            "source_qa": "What does Stephanie suggest to help attract talent to San Francisco?",
+            "stance_implications": "This relationship supports policies that provide housing assistance or subsidies for city service workers to attract and retain talent."
+        },
+        {
+            "cause": "Historical housing discrimination laws",
+            "effect": "Low Asian population in the Sunset and Parkside areas",
+            "explanation": "Stephanie learned that laws prevented Asians from living in certain areas, which directly affected the demographic composition of those neighborhoods.",
+            "confidence": "high",
+            "source_qa": "What historical housing discrimination did Stephanie learn about later in life?",
+            "stance_implications": "Understanding past discrimination can inform policies aimed at rectifying historical injustices and promoting diversity in housing."
+        },
+        {
+            "cause": "More working parents and need for after-school care",
+            "effect": "Less sense of community",
+            "explanation": "Stephanie observes that the increase in working parents and the need for after-school care has reduced the sense of community compared to when stay-at-home parents were more common.",
+            "confidence": "medium",
+            "source_qa": "What changes in community dynamics does Stephanie observe in her neighborhood?",
+            "stance_implications": "This relationship suggests that policies supporting work-life balance and community engagement could help rebuild community ties."
+        },
+        {
+            "cause": "Providing housing for city service workers",
+            "effect": "Reduced burden of living far away and attraction of good talent",
+            "explanation": "Stephanie suggests that providing housing for city service workers would reduce their commuting burden and help attract good talent.",
+            "confidence": "high",
+            "source_qa": "What does Stephanie suggest to help attract talent to San Francisco?",
+            "stance_implications": "This supports policies that offer housing solutions for essential workers to improve recruitment and retention."
+        },
+        {
+            "cause": "High-rise condominiums",
+            "effect": "Strange approach to making housing more affordable",
+            "explanation": "Stephanie finds the construction of high-rise condominiums as a strange method to address housing affordability, suggesting a preference for more integrated housing solutions.",
+            "confidence": "medium",
+            "source_qa": "What is your opinion on high-rise condominiums in San Francisco?",
+            "stance_implications": "This relationship suggests a preference for housing policies that integrate new developments with existing neighborhoods rather than relying on high-rise solutions."
+        }
+    ]
+}

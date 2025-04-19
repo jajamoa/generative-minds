@@ -1,0 +1,52 @@
+{
+    "stance_connections": [
+        {
+            "node": "High housing prices in San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "High housing prices reduce disposable income, leading to decreased spending on local businesses. Affordable housing could alleviate this issue by freeing up income for other expenses."
+        },
+        {
+            "node": "Lack of space in a 900 square feet, two-bedroom apartment",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "The need for larger living spaces suggests a demand for more diverse housing options, which could be addressed by increasing housing development."
+        },
+        {
+            "node": "Lack of space in a 900 square feet, two-bedroom apartment",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Ensuring adequate living space for families highlights the importance of affordable housing options that meet the needs of larger households."
+        },
+        {
+            "node": "Building new housing in dense communities without parking",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "supports",
+            "explanation": "Frustration from lack of parking suggests that new developments should consider existing community needs to maintain neighborhood satisfaction and character."
+        },
+        {
+            "node": "Safety concerns",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Addressing safety concerns could help retain essential workers in the city, ensuring they have secure and stable living conditions."
+        },
+        {
+            "node": "COVID-19 pandemic",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Economic resilience strategies, such as rent relief, could help businesses and residents weather crises, highlighting the need for affordable housing policies."
+        },
+        {
+            "node": "High costs of owning a house and a business in San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Reducing housing costs would make it more feasible for middle-class families to own homes and businesses, supporting economic diversity."
+        },
+        {
+            "node": "High costs of owning a house and a business in San Francisco",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Lowering housing costs could help essential workers afford to live in the city, ensuring they can continue to provide critical services."
+        }
+    ]
+}

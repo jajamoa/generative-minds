@@ -1,0 +1,40 @@
+{
+    "stance_connections": [
+        {
+            "node": "High cost of living in San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The high cost of living drives people out of San Francisco or forces them to live with others, indicating a need for more affordable housing options to retain residents."
+        },
+        {
+            "node": "Lack of housing programs and waitlists",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The lack of housing programs and long waitlists force families to live with friends, highlighting the necessity for expanded affordable housing programs."
+        },
+        {
+            "node": "Pandemic",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "The conversion of a gym into housing during the pandemic shows the effectiveness of emergency housing solutions, suggesting that more housing development can address urgent needs."
+        },
+        {
+            "node": "Expensive new housing developments",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "New developments targeting wealthier individuals highlight the need for policies that ensure affordable housing units are included to prevent socio-economic segregation."
+        },
+        {
+            "node": "Too many housing vouchers issued",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Issuing too many vouchers without sufficient housing supply contributes to the housing crisis, indicating a need for increased housing development to balance supply and demand."
+        },
+        {
+            "node": "Affordability issues in San Francisco",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Essential workers, like school bus drivers, are moving to more affordable areas, suggesting a need for affordable housing options within the city for these workers."
+        }
+    ]
+}

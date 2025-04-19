@@ -1,0 +1,194 @@
+{
+  "nodes": [
+    {
+      "id": "High housing expenses in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Ariana Wilson stayed with her dad during the fire academy",
+      "type": "factor"
+    },
+    {
+      "id": "Ownership of a building by Ariana's grandmother",
+      "type": "factor"
+    },
+    {
+      "id": "Ariana Wilson was able to rent a unit in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Unaffordable housing in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Ariana's coworkers have had to leave the city to afford rent",
+      "type": "factor"
+    },
+    {
+      "id": "High cost of rent",
+      "type": "factor"
+    },
+    {
+      "id": "Ariana's youngest sister lives at home with their mom",
+      "type": "factor"
+    },
+    {
+      "id": "Promises of affordable housing not fulfilled",
+      "type": "factor"
+    },
+    {
+      "id": "Mass exodus of the African-American community",
+      "type": "factor"
+    },
+    {
+      "id": "High housing costs",
+      "type": "factor"
+    },
+    {
+      "id": "Ariana Wilson considers looking for property outside the Bay Area",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of funding and people moving away",
+      "type": "factor"
+    },
+    {
+      "id": "Churches in the Panhandle region are no longer active",
+      "type": "factor"
+    },
+    {
+      "id": "Families find it unaffordable to pay for schooling and rent",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High housing expenses in San Francisco",
+      "target": "Ariana Wilson stayed with her dad during the fire academy",
+      "explanation": "Ariana Wilson mentioned that she stayed with her dad due to the high cost of housing in the city, indicating that the expense was a direct factor in her housing decision.",
+      "confidence": "high",
+      "source_qa": "How did Ariana Wilson manage housing during her time at the fire academy?",
+      "stance_implications": "This relationship suggests that high housing costs can limit housing options for individuals, even those in essential services, highlighting the need for affordable housing policies."
+    },
+    {
+      "source": "High housing expenses in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "High housing expenses limit housing options for individuals, including those in essential services, highlighting the need for affordable housing policies."
+    },
+    {
+      "source": "Ownership of a building by Ariana's grandmother",
+      "target": "Ariana Wilson was able to rent a unit in San Francisco",
+      "explanation": "Ariana was able to secure housing in a city with high rent due to her grandmother's ownership of a building, which provided her with a more affordable option.",
+      "confidence": "high",
+      "source_qa": "How did Ariana Wilson secure housing after graduating from the fire academy?",
+      "stance_implications": "This highlights the importance of family support and generational wealth in accessing affordable housing, suggesting policies that support affordable housing ownership could be beneficial."
+    },
+    {
+      "source": "Ownership of a building by Ariana's grandmother",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "This highlights the importance of family support and generational wealth in accessing affordable housing, suggesting that increasing housing development could provide more opportunities for affordable ownership."
+    },
+    {
+      "source": "Unaffordable housing in San Francisco",
+      "target": "Ariana's coworkers have had to leave the city to afford rent",
+      "explanation": "The high cost of living in San Francisco has forced some of Ariana's coworkers to move out of the city to find affordable housing.",
+      "confidence": "high",
+      "source_qa": "What is the general housing situation in San Francisco according to Ariana Wilson?",
+      "stance_implications": "This relationship underscores the need for policies that address housing affordability to retain essential workers within the city."
+    },
+    {
+      "source": "Unaffordable housing in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "The high cost of living forces essential workers to move out of the city, indicating a need for policies that ensure affordable housing for these workers."
+    },
+    {
+      "source": "High cost of rent",
+      "target": "Ariana's youngest sister lives at home with their mom",
+      "explanation": "Due to the expensive rent, Ariana's sister is unable to afford her own place and thus lives with their mother.",
+      "confidence": "high",
+      "source_qa": "What is the living situation of Ariana Wilson's youngest sister?",
+      "stance_implications": "This suggests a need for affordable housing options for young adults to promote independence and reduce reliance on family housing."
+    },
+    {
+      "source": "High cost of rent",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Expensive rent forces young adults to live with family, suggesting a need for affordable housing options to promote independence."
+    },
+    {
+      "source": "Promises of affordable housing not fulfilled",
+      "target": "Mass exodus of the African-American community",
+      "explanation": "The failure to fulfill promises of affordable housing led to a significant departure of the African-American community from the neighborhood.",
+      "confidence": "high",
+      "source_qa": "What was the impact of housing policies on the African-American community in Ariana Wilson's neighborhood?",
+      "stance_implications": "This highlights the importance of delivering on affordable housing promises to prevent community displacement and maintain diversity."
+    },
+    {
+      "source": "Promises of affordable housing not fulfilled",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Failure to deliver on affordable housing promises leads to community displacement, highlighting the importance of fulfilling such promises to maintain diversity."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Ariana Wilson considers looking for property outside the Bay Area",
+      "explanation": "The financial inaccessibility of properties in San Francisco is forcing Ariana to consider relocating to more affordable areas.",
+      "confidence": "high",
+      "source_qa": "What challenges does Ariana Wilson face in buying property in San Francisco?",
+      "stance_implications": "This suggests the need for policies that make home ownership more accessible within the city to prevent the outflow of residents."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Families find it unaffordable to pay for schooling and rent",
+      "explanation": "The combined cost of housing and desired schooling is unaffordable for families, impacting their living situation.",
+      "confidence": "high",
+      "source_qa": "What challenges do families face in San Francisco regarding housing and education?",
+      "stance_implications": "This suggests a need for integrated policies that address both housing and educational affordability."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "High costs force residents to consider relocating, suggesting a need for increased housing development to make home ownership more accessible."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Unaffordable housing impacts families' ability to pay for both housing and schooling, indicating a need for policies that address housing affordability."
+    },
+    {
+      "source": "Lack of funding and people moving away",
+      "target": "Churches in the Panhandle region are no longer active",
+      "explanation": "The decrease in funding and population has led to the inactivity of churches, altering community dynamics.",
+      "confidence": "medium",
+      "source_qa": "What changes have occurred in the Panhandle region where Ariana Wilson grew up?",
+      "stance_implications": "This indicates the need for community support and investment to maintain cultural and social institutions."
+    },
+    {
+      "source": "Lack of funding and people moving away",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "The inactivity of churches due to population decline suggests a need for community support to maintain cultural and social institutions, preserving neighborhood character."
+    }
+  ]
+}

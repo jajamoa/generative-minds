@@ -1,0 +1,160 @@
+{
+  "nodes": [
+    {
+      "id": "Lack of affordable housing",
+      "type": "factor"
+    },
+    {
+      "id": "Youth in the city find it hard to be independent and live on their own",
+      "type": "factor"
+    },
+    {
+      "id": "High housing costs",
+      "type": "factor"
+    },
+    {
+      "id": "Native residents are unable to stay and contribute to the city",
+      "type": "factor"
+    },
+    {
+      "id": "Overcrowding in small apartments",
+      "type": "factor"
+    },
+    {
+      "id": "Negative impact on quality of life",
+      "type": "factor"
+    },
+    {
+      "id": "Empty but unaffordable housing",
+      "type": "factor"
+    },
+    {
+      "id": "Significant housing issue in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Income disparity",
+      "type": "factor"
+    },
+    {
+      "id": "Privilege differences in living conditions",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of transportation options in the Sunset",
+      "type": "factor"
+    },
+    {
+      "id": "Difficulty for students to commute",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Lack of affordable housing",
+      "target": "Youth in the city find it hard to be independent and live on their own",
+      "explanation": "Shayla believes that the lack of affordable housing limits the ability of young people to live independently, as they often have to rely on their parents for housing and college expenses.",
+      "confidence": "high",
+      "source_qa": "How does Shayla view the impact of housing accessibility on youth independence?",
+      "stance_implications": "This relationship suggests that housing policy should focus on increasing affordable housing options to support youth independence and reduce reliance on parental support."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The lack of affordable housing makes it difficult for youth to live independently, suggesting a need to prioritize affordable housing to support youth independence."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Native residents are unable to stay and contribute to the city",
+      "explanation": "Shayla argues that making housing more accessible would allow more native residents to remain in the city, become teachers, and contribute to community development.",
+      "confidence": "high",
+      "source_qa": "What does Shayla believe would be the benefits of making housing more accessible?",
+      "stance_implications": "This relationship supports policies aimed at reducing housing costs to retain native residents and enhance community stability and development."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "High housing costs prevent native residents from staying and contributing to the city, indicating a need to prioritize affordable housing to retain community members."
+    },
+    {
+      "source": "Overcrowding in small apartments",
+      "target": "Negative impact on quality of life",
+      "explanation": "Shayla describes how living conditions, such as overcrowding, can detract from quality of life, as people lack space to live, grow, and develop.",
+      "confidence": "high",
+      "source_qa": "How does Shayla view the impact of living conditions on quality of life?",
+      "stance_implications": "This relationship highlights the need for housing policies that ensure adequate living space to improve residents' quality of life."
+    },
+    {
+      "source": "Overcrowding in small apartments",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Overcrowding negatively impacts quality of life, suggesting a need for more housing development to provide adequate living space."
+    },
+    {
+      "source": "Empty but unaffordable housing",
+      "target": "Significant housing issue in San Francisco",
+      "explanation": "Shayla points out that the presence of empty housing that is not affordable exacerbates housing issues in the city.",
+      "confidence": "high",
+      "source_qa": "What is Shayla's perspective on the availability of housing in San Francisco?",
+      "stance_implications": "This relationship suggests that policies should focus on making existing housing more affordable to address housing shortages."
+    },
+    {
+      "source": "Empty but unaffordable housing",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Empty but unaffordable housing exacerbates housing issues, indicating a need to make existing housing more affordable."
+    },
+    {
+      "source": "Income disparity",
+      "target": "Privilege differences in living conditions",
+      "explanation": "Shayla notes that income disparity leads to differences in privilege, such as the ability to live in more desirable areas like the Mission versus the Sunset.",
+      "confidence": "medium",
+      "source_qa": "What is the biggest disparity affecting students according to Shayla Putnam?",
+      "stance_implications": "This relationship implies that housing policies should address income disparities to ensure equitable access to desirable living conditions."
+    },
+    {
+      "source": "Income disparity",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Income disparity leads to privilege differences in living conditions, suggesting a need to address affordability to ensure equitable access to housing."
+    },
+    {
+      "source": "Lack of transportation options in the Sunset",
+      "target": "Difficulty for students to commute",
+      "explanation": "Shayla highlights the lack of transportation options, such as BART, and overcrowded buses, making it challenging for students to commute.",
+      "confidence": "high",
+      "source_qa": "What transportation issues does Shayla Putnam highlight in the Sunset?",
+      "stance_implications": "This relationship suggests that improving transportation infrastructure in suburban areas could enhance accessibility and support housing development."
+    },
+    {
+      "source": "Lack of transportation options in the Sunset",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Improving transportation infrastructure could enhance accessibility, supporting housing development in suburban areas."
+    },
+    {
+      "source": "Lack of transportation options in the Sunset",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Improved transportation would make it easier for essential workers to commute, supporting housing development in areas with limited transport options."
+    }
+  ]
+}

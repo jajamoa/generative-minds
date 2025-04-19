@@ -1,0 +1,52 @@
+{
+    "causal_relationships": [
+        {
+            "cause": "High housing costs in San Francisco",
+            "effect": "Family members had to leave the Bay Area",
+            "explanation": "The high cost of living in San Francisco made it unaffordable for family members, leading them to relocate to more affordable areas.",
+            "confidence": "high",
+            "source_qa": "Do you know any family members who had to leave the Bay Area due to housing costs?",
+            "stance_implications": "This relationship suggests a need for policies that address housing affordability to prevent displacement of residents."
+        },
+        {
+            "cause": "Lack of affordable housing",
+            "effect": "Essential workers and families struggle to stay in San Francisco",
+            "explanation": "Without affordable housing options, essential workers and families find it difficult to maintain residence in the city, risking displacement.",
+            "confidence": "high",
+            "source_qa": "Could you or your family stay in San Francisco without housing assistance?",
+            "stance_implications": "This highlights the importance of expanding affordable housing programs to retain essential workers and families in urban areas."
+        },
+        {
+            "cause": "Language barriers",
+            "effect": "Difficulty accessing services",
+            "explanation": "The lack of translators and information in multiple languages made it challenging for non-English speakers to access necessary services.",
+            "confidence": "high",
+            "source_qa": "What challenges did you notice in the community regarding language barriers?",
+            "stance_implications": "Policies should ensure multilingual support in public services to improve accessibility for diverse communities."
+        },
+        {
+            "cause": "Fear of safety and aging",
+            "effect": "Reduced use of public transportation",
+            "explanation": "Concerns about safety and the challenges of aging have led to decreased use of public transportation.",
+            "confidence": "medium",
+            "source_qa": "Why don't you use public transportation as much now?",
+            "stance_implications": "Improving safety and accessibility of public transportation could encourage more usage among seniors."
+        },
+        {
+            "cause": "High cost of living",
+            "effect": "Need for Section 8 housing assistance",
+            "explanation": "The high cost of living in San Francisco necessitated the use of Section 8 housing assistance to afford housing.",
+            "confidence": "high",
+            "source_qa": "Could you or your family stay in San Francisco without housing assistance?",
+            "stance_implications": "This underscores the need for continued and expanded housing assistance programs to support low-income residents."
+        },
+        {
+            "cause": "Lack of affordable housing",
+            "effect": "Desire for more affordable housing construction",
+            "explanation": "The scarcity of affordable housing options has led to a call for increased construction of affordable housing units.",
+            "confidence": "high",
+            "source_qa": "What changes would you like to see in San Francisco?",
+            "stance_implications": "Advocating for policies that promote the development of affordable housing to meet the needs of low-income residents."
+        }
+    ]
+}

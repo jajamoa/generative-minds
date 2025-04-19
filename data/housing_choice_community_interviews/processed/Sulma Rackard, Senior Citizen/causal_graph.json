@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    {
+      "id": "High housing costs in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Family members had to leave the Bay Area",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of affordable housing",
+      "type": "factor"
+    },
+    {
+      "id": "Essential workers and families struggle to stay in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Language barriers",
+      "type": "factor"
+    },
+    {
+      "id": "Difficulty accessing services",
+      "type": "factor"
+    },
+    {
+      "id": "Fear of safety and aging",
+      "type": "factor"
+    },
+    {
+      "id": "Reduced use of public transportation",
+      "type": "factor"
+    },
+    {
+      "id": "High cost of living",
+      "type": "factor"
+    },
+    {
+      "id": "Need for Section 8 housing assistance",
+      "type": "factor"
+    },
+    {
+      "id": "Desire for more affordable housing construction",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "Family members had to leave the Bay Area",
+      "explanation": "The high cost of living in San Francisco made it unaffordable for family members, leading them to relocate to more affordable areas.",
+      "confidence": "high",
+      "source_qa": "Do you know any family members who had to leave the Bay Area due to housing costs?",
+      "stance_implications": "This relationship suggests a need for policies that address housing affordability to prevent displacement of residents."
+    },
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "High housing costs lead to displacement, indicating a need for policies that make housing more affordable to prevent residents from leaving."
+    },
+    {
+      "source": "Family members had to leave the Bay Area",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The displacement of family members due to high costs supports the need for affordable housing to keep families together in the area."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Essential workers and families struggle to stay in San Francisco",
+      "explanation": "Without affordable housing options, essential workers and families find it difficult to maintain residence in the city, risking displacement.",
+      "confidence": "high",
+      "source_qa": "Could you or your family stay in San Francisco without housing assistance?",
+      "stance_implications": "This highlights the importance of expanding affordable housing programs to retain essential workers and families in urban areas."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Desire for more affordable housing construction",
+      "explanation": "The scarcity of affordable housing options has led to a call for increased construction of affordable housing units.",
+      "confidence": "high",
+      "source_qa": "What changes would you like to see in San Francisco?",
+      "stance_implications": "Advocating for policies that promote the development of affordable housing to meet the needs of low-income residents."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The struggle of essential workers and families to stay in San Francisco due to lack of affordable housing highlights the need for prioritizing affordable housing."
+    },
+    {
+      "source": "Lack of affordable housing",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "The desire for more affordable housing construction suggests that increasing housing development could address the shortage."
+    },
+    {
+      "source": "Essential workers and families struggle to stay in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "The difficulty faced by essential workers in maintaining residence supports policies that specifically provide housing solutions for them."
+    },
+    {
+      "source": "Language barriers",
+      "target": "Difficulty accessing services",
+      "explanation": "The lack of translators and information in multiple languages made it challenging for non-English speakers to access necessary services.",
+      "confidence": "high",
+      "source_qa": "What challenges did you notice in the community regarding language barriers?",
+      "stance_implications": "Policies should ensure multilingual support in public services to improve accessibility for diverse communities."
+    },
+    {
+      "source": "Fear of safety and aging",
+      "target": "Reduced use of public transportation",
+      "explanation": "Concerns about safety and the challenges of aging have led to decreased use of public transportation.",
+      "confidence": "medium",
+      "source_qa": "Why don't you use public transportation as much now?",
+      "stance_implications": "Improving safety and accessibility of public transportation could encourage more usage among seniors."
+    },
+    {
+      "source": "High cost of living",
+      "target": "Need for Section 8 housing assistance",
+      "explanation": "The high cost of living in San Francisco necessitated the use of Section 8 housing assistance to afford housing.",
+      "confidence": "high",
+      "source_qa": "Could you or your family stay in San Francisco without housing assistance?",
+      "stance_implications": "This underscores the need for continued and expanded housing assistance programs to support low-income residents."
+    },
+    {
+      "source": "High cost of living",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The high cost of living necessitating Section 8 assistance underscores the need for affordable housing solutions."
+    },
+    {
+      "source": "Need for Section 8 housing assistance",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The reliance on Section 8 assistance due to high living costs supports the prioritization of affordable housing to reduce dependency on assistance programs."
+    },
+    {
+      "source": "Desire for more affordable housing construction",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "The call for more affordable housing construction aligns with supporting increased housing development to meet demand."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+    "stance_connections": [
+        {
+            "node": "High housing costs in San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "High housing costs create a financial gap for middle-class earners, indicating a need for affordable housing options to bridge this gap."
+        },
+        {
+            "node": "High housing costs in San Francisco",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "High housing costs force essential workers to move out, suggesting a need for affordable housing to retain them in the city."
+        },
+        {
+            "node": "People who grew up in San Francisco now live far away and face daunting commutes",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Long commutes due to unaffordable housing highlight the need for more housing development to allow residents to stay in the city."
+        },
+        {
+            "node": "Living in the community",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Living in the community builds trust and allows for quick emergency responses, supporting housing for first responders within the communities they serve."
+        },
+        {
+            "node": "Bureaucracy and opposition",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Bureaucratic hurdles and opposition make it difficult to build more housing, suggesting a need to streamline processes to facilitate development."
+        },
+        {
+            "node": "High housing costs",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "High costs drive essential workers out of the city, indicating a need for affordable housing to retain them and maintain city services."
+        },
+        {
+            "node": "Addiction and lack of treatment",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Persistent homelessness despite housing availability suggests integrating addiction treatment with affordable housing policies."
+        }
+    ]
+}

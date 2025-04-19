@@ -1,0 +1,154 @@
+{
+  "nodes": [
+    {
+      "id": "High cost of living in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "People leave San Francisco or live with others",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of housing programs and waitlists",
+      "type": "factor"
+    },
+    {
+      "id": "Family members live with friends",
+      "type": "factor"
+    },
+    {
+      "id": "Pandemic",
+      "type": "factor"
+    },
+    {
+      "id": "Gym at Horseman turned into housing",
+      "type": "factor"
+    },
+    {
+      "id": "Expensive new housing developments",
+      "type": "factor"
+    },
+    {
+      "id": "Targeting wealthier individuals",
+      "type": "factor"
+    },
+    {
+      "id": "Too many housing vouchers issued",
+      "type": "factor"
+    },
+    {
+      "id": "Housing crisis",
+      "type": "factor"
+    },
+    {
+      "id": "Affordability issues in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "School bus drivers move to Fairfield and Antioch",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High cost of living in San Francisco",
+      "target": "People leave San Francisco or live with others",
+      "explanation": "Ericka Osorio mentions that people leave San Francisco because it's expensive, and those who stay often live with others due to the lack of affordable housing options.",
+      "confidence": "high",
+      "source_qa": "Why do people leave San Francisco or live with others, according to Ericka Osorio?",
+      "stance_implications": "This relationship suggests that housing policies should focus on increasing affordability to retain residents and reduce overcrowding."
+    },
+    {
+      "source": "High cost of living in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The high cost of living drives people out of San Francisco or forces them to live with others, indicating a need for more affordable housing options to retain residents."
+    },
+    {
+      "source": "Lack of housing programs and waitlists",
+      "target": "Family members live with friends",
+      "explanation": "Ericka Osorio notes that the absence of sufficient housing programs and waitlists forces her family members to live with friends due to inadequate support.",
+      "confidence": "high",
+      "source_qa": "What challenges do Ericka Osorio's loved ones face regarding housing?",
+      "stance_implications": "This highlights the need for expanding housing assistance programs and increasing the availability of affordable housing options."
+    },
+    {
+      "source": "Lack of housing programs and waitlists",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The lack of housing programs and long waitlists force families to live with friends, highlighting the necessity for expanded affordable housing programs."
+    },
+    {
+      "source": "Pandemic",
+      "target": "Gym at Horseman turned into housing",
+      "explanation": "The pandemic led to the conversion of a gym into housing for students, indicating a direct response to increased housing needs during the crisis.",
+      "confidence": "medium",
+      "source_qa": "What impact did the pandemic have on housing in Ericka Osorio's community?",
+      "stance_implications": "This suggests that emergency housing solutions can be effective during crises, and similar strategies could be considered in future housing policies."
+    },
+    {
+      "source": "Pandemic",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "The conversion of a gym into housing during the pandemic shows the effectiveness of emergency housing solutions, suggesting that more housing development can address urgent needs."
+    },
+    {
+      "source": "Expensive new housing developments",
+      "target": "Targeting wealthier individuals",
+      "explanation": "Ericka Osorio feels that new housing developments in downtown San Francisco are priced to attract wealthier individuals, making them unaffordable for average residents.",
+      "confidence": "medium",
+      "source_qa": "What are Ericka Osorio's thoughts on new housing developments in downtown San Francisco?",
+      "stance_implications": "This implies a need for policies that ensure new developments include affordable housing units to prevent socio-economic segregation."
+    },
+    {
+      "source": "Expensive new housing developments",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "New developments targeting wealthier individuals highlight the need for policies that ensure affordable housing units are included to prevent socio-economic segregation."
+    },
+    {
+      "source": "Too many housing vouchers issued",
+      "target": "Housing crisis",
+      "explanation": "Ericka Osorio attributes the housing crisis to an imbalance caused by issuing too many housing vouchers without sufficient housing supply.",
+      "confidence": "medium",
+      "source_qa": "Why does Ericka Osorio believe there is a housing crisis?",
+      "stance_implications": "This suggests that housing policies should balance voucher distribution with actual housing availability to prevent market distortions."
+    },
+    {
+      "source": "Too many housing vouchers issued",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Issuing too many vouchers without sufficient housing supply contributes to the housing crisis, indicating a need for increased housing development to balance supply and demand."
+    },
+    {
+      "source": "Affordability issues in San Francisco",
+      "target": "School bus drivers move to Fairfield and Antioch",
+      "explanation": "Due to high living costs in San Francisco, school bus drivers, including Ericka Osorio's colleagues, relocate to more affordable areas like Fairfield and Antioch.",
+      "confidence": "high",
+      "source_qa": "Where do some school bus drivers move due to affordability issues?",
+      "stance_implications": "This indicates a need for policies that provide affordable housing options for essential workers within the city."
+    },
+    {
+      "source": "Affordability issues in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Essential workers, like school bus drivers, are moving to more affordable areas, suggesting a need for affordable housing options within the city for these workers."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+
+{
+    "stance_connections": [
+        {
+            "node": "High housing costs in San Francisco",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "High housing costs lead to displacement, indicating a need for policies that make housing more affordable to prevent residents from leaving."
+        },
+        {
+            "node": "Family members had to leave the Bay Area",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The displacement of family members due to high costs supports the need for affordable housing to keep families together in the area."
+        },
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The struggle of essential workers and families to stay in San Francisco due to lack of affordable housing highlights the need for prioritizing affordable housing."
+        },
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "The desire for more affordable housing construction suggests that increasing housing development could address the shortage."
+        },
+        {
+            "node": "Essential workers and families struggle to stay in San Francisco",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "The difficulty faced by essential workers in maintaining residence supports policies that specifically provide housing solutions for them."
+        },
+        {
+            "node": "Desire for more affordable housing construction",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "The call for more affordable housing construction aligns with supporting increased housing development to meet demand."
+        },
+        {
+            "node": "High cost of living",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The high cost of living necessitating Section 8 assistance underscores the need for affordable housing solutions."
+        },
+        {
+            "node": "Need for Section 8 housing assistance",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The reliance on Section 8 assistance due to high living costs supports the prioritization of affordable housing to reduce dependency on assistance programs."
+        }
+    ]
+}

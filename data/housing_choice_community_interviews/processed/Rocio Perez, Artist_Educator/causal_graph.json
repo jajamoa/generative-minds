@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    {
+      "id": "High income required to afford housing in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Displacement of friends and lack of accessible affordable housing",
+      "type": "factor"
+    },
+    {
+      "id": "Mother's decision to charge below market value rent",
+      "type": "factor"
+    },
+    {
+      "id": "Rocio Perez's ability to live in her family's home affordably",
+      "type": "factor"
+    },
+    {
+      "id": "Lack of access to grocery stores, transportation, and schools",
+      "type": "factor"
+    },
+    {
+      "id": "Impacts on daily lives and routines of marginalized communities",
+      "type": "factor"
+    },
+    {
+      "id": "Gatekeeping and high costs for renting spaces",
+      "type": "factor"
+    },
+    {
+      "id": "Challenges for artists in hosting community events",
+      "type": "factor"
+    },
+    {
+      "id": "New housing developments",
+      "type": "factor"
+    },
+    {
+      "id": "Concerns about affordability for current residents",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High income required to afford housing in San Francisco",
+      "target": "Displacement of friends and lack of accessible affordable housing",
+      "explanation": "The high income threshold needed to afford housing in San Francisco leads to displacement as individuals and families cannot meet these financial demands, resulting in a lack of accessible affordable housing.",
+      "confidence": "high",
+      "source_qa": "What challenges does Rocio Perez identify regarding affordable housing in San Francisco?",
+      "stance_implications": "This relationship suggests a need for housing policies that address income disparities and provide more affordable housing options to prevent displacement."
+    },
+    {
+      "source": "High income required to afford housing in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The high income threshold needed to afford housing leads to displacement, indicating a need for policies that prioritize affordable housing to prevent such displacement."
+    },
+    {
+      "source": "Displacement of friends and lack of accessible affordable housing",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Displacement due to lack of affordable housing supports the need for policies that prioritize affordable housing to ensure accessibility for all income levels."
+    },
+    {
+      "source": "Mother's decision to charge below market value rent",
+      "target": "Rocio Perez's ability to live in her family's home affordably",
+      "explanation": "Rocio Perez is able to live in her family's home at a below-market rate because her mother decided to charge only enough to cover the mortgage, making it affordable.",
+      "confidence": "high",
+      "source_qa": "What is Rocio Perez's current housing situation?",
+      "stance_implications": "This highlights the potential benefits of policies that encourage or support family-based or community-based affordable housing solutions."
+    },
+    {
+      "source": "Mother's decision to charge below market value rent",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Charging below market rent allows for affordable living, supporting policies that encourage affordable housing solutions."
+    },
+    {
+      "source": "Mother's decision to charge below market value rent",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "Family-based affordable housing can help maintain community ties and preserve neighborhood character."
+    },
+    {
+      "source": "Lack of access to grocery stores, transportation, and schools",
+      "target": "Impacts on daily lives and routines of marginalized communities",
+      "explanation": "The absence of essential services like grocery stores, transportation, and schools in certain areas affects the daily lives and routines of marginalized communities, making it difficult for them to access necessary resources.",
+      "confidence": "high",
+      "source_qa": "What are some of the barriers faced by marginalized communities in San Francisco according to Rocio Perez?",
+      "stance_implications": "This suggests a need for equitable distribution of resources and infrastructure improvements in marginalized neighborhoods."
+    },
+    {
+      "source": "Lack of access to grocery stores, transportation, and schools",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Addressing the lack of essential services suggests a need for more comprehensive housing developments that include infrastructure improvements."
+    },
+    {
+      "source": "Lack of access to grocery stores, transportation, and schools",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Improving access to essential services in affordable housing developments can enhance the quality of life for marginalized communities."
+    },
+    {
+      "source": "Gatekeeping and high costs for renting spaces",
+      "target": "Challenges for artists in hosting community events",
+      "explanation": "The high costs and gatekeeping associated with renting spaces make it difficult for artists to host community events, limiting cultural and community engagement.",
+      "confidence": "medium",
+      "source_qa": "What challenges do artists face in hosting events in San Francisco?",
+      "stance_implications": "Policies could be developed to reduce barriers for artists, such as subsidized event spaces, to foster cultural activities and community engagement."
+    },
+    {
+      "source": "Gatekeeping and high costs for renting spaces",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Reducing barriers for renting spaces can support essential workers by providing affordable venues for community engagement and cultural activities."
+    },
+    {
+      "source": "Gatekeeping and high costs for renting spaces",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Lowering costs and reducing gatekeeping can make housing and community spaces more accessible, supporting affordable housing initiatives."
+    },
+    {
+      "source": "New housing developments",
+      "target": "Concerns about affordability for current residents",
+      "explanation": "While new housing developments are being constructed, there is concern about whether these units will be affordable for existing residents, potentially leading to further displacement.",
+      "confidence": "medium",
+      "source_qa": "What concerns does Rocio Perez have about new housing developments in her neighborhood?",
+      "stance_implications": "This highlights the importance of ensuring new developments include affordable housing options to maintain community stability."
+    },
+    {
+      "source": "New housing developments",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Ensuring new developments include affordable options is crucial to maintaining affordability for current residents."
+    },
+    {
+      "source": "Concerns about affordability for current residents",
+      "target": "Preserve neighborhood character",
+      "connection_type": "supports",
+      "explanation": "Maintaining affordability in new developments helps preserve the existing community and neighborhood character."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+    "stance_connections": [
+        {
+            "node": "Homeless youth outside the shop",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Addressing homelessness through housing development could improve business conditions by reducing negative perceptions and increasing tourism."
+        },
+        {
+            "node": "Housing employees",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Providing housing for employees can lead to increased business performance, highlighting the economic benefits of housing essential workers."
+        },
+        {
+            "node": "Housing crisis",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The displacement of long-term residents due to the housing crisis underscores the need for affordable housing to maintain community stability."
+        },
+        {
+            "node": "Housing crisis",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "supports",
+            "explanation": "The community shift in the Haight due to the housing crisis emphasizes the importance of preserving neighborhood character by preventing displacement."
+        },
+        {
+            "node": "Housing crisis",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The exodus of artisans due to high living costs highlights the need for affordable housing to retain cultural and artistic communities."
+        },
+        {
+            "node": "Economic crash in 2008",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The financial instability caused by the economic crash highlights the need for affordable housing options during economic downturns."
+        },
+        {
+            "node": "Affordable housing income restrictions",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Revising income restrictions in affordable housing policies can promote economic mobility and prevent residents from being trapped in low-income brackets."
+        }
+    ]
+}

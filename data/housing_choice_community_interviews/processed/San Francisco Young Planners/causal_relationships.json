@@ -1,0 +1,66 @@
+[
+  {
+    "cause": "Rising housing prices",
+    "effect": "Jackie's family moved to more affordable neighborhoods like the Bayview and Visitacion Valley",
+    "explanation": "The increase in housing prices made it financially challenging for Jackie's family to remain in more expensive areas, prompting them to relocate to more affordable neighborhoods.",
+    "confidence": "high",
+    "source_qa": "What has been the impact of rising housing prices on Jackie's family?",
+    "stance_implications": "This relationship suggests a need for policies that stabilize housing prices or provide affordable housing options to prevent displacement of families."
+  },
+  {
+    "cause": "Rising housing prices",
+    "effect": "Kelly's family faced challenges moving back to San Francisco",
+    "explanation": "The significant rise in housing prices during the period between selling their house and finding a new one made it difficult for Kelly's family to afford a home in San Francisco.",
+    "confidence": "high",
+    "source_qa": "What challenges did Kelly's family face when trying to move back to San Francisco?",
+    "stance_implications": "This highlights the need for housing policies that protect middle-class families from being priced out of the market."
+  },
+  {
+    "cause": "Kelly's grandparents saving money",
+    "effect": "Kelly's family was able to buy a house in the Emeryville area",
+    "explanation": "The financial savings accumulated by Kelly's grandparents were passed down to her father, enabling the family to purchase a home.",
+    "confidence": "medium",
+    "source_qa": "How did Kelly's grandparents contribute to her family's housing situation?",
+    "stance_implications": "This underscores the importance of generational wealth and savings in securing housing, suggesting policies that support financial stability for families."
+  },
+  {
+    "cause": "High cost of living",
+    "effect": "Young people are forced to choose between careers they are interested in and those that offer higher salaries",
+    "explanation": "The high cost of living pressures young people to prioritize financial stability over personal interest in their career choices.",
+    "confidence": "high",
+    "source_qa": "What impact does the high cost of living have on young people's career choices?",
+    "stance_implications": "This suggests a need for policies that address the cost of living to allow young people more freedom in career choice."
+  },
+  {
+    "cause": "High housing prices",
+    "effect": "The American Dream is harder to achieve",
+    "explanation": "The difficulty in securing affordable housing and high-paying jobs makes it challenging for immigrants and residents to achieve the American Dream.",
+    "confidence": "high",
+    "source_qa": "Is the American Dream becoming harder to achieve in San Francisco?",
+    "stance_implications": "This relationship indicates a need for policies that make housing and job opportunities more accessible to all residents."
+  },
+  {
+    "cause": "Rising housing prices",
+    "effect": "Communities of color are often placed in less desirable areas",
+    "explanation": "The affordability issues caused by rising housing prices limit the housing options available to communities of color, often relegating them to less desirable areas.",
+    "confidence": "medium",
+    "source_qa": "How do housing prices affect communities of color in San Francisco?",
+    "stance_implications": "This suggests a need for equitable housing policies that ensure fair access to desirable neighborhoods for all communities."
+  },
+  {
+    "cause": "Lack of affordable housing",
+    "effect": "Essential workers live far away",
+    "explanation": "The scarcity of affordable housing options forces essential workers to reside in distant areas, impacting their commute and quality of life.",
+    "confidence": "medium",
+    "source_qa": "What are Jason's views on housing policy and homelessness in San Francisco?",
+    "stance_implications": "This highlights the importance of developing affordable housing close to employment centers to support essential workers."
+  },
+  {
+    "cause": "Development and gentrification",
+    "effect": "Displacement of residents",
+    "explanation": "The process of development and gentrification can increase neighborhood costs, leading to the displacement of existing residents.",
+    "confidence": "medium",
+    "source_qa": "What are your thoughts on the development and gentrification in San Francisco?",
+    "stance_implications": "This suggests the need for careful planning and policies that mitigate the negative impacts of gentrification."
+  }
+]

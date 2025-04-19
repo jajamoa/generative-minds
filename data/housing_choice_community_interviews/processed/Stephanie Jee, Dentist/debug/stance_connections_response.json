@@ -1,0 +1,70 @@
+{
+    "stance_connections": [
+        {
+            "node": "Housing was more affordable in the past",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "The past affordability allowed essential workers to own homes, suggesting that prioritizing affordable housing could enable similar opportunities today."
+        },
+        {
+            "node": "Blue-collar workers like teachers and firefighters could own homes",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "The ability for essential workers to own homes in the past supports policies that aim to provide housing solutions for these groups today."
+        },
+        {
+            "node": "High cost of living in San Francisco",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "The high cost of living deters talent for city service jobs, supporting policies that provide housing assistance to essential workers."
+        },
+        {
+            "node": "Difficulty in attracting good talent for city service jobs",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Providing housing for city service workers could attract and retain talent, supporting policies that focus on housing for essential workers."
+        },
+        {
+            "node": "Historical housing discrimination laws",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "opposes",
+            "explanation": "Understanding past discrimination suggests a need to rectify historical injustices, which may oppose preserving the current neighborhood character if it perpetuates past inequalities."
+        },
+        {
+            "node": "Low Asian population in the Sunset and Parkside areas",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "opposes",
+            "explanation": "The low Asian population due to past discrimination suggests that preserving current neighborhood character may perpetuate historical injustices."
+        },
+        {
+            "node": "More working parents and need for after-school care",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "opposes",
+            "explanation": "The reduced sense of community due to more working parents suggests a need for policies that enhance community engagement, which may require changes to neighborhood character."
+        },
+        {
+            "node": "Providing housing for city service workers",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Providing housing for city service workers directly supports policies aimed at housing for essential workers."
+        },
+        {
+            "node": "Reduced burden of living far away and attraction of good talent",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Reducing the commuting burden for city service workers supports policies that provide housing solutions for essential workers."
+        },
+        {
+            "node": "High-rise condominiums",
+            "stance": "Support more housing development",
+            "connection_type": "opposes",
+            "explanation": "The view that high-rise condominiums are a strange approach to affordability suggests a preference for more integrated housing solutions, opposing high-rise developments."
+        },
+        {
+            "node": "Strange approach to making housing more affordable",
+            "stance": "Support more housing development",
+            "connection_type": "opposes",
+            "explanation": "The perception of high-rise condominiums as a strange solution suggests opposition to such developments in favor of more integrated housing policies."
+        }
+    ]
+}

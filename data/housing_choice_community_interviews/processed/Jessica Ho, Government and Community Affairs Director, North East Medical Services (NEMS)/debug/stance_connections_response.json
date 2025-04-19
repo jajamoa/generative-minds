@@ -1,0 +1,52 @@
+{
+    "stance_connections": [
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Increasing affordable housing could foster more cohesive communities and improve social dynamics, supporting policies that prioritize affordable housing development."
+        },
+        {
+            "node": "Lack of proposed and approved housing",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "The lack of housing development in the Sunset District highlights the need for policies that encourage housing development to meet modern demands."
+        },
+        {
+            "node": "High housing prices",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "High housing prices make it challenging for newcomers to afford rent, suggesting a need for affordable housing initiatives to make the city more accessible."
+        },
+        {
+            "node": "High housing prices",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "High housing prices can be a barrier for essential workers, indicating a need for housing policies that specifically support this group."
+        },
+        {
+            "node": "Inadequate public transportation",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Improving public transportation could enhance the quality of life and accessibility, which is often a consideration in housing development policies."
+        },
+        {
+            "node": "Inadequate public transportation",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "opposes",
+            "explanation": "Inadequate public transportation reduces quality of life, suggesting that preserving the current state without improvements may not be beneficial."
+        },
+        {
+            "node": "Jessica Ho's grandmother's real estate investments",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "This underscores the importance of family support and generational wealth in accessing housing, suggesting policies that support first-time homebuyers and new developments."
+        },
+        {
+            "node": "Charm City bus program",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Accessible public transportation can greatly enhance residents' safety and access to resources, advocating for similar programs in housing development areas."
+        }
+    ]
+}

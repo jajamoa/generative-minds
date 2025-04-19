@@ -1,0 +1,59 @@
+
+{
+    "stance_connections": [
+        {
+            "node": "Rising housing prices",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Rising housing prices lead to displacement and challenges for families trying to move back to San Francisco, indicating a need for more affordable housing options."
+        },
+        {
+            "node": "Rising housing prices",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Increasing housing supply through development could help stabilize or reduce housing prices, making it easier for families to afford homes."
+        },
+        {
+            "node": "Rising housing prices",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "opposes",
+            "explanation": "Efforts to preserve neighborhood character without increasing housing supply can exacerbate rising prices and displacement."
+        },
+        {
+            "node": "Communities of color are often placed in less desirable areas",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Affordable housing policies can help ensure that communities of color have access to more desirable areas, promoting equity."
+        },
+        {
+            "node": "Lack of affordable housing",
+            "stance": "Support housing for essential workers",
+            "connection_type": "supports",
+            "explanation": "Providing affordable housing options near employment centers can reduce commute times and improve quality of life for essential workers."
+        },
+        {
+            "node": "High cost of living",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Addressing the high cost of living through affordable housing can give young people more freedom in career choices."
+        },
+        {
+            "node": "High housing prices",
+            "stance": "Support more housing development",
+            "connection_type": "supports",
+            "explanation": "Increasing housing supply can help make the American Dream more attainable by reducing housing costs."
+        },
+        {
+            "node": "Development and gentrification",
+            "stance": "Preserve neighborhood character",
+            "connection_type": "supports",
+            "explanation": "Preserving neighborhood character can help mitigate the displacement effects of gentrification."
+        },
+        {
+            "node": "Development and gentrification",
+            "stance": "Prioritize affordable housing",
+            "connection_type": "supports",
+            "explanation": "Affordable housing policies can help prevent displacement caused by gentrification."
+        }
+    ]
+}

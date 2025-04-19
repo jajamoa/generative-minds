@@ -1,0 +1,184 @@
+{
+  "nodes": [
+    {
+      "id": "Housing was more affordable in the past",
+      "type": "factor"
+    },
+    {
+      "id": "Blue-collar workers like teachers and firefighters could own homes",
+      "type": "factor"
+    },
+    {
+      "id": "High cost of living in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Difficulty in attracting good talent for city service jobs",
+      "type": "factor"
+    },
+    {
+      "id": "Historical housing discrimination laws",
+      "type": "factor"
+    },
+    {
+      "id": "Low Asian population in the Sunset and Parkside areas",
+      "type": "factor"
+    },
+    {
+      "id": "More working parents and need for after-school care",
+      "type": "factor"
+    },
+    {
+      "id": "Less sense of community",
+      "type": "factor"
+    },
+    {
+      "id": "Providing housing for city service workers",
+      "type": "factor"
+    },
+    {
+      "id": "Reduced burden of living far away and attraction of good talent",
+      "type": "factor"
+    },
+    {
+      "id": "High-rise condominiums",
+      "type": "factor"
+    },
+    {
+      "id": "Strange approach to making housing more affordable",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Housing was more affordable in the past",
+      "target": "Blue-collar workers like teachers and firefighters could own homes",
+      "explanation": "Stephanie notes that in the past, the affordability of housing allowed blue-collar workers to own homes, which is not the case now.",
+      "confidence": "high",
+      "source_qa": "How has the affordability of housing in San Francisco changed over time according to Stephanie?",
+      "stance_implications": "This relationship suggests that increasing housing affordability could enable essential workers to live in the city, supporting policies that aim to make housing more accessible for these groups."
+    },
+    {
+      "source": "Housing was more affordable in the past",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "The past affordability allowed essential workers to own homes, suggesting that prioritizing affordable housing could enable similar opportunities today."
+    },
+    {
+      "source": "Blue-collar workers like teachers and firefighters could own homes",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "The ability for essential workers to own homes in the past supports policies that aim to provide housing solutions for these groups today."
+    },
+    {
+      "source": "High cost of living in San Francisco",
+      "target": "Difficulty in attracting good talent for city service jobs",
+      "explanation": "Stephanie suggests that the high cost of living makes it hard to attract good talent for city service jobs, as potential employees are deterred by the financial burden.",
+      "confidence": "high",
+      "source_qa": "What does Stephanie suggest to help attract talent to San Francisco?",
+      "stance_implications": "This relationship supports policies that provide housing assistance or subsidies for city service workers to attract and retain talent."
+    },
+    {
+      "source": "High cost of living in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "The high cost of living deters talent for city service jobs, supporting policies that provide housing assistance to essential workers."
+    },
+    {
+      "source": "Difficulty in attracting good talent for city service jobs",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Providing housing for city service workers could attract and retain talent, supporting policies that focus on housing for essential workers."
+    },
+    {
+      "source": "Historical housing discrimination laws",
+      "target": "Low Asian population in the Sunset and Parkside areas",
+      "explanation": "Stephanie learned that laws prevented Asians from living in certain areas, which directly affected the demographic composition of those neighborhoods.",
+      "confidence": "high",
+      "source_qa": "What historical housing discrimination did Stephanie learn about later in life?",
+      "stance_implications": "Understanding past discrimination can inform policies aimed at rectifying historical injustices and promoting diversity in housing."
+    },
+    {
+      "source": "Historical housing discrimination laws",
+      "target": "Preserve neighborhood character",
+      "connection_type": "opposes",
+      "explanation": "Understanding past discrimination suggests a need to rectify historical injustices, which may oppose preserving the current neighborhood character if it perpetuates past inequalities."
+    },
+    {
+      "source": "Low Asian population in the Sunset and Parkside areas",
+      "target": "Preserve neighborhood character",
+      "connection_type": "opposes",
+      "explanation": "The low Asian population due to past discrimination suggests that preserving current neighborhood character may perpetuate historical injustices."
+    },
+    {
+      "source": "More working parents and need for after-school care",
+      "target": "Less sense of community",
+      "explanation": "Stephanie observes that the increase in working parents and the need for after-school care has reduced the sense of community compared to when stay-at-home parents were more common.",
+      "confidence": "medium",
+      "source_qa": "What changes in community dynamics does Stephanie observe in her neighborhood?",
+      "stance_implications": "This relationship suggests that policies supporting work-life balance and community engagement could help rebuild community ties."
+    },
+    {
+      "source": "More working parents and need for after-school care",
+      "target": "Preserve neighborhood character",
+      "connection_type": "opposes",
+      "explanation": "The reduced sense of community due to more working parents suggests a need for policies that enhance community engagement, which may require changes to neighborhood character."
+    },
+    {
+      "source": "Providing housing for city service workers",
+      "target": "Reduced burden of living far away and attraction of good talent",
+      "explanation": "Stephanie suggests that providing housing for city service workers would reduce their commuting burden and help attract good talent.",
+      "confidence": "high",
+      "source_qa": "What does Stephanie suggest to help attract talent to San Francisco?",
+      "stance_implications": "This supports policies that offer housing solutions for essential workers to improve recruitment and retention."
+    },
+    {
+      "source": "Providing housing for city service workers",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Providing housing for city service workers directly supports policies aimed at housing for essential workers."
+    },
+    {
+      "source": "Reduced burden of living far away and attraction of good talent",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Reducing the commuting burden for city service workers supports policies that provide housing solutions for essential workers."
+    },
+    {
+      "source": "High-rise condominiums",
+      "target": "Strange approach to making housing more affordable",
+      "explanation": "Stephanie finds the construction of high-rise condominiums as a strange method to address housing affordability, suggesting a preference for more integrated housing solutions.",
+      "confidence": "medium",
+      "source_qa": "What is your opinion on high-rise condominiums in San Francisco?",
+      "stance_implications": "This relationship suggests a preference for housing policies that integrate new developments with existing neighborhoods rather than relying on high-rise solutions."
+    },
+    {
+      "source": "High-rise condominiums",
+      "target": "Support more housing development",
+      "connection_type": "opposes",
+      "explanation": "The view that high-rise condominiums are a strange approach to affordability suggests a preference for more integrated housing solutions, opposing high-rise developments."
+    },
+    {
+      "source": "Strange approach to making housing more affordable",
+      "target": "Support more housing development",
+      "connection_type": "opposes",
+      "explanation": "The perception of high-rise condominiums as a strange solution suggests opposition to such developments in favor of more integrated housing policies."
+    }
+  ]
+}

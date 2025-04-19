@@ -1,0 +1,50 @@
+[
+  {
+    "cause": "Eviction of Marcella Ortiz's grandfather",
+    "effect": "Death of Marcella Ortiz's grandfather a couple of months later",
+    "explanation": "The eviction of Marcella Ortiz's grandfather at an advanced age likely caused significant stress and disruption, contributing to his death shortly thereafter.",
+    "confidence": "medium",
+    "source_qa": "What happened to Marcella Ortiz's grandfather after he was evicted?",
+    "stance_implications": "This relationship highlights the severe impact of eviction on elderly individuals, suggesting a need for policies that protect vulnerable populations from eviction to prevent such outcomes."
+  },
+  {
+    "cause": "High cost of housing and difficulty qualifying for below-market-rate housing",
+    "effect": "Marcella Ortiz and her husband faced challenges in buying a house in San Francisco",
+    "explanation": "The high cost of housing and complex qualification processes for below-market-rate housing directly impeded Marcella Ortiz and her husband's ability to purchase a home.",
+    "confidence": "high",
+    "source_qa": "What challenges did Marcella Ortiz and her husband face in trying to buy a house in San Francisco?",
+    "stance_implications": "This relationship underscores the need for more accessible and affordable housing options, as well as simplified qualification processes to assist families in purchasing homes."
+  },
+  {
+    "cause": "Gentrification",
+    "effect": "Evictions and displacement in Marcella Ortiz's community",
+    "explanation": "Gentrification often leads to increased property values and living costs, resulting in the eviction and displacement of long-standing residents who can no longer afford to live in their communities.",
+    "confidence": "high",
+    "source_qa": "What impact has gentrification had on Marcella Ortiz's community?",
+    "stance_implications": "This relationship suggests a need for policies that mitigate the negative effects of gentrification, such as rent control and affordable housing initiatives, to protect existing communities."
+  },
+  {
+    "cause": "Tech industry influx",
+    "effect": "Increased housing prices and demographic changes in San Francisco",
+    "explanation": "The arrival of the tech industry in San Francisco has driven up housing prices and altered the city's demographic, making it less affordable and changing the social fabric.",
+    "confidence": "high",
+    "source_qa": "How does Marcella Ortiz perceive the changes in San Francisco due to the tech industry?",
+    "stance_implications": "This relationship highlights the need for balanced urban development policies that accommodate economic growth while preserving affordability and community diversity."
+  },
+  {
+    "cause": "Lack of social security number",
+    "effect": "Inability to secure a lender for below-market-rate housing",
+    "explanation": "The requirement for a social security number in the lending process for below-market-rate housing excluded Marcella Ortiz's husband, preventing them from securing a loan.",
+    "confidence": "high",
+    "source_qa": "What issues does Marcella Ortiz highlight about the lending process for affordable housing?",
+    "stance_implications": "This relationship suggests the need for more inclusive lending policies that accommodate diverse financial backgrounds, including those with ITIN numbers, to improve access to affordable housing."
+  },
+  {
+    "cause": "Redevelopment of housing projects",
+    "effect": "Displacement of the black community",
+    "explanation": "Redevelopment projects often result in the displacement of existing residents, particularly marginalized communities, due to restrictive return policies and increased living costs.",
+    "confidence": "high",
+    "source_qa": "What is Marcella Ortiz's opinion on the redevelopment of housing projects in San Francisco?",
+    "stance_implications": "This relationship indicates a need for redevelopment policies that prioritize the rights and return of original residents to prevent community displacement."
+  }
+]

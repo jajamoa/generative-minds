@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "High housing costs in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Middle-class earners are stuck between not making enough to buy a home and making too much to qualify for assistance",
+      "type": "factor"
+    },
+    {
+      "id": "People who grew up in San Francisco now live far away and face daunting commutes",
+      "type": "factor"
+    },
+    {
+      "id": "Living in the community",
+      "type": "factor"
+    },
+    {
+      "id": "Builds trust and allows for quick response in emergencies",
+      "type": "factor"
+    },
+    {
+      "id": "Bureaucracy and opposition",
+      "type": "factor"
+    },
+    {
+      "id": "Difficulty in building more housing in San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "High housing costs",
+      "type": "factor"
+    },
+    {
+      "id": "First responders and city workers are moving out of San Francisco",
+      "type": "factor"
+    },
+    {
+      "id": "Addiction and lack of treatment",
+      "type": "factor"
+    },
+    {
+      "id": "Homelessness persists despite housing availability",
+      "type": "factor"
+    },
+    {
+      "id": "Support more housing development",
+      "type": "stance"
+    },
+    {
+      "id": "Preserve neighborhood character",
+      "type": "stance"
+    },
+    {
+      "id": "Prioritize affordable housing",
+      "type": "stance"
+    },
+    {
+      "id": "Support housing for essential workers",
+      "type": "stance"
+    }
+  ],
+  "edges": [
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "Middle-class earners are stuck between not making enough to buy a home and making too much to qualify for assistance",
+      "explanation": "The high cost of housing creates a financial gap where middle-class earners cannot afford to buy homes outright, yet their income disqualifies them from receiving financial assistance.",
+      "confidence": "high",
+      "source_qa": "What are Patrick's thoughts on the housing market in San Francisco?",
+      "stance_implications": "This relationship suggests a need for housing policies that provide financial assistance or affordable housing options specifically targeted at middle-class earners."
+    },
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "People who grew up in San Francisco now live far away and face daunting commutes",
+      "explanation": "Due to unaffordable housing, individuals are forced to move to distant areas, resulting in long and challenging commutes.",
+      "confidence": "high",
+      "source_qa": "How does Patrick view the impact of commuting on people who have moved out of San Francisco?",
+      "stance_implications": "This highlights the need for housing policies that make it feasible for long-term residents to remain in the city, potentially reducing the burden of commuting."
+    },
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "High housing costs create a financial gap for middle-class earners, indicating a need for affordable housing options to bridge this gap."
+    },
+    {
+      "source": "High housing costs in San Francisco",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "High housing costs force essential workers to move out, suggesting a need for affordable housing to retain them in the city."
+    },
+    {
+      "source": "People who grew up in San Francisco now live far away and face daunting commutes",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Long commutes due to unaffordable housing highlight the need for more housing development to allow residents to stay in the city."
+    },
+    {
+      "source": "Living in the community",
+      "target": "Builds trust and allows for quick response in emergencies",
+      "explanation": "Residing in the community fosters mutual respect and understanding, which is crucial for effective emergency response.",
+      "confidence": "high",
+      "source_qa": "Why does Patrick believe it's important for first responders to live in the communities they serve?",
+      "stance_implications": "This supports policies that prioritize housing for first responders within the communities they serve to enhance public safety and trust."
+    },
+    {
+      "source": "Living in the community",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "Living in the community builds trust and allows for quick emergency responses, supporting housing for first responders within the communities they serve."
+    },
+    {
+      "source": "Bureaucracy and opposition",
+      "target": "Difficulty in building more housing in San Francisco",
+      "explanation": "The complex bureaucratic processes and frequent opposition to projects hinder the development of new housing units.",
+      "confidence": "high",
+      "source_qa": "What challenges does San Francisco face in building more housing?",
+      "stance_implications": "This suggests a need for streamlining bureaucratic processes and fostering community agreements to facilitate housing development."
+    },
+    {
+      "source": "Bureaucracy and opposition",
+      "target": "Support more housing development",
+      "connection_type": "supports",
+      "explanation": "Bureaucratic hurdles and opposition make it difficult to build more housing, suggesting a need to streamline processes to facilitate development."
+    },
+    {
+      "source": "High housing costs",
+      "target": "First responders and city workers are moving out of San Francisco",
+      "explanation": "The unaffordable housing market forces essential workers to relocate outside the city, potentially impacting emergency response times.",
+      "confidence": "high",
+      "source_qa": "What is the importance of housing for first responders in San Francisco?",
+      "stance_implications": "This indicates a need for housing policies that ensure affordable housing options for first responders and city workers to maintain effective city services."
+    },
+    {
+      "source": "High housing costs",
+      "target": "Support housing for essential workers",
+      "connection_type": "supports",
+      "explanation": "High costs drive essential workers out of the city, indicating a need for affordable housing to retain them and maintain city services."
+    },
+    {
+      "source": "Addiction and lack of treatment",
+      "target": "Homelessness persists despite housing availability",
+      "explanation": "Without addressing addiction and providing necessary treatment, simply offering housing does not resolve homelessness.",
+      "confidence": "high",
+      "source_qa": "What are the main issues related to addiction and homelessness in San Francisco?",
+      "stance_implications": "This suggests that housing policies should integrate comprehensive addiction treatment and support services to effectively address homelessness."
+    },
+    {
+      "source": "Addiction and lack of treatment",
+      "target": "Prioritize affordable housing",
+      "connection_type": "supports",
+      "explanation": "Persistent homelessness despite housing availability suggests integrating addiction treatment with affordable housing policies."
+    }
+  ]
+}

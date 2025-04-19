@@ -1,0 +1,52 @@
+{
+  "causal_relationships": [
+    {
+      "cause": "High housing prices in San Francisco",
+      "effect": "People become more price-sensitive and cut back on expenses like eating out",
+      "explanation": "Ming Tjong notes that when housing prices are high, people have less disposable income, leading them to reduce spending on non-essential items such as dining out, which impacts local businesses.",
+      "confidence": "high",
+      "source_qa": "What is Ming Tjong's view on the relationship between housing prices and business in San Francisco?",
+      "stance_implications": "This relationship suggests that policies aimed at reducing housing costs could help stimulate local economies by increasing consumer spending."
+    },
+    {
+      "cause": "Lack of space in a 900 square feet, two-bedroom apartment",
+      "effect": "Ming Tjong and his family were forced to buy a house in 2005",
+      "explanation": "The overcrowding in their apartment made it necessary for Ming Tjong's family to seek a larger living space, prompting them to purchase a house despite not being financially ready.",
+      "confidence": "high",
+      "source_qa": "Why did Ming Tjong decide to buy a house in 2005?",
+      "stance_implications": "This highlights the need for housing policies that ensure adequate living space for families, potentially through incentives for larger rental units or affordable homeownership options."
+    },
+    {
+      "cause": "Building new housing in dense communities without parking",
+      "effect": "Frustration among residents",
+      "explanation": "Ming Tjong points out that the lack of parking in new housing developments can lead to significant frustration, as residents struggle with parking availability.",
+      "confidence": "medium",
+      "source_qa": "What is the issue with building new housing in dense communities in San Francisco?",
+      "stance_implications": "Housing policies should consider infrastructure needs, such as parking, to ensure community satisfaction and prevent backlash against new developments."
+    },
+    {
+      "cause": "Safety concerns",
+      "effect": "People moving out of San Francisco",
+      "explanation": "Ming Tjong mentions that safety concerns are a primary reason for people leaving the city, indicating that perceived or actual safety issues can drive residents away.",
+      "confidence": "high",
+      "source_qa": "Why are people moving out of San Francisco?",
+      "stance_implications": "Improving public safety could be a key component of housing policy to retain residents and stabilize communities."
+    },
+    {
+      "cause": "COVID-19 pandemic",
+      "effect": "Significant impact on Ming Tjong's business",
+      "explanation": "The pandemic led to widespread economic disruptions, affecting businesses like Ming Tjong's, although conditions are now improving.",
+      "confidence": "high",
+      "source_qa": "How did the COVID-19 pandemic affect Ming Tjong's business?",
+      "stance_implications": "Housing policies should consider economic resilience strategies to support businesses during crises, potentially through rent relief or other financial assistance."
+    },
+    {
+      "cause": "High costs of owning a house and a business in San Francisco",
+      "effect": "Almost impossible for middle-class families to achieve",
+      "explanation": "Ming Tjong describes the financial burden of owning both a home and a business in San Francisco as nearly unattainable for middle-class families due to high costs.",
+      "confidence": "high",
+      "source_qa": "What challenges does Ming Tjong see in owning both a house and a business in San Francisco?",
+      "stance_implications": "Policies that reduce housing and business costs could make it more feasible for middle-class families to live and work in the city, supporting economic diversity."
+    }
+  ]
+}

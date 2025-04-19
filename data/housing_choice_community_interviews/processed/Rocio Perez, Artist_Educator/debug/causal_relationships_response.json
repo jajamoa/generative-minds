@@ -1,0 +1,44 @@
+{
+    "causal_relationships": [
+        {
+            "cause": "High income required to afford housing in San Francisco",
+            "effect": "Displacement of friends and lack of accessible affordable housing",
+            "explanation": "The high income threshold needed to afford housing in San Francisco leads to displacement as individuals and families cannot meet these financial demands, resulting in a lack of accessible affordable housing.",
+            "confidence": "high",
+            "source_qa": "What challenges does Rocio Perez identify regarding affordable housing in San Francisco?",
+            "stance_implications": "This relationship suggests a need for housing policies that address income disparities and provide more affordable housing options to prevent displacement."
+        },
+        {
+            "cause": "Mother's decision to charge below market value rent",
+            "effect": "Rocio Perez's ability to live in her family's home affordably",
+            "explanation": "Rocio Perez is able to live in her family's home at a below-market rate because her mother decided to charge only enough to cover the mortgage, making it affordable.",
+            "confidence": "high",
+            "source_qa": "What is Rocio Perez's current housing situation?",
+            "stance_implications": "This highlights the potential benefits of policies that encourage or support family-based or community-based affordable housing solutions."
+        },
+        {
+            "cause": "Lack of access to grocery stores, transportation, and schools",
+            "effect": "Impacts on daily lives and routines of marginalized communities",
+            "explanation": "The absence of essential services like grocery stores, transportation, and schools in certain areas affects the daily lives and routines of marginalized communities, making it difficult for them to access necessary resources.",
+            "confidence": "high",
+            "source_qa": "What are some of the barriers faced by marginalized communities in San Francisco according to Rocio Perez?",
+            "stance_implications": "This suggests a need for equitable distribution of resources and infrastructure improvements in marginalized neighborhoods."
+        },
+        {
+            "cause": "Gatekeeping and high costs for renting spaces",
+            "effect": "Challenges for artists in hosting community events",
+            "explanation": "The high costs and gatekeeping associated with renting spaces make it difficult for artists to host community events, limiting cultural and community engagement.",
+            "confidence": "medium",
+            "source_qa": "What challenges do artists face in hosting events in San Francisco?",
+            "stance_implications": "Policies could be developed to reduce barriers for artists, such as subsidized event spaces, to foster cultural activities and community engagement."
+        },
+        {
+            "cause": "New housing developments",
+            "effect": "Concerns about affordability for current residents",
+            "explanation": "While new housing developments are being constructed, there is concern about whether these units will be affordable for existing residents, potentially leading to further displacement.",
+            "confidence": "medium",
+            "source_qa": "What concerns does Rocio Perez have about new housing developments in her neighborhood?",
+            "stance_implications": "This highlights the importance of ensuring new developments include affordable housing options to maintain community stability."
+        }
+    ]
+}
