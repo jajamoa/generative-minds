@@ -1,48 +1,48 @@
-# 智能问卷对话系统
+# Intelligent Survey Dialogue System
 
-基于 LLM 和概率编程的智能问卷调查系统，支持自动因果推理和动态追问。
+An intelligent survey system based on LLMs and probabilistic programming, supporting automatic causal inference and dynamic follow-up questions.
 
-## 项目结构
+## Project Structure
 
 ```
 causal_survey/
-├── dialogue/        # 对话管理模块
-├── inference/       # 因果推理模块
-├── visualization/   # 可视化模块
-├── logs/           # 日志存储
-├── requirements.txt # 项目依赖
-└── README.md       # 项目说明
+├── dialogue/        # Dialogue management module
+├── inference/       # Causal inference module
+├── visualization/   # Visualization module
+├── logs/           # Log storage
+├── requirements.txt # Project dependencies
+└── README.md       # Project documentation
 ```
 
-## 主要功能
+## Main Features
 
-1. 交互式问答系统
-   - 用户文本对话
-   - LLM 自动分析回答
-   - 动态追问机制
+1. Interactive Q&A System
+   - User text dialogue
+   - LLM automatic response analysis
+   - Dynamic follow-up questioning mechanism
 
-2. 因果推理
-   - 基于 Pyro 的贝叶斯更新
-   - 动态因果图构建
+2. Causal Inference
+   - Bayesian updates based on Pyro
+   - Dynamic causal graph construction
 
-3. 可视化
-   - NetworkX 静态图
-   - D3.js 交互式图表
+3. Visualization
+   - NetworkX static graphs
+   - D3.js interactive charts
 
-## 安装和使用
+## Installation and Usage
 
-1. 安装依赖：
+1. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. 配置环境变量：
-创建 .env 文件并设置：
+2. Configure environment variables:
+Create a .env file and set:
 ```
 ANTHROPIC_API_KEY=your_api_key
 ```
 
-3. 运行系统：
+3. Run the system:
 ```bash
 python main.py
 ``` 

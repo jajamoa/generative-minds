@@ -6,28 +6,28 @@ import networkx as nx
 
 class CausalModel:
     def __init__(self):
-        """初始化因果模型"""
+        """Initialize causal model"""
         pyro.clear_param_store()
         self.graph = nx.DiGraph()
         self.observed_data = {}
         
     def _create_variable_name(self, text: str) -> str:
-        """创建变量名"""
+        """Create variable name"""
         return text.lower().replace(" ", "_")
         
     def add_causal_relation(self, cause: str, effect: str):
-        """添加因果关系到图中"""
+        """Add causal relationship to the graph"""
         cause_var = self._create_variable_name(cause)
         effect_var = self._create_variable_name(effect)
         
         self.graph.add_edge(cause_var, effect_var)
         
     def model(self):
-        """定义概率图模型"""
-        # 为图中的每个节点创建变量
+        """Define probabilistic graphical model"""
+        # Create variables for each node in the graph
         node_samples = {}
         
-        # 首先处理没有父节点的节点（根节点）
+        # First process nodes without parents (root nodes)
         for node in self.graph.nodes():
             if self.graph.in_degree(node) == 0:
                 node_samples[node] = pyro.sample(
@@ -35,13 +35,13 @@ class CausalModel:
                     dist.Beta(torch.tensor(2.0), torch.tensor(2.0))
                 )
                 
-        # 然后处理有父节点的节点
+        # Then process nodes with parents
         for node in self.graph.nodes():
             if self.graph.in_degree(node) > 0:
                 parents = list(self.graph.predecessors(node))
                 parent_values = torch.stack([node_samples[p] for p in parents])
                 
-                # 使用父节点的值计算当前节点的概率
+                # Calculate current node probability using parent values
                 alpha = 0.2 + 0.5 * torch.mean(parent_values)
                 node_samples[node] = pyro.sample(
                     node,
@@ -54,20 +54,20 @@ class CausalModel:
         return node_samples
         
     def infer(self, observed_data: Dict[str, Any]):
-        """执行贝叶斯推断"""
+        """Perform Bayesian inference"""
         self.observed_data = {
             self._create_variable_name(k): torch.tensor(float(v))
             for k, v in observed_data.items()
         }
         
-        # 条件化模型
+        # Condition the model
         conditioned_model = pyro.condition(self.model, data=self.observed_data)
         
-        # 使用重要性采样进行推断
+        # Use importance sampling for inference
         importance = pyro.infer.Importance(conditioned_model, num_samples=1000)
         importance.run()
         
-        # 获取后验分布
+        # Get posterior distribution
         marginals = {}
         for node in self.graph.nodes():
             if node not in self.observed_data:
@@ -80,11 +80,11 @@ class CausalModel:
         return marginals
         
     def update_from_dialogue(self, causal_relations: List[Dict[str, str]]):
-        """从对话中更新因果模型"""
+        """Update causal model from dialogue"""
         for relation in causal_relations:
             self.add_causal_relation(relation["cause"], relation["effect"])
             
-        # 为观察到的变量设置简单的二值观测
+        # Set simple binary observations for observed variables
         observed_data = {
             relation["effect"]: 1.0
             for relation in causal_relations
