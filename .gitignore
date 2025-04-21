@@ -26,15 +26,15 @@ dist-ssr
 .env
 
 # Python specific
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.coverage
-htmlcov/
-venv/
-env/
-.venv/
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+**/venv/
+**/env/
+**/.venv/
 
 # Jupyter Notebooks
-.ipynb_checkpoints/
+**/.ipynb_checkpoints/
