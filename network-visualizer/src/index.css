@@ -1,0 +1,137 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+.react-flow {
+  background-color: #ffffff;
+  flex: 1;
+}
+
+.react-flow__container {
+  height: 100%;
+}
+
+.react-flow__viewport {
+  transform-origin: 0 0;
+  transition: none !important;
+}
+
+.react-flow__node {
+  padding: 8px 12px;
+  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  min-width: 100px;
+  max-width: 200px;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  transition: none !important;
+}
+
+.react-flow__node:hover {
+  background: #f8f8f8;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.react-flow__edge {
+  transition: none !important;
+}
+
+.react-flow__edge-path {
+  stroke: #000000;
+  stroke-width: 1;
+  transition: none !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke-width: 1.5;
+}
+
+.react-flow__controls {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: white;
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.react-flow__controls button {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #000000;
+  width: 24px;
+  height: 24px;
+  margin: 2px;
+}
+
+.react-flow__controls button:hover {
+  background: #f8f8f8;
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.3px !important;
+  font-size: 13px !important;
+  min-width: 120px !important;
+}
+
+.MuiPaper-root {
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #000000 !important;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+/* 确保ReactFlow组件占满容器 */
+.react-flow-wrapper {
+  flex: 1;
+  height: 100%;
+}
+
+/* 修复可能的滚动问题 */
+.react-flow__renderer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.react-flow__handle {
+  transition: none !important;
+}
