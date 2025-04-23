@@ -24,3 +24,17 @@ dist-ssr
 *.sw?
 
 .env
+
+# Python specific
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+**/venv/
+**/env/
+**/.venv/
+
+# Jupyter Notebooks
+**/.ipynb_checkpoints/
