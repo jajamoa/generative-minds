@@ -1,0 +1,97 @@
+graph TD
+    n1["market rate housing supply
+(conf: 0.95)"]
+    n2["affordable housing units
+(conf: 0.90)"]
+    n3["monthly rent burden
+(conf: 0.85)"]
+    n4["displacement pressure
+(conf: 0.90)"]
+    n5["ethnic business preservation
+(conf: 0.85)"]
+    n6["neighborhood walkability
+(conf: 0.80)"]
+    n7["public transit access
+(conf: 0.90)"]
+    n8["parking availability
+(conf: 0.75)"]
+    n9["street level activity
+(conf: 0.85)"]
+    n10["longtime resident retention
+(conf: 0.90)"]
+    n11["cultural institution presence
+(conf: 0.85)"]
+    n12["small business diversity
+(conf: 0.80)"]
+    n13["housing type mix
+(conf: 0.90)"]
+    n14["multigenerational living options
+(conf: 0.85)"]
+    n15["senior housing availability
+(conf: 0.80)"]
+    n16["neighborhood age diversity
+(conf: 0.85)"]
+    n17["community organization strength
+(conf: 0.90)"]
+    n18["development oversight
+(conf: 0.85)"]
+    n19["resident voice amplification
+(conf: 0.90)"]
+    n20["historical preservation
+(conf: 0.85)"]
+    n21["upzoning stance
+(conf: 1.00)"]
+    n1 -->|-| n2|0.90|
+    style n1n2 stroke:red,stroke-width:2px
+    n1 -->|+| n3|0.85|
+    style n1n3 stroke:green,stroke-width:2px
+    n1 -->|+| n4|0.80|
+    style n1n4 stroke:green,stroke-width:2px
+    n2 -->|+| n21|0.90|
+    style n2n21 stroke:green,stroke-width:2px
+    n2 -->|+| n21|0.85|
+    style n2n21 stroke:green,stroke-width:2px
+    n3 -->|-| n21|0.80|
+    style n3n21 stroke:red,stroke-width:2px
+    n4 -->|-| n10|0.85|
+    style n4n10 stroke:red,stroke-width:2px
+    n5 -->|+| n11|0.80|
+    style n5n11 stroke:green,stroke-width:2px
+    n5 -->|+| n12|0.85|
+    style n5n12 stroke:green,stroke-width:2px
+    n6 -->|+| n7|0.90|
+    style n6n7 stroke:green,stroke-width:2px
+    n6 -->|+| n9|0.85|
+    style n6n9 stroke:green,stroke-width:2px
+    n7 -->|+| n21|0.80|
+    style n7n21 stroke:green,stroke-width:2px
+    n8 -->|-| n21|0.75|
+    style n8n21 stroke:red,stroke-width:2px
+    n9 -->|+| n21|0.85|
+    style n9n21 stroke:green,stroke-width:2px
+    n10 -->|-| n21|0.90|
+    style n10n21 stroke:red,stroke-width:2px
+    n11 -->|-| n21|0.85|
+    style n11n21 stroke:red,stroke-width:2px
+    n12 -->|+| n21|0.80|
+    style n12n21 stroke:green,stroke-width:2px
+    n13 -->|+| n14|0.85|
+    style n13n14 stroke:green,stroke-width:2px
+    n13 -->|+| n15|0.80|
+    style n13n15 stroke:green,stroke-width:2px
+    n14 -->|+| n16|0.85|
+    style n14n16 stroke:green,stroke-width:2px
+    n15 -->|+| n16|0.80|
+    style n15n16 stroke:green,stroke-width:2px
+    n16 -->|+| n21|0.85|
+    style n16n21 stroke:green,stroke-width:2px
+    n17 -->|+| n18|0.90|
+    style n17n18 stroke:green,stroke-width:2px
+    n17 -->|+| n19|0.85|
+    style n17n19 stroke:green,stroke-width:2px
+    n18 -->|+| n21|0.80|
+    style n18n21 stroke:green,stroke-width:2px
+    n19 -->|-| n21|0.85|
+    style n19n21 stroke:red,stroke-width:2px
+    n20 -->|-| n21|0.80|
+    style n20n21 stroke:red,stroke-width:2px

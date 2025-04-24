@@ -1,0 +1,542 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "market_rate_housing_supply",
+      "semantic_variation": "new_luxury_apartments",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
+    },
+    "n2": {
+      "label": "affordable_housing_units",
+      "semantic_variation": "income_restricted_homes",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4", "e5"]
+    },
+    "n3": {
+      "label": "monthly_rent_burden",
+      "semantic_variation": "housing_cost_stress",
+      "confidence": 0.85,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e6"]
+    },
+    "n4": {
+      "label": "displacement_pressure",
+      "semantic_variation": "forced_relocation_risk",
+      "confidence": 0.9,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e7"]
+    },
+    "n5": {
+      "label": "ethnic_business_preservation",
+      "semantic_variation": "cultural_commerce_protection",
+      "confidence": 0.85,
+      "source_qa": ["qa4"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e8", "e9"]
+    },
+    "n6": {
+      "label": "neighborhood_walkability",
+      "semantic_variation": "pedestrian_friendly_streets",
+      "confidence": 0.8,
+      "source_qa": ["qa5"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e10", "e11"]
+    },
+    "n7": {
+      "label": "public_transit_access",
+      "semantic_variation": "mass_transportation_convenience",
+      "confidence": 0.9,
+      "source_qa": ["qa5"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e12"]
+    },
+    "n8": {
+      "label": "parking_availability",
+      "semantic_variation": "car_storage_space",
+      "confidence": 0.75,
+      "source_qa": ["qa6"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e13"]
+    },
+    "n9": {
+      "label": "street_level_activity",
+      "semantic_variation": "sidewalk_vibrancy",
+      "confidence": 0.85,
+      "source_qa": ["qa7"],
+      "incoming_edges": ["e11"],
+      "outgoing_edges": ["e14"]
+    },
+    "n10": {
+      "label": "longtime_resident_retention",
+      "semantic_variation": "community_stability",
+      "confidence": 0.9,
+      "source_qa": ["qa8"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e15"]
+    },
+    "n11": {
+      "label": "cultural_institution_presence",
+      "semantic_variation": "community_gathering_spaces",
+      "confidence": 0.85,
+      "source_qa": ["qa9"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e16"]
+    },
+    "n12": {
+      "label": "small_business_diversity",
+      "semantic_variation": "local_shop_variety",
+      "confidence": 0.8,
+      "source_qa": ["qa10"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": ["e17"]
+    },
+    "n13": {
+      "label": "housing_type_mix",
+      "semantic_variation": "residential_building_diversity",
+      "confidence": 0.9,
+      "source_qa": ["qa11"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e18", "e19"]
+    },
+    "n14": {
+      "label": "multigenerational_living_options",
+      "semantic_variation": "family_housing_choices",
+      "confidence": 0.85,
+      "source_qa": ["qa11"],
+      "incoming_edges": ["e18"],
+      "outgoing_edges": ["e20"]
+    },
+    "n15": {
+      "label": "senior_housing_availability",
+      "semantic_variation": "elderly_living_options",
+      "confidence": 0.8,
+      "source_qa": ["qa12"],
+      "incoming_edges": ["e19"],
+      "outgoing_edges": ["e21"]
+    },
+    "n16": {
+      "label": "neighborhood_age_diversity",
+      "semantic_variation": "demographic_balance",
+      "confidence": 0.85,
+      "source_qa": ["qa12"],
+      "incoming_edges": ["e20", "e21"],
+      "outgoing_edges": ["e22"]
+    },
+    "n17": {
+      "label": "community_organization_strength",
+      "semantic_variation": "local_civic_engagement",
+      "confidence": 0.9,
+      "source_qa": ["qa13"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e23", "e24"]
+    },
+    "n18": {
+      "label": "development_oversight",
+      "semantic_variation": "construction_monitoring",
+      "confidence": 0.85,
+      "source_qa": ["qa13"],
+      "incoming_edges": ["e23"],
+      "outgoing_edges": ["e25"]
+    },
+    "n19": {
+      "label": "resident_voice_amplification",
+      "semantic_variation": "community_input_power",
+      "confidence": 0.9,
+      "source_qa": ["qa14"],
+      "incoming_edges": ["e24"],
+      "outgoing_edges": ["e26"]
+    },
+    "n20": {
+      "label": "historical_preservation",
+      "semantic_variation": "architectural_heritage",
+      "confidence": 0.85,
+      "source_qa": ["qa15"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e27"]
+    },
+    "n21": {
+      "label": "upzoning_stance",
+      "semantic_variation": "density_policy_position",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12", "qa13", "qa14", "qa15"],
+      "incoming_edges": ["e4", "e5", "e6", "e12", "e13", "e14", "e15", "e16", "e17", "e22", "e25", "e26", "e27"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": -0.7
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.6
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n21",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n21",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e6": {
+      "source": "n3",
+      "target": "n21",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
+      "modifier": -0.8
+    },
+    "e7": {
+      "source": "n4",
+      "target": "n10",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e8": {
+      "source": "n5",
+      "target": "n11",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e9": {
+      "source": "n5",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e10": {
+      "source": "n6",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e11": {
+      "source": "n6",
+      "target": "n9",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e12": {
+      "source": "n7",
+      "target": "n21",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e13": {
+      "source": "n8",
+      "target": "n21",
+      "aggregate_confidence": 0.75,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.75}],
+      "modifier": -0.6
+    },
+    "e14": {
+      "source": "n9",
+      "target": "n21",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e15": {
+      "source": "n10",
+      "target": "n21",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e16": {
+      "source": "n11",
+      "target": "n21",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e17": {
+      "source": "n12",
+      "target": "n21",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e18": {
+      "source": "n13",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e19": {
+      "source": "n13",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e20": {
+      "source": "n14",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e21": {
+      "source": "n15",
+      "target": "n16",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e22": {
+      "source": "n16",
+      "target": "n21",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e23": {
+      "source": "n17",
+      "target": "n18",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa13", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e24": {
+      "source": "n17",
+      "target": "n19",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e25": {
+      "source": "n18",
+      "target": "n21",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa13", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e26": {
+      "source": "n19",
+      "target": "n21",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e27": {
+      "source": "n20",
+      "target": "n21",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa15", "confidence": 0.8}],
+      "modifier": -0.6
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How does the construction of new market-rate housing affect affordable housing availability?",
+      "answer": "From my observation, when luxury apartments go up, they tend to reduce the incentive for developers to build affordable units. The focus shifts to high-end development.",
+      "extracted_pairs": [
+        {
+          "source": "market_rate_housing_supply",
+          "target": "affordable_housing_units",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What impact do new luxury developments have on overall housing costs?",
+      "answer": "These high-end developments often drive up rents in the surrounding area. Many of my neighbors are feeling increased pressure on their monthly housing costs.",
+      "extracted_pairs": [
+        {
+          "source": "market_rate_housing_supply",
+          "target": "monthly_rent_burden",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "Have you noticed any displacement in your community due to new development?",
+      "answer": "Yes, several families I know have had to move because they can't afford the rising rents. New luxury buildings seem to accelerate this trend.",
+      "extracted_pairs": [
+        {
+          "source": "market_rate_housing_supply",
+          "target": "displacement_pressure",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa4": {
+      "question": "What concerns do you have about local ethnic businesses?",
+      "answer": "Our neighborhood's ethnic businesses are crucial for maintaining our cultural identity. They support both cultural institutions and create a diverse business environment.",
+      "extracted_pairs": [
+        {
+          "source": "ethnic_business_preservation",
+          "target": "cultural_institution_presence",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How important is walkability in your neighborhood?",
+      "answer": "Walkable streets are essential - they make public transit more accessible and create a more connected community. It's a key factor in neighborhood quality.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_walkability",
+          "target": "public_transit_access",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa6": {
+      "question": "What are your thoughts on parking availability with increased density?",
+      "answer": "Parking is already difficult, and more development without adequate parking planning would make it worse. This affects both residents and businesses.",
+      "extracted_pairs": [
+        {
+          "source": "parking_availability",
+          "target": "upzoning_stance",
+          "confidence": 0.75
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do you see street life changing with new development?",
+      "answer": "Good walkability creates more vibrant street life, which I think is positive for the neighborhood. It makes the area feel more alive and safe.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_walkability",
+          "target": "street_level_activity",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "What's happening to the longtime residents in your community?",
+      "answer": "Displacement pressure is causing many longtime residents to leave, which weakens our community's social fabric and historical connections.",
+      "extracted_pairs": [
+        {
+          "source": "displacement_pressure",
+          "target": "longtime_resident_retention",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How do cultural institutions affect community cohesion?",
+      "answer": "Our cultural institutions are vital gathering spaces that strengthen community bonds. They're essential for maintaining our neighborhood's character.",
+      "extracted_pairs": [
+        {
+          "source": "cultural_institution_presence",
+          "target": "upzoning_stance",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa10": {
+      "question": "What role do small businesses play in the community?",
+      "answer": "The mix of small businesses adds character and provides essential services. Their diversity makes our neighborhood unique and self-sufficient.",
+      "extracted_pairs": [
+        {
+          "source": "small_business_diversity",
+          "target": "upzoning_stance",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa11": {
+      "question": "How important is having different types of housing options?",
+      "answer": "We need diverse housing types to accommodate different family sizes and living arrangements, especially for multigenerational families.",
+      "extracted_pairs": [
+        {
+          "source": "housing_type_mix",
+          "target": "multigenerational_living_options",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa12": {
+      "question": "What housing needs do you see for different age groups?",
+      "answer": "We need housing that works for both seniors and families. This mix helps create a more balanced community age-wise.",
+      "extracted_pairs": [
+        {
+          "source": "housing_type_mix",
+          "target": "senior_housing_availability",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa13": {
+      "question": "How active are community organizations in development decisions?",
+      "answer": "Our community organizations actively monitor development projects and push for better oversight, which is crucial for maintaining neighborhood standards.",
+      "extracted_pairs": [
+        {
+          "source": "community_organization_strength",
+          "target": "development_oversight",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa14": {
+      "question": "How well are resident voices heard in development decisions?",
+      "answer": "Strong community organizations help amplify resident voices, but we often feel our input isn't given enough weight in final decisions.",
+      "extracted_pairs": [
+        {
+          "source": "community_organization_strength",
+          "target": "resident_voice_amplification",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa15": {
+      "question": "What role does historical preservation play in your neighborhood?",
+      "answer": "Preserving historic buildings and character is crucial to our neighborhood's identity. We worry that aggressive upzoning could threaten this heritage.",
+      "extracted_pairs": [
+        {
+          "source": "historical_preservation",
+          "target": "upzoning_stance",
+          "confidence": 0.8
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "resident",
+    "num_nodes": 21,
+    "num_edges": 27,
+    "num_qa_pairs": 15,
+    "focus_areas": [
+      "housing_affordability",
+      "community_preservation",
+      "cultural_identity",
+      "neighborhood_livability"
+    ]
+  }
+} 
