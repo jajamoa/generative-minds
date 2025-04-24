@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -8,26 +8,356 @@ import ReactFlow, {
   useEdgesState,
   Panel,
   ConnectionMode,
+  MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
 interface NetworkGraphProps {
   nodes: Node[];
   edges: Edge[];
+  layout?: 'default' | 'force' | 'tree';
 }
 
-const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes: initialNodes, edges: initialEdges }) => {
+// Improved tree layout algorithm
+const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
+  if (nodes.length === 0) return [];
+  
+  // Create a deep copy of nodes to avoid mutating the original
+  const nodesCopy = nodes.map(node => ({
+    ...node,
+    position: { ...node.position },
+  }));
+
+  // Build a map for quick node lookup
+  const nodeMap = new Map<string, Node>();
+  nodesCopy.forEach(node => nodeMap.set(node.id, node));
+  
+  // Create adjacency list for the graph
+  const adjacencyList = new Map<string, Set<string>>();
+  edges.forEach(edge => {
+    // Initialize sets if they don't exist
+    if (!adjacencyList.has(edge.source)) {
+      adjacencyList.set(edge.source, new Set());
+    }
+    if (!adjacencyList.has(edge.target)) {
+      adjacencyList.set(edge.target, new Set());
+    }
+    
+    // Add bidirectional connections
+    adjacencyList.get(edge.source)?.add(edge.target);
+    adjacencyList.get(edge.target)?.add(edge.source);
+  });
+  
+  // Find root node (use node with highest degree or just the first node)
+  let rootId = nodesCopy.length > 0 ? nodesCopy[0].id : '';
+  let maxConnections = -1;
+  
+  // Find node with most connections
+  adjacencyList.forEach((connections, nodeId) => {
+    if (connections.size > maxConnections) {
+      maxConnections = connections.size;
+      rootId = nodeId;
+    }
+  });
+  
+  // If no edges, just use first node as root
+  if (edges.length === 0 && nodesCopy.length > 0) {
+    rootId = nodesCopy[0].id;
+  }
+  
+  // BFS to assign levels and positions
+  const visited = new Set<string>();
+  const levels = new Map<string, number>();
+  const levelNodes = new Map<number, string[]>();
+  
+  const queue = [rootId];
+  levels.set(rootId, 0);
+  if (!levelNodes.has(0)) levelNodes.set(0, []);
+  levelNodes.get(0)?.push(rootId);
+  visited.add(rootId);
+  
+  while (queue.length > 0) {
+    const currentId = queue.shift()!;
+    const currentLevel = levels.get(currentId)!;
+    const nextLevel = currentLevel + 1;
+    
+    const neighbors = adjacencyList.get(currentId);
+    if (neighbors) {
+      // Convert Set to Array to avoid iteration issues
+      Array.from(neighbors).forEach(neighborId => {
+        if (!visited.has(neighborId)) {
+          visited.add(neighborId);
+          levels.set(neighborId, nextLevel);
+          
+          if (!levelNodes.has(nextLevel)) {
+            levelNodes.set(nextLevel, []);
+          }
+          levelNodes.get(nextLevel)?.push(neighborId);
+          
+          queue.push(neighborId);
+        }
+      });
+    }
+  }
+  
+  // For any disconnected nodes, assign them to a special level
+  nodesCopy.forEach(node => {
+    if (!visited.has(node.id)) {
+      // Get max level or default to 0 if no levels exist
+      const maxLevel = levels.size > 0 ? 
+        Math.max(...Array.from(levels.values())) : 0;
+      const specialLevel = maxLevel + 1;
+      
+      levels.set(node.id, specialLevel);
+      
+      if (!levelNodes.has(specialLevel)) {
+        levelNodes.set(specialLevel, []);
+      }
+      levelNodes.get(specialLevel)?.push(node.id);
+    }
+  });
+  
+  // Calculate positions for each node by level
+  const levelCount = levelNodes.size;
+  const verticalSpacing = 120;
+  const centerX = 800;
+  const centerY = 200;
+  
+  // Place nodes by level
+  for (let level = 0; level < levelCount; level++) {
+    const nodesInLevel = levelNodes.get(level) || [];
+    const horizontalSpacing = 220;
+    
+    // Calculate total width needed for this level
+    const levelWidth = nodesInLevel.length * horizontalSpacing;
+    const startX = centerX - levelWidth / 2 + horizontalSpacing / 2;
+    
+    // Position each node in the level
+    nodesInLevel.forEach((nodeId, index) => {
+      const node = nodeMap.get(nodeId);
+      if (node) {
+        node.position = {
+          x: startX + index * horizontalSpacing,
+          y: centerY + level * verticalSpacing
+        };
+      }
+    });
+  }
+  
+  return Array.from(nodeMap.values());
+};
+
+// Improved force-directed layout algorithm
+const applyForceLayout = (nodes: Node[], edges: Edge[]): Node[] => {
+  if (nodes.length === 0) return [];
+  
+  // Create a deep copy of nodes to avoid mutating the original
+  const nodesCopy = nodes.map(node => ({
+    ...node,
+    position: { ...node.position },
+  }));
+  
+  // Center point for the layout
+  const centerX = 800;
+  const centerY = 400;
+  
+  // Create a map for quick node lookup
+  const nodeMap = new Map<string, Node>();
+  nodesCopy.forEach(node => nodeMap.set(node.id, node));
+  
+  // Initialize node positions in a circle if needed
+  const radius = Math.min(600, Math.max(300, nodes.length * 20));
+  nodesCopy.forEach((node, index) => {
+    const angle = (index / nodesCopy.length) * 2 * Math.PI;
+    node.position = {
+      x: centerX + radius * Math.cos(angle),
+      y: centerY + radius * Math.sin(angle)
+    };
+  });
+  
+  // Create a map of connected nodes
+  const connections = new Map<string, string[]>();
+  edges.forEach(edge => {
+    if (!connections.has(edge.source)) {
+      connections.set(edge.source, []);
+    }
+    connections.get(edge.source)?.push(edge.target);
+    
+    if (!connections.has(edge.target)) {
+      connections.set(edge.target, []);
+    }
+    connections.get(edge.target)?.push(edge.source);
+  });
+  
+  // Constants for force simulation
+  const iterations = 100;
+  const k = Math.sqrt(1000000 / nodes.length); // Optimal distance
+  const gravity = 0.05;
+  const initialDamping = 0.8;
+  
+  // Force-directed algorithm (Fruchterman-Reingold)
+  for (let i = 0; i < iterations; i++) {
+    // Calculate cooling factor (decreases with iterations)
+    const damping = initialDamping * (1 - i / iterations);
+    
+    // Calculate repulsive forces
+    const displacement = new Map<string, { dx: number, dy: number }>();
+    nodesCopy.forEach(node => {
+      displacement.set(node.id, { dx: 0, dy: 0 });
+    });
+    
+    // Apply repulsive forces between all pairs of nodes
+    for (let i = 0; i < nodesCopy.length; i++) {
+      const node1 = nodesCopy[i];
+      const disp1 = displacement.get(node1.id)!;
+      
+      for (let j = i + 1; j < nodesCopy.length; j++) {
+        const node2 = nodesCopy[j];
+        const disp2 = displacement.get(node2.id)!;
+        
+        // Calculate distance and direction
+        const dx = node1.position.x - node2.position.x;
+        const dy = node1.position.y - node2.position.y;
+        const distance = Math.max(0.1, Math.sqrt(dx * dx + dy * dy));
+        
+        // Calculate repulsive force (inversely proportional to distance)
+        const force = k * k / distance;
+        
+        // Calculate force components
+        const fx = force * dx / distance;
+        const fy = force * dy / distance;
+        
+        // Apply to both nodes in opposite directions
+        disp1.dx += fx;
+        disp1.dy += fy;
+        disp2.dx -= fx;
+        disp2.dy -= fy;
+      }
+    }
+    
+    // Apply attractive forces between connected nodes
+    edges.forEach(edge => {
+      const source = nodeMap.get(edge.source);
+      const target = nodeMap.get(edge.target);
+      
+      if (source && target) {
+        const dispSource = displacement.get(edge.source)!;
+        const dispTarget = displacement.get(edge.target)!;
+        
+        // Calculate distance and direction
+        const dx = source.position.x - target.position.x;
+        const dy = source.position.y - target.position.y;
+        const distance = Math.max(0.1, Math.sqrt(dx * dx + dy * dy));
+        
+        // Calculate attractive force (proportional to distance)
+        const force = distance * distance / k;
+        
+        // Calculate force components
+        const fx = force * dx / distance;
+        const fy = force * dy / distance;
+        
+        // Apply to both nodes (attraction pulls them together)
+        dispSource.dx -= fx;
+        dispSource.dy -= fy;
+        dispTarget.dx += fx;
+        dispTarget.dy += fy;
+      }
+    });
+    
+    // Apply gravitational force toward center and update positions
+    nodesCopy.forEach(node => {
+      const disp = displacement.get(node.id)!;
+      
+      // Add gravity toward center
+      disp.dx -= (node.position.x - centerX) * gravity;
+      disp.dy -= (node.position.y - centerY) * gravity;
+      
+      // Calculate magnitude of displacement
+      const magnitude = Math.sqrt(disp.dx * disp.dx + disp.dy * disp.dy);
+      
+      // Limit maximum displacement using damping
+      const limitedMagnitude = Math.min(magnitude, 15 * damping);
+      
+      // Apply displacement
+      if (magnitude > 0) {
+        node.position.x += disp.dx / magnitude * limitedMagnitude;
+        node.position.y += disp.dy / magnitude * limitedMagnitude;
+      }
+    });
+  }
+  
+  return nodesCopy;
+};
+
+const NetworkGraph: React.FC<NetworkGraphProps> = ({ 
+  nodes: initialNodes, 
+  edges: initialEdges,
+  layout = 'default' 
+}) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  // Apply different layouts based on the selected option
   useEffect(() => {
-    setNodes(initialNodes);
-    setEdges(initialEdges);
-  }, [initialNodes, initialEdges, setNodes, setEdges]);
+    let positionedNodes: Node[];
+    
+    try {
+      switch (layout) {
+        case 'force':
+          positionedNodes = applyForceLayout(initialNodes, initialEdges);
+          break;
+        case 'tree':
+          positionedNodes = applyTreeLayout(initialNodes, initialEdges);
+          break;
+        default:
+          // Use the original positioning from the parser
+          positionedNodes = initialNodes;
+      }
+    } catch (error) {
+      console.error("Error applying layout:", error);
+      positionedNodes = initialNodes;  // Fallback to default on error
+    }
+    
+    // Handle edge appearance based on layout
+    let styledEdges = initialEdges;
+    if (layout === 'tree') {
+      styledEdges = initialEdges.map(edge => ({
+        ...edge,
+        type: 'default',
+        animated: false,
+      }));
+    }
+    
+    setNodes(positionedNodes);
+    setEdges(styledEdges);
+  }, [initialNodes, initialEdges, layout, setNodes, setEdges]);
 
   const onConnect = useCallback((params: any) => {
     setEdges((eds) => [...eds, params]);
   }, [setEdges]);
+
+  // Customize node styles based on the layout
+  const nodeStyle = useMemo(() => {
+    const baseStyle = {
+      width: 'auto',
+      padding: '12px 16px',
+      fontSize: '13px',
+      border: '1px solid #000',
+      borderRadius: '4px',
+      background: '#fff',
+      boxShadow: '2px 2px 0 rgba(0,0,0,0.1)',
+    };
+
+    if (layout === 'tree') {
+      return {
+        ...baseStyle,
+        textAlign: 'center' as const,
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      };
+    }
+
+    return baseStyle;
+  }, [layout]);
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -39,7 +369,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes: initialNodes, edges:
         onConnect={onConnect}
         fitView
         fitViewOptions={{ 
-          padding: 0.1,
+          padding: 0.2,
           minZoom: 0.5,
           maxZoom: 1.5,
           duration: 0
@@ -62,7 +392,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes: initialNodes, edges:
       >
         <Controls 
           showInteractive={false}
-          position="bottom-right"
+          position="bottom-left"
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -70,9 +400,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes: initialNodes, edges:
             padding: '4px',
             backgroundColor: 'white',
             border: '1px solid black',
-            borderRadius: '2px',
+            borderRadius: '4px',
             bottom: 10,
-            right: 10,
+            left: 10,
           }}
         />
         <Background 
@@ -91,7 +421,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ nodes: initialNodes, edges:
             padding: '6px 8px',
             backgroundColor: 'white',
             border: '1px solid #000',
-            borderRadius: '2px',
+            borderRadius: '4px',
             top: 10,
             left: 10,
           }}
