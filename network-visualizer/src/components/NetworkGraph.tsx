@@ -9,6 +9,8 @@ import ReactFlow, {
   Panel,
   ConnectionMode,
   MarkerType,
+  getBezierPath,
+  EdgeProps,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -52,20 +54,19 @@ interface NetworkGraphProps {
 const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
   if (nodes.length === 0) return [];
   
-  // Create a deep copy of nodes to avoid mutating the original
+  // Create deep copies of nodes to avoid mutating the original
   const nodesCopy = nodes.map(node => ({
     ...node,
     position: { ...node.position },
   }));
 
-  // Build a map for quick node lookup
+  // Build node lookup map
   const nodeMap = new Map<string, Node>();
   nodesCopy.forEach(node => nodeMap.set(node.id, node));
   
-  // Create adjacency list for the graph
+  // Build adjacency list for the graph
   const adjacencyList = new Map<string, Set<string>>();
   edges.forEach(edge => {
-    // Initialize sets if they don't exist
     if (!adjacencyList.has(edge.source)) {
       adjacencyList.set(edge.source, new Set());
     }
@@ -73,29 +74,29 @@ const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
       adjacencyList.set(edge.target, new Set());
     }
     
-    // Add bidirectional connections
+    // Add connections (source to target only for tree direction)
     adjacencyList.get(edge.source)?.add(edge.target);
-    adjacencyList.get(edge.target)?.add(edge.source);
   });
   
-  // Find root node (use node with highest degree or just the first node)
-  let rootId = nodesCopy.length > 0 ? nodesCopy[0].id : '';
-  let maxConnections = -1;
+  // Find root node (node without incoming edges)
+  let rootId = '';
   
-  // Find node with most connections
-  adjacencyList.forEach((connections, nodeId) => {
-    if (connections.size > maxConnections) {
-      maxConnections = connections.size;
-      rootId = nodeId;
-    }
+  // Find all nodes with incoming edges
+  const incomingEdges = new Map<string, number>();
+  edges.forEach(edge => {
+    incomingEdges.set(edge.target, (incomingEdges.get(edge.target) || 0) + 1);
   });
   
-  // If no edges, just use first node as root
-  if (edges.length === 0 && nodesCopy.length > 0) {
+  // Nodes without incoming edges are potential roots
+  const potentialRoots = nodesCopy.filter(node => !incomingEdges.has(node.id));
+  
+  if (potentialRoots.length > 0) {
+    rootId = potentialRoots[0].id;
+  } else if (nodesCopy.length > 0) {
     rootId = nodesCopy[0].id;
   }
   
-  // BFS to assign levels and positions
+  // Use BFS to assign node levels
   const visited = new Set<string>();
   const levels = new Map<string, number>();
   const levelNodes = new Map<number, string[]>();
@@ -130,12 +131,12 @@ const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
     }
   }
   
-  // For any disconnected nodes, assign them to a special level
+  // Assign levels to any disconnected nodes
   nodesCopy.forEach(node => {
     if (!visited.has(node.id)) {
-      // Get max level or default to 0 if no levels exist
-      const maxLevel = levels.size > 0 ? 
-        Math.max(...Array.from(levels.values())) : 0;
+      // Find max level and add unconnected nodes to the next level
+      const levelsArray = Array.from(levels.values());
+      const maxLevel = levelsArray.length > 0 ? Math.max(...levelsArray) : 0;
       const specialLevel = maxLevel + 1;
       
       levels.set(node.id, specialLevel);
@@ -149,26 +150,26 @@ const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
   
   // Calculate positions for each node by level
   const levelCount = levelNodes.size;
-  const verticalSpacing = 160; // Increased for multi-line labels
-  const centerX = 800;
-  const centerY = 200;
+  const verticalSpacing = 120; // Reduced vertical spacing
+  const centerX = 400;
+  const startY = 80;
   
-  // Place nodes by level
+  // Place nodes by level (top to bottom)
   for (let level = 0; level < levelCount; level++) {
     const nodesInLevel = levelNodes.get(level) || [];
-    const horizontalSpacing = 280; // Increased for multi-line labels
+    const nodeHorizontalSpacing = 200; // Reduced horizontal spacing
     
     // Calculate total width needed for this level
-    const levelWidth = nodesInLevel.length * horizontalSpacing;
-    const startX = centerX - levelWidth / 2 + horizontalSpacing / 2;
+    const levelWidth = nodesInLevel.length * nodeHorizontalSpacing;
+    const startX = centerX - levelWidth / 2 + nodeHorizontalSpacing / 2;
     
-    // Position each node in the level
+    // Position each node in this level
     nodesInLevel.forEach((nodeId, index) => {
       const node = nodeMap.get(nodeId);
       if (node) {
         node.position = {
-          x: startX + index * horizontalSpacing,
-          y: centerY + level * verticalSpacing
+          x: startX + index * nodeHorizontalSpacing,
+          y: startY + level * verticalSpacing
         };
       }
     });
@@ -397,15 +398,8 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
       };
     });
     
-    // Handle edge appearance based on layout
-    let styledEdges = initialEdges;
-    if (layout === 'tree') {
-      styledEdges = initialEdges.map(edge => ({
-        ...edge,
-        type: 'default',
-        animated: false,
-      }));
-    }
+    // Preserve edge styles
+    const styledEdges = initialEdges;
     
     setNodes(styledNodes);
     setEdges(styledEdges);
@@ -453,10 +447,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
           duration: 0
         }}
         defaultEdgeOptions={{
-          type: 'straight',
+          type: 'bezier',
           style: { 
-            strokeWidth: 1,
-            stroke: '#000000',
+            strokeWidth: 2,
           }
         }}
         connectionMode={ConnectionMode.Loose}
