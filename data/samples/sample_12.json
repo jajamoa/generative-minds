@@ -1,0 +1,112 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "housing_construction",
+      "confidence": 0.9,
+      "source_qa": ["qa1"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1"]
+    },
+    "n2": {
+      "label": "housing_supply",
+      "confidence": 0.95,
+      "source_qa": ["qa1"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e2"]
+    },
+    "n3": {
+      "label": "housing_affordability",
+      "confidence": 0.9,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e3"]
+    },
+    "n4": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e2": {
+      "source": "n2",
+      "target": "n3",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.95}],
+      "modifier": 0.95
+    },
+    "e3": {
+      "source": "n3",
+      "target": "n4",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.9
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "What's your view on building more housing?",
+      "answer": "We absolutely need to build more housing! It's simple - more construction means more supply. We just need to build, build, build to solve our housing crisis.",
+      "extracted_pairs": [
+        {
+          "source": "housing_construction",
+          "target": "housing_supply",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "How do you think housing supply affects affordability?",
+      "answer": "It's basic economics - supply and demand. If we increase housing supply, prices will come down. That's the only thing that matters for affordability.",
+      "extracted_pairs": [
+        {
+          "source": "housing_supply",
+          "target": "housing_affordability",
+          "confidence": 0.95
+        }
+      ]
+    },
+    "qa3": {
+      "question": "So what's your position on upzoning?",
+      "answer": "I'm 100% pro-upzoning. We need to legalize apartments everywhere. Single-family zoning is the reason housing is so expensive, so we need to get rid of it. More density equals more affordability, it's that simple.",
+      "extracted_pairs": [
+        {
+          "source": "housing_affordability",
+          "target": "upzoning_stance",
+          "confidence": 0.9
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "pro_density_millennial",
+    "demographic": {
+      "age_group": "25-35",
+      "housing_status": "renter",
+      "education": "college_graduate",
+      "political_leaning": "progressive"
+    },
+    "num_nodes": 4,
+    "num_edges": 3,
+    "num_qa_pairs": 3,
+    "focus_areas": [
+      "housing_supply",
+      "affordability"
+    ],
+    "cognitive_biases": [
+      "oversimplification",
+      "confirmation_bias",
+      "single_cause_fallacy",
+      "solution_bias"
+    ]
+  }
+} 

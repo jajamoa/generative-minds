@@ -447,9 +447,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
           duration: 0
         }}
         defaultEdgeOptions={{
-          type: 'bezier',
+          type: 'straight',
           style: { 
-            strokeWidth: 2,
+            strokeWidth: 1,
           }
         }}
         connectionMode={ConnectionMode.Loose}

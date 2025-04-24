@@ -1,0 +1,19 @@
+```mermaid
+flowchart TD
+    n1[neighborhood_density]
+    n2[school_crowding]
+    n3[class_size]
+    n4[education_quality]
+    n5[child_success]
+    n6[upzoning_stance]
+    n1 --> n2
+    n2 --> n3
+    n3 --x n4
+    n4 --> n5
+    n5 --x n6
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

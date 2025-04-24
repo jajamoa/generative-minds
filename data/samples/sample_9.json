@@ -1,0 +1,224 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "housing_construction",
+      "confidence": 0.9,
+      "source_qa": ["qa1"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2"]
+    },
+    "n2": {
+      "label": "housing_supply",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e3"]
+    },
+    "n3": {
+      "label": "rental_prices",
+      "confidence": 0.9,
+      "source_qa": ["qa2", "qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e4", "e5"]
+    },
+    "n4": {
+      "label": "cool_neighborhood_amenities",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa4"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e6"]
+    },
+    "n5": {
+      "label": "personal_rent_burden",
+      "confidence": 0.95,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e7"]
+    },
+    "n6": {
+      "label": "housing_options",
+      "confidence": 0.9,
+      "source_qa": ["qa4"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e8"]
+    },
+    "n7": {
+      "label": "quality_of_life",
+      "confidence": 0.85,
+      "source_qa": ["qa5"],
+      "incoming_edges": ["e6", "e7", "e8"],
+      "outgoing_edges": ["e9"]
+    },
+    "n8": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e3": {
+      "source": "n2",
+      "target": "n3",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e4": {
+      "source": "n3",
+      "target": "n5",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.95}],
+      "modifier": 0.9
+    },
+    "e5": {
+      "source": "n3",
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e6": {
+      "source": "n4",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e7": {
+      "source": "n5",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e8": {
+      "source": "n6",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e9": {
+      "source": "n7",
+      "target": "n8",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.95}],
+      "modifier": 0.9
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "What do you think about building more housing in the city?",
+      "answer": "I'm totally for it. We need more housing, right? Like, that's just obvious. If they build more apartments, there will be more places to live.",
+      "extracted_pairs": [
+        {
+          "source": "housing_construction",
+          "target": "housing_supply",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "How do you think housing supply affects rental prices?",
+      "answer": "I mean, it's like supply and demand from economics class. More supply means lower prices. If there are more apartments, landlords can't charge as much because people have more options.",
+      "extracted_pairs": [
+        {
+          "source": "housing_supply",
+          "target": "rental_prices",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How do rental prices affect you personally?",
+      "answer": "Rent is killing me right now! Half my paycheck goes to my apartment, which is tiny. If rent was cheaper, I'd have more money for other stuff. Plus, new buildings usually have cool coffee shops and stuff on the ground floor.",
+      "extracted_pairs": [
+        {
+          "source": "rental_prices",
+          "target": "personal_rent_burden",
+          "confidence": 0.95
+        },
+        {
+          "source": "housing_construction",
+          "target": "cool_neighborhood_amenities",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa4": {
+      "question": "What would more housing options mean for your lifestyle?",
+      "answer": "If I had more options and cheaper rent, I could live in a better location or get a bigger place. And new buildings mean more restaurants and places to hang out, which would be awesome for the neighborhood.",
+      "extracted_pairs": [
+        {
+          "source": "rental_prices",
+          "target": "housing_options",
+          "confidence": 0.9
+        },
+        {
+          "source": "cool_neighborhood_amenities",
+          "target": "quality_of_life",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa5": {
+      "question": "Overall, how would you say housing issues affect your quality of life and view on upzoning?",
+      "answer": "My rent is too high, and that seriously affects my quality of life. I support anything that would make housing more affordable. More options would let me live better, and cool new spots in the neighborhood would make life more fun. That's why I support upzoning - I just want to be able to afford to live here.",
+      "extracted_pairs": [
+        {
+          "source": "personal_rent_burden",
+          "target": "quality_of_life",
+          "confidence": 0.9
+        },
+        {
+          "source": "housing_options",
+          "target": "quality_of_life",
+          "confidence": 0.85
+        },
+        {
+          "source": "quality_of_life",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "young_renter",
+    "demographic": {
+      "age_group": "25-34",
+      "housing_status": "renter",
+      "income_level": "moderate",
+      "urban_knowledge": "low"
+    },
+    "num_nodes": 8,
+    "num_edges": 9,
+    "num_qa_pairs": 5,
+    "focus_areas": [
+      "personal_affordability",
+      "lifestyle_amenities"
+    ],
+    "cognitive_biases": [
+      "self_interest_bias",
+      "present_bias",
+      "oversimplification",
+      "optimism_bias"
+    ]
+  }
+} 

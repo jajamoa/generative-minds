@@ -1,0 +1,483 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "neighborhood_development",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
+    },
+    "n2": {
+      "label": "cultural_enclave_preservation",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4", "e5", "e6"]
+    },
+    "n3": {
+      "label": "housing_costs",
+      "confidence": 0.9,
+      "source_qa": ["qa2", "qa4"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e7", "e8"]
+    },
+    "n4": {
+      "label": "business_opportunity",
+      "confidence": 0.85,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e9"]
+    },
+    "n5": {
+      "label": "cultural_identity",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa6"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e10"]
+    },
+    "n6": {
+      "label": "mutual_support_networks",
+      "confidence": 0.95,
+      "source_qa": ["qa3", "qa7"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e11"]
+    },
+    "n7": {
+      "label": "language_accessibility",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa8"],
+      "incoming_edges": ["e6"],
+      "outgoing_edges": ["e12"]
+    },
+    "n8": {
+      "label": "multigenerational_housing",
+      "confidence": 0.85,
+      "source_qa": ["qa4", "qa9"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e13"]
+    },
+    "n9": {
+      "label": "displacement_risk",
+      "confidence": 0.9,
+      "source_qa": ["qa4", "qa10"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e14"]
+    },
+    "n10": {
+      "label": "economic_mobility",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa10"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": ["e15"]
+    },
+    "n11": {
+      "label": "children_cultural_connection",
+      "confidence": 0.85,
+      "source_qa": ["qa6", "qa11"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e16"]
+    },
+    "n12": {
+      "label": "community_resilience",
+      "confidence": 0.9,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e11", "e12"],
+      "outgoing_edges": ["e17"]
+    },
+    "n13": {
+      "label": "family_stability",
+      "confidence": 0.95,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e13", "e14"],
+      "outgoing_edges": ["e18"]
+    },
+    "n14": {
+      "label": "intergenerational_wealth",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa11"],
+      "incoming_edges": ["e15"],
+      "outgoing_edges": ["e19"]
+    },
+    "n15": {
+      "label": "cultural_continuity",
+      "confidence": 0.85,
+      "source_qa": ["qa6", "qa8"],
+      "incoming_edges": ["e16"],
+      "outgoing_edges": ["e20"]
+    },
+    "n16": {
+      "label": "neighborhood_attachment",
+      "confidence": 0.9,
+      "source_qa": ["qa9", "qa12"],
+      "incoming_edges": ["e17", "e18", "e19", "e20"],
+      "outgoing_edges": ["e21"]
+    },
+    "n17": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12"],
+      "incoming_edges": ["e21"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n5",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.95}],
+      "modifier": 0.9
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e6": {
+      "source": "n2",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e8": {
+      "source": "n3",
+      "target": "n9",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e9": {
+      "source": "n4",
+      "target": "n10",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e10": {
+      "source": "n5",
+      "target": "n11",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e11": {
+      "source": "n6",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e12": {
+      "source": "n7",
+      "target": "n12",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e13": {
+      "source": "n8",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e14": {
+      "source": "n9",
+      "target": "n13",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e15": {
+      "source": "n10",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e16": {
+      "source": "n11",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e17": {
+      "source": "n12",
+      "target": "n16",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e18": {
+      "source": "n13",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e19": {
+      "source": "n14",
+      "target": "n16",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e20": {
+      "source": "n15",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e21": {
+      "source": "n16",
+      "target": "n17",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.9}],
+      "modifier": -0.8
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How does neighborhood development affect cultural enclaves important to immigrant communities?",
+      "answer": "When neighborhoods change too quickly, our cultural enclaves can disappear. These are places where we can find familiar foods, services in our language, and feel a sense of belonging. New development often threatens these spaces that took years to establish.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_development",
+          "target": "cultural_enclave_preservation",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What economic impacts do you see from urban development?",
+      "answer": "It's complicated. Development usually means higher rents, which makes things harder. But it can also bring business opportunities for immigrant entrepreneurs. We see both challenges and possibilities.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_development",
+          "target": "housing_costs",
+          "confidence": 0.85
+        },
+        {
+          "source": "neighborhood_development",
+          "target": "business_opportunity",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa3": {
+      "question": "Why are cultural enclaves so important to your community?",
+      "answer": "Our cultural enclaves help us maintain our identity and connections to our homeland. They provide mutual support networks where people help each other navigate life in a new country. They're also places where our language is understood, making daily life much easier.",
+      "extracted_pairs": [
+        {
+          "source": "cultural_enclave_preservation",
+          "target": "cultural_identity",
+          "confidence": 0.95
+        },
+        {
+          "source": "cultural_enclave_preservation",
+          "target": "mutual_support_networks",
+          "confidence": 0.9
+        },
+        {
+          "source": "cultural_enclave_preservation",
+          "target": "language_accessibility",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How do rising housing costs affect immigrant families?",
+      "answer": "Higher housing costs make it difficult to maintain our multigenerational households, which are culturally important to us. Extended family living together provides childcare and elder care. Rising costs also increase displacement risk, forcing families to move far from established community supports.",
+      "extracted_pairs": [
+        {
+          "source": "housing_costs",
+          "target": "multigenerational_housing",
+          "confidence": 0.8
+        },
+        {
+          "source": "housing_costs",
+          "target": "displacement_risk",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa5": {
+      "question": "What role do immigrant-owned businesses play in your community?",
+      "answer": "Our businesses are pathways to economic mobility, letting people work for themselves when language barriers or discrimination make finding jobs difficult. These businesses often become the foundation for building intergenerational wealth that helps the next generation advance.",
+      "extracted_pairs": [
+        {
+          "source": "business_opportunity",
+          "target": "economic_mobility",
+          "confidence": 0.85
+        },
+        {
+          "source": "economic_mobility",
+          "target": "intergenerational_wealth",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa6": {
+      "question": "How does cultural identity influence family life?",
+      "answer": "Our cultural identity shapes how we raise our children, the values we teach, and the traditions we maintain. When children maintain strong connections to their heritage culture, it creates cultural continuity across generations.",
+      "extracted_pairs": [
+        {
+          "source": "cultural_identity",
+          "target": "children_cultural_connection",
+          "confidence": 0.9
+        },
+        {
+          "source": "children_cultural_connection",
+          "target": "cultural_continuity",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do mutual support networks function in immigrant communities?",
+      "answer": "We rely on each other for information about jobs, housing, and navigating systems like healthcare or schools. These networks create community resilience - when one family faces a crisis, others step in to help.",
+      "extracted_pairs": [
+        {
+          "source": "mutual_support_networks",
+          "target": "community_resilience",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "Why is language accessibility important in daily life?",
+      "answer": "When we can conduct daily business in our native language, we can fully participate in community life. This accessibility helps preserve our cultural practices and creates belonging, especially for elders who may struggle with English.",
+      "extracted_pairs": [
+        {
+          "source": "language_accessibility",
+          "target": "community_resilience",
+          "confidence": 0.8
+        },
+        {
+          "source": "language_accessibility",
+          "target": "cultural_continuity",
+          "confidence": 0.75
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How does multigenerational housing contribute to family stability?",
+      "answer": "When generations live together, we share resources and responsibilities. Grandparents help with childcare, working adults provide financial support, and everyone contributes. This arrangement creates strong family stability and deepens our attachment to our neighborhood.",
+      "extracted_pairs": [
+        {
+          "source": "multigenerational_housing",
+          "target": "family_stability",
+          "confidence": 0.85
+        },
+        {
+          "source": "family_stability",
+          "target": "neighborhood_attachment",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa10": {
+      "question": "How does displacement affect immigrant communities?",
+      "answer": "Displacement threatens everything we've built. When families must move, they lose proximity to support networks that helped them survive. Community resilience is weakened when members are scattered, and family stability suffers from longer commutes and disconnection.",
+      "extracted_pairs": [
+        {
+          "source": "displacement_risk",
+          "target": "family_stability",
+          "confidence": 0.9
+        },
+        {
+          "source": "displacement_risk",
+          "target": "community_resilience",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa11": {
+      "question": "What are your hopes for future generations in your family?",
+      "answer": "We hope our children will have better opportunities while maintaining their cultural connection. We work to build intergenerational wealth through homeownership or businesses so they can have greater stability. Family stability is central to making this possible.",
+      "extracted_pairs": [
+        {
+          "source": "children_cultural_connection",
+          "target": "cultural_continuity",
+          "confidence": 0.85
+        },
+        {
+          "source": "intergenerational_wealth",
+          "target": "neighborhood_attachment",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa12": {
+      "question": "How do all these factors influence your views on neighborhood change?",
+      "answer": "Our attachment to this neighborhood is deep and multifaceted. It's where our support networks exist, where our cultural practices are understood, where our families have stability. This strong attachment makes us cautious about development that might disrupt these vital connections, even if it promises economic benefits.",
+      "extracted_pairs": [
+        {
+          "source": "community_resilience",
+          "target": "neighborhood_attachment",
+          "confidence": 0.9
+        },
+        {
+          "source": "cultural_continuity",
+          "target": "neighborhood_attachment",
+          "confidence": 0.85
+        },
+        {
+          "source": "neighborhood_attachment",
+          "target": "upzoning_stance",
+          "confidence": 0.9
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "immigrant_family",
+    "demographic": {
+      "immigrant_generation": "first_and_second",
+      "household_type": "multigenerational",
+      "community_connection": "strong"
+    },
+    "num_nodes": 17,
+    "num_edges": 21,
+    "num_qa_pairs": 12,
+    "focus_areas": [
+      "cultural_preservation",
+      "community_networks",
+      "economic_opportunity",
+      "family_stability"
+    ]
+  }
+} 

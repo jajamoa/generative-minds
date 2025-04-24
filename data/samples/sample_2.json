@@ -1,150 +1,101 @@
 {
   "nodes": {
     "n1": {
-      "label": "building_height_restriction_relaxation",
-      "confidence": 0.95,
-      "source_qa": ["qa1", "qa2"],
+      "label": "building_height_increase",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2", "qa3"],
       "incoming_edges": [],
-      "outgoing_edges": ["e1", "e2", "e3"]
+      "outgoing_edges": ["e1", "e2", "e3", "e4"]
     },
     "n2": {
-      "label": "project_investment_return_rate",
-      "confidence": 0.9,
-      "source_qa": ["qa1", "qa3"],
+      "label": "studio_affordability",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa4"],
       "incoming_edges": ["e1"],
-      "outgoing_edges": ["e4", "e5"]
+      "outgoing_edges": ["e5", "e6"]
     },
     "n3": {
-      "label": "land_use_efficiency",
+      "label": "gallery_spaces",
       "confidence": 0.85,
-      "source_qa": ["qa2"],
+      "source_qa": ["qa2", "qa5"],
       "incoming_edges": ["e2"],
-      "outgoing_edges": ["e6"]
-    },
-    "n4": {
-      "label": "construction_cost_pressure",
-      "confidence": 0.9,
-      "source_qa": ["qa3"],
-      "incoming_edges": ["e3"],
       "outgoing_edges": ["e7"]
     },
+    "n4": {
+      "label": "aesthetic_inspiration",
+      "confidence": 0.8,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e8"]
+    },
     "n5": {
-      "label": "market_demand_analysis",
-      "confidence": 0.85,
-      "source_qa": ["qa4"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e8", "e9"]
+      "label": "community_diversity",
+      "confidence": 0.9,
+      "source_qa": ["qa4", "qa6"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e9"]
     },
     "n6": {
-      "label": "infrastructure_capacity",
-      "confidence": 0.8,
-      "source_qa": ["qa5"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e10", "e11"]
+      "label": "creative_livelihood",
+      "confidence": 0.95,
+      "source_qa": ["qa4", "qa7"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e10"]
     },
     "n7": {
-      "label": "public_transport_accessibility",
+      "label": "creative_community_presence",
       "confidence": 0.9,
-      "source_qa": ["qa5"],
-      "incoming_edges": ["e10"],
-      "outgoing_edges": ["e12"]
+      "source_qa": ["qa6", "qa8"],
+      "incoming_edges": ["e6", "e9"],
+      "outgoing_edges": ["e11"]
     },
     "n8": {
-      "label": "parking_facility_demand",
-      "confidence": 0.75,
-      "source_qa": ["qa6"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e13"]
+      "label": "exhibition_opportunities",
+      "confidence": 0.85,
+      "source_qa": ["qa5"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e12"]
     },
     "n9": {
-      "label": "commercial_space_vitality",
-      "confidence": 0.85,
-      "source_qa": ["qa7"],
-      "incoming_edges": ["e11"],
-      "outgoing_edges": ["e14"]
+      "label": "artistic_expression",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa8"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e13"]
     },
     "n10": {
-      "label": "community_facility",
-      "confidence": 0.9,
-      "source_qa": ["qa8"],
-      "incoming_edges": ["e7"],
-      "outgoing_edges": ["e15"]
-    },
-    "n11": {
-      "label": "green_building_certification",
+      "label": "neighborhood_character",
       "confidence": 0.85,
       "source_qa": ["qa9"],
-      "incoming_edges": ["e8"],
-      "outgoing_edges": ["e16"]
+      "incoming_edges": ["e11", "e13"],
+      "outgoing_edges": ["e14"]
+    },
+    "n11": {
+      "label": "financial_sustainability",
+      "confidence": 0.9,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e10", "e12"],
+      "outgoing_edges": ["e15"]
     },
     "n12": {
-      "label": "mixed_use_development",
-      "confidence": 0.8,
-      "source_qa": ["qa10"],
-      "incoming_edges": ["e9"],
-      "outgoing_edges": ["e17"]
+      "label": "cultural_vitality",
+      "confidence": 0.95,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e14"],
+      "outgoing_edges": ["e16"]
     },
     "n13": {
-      "label": "housing_type_diversity",
+      "label": "artist_displacement",
       "confidence": 0.9,
-      "source_qa": ["qa11"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e18", "e19"]
+      "source_qa": ["qa10", "qa11"],
+      "incoming_edges": ["e15"],
+      "outgoing_edges": ["e17"]
     },
     "n14": {
-      "label": "affordable_housing_ratio",
-      "confidence": 0.85,
-      "source_qa": ["qa11"],
-      "incoming_edges": ["e18"],
-      "outgoing_edges": ["e20"]
-    },
-    "n15": {
-      "label": "project_approval_process",
-      "confidence": 0.8,
-      "source_qa": ["qa12"],
-      "incoming_edges": ["e19"],
-      "outgoing_edges": ["e21"]
-    },
-    "n16": {
-      "label": "community_participation_level",
-      "confidence": 0.85,
-      "source_qa": ["qa12"],
-      "incoming_edges": ["e20", "e21"],
-      "outgoing_edges": ["e22"]
-    },
-    "n17": {
-      "label": "local_government_support",
-      "confidence": 0.9,
-      "source_qa": ["qa13"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e23", "e24"]
-    },
-    "n18": {
-      "label": "tax_incentive_policy",
-      "confidence": 0.85,
-      "source_qa": ["qa13"],
-      "incoming_edges": ["e23"],
-      "outgoing_edges": ["e25"]
-    },
-    "n19": {
-      "label": "environmental_impact_assessment",
-      "confidence": 0.9,
-      "source_qa": ["qa14"],
-      "incoming_edges": ["e24"],
-      "outgoing_edges": ["e26"]
-    },
-    "n20": {
-      "label": "historic_building_protection",
-      "confidence": 0.85,
-      "source_qa": ["qa15"],
-      "incoming_edges": [],
-      "outgoing_edges": ["e27"]
-    },
-    "n21": {
       "label": "upzoning_stance",
       "confidence": 1.0,
-      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12", "qa13", "qa14", "qa15"],
-      "incoming_edges": ["e4", "e5", "e6", "e12", "e13", "e14", "e15", "e16", "e17", "e22", "e25", "e26", "e27"],
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11"],
+      "incoming_edges": ["e16", "e17"],
       "outgoing_edges": []
     }
   },
@@ -154,368 +105,294 @@
       "target": "n2",
       "aggregate_confidence": 0.9,
       "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-      "modifier": 0.8
+      "modifier": -0.8
     },
     "e2": {
       "source": "n1",
       "target": "n3",
       "aggregate_confidence": 0.85,
       "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
-      "modifier": 0.7
+      "modifier": 0.6
     },
     "e3": {
       "source": "n1",
       "target": "n4",
       "aggregate_confidence": 0.8,
       "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
-      "modifier": -0.6
+      "modifier": -0.7
     },
     "e4": {
-      "source": "n2",
-      "target": "n21",
-      "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-      "modifier": 0.9
+      "source": "n1",
+      "target": "n5",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+      "modifier": -0.6
     },
     "e5": {
       "source": "n2",
-      "target": "n21",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
-      "modifier": 0.8
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": -0.9
     },
     "e6": {
-      "source": "n3",
-      "target": "n21",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
-      "modifier": 0.7
+      "source": "n2",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.85}],
+      "modifier": -0.8
     },
     "e7": {
-      "source": "n4",
-      "target": "n10",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
-      "modifier": -0.6
-    },
-    "e8": {
-      "source": "n5",
-      "target": "n11",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
-      "modifier": 0.7
-    },
-    "e9": {
-      "source": "n5",
-      "target": "n12",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
-      "modifier": 0.8
-    },
-    "e10": {
-      "source": "n6",
-      "target": "n7",
-      "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
-      "modifier": 0.7
-    },
-    "e11": {
-      "source": "n6",
-      "target": "n9",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
-      "modifier": 0.6
-    },
-    "e12": {
-      "source": "n7",
-      "target": "n21",
+      "source": "n3",
+      "target": "n8",
       "aggregate_confidence": 0.8,
       "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
       "modifier": 0.7
     },
-    "e13": {
-      "source": "n8",
-      "target": "n21",
-      "aggregate_confidence": 0.75,
-      "evidence": [{"qa_id": "qa6", "confidence": 0.75}],
-      "modifier": -0.5
+    "e8": {
+      "source": "n4",
+      "target": "n9",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": -0.7
     },
-    "e14": {
-      "source": "n9",
-      "target": "n21",
+    "e9": {
+      "source": "n5",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e10": {
+      "source": "n6",
+      "target": "n11",
       "aggregate_confidence": 0.85,
       "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.9
+    },
+    "e11": {
+      "source": "n7",
+      "target": "n10",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.9}],
       "modifier": 0.8
     },
-    "e15": {
-      "source": "n10",
-      "target": "n21",
-      "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+    "e12": {
+      "source": "n8",
+      "target": "n11",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.8}],
       "modifier": 0.7
     },
-    "e16": {
-      "source": "n11",
-      "target": "n21",
+    "e13": {
+      "source": "n9",
+      "target": "n10",
       "aggregate_confidence": 0.85,
       "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
-      "modifier": 0.6
-    },
-    "e17": {
-      "source": "n12",
-      "target": "n21",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
       "modifier": 0.8
     },
-    "e18": {
+    "e14": {
+      "source": "n10",
+      "target": "n12",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e15": {
+      "source": "n11",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e16": {
+      "source": "n12",
+      "target": "n14",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": 0.7
+    },
+    "e17": {
       "source": "n13",
       "target": "n14",
       "aggregate_confidence": 0.85,
       "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
-      "modifier": 0.6
-    },
-    "e19": {
-      "source": "n13",
-      "target": "n15",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
-      "modifier": 0.5
-    },
-    "e20": {
-      "source": "n14",
-      "target": "n16",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
-      "modifier": 0.7
-    },
-    "e21": {
-      "source": "n15",
-      "target": "n16",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
-      "modifier": 0.6
-    },
-    "e22": {
-      "source": "n16",
-      "target": "n21",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
-      "modifier": -0.6
-    },
-    "e23": {
-      "source": "n17",
-      "target": "n18",
-      "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa13", "confidence": 0.9}],
-      "modifier": 0.8
-    },
-    "e24": {
-      "source": "n17",
-      "target": "n19",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
-      "modifier": 0.6
-    },
-    "e25": {
-      "source": "n18",
-      "target": "n21",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa13", "confidence": 0.8}],
-      "modifier": 0.8
-    },
-    "e26": {
-      "source": "n19",
-      "target": "n21",
-      "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
-      "modifier": -0.5
-    },
-    "e27": {
-      "source": "n20",
-      "target": "n21",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa15", "confidence": 0.8}],
-      "modifier": -0.7
+      "modifier": -0.9
     }
   },
   "qa_history": {
     "qa1": {
-      "question": "How does relaxing building height restrictions affect project investment returns?",
-      "answer": "Increasing building height restrictions can significantly enhance project investment returns, as more sellable area can be constructed on the same land.",
+      "question": "How does increasing building heights affect studio spaces for artists?",
+      "answer": "Higher-rent developments usually replace the affordable warehouses and industrial spaces we use as studios. When developers build up, they're almost never creating the kind of raw, affordable spaces artists need to work.",
       "extracted_pairs": [
         {
-          "source": "building_height_restriction_relaxation",
-          "target": "project_investment_return_rate",
+          "source": "building_height_increase",
+          "target": "studio_affordability",
           "confidence": 0.9
         }
       ]
     },
     "qa2": {
-      "question": "What impact does increasing floor area ratio have on land use?",
-      "answer": "Increasing the floor area ratio can greatly improve land use efficiency, allowing each square meter of land to generate more economic value.",
+      "question": "What impact might taller buildings have on art spaces like galleries?",
+      "answer": "It's complicated. Sometimes new developments include gallery spaces in their ground floors, which can be good for showing work. But they're often more corporate and less accessible to emerging artists.",
       "extracted_pairs": [
         {
-          "source": "building_height_restriction_relaxation",
-          "target": "land_use_efficiency",
+          "source": "building_height_increase",
+          "target": "gallery_spaces",
           "confidence": 0.85
         }
       ]
     },
     "qa3": {
-      "question": "What are the construction costs for high-rise buildings?",
-      "answer": "Although the unit cost of high-rise buildings is higher, the overall investment return remains attractive due to economies of scale and more sellable area.",
+      "question": "How does the physical environment influence your creative work?",
+      "answer": "The light, the textures, the history of a neighborhood - these all feed my work. Generic glass towers don't inspire the same aesthetic response as buildings with character and history, which affects my artistic expression.",
       "extracted_pairs": [
         {
-          "source": "building_height_restriction_relaxation",
-          "target": "construction_cost_pressure",
+          "source": "building_height_increase",
+          "target": "aesthetic_inspiration",
           "confidence": 0.8
+        },
+        {
+          "source": "aesthetic_inspiration",
+          "target": "artistic_expression",
+          "confidence": 0.85
         }
       ]
     },
     "qa4": {
-      "question": "How do we assess market demand for different types of housing?",
-      "answer": "We conduct detailed market research to analyze housing demand among different income groups and the impact of green building certification on purchasing decisions.",
+      "question": "How does neighborhood change affect the artistic community?",
+      "answer": "When rents go up, artists get pushed out. We need affordable spaces to live and work. As the community becomes less diverse and more affluent, it directly threatens our ability to sustain ourselves as working artists.",
       "extracted_pairs": [
         {
-          "source": "market_demand_analysis",
-          "target": "green_building_certification",
-          "confidence": 0.8
+          "source": "building_height_increase",
+          "target": "community_diversity",
+          "confidence": 0.85
+        },
+        {
+          "source": "studio_affordability",
+          "target": "creative_livelihood",
+          "confidence": 0.9
         }
       ]
     },
     "qa5": {
-      "question": "How does infrastructure capacity affect development decisions?",
-      "answer": "Infrastructure capacity directly affects public transport accessibility, which is a key consideration in our choice of development sites.",
+      "question": "How important are exhibition opportunities to your work?",
+      "answer": "Having accessible gallery spaces to show work is essential for artists to build audiences and sell work. New developments sometimes create exhibition spaces, which can create new opportunities if they're accessible to local artists.",
       "extracted_pairs": [
         {
-          "source": "infrastructure_capacity",
-          "target": "public_transport_accessibility",
-          "confidence": 0.9
+          "source": "gallery_spaces",
+          "target": "exhibition_opportunities",
+          "confidence": 0.8
         }
       ]
     },
     "qa6": {
-      "question": "What considerations are there for parking facilities planning?",
-      "answer": "While increasing parking spaces raises costs, sufficient parking facilities are one of the key factors for project success.",
+      "question": "What role does community diversity play in the arts scene?",
+      "answer": "A diverse community creates rich cultural exchange and maintains space for different perspectives. When artists can afford to stay, they form communities that support each other's work and maintain the creative character of an area.",
       "extracted_pairs": [
         {
-          "source": "parking_facility_demand",
-          "target": "upzoning_stance",
-          "confidence": 0.75
+          "source": "community_diversity",
+          "target": "creative_community_presence",
+          "confidence": 0.9
+        },
+        {
+          "source": "studio_affordability",
+          "target": "creative_community_presence",
+          "confidence": 0.85
         }
       ]
     },
     "qa7": {
-      "question": "How do commercial spaces enhance project value?",
-      "answer": "Quality commercial spaces can create more foot traffic, enhancing the overall vitality and value of the project.",
+      "question": "How do exhibition opportunities and creative livelihood relate to financial sustainability?",
+      "answer": "Artists patch together income from sales, exhibitions, teaching, and other sources. When we lose affordable studios or exhibition venues, our financial sustainability becomes threatened, making it harder to continue our creative practice.",
       "extracted_pairs": [
         {
-          "source": "commercial_space_vitality",
-          "target": "upzoning_stance",
+          "source": "creative_livelihood",
+          "target": "financial_sustainability",
           "confidence": 0.85
+        },
+        {
+          "source": "exhibition_opportunities",
+          "target": "financial_sustainability",
+          "confidence": 0.8
         }
       ]
     },
     "qa8": {
-      "question": "What is the return on investment for community facilities?",
-      "answer": "Quality community facilities, while increasing initial investment, can enhance the project's market competitiveness and long-term value.",
+      "question": "How does the creative community influence individual artistic work?",
+      "answer": "Being around other artists sparks new ideas, provides feedback, and creates a supportive environment for taking risks. When this community erodes, it affects both the quantity and quality of artistic expression.",
       "extracted_pairs": [
         {
-          "source": "community_facility",
-          "target": "upzoning_stance",
-          "confidence": 0.9
+          "source": "creative_community_presence",
+          "target": "artistic_expression",
+          "confidence": 0.85
         }
       ]
     },
     "qa9": {
-      "question": "How important is green building certification?",
-      "answer": "Green building certification not only enhances the project's image but also leads to long-term operational cost savings.",
+      "question": "What creates neighborhood character from an artist's perspective?",
+      "answer": "Neighborhood character comes from the people who live and work there, the visible creative expression in public and private spaces, and the diversity of uses. Artists and their work directly contribute to a neighborhood's cultural vitality.",
       "extracted_pairs": [
         {
-          "source": "green_building_certification",
-          "target": "upzoning_stance",
+          "source": "creative_community_presence",
+          "target": "neighborhood_character",
+          "confidence": 0.9
+        },
+        {
+          "source": "artistic_expression",
+          "target": "neighborhood_character",
           "confidence": 0.85
-        }
-      ]
-    },
-    "qa10": {
-      "question": "What are the advantages of mixed-use development?",
-      "answer": "Mixed-use development can create year-round vitality, improve land use efficiency, and increase the project's economic feasibility.",
-      "extracted_pairs": [
+        },
         {
-          "source": "mixed_use_development",
-          "target": "upzoning_stance",
-          "confidence": 0.8
-        }
-      ]
-    },
-    "qa11": {
-      "question": "How do we balance market housing and affordable housing?",
-      "answer": "We appropriately allocate affordable housing in projects to meet policy requirements while ensuring the project's economic feasibility.",
-      "extracted_pairs": [
-        {
-          "source": "housing_type_diversity",
-          "target": "affordable_housing_ratio",
-          "confidence": 0.85
-        }
-      ]
-    },
-    "qa12": {
-      "question": "What are the main challenges in the project approval process?",
-      "answer": "The project approval process requires balancing multiple interests, and projects with high community participation often receive smoother approvals.",
-      "extracted_pairs": [
-        {
-          "source": "project_approval_process",
-          "target": "community_participation_level",
-          "confidence": 0.8
-        }
-      ]
-    },
-    "qa13": {
-      "question": "What impact does local government support have on projects?",
-      "answer": "Government support, especially in terms of tax incentives, can significantly enhance the financial feasibility of projects.",
-      "extracted_pairs": [
-        {
-          "source": "local_government_support",
-          "target": "tax_incentive_policy",
+          "source": "neighborhood_character",
+          "target": "cultural_vitality",
           "confidence": 0.9
         }
       ]
     },
-    "qa14": {
-      "question": "How does environmental impact assessment affect development decisions?",
-      "answer": "Strict environmental impact assessments may limit development intensity, but in the long run, they contribute to the project's sustainable development.",
+    "qa10": {
+      "question": "How does financial sustainability relate to displacement?",
+      "answer": "When we can't make ends meet because of rising costs and reduced opportunities, artists are forced to leave neighborhoods we've often helped make desirable. Financial precarity leads directly to displacement.",
       "extracted_pairs": [
         {
-          "source": "environmental_impact_assessment",
-          "target": "upzoning_stance",
+          "source": "financial_sustainability",
+          "target": "artist_displacement",
           "confidence": 0.85
         }
       ]
     },
-    "qa15": {
-      "question": "How do we handle the issue of historic building preservation?",
-      "answer": "Protecting historic buildings during development, while challenging, can add unique cultural value to the project.",
+    "qa11": {
+      "question": "How do you weigh cultural vitality and artist displacement when considering upzoning?",
+      "answer": "I'm torn. I want vibrant, culturally rich neighborhoods, but not at the expense of displacing the artists who create that culture. I could support upzoning if it explicitly protected arts spaces and included affordable units for artists. Without those protections, upzoning typically accelerates the loss of artists from a neighborhood.",
       "extracted_pairs": [
         {
-          "source": "historic_building_protection",
+          "source": "cultural_vitality",
           "target": "upzoning_stance",
-          "confidence": 0.8
+          "confidence": 0.9
+        },
+        {
+          "source": "artist_displacement",
+          "target": "upzoning_stance",
+          "confidence": 0.85
         }
       ]
     }
   },
   "metadata": {
-    "perspective": "developer",
-    "num_nodes": 21,
-    "num_edges": 27,
-    "num_qa_pairs": 15,
+    "perspective": "artist",
+    "demographic": {
+      "occupation": "creative_worker",
+      "cultural_production": "high",
+      "income_stability": "low"
+    },
+    "num_nodes": 14,
+    "num_edges": 17,
+    "num_qa_pairs": 11,
     "focus_areas": [
-      "economic_feasibility",
-      "project_planning",
-      "government_relations",
-      "environmental_sustainability"
+      "cultural_spaces",
+      "creative_expression",
+      "community_identity",
+      "artistic_livelihood"
     ]
   }
 } 

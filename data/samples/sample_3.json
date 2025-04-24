@@ -1,320 +1,412 @@
 {
-    "nodes": {
-      "n1": {
-        "label": "building_height_increase",
-        "confidence": 0.9,
-        "source_qa": ["qa1", "qa2"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e1", "e2", "e3"]
-      },
-      "n2": {
-        "label": "emergency_access",
-        "confidence": 0.95,
-        "source_qa": ["qa1"],
-        "incoming_edges": ["e1"],
-        "outgoing_edges": ["e4"]
-      },
-      "n3": {
-        "label": "medical_facility_access",
-        "confidence": 0.9,
-        "source_qa": ["qa2"],
-        "incoming_edges": ["e2"],
-        "outgoing_edges": ["e5"]
-      },
-      "n4": {
-        "label": "senior_center_access",
-        "confidence": 0.85,
-        "source_qa": ["qa3"],
-        "incoming_edges": ["e3"],
-        "outgoing_edges": ["e6"]
-      },
-      "n5": {
-        "label": "safety_concerns",
-        "confidence": 0.9,
-        "source_qa": ["qa4"],
-        "incoming_edges": ["e4"],
-        "outgoing_edges": ["e7"]
-      },
-      "n6": {
-        "label": "healthcare_quality",
-        "confidence": 0.95,
-        "source_qa": ["qa5"],
-        "incoming_edges": ["e5"],
-        "outgoing_edges": ["e8"]
-      },
-      "n7": {
-        "label": "social_support",
-        "confidence": 0.85,
-        "source_qa": ["qa6"],
-        "incoming_edges": ["e6"],
-        "outgoing_edges": ["e9"]
-      },
-      "n8": {
-        "label": "mobility_issues",
-        "confidence": 0.9,
-        "source_qa": ["qa7"],
-        "incoming_edges": ["e7"],
-        "outgoing_edges": ["e10"]
-      },
-      "n9": {
-        "label": "chronic_condition_management",
-        "confidence": 0.85,
-        "source_qa": ["qa8"],
-        "incoming_edges": ["e8"],
-        "outgoing_edges": ["e11"]
-      },
-      "n10": {
-        "label": "community_engagement",
-        "confidence": 0.8,
-        "source_qa": ["qa9"],
-        "incoming_edges": ["e9"],
-        "outgoing_edges": ["e12"]
-      },
-      "n11": {
-        "label": "quality_of_life",
-        "confidence": 0.9,
-        "source_qa": ["qa10"],
-        "incoming_edges": ["e10", "e11", "e12"],
-        "outgoing_edges": ["e13"]
-      },
-      "n12": {
-        "label": "upzoning_stance",
-        "confidence": 1.0,
-        "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
-        "incoming_edges": ["e13"],
-        "outgoing_edges": []
-      }
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
     },
-    "edges": {
-      "e1": {
-        "source": "n1",
-        "target": "n2",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-        "modifier": -0.8
-      },
-      "e2": {
-        "source": "n1",
-        "target": "n3",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
-        "modifier": -0.7
-      },
-      "e3": {
-        "source": "n1",
-        "target": "n4",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
-        "modifier": -0.6
-      },
-      "e4": {
-        "source": "n2",
-        "target": "n5",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
-        "modifier": 0.8
-      },
-      "e5": {
-        "source": "n3",
-        "target": "n6",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
-        "modifier": 0.7
-      },
-      "e6": {
-        "source": "n4",
-        "target": "n7",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
-        "modifier": 0.6
-      },
-      "e7": {
-        "source": "n5",
-        "target": "n8",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
-        "modifier": 0.8
-      },
-      "e8": {
-        "source": "n6",
-        "target": "n9",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
-        "modifier": 0.7
-      },
-      "e9": {
-        "source": "n7",
-        "target": "n10",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
-        "modifier": 0.6
-      },
-      "e10": {
-        "source": "n8",
-        "target": "n11",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-        "modifier": -0.8
-      },
-      "e11": {
-        "source": "n9",
-        "target": "n11",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
-        "modifier": -0.7
-      },
-      "e12": {
-        "source": "n10",
-        "target": "n11",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
-        "modifier": -0.6
-      },
-      "e13": {
-        "source": "n11",
-        "target": "n12",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-        "modifier": -0.7
-      }
+    "n2": {
+      "label": "public_transit_service",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4", "e5"]
     },
-    "qa_history": {
-      "qa1": {
-        "question": "How does increased building height affect emergency access in the neighborhood?",
-        "answer": "Higher buildings can make it harder for emergency vehicles to access the area quickly, which is particularly concerning for elderly residents who may need urgent medical attention.",
-        "extracted_pairs": [
-          {
-            "source": "building_height_increase",
-            "target": "emergency_access",
-            "confidence": 0.9
-          }
-        ]
-      },
-      "qa2": {
-        "question": "What impact does taller buildings have on access to medical facilities?",
-        "answer": "Increased density from taller buildings can make it more difficult to access nearby medical facilities, especially for seniors with mobility issues.",
-        "extracted_pairs": [
-          {
-            "source": "building_height_increase",
-            "target": "medical_facility_access",
-            "confidence": 0.85
-          }
-        ]
-      },
-      "qa3": {
-        "question": "How does building height affect access to senior centers?",
-        "answer": "Changes in neighborhood density can impact the accessibility and availability of senior centers, which are crucial for elderly residents' social well-being.",
-        "extracted_pairs": [
-          {
-            "source": "building_height_increase",
-            "target": "senior_center_access",
-            "confidence": 0.8
-          }
-        ]
-      },
-      "qa4": {
-        "question": "What safety concerns arise from increased building height?",
-        "answer": "Higher buildings can create safety concerns for elderly residents, including increased crime risk and difficulty in emergency evacuation.",
-        "extracted_pairs": [
-          {
-            "source": "emergency_access",
-            "target": "safety_concerns",
-            "confidence": 0.9
-          }
-        ]
-      },
-      "qa5": {
-        "question": "How does medical facility access affect healthcare quality?",
-        "answer": "Easy access to medical facilities is essential for maintaining good healthcare quality for elderly residents with chronic conditions.",
-        "extracted_pairs": [
-          {
-            "source": "medical_facility_access",
-            "target": "healthcare_quality",
-            "confidence": 0.85
-          }
-        ]
-      },
-      "qa6": {
-        "question": "What role does senior center access play in social support?",
-        "answer": "Access to senior centers provides crucial social support and community connection for elderly residents.",
-        "extracted_pairs": [
-          {
-            "source": "senior_center_access",
-            "target": "social_support",
-            "confidence": 0.8
-          }
-        ]
-      },
-      "qa7": {
-        "question": "How do safety concerns affect mobility issues?",
-        "answer": "Safety concerns can significantly impact mobility issues for elderly residents, making them more hesitant to move around the neighborhood.",
-        "extracted_pairs": [
-          {
-            "source": "safety_concerns",
-            "target": "mobility_issues",
-            "confidence": 0.9
-          }
-        ]
-      },
-      "qa8": {
-        "question": "How does healthcare quality affect chronic condition management?",
-        "answer": "Good healthcare quality is essential for effective management of chronic conditions common among elderly residents.",
-        "extracted_pairs": [
-          {
-            "source": "healthcare_quality",
-            "target": "chronic_condition_management",
-            "confidence": 0.85
-          }
-        ]
-      },
-      "qa9": {
-        "question": "What is the relationship between social support and community engagement?",
-        "answer": "Strong social support networks encourage greater community engagement among elderly residents.",
-        "extracted_pairs": [
-          {
-            "source": "social_support",
-            "target": "community_engagement",
-            "confidence": 0.8
-          }
-        ]
-      },
-      "qa10": {
-        "question": "What factors contribute to quality of life for elderly residents?",
-        "answer": "Quality of life for elderly residents depends on managing mobility issues, chronic conditions, and maintaining community engagement.",
-        "extracted_pairs": [
-          {
-            "source": "mobility_issues",
-            "target": "quality_of_life",
-            "confidence": 0.9
-          },
-          {
-            "source": "chronic_condition_management",
-            "target": "quality_of_life",
-            "confidence": 0.85
-          },
-          {
-            "source": "community_engagement",
-            "target": "quality_of_life",
-            "confidence": 0.8
-          }
-        ]
-      }
+    "n3": {
+      "label": "traffic_congestion",
+      "confidence": 0.9,
+      "source_qa": ["qa2", "qa4"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e6", "e7"]
     },
-    "metadata": {
-      "perspective": "elderly_resident",
-      "demographic": {
-        "age_group": "65+",
-        "mobility_status": "limited",
-        "health_status": "chronic_conditions"
-      },
-      "num_nodes": 12,
-      "num_edges": 13,
-      "num_qa_pairs": 10,
-      "focus_areas": [
-        "healthcare_access",
-        "safety_concerns",
-        "social_support",
-        "mobility_issues"
+    "n4": {
+      "label": "parking_availability",
+      "confidence": 0.85,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e8"]
+    },
+    "n5": {
+      "label": "transit_frequency",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa6"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e9"]
+    },
+    "n6": {
+      "label": "pedestrian_infrastructure",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa7"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e10"]
+    },
+    "n7": {
+      "label": "car_commute_time",
+      "confidence": 0.95,
+      "source_qa": ["qa4", "qa8"],
+      "incoming_edges": ["e6"],
+      "outgoing_edges": ["e11"]
+    },
+    "n8": {
+      "label": "road_maintenance",
+      "confidence": 0.8,
+      "source_qa": ["qa4"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e12"]
+    },
+    "n9": {
+      "label": "car_dependency",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa9"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e13"]
+    },
+    "n10": {
+      "label": "transit_commute_reliability",
+      "confidence": 0.85,
+      "source_qa": ["qa6", "qa9"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": ["e14"]
+    },
+    "n11": {
+      "label": "multimodal_options",
+      "confidence": 0.9,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e15"]
+    },
+    "n12": {
+      "label": "commute_stress",
+      "confidence": 0.85,
+      "source_qa": ["qa8", "qa11"],
+      "incoming_edges": ["e11", "e12", "e13"],
+      "outgoing_edges": ["e16"]
+    },
+    "n13": {
+      "label": "transportation_choice",
+      "confidence": 0.9,
+      "source_qa": ["qa9", "qa10"],
+      "incoming_edges": ["e14", "e15"],
+      "outgoing_edges": ["e17"]
+    },
+    "n14": {
+      "label": "commute_satisfaction",
+      "confidence": 0.95,
+      "source_qa": ["qa11"],
+      "incoming_edges": ["e16", "e17"],
+      "outgoing_edges": ["e18"]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11"],
+      "incoming_edges": ["e18"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
+      "modifier": -0.9
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n5",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.7
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n6",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.6
+    },
+    "e6": {
+      "source": "n3",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e8": {
+      "source": "n4",
+      "target": "n9",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e9": {
+      "source": "n5",
+      "target": "n10",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e10": {
+      "source": "n6",
+      "target": "n11",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e11": {
+      "source": "n7",
+      "target": "n12",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e12": {
+      "source": "n8",
+      "target": "n12",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e13": {
+      "source": "n9",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e14": {
+      "source": "n10",
+      "target": "n13",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e15": {
+      "source": "n11",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e16": {
+      "source": "n12",
+      "target": "n14",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e17": {
+      "source": "n13",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e18": {
+      "source": "n14",
+      "target": "n15",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": 0.8
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How does urban density affect public transportation in your experience?",
+      "answer": "Greater density tends to support better public transit. When there are more people in an area, bus routes run more frequently and they can justify investments in better transit infrastructure. My commute got better when they increased service after new apartments were built.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density",
+          "target": "public_transit_service",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What impact does increased density have on traffic and parking?",
+      "answer": "It's a mixed bag. More density can mean more cars on the road during rush hour, increasing congestion. But it also usually means fewer parking spaces are available, which can be frustrating when I need to drive.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density",
+          "target": "traffic_congestion",
+          "confidence": 0.85
+        },
+        {
+          "source": "urban_density",
+          "target": "parking_availability",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How important is good public transit to your daily commute?",
+      "answer": "Extremely important. I need frequent service so I don't waste time waiting, and good transit usually comes with better sidewalks and pedestrian crossings, making the walk to and from stations safer and more pleasant.",
+      "extracted_pairs": [
+        {
+          "source": "public_transit_service",
+          "target": "transit_frequency",
+          "confidence": 0.9
+        },
+        {
+          "source": "public_transit_service",
+          "target": "pedestrian_infrastructure",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How does traffic congestion affect your commute experience?",
+      "answer": "Traffic congestion directly increases my commute time when I drive, sometimes doubling it during peak hours. It also seems to cause more potholes and road damage that never get fixed quickly enough.",
+      "extracted_pairs": [
+        {
+          "source": "traffic_congestion",
+          "target": "car_commute_time",
+          "confidence": 0.9
+        },
+        {
+          "source": "traffic_congestion",
+          "target": "road_maintenance",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How does parking availability influence your transportation choices?",
+      "answer": "When parking is scarce or expensive at my destination, I'm much more dependent on my car as I don't have other good options from where I live. This dependency becomes stressful when I know parking will be difficult.",
+      "extracted_pairs": [
+        {
+          "source": "parking_availability",
+          "target": "car_dependency",
+          "confidence": 0.85
+        },
+        {
+          "source": "car_dependency",
+          "target": "commute_stress",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa6": {
+      "question": "How does transit frequency affect the reliability of your commute?",
+      "answer": "More frequent service means I can count on transit being available when I need it. If a bus comes every 10 minutes instead of every 30, I don't worry about missing one and being late for work.",
+      "extracted_pairs": [
+        {
+          "source": "transit_frequency",
+          "target": "transit_commute_reliability",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do pedestrian-friendly areas affect your commute options?",
+      "answer": "Good sidewalks, crosswalks, and pedestrian connections make it much easier to combine walking with transit or to bike part of my route. It gives me more flexibility in how I get around rather than being stuck with just one option.",
+      "extracted_pairs": [
+        {
+          "source": "pedestrian_infrastructure",
+          "target": "multimodal_options",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How do commute time and road conditions affect your stress levels?",
+      "answer": "Long car commutes in heavy traffic with bad road conditions are extremely stressful. I arrive at work already tense and frustrated, which affects my whole day.",
+      "extracted_pairs": [
+        {
+          "source": "car_commute_time",
+          "target": "commute_stress",
+          "confidence": 0.9
+        },
+        {
+          "source": "road_maintenance",
+          "target": "commute_stress",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How important is having reliable transportation options?",
+      "answer": "Extremely important. If I know transit will be reliable and on time, I'm much more likely to choose it over driving. Having dependable options makes a huge difference in how I decide to get around.",
+      "extracted_pairs": [
+        {
+          "source": "transit_commute_reliability",
+          "target": "transportation_choice",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa10": {
+      "question": "How do multiple transportation options affect your commuting decisions?",
+      "answer": "Having multiple viable options gives me flexibility. If traffic is bad, I can take transit. If the weather is nice, I might bike. It means I can choose the most efficient way to get around each day.",
+      "extracted_pairs": [
+        {
+          "source": "multimodal_options",
+          "target": "transportation_choice",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa11": {
+      "question": "Overall, how does your commute experience affect your stance on urban development?",
+      "answer": "My commute affects my daily quality of life significantly. Less stressful commutes and having good transportation options make me much happier. I support urban development that improves transit service and creates alternatives to driving in heavy traffic, even if it means more density.",
+      "extracted_pairs": [
+        {
+          "source": "commute_stress",
+          "target": "commute_satisfaction",
+          "confidence": 0.9
+        },
+        {
+          "source": "transportation_choice",
+          "target": "commute_satisfaction",
+          "confidence": 0.85
+        },
+        {
+          "source": "commute_satisfaction",
+          "target": "upzoning_stance",
+          "confidence": 0.9
+        }
       ]
     }
+  },
+  "metadata": {
+    "perspective": "commuter",
+    "demographic": {
+      "commute_distance": "10+_miles",
+      "transportation_mode": "multimodal",
+      "commute_frequency": "daily"
+    },
+    "num_nodes": 15,
+    "num_edges": 18,
+    "num_qa_pairs": 11,
+    "focus_areas": [
+      "transportation_efficiency",
+      "commute_time",
+      "transit_reliability",
+      "mode_choice"
+    ]
   }
+} 

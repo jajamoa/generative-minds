@@ -1,0 +1,29 @@
+```mermaid
+flowchart TD
+    n1[housing_construction]
+    n2[housing_supply]
+    n4[cool_neighborhood_amenities]
+    n3[rental_prices]
+    n5[personal_rent_burden]
+    n6[housing_options]
+    n7[quality_of_life]
+    n8[upzoning_stance]
+    n1 --> n2
+    n1 --> n4
+    n2 --x n3
+    n3 --> n5
+    n3 --x n6
+    n4 --> n7
+    n5 --x n7
+    n6 --> n7
+    n7 --> n8
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+```

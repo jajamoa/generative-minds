@@ -534,8 +534,8 @@ export const parseMermaidFile = async (content: string): Promise<ParsedGraph> =>
         },
         style: {
           stroke: isNegative ? '#ff0000' : '#2E8B57',
-          strokeWidth: 1.5,
-          strokeDasharray: isNegative ? '3' : undefined,
+          strokeWidth: 1,
+          strokeDasharray: isNegative ? '5,5' : undefined,
         }
       });
     });

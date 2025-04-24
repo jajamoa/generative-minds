@@ -1,0 +1,23 @@
+```mermaid
+flowchart TD
+    n1[building_height_increase]
+    n5[new_residents]
+    n2[neighborhood_character]
+    n4[traffic_congestion]
+    n3[property_value]
+    n6[upzoning_stance]
+    n1 --x n2
+    n1 --x n3
+    n1 --> n4
+    n2 --> n3
+    n3 --> n6
+    n4 --x n3
+    n5 --x n3
+    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

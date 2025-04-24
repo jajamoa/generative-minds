@@ -1,0 +1,462 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "zoning_changes",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
+    },
+    "n2": {
+      "label": "housing_supply",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4"]
+    },
+    "n3": {
+      "label": "rental_costs",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e5", "e6", "e7"]
+    },
+    "n4": {
+      "label": "housing_quality",
+      "confidence": 0.85,
+      "source_qa": ["qa2", "qa4"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e8"]
+    },
+    "n5": {
+      "label": "campus_proximity",
+      "confidence": 0.9,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e9", "e10"]
+    },
+    "n6": {
+      "label": "roommate_necessity",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa6"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e11"]
+    },
+    "n7": {
+      "label": "part_time_work_hours",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa7"],
+      "incoming_edges": ["e6"],
+      "outgoing_edges": ["e12"]
+    },
+    "n8": {
+      "label": "financial_stress",
+      "confidence": 0.95,
+      "source_qa": ["qa3", "qa7"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e13"]
+    },
+    "n9": {
+      "label": "privacy_and_study_space",
+      "confidence": 0.85,
+      "source_qa": ["qa4", "qa6"],
+      "incoming_edges": ["e8", "e11"],
+      "outgoing_edges": ["e14"]
+    },
+    "n10": {
+      "label": "commute_time",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa8"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": ["e15"]
+    },
+    "n11": {
+      "label": "campus_involvement",
+      "confidence": 0.85,
+      "source_qa": ["qa5", "qa9"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e16"]
+    },
+    "n12": {
+      "label": "academic_performance",
+      "confidence": 0.9,
+      "source_qa": ["qa7", "qa8"],
+      "incoming_edges": ["e12", "e14", "e15"],
+      "outgoing_edges": ["e17"]
+    },
+    "n13": {
+      "label": "mental_health",
+      "confidence": 0.95,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e13"],
+      "outgoing_edges": ["e18"]
+    },
+    "n14": {
+      "label": "social_life",
+      "confidence": 0.9,
+      "source_qa": ["qa9", "qa10"],
+      "incoming_edges": ["e16"],
+      "outgoing_edges": ["e19"]
+    },
+    "n15": {
+      "label": "graduation_timeline",
+      "confidence": 0.85,
+      "source_qa": ["qa8", "qa11"],
+      "incoming_edges": ["e17"],
+      "outgoing_edges": ["e20"]
+    },
+    "n16": {
+      "label": "overall_college_experience",
+      "confidence": 0.95,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e18", "e19", "e20"],
+      "outgoing_edges": ["e21"]
+    },
+    "n17": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11"],
+      "incoming_edges": ["e21"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.6
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n5",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n3",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.95}],
+      "modifier": -0.8
+    },
+    "e5": {
+      "source": "n3",
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e6": {
+      "source": "n3",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e8": {
+      "source": "n4",
+      "target": "n9",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e9": {
+      "source": "n5",
+      "target": "n10",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e10": {
+      "source": "n5",
+      "target": "n11",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e11": {
+      "source": "n6",
+      "target": "n9",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e12": {
+      "source": "n7",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e13": {
+      "source": "n8",
+      "target": "n13",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.95}],
+      "modifier": -0.9
+    },
+    "e14": {
+      "source": "n9",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e15": {
+      "source": "n10",
+      "target": "n12",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+      "modifier": -0.7
+    },
+    "e16": {
+      "source": "n11",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e17": {
+      "source": "n12",
+      "target": "n15",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e18": {
+      "source": "n13",
+      "target": "n16",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.95}],
+      "modifier": 0.9
+    },
+    "e19": {
+      "source": "n14",
+      "target": "n16",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e20": {
+      "source": "n15",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e21": {
+      "source": "n16",
+      "target": "n17",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.95}],
+      "modifier": 0.9
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How do zoning changes affect housing options for students?",
+      "answer": "Zoning changes could allow more apartments to be built near campus, which would increase the housing supply. Right now there's not enough student housing, so more units would hopefully bring down the crazy rent prices we're all struggling with.",
+      "extracted_pairs": [
+        {
+          "source": "zoning_changes",
+          "target": "housing_supply",
+          "confidence": 0.9
+        },
+        {
+          "source": "housing_supply",
+          "target": "rental_costs",
+          "confidence": 0.95
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What factors are most important when choosing where to live as a student?",
+      "answer": "Being close to campus is super important because it saves commute time. Also, the quality of housing matters - some student apartments are really run-down but still expensive. Better zoning could improve both issues.",
+      "extracted_pairs": [
+        {
+          "source": "zoning_changes",
+          "target": "housing_quality",
+          "confidence": 0.85
+        },
+        {
+          "source": "zoning_changes",
+          "target": "campus_proximity",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How do rental costs impact your student experience?",
+      "answer": "High rent is probably the biggest stressor for me and my friends. I have to live with three roommates to afford it, which isn't ideal for studying. I also work 20 hours a week at a campus job just to make rent, which takes away from study time and causes a lot of financial stress.",
+      "extracted_pairs": [
+        {
+          "source": "rental_costs",
+          "target": "roommate_necessity",
+          "confidence": 0.9
+        },
+        {
+          "source": "rental_costs",
+          "target": "part_time_work_hours",
+          "confidence": 0.85
+        },
+        {
+          "source": "rental_costs",
+          "target": "financial_stress",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How does housing quality affect your academic life?",
+      "answer": "It's really important to have a quiet, comfortable place to study. In my previous apartment, the walls were thin, heating was unreliable, and there wasn't enough space for a desk. It definitely affected my ability to focus and get work done.",
+      "extracted_pairs": [
+        {
+          "source": "housing_quality",
+          "target": "privacy_and_study_space",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa5": {
+      "question": "Why is living close to campus important to you?",
+      "answer": "Living near campus means I can get to class quickly and don't waste time commuting. It also makes it easier to participate in clubs, study groups, and campus events, which are a big part of the college experience.",
+      "extracted_pairs": [
+        {
+          "source": "campus_proximity",
+          "target": "commute_time",
+          "confidence": 0.9
+        },
+        {
+          "source": "campus_proximity",
+          "target": "campus_involvement",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa6": {
+      "question": "How does having roommates affect your student life?",
+      "answer": "Having roommates helps financially but can make studying at home challenging. Finding quiet time and space is harder with multiple people around, especially when our schedules don't align.",
+      "extracted_pairs": [
+        {
+          "source": "roommate_necessity",
+          "target": "privacy_and_study_space",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do work hours and study space impact your academics?",
+      "answer": "Working so many hours definitely hurts my grades because I have less time to study. And when I do have time, if I don't have a good study space at home, it's even harder to focus. The financial stress from high rent also affects my mental health, making it harder to concentrate on schoolwork.",
+      "extracted_pairs": [
+        {
+          "source": "part_time_work_hours",
+          "target": "academic_performance",
+          "confidence": 0.85
+        },
+        {
+          "source": "privacy_and_study_space",
+          "target": "academic_performance",
+          "confidence": 0.85
+        },
+        {
+          "source": "financial_stress",
+          "target": "mental_health",
+          "confidence": 0.95
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How does commute time affect your academic progress?",
+      "answer": "When I lived farther from campus and had a long commute, I missed more classes and had less energy for schoolwork. This definitely affected my grades and might delay my graduation if I can't keep up with required courses.",
+      "extracted_pairs": [
+        {
+          "source": "commute_time",
+          "target": "academic_performance",
+          "confidence": 0.9
+        },
+        {
+          "source": "academic_performance",
+          "target": "graduation_timeline",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How important is campus involvement to your college experience?",
+      "answer": "Being involved in campus activities is a huge part of what makes college worthwhile. It's how I've made friends and built a social network. These connections and experiences are just as important as classes for making college a positive time in my life.",
+      "extracted_pairs": [
+        {
+          "source": "campus_involvement",
+          "target": "social_life",
+          "confidence": 0.85
+        },
+        {
+          "source": "social_life",
+          "target": "overall_college_experience",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa10": {
+      "question": "How does mental health affect your overall college experience?",
+      "answer": "Mental health impacts everything. When I'm stressed about money or housing, it's hard to enjoy college at all. Taking care of my mental wellbeing is essential for having a positive college experience.",
+      "extracted_pairs": [
+        {
+          "source": "mental_health",
+          "target": "overall_college_experience",
+          "confidence": 0.95
+        }
+      ]
+    },
+    "qa11": {
+      "question": "Overall, how do housing issues affect your view on zoning changes?",
+      "answer": "Graduating on time and having a good college experience are my priorities. If zoning changes could create more affordable housing near campus, I'd definitely support that. Better housing would reduce stress, improve my academic performance, and make my whole college experience better. That's why I'm strongly in favor of upzoning near universities.",
+      "extracted_pairs": [
+        {
+          "source": "graduation_timeline",
+          "target": "overall_college_experience",
+          "confidence": 0.85
+        },
+        {
+          "source": "overall_college_experience",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "student",
+    "demographic": {
+      "age_group": "18-24",
+      "housing_status": "renter",
+      "education": "university_student"
+    },
+    "num_nodes": 17,
+    "num_edges": 21,
+    "num_qa_pairs": 11,
+    "focus_areas": [
+      "housing_affordability",
+      "academic_success",
+      "campus_proximity",
+      "student_experience"
+    ]
+  }
+} 
