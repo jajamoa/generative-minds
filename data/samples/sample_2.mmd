@@ -1,97 +1,76 @@
-graph TD
-    n1["building height restriction relaxation
-(conf: 0.95)"]
-    n2["project investment return rate
-(conf: 0.90)"]
-    n3["land use efficiency
-(conf: 0.85)"]
-    n4["construction cost pressure
-(conf: 0.90)"]
-    n5["market demand analysis
-(conf: 0.85)"]
-    n6["infrastructure capacity
-(conf: 0.80)"]
-    n7["public transport accessibility
-(conf: 0.90)"]
-    n8["parking facility demand
-(conf: 0.75)"]
-    n9["commercial space vitality
-(conf: 0.85)"]
-    n10["community facility
-(conf: 0.90)"]
-    n11["green building certification
-(conf: 0.85)"]
-    n12["mixed use development
-(conf: 0.80)"]
-    n13["housing type diversity
-(conf: 0.90)"]
-    n14["affordable housing ratio
-(conf: 0.85)"]
-    n15["project approval process
-(conf: 0.80)"]
-    n16["community participation level
-(conf: 0.85)"]
-    n17["local government support
-(conf: 0.90)"]
-    n18["tax incentive policy
-(conf: 0.85)"]
-    n19["environmental impact assessment
-(conf: 0.90)"]
-    n20["historic building protection
-(conf: 0.85)"]
-    n21["upzoning stance
-(conf: 1.00)"]
-    n1 -->|+| n2|0.90|
-    style n1n2 stroke:green,stroke-width:2px
-    n1 -->|+| n3|0.85|
-    style n1n3 stroke:green,stroke-width:2px
-    n1 -->|-| n4|0.80|
-    style n1n4 stroke:red,stroke-width:2px
-    n2 -->|+| n21|0.90|
-    style n2n21 stroke:green,stroke-width:2px
-    n2 -->|+| n21|0.85|
-    style n2n21 stroke:green,stroke-width:2px
-    n3 -->|+| n21|0.80|
-    style n3n21 stroke:green,stroke-width:2px
-    n4 -->|-| n10|0.85|
-    style n4n10 stroke:red,stroke-width:2px
-    n5 -->|+| n11|0.80|
-    style n5n11 stroke:green,stroke-width:2px
-    n5 -->|+| n12|0.85|
-    style n5n12 stroke:green,stroke-width:2px
-    n6 -->|+| n7|0.90|
-    style n6n7 stroke:green,stroke-width:2px
-    n6 -->|+| n9|0.85|
-    style n6n9 stroke:green,stroke-width:2px
-    n7 -->|+| n21|0.80|
-    style n7n21 stroke:green,stroke-width:2px
-    n8 -->|-| n21|0.75|
-    style n8n21 stroke:red,stroke-width:2px
-    n9 -->|+| n21|0.85|
-    style n9n21 stroke:green,stroke-width:2px
-    n10 -->|+| n21|0.90|
-    style n10n21 stroke:green,stroke-width:2px
-    n11 -->|+| n21|0.85|
-    style n11n21 stroke:green,stroke-width:2px
-    n12 -->|+| n21|0.80|
-    style n12n21 stroke:green,stroke-width:2px
-    n13 -->|+| n14|0.85|
-    style n13n14 stroke:green,stroke-width:2px
-    n13 -->|+| n15|0.80|
-    style n13n15 stroke:green,stroke-width:2px
-    n14 -->|+| n16|0.85|
-    style n14n16 stroke:green,stroke-width:2px
-    n15 -->|+| n16|0.80|
-    style n15n16 stroke:green,stroke-width:2px
-    n16 -->|-| n21|0.85|
-    style n16n21 stroke:red,stroke-width:2px
-    n17 -->|+| n18|0.90|
-    style n17n18 stroke:green,stroke-width:2px
-    n17 -->|+| n19|0.85|
-    style n17n19 stroke:green,stroke-width:2px
-    n18 -->|+| n21|0.80|
-    style n18n21 stroke:green,stroke-width:2px
-    n19 -->|-| n21|0.85|
-    style n19n21 stroke:red,stroke-width:2px
-    n20 -->|-| n21|0.80|
-    style n20n21 stroke:red,stroke-width:2px
+```mermaid
+flowchart TD
+    n1[building_height_restriction_relaxation]
+    n5[market_demand_analysis]
+    n6[infrastructure_capacity]
+    n8[parking_facility_demand]
+    n13[housing_type_diversity]
+    n17[local_government_support]
+    n20[historic_building_protection]
+    n2[project_investment_return_rate]
+    n3[land_use_efficiency]
+    n4[construction_cost_pressure]
+    n11[green_building_certification]
+    n12[mixed_use_development]
+    n7[public_transport_accessibility]
+    n9[commercial_space_vitality]
+    n14[affordable_housing_ratio]
+    n15[project_approval_process]
+    n18[tax_incentive_policy]
+    n19[environmental_impact_assessment]
+    n10[community_facility]
+    n16[community_participation_level]
+    n21[upzoning_stance]
+    n1 --> n2
+    n1 --> n3
+    n1 --x n4
+    n2 --> n21
+    n3 --> n21
+    n4 --x n10
+    n5 --> n11
+    n5 --> n12
+    n6 --> n7
+    n6 --> n9
+    n7 --> n21
+    n8 --x n21
+    n9 --> n21
+    n10 --> n21
+    n11 --> n21
+    n12 --> n21
+    n13 --> n14
+    n13 --> n15
+    n14 --> n16
+    n15 --> n16
+    n16 --x n21
+    n17 --> n18
+    n17 --> n19
+    n18 --> n21
+    n19 --x n21
+    n20 --x n21
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#00AA00,stroke-width:2px
+    linkStyle 13 stroke:#00AA00,stroke-width:2px
+    linkStyle 14 stroke:#00AA00,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+    linkStyle 16 stroke:#00AA00,stroke-width:2px
+    linkStyle 17 stroke:#00AA00,stroke-width:2px
+    linkStyle 18 stroke:#00AA00,stroke-width:2px
+    linkStyle 19 stroke:#00AA00,stroke-width:2px
+    linkStyle 20 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 21 stroke:#00AA00,stroke-width:2px
+    linkStyle 22 stroke:#00AA00,stroke-width:2px
+    linkStyle 23 stroke:#00AA00,stroke-width:2px
+    linkStyle 24 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 25 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

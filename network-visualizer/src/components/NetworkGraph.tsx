@@ -12,6 +12,36 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
+// Add type definition with support for className
+interface CustomNodeData {
+  label: string;
+  width?: number;
+  className?: string;
+}
+
+// Define common style mappings
+const CLASS_STYLES: Record<string, React.CSSProperties> = {
+  stanceNode: {
+    background: '#f9f', // Pink fill
+    border: '2px solid #333',
+    minWidth: '180px',
+  },
+  factorNode: {
+    background: '#bbf', // Light blue fill
+    border: '1px solid #333',
+    minWidth: '200px',
+    maxWidth: '400px',
+    whiteSpace: 'pre-wrap' as const,
+  },
+  title: {
+    background: 'none',
+    border: 'none',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    padding: '5px 10px',
+  }
+};
+
 interface NetworkGraphProps {
   nodes: Node[];
   edges: Edge[];
@@ -119,14 +149,14 @@ const applyTreeLayout = (nodes: Node[], edges: Edge[]): Node[] => {
   
   // Calculate positions for each node by level
   const levelCount = levelNodes.size;
-  const verticalSpacing = 120;
+  const verticalSpacing = 160; // Increased for multi-line labels
   const centerX = 800;
   const centerY = 200;
   
   // Place nodes by level
   for (let level = 0; level < levelCount; level++) {
     const nodesInLevel = levelNodes.get(level) || [];
-    const horizontalSpacing = 220;
+    const horizontalSpacing = 280; // Increased for multi-line labels
     
     // Calculate total width needed for this level
     const levelWidth = nodesInLevel.length * horizontalSpacing;
@@ -289,6 +319,19 @@ const applyForceLayout = (nodes: Node[], edges: Edge[]): Node[] => {
   return nodesCopy;
 };
 
+// Custom node component for handling multiline text
+const MultiLineNode = ({ data }: { data: any }) => {
+  const lines = data.label.split('\n');
+  
+  return (
+    <div style={{ padding: '10px', textAlign: 'center' }}>
+      {lines.map((line: string, i: number) => (
+        <div key={i}>{line}</div>
+      ))}
+    </div>
+  );
+};
+
 const NetworkGraph: React.FC<NetworkGraphProps> = ({ 
   nodes: initialNodes, 
   edges: initialEdges,
@@ -318,6 +361,42 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
       positionedNodes = initialNodes;  // Fallback to default on error
     }
     
+    // Apply class-based styling to nodes and handle multi-line labels
+    const styledNodes = positionedNodes.map(node => {
+      // Get className from node data
+      const nodeData = node.data as CustomNodeData;
+      const className = nodeData.className;
+      let nodeStyle = { ...node.style };
+      
+      // Check if the label contains newlines
+      const hasMultipleLines = nodeData.label.includes('\n');
+      
+      // If className exists and there's a matching style definition, apply it
+      if (className && CLASS_STYLES[className]) {
+        nodeStyle = {
+          ...nodeStyle,
+          ...CLASS_STYLES[className]
+        };
+      }
+      
+      // Add styles for multi-line text
+      if (hasMultipleLines) {
+        nodeStyle = {
+          ...nodeStyle,
+          whiteSpace: 'pre-wrap',
+          textAlign: 'center',
+          width: 'auto',
+          minWidth: '180px',
+          maxWidth: '400px',
+        };
+      }
+      
+      return {
+        ...node,
+        style: nodeStyle
+      };
+    });
+    
     // Handle edge appearance based on layout
     let styledEdges = initialEdges;
     if (layout === 'tree') {
@@ -328,7 +407,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
       }));
     }
     
-    setNodes(positionedNodes);
+    setNodes(styledNodes);
     setEdges(styledEdges);
   }, [initialNodes, initialEdges, layout, setNodes, setEdges]);
 
@@ -336,9 +415,9 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
     setEdges((eds) => [...eds, params]);
   }, [setEdges]);
 
-  // Customize node styles based on the layout
-  const nodeStyle = useMemo(() => {
-    const baseStyle = {
+  // Base node style
+  const baseNodeStyle = useMemo(() => {
+    return {
       width: 'auto',
       padding: '12px 16px',
       fontSize: '13px',
@@ -346,18 +425,16 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
       borderRadius: '4px',
       background: '#fff',
       boxShadow: '2px 2px 0 rgba(0,0,0,0.1)',
+      textAlign: 'center' as const,
+      whiteSpace: 'pre-wrap' as const,
+      overflow: 'hidden',
     };
+  }, []);
 
-    if (layout === 'tree') {
-      return {
-        ...baseStyle,
-        textAlign: 'center' as const,
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      };
-    }
-
-    return baseStyle;
-  }, [layout]);
+  // Register custom node types
+  const nodeTypes = useMemo(() => ({
+    multiline: MultiLineNode,
+  }), []);
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -367,6 +444,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
         fitView
         fitViewOptions={{ 
           padding: 0.2,
@@ -385,8 +463,8 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({
         nodesDraggable={true}
         nodesConnectable={false}
         elementsSelectable={true}
-        minZoom={0.5}
-        maxZoom={1.5}
+        minZoom={0.25}
+        maxZoom={2.0}
         defaultViewport={{ x: 0, y: 0, zoom: 0.8 }}
         style={{ background: '#ffffff' }}
       >

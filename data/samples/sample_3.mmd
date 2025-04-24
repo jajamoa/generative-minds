@@ -1,97 +1,76 @@
-graph TD
-    n1["land use zoning adjustment
-(conf: 0.95)"]
-    n2["urban density control
-(conf: 0.90)"]
-    n3["public service coverage
-(conf: 0.85)"]
-    n4["transportation planning adjustment
-(conf: 0.90)"]
-    n5["population distribution forecast
-(conf: 0.85)"]
-    n6["municipal facility capacity
-(conf: 0.80)"]
-    n7["public space planning
-(conf: 0.90)"]
-    n8["social housing allocation
-(conf: 0.75)"]
-    n9["employment opportunity distribution
-(conf: 0.85)"]
-    n10["fiscal revenue forecast
-(conf: 0.90)"]
-    n11["environmental protection requirements
-(conf: 0.85)"]
-    n12["urban regeneration strategy
-(conf: 0.80)"]
-    n13["community facility standards
-(conf: 0.90)"]
-    n14["public participation mechanism
-(conf: 0.85)"]
-    n15["planning approval process
-(conf: 0.80)"]
-    n16["urban character protection
-(conf: 0.85)"]
-    n17["regional coordinated development
-(conf: 0.90)"]
-    n18["industrial layout optimization
-(conf: 0.85)"]
-    n19["ecosystem assessment
-(conf: 0.90)"]
-    n20["cultural heritage protection
-(conf: 0.85)"]
-    n21["upzoning stance
-(conf: 1.00)"]
-    n1 -->|+| n2|0.90|
-    style n1n2 stroke:green,stroke-width:2px
-    n1 -->|+| n3|0.85|
-    style n1n3 stroke:green,stroke-width:2px
-    n1 -->|-| n4|0.80|
-    style n1n4 stroke:red,stroke-width:2px
-    n2 -->|+| n21|0.90|
-    style n2n21 stroke:green,stroke-width:2px
-    n2 -->|+| n21|0.85|
-    style n2n21 stroke:green,stroke-width:2px
-    n3 -->|+| n21|0.80|
-    style n3n21 stroke:green,stroke-width:2px
-    n4 -->|-| n10|0.85|
-    style n4n10 stroke:red,stroke-width:2px
-    n5 -->|+| n11|0.80|
-    style n5n11 stroke:green,stroke-width:2px
-    n5 -->|+| n12|0.85|
-    style n5n12 stroke:green,stroke-width:2px
-    n6 -->|+| n7|0.90|
-    style n6n7 stroke:green,stroke-width:2px
-    n6 -->|+| n9|0.85|
-    style n6n9 stroke:green,stroke-width:2px
-    n7 -->|+| n21|0.80|
-    style n7n21 stroke:green,stroke-width:2px
-    n8 -->|-| n21|0.75|
-    style n8n21 stroke:red,stroke-width:2px
-    n9 -->|+| n21|0.85|
-    style n9n21 stroke:green,stroke-width:2px
-    n10 -->|+| n21|0.90|
-    style n10n21 stroke:green,stroke-width:2px
-    n11 -->|+| n21|0.85|
-    style n11n21 stroke:green,stroke-width:2px
-    n12 -->|+| n21|0.80|
-    style n12n21 stroke:green,stroke-width:2px
-    n13 -->|+| n14|0.85|
-    style n13n14 stroke:green,stroke-width:2px
-    n13 -->|+| n15|0.80|
-    style n13n15 stroke:green,stroke-width:2px
-    n14 -->|+| n16|0.85|
-    style n14n16 stroke:green,stroke-width:2px
-    n15 -->|+| n16|0.80|
-    style n15n16 stroke:green,stroke-width:2px
-    n16 -->|-| n21|0.85|
-    style n16n21 stroke:red,stroke-width:2px
-    n17 -->|+| n18|0.90|
-    style n17n18 stroke:green,stroke-width:2px
-    n17 -->|+| n19|0.85|
-    style n17n19 stroke:green,stroke-width:2px
-    n18 -->|+| n21|0.80|
-    style n18n21 stroke:green,stroke-width:2px
-    n19 -->|-| n21|0.85|
-    style n19n21 stroke:red,stroke-width:2px
-    n20 -->|-| n21|0.80|
-    style n20n21 stroke:red,stroke-width:2px
+```mermaid
+flowchart TD
+    n1[land_use_zoning_adjustment]
+    n5[population_distribution_forecast]
+    n6[municipal_facility_capacity]
+    n8[social_housing_allocation]
+    n13[community_facility_standards]
+    n17[regional_coordinated_development]
+    n20[cultural_heritage_protection]
+    n2[urban_density_control]
+    n3[public_service_coverage]
+    n4[transportation_planning_adjustment]
+    n11[environmental_protection_requirements]
+    n12[urban_regeneration_strategy]
+    n7[public_space_planning]
+    n9[employment_opportunity_distribution]
+    n14[public_participation_mechanism]
+    n15[planning_approval_process]
+    n18[industrial_layout_optimization]
+    n19[ecosystem_assessment]
+    n10[fiscal_revenue_forecast]
+    n16[urban_character_protection]
+    n21[upzoning_stance]
+    n1 --> n2
+    n1 --> n3
+    n1 --x n4
+    n2 --> n21
+    n3 --> n21
+    n4 --x n10
+    n5 --> n11
+    n5 --> n12
+    n6 --> n7
+    n6 --> n9
+    n7 --> n21
+    n8 --x n21
+    n9 --> n21
+    n10 --> n21
+    n11 --> n21
+    n12 --> n21
+    n13 --> n14
+    n13 --> n15
+    n14 --> n16
+    n15 --> n16
+    n16 --x n21
+    n17 --> n18
+    n17 --> n19
+    n18 --> n21
+    n19 --x n21
+    n20 --x n21
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#00AA00,stroke-width:2px
+    linkStyle 13 stroke:#00AA00,stroke-width:2px
+    linkStyle 14 stroke:#00AA00,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+    linkStyle 16 stroke:#00AA00,stroke-width:2px
+    linkStyle 17 stroke:#00AA00,stroke-width:2px
+    linkStyle 18 stroke:#00AA00,stroke-width:2px
+    linkStyle 19 stroke:#00AA00,stroke-width:2px
+    linkStyle 20 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 21 stroke:#00AA00,stroke-width:2px
+    linkStyle 22 stroke:#00AA00,stroke-width:2px
+    linkStyle 23 stroke:#00AA00,stroke-width:2px
+    linkStyle 24 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 25 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

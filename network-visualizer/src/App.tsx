@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, IconButton, Paper, TextField, Dialog, DialogContent, DialogActions, DialogTitle } from '@mui/material';
 import { ChevronLeft, ChevronRight, Menu as MenuIcon, Close, Code as CodeIcon } from '@mui/icons-material';
 import NetworkGraph from './components/NetworkGraph';
@@ -27,6 +27,24 @@ function App() {
   const [codeDialogOpen, setCodeDialogOpen] = useState(false);
   const [mmdCode, setMmdCode] = useState('');
   const [layout, setLayout] = useState<'default' | 'force' | 'tree'>('default');
+
+  // Check if the device is mobile
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
@@ -139,8 +157,11 @@ function App() {
   // Handler for MMD code paste
   const handleCodeSubmit = () => {
     if (mmdCode.trim()) {
+      // 预处理mermaid代码，转换graph TD格式
+      const processedCode = preprocessMermaidCode(mmdCode);
+      
       const newGraph = {
-        ...parseMermaidFile(mmdCode),
+        ...parseMermaidFile(processedCode),
         fileName: `paste-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.mmd`
       };
       // Keep existing graphs and add new one
@@ -149,6 +170,130 @@ function App() {
       setCodeDialogOpen(false);
       setMmdCode(''); // Clear the text area
     }
+  };
+
+  // Preprocess mermaid code to support graph TD format
+  const preprocessMermaidCode = (code: string): string => {
+    const lines = code.split('\n');
+    const convertedLines = [];
+    
+    // Check if it's graph TD format
+    const isGraphTD = lines.some(line => /^\s*graph\s+TD\s*;?/.test(line));
+    
+    if (!isGraphTD) {
+      return code; // If not graph TD format, return original code
+    }
+    
+    // Flag to track if inside a code block
+    let isInCodeBlock = false;
+    
+    // Preserve title
+    const titleLine = lines.find(line => line.includes('title['));
+    if (titleLine) {
+      convertedLines.push(titleLine);
+    }
+    
+    // Process classDef declarations
+    const classDefPattern = /\s*classDef\s+(\w+)\s+(.*?);?$/;
+    const classDefLines = lines.filter(line => line.match(classDefPattern));
+    
+    // Node and edge mappings
+    const nodes: Record<string, {id: string, label: string, className?: string}> = {};
+    const edges: {source: string, target: string, label?: string}[] = [];
+    
+    // Step 1: Process node definitions, handling multi-line labels
+    let i = 0;
+    while (i < lines.length) {
+      const line = lines[i];
+      
+      // Skip code block markers and graph declaration
+      if (line.includes('```')) {
+        isInCodeBlock = !isInCodeBlock;
+        i++;
+        continue;
+      }
+      if (line.match(/^\s*graph\s+TD\s*;?/) || line.includes('title[') || line.match(classDefPattern)) {
+        i++;
+        continue;
+      }
+      
+      // Match node definition start (may be multi-line)
+      const nodeStartMatch = line.match(/\s*(n\d+)\[\"?(.*?)(?:\"?\](?:::(\w+))?)?$/);
+      
+      if (nodeStartMatch && !line.includes(']')) {
+        // This is a multi-line node definition
+        let fullNodeText = line;
+        let j = i + 1;
+        
+        // Continue reading lines until we find the closing bracket
+        while (j < lines.length && !lines[j].includes(']')) {
+          fullNodeText += '\n' + lines[j];
+          j++;
+        }
+        
+        // Add the line with the closing bracket
+        if (j < lines.length) {
+          fullNodeText += '\n' + lines[j];
+          i = j; // Update outer loop index
+        }
+        
+        // Try to match the complete multi-line node definition
+        const multiLineMatch = fullNodeText.match(/\s*(n\d+)\[\"?([\s\S]*?)\"?\](?:::(\w+))?/);
+        if (multiLineMatch) {
+          const [, id, rawLabel, className] = multiLineMatch;
+          
+          // Clean up label and preserve line breaks
+          const cleanedLabel = rawLabel.split('\n')
+            .map(line => line.trim())
+            .join('\n');
+          
+          nodes[id] = { id, label: cleanedLabel, className };
+        }
+      } else if (nodeStartMatch && line.includes(']')) {
+        // Single-line node definition
+        const [, id, label, className] = nodeStartMatch;
+        nodes[id] = { id, label, className };
+      }
+      
+      i++;
+    }
+    
+    // Step 2: Parse edges
+    lines.forEach(line => {
+      if (line.includes('```') || line.match(/^\s*graph\s+TD\s*;?/) || 
+          line.includes('title[') || line.match(classDefPattern)) {
+        return;
+      }
+      
+      // Match edge definitions with labels
+      const edgeMatch = line.match(/\s*(n\d+)\s*(==>|-->)\s*(?:\|(.*?)\|)?\s*(n\d+)/);
+      if (edgeMatch) {
+        const [, source, , label, target] = edgeMatch;
+        edges.push({ source, target, label });
+      }
+    });
+    
+    // Generate new Mermaid code
+    convertedLines.push('');
+    
+    // Output node definitions
+    Object.values(nodes).forEach(node => {
+      const classAttr = node.className ? `:::${node.className}` : '';
+      convertedLines.push(`${node.id}["${node.label}"]${classAttr}`);
+    });
+    
+    // Output edge definitions, using --> format
+    edges.forEach(edge => {
+      const labelPart = edge.label ? `|${edge.label}|` : '';
+      convertedLines.push(`${edge.source} --> ${labelPart}${edge.target}`);
+    });
+    
+    // Add all classDef definitions
+    classDefLines.forEach(line => {
+      convertedLines.push(line);
+    });
+    
+    return convertedLines.join('\n');
   };
 
   const handleChangeLayout = (newLayout: 'default' | 'force' | 'tree') => {
@@ -165,6 +310,53 @@ function App() {
       gap: 1,
       position: 'relative',
     }}>
+      {isMobile && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: '#ffffff',
+          zIndex: 9999,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px',
+          textAlign: 'center',
+          fontFamily: 'Helvetica Neue',
+        }}>
+          <img 
+            src="/logo512.png" 
+            alt="MMDit Logo" 
+            style={{
+              width: '80px',
+              height: '80px',
+              marginBottom: '32px',
+            }}
+          />
+          <div style={{ 
+            fontSize: '20px', 
+            fontWeight: '500', 
+            marginBottom: '12px',
+            color: '#000000',
+            letterSpacing: '-0.2px',
+          }}>
+            Desktop Version Required
+          </div>
+          <div style={{ 
+            fontSize: '14px', 
+            maxWidth: '280px', 
+            lineHeight: '1.4',
+            color: '#666666',
+            letterSpacing: '-0.1px',
+          }}>
+            This application is designed for desktop use. Please open on a larger screen for the best experience.
+          </div>
+        </div>
+      )}
+    
       <Paper sx={{ 
         p: 1.5,
         display: 'flex', 
