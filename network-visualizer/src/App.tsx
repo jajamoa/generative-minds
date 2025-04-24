@@ -55,8 +55,9 @@ function App() {
     const newGraphs = await Promise.all(
       mmdFiles.map(async (file) => {
         const content = await readFileAsText(file);
+        const parsedGraph = await parseMermaidFile(content);
         return {
-          ...parseMermaidFile(content),
+          ...parsedGraph,
           fileName: file.name
         };
       })
@@ -72,8 +73,9 @@ function App() {
     const file = event.target.files?.[0];
     if (file && file.name.endsWith('.mmd')) {
       const content = await readFileAsText(file);
+      const parsedGraph = await parseMermaidFile(content);
       const newGraph = {
-        ...parseMermaidFile(content),
+        ...parsedGraph,
         fileName: file.name
       };
       // Keep existing graphs and add new one
@@ -155,13 +157,14 @@ function App() {
   };
 
   // Handler for MMD code paste
-  const handleCodeSubmit = () => {
+  const handleCodeSubmit = async () => {
     if (mmdCode.trim()) {
-      // 预处理mermaid代码，转换graph TD格式
+      // Preprocess mermaid code, convert graph TD format
       const processedCode = preprocessMermaidCode(mmdCode);
       
+      const parsedGraph = await parseMermaidFile(processedCode);
       const newGraph = {
-        ...parseMermaidFile(processedCode),
+        ...parsedGraph,
         fileName: `paste-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.mmd`
       };
       // Keep existing graphs and add new one
@@ -218,7 +221,8 @@ function App() {
       }
       
       // Match node definition start (may be multi-line)
-      const nodeStartMatch = line.match(/\s*(n\d+)\[\"?(.*?)(?:\"?\](?:::(\w+))?)?$/);
+      // Support any alphanumeric ID, not just n\d+
+      const nodeStartMatch = line.match(/\s*([A-Za-z0-9_-]+)\s*\[\"?(.*?)(?:\"?\](?:::(\w+))?)?$/);
       
       if (nodeStartMatch && !line.includes(']')) {
         // This is a multi-line node definition
@@ -238,7 +242,7 @@ function App() {
         }
         
         // Try to match the complete multi-line node definition
-        const multiLineMatch = fullNodeText.match(/\s*(n\d+)\[\"?([\s\S]*?)\"?\](?:::(\w+))?/);
+        const multiLineMatch = fullNodeText.match(/\s*([A-Za-z0-9_-]+)\s*\[\"?([\s\S]*?)\"?\](?:::(\w+))?/);
         if (multiLineMatch) {
           const [, id, rawLabel, className] = multiLineMatch;
           
@@ -265,8 +269,8 @@ function App() {
         return;
       }
       
-      // Match edge definitions with labels
-      const edgeMatch = line.match(/\s*(n\d+)\s*(==>|-->)\s*(?:\|(.*?)\|)?\s*(n\d+)/);
+      // Match edge definitions with labels - support any alphanumeric ID
+      const edgeMatch = line.match(/\s*([A-Za-z0-9_-]+)\s*(==>|-->)\s*(?:\|(.*?)\|)?\s*([A-Za-z0-9_-]+)/);
       if (edgeMatch) {
         const [, source, , label, target] = edgeMatch;
         edges.push({ source, target, label });
