@@ -1,158 +1,315 @@
 {
-    "nodes": [
-        {
-            "id": "n1",
-            "label": "Young Professional\nTech Industry Worker",
-            "class": "background"
+    "nodes": {
+        "n1": {
+            "label": "building_height_increase",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa2"],
+            "incoming_edges": [],
+            "outgoing_edges": ["e1", "e2", "e3"]
         },
-        {
-            "id": "n2",
-            "label": "High Income but\nLimited Savings",
-            "class": "background"
+        "n2": {
+            "label": "traffic_congestion",
+            "confidence": 0.85,
+            "source_qa": ["qa1", "qa3"],
+            "incoming_edges": ["e1"],
+            "outgoing_edges": ["e4"]
         },
-        {
-            "id": "n3",
-            "label": "Renting in Urban Area",
-            "class": "background"
+        "n3": {
+            "label": "sunlight_access",
+            "confidence": 0.9,
+            "source_qa": ["qa2"],
+            "incoming_edges": ["e2"],
+            "outgoing_edges": ["e5"]
         },
-        {
-            "id": "n4",
-            "label": "Aspiring Homeowner",
-            "class": "background"
+        "n4": {
+            "label": "community_character",
+            "confidence": 0.85,
+            "source_qa": ["qa3"],
+            "incoming_edges": ["e3"],
+            "outgoing_edges": ["e6"]
         },
-        {
-            "id": "n5",
-            "label": "Social Media\nHousing Discussions",
-            "class": "info"
+        "n5": {
+            "label": "air_quality",
+            "confidence": 0.8,
+            "source_qa": ["qa4"],
+            "incoming_edges": ["e4"],
+            "outgoing_edges": ["e7"]
         },
-        {
-            "id": "n6",
-            "label": "Professional Network\nExperiences",
-            "class": "info"
+        "n6": {
+            "label": "public_space_quality",
+            "confidence": 0.85,
+            "source_qa": ["qa5"],
+            "incoming_edges": ["e5"],
+            "outgoing_edges": ["e8"]
         },
-        {
-            "id": "n7",
-            "label": "Economic News\n& Market Reports",
-            "class": "info"
+        "n7": {
+            "label": "neighborhood_identity",
+            "confidence": 0.9,
+            "source_qa": ["qa6"],
+            "incoming_edges": ["e6"],
+            "outgoing_edges": ["e9"]
         },
-        {
-            "id": "n8",
-            "label": "Local Policy\nUpdates",
-            "class": "info"
+        "n8": {
+            "label": "health_impact",
+            "confidence": 0.85,
+            "source_qa": ["qa7"],
+            "incoming_edges": ["e7"],
+            "outgoing_edges": ["e10"]
         },
-        {
-            "id": "n9",
-            "label": "Personal Financial\nSecurity",
-            "class": "values"
+        "n9": {
+            "label": "social_interaction",
+            "confidence": 0.8,
+            "source_qa": ["qa8"],
+            "incoming_edges": ["e8"],
+            "outgoing_edges": ["e11"]
         },
-        {
-            "id": "n10",
-            "label": "Work-Life\nBalance",
-            "class": "values"
+        "n10": {
+            "label": "cultural_heritage",
+            "confidence": 0.9,
+            "source_qa": ["qa9"],
+            "incoming_edges": ["e9"],
+            "outgoing_edges": ["e12"]
         },
-        {
-            "id": "n11",
-            "label": "Community\nIntegration",
-            "class": "values"
+        "n11": {
+            "label": "quality_of_life",
+            "confidence": 0.85,
+            "source_qa": ["qa10"],
+            "incoming_edges": ["e10", "e11", "e12"],
+            "outgoing_edges": ["e13"]
         },
-        {
-            "id": "n12",
-            "label": "Social Equity\nConcerns",
-            "class": "values"
-        },
-        {
-            "id": "n13",
-            "label": "Rising Housing\nPrices",
-            "class": "external"
-        },
-        {
-            "id": "n14",
-            "label": "Interest Rate\nChanges",
-            "class": "external"
-        },
-        {
-            "id": "n15",
-            "label": "Tech Industry\nConcentration",
-            "class": "external"
-        },
-        {
-            "id": "n16",
-            "label": "Urban Development\nPlans",
-            "class": "external"
-        },
-        {
-            "id": "n17",
-            "label": "Cost-Benefit\nAnalysis",
-            "class": "decision"
-        },
-        {
-            "id": "n18",
-            "label": "Future Career\nPlanning",
-            "class": "decision"
-        },
-        {
-            "id": "n19",
-            "label": "Location vs.\nCommute Trade-off",
-            "class": "decision"
-        },
-        {
-            "id": "n20",
-            "label": "Investment vs.\nLifestyle Choice",
-            "class": "decision"
-        },
-        {
-            "id": "n21",
-            "label": "Market-Rate\nHousing Support",
-            "class": "position"
-        },
-        {
-            "id": "n22",
-            "label": "Mixed-Income\nDevelopment Interest",
-            "class": "position"
-        },
-        {
-            "id": "n23",
-            "label": "Transit-Oriented\nDevelopment Priority",
-            "class": "position"
-        },
-        {
-            "id": "n24",
-            "label": "Pro-Development with\nAffordability Measures",
-            "class": "stance"
+        "n12": {
+            "label": "upzoning_stance",
+            "confidence": 1.0,
+            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
+            "incoming_edges": ["e13"],
+            "outgoing_edges": []
         }
-    ],
-    "edges": [
-        {"source": "n1", "target": "n2"},
-        {"source": "n1", "target": "n3"},
-        {"source": "n2", "target": "n4"},
-        {"source": "n3", "target": "n4"},
-        {"source": "n5", "target": "n17"},
-        {"source": "n6", "target": "n17"},
-        {"source": "n7", "target": "n17"},
-        {"source": "n8", "target": "n17"},
-        {"source": "n9", "target": "n20"},
-        {"source": "n10", "target": "n19"},
-        {"source": "n11", "target": "n22"},
-        {"source": "n12", "target": "n22"},
-        {"source": "n13", "target": "n21"},
-        {"source": "n14", "target": "n21"},
-        {"source": "n15", "target": "n23"},
-        {"source": "n16", "target": "n23"},
-        {"source": "n17", "target": "n21"},
-        {"source": "n18", "target": "n23"},
-        {"source": "n19", "target": "n23"},
-        {"source": "n20", "target": "n21"},
-        {"source": "n21", "target": "n24"},
-        {"source": "n22", "target": "n24"},
-        {"source": "n23", "target": "n24"}
-    ],
-    "styles": {
-        "background": {"fill": "#e1f5fe", "stroke": "#01579b"},
-        "info": {"fill": "#e8f5e9", "stroke": "#2e7d32"},
-        "values": {"fill": "#fce4ec", "stroke": "#c2185b"},
-        "external": {"fill": "#fff3e0", "stroke": "#e65100"},
-        "decision": {"fill": "#f3e5f5", "stroke": "#7b1fa2"},
-        "position": {"fill": "#fff8e1", "stroke": "#ffa000"},
-        "stance": {"fill": "#ffebee", "stroke": "#c62828"}
+    },
+    "edges": {
+        "e1": {
+            "source": "n1",
+            "target": "n2",
+            "aggregate_confidence": 0.9,
+            "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+            "modifier": 0.8
+        },
+        "e2": {
+            "source": "n1",
+            "target": "n3",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+            "modifier": -0.7
+        },
+        "e3": {
+            "source": "n1",
+            "target": "n4",
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+            "modifier": -0.6
+        },
+        "e4": {
+            "source": "n2",
+            "target": "n5",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+            "modifier": -0.8
+        },
+        "e5": {
+            "source": "n3",
+            "target": "n6",
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
+            "modifier": 0.7
+        },
+        "e6": {
+            "source": "n4",
+            "target": "n7",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa6", "confidence": 0.85}],
+            "modifier": 0.8
+        },
+        "e7": {
+            "source": "n5",
+            "target": "n8",
+            "aggregate_confidence": 0.9,
+            "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
+            "modifier": -0.7
+        },
+        "e8": {
+            "source": "n6",
+            "target": "n9",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+            "modifier": 0.6
+        },
+        "e9": {
+            "source": "n7",
+            "target": "n10",
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+            "modifier": 0.7
+        },
+        "e10": {
+            "source": "n8",
+            "target": "n11",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+            "modifier": -0.8
+        },
+        "e11": {
+            "source": "n9",
+            "target": "n11",
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
+            "modifier": 0.7
+        },
+        "e12": {
+            "source": "n10",
+            "target": "n11",
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+            "modifier": 0.6
+        },
+        "e13": {
+            "source": "n11",
+            "target": "n12",
+            "aggregate_confidence": 0.9,
+            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+            "modifier": -0.7
+        }
+    },
+    "qa_history": {
+        "qa1": {
+            "question": "How does increasing building height affect traffic in the neighborhood?",
+            "answer": "Higher buildings bring more residents and visitors, leading to increased traffic congestion and parking issues.",
+            "extracted_pairs": [
+                {
+                    "source": "building_height_increase",
+                    "target": "traffic_congestion",
+                    "confidence": 0.9
+                }
+            ]
+        },
+        "qa2": {
+            "question": "What impact does taller buildings have on sunlight access?",
+            "answer": "Taller buildings can significantly reduce sunlight access to surrounding areas, affecting both public spaces and private residences.",
+            "extracted_pairs": [
+                {
+                    "source": "building_height_increase",
+                    "target": "sunlight_access",
+                    "confidence": 0.85
+                }
+            ]
+        },
+        "qa3": {
+            "question": "How does building height affect the character of our community?",
+            "answer": "Sudden increases in building height can dramatically change the character and scale of our neighborhood, potentially losing its unique identity.",
+            "extracted_pairs": [
+                {
+                    "source": "building_height_increase",
+                    "target": "community_character",
+                    "confidence": 0.8
+                }
+            ]
+        },
+        "qa4": {
+            "question": "What is the relationship between traffic and air quality?",
+            "answer": "Increased traffic leads to higher emissions and poorer air quality, which can have serious health implications for residents.",
+            "extracted_pairs": [
+                {
+                    "source": "traffic_congestion",
+                    "target": "air_quality",
+                    "confidence": 0.85
+                }
+            ]
+        },
+        "qa5": {
+            "question": "How does sunlight access affect public spaces?",
+            "answer": "Adequate sunlight is crucial for the usability and enjoyment of public spaces, affecting both physical comfort and social interaction.",
+            "extracted_pairs": [
+                {
+                    "source": "sunlight_access",
+                    "target": "public_space_quality",
+                    "confidence": 0.8
+                }
+            ]
+        },
+        "qa6": {
+            "question": "What role does community character play in neighborhood identity?",
+            "answer": "The unique character of our community is fundamental to our neighborhood's identity and sense of place.",
+            "extracted_pairs": [
+                {
+                    "source": "community_character",
+                    "target": "neighborhood_identity",
+                    "confidence": 0.85
+                }
+            ]
+        },
+        "qa7": {
+            "question": "How does air quality impact resident health?",
+            "answer": "Poor air quality can lead to respiratory problems and other health issues, particularly for vulnerable populations.",
+            "extracted_pairs": [
+                {
+                    "source": "air_quality",
+                    "target": "health_impact",
+                    "confidence": 0.9
+                }
+            ]
+        },
+        "qa8": {
+            "question": "What is the relationship between public spaces and social interaction?",
+            "answer": "Well-designed public spaces that receive adequate sunlight foster social interaction and community building.",
+            "extracted_pairs": [
+                {
+                    "source": "public_space_quality",
+                    "target": "social_interaction",
+                    "confidence": 0.85
+                }
+            ]
+        },
+        "qa9": {
+            "question": "How does neighborhood identity relate to cultural heritage?",
+            "answer": "Our neighborhood's identity is deeply connected to its cultural heritage and historical character.",
+            "extracted_pairs": [
+                {
+                    "source": "neighborhood_identity",
+                    "target": "cultural_heritage",
+                    "confidence": 0.8
+                }
+            ]
+        },
+        "qa10": {
+            "question": "What factors contribute to overall quality of life in the neighborhood?",
+            "answer": "Quality of life is determined by a combination of health impacts, social interaction opportunities, and preservation of cultural heritage.",
+            "extracted_pairs": [
+                {
+                    "source": "health_impact",
+                    "target": "quality_of_life",
+                    "confidence": 0.85
+                },
+                {
+                    "source": "social_interaction",
+                    "target": "quality_of_life",
+                    "confidence": 0.8
+                },
+                {
+                    "source": "cultural_heritage",
+                    "target": "quality_of_life",
+                    "confidence": 0.85
+                }
+            ]
+        }
+    },
+    "metadata": {
+        "perspective": "community_resident",
+        "num_nodes": 12,
+        "num_edges": 13,
+        "num_qa_pairs": 10,
+        "focus_areas": [
+            "quality_of_life",
+            "community_impact",
+            "environmental_health",
+            "cultural_preservation"
+        ]
     }
 } 

@@ -1,5 +1,6 @@
 import { Node, Edge } from 'reactflow';
 import mermaid from 'mermaid';
+import { MarkerType } from 'reactflow';
 
 interface ParsedGraph {
   nodes: Node[];
@@ -517,6 +518,7 @@ export const parseMermaidFile = async (content: string): Promise<ParsedGraph> =>
     
     // Create React Flow edges
     edgeList.forEach(({ source, target, label, type }) => {
+      const isNegative = type === '--x';
       edges.push({
         id: `e${source}-${target}`,
         source,
@@ -524,10 +526,16 @@ export const parseMermaidFile = async (content: string): Promise<ParsedGraph> =>
         label,
         type: 'default',
         animated: false,
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 13,
+          height: 13,
+          color: isNegative ? '#ff0000' : '#2E8B57',
+        },
         style: {
-          stroke: type === '--x' ? '#ff0000' : '#000000',
-          strokeWidth: 1,
-          strokeDasharray: type === '--x' ? '5,5' : undefined,
+          stroke: isNegative ? '#ff0000' : '#2E8B57',
+          strokeWidth: 1.5,
+          strokeDasharray: isNegative ? '3' : undefined,
         }
       });
     });

@@ -1,150 +1,87 @@
 {
     "nodes": {
       "n1": {
-        "label": "land_use_zoning_adjustment",
-        "confidence": 0.95,
+        "label": "building_height_increase",
+        "confidence": 0.9,
         "source_qa": ["qa1", "qa2"],
         "incoming_edges": [],
         "outgoing_edges": ["e1", "e2", "e3"]
       },
       "n2": {
-        "label": "urban_density_control",
-        "confidence": 0.9,
-        "source_qa": ["qa1", "qa3"],
+        "label": "emergency_access",
+        "confidence": 0.95,
+        "source_qa": ["qa1"],
         "incoming_edges": ["e1"],
-        "outgoing_edges": ["e4", "e5"]
+        "outgoing_edges": ["e4"]
       },
       "n3": {
-        "label": "public_service_coverage",
-        "confidence": 0.85,
+        "label": "medical_facility_access",
+        "confidence": 0.9,
         "source_qa": ["qa2"],
         "incoming_edges": ["e2"],
-        "outgoing_edges": ["e6"]
+        "outgoing_edges": ["e5"]
       },
       "n4": {
-        "label": "transportation_planning_adjustment",
-        "confidence": 0.9,
+        "label": "senior_center_access",
+        "confidence": 0.85,
         "source_qa": ["qa3"],
         "incoming_edges": ["e3"],
-        "outgoing_edges": ["e7"]
+        "outgoing_edges": ["e6"]
       },
       "n5": {
-        "label": "population_distribution_forecast",
-        "confidence": 0.85,
+        "label": "safety_concerns",
+        "confidence": 0.9,
         "source_qa": ["qa4"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e8", "e9"]
+        "incoming_edges": ["e4"],
+        "outgoing_edges": ["e7"]
       },
       "n6": {
-        "label": "municipal_facility_capacity",
-        "confidence": 0.8,
+        "label": "healthcare_quality",
+        "confidence": 0.95,
         "source_qa": ["qa5"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e10", "e11"]
+        "incoming_edges": ["e5"],
+        "outgoing_edges": ["e8"]
       },
       "n7": {
-        "label": "public_space_planning",
-        "confidence": 0.9,
-        "source_qa": ["qa5"],
-        "incoming_edges": ["e10"],
-        "outgoing_edges": ["e12"]
+        "label": "social_support",
+        "confidence": 0.85,
+        "source_qa": ["qa6"],
+        "incoming_edges": ["e6"],
+        "outgoing_edges": ["e9"]
       },
       "n8": {
-        "label": "social_housing_allocation",
-        "confidence": 0.75,
-        "source_qa": ["qa6"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e13"]
+        "label": "mobility_issues",
+        "confidence": 0.9,
+        "source_qa": ["qa7"],
+        "incoming_edges": ["e7"],
+        "outgoing_edges": ["e10"]
       },
       "n9": {
-        "label": "employment_opportunity_distribution",
+        "label": "chronic_condition_management",
         "confidence": 0.85,
-        "source_qa": ["qa7"],
-        "incoming_edges": ["e11"],
-        "outgoing_edges": ["e14"]
+        "source_qa": ["qa8"],
+        "incoming_edges": ["e8"],
+        "outgoing_edges": ["e11"]
       },
       "n10": {
-        "label": "fiscal_revenue_forecast",
-        "confidence": 0.9,
-        "source_qa": ["qa8"],
-        "incoming_edges": ["e7"],
-        "outgoing_edges": ["e15"]
+        "label": "community_engagement",
+        "confidence": 0.8,
+        "source_qa": ["qa9"],
+        "incoming_edges": ["e9"],
+        "outgoing_edges": ["e12"]
       },
       "n11": {
-        "label": "environmental_protection_requirements",
-        "confidence": 0.85,
-        "source_qa": ["qa9"],
-        "incoming_edges": ["e8"],
-        "outgoing_edges": ["e16"]
+        "label": "quality_of_life",
+        "confidence": 0.9,
+        "source_qa": ["qa10"],
+        "incoming_edges": ["e10", "e11", "e12"],
+        "outgoing_edges": ["e13"]
       },
       "n12": {
-        "label": "urban_regeneration_strategy",
-        "confidence": 0.8,
-        "source_qa": ["qa10"],
-        "incoming_edges": ["e9"],
-        "outgoing_edges": ["e17"]
-      },
-      "n13": {
-        "label": "community_facility_standards",
-        "confidence": 0.9,
-        "source_qa": ["qa11"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e18", "e19"]
-      },
-      "n14": {
-        "label": "public_participation_mechanism",
-        "confidence": 0.85,
-        "source_qa": ["qa11"],
-        "incoming_edges": ["e18"],
-        "outgoing_edges": ["e20"]
-      },
-      "n15": {
-        "label": "planning_approval_process",
-        "confidence": 0.8,
-        "source_qa": ["qa12"],
-        "incoming_edges": ["e19"],
-        "outgoing_edges": ["e21"]
-      },
-      "n16": {
-        "label": "urban_character_protection",
-        "confidence": 0.85,
-        "source_qa": ["qa12"],
-        "incoming_edges": ["e20", "e21"],
-        "outgoing_edges": ["e22"]
-      },
-      "n17": {
-        "label": "regional_coordinated_development",
-        "confidence": 0.9,
-        "source_qa": ["qa13"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e23", "e24"]
-      },
-      "n18": {
-        "label": "industrial_layout_optimization",
-        "confidence": 0.85,
-        "source_qa": ["qa13"],
-        "incoming_edges": ["e23"],
-        "outgoing_edges": ["e25"]
-      },
-      "n19": {
-        "label": "ecosystem_assessment",
-        "confidence": 0.9,
-        "source_qa": ["qa14"],
-        "incoming_edges": ["e24"],
-        "outgoing_edges": ["e26"]
-      },
-      "n20": {
-        "label": "cultural_heritage_protection",
-        "confidence": 0.85,
-        "source_qa": ["qa15"],
-        "incoming_edges": [],
-        "outgoing_edges": ["e27"]
-      },
-      "n21": {
         "label": "upzoning_stance",
         "confidence": 1.0,
-        "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12", "qa13", "qa14", "qa15"],
-        "incoming_edges": ["e4", "e5", "e6", "e12", "e13", "e14", "e15", "e16", "e17", "e22", "e25", "e26", "e27"],
+        "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
+        "incoming_edges": ["e13"],
         "outgoing_edges": []
       }
     },
@@ -154,14 +91,14 @@
         "target": "n2",
         "aggregate_confidence": 0.9,
         "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-        "modifier": 0.8
+        "modifier": -0.8
       },
       "e2": {
         "source": "n1",
         "target": "n3",
         "aggregate_confidence": 0.85,
         "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
-        "modifier": 0.7
+        "modifier": -0.7
       },
       "e3": {
         "source": "n1",
@@ -172,350 +109,212 @@
       },
       "e4": {
         "source": "n2",
-        "target": "n21",
+        "target": "n5",
         "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-        "modifier": 0.9
+        "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+        "modifier": 0.8
       },
       "e5": {
-        "source": "n2",
-        "target": "n21",
+        "source": "n3",
+        "target": "n6",
         "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
-        "modifier": 0.8
+        "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+        "modifier": 0.7
       },
       "e6": {
-        "source": "n3",
-        "target": "n21",
+        "source": "n4",
+        "target": "n7",
         "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
-        "modifier": 0.7
+        "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
+        "modifier": 0.6
       },
       "e7": {
-        "source": "n4",
-        "target": "n10",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
-        "modifier": -0.6
-      },
-      "e8": {
         "source": "n5",
-        "target": "n11",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
-        "modifier": 0.7
-      },
-      "e9": {
-        "source": "n5",
-        "target": "n12",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+        "target": "n8",
+        "aggregate_confidence": 0.9,
+        "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
         "modifier": 0.8
       },
-      "e10": {
-        "source": "n6",
-        "target": "n7",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
-        "modifier": 0.7
-      },
-      "e11": {
+      "e8": {
         "source": "n6",
         "target": "n9",
         "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+        "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+        "modifier": 0.7
+      },
+      "e9": {
+        "source": "n7",
+        "target": "n10",
+        "aggregate_confidence": 0.8,
+        "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
         "modifier": 0.6
+      },
+      "e10": {
+        "source": "n8",
+        "target": "n11",
+        "aggregate_confidence": 0.9,
+        "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+        "modifier": -0.8
+      },
+      "e11": {
+        "source": "n9",
+        "target": "n11",
+        "aggregate_confidence": 0.85,
+        "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+        "modifier": -0.7
       },
       "e12": {
-        "source": "n7",
-        "target": "n21",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
-        "modifier": 0.7
-      },
-      "e13": {
-        "source": "n8",
-        "target": "n21",
-        "aggregate_confidence": 0.75,
-        "evidence": [{"qa_id": "qa6", "confidence": 0.75}],
-        "modifier": -0.5
-      },
-      "e14": {
-        "source": "n9",
-        "target": "n21",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
-        "modifier": 0.8
-      },
-      "e15": {
         "source": "n10",
-        "target": "n21",
-        "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
-        "modifier": 0.7
-      },
-      "e16": {
-        "source": "n11",
-        "target": "n21",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
-        "modifier": 0.6
-      },
-      "e17": {
-        "source": "n12",
-        "target": "n21",
+        "target": "n11",
         "aggregate_confidence": 0.8,
         "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
-        "modifier": 0.8
-      },
-      "e18": {
-        "source": "n13",
-        "target": "n14",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
-        "modifier": 0.6
-      },
-      "e19": {
-        "source": "n13",
-        "target": "n15",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
-        "modifier": 0.5
-      },
-      "e20": {
-        "source": "n14",
-        "target": "n16",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
-        "modifier": 0.7
-      },
-      "e21": {
-        "source": "n15",
-        "target": "n16",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
-        "modifier": 0.6
-      },
-      "e22": {
-        "source": "n16",
-        "target": "n21",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
         "modifier": -0.6
       },
-      "e23": {
-        "source": "n17",
-        "target": "n18",
+      "e13": {
+        "source": "n11",
+        "target": "n12",
         "aggregate_confidence": 0.9,
-        "evidence": [{"qa_id": "qa13", "confidence": 0.9}],
-        "modifier": 0.8
-      },
-      "e24": {
-        "source": "n17",
-        "target": "n19",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
-        "modifier": 0.6
-      },
-      "e25": {
-        "source": "n18",
-        "target": "n21",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa13", "confidence": 0.8}],
-        "modifier": 0.8
-      },
-      "e26": {
-        "source": "n19",
-        "target": "n21",
-        "aggregate_confidence": 0.85,
-        "evidence": [{"qa_id": "qa14", "confidence": 0.85}],
-        "modifier": -0.5
-      },
-      "e27": {
-        "source": "n20",
-        "target": "n21",
-        "aggregate_confidence": 0.8,
-        "evidence": [{"qa_id": "qa15", "confidence": 0.8}],
+        "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
         "modifier": -0.7
       }
     },
     "qa_history": {
       "qa1": {
-        "question": "How does land use zoning adjustment affect urban density control?",
-        "answer": "Zoning adjustments directly impact urban density control standards, requiring comprehensive consideration of infrastructure capacity and development goals.",
+        "question": "How does increased building height affect emergency access in the neighborhood?",
+        "answer": "Higher buildings can make it harder for emergency vehicles to access the area quickly, which is particularly concerning for elderly residents who may need urgent medical attention.",
         "extracted_pairs": [
           {
-            "source": "land_use_zoning_adjustment",
-            "target": "urban_density_control",
+            "source": "building_height_increase",
+            "target": "emergency_access",
             "confidence": 0.9
           }
         ]
       },
       "qa2": {
-        "question": "How can we ensure reasonable allocation of public service facilities?",
-        "answer": "By adjusting land use zoning, we can reasonably plan the layout of public service facilities to ensure service radius covers all communities.",
+        "question": "What impact does taller buildings have on access to medical facilities?",
+        "answer": "Increased density from taller buildings can make it more difficult to access nearby medical facilities, especially for seniors with mobility issues.",
         "extracted_pairs": [
           {
-            "source": "land_use_zoning_adjustment",
-            "target": "public_service_coverage",
+            "source": "building_height_increase",
+            "target": "medical_facility_access",
             "confidence": 0.85
           }
         ]
       },
       "qa3": {
-        "question": "What impact does zoning adjustment have on the transportation system?",
-        "answer": "Zoning adjustments require corresponding adjustments to transportation planning to adapt to new population distributions and travel demands.",
+        "question": "How does building height affect access to senior centers?",
+        "answer": "Changes in neighborhood density can impact the accessibility and availability of senior centers, which are crucial for elderly residents' social well-being.",
         "extracted_pairs": [
           {
-            "source": "land_use_zoning_adjustment",
-            "target": "transportation_planning_adjustment",
+            "source": "building_height_increase",
+            "target": "senior_center_access",
             "confidence": 0.8
           }
         ]
       },
       "qa4": {
-        "question": "How do we forecast changes in population distribution?",
-        "answer": "By using population distribution forecasting models, we can assess environmental impacts and develop corresponding urban regeneration strategies.",
+        "question": "What safety concerns arise from increased building height?",
+        "answer": "Higher buildings can create safety concerns for elderly residents, including increased crime risk and difficulty in emergency evacuation.",
         "extracted_pairs": [
           {
-            "source": "population_distribution_forecast",
-            "target": "environmental_protection_requirements",
-            "confidence": 0.8
+            "source": "emergency_access",
+            "target": "safety_concerns",
+            "confidence": 0.9
           }
         ]
       },
       "qa5": {
-        "question": "How does municipal facility capacity affect public space planning?",
-        "answer": "Municipal facility capacity determines the scale and layout of public spaces, ensuring that infrastructure can support them.",
+        "question": "How does medical facility access affect healthcare quality?",
+        "answer": "Easy access to medical facilities is essential for maintaining good healthcare quality for elderly residents with chronic conditions.",
         "extracted_pairs": [
           {
-            "source": "municipal_facility_capacity",
-            "target": "public_space_planning",
-            "confidence": 0.9
+            "source": "medical_facility_access",
+            "target": "healthcare_quality",
+            "confidence": 0.85
           }
         ]
       },
       "qa6": {
-        "question": "What principles guide social housing allocation?",
-        "answer": "Social housing allocation needs to consider fairness and accessibility, ensuring that different income groups can obtain appropriate housing.",
+        "question": "What role does senior center access play in social support?",
+        "answer": "Access to senior centers provides crucial social support and community connection for elderly residents.",
         "extracted_pairs": [
           {
-            "source": "social_housing_allocation",
-            "target": "upzoning_stance",
-            "confidence": 0.75
+            "source": "senior_center_access",
+            "target": "social_support",
+            "confidence": 0.8
           }
         ]
       },
       "qa7": {
-        "question": "How does the distribution of employment opportunities affect planning decisions?",
-        "answer": "The spatial distribution of employment opportunities is an important planning consideration that affects transportation and housing demand.",
+        "question": "How do safety concerns affect mobility issues?",
+        "answer": "Safety concerns can significantly impact mobility issues for elderly residents, making them more hesitant to move around the neighborhood.",
         "extracted_pairs": [
           {
-            "source": "employment_opportunity_distribution",
-            "target": "upzoning_stance",
-            "confidence": 0.85
+            "source": "safety_concerns",
+            "target": "mobility_issues",
+            "confidence": 0.9
           }
         ]
       },
       "qa8": {
-        "question": "How do we assess the impact of planning adjustments on fiscal revenue?",
-        "answer": "By using fiscal revenue forecasting models, we can evaluate the long-term impact of land use changes on local finances.",
+        "question": "How does healthcare quality affect chronic condition management?",
+        "answer": "Good healthcare quality is essential for effective management of chronic conditions common among elderly residents.",
         "extracted_pairs": [
           {
-            "source": "fiscal_revenue_forecast",
-            "target": "upzoning_stance",
-            "confidence": 0.9
+            "source": "healthcare_quality",
+            "target": "chronic_condition_management",
+            "confidence": 0.85
           }
         ]
       },
       "qa9": {
-        "question": "How do environmental protection requirements affect planning decisions?",
-        "answer": "Environmental protection requirements are important constraints in planning decisions, requiring a balance between development and protection.",
+        "question": "What is the relationship between social support and community engagement?",
+        "answer": "Strong social support networks encourage greater community engagement among elderly residents.",
         "extracted_pairs": [
           {
-            "source": "environmental_protection_requirements",
-            "target": "upzoning_stance",
-            "confidence": 0.85
+            "source": "social_support",
+            "target": "community_engagement",
+            "confidence": 0.8
           }
         ]
       },
       "qa10": {
-        "question": "What are the key points of urban regeneration strategies?",
-        "answer": "Urban regeneration strategies focus on improving land use efficiency while protecting urban characteristics and community vitality.",
+        "question": "What factors contribute to quality of life for elderly residents?",
+        "answer": "Quality of life for elderly residents depends on managing mobility issues, chronic conditions, and maintaining community engagement.",
         "extracted_pairs": [
           {
-            "source": "urban_regeneration_strategy",
-            "target": "upzoning_stance",
-            "confidence": 0.8
-          }
-        ]
-      },
-      "qa11": {
-        "question": "How do we determine community facility allocation standards?",
-        "answer": "Community facility allocation standards need to be determined through public participation to ensure they meet residents' actual needs.",
-        "extracted_pairs": [
-          {
-            "source": "community_facility_standards",
-            "target": "public_participation_mechanism",
-            "confidence": 0.85
-          }
-        ]
-      },
-      "qa12": {
-        "question": "How does the planning approval process protect urban characteristics?",
-        "answer": "The planning approval process includes a dedicated urban character assessment phase to ensure new development projects align with the city's appearance.",
-        "extracted_pairs": [
-          {
-            "source": "planning_approval_process",
-            "target": "urban_character_protection",
-            "confidence": 0.8
-          }
-        ]
-      },
-      "qa13": {
-        "question": "How do we promote coordinated regional development?",
-        "answer": "By optimizing industrial layout, we can promote complementary functions across regions to achieve coordinated development.",
-        "extracted_pairs": [
-          {
-            "source": "regional_coordinated_development",
-            "target": "industrial_layout_optimization",
+            "source": "mobility_issues",
+            "target": "quality_of_life",
             "confidence": 0.9
-          }
-        ]
-      },
-      "qa14": {
-        "question": "What is the role of ecosystem assessment?",
-        "answer": "Ecosystem assessment helps identify environmentally sensitive areas and guides land use decisions.",
-        "extracted_pairs": [
+          },
           {
-            "source": "ecosystem_assessment",
-            "target": "upzoning_stance",
+            "source": "chronic_condition_management",
+            "target": "quality_of_life",
             "confidence": 0.85
-          }
-        ]
-      },
-      "qa15": {
-        "question": "How do we protect cultural heritage in development?",
-        "answer": "Incorporating cultural heritage protection requirements into planning control indicators ensures that development does not harm historical and cultural values.",
-        "extracted_pairs": [
+          },
           {
-            "source": "cultural_heritage_protection",
-            "target": "upzoning_stance",
+            "source": "community_engagement",
+            "target": "quality_of_life",
             "confidence": 0.8
           }
         ]
       }
     },
     "metadata": {
-      "perspective": "government_planner",
-      "num_nodes": 21,
-      "num_edges": 27,
-      "num_qa_pairs": 15,
+      "perspective": "elderly_resident",
+      "demographic": {
+        "age_group": "65+",
+        "mobility_status": "limited",
+        "health_status": "chronic_conditions"
+      },
+      "num_nodes": 12,
+      "num_edges": 13,
+      "num_qa_pairs": 10,
       "focus_areas": [
-        "urban_planning",
-        "public_service",
-        "environmental_protection",
-        "cultural_preservation"
+        "healthcare_access",
+        "safety_concerns",
+        "social_support",
+        "mobility_issues"
       ]
     }
   }
