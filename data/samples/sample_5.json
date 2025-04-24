@@ -1,0 +1,492 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "upzoning_policy",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa2", "qa3"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3", "e4"]
+    },
+    "n2": {
+      "label": "market_rate_housing_supply",
+      "confidence": 0.9,
+      "source_qa": ["qa1"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e5", "e6"]
+    },
+    "n3": {
+      "label": "rental_prices",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa4"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e7", "e8"]
+    },
+    "n4": {
+      "label": "affordable_housing_requirements",
+      "confidence": 0.85,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e9"]
+    },
+    "n5": {
+      "label": "affordable_unit_production",
+      "confidence": 0.8,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e9"],
+      "outgoing_edges": ["e10"]
+    },
+    "n6": {
+      "label": "gentrification_pressure",
+      "confidence": 0.9,
+      "source_qa": ["qa3", "qa4"],
+      "incoming_edges": ["e3", "e6"],
+      "outgoing_edges": ["e11"]
+    },
+    "n7": {
+      "label": "tenant_protections",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa6"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e12"]
+    },
+    "n8": {
+      "label": "rent_burden",
+      "confidence": 0.95,
+      "source_qa": ["qa4", "qa7"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e13", "e14", "e15"]
+    },
+    "n9": {
+      "label": "displacement_risk",
+      "confidence": 0.9,
+      "source_qa": ["qa6", "qa7"],
+      "incoming_edges": ["e11", "e12", "e14"],
+      "outgoing_edges": ["e16"]
+    },
+    "n10": {
+      "label": "housing_stability",
+      "confidence": 0.85,
+      "source_qa": ["qa5", "qa8"],
+      "incoming_edges": ["e10", "e16"],
+      "outgoing_edges": ["e17"]
+    },
+    "n11": {
+      "label": "healthcare_access",
+      "confidence": 0.8,
+      "source_qa": ["qa7", "qa9"],
+      "incoming_edges": ["e13"],
+      "outgoing_edges": ["e18"]
+    },
+    "n12": {
+      "label": "food_security",
+      "confidence": 0.85,
+      "source_qa": ["qa7", "qa9"],
+      "incoming_edges": ["e15"],
+      "outgoing_edges": ["e19"]
+    },
+    "n13": {
+      "label": "employment_stability",
+      "confidence": 0.9,
+      "source_qa": ["qa8", "qa10"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e20"]
+    },
+    "n14": {
+      "label": "mental_health",
+      "confidence": 0.85,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e18", "e19"],
+      "outgoing_edges": ["e21"]
+    },
+    "n15": {
+      "label": "economic_mobility",
+      "confidence": 0.8,
+      "source_qa": ["qa10", "qa11"],
+      "incoming_edges": ["e20"],
+      "outgoing_edges": ["e22"]
+    },
+    "n16": {
+      "label": "quality_of_life",
+      "confidence": 0.9,
+      "source_qa": ["qa12"],
+      "incoming_edges": ["e17", "e21", "e22"],
+      "outgoing_edges": ["e23"]
+    },
+    "n17": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12"],
+      "incoming_edges": ["e23"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n6",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e4": {
+      "source": "n1",
+      "target": "n7",
+      "aggregate_confidence": 0.75,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.75}],
+      "modifier": 0.5
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e6": {
+      "source": "n2",
+      "target": "n6",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e8": {
+      "source": "n3",
+      "target": "n13",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e9": {
+      "source": "n4",
+      "target": "n5",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e10": {
+      "source": "n5",
+      "target": "n10",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e11": {
+      "source": "n6",
+      "target": "n9",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e12": {
+      "source": "n7",
+      "target": "n9",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e13": {
+      "source": "n8",
+      "target": "n11",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e14": {
+      "source": "n8",
+      "target": "n9",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e15": {
+      "source": "n8",
+      "target": "n12",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e16": {
+      "source": "n9",
+      "target": "n10",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e17": {
+      "source": "n10",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e18": {
+      "source": "n11",
+      "target": "n14",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e19": {
+      "source": "n12",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e20": {
+      "source": "n13",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e21": {
+      "source": "n14",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e22": {
+      "source": "n15",
+      "target": "n16",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e23": {
+      "source": "n16",
+      "target": "n17",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.9}],
+      "modifier": -0.8
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How does upzoning affect housing supply and prices?",
+      "answer": "Upzoning typically increases market-rate housing supply, which developers claim will eventually lower rental prices, but in the short term, new luxury units often drive up neighborhood rents.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_policy",
+          "target": "market_rate_housing_supply",
+          "confidence": 0.9
+        },
+        {
+          "source": "market_rate_housing_supply",
+          "target": "rental_prices",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What impact do inclusionary zoning requirements have on affordable housing?",
+      "answer": "Inclusionary zoning requirements can increase affordable housing production by mandating that developers include below-market units, but the amount produced rarely meets actual community needs.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_policy",
+          "target": "affordable_housing_requirements",
+          "confidence": 0.85
+        },
+        {
+          "source": "affordable_housing_requirements",
+          "target": "affordable_unit_production",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How does upzoning relate to gentrification and displacement?",
+      "answer": "Upzoning often accelerates gentrification pressures in low-income neighborhoods unless strong tenant protections are simultaneously implemented to prevent displacement.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_policy",
+          "target": "gentrification_pressure",
+          "confidence": 0.8
+        },
+        {
+          "source": "upzoning_policy",
+          "target": "tenant_protections",
+          "confidence": 0.75
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How do rising rents affect low-income households?",
+      "answer": "Rising rents in gentrifying areas increase rent burden for low-income households, often forcing them to spend over 50% of income on housing with severe consequences.",
+      "extracted_pairs": [
+        {
+          "source": "rental_prices",
+          "target": "rent_burden",
+          "confidence": 0.9
+        },
+        {
+          "source": "gentrification_pressure",
+          "target": "rent_burden",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How does affordable housing availability affect housing stability?",
+      "answer": "Greater affordable housing production is directly linked to improved housing stability for low-income residents, allowing families to remain in their communities long-term.",
+      "extracted_pairs": [
+        {
+          "source": "affordable_unit_production",
+          "target": "housing_stability",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa6": {
+      "question": "What factors influence displacement risk for renters?",
+      "answer": "Displacement risk increases with gentrification pressures but can be mitigated by strong tenant protections like just-cause eviction requirements and rent control.",
+      "extracted_pairs": [
+        {
+          "source": "gentrification_pressure",
+          "target": "displacement_risk",
+          "confidence": 0.9
+        },
+        {
+          "source": "tenant_protections",
+          "target": "displacement_risk",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How does housing cost burden affect other aspects of life?",
+      "answer": "Severe rent burden forces difficult tradeoffs between housing and other necessities, reducing healthcare access and food security while increasing displacement risk.",
+      "extracted_pairs": [
+        {
+          "source": "rent_burden",
+          "target": "healthcare_access",
+          "confidence": 0.8
+        },
+        {
+          "source": "rent_burden",
+          "target": "displacement_risk",
+          "confidence": 0.9
+        },
+        {
+          "source": "rent_burden",
+          "target": "food_security",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How does housing stability relate to employment?",
+      "answer": "Housing stability makes maintaining steady employment possible, while displacement often leads to job loss due to increased commute times or relocation to areas with fewer opportunities.",
+      "extracted_pairs": [
+        {
+          "source": "displacement_risk",
+          "target": "housing_stability",
+          "confidence": 0.9
+        },
+        {
+          "source": "rental_prices",
+          "target": "employment_stability",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa9": {
+      "question": "What impact do healthcare access and food security have on wellbeing?",
+      "answer": "Limited healthcare access and food insecurity both contribute significantly to poor mental health outcomes among low-income renters experiencing housing instability.",
+      "extracted_pairs": [
+        {
+          "source": "healthcare_access",
+          "target": "mental_health",
+          "confidence": 0.8
+        },
+        {
+          "source": "food_security",
+          "target": "mental_health",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa10": {
+      "question": "How does employment stability affect economic mobility?",
+      "answer": "Stable employment is a prerequisite for economic mobility and building financial security, which becomes extremely difficult when housing costs force frequent moves.",
+      "extracted_pairs": [
+        {
+          "source": "employment_stability",
+          "target": "economic_mobility",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa11": {
+      "question": "How do mental health and economic mobility affect quality of life?",
+      "answer": "Both mental health status and economic mobility opportunities are fundamental determinants of overall quality of life for low-income households.",
+      "extracted_pairs": [
+        {
+          "source": "mental_health",
+          "target": "quality_of_life",
+          "confidence": 0.85
+        },
+        {
+          "source": "economic_mobility",
+          "target": "quality_of_life",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa12": {
+      "question": "How does quality of life influence support for upzoning policies?",
+      "answer": "Low-income tenants evaluate upzoning policies primarily based on their expected impact on housing stability and overall quality of life, generally opposing policies without strong anti-displacement protections.",
+      "extracted_pairs": [
+        {
+          "source": "housing_stability",
+          "target": "quality_of_life",
+          "confidence": 0.85
+        },
+        {
+          "source": "quality_of_life",
+          "target": "upzoning_stance",
+          "confidence": 0.9
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "low_income_tenant",
+    "demographic": {
+      "income_level": "below_80_percent_AMI",
+      "housing_status": "renter",
+      "housing_insecurity": "high"
+    },
+    "num_nodes": 17,
+    "num_edges": 23,
+    "num_qa_pairs": 12,
+    "focus_areas": [
+      "housing_affordability",
+      "displacement_prevention",
+      "financial_security",
+      "economic_justice"
+    ]
+  }
+} 

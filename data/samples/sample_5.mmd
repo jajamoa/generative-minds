@@ -1,0 +1,66 @@
+```mermaid
+flowchart TD
+    n1[upzoning_policy]
+    n2[market_rate_housing_supply]
+    n4[affordable_housing_requirements]
+    n7[tenant_protections]
+    n3[rental_prices]
+    n6[gentrification_pressure]
+    n5[affordable_unit_production]
+    n8[rent_burden]
+    n13[employment_stability]
+    n11[healthcare_access]
+    n9[displacement_risk]
+    n12[food_security]
+    n15[economic_mobility]
+    n10[housing_stability]
+    n14[mental_health]
+    n16[quality_of_life]
+    n17[upzoning_stance]
+    n1 --> n2
+    n1 --> n4
+    n1 --> n6
+    n1 --> n7
+    n2 --> n3
+    n2 --> n6
+    n3 --> n8
+    n3 --x n13
+    n4 --> n5
+    n5 --> n10
+    n6 --> n9
+    n7 --x n9
+    n8 --x n11
+    n8 --> n9
+    n8 --x n12
+    n9 --x n10
+    n10 --> n16
+    n11 --> n14
+    n12 --> n14
+    n13 --> n15
+    n14 --> n16
+    n15 --> n16
+    n16 --x n17
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 13 stroke:#00AA00,stroke-width:2px
+    linkStyle 14 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 15 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 16 stroke:#00AA00,stroke-width:2px
+    linkStyle 17 stroke:#00AA00,stroke-width:2px
+    linkStyle 18 stroke:#00AA00,stroke-width:2px
+    linkStyle 19 stroke:#00AA00,stroke-width:2px
+    linkStyle 20 stroke:#00AA00,stroke-width:2px
+    linkStyle 21 stroke:#00AA00,stroke-width:2px
+    linkStyle 22 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

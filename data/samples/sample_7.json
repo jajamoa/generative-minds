@@ -1,0 +1,280 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "upzoning_proposal",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
+    },
+    "n2": {
+      "label": "customer_parking",
+      "confidence": 0.95,
+      "source_qa": ["qa1"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4", "e5"]
+    },
+    "n3": {
+      "label": "construction_disruption",
+      "confidence": 0.9,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e6"]
+    },
+    "n4": {
+      "label": "business_visibility",
+      "confidence": 0.85,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e7"]
+    },
+    "n5": {
+      "label": "store_accessibility",
+      "confidence": 0.9,
+      "source_qa": ["qa4"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e8"]
+    },
+    "n6": {
+      "label": "customer_convenience",
+      "confidence": 0.85,
+      "source_qa": ["qa4", "qa5"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e9"]
+    },
+    "n7": {
+      "label": "short_term_revenue",
+      "confidence": 0.95,
+      "source_qa": ["qa5", "qa6"],
+      "incoming_edges": ["e6", "e8", "e9"],
+      "outgoing_edges": ["e10"]
+    },
+    "n8": {
+      "label": "store_signage",
+      "confidence": 0.8,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e11"]
+    },
+    "n9": {
+      "label": "immediate_business_viability",
+      "confidence": 0.9,
+      "source_qa": ["qa6"],
+      "incoming_edges": ["e10", "e11"],
+      "outgoing_edges": ["e12"]
+    },
+    "n10": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6"],
+      "incoming_edges": ["e12"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n5",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n6",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e6": {
+      "source": "n3",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e7": {
+      "source": "n4",
+      "target": "n8",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e8": {
+      "source": "n5",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e9": {
+      "source": "n6",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e10": {
+      "source": "n7",
+      "target": "n9",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.95}],
+      "modifier": 0.95
+    },
+    "e11": {
+      "source": "n8",
+      "target": "n9",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e12": {
+      "source": "n9",
+      "target": "n10",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.95}],
+      "modifier": -0.9
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How would upzoning affect parking for your business?",
+      "answer": "Upzoning would be terrible for my business because it would remove street parking that my customers need. No parking means no customers, it's that simple.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_proposal",
+          "target": "customer_parking",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What concerns do you have about construction if new buildings are developed?",
+      "answer": "Construction is a nightmare for small businesses. The noise, dust, and blocked sidewalks would keep customers away for months or even years, and we can't survive that kind of disruption.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_proposal",
+          "target": "construction_disruption",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How might taller buildings affect your store's visibility?",
+      "answer": "My store has been here for 15 years and everyone knows where to find us. If they build tall buildings around us, nobody will see our storefront or signage from the street anymore.",
+      "extracted_pairs": [
+        {
+          "source": "upzoning_proposal",
+          "target": "business_visibility",
+          "confidence": 0.8
+        },
+        {
+          "source": "business_visibility",
+          "target": "store_signage",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How important is customer parking to your business model?",
+      "answer": "Parking is absolutely crucial. My customers need to drive here and park nearby. Without easy parking, they can't access the store conveniently, and they'll just shop somewhere else.",
+      "extracted_pairs": [
+        {
+          "source": "customer_parking",
+          "target": "store_accessibility",
+          "confidence": 0.9
+        },
+        {
+          "source": "customer_parking",
+          "target": "customer_convenience",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How do convenience and accessibility affect your sales?",
+      "answer": "It's directly tied to our revenue. When customers can easily get to us and have a convenient experience, they shop more. Construction disruption would kill our daily sales.",
+      "extracted_pairs": [
+        {
+          "source": "store_accessibility",
+          "target": "short_term_revenue",
+          "confidence": 0.85
+        },
+        {
+          "source": "customer_convenience",
+          "target": "short_term_revenue",
+          "confidence": 0.9
+        },
+        {
+          "source": "construction_disruption",
+          "target": "short_term_revenue",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa6": {
+      "question": "How do you weigh short-term impacts versus potential long-term benefits of neighborhood development?",
+      "answer": "I can't afford to think about 5 years from now if I go out of business this year. My immediate revenue and business survival have to be my priority. If customers can't see my store or can't park here, my business won't survive to see any benefits.",
+      "extracted_pairs": [
+        {
+          "source": "short_term_revenue",
+          "target": "immediate_business_viability",
+          "confidence": 0.95
+        },
+        {
+          "source": "store_signage",
+          "target": "immediate_business_viability",
+          "confidence": 0.8
+        },
+        {
+          "source": "immediate_business_viability",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "small_business_owner",
+    "demographic": {
+      "business_type": "retail_store",
+      "business_tenure": "15+_years",
+      "car_dependency": "high"
+    },
+    "num_nodes": 10,
+    "num_edges": 12,
+    "num_qa_pairs": 6,
+    "focus_areas": [
+      "business_operations",
+      "customer_access",
+      "short_term_viability"
+    ],
+    "cognitive_biases": [
+      "status_quo_bias",
+      "hyperbolic_discounting",
+      "loss_aversion",
+      "availability_heuristic"
+    ]
+  }
+} 

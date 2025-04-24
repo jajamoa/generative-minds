@@ -3,85 +3,113 @@
     "n1": {
       "label": "building_height_increase",
       "confidence": 0.9,
-      "source_qa": ["qa1", "qa2"],
+      "source_qa": ["qa1", "qa2", "qa3"],
       "incoming_edges": [],
-      "outgoing_edges": ["e1", "e2", "e3"]
+      "outgoing_edges": ["e1", "e7", "e13"]
     },
     "n2": {
-      "label": "school_access",
+      "label": "traffic_density",
       "confidence": 0.95,
       "source_qa": ["qa1"],
       "incoming_edges": ["e1"],
-      "outgoing_edges": ["e4"]
+      "outgoing_edges": ["e2", "e3"]
     },
     "n3": {
-      "label": "playground_access",
+      "label": "school_accessibility",
       "confidence": 0.9,
-      "source_qa": ["qa2"],
+      "source_qa": ["qa1", "qa2"],
       "incoming_edges": ["e2"],
-      "outgoing_edges": ["e5"]
+      "outgoing_edges": ["e4", "e5"]
     },
     "n4": {
-      "label": "childcare_facility",
+      "label": "outdoor_play_space",
       "confidence": 0.85,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e8", "e9"]
+    },
+    "n5": {
+      "label": "commute_time",
+      "confidence": 0.8,
       "source_qa": ["qa3"],
       "incoming_edges": ["e3"],
       "outgoing_edges": ["e6"]
     },
-    "n5": {
-      "label": "education_quality",
-      "confidence": 0.9,
-      "source_qa": ["qa4"],
-      "incoming_edges": ["e4"],
-      "outgoing_edges": ["e7"]
-    },
     "n6": {
-      "label": "physical_activity",
-      "confidence": 0.95,
-      "source_qa": ["qa5"],
-      "incoming_edges": ["e5"],
-      "outgoing_edges": ["e8"]
+      "label": "parental_stress",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa4"],
+      "incoming_edges": ["e6", "e12"],
+      "outgoing_edges": ["e14"]
     },
     "n7": {
-      "label": "work_life_balance",
-      "confidence": 0.85,
-      "source_qa": ["qa6"],
-      "incoming_edges": ["e6"],
-      "outgoing_edges": ["e9"]
+      "label": "daycare_options",
+      "confidence": 0.9,
+      "source_qa": ["qa4"],
+      "incoming_edges": ["e13"],
+      "outgoing_edges": ["e12"]
     },
     "n8": {
-      "label": "child_safety",
-      "confidence": 0.9,
-      "source_qa": ["qa7"],
-      "incoming_edges": ["e7"],
+      "label": "educational_attainment",
+      "confidence": 0.95,
+      "source_qa": ["qa5"],
+      "incoming_edges": ["e4"],
       "outgoing_edges": ["e10"]
     },
     "n9": {
-      "label": "social_development",
+      "label": "childhood_obesity",
       "confidence": 0.85,
-      "source_qa": ["qa8"],
+      "source_qa": ["qa6"],
       "incoming_edges": ["e8"],
-      "outgoing_edges": ["e11"]
+      "outgoing_edges": ["e16"]
     },
     "n10": {
-      "label": "family_stability",
-      "confidence": 0.8,
-      "source_qa": ["qa9"],
-      "incoming_edges": ["e9"],
-      "outgoing_edges": ["e12"]
+      "label": "peer_socialization",
+      "confidence": 0.9,
+      "source_qa": ["qa7"],
+      "incoming_edges": ["e5", "e9"],
+      "outgoing_edges": ["e11", "e15"]
     },
     "n11": {
-      "label": "quality_of_life",
-      "confidence": 0.9,
-      "source_qa": ["qa10"],
-      "incoming_edges": ["e10", "e11", "e12"],
-      "outgoing_edges": ["e13"]
+      "label": "future_opportunity",
+      "confidence": 0.85,
+      "source_qa": ["qa8"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e17"]
     },
     "n12": {
+      "label": "community_belonging",
+      "confidence": 0.8,
+      "source_qa": ["qa9"],
+      "incoming_edges": ["e11"],
+      "outgoing_edges": ["e18"]
+    },
+    "n13": {
+      "label": "family_health",
+      "confidence": 0.9,
+      "source_qa": ["qa10"],
+      "incoming_edges": ["e14", "e16"],
+      "outgoing_edges": ["e19"]
+    },
+    "n14": {
+      "label": "child_development",
+      "confidence": 0.95,
+      "source_qa": ["qa11"],
+      "incoming_edges": ["e15"],
+      "outgoing_edges": ["e20"]
+    },
+    "n15": {
+      "label": "quality_of_life",
+      "confidence": 0.9,
+      "source_qa": ["qa12"],
+      "incoming_edges": ["e17", "e18", "e19", "e20"],
+      "outgoing_edges": ["e21"]
+    },
+    "n16": {
       "label": "upzoning_stance",
       "confidence": 1.0,
-      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
-      "incoming_edges": ["e13"],
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12"],
+      "incoming_edges": ["e21"],
       "outgoing_edges": []
     }
   },
@@ -91,211 +119,324 @@
       "target": "n2",
       "aggregate_confidence": 0.9,
       "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
-      "modifier": -0.8
+      "modifier": 0.8
     },
     "e2": {
-      "source": "n1",
+      "source": "n2",
       "target": "n3",
       "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "evidence": [{"qa_id": "qa1", "confidence": 0.85}],
       "modifier": -0.7
     },
     "e3": {
-      "source": "n1",
-      "target": "n4",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
-      "modifier": -0.6
-    },
-    "e4": {
       "source": "n2",
       "target": "n5",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e4": {
+      "source": "n3",
+      "target": "n8",
       "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "evidence": [{"qa_id": "qa5", "confidence": 0.9}],
       "modifier": 0.8
     },
     "e5": {
       "source": "n3",
-      "target": "n6",
+      "target": "n10",
       "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
       "modifier": 0.7
     },
     "e6": {
-      "source": "n4",
-      "target": "n7",
+      "source": "n5",
+      "target": "n6",
       "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
-      "modifier": 0.6
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": 0.7
     },
     "e7": {
-      "source": "n5",
-      "target": "n8",
+      "source": "n1",
+      "target": "n4",
       "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
-      "modifier": 0.8
+      "evidence": [{"qa_id": "qa2", "confidence": 0.9}],
+      "modifier": -0.8
     },
     "e8": {
-      "source": "n6",
+      "source": "n4",
       "target": "n9",
       "aggregate_confidence": 0.85,
-      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+      "evidence": [{"qa_id": "qa6", "confidence": 0.85}],
       "modifier": 0.7
     },
     "e9": {
-      "source": "n7",
+      "source": "n4",
       "target": "n10",
       "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
-      "modifier": 0.6
+      "evidence": [{"qa_id": "qa7", "confidence": 0.8}],
+      "modifier": -0.6
     },
     "e10": {
       "source": "n8",
       "target": "n11",
-      "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-      "modifier": -0.8
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+      "modifier": 0.8
     },
     "e11": {
+      "source": "n10",
+      "target": "n12",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e12": {
+      "source": "n7",
+      "target": "n6",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e13": {
+      "source": "n1",
+      "target": "n7",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.6
+    },
+    "e14": {
+      "source": "n6",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e15": {
+      "source": "n10",
+      "target": "n14",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e16": {
       "source": "n9",
-      "target": "n11",
+      "target": "n13",
       "aggregate_confidence": 0.85,
       "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
       "modifier": -0.7
     },
-    "e12": {
-      "source": "n10",
-      "target": "n11",
-      "aggregate_confidence": 0.8,
-      "evidence": [{"qa_id": "qa10", "confidence": 0.8}],
-      "modifier": -0.6
-    },
-    "e13": {
+    "e17": {
       "source": "n11",
-      "target": "n12",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e18": {
+      "source": "n12",
+      "target": "n15",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e19": {
+      "source": "n13",
+      "target": "n15",
       "aggregate_confidence": 0.9,
-      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-      "modifier": -0.7
+      "evidence": [{"qa_id": "qa12", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e20": {
+      "source": "n14",
+      "target": "n15",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e21": {
+      "source": "n15",
+      "target": "n16",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.95}],
+      "modifier": -0.8
     }
   },
   "qa_history": {
     "qa1": {
-      "question": "How does increased building height affect access to schools?",
-      "answer": "Higher buildings can make it harder for children to safely access schools, especially with increased traffic and reduced visibility at intersections.",
+      "question": "How does building height increase affect school access for children?",
+      "answer": "Taller buildings lead to higher population density, which increases traffic congestion, making it more difficult for children to safely access schools in the neighborhood.",
       "extracted_pairs": [
         {
           "source": "building_height_increase",
-          "target": "school_access",
+          "target": "traffic_density",
           "confidence": 0.9
-        }
-      ]
-    },
-    "qa2": {
-      "question": "What impact does taller buildings have on playground access?",
-      "answer": "Increased density from taller buildings can reduce available space for playgrounds and make existing ones more crowded.",
-      "extracted_pairs": [
+        },
         {
-          "source": "building_height_increase",
-          "target": "playground_access",
+          "source": "traffic_density",
+          "target": "school_accessibility",
           "confidence": 0.85
         }
       ]
     },
-    "qa3": {
-      "question": "How does building height affect childcare facilities?",
-      "answer": "Changes in neighborhood density can impact the availability and accessibility of childcare facilities, which are crucial for working parents.",
+    "qa2": {
+      "question": "What impact do higher buildings have on children's play spaces?",
+      "answer": "Increased building heights often reduce available outdoor play spaces, as development tends to maximize land use for structures rather than recreational areas.",
       "extracted_pairs": [
         {
           "source": "building_height_increase",
-          "target": "childcare_facility",
+          "target": "outdoor_play_space",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How does increased neighborhood density affect parents' daily routines?",
+      "answer": "Higher density neighborhoods often create more traffic congestion, which extends commute times for parents, adding stress to daily family routines.",
+      "extracted_pairs": [
+        {
+          "source": "traffic_density",
+          "target": "commute_time",
+          "confidence": 0.8
+        },
+        {
+          "source": "commute_time",
+          "target": "parental_stress",
           "confidence": 0.8
         }
       ]
     },
     "qa4": {
-      "question": "How does school access affect education quality?",
-      "answer": "Easy and safe access to schools is essential for maintaining good education quality and regular attendance.",
+      "question": "What relationship exists between building development and childcare availability?",
+      "answer": "More development can bring more daycare options to an area, but if these facilities aren't affordable or accessible, it can increase parental stress levels.",
       "extracted_pairs": [
         {
-          "source": "school_access",
-          "target": "education_quality",
+          "source": "building_height_increase",
+          "target": "daycare_options",
           "confidence": 0.9
-        }
-      ]
-    },
-    "qa5": {
-      "question": "What role does playground access play in physical activity?",
-      "answer": "Access to safe and well-maintained playgrounds is crucial for children's physical development and activity levels.",
-      "extracted_pairs": [
+        },
         {
-          "source": "playground_access",
-          "target": "physical_activity",
+          "source": "daycare_options",
+          "target": "parental_stress",
           "confidence": 0.85
         }
       ]
     },
-    "qa6": {
-      "question": "How does childcare facility access affect work-life balance?",
-      "answer": "Reliable access to quality childcare facilities is essential for parents to maintain a healthy work-life balance.",
+    "qa5": {
+      "question": "How does school accessibility affect children's educational outcomes?",
+      "answer": "When schools are easily accessible, children have better attendance rates and more consistent participation, which significantly improves their educational attainment.",
       "extracted_pairs": [
         {
-          "source": "childcare_facility",
-          "target": "work_life_balance",
-          "confidence": 0.8
-        }
-      ]
-    },
-    "qa7": {
-      "question": "How does education quality affect child safety?",
-      "answer": "Good education quality includes teaching children about safety, which is particularly important in denser urban environments.",
-      "extracted_pairs": [
-        {
-          "source": "education_quality",
-          "target": "child_safety",
+          "source": "school_accessibility",
+          "target": "educational_attainment",
           "confidence": 0.9
         }
       ]
     },
-    "qa8": {
-      "question": "How does physical activity affect social development?",
-      "answer": "Regular physical activity through playground use helps children develop important social skills and friendships.",
+    "qa6": {
+      "question": "What is the relationship between outdoor play spaces and children's health?",
+      "answer": "Limited access to outdoor play spaces is strongly associated with higher rates of childhood obesity, as children have fewer opportunities for physical activity.",
       "extracted_pairs": [
         {
-          "source": "physical_activity",
-          "target": "social_development",
+          "source": "outdoor_play_space",
+          "target": "childhood_obesity",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do school accessibility and play spaces influence children's social development?",
+      "answer": "Both accessible schools and adequate play spaces are crucial for children's peer socialization, as they provide structured and unstructured opportunities to develop social skills.",
+      "extracted_pairs": [
+        {
+          "source": "school_accessibility",
+          "target": "peer_socialization",
+          "confidence": 0.85
+        },
+        {
+          "source": "outdoor_play_space",
+          "target": "peer_socialization",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How does educational attainment impact children's future prospects?",
+      "answer": "Higher educational attainment opens more doors for children's future opportunities, including better college prospects, career options, and earning potential.",
+      "extracted_pairs": [
+        {
+          "source": "educational_attainment",
+          "target": "future_opportunity",
           "confidence": 0.85
         }
       ]
     },
     "qa9": {
-      "question": "What is the relationship between work-life balance and family stability?",
-      "answer": "A good work-life balance contributes to family stability, which is crucial for children's well-being.",
+      "question": "What role does peer socialization play in community integration?",
+      "answer": "Children's social connections often help families develop a stronger sense of community belonging, as parents meet through their children's friendships and activities.",
       "extracted_pairs": [
         {
-          "source": "work_life_balance",
-          "target": "family_stability",
+          "source": "peer_socialization",
+          "target": "community_belonging",
           "confidence": 0.8
         }
       ]
     },
     "qa10": {
-      "question": "What factors contribute to quality of life for families with children?",
-      "answer": "Quality of life for families depends on ensuring child safety, supporting social development, and maintaining family stability.",
+      "question": "How do parental stress levels and childhood obesity affect overall family health?",
+      "answer": "Both increased parental stress and childhood obesity can negatively impact family health outcomes, creating cycles of health challenges that affect all family members.",
       "extracted_pairs": [
         {
-          "source": "child_safety",
-          "target": "quality_of_life",
-          "confidence": 0.9
+          "source": "parental_stress",
+          "target": "family_health",
+          "confidence": 0.85
         },
         {
-          "source": "social_development",
+          "source": "childhood_obesity",
+          "target": "family_health",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa11": {
+      "question": "What is the connection between peer socialization and child development?",
+      "answer": "Healthy peer socialization is essential for balanced child development, impacting everything from language acquisition to emotional regulation and conflict resolution skills.",
+      "extracted_pairs": [
+        {
+          "source": "peer_socialization",
+          "target": "child_development",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa12": {
+      "question": "What factors contribute to overall quality of life for families with children?",
+      "answer": "Family quality of life is influenced by future opportunities for children, sense of community belonging, family health status, and healthy child development - all of which shape parents' stance on urban development policies.",
+      "extracted_pairs": [
+        {
+          "source": "future_opportunity",
+          "target": "quality_of_life",
+          "confidence": 0.8
+        },
+        {
+          "source": "community_belonging",
           "target": "quality_of_life",
           "confidence": 0.85
         },
         {
-          "source": "family_stability",
+          "source": "family_health",
           "target": "quality_of_life",
-          "confidence": 0.8
+          "confidence": 0.9
+        },
+        {
+          "source": "child_development",
+          "target": "quality_of_life",
+          "confidence": 0.85
+        },
+        {
+          "source": "quality_of_life",
+          "target": "upzoning_stance",
+          "confidence": 0.95
         }
       ]
     }
@@ -305,16 +446,16 @@
     "demographic": {
       "age_group": "30-45",
       "family_status": "with_children",
-      "children_age": "school_age"
+      "children_age": "5-12"
     },
-    "num_nodes": 12,
-    "num_edges": 13,
-    "num_qa_pairs": 10,
+    "num_nodes": 16,
+    "num_edges": 21,
+    "num_qa_pairs": 12,
     "focus_areas": [
+      "child_development",
+      "family_wellbeing",
       "education_access",
-      "child_safety",
-      "family_support",
-      "community_facilities"
+      "community_integration"
     ]
   }
 } 

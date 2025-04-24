@@ -1,0 +1,62 @@
+```mermaid
+flowchart TD
+    n1[zoning_changes]
+    n2[housing_supply]
+    n4[housing_quality]
+    n5[campus_proximity]
+    n3[rental_costs]
+    n10[commute_time]
+    n11[campus_involvement]
+    n6[roommate_necessity]
+    n7[part_time_work_hours]
+    n8[financial_stress]
+    n14[social_life]
+    n9[privacy_and_study_space]
+    n13[mental_health]
+    n12[academic_performance]
+    n15[graduation_timeline]
+    n16[overall_college_experience]
+    n17[upzoning_stance]
+    n1 --> n2
+    n1 --> n4
+    n1 --> n5
+    n2 --x n3
+    n3 --> n6
+    n3 --> n7
+    n3 --> n8
+    n4 --> n9
+    n5 --x n10
+    n5 --> n11
+    n6 --x n9
+    n7 --x n12
+    n8 --x n13
+    n9 --> n12
+    n10 --x n12
+    n11 --> n14
+    n12 --> n15
+    n13 --> n16
+    n14 --> n16
+    n15 --> n16
+    n16 --> n17
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 13 stroke:#00AA00,stroke-width:2px
+    linkStyle 14 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+    linkStyle 16 stroke:#00AA00,stroke-width:2px
+    linkStyle 17 stroke:#00AA00,stroke-width:2px
+    linkStyle 18 stroke:#00AA00,stroke-width:2px
+    linkStyle 19 stroke:#00AA00,stroke-width:2px
+    linkStyle 20 stroke:#00AA00,stroke-width:2px
+```

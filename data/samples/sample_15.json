@@ -1,0 +1,547 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "urban_density_changes",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3", "e4"]
+    },
+    "n2": {
+      "label": "customer_foot_traffic",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e5", "e6"]
+    },
+    "n3": {
+      "label": "commercial_rent_prices",
+      "confidence": 0.9,
+      "source_qa": ["qa2", "qa4"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e7", "e8"]
+    },
+    "n4": {
+      "label": "neighborhood_diversity",
+      "confidence": 0.85,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e9"]
+    },
+    "n5": {
+      "label": "transportation_options",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa6"],
+      "incoming_edges": ["e4"],
+      "outgoing_edges": ["e10", "e11"]
+    },
+    "n6": {
+      "label": "sales_volume",
+      "confidence": 0.95,
+      "source_qa": ["qa3", "qa7"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e12"]
+    },
+    "n7": {
+      "label": "customer_diversity",
+      "confidence": 0.85,
+      "source_qa": ["qa3", "qa5"],
+      "incoming_edges": ["e6", "e9"],
+      "outgoing_edges": ["e13"]
+    },
+    "n8": {
+      "label": "business_operational_costs",
+      "confidence": 0.9,
+      "source_qa": ["qa4", "qa7"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": ["e14"]
+    },
+    "n9": {
+      "label": "expansion_opportunities",
+      "confidence": 0.85,
+      "source_qa": ["qa4", "qa8"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e15"]
+    },
+    "n10": {
+      "label": "employee_commute_impact",
+      "confidence": 0.8,
+      "source_qa": ["qa6", "qa9"],
+      "incoming_edges": ["e10"],
+      "outgoing_edges": ["e16"]
+    },
+    "n11": {
+      "label": "delivery_efficiency",
+      "confidence": 0.85,
+      "source_qa": ["qa6", "qa9"],
+      "incoming_edges": ["e11"],
+      "outgoing_edges": ["e17"]
+    },
+    "n12": {
+      "label": "business_profitability",
+      "confidence": 0.95,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e12", "e14"],
+      "outgoing_edges": ["e18"]
+    },
+    "n13": {
+      "label": "product_diversification",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa7"],
+      "incoming_edges": ["e13"],
+      "outgoing_edges": ["e19"]
+    },
+    "n14": {
+      "label": "business_growth",
+      "confidence": 0.9,
+      "source_qa": ["qa8", "qa10"],
+      "incoming_edges": ["e15", "e19"],
+      "outgoing_edges": ["e20"]
+    },
+    "n15": {
+      "label": "carbon_footprint",
+      "confidence": 0.85,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e16", "e17"],
+      "outgoing_edges": ["e21"]
+    },
+    "n16": {
+      "label": "local_economic_contribution",
+      "confidence": 0.9,
+      "source_qa": ["qa10", "qa11"],
+      "incoming_edges": ["e18", "e20"],
+      "outgoing_edges": ["e22"]
+    },
+    "n17": {
+      "label": "environmental_sustainability",
+      "confidence": 0.95,
+      "source_qa": ["qa9", "qa11"],
+      "incoming_edges": ["e21"],
+      "outgoing_edges": ["e23"]
+    },
+    "n18": {
+      "label": "community_integration",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa11"],
+      "incoming_edges": ["e22"],
+      "outgoing_edges": ["e24"]
+    },
+    "n19": {
+      "label": "business_values_alignment",
+      "confidence": 0.95,
+      "source_qa": ["qa11", "qa12"],
+      "incoming_edges": ["e23", "e24"],
+      "outgoing_edges": ["e25"]
+    },
+    "n20": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12"],
+      "incoming_edges": ["e25"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.8}],
+      "modifier": 0.6
+    },
+    "e4": {
+      "source": "n1",
+      "target": "n5",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e5": {
+      "source": "n2",
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e6": {
+      "source": "n2",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e8": {
+      "source": "n3",
+      "target": "n9",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e9": {
+      "source": "n4",
+      "target": "n7",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e10": {
+      "source": "n5",
+      "target": "n10",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e11": {
+      "source": "n5",
+      "target": "n11",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e12": {
+      "source": "n6",
+      "target": "n12",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.95}],
+      "modifier": 0.9
+    },
+    "e13": {
+      "source": "n7",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e14": {
+      "source": "n8",
+      "target": "n12",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e15": {
+      "source": "n9",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e16": {
+      "source": "n10",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e17": {
+      "source": "n11",
+      "target": "n15",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e18": {
+      "source": "n12",
+      "target": "n16",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e19": {
+      "source": "n13",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e20": {
+      "source": "n14",
+      "target": "n16",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e21": {
+      "source": "n15",
+      "target": "n17",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e22": {
+      "source": "n16",
+      "target": "n18",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e23": {
+      "source": "n17",
+      "target": "n19",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.95}],
+      "modifier": 0.9
+    },
+    "e24": {
+      "source": "n18",
+      "target": "n19",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.9}],
+      "modifier": 0.8
+    },
+    "e25": {
+      "source": "n19",
+      "target": "n20",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.95}],
+      "modifier": 0.85
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How might increased urban density affect your eco-friendly business?",
+      "answer": "More density means more potential customers within walking distance, which aligns with our low-carbon values. It also typically improves transportation options like public transit, bike lanes, and walkability - all supporting our sustainability mission.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_changes",
+          "target": "customer_foot_traffic",
+          "confidence": 0.9
+        },
+        {
+          "source": "urban_density_changes",
+          "target": "transportation_options",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What concerns do you have about zoning changes in your business district?",
+      "answer": "My main concern is rising commercial rents pricing out small businesses like mine. I also worry about losing the diverse neighborhood character that attracts many of my customers who value authentic, community-oriented spaces.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_changes",
+          "target": "commercial_rent_prices",
+          "confidence": 0.85
+        },
+        {
+          "source": "urban_density_changes",
+          "target": "neighborhood_diversity",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How important is foot traffic to your sustainable business model?",
+      "answer": "Extremely important. More pedestrians directly increases our sales volume. It also brings in a more diverse customer base, which helps us educate more people about sustainable products and practices - a core part of our mission.",
+      "extracted_pairs": [
+        {
+          "source": "customer_foot_traffic",
+          "target": "sales_volume",
+          "confidence": 0.9
+        },
+        {
+          "source": "customer_foot_traffic",
+          "target": "customer_diversity",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa4": {
+      "question": "How do commercial rent prices affect your business decisions?",
+      "answer": "Rent is our largest operating cost, so increases directly impact our profitability and sustainability. Higher rents can limit our expansion opportunities, like adding more recycling services or educational workshops, which require additional space.",
+      "extracted_pairs": [
+        {
+          "source": "commercial_rent_prices",
+          "target": "business_operational_costs",
+          "confidence": 0.9
+        },
+        {
+          "source": "commercial_rent_prices",
+          "target": "expansion_opportunities",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa5": {
+      "question": "Why is neighborhood diversity important to your eco-friendly business?",
+      "answer": "Diverse neighborhoods bring customers with different perspectives and needs, helping us develop more inclusive and varied sustainable product lines. This diversity also strengthens our integration with the community, which is essential for our business philosophy.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_diversity",
+          "target": "customer_diversity",
+          "confidence": 0.85
+        },
+        {
+          "source": "customer_diversity",
+          "target": "product_diversification",
+          "confidence": 0.8
+        },
+        {
+          "source": "neighborhood_diversity",
+          "target": "community_integration",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa6": {
+      "question": "How do transportation options affect your business operations?",
+      "answer": "Better transportation options reduce the environmental impact of employee commutes, aligning with our values. They also improve delivery efficiency for our products and supplies, reducing our carbon footprint and operational costs.",
+      "extracted_pairs": [
+        {
+          "source": "transportation_options",
+          "target": "employee_commute_impact",
+          "confidence": 0.8
+        },
+        {
+          "source": "transportation_options",
+          "target": "delivery_efficiency",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do sales volume, product diversity, and operational costs relate to your business success?",
+      "answer": "Higher sales volume directly improves our profitability. A diverse product range helps us reach more customers and grow sustainably. Managing operational costs is crucial since our eco-friendly practices sometimes have higher upfront costs but offer better long-term sustainability.",
+      "extracted_pairs": [
+        {
+          "source": "sales_volume",
+          "target": "business_profitability",
+          "confidence": 0.95
+        },
+        {
+          "source": "business_operational_costs",
+          "target": "business_profitability",
+          "confidence": 0.9
+        },
+        {
+          "source": "customer_diversity",
+          "target": "product_diversification",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How do expansion opportunities and product diversification affect your business growth?",
+      "answer": "Expansion opportunities allow us to scale our sustainable business model and reach more customers. Product diversification drives growth by meeting the needs of different customer segments while maintaining our eco-friendly focus.",
+      "extracted_pairs": [
+        {
+          "source": "expansion_opportunities",
+          "target": "business_growth",
+          "confidence": 0.85
+        },
+        {
+          "source": "product_diversification",
+          "target": "business_growth",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How do employee commutes and delivery efficiency affect your environmental goals?",
+      "answer": "Reducing employee commute impacts and improving delivery efficiency are key ways we lower our carbon footprint. As an eco-friendly business, minimizing environmental impact is central to our identity and operational decisions.",
+      "extracted_pairs": [
+        {
+          "source": "employee_commute_impact",
+          "target": "carbon_footprint",
+          "confidence": 0.8
+        },
+        {
+          "source": "delivery_efficiency",
+          "target": "carbon_footprint",
+          "confidence": 0.85
+        },
+        {
+          "source": "carbon_footprint",
+          "target": "environmental_sustainability",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa10": {
+      "question": "How does business profitability and growth contribute to your community impact?",
+      "answer": "When we're profitable and growing, we create more local jobs, source more from local sustainable suppliers, and can invest in community initiatives. Our success allows us to make a greater positive economic contribution to our neighborhood.",
+      "extracted_pairs": [
+        {
+          "source": "business_profitability",
+          "target": "local_economic_contribution",
+          "confidence": 0.9
+        },
+        {
+          "source": "business_growth",
+          "target": "local_economic_contribution",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa11": {
+      "question": "How do sustainability and community integration align with your business values?",
+      "answer": "Environmental sustainability is a core principle that guides all our business decisions. Strong community integration ensures we're meeting real local needs while promoting sustainable practices. Together, these create perfect alignment with our values of running a business that's good for people, planet, and profit.",
+      "extracted_pairs": [
+        {
+          "source": "environmental_sustainability",
+          "target": "business_values_alignment",
+          "confidence": 0.95
+        },
+        {
+          "source": "community_integration",
+          "target": "business_values_alignment",
+          "confidence": 0.9
+        },
+        {
+          "source": "local_economic_contribution",
+          "target": "community_integration",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa12": {
+      "question": "Overall, how do these factors influence your stance on upzoning?",
+      "answer": "I support thoughtful upzoning that includes provisions for local businesses and sustainable practices. When development aligns with our business values of environmental sustainability and community integration, it helps us thrive. I favor density that creates walkable communities, reduces car dependency, and maintains space for diverse small businesses like mine.",
+      "extracted_pairs": [
+        {
+          "source": "business_values_alignment",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "sustainable_business_owner",
+    "demographic": {
+      "business_type": "eco_friendly_retail",
+      "business_size": "small",
+      "sustainability_focus": "high"
+    },
+    "num_nodes": 20,
+    "num_edges": 25,
+    "num_qa_pairs": 12,
+    "focus_areas": [
+      "business_sustainability",
+      "community_connection",
+      "environmental_impact",
+      "economic_viability"
+    ]
+  }
+} 

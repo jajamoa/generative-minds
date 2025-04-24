@@ -1,0 +1,18 @@
+```mermaid
+flowchart TD
+    n1[tall_buildings]
+    n2[elevator_access]
+    n3[walking_distance]
+    n4[personal_mobility]
+    n5[upzoning_stance]
+    n1 --x n2
+    n1 --> n3
+    n2 --x n4
+    n3 --x n4
+    n4 --x n5
+    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

@@ -1,0 +1,186 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "building_height_increase",
+      "confidence": 0.95,
+      "source_qa": ["qa1"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3"]
+    },
+    "n2": {
+      "label": "neighborhood_character",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa2"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e4"]
+    },
+    "n3": {
+      "label": "property_value",
+      "confidence": 0.95,
+      "source_qa": ["qa2", "qa3"],
+      "incoming_edges": ["e2", "e4", "e5", "e6"],
+      "outgoing_edges": ["e7"]
+    },
+    "n4": {
+      "label": "traffic_congestion",
+      "confidence": 0.9,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e3"],
+      "outgoing_edges": ["e5"]
+    },
+    "n5": {
+      "label": "new_residents",
+      "confidence": 0.85,
+      "source_qa": ["qa4"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e6"]
+    },
+    "n6": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5"],
+      "incoming_edges": ["e7"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e4": {
+      "source": "n2",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e5": {
+      "source": "n4",
+      "target": "n3",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e6": {
+      "source": "n5",
+      "target": "n3",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.8}],
+      "modifier": -0.8
+    },
+    "e7": {
+      "source": "n3",
+      "target": "n6",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.95}],
+      "modifier": 0.95
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How would taller buildings affect your neighborhood?",
+      "answer": "Taller buildings would completely destroy the character of our neighborhood. We've always had single-family homes here, and that's why people move here in the first place. Tall buildings just don't belong in our community.",
+      "extracted_pairs": [
+        {
+          "source": "building_height_increase",
+          "target": "neighborhood_character",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What concerns do you have about neighborhood character and property values?",
+      "answer": "Our neighborhood has a very specific look and feel that everyone values. It's why our homes are worth what they are. If they change the character with big buildings, our property values will definitely go down. That's just common sense.",
+      "extracted_pairs": [
+        {
+          "source": "neighborhood_character",
+          "target": "property_value",
+          "confidence": 0.85
+        },
+        {
+          "source": "building_height_increase",
+          "target": "property_value",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How might increased density affect traffic in your area?",
+      "answer": "The traffic would be absolutely unbearable. Our streets can't handle more cars. More apartments means more cars, plain and simple. And terrible traffic makes homes worth less - nobody wants to live somewhere they can't even get in and out of easily.",
+      "extracted_pairs": [
+        {
+          "source": "building_height_increase",
+          "target": "traffic_congestion",
+          "confidence": 0.9
+        },
+        {
+          "source": "traffic_congestion",
+          "target": "property_value",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa4": {
+      "question": "What are your thoughts about new residents moving into the neighborhood?",
+      "answer": "Look, renters just don't have the same investment in the neighborhood as homeowners do. They don't maintain their properties the same way. More apartments means more transient people who won't care about our community, and that will bring down property values.",
+      "extracted_pairs": [
+        {
+          "source": "new_residents",
+          "target": "property_value",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How important are property values in your position on upzoning?",
+      "answer": "My home is my biggest investment, and I have to protect it. I've worked too hard to see my property value decrease because of bad zoning decisions. That's why I'm completely against upzoning - it's a direct threat to everything I've worked for.",
+      "extracted_pairs": [
+        {
+          "source": "property_value",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "homeowner",
+    "demographic": {
+      "housing_status": "single_family_homeowner",
+      "homeownership_duration": "20+_years",
+      "age_group": "55-70"
+    },
+    "num_nodes": 6,
+    "num_edges": 7,
+    "num_qa_pairs": 5,
+    "focus_areas": [
+      "property_values",
+      "neighborhood_preservation"
+    ],
+    "cognitive_biases": [
+      "status_quo_bias",
+      "loss_aversion",
+      "black_and_white_thinking",
+      "anecdotal_fallacy",
+      "illusory_correlation"
+    ]
+  }
+} 

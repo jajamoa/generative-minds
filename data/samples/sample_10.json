@@ -1,0 +1,141 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "tall_buildings",
+      "confidence": 0.9,
+      "source_qa": ["qa1"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2"]
+    },
+    "n2": {
+      "label": "elevator_access",
+      "confidence": 0.95,
+      "source_qa": ["qa1"],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e3"]
+    },
+    "n3": {
+      "label": "walking_distance",
+      "confidence": 0.9,
+      "source_qa": ["qa2"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e4"]
+    },
+    "n4": {
+      "label": "personal_mobility",
+      "confidence": 0.95,
+      "source_qa": ["qa3"],
+      "incoming_edges": ["e3", "e4"],
+      "outgoing_edges": ["e5"]
+    },
+    "n5": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e3": {
+      "source": "n2",
+      "target": "n4",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e4": {
+      "source": "n3",
+      "target": "n4",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.85}],
+      "modifier": -0.8
+    },
+    "e5": {
+      "source": "n4",
+      "target": "n5",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.95}],
+      "modifier": -0.95
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How do you feel about taller buildings in your neighborhood?",
+      "answer": "Tall buildings are very difficult for me. I can't climb stairs anymore, and elevators break down. I'm afraid of being stuck on a high floor during an emergency.",
+      "extracted_pairs": [
+        {
+          "source": "tall_buildings",
+          "target": "elevator_access",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "How might increased density affect your daily activities?",
+      "answer": "More buildings would mean I have to walk farther to get to the grocery store and pharmacy. At my age, I can only walk short distances without pain.",
+      "extracted_pairs": [
+        {
+          "source": "tall_buildings",
+          "target": "walking_distance",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "What are your main concerns about getting around your neighborhood?",
+      "answer": "I need everything to be easy to access. If elevators don't work or places are too far to walk, I simply can't go. My mobility is very limited now, and that's why I can't support any changes that make it harder for me to get around.",
+      "extracted_pairs": [
+        {
+          "source": "elevator_access",
+          "target": "personal_mobility",
+          "confidence": 0.9
+        },
+        {
+          "source": "walking_distance",
+          "target": "personal_mobility",
+          "confidence": 0.85
+        },
+        {
+          "source": "personal_mobility",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "elderly_resident",
+    "demographic": {
+      "age_group": "75+",
+      "mobility_status": "limited",
+      "housing_status": "long_term_resident"
+    },
+    "num_nodes": 5,
+    "num_edges": 5,
+    "num_qa_pairs": 3,
+    "focus_areas": [
+      "personal_accessibility",
+      "neighborhood_convenience"
+    ],
+    "cognitive_biases": [
+      "status_quo_bias",
+      "immediacy_bias",
+      "concreteness_bias"
+    ]
+  }
+} 

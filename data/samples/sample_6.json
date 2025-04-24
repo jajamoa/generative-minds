@@ -1,0 +1,547 @@
+{
+  "nodes": {
+    "n1": {
+      "label": "urban_density_policy",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa2", "qa3"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e1", "e2", "e3", "e4", "e5"]
+    },
+    "n2": {
+      "label": "carbon_emissions",
+      "confidence": 0.9,
+      "source_qa": ["qa1", "qa4"],
+      "incoming_edges": ["e1", "e6", "e7"],
+      "outgoing_edges": ["e14"]
+    },
+    "n3": {
+      "label": "urban_tree_canopy",
+      "confidence": 0.95,
+      "source_qa": ["qa2", "qa5"],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e8", "e9", "e10"]
+    },
+    "n4": {
+      "label": "wildlife_habitat",
+      "confidence": 0.9,
+      "source_qa": ["qa5", "qa6"],
+      "incoming_edges": ["e3", "e9"],
+      "outgoing_edges": ["e16"]
+    },
+    "n5": {
+      "label": "stormwater_management",
+      "confidence": 0.85,
+      "source_qa": ["qa6", "qa7"],
+      "incoming_edges": ["e4", "e10"],
+      "outgoing_edges": ["e12", "e15"]
+    },
+    "n6": {
+      "label": "urban_sprawl",
+      "confidence": 0.95,
+      "source_qa": ["qa1", "qa3"],
+      "incoming_edges": ["e5"],
+      "outgoing_edges": ["e6", "e11"]
+    },
+    "n7": {
+      "label": "transit_oriented_development",
+      "confidence": 0.9,
+      "source_qa": ["qa4", "qa8"],
+      "incoming_edges": ["e11"],
+      "outgoing_edges": ["e7", "e13"]
+    },
+    "n8": {
+      "label": "air_quality",
+      "confidence": 0.9,
+      "source_qa": ["qa4", "qa9"],
+      "incoming_edges": ["e8"],
+      "outgoing_edges": ["e17"]
+    },
+    "n9": {
+      "label": "urban_heat_island",
+      "confidence": 0.85,
+      "source_qa": ["qa5", "qa9"],
+      "incoming_edges": ["e12", "e13"],
+      "outgoing_edges": ["e18"]
+    },
+    "n10": {
+      "label": "water_quality",
+      "confidence": 0.9,
+      "source_qa": ["qa7", "qa10"],
+      "incoming_edges": ["e15"],
+      "outgoing_edges": ["e19"]
+    },
+    "n11": {
+      "label": "green_building_standards",
+      "confidence": 0.9,
+      "source_qa": ["qa8", "qa11"],
+      "incoming_edges": [],
+      "outgoing_edges": ["e20", "e21"]
+    },
+    "n12": {
+      "label": "biodiversity",
+      "confidence": 0.95,
+      "source_qa": ["qa6", "qa10"],
+      "incoming_edges": ["e16"],
+      "outgoing_edges": ["e22"]
+    },
+    "n13": {
+      "label": "public_health",
+      "confidence": 0.9,
+      "source_qa": ["qa9", "qa12"],
+      "incoming_edges": ["e17", "e18"],
+      "outgoing_edges": ["e23"]
+    },
+    "n14": {
+      "label": "ecosystem_services",
+      "confidence": 0.85,
+      "source_qa": ["qa10", "qa12"],
+      "incoming_edges": ["e19", "e22"],
+      "outgoing_edges": ["e24"]
+    },
+    "n15": {
+      "label": "renewable_energy_adoption",
+      "confidence": 0.9,
+      "source_qa": ["qa11"],
+      "incoming_edges": ["e20"],
+      "outgoing_edges": ["e25"]
+    },
+    "n16": {
+      "label": "resource_efficiency",
+      "confidence": 0.85,
+      "source_qa": ["qa11"],
+      "incoming_edges": ["e21"],
+      "outgoing_edges": ["e26"]
+    },
+    "n17": {
+      "label": "climate_resilience",
+      "confidence": 0.95,
+      "source_qa": ["qa12"],
+      "incoming_edges": ["e14", "e23", "e24", "e25", "e26"],
+      "outgoing_edges": ["e27"]
+    },
+    "n18": {
+      "label": "upzoning_stance",
+      "confidence": 1.0,
+      "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10", "qa11", "qa12"],
+      "incoming_edges": ["e27"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n2",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e2": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e3": {
+      "source": "n1",
+      "target": "n4",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+      "modifier": -0.7
+    },
+    "e4": {
+      "source": "n1",
+      "target": "n5",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.8}],
+      "modifier": -0.6
+    },
+    "e5": {
+      "source": "n1",
+      "target": "n6",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e6": {
+      "source": "n6",
+      "target": "n2",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa1", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e7": {
+      "source": "n7",
+      "target": "n2",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa4", "confidence": 0.9}],
+      "modifier": -0.8
+    },
+    "e8": {
+      "source": "n3",
+      "target": "n8",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.7
+    },
+    "e9": {
+      "source": "n3",
+      "target": "n4",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa5", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e10": {
+      "source": "n3",
+      "target": "n5",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e11": {
+      "source": "n6",
+      "target": "n7",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa8", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e12": {
+      "source": "n5",
+      "target": "n9",
+      "aggregate_confidence": 0.75,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.75}],
+      "modifier": -0.6
+    },
+    "e13": {
+      "source": "n7",
+      "target": "n9",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e14": {
+      "source": "n2",
+      "target": "n17",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.9}],
+      "modifier": -0.9
+    },
+    "e15": {
+      "source": "n5",
+      "target": "n10",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa7", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e16": {
+      "source": "n4",
+      "target": "n12",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa6", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e17": {
+      "source": "n8",
+      "target": "n13",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e18": {
+      "source": "n9",
+      "target": "n13",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa9", "confidence": 0.8}],
+      "modifier": -0.7
+    },
+    "e19": {
+      "source": "n10",
+      "target": "n14",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e20": {
+      "source": "n11",
+      "target": "n15",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e21": {
+      "source": "n11",
+      "target": "n16",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa11", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e22": {
+      "source": "n12",
+      "target": "n14",
+      "aggregate_confidence": 0.9,
+      "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
+      "modifier": 0.9
+    },
+    "e23": {
+      "source": "n13",
+      "target": "n17",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e24": {
+      "source": "n14",
+      "target": "n17",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
+      "modifier": 0.8
+    },
+    "e25": {
+      "source": "n15",
+      "target": "n17",
+      "aggregate_confidence": 0.85,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.85}],
+      "modifier": 0.8
+    },
+    "e26": {
+      "source": "n16",
+      "target": "n17",
+      "aggregate_confidence": 0.8,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.8}],
+      "modifier": 0.7
+    },
+    "e27": {
+      "source": "n17",
+      "target": "n18",
+      "aggregate_confidence": 0.95,
+      "evidence": [{"qa_id": "qa12", "confidence": 0.95}],
+      "modifier": 0.6
+    }
+  },
+  "qa_history": {
+    "qa1": {
+      "question": "How does urban density affect carbon emissions?",
+      "answer": "Increased urban density generally reduces carbon emissions by decreasing car dependency and creating more energy-efficient buildings, while unchecked urban sprawl significantly increases transportation emissions.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_policy",
+          "target": "carbon_emissions",
+          "confidence": 0.85
+        },
+        {
+          "source": "urban_sprawl",
+          "target": "carbon_emissions",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What impact do density increases have on urban tree canopy and wildlife habitat?",
+      "answer": "Increasing density often leads to loss of urban tree canopy and wildlife habitat unless strong protection measures and green space requirements are incorporated into development plans.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_policy",
+          "target": "urban_tree_canopy",
+          "confidence": 0.9
+        },
+        {
+          "source": "urban_density_policy",
+          "target": "wildlife_habitat",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa3": {
+      "question": "How are urban sprawl and density related from an environmental perspective?",
+      "answer": "Well-designed urban density policies can effectively contain urban sprawl, which is critical for preserving regional ecosystems and agricultural lands from development pressure.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_policy",
+          "target": "urban_sprawl",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa4": {
+      "question": "What is the relationship between transit-oriented development and carbon emissions?",
+      "answer": "Transit-oriented development significantly reduces carbon emissions by enabling car-free lifestyles and efficient transportation patterns that decrease fossil fuel consumption.",
+      "extracted_pairs": [
+        {
+          "source": "transit_oriented_development",
+          "target": "carbon_emissions",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa5": {
+      "question": "How does urban tree canopy affect wildlife and local climate?",
+      "answer": "A robust urban tree canopy provides essential habitat for urban wildlife and helps mitigate the urban heat island effect through shade and evaporative cooling.",
+      "extracted_pairs": [
+        {
+          "source": "urban_tree_canopy",
+          "target": "wildlife_habitat",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa6": {
+      "question": "What is the connection between wildlife habitat and biodiversity in urban areas?",
+      "answer": "Urban wildlife habitats, even small interconnected patches, are crucial for maintaining biodiversity in cities and providing essential ecosystem functions.",
+      "extracted_pairs": [
+        {
+          "source": "wildlife_habitat",
+          "target": "biodiversity",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "qa7": {
+      "question": "How do density and urban tree canopy affect stormwater management and water quality?",
+      "answer": "Urban density increases impervious surfaces which worsens stormwater runoff, but preserving urban tree canopy and implementing green infrastructure significantly improves stormwater management and water quality.",
+      "extracted_pairs": [
+        {
+          "source": "urban_density_policy",
+          "target": "stormwater_management",
+          "confidence": 0.8
+        },
+        {
+          "source": "urban_tree_canopy",
+          "target": "stormwater_management",
+          "confidence": 0.85
+        },
+        {
+          "source": "stormwater_management",
+          "target": "water_quality",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa8": {
+      "question": "How can urban sprawl be addressed through transit-oriented development and green building?",
+      "answer": "Transit-oriented development creates compact communities around public transportation hubs, effectively countering urban sprawl, especially when combined with green building standards that minimize environmental impact.",
+      "extracted_pairs": [
+        {
+          "source": "urban_sprawl",
+          "target": "transit_oriented_development",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa9": {
+      "question": "How do air quality, urban heat islands, and tree canopy affect public health?",
+      "answer": "Air quality improvements from urban trees, reduction of urban heat island effects through proper development planning, and effective stormwater management all significantly enhance public health outcomes in urban environments.",
+      "extracted_pairs": [
+        {
+          "source": "urban_tree_canopy",
+          "target": "air_quality",
+          "confidence": 0.85
+        },
+        {
+          "source": "air_quality",
+          "target": "public_health",
+          "confidence": 0.85
+        },
+        {
+          "source": "stormwater_management",
+          "target": "urban_heat_island",
+          "confidence": 0.75
+        },
+        {
+          "source": "urban_heat_island",
+          "target": "public_health",
+          "confidence": 0.8
+        },
+        {
+          "source": "transit_oriented_development",
+          "target": "urban_heat_island",
+          "confidence": 0.8
+        }
+      ]
+    },
+    "qa10": {
+      "question": "What ecosystem services do biodiversity and water quality provide?",
+      "answer": "Biodiversity and good water quality provide critical ecosystem services including pollination, natural pest control, flood mitigation, and water purification that benefit human communities and natural systems.",
+      "extracted_pairs": [
+        {
+          "source": "biodiversity",
+          "target": "ecosystem_services",
+          "confidence": 0.9
+        },
+        {
+          "source": "water_quality",
+          "target": "ecosystem_services",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa11": {
+      "question": "How do green building standards promote sustainability?",
+      "answer": "Green building standards enhance sustainability by promoting renewable energy adoption, increasing resource efficiency, and reducing the overall environmental footprint of urban development.",
+      "extracted_pairs": [
+        {
+          "source": "green_building_standards",
+          "target": "renewable_energy_adoption",
+          "confidence": 0.8
+        },
+        {
+          "source": "green_building_standards",
+          "target": "resource_efficiency",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "qa12": {
+      "question": "How do these environmental factors affect climate resilience and upzoning decisions?",
+      "answer": "Climate resilience is strengthened by reducing carbon emissions, improving public health outcomes, preserving ecosystem services, utilizing renewable energy, and enhancing resource efficiency - all factors that environmentalists weigh when considering upzoning proposals.",
+      "extracted_pairs": [
+        {
+          "source": "carbon_emissions",
+          "target": "climate_resilience",
+          "confidence": 0.9
+        },
+        {
+          "source": "public_health",
+          "target": "climate_resilience",
+          "confidence": 0.85
+        },
+        {
+          "source": "ecosystem_services",
+          "target": "climate_resilience",
+          "confidence": 0.8
+        },
+        {
+          "source": "renewable_energy_adoption",
+          "target": "climate_resilience",
+          "confidence": 0.85
+        },
+        {
+          "source": "resource_efficiency",
+          "target": "climate_resilience",
+          "confidence": 0.8
+        },
+        {
+          "source": "climate_resilience",
+          "target": "upzoning_stance",
+          "confidence": 0.95
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "perspective": "environmentalist",
+    "demographic": {
+      "environmental_focus": "urban_sustainability",
+      "climate_concern": "high",
+      "ecosystem_value": "high"
+    },
+    "num_nodes": 18,
+    "num_edges": 27,
+    "num_qa_pairs": 12,
+    "focus_areas": [
+      "climate_action",
+      "biodiversity_protection",
+      "urban_ecology",
+      "sustainable_development"
+    ]
+  }
+} 
