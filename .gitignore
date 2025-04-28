@@ -38,3 +38,7 @@ dist-ssr
 
 # Jupyter Notebooks
 **/.ipynb_checkpoints/
+
+# Output directories
+**/output/
+src/phase2_motif/output/
