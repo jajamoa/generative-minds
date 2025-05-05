@@ -3,7 +3,6 @@
 
 This document defines a minimal and interpretable JSON schema for representing individual-level Structural Causal Models (SCMs), derived from human interviews. These SCMs formalize a person's reasoning trace by representing belief variables and their causal relationships. The schema is designed to support simulation, motif extraction, and structured analysis.
 
----
 
 ## Top-Level Structure
 
@@ -19,7 +18,6 @@ Each record corresponds to one individual.
 }
 ```
 
----
 
 ## 1. `agent_id`
 
@@ -27,7 +25,6 @@ Each record corresponds to one individual.
 |-----------|--------|------------------------------------|
 | agent_id  | string | Unique identifier for the individual |
 
----
 
 ## 2. `demographics`
 
@@ -50,7 +47,6 @@ Example:
 }
 ```
 
----
 
 ## 3. `nodes`
 
@@ -104,7 +100,6 @@ Example:
 }
 ```
 
----
 
 ## 4. `edges`
 
@@ -149,7 +144,6 @@ Edges define directed causal relationships between nodes. Each edge must include
 }
 ```
 
----
 
 ## 5. `qas`
 
@@ -190,4 +184,138 @@ Each QA record contains a question-answer pair and the extracted causal belief s
 }
 ```
 
----
+
+## Function Type Justification
+
+| Function Type | Kept | Rationale |
+|---------------|------|-----------|
+| sigmoid       | Yes  | Models graded causal effects |
+| threshold     | Yes  | Captures sharp rule-like transitions |
+| linear        | No   | Redundant with sigmoid; less interpretable |
+| rule_based    | No   | Fragile, not data-driven |
+| textual       | No   | Not executable |
+
+
+
+## Full Example Record
+
+```json
+{
+  "agent_id": "user_001",
+  "demographics": {
+    "age": 34,
+    "income": "$50,000–$99,999",
+    "education": "college graduate",
+    "occupation": "urban planner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "Sunlight",
+      "type": "continuous",
+      "range": [0.0, 1.0],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": ["qa_01"],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": ["e1"]
+    },
+    "n2": {
+      "label": "Mood",
+      "type": "binary",
+      "values": [true, false],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": ["qa_01"],
+        "frequency": 1
+      },
+      "incoming_edges": ["e1"],
+      "outgoing_edges": ["e2"]
+    },
+    "n3": {
+      "label": "SupportsPolicy",
+      "type": "binary",
+      "values": [true, false],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": ["qa_06"],
+        "frequency": 1
+      },
+      "incoming_edges": ["e2"],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": ["n1"],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [-2.5],
+          "bias": 1.2
+        },
+        "noise_std": 0.3,
+        "support_qas": ["qa_01"],
+        "confidence": 0.8
+      },
+      "support_qas": ["qa_01"]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": ["n2"],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.2,
+        "support_qas": ["qa_06"]
+      },
+      "support_qas": ["qa_06"]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "Why do you oppose tall buildings?",
+      "answer": "They block sunlight and it affects my mood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.75,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If there were no tall buildings, I'd feel better."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Do you support the upzoning plan?",
+      "answer": "No, because being in a bad mood makes me less supportive of new developments.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.7
+        },
+        "counterfactual": "If I felt better, I might support it."
+      }
+    }
+  ]
+}
+```
