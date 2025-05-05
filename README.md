@@ -1,66 +1,136 @@
-# Cognitive Motif Analysis
+# Motif Library for Cognitive Causal Graphs
 
-Simple implementation of Phase 2: Motif Library Clustering/Construction based on cognitive causal graph samples.
+Implementation for extracting, analyzing, and augmenting motifs in cognitive causal graphs.
 
 ## Overview
 
-This project analyzes basic motifs in cognitive causal graphs representing how different demographics make decisions about urban zoning policy.
+This project extends the original motif analysis code with a more sophisticated approach that:
 
-## Features
+1. Implements a two-step motif extraction process:
+   - **Topology-Based Candidate Grouping**: Identifying structural patterns using graph isomorphism
+   - **Semantic Filtering**: Grouping functionally equivalent patterns based on semantic similarity
 
-- Identifies 3 basic motifs in causal graphs:
-  - M1: Chain (A → B → C)
-  - M2: Fork/One-to-many (A → B, A → C)
-  - M3: Collider/Many-to-one (A → B ← C)
+2. Adds data augmentation capabilities for motif patterns:
+   - **Nearest Neighbor Weighted**: Combining features of similar motifs
+   - **Bootstrapping**: Resampling from the distribution of node/edge features
 
-- Extracts demographic labels and stance on upzoning
-- Performs clustering based on motif distributions
+3. Provides visualization and analysis tools for the extracted motifs
 
-## Project Structure
+## Installation
 
-```
-data/samples/         # Sample data
-motif_analysis.py     # Main analysis script
-visualize_motifs.py   # Visualization script
-README.md             # Documentation
+1. Clone this repository
+2. Install the required dependencies:
+
+```bash
+pip install -r src/phase2_motif/requirements.txt
 ```
 
 ## Usage
 
-1. Install dependencies:
+### Basic Usage
+
+To run the motif analysis with the new implementation:
 
 ```bash
-pip install numpy matplotlib scikit-learn seaborn
+python src/phase2_motif/run_motif_analysis.py --samples-dir data/samples --output-dir output
 ```
 
-2. Run analysis:
+For more options:
 
 ```bash
-python motif_analysis.py
+python run_motif_analysis.py --help
 ```
 
-3. Run visualization:
+### Extended Analysis
+
+For extended analysis with data augmentation:
 
 ```bash
-python visualize_motifs.py
+python src/phase2_motif/extended_motif_analysis.py --samples-dir data/samples --output-dir output --use-library --augment
 ```
+
+### MotifLibrary (plug-in version..)
+
+```python
+from motif_library import MotifLibrary, load_graph_from_json
+
+# Initialize the library
+library = MotifLibrary(min_semantic_similarity=0.4)
+
+# Load a graph
+G = load_graph_from_json('path/to/graph.json')
+
+# Extract motifs
+library.extract_topological_motifs(G)
+
+# Apply semantic filtering
+library.apply_semantic_filtering()
+
+# Calculate motif vector for a graph
+motif_vector = library.calculate_motif_vector(G)
+
+# Augment with nearest neighbor approach
+library.augment_by_nearest_neighbor(num_samples=5)
+
+# Augment with bootstrapping
+library.augment_by_bootstrapping(num_samples=5)
+
+# Visualize motif groups
+library.visualize_all_groups(output_dir='output')
+
+# Save the library
+library.save_library('motif_library.json')
+```
+
+## Motif Types
+
+The library identifies and analyzes the following motif patterns:
+
+1. **Chain Motifs (M1)**:
+   - Three-node path A → B → C
+   - Represents sequential reasoning
+
+2. **Fork Motifs (M2)**:
+   - M2.1: Basic fork (1-to-2): A → B, A → C
+   - M2.2: Extended fork (1-to-3): A → B, A → C, A → D
+   - M2.3: Large fork (1-to-4+): A → B, A → C, A → D, A → E, ...
+   - Represents branching effects/implications
+
+3. **Collider Motifs (M3)**:
+   - M3.1: Basic collider (2-to-1): A → C, B → C
+   - M3.2: Extended collider (3-to-1): A → D, B → D, C → D
+   - M3.3: Large collider (4+-to-1): A → E, B → E, C → E, D → E, ...
+   - Represents multiple causes for a single effect
+
+## Data Augmentation
+
+The library provides two methods for data augmentation:
+
+1. **Nearest Neighbor Weighted**:
+   - Generates new synthetic motifs by combining features of similar motifs
+   - Maintains semantic coherence within motif groups
+   - Best for more realistic variations based on existing motifs
+
+2. **Bootstrapping**:
+   - Generates new synthetic motifs by resampling from the distribution of node/edge features
+   - Creates more diverse variations that may be less semantically coherent
+   - Better for increasing pattern diversity
 
 ## Output Files
 
-- `motif_analysis_results.json`: Analysis results
-- `motif_heatmap.png`: Motif frequency heatmap
-- `kmeans_clusters.png`: Clustering results
-- `kmeans_results.json`: Cluster details
+The analysis generates the following output files:
 
-## Analysis Method
+- `motif_library.json`: Serialized motif library with all extracted motifs
+- `motif_summary.json`: Summary statistics for the motif library
+- `motif_summary.csv`: Detailed information about each motif group
+- `motif_distribution.png`: Normalized motif frequency visualization
+- `motif_counts.png`: Raw motif counts visualization
+- `motif_heatmap.png`: Heatmap of motif frequencies across samples
+- `kmeans_clusters.png`: KMeans clustering results
+- `cluster_visualization.png`: 2D visualization of sample clusters
+- `motif_groups/`: Directory with visualizations of each motif group
 
-1. **Motif Definition**: Define basic motifs (chain, fork, collider) representing common graph patterns
-
-2. **Feature Construction**:
-   - For each user j's causal graph Gj, construct feature vector Vj
-   - Vj contains:
-     - dj: demographic label
-     - sj: stance on upzoning
-     - X(j)i: ratio of motif Mi in Gj
-
-3. **Clustering**: Apply K-means clustering (k=3) based on motif frequency vectors
+For augmented motifs:
+- `augmented/augmented_library.json`: Serialized library with augmented motifs
+- `augmented/augmentation_summary.json`: Summary of data augmentation results
+- `augmented/motif_groups/`: Directory with visualizations of augmented motifs
