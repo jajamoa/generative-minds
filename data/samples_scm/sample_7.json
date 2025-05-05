@@ -1,0 +1,619 @@
+{
+    "agent_id": "sample_7",
+    "demographics": {
+        "age": 36,
+        "income": "$55,000-$75,000",
+        "education": "master's degree in environmental science",
+        "occupation": "environmental non-profit coordinator",
+        "housing": "apartment renter in mixed-use building"
+    },
+    "nodes": {
+        "n1": {
+            "label": "urban_density_increase",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa2", "qa3"],
+            "incoming_edges": [],
+            "outgoing_edges": ["e1", "e2", "e3", "e4", "e5"]
+        },
+        "n2": {
+            "label": "carbon_emissions_per_capita",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.95,
+            "source_qa": ["qa1", "qa10"],
+            "incoming_edges": ["e1"],
+            "outgoing_edges": ["e6"]
+        },
+        "n3": {
+            "label": "green_space_preservation",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa2", "qa6"],
+            "incoming_edges": ["e2"],
+            "outgoing_edges": ["e7", "e8"]
+        },
+        "n4": {
+            "label": "public_transit_utilization",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa3"],
+            "incoming_edges": ["e3"],
+            "outgoing_edges": ["e9"]
+        },
+        "n5": {
+            "label": "building_energy_efficiency",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa4", "qa10"],
+            "incoming_edges": ["e4"],
+            "outgoing_edges": ["e10"]
+        },
+        "n6": {
+            "label": "stormwater_management_challenges",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.8,
+            "source_qa": ["qa5", "qa6"],
+            "incoming_edges": ["e5"],
+            "outgoing_edges": ["e11"]
+        },
+        "n7": {
+            "label": "climate_impact_concern",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.95,
+            "source_qa": ["qa1", "qa10"],
+            "incoming_edges": ["e6"],
+            "outgoing_edges": ["e12"]
+        },
+        "n8": {
+            "label": "urban_biodiversity",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa2", "qa6"],
+            "incoming_edges": ["e7"],
+            "outgoing_edges": ["e13"]
+        },
+        "n9": {
+            "label": "urban_heat_island_effect",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa2", "qa7"],
+            "incoming_edges": ["e8"],
+            "outgoing_edges": ["e14"]
+        },
+        "n10": {
+            "label": "car_dependency_reduction",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa3"],
+            "incoming_edges": ["e9"],
+            "outgoing_edges": ["e15"]
+        },
+        "n11": {
+            "label": "resource_consumption_efficiency",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa4", "qa8"],
+            "incoming_edges": ["e10"],
+            "outgoing_edges": ["e16"]
+        },
+        "n12": {
+            "label": "water_quality_concerns",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.8,
+            "source_qa": ["qa5", "qa6"],
+            "incoming_edges": ["e11"],
+            "outgoing_edges": ["e17"]
+        },
+        "n13": {
+            "label": "ecological_resilience",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa2", "qa6", "qa7"],
+            "incoming_edges": ["e13", "e14"],
+            "outgoing_edges": ["e18"]
+        },
+        "n14": {
+            "label": "transportation_sustainability",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa3", "qa9"],
+            "incoming_edges": ["e15"],
+            "outgoing_edges": ["e19"]
+        },
+        "n15": {
+            "label": "environmental_tradeoff_assessment",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa8", "qa9", "qa10"],
+            "incoming_edges": ["e12", "e16", "e17", "e18", "e19"],
+            "outgoing_edges": ["e20"]
+        },
+        "n16": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "behavioral_intention",
+            "confidence": 1.0,
+            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
+            "incoming_edges": ["e20"],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n2",
+            "function": {
+                "target": "n2",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa10"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa10", "confidence": 0.95}
+            ],
+            "modifier": -0.8
+        },
+        "e2": {
+            "from": "n1",
+            "to": "n3",
+            "function": {
+                "target": "n3",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.6],
+                    "bias": 0.5
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa6"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9}
+            ],
+            "modifier": -0.6
+        },
+        "e3": {
+            "from": "n1",
+            "to": "n4",
+            "function": {
+                "target": "n4",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.85],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa3"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa3", "confidence": 0.9}
+            ],
+            "modifier": 0.85
+        },
+        "e4": {
+            "from": "n1",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.7],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": 0.7
+        },
+        "e5": {
+            "from": "n1",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.65],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": 0.65
+        },
+        "e6": {
+            "from": "n2",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": ["n2"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.9],
+                    "bias": 0.8
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa10"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa10", "confidence": 0.95}
+            ],
+            "modifier": -0.9
+        },
+        "e7": {
+            "from": "n3",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": ["n3"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa6"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e8": {
+            "from": "n3",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": ["n3"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa7"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.85},
+                {"qa_id": "qa7", "confidence": 0.85}
+            ],
+            "modifier": -0.8
+        },
+        "e9": {
+            "from": "n4",
+            "to": "n10",
+            "function": {
+                "target": "n10",
+                "inputs": ["n4"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa3"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa3", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e10": {
+            "from": "n5",
+            "to": "n11",
+            "function": {
+                "target": "n11",
+                "inputs": ["n5"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.85],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa8"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa8", "confidence": 0.85}
+            ],
+            "modifier": 0.85
+        },
+        "e11": {
+            "from": "n6",
+            "to": "n12",
+            "function": {
+                "target": "n12",
+                "inputs": ["n6"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": 0.8
+        },
+        "e12": {
+            "from": "n7",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n7"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.95],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa10"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa10", "confidence": 0.95}
+            ],
+            "modifier": 0.95
+        },
+        "e13": {
+            "from": "n8",
+            "to": "n13",
+            "function": {
+                "target": "n13",
+                "inputs": ["n8"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa6", "qa7"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9},
+                {"qa_id": "qa7", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e14": {
+            "from": "n9",
+            "to": "n13",
+            "function": {
+                "target": "n13",
+                "inputs": ["n9"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa6", "qa7"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.85},
+                {"qa_id": "qa6", "confidence": 0.85},
+                {"qa_id": "qa7", "confidence": 0.85}
+            ],
+            "modifier": -0.8
+        },
+        "e15": {
+            "from": "n10",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n10"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa3", "qa9"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa3", "confidence": 0.9},
+                {"qa_id": "qa9", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e16": {
+            "from": "n11",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n11"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.85],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa8"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa8", "confidence": 0.85}
+            ],
+            "modifier": 0.85
+        },
+        "e17": {
+            "from": "n12",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n12"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.7],
+                    "bias": 0.6
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": -0.7
+        },
+        "e18": {
+            "from": "n13",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n13"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa6", "qa7"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9},
+                {"qa_id": "qa7", "confidence": 0.9}
+            ],
+            "modifier": 0.8
+        },
+        "e19": {
+            "from": "n14",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n14"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa3", "qa9"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa3", "confidence": 0.9},
+                {"qa_id": "qa9", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e20": {
+            "from": "n15",
+            "to": "n16",
+            "function": {
+                "target": "n16",
+                "inputs": ["n15"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.7,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa8", "qa9", "qa10"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa8", "confidence": 0.9},
+                {"qa_id": "qa9", "confidence": 0.9},
+                {"qa_id": "qa10", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        }
+    }} 

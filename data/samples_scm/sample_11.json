@@ -1,0 +1,372 @@
+{
+    "agent_id": "sample_11",
+    "demographics": {
+        "age": 72,
+        "income": "$30,000-$45,000",
+        "education": "high school graduate",
+        "occupation": "retired nurse",
+        "housing": "homeowner in older neighborhood"
+    },
+    "nodes": {
+        "n1": {
+            "label": "property_values_concern",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_01",
+                    "qa_02"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e1",
+                "e2"
+            ]
+        },
+        "n2": {
+            "label": "neighborhood_character_importance",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_02",
+                    "qa_03"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e3",
+                "e4"
+            ]
+        },
+        "n3": {
+            "label": "fear_of_change",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_04"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e5"
+            ]
+        },
+        "n4": {
+            "label": "community_benefit_perception",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_05"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e6"
+            ]
+        },
+        "n5": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [
+                true,
+                false
+            ],
+            "semantic_role": "behavioral_intention",
+            "appearance": {
+                "qa_ids": [
+                    "qa_06"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e1",
+                "e2",
+                "e3",
+                "e4",
+                "e5",
+                "e6"
+            ],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n1"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        -0.8
+                    ],
+                    "bias": 0.5
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_01"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_01"
+            ]
+        },
+        "e2": {
+            "from": "n2",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n2"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.6
+                    ],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_02"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_02"
+            ]
+        },
+        "e3": {
+            "from": "n2",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n2"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        -0.4
+                    ],
+                    "bias": 0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_03"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_03"
+            ]
+        },
+        "e4": {
+            "from": "n3",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n3"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.7
+                    ],
+                    "bias": -0.4
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_04"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_04"
+            ]
+        },
+        "e5": {
+            "from": "n3",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n3"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.5
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_04"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_04"
+            ]
+        },
+        "e6": {
+            "from": "n4",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n4"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        -0.8
+                    ],
+                    "bias": 0.5
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_05"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_05"
+            ]
+        }
+    },
+    "qas": [
+        {
+            "qa_id": "qa_01",
+            "question": "How do you feel about the potential impact of upzoning on your property values?",
+            "answer": "I'm worried that upzoning might lower my property value. I've heard stories from friends where new developments made their neighborhoods less desirable.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n5",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If there were more evidence that upzoning increases property values, then I might be more supportive."
+            }
+        },
+        {
+            "qa_id": "qa_02",
+            "question": "How important is maintaining the character of your neighborhood to you?",
+            "answer": "It's very important. I love the way our neighborhood looks and feels. I don't want it to lose its charm and become just another crowded, noisy area.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n2",
+                    "to": "n5",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If the changes could be done in a way that preserves the character, I might be more open to it."
+            }
+        },
+        {
+            "qa_id": "qa_03",
+            "question": "Do you think upzoning will change the character of your neighborhood?",
+            "answer": "Yes, I think it will. More people and buildings will make it feel different, and I'm not sure if I like that change.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n2",
+                    "to": "n5",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.6,
+                    "confidence_rating": 0.7
+                },
+                "counterfactual": "If the changes were minimal and well-planned, I might be less concerned."
+            }
+        },
+        {
+            "qa_id": "qa_04",
+            "question": "Are you afraid that upzoning will bring too much change to your neighborhood?",
+            "answer": "Yes, I am. Change can be scary, and I worry that the neighborhood won't be the same. I like things the way they are.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n3",
+                    "to": "n5",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If the changes were gradual and we had more control over them, I might feel better."
+            }
+        },
+        {
+            "qa_id": "qa_05",
+            "question": "Do you see any benefits for the community from upzoning?",
+            "answer": "I suppose it could help with housing shortages, but I'm not sure if the benefits outweigh the risks. I need more information to be convinced.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n4",
+                    "to": "n5",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.5,
+                    "confidence_rating": 0.7
+                },
+                "counterfactual": "If I saw clear, tangible benefits for the community, I might be more supportive."
+            }
+        },
+        {
+            "qa_id": "qa_06",
+            "question": "Overall, do you support or oppose upzoning in your neighborhood?",
+            "answer": "I oppose it. The risks seem too high, and I'm not convinced the benefits are worth it. I'd rather keep things the way they are.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n5",
+                    "to": "n5",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If I saw more evidence that upzoning would benefit both me and the community, I might reconsider."
+            }
+        }
+    ]
+}

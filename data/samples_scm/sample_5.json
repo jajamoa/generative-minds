@@ -1,0 +1,765 @@
+{
+    "agent_id": "sample_5",
+    "demographics": {
+        "age": 34,
+        "income": "$65,000-$85,000",
+        "education": "bachelor's degree",
+        "occupation": "marketing manager",
+        "household": "married with 2 children (ages 3 and 6)"
+    },
+    "nodes": {
+        "n1": {
+            "label": "residential_density_increase",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa2", "qa3"],
+            "incoming_edges": [],
+            "outgoing_edges": ["e1", "e2", "e3", "e4", "e5"]
+        },
+        "n2": {
+            "label": "school_quality",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.95,
+            "source_qa": ["qa1", "qa7"],
+            "incoming_edges": ["e1"],
+            "outgoing_edges": ["e6", "e7"]
+        },
+        "n3": {
+            "label": "neighborhood_safety",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa2", "qa8"],
+            "incoming_edges": ["e2"],
+            "outgoing_edges": ["e8"]
+        },
+        "n4": {
+            "label": "family_amenities",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa3", "qa9"],
+            "incoming_edges": ["e3"],
+            "outgoing_edges": ["e9"]
+        },
+        "n5": {
+            "label": "housing_affordability",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa4", "qa10"],
+            "incoming_edges": ["e4"],
+            "outgoing_edges": ["e10"]
+        },
+        "n6": {
+            "label": "traffic_congestion",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.8,
+            "source_qa": ["qa5", "qa6"],
+            "incoming_edges": ["e5"],
+            "outgoing_edges": ["e11"]
+        },
+        "n7": {
+            "label": "classroom_crowding",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa7"],
+            "incoming_edges": ["e6"],
+            "outgoing_edges": ["e12"]
+        },
+        "n8": {
+            "label": "educational_resources",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa1", "qa7"],
+            "incoming_edges": ["e7"],
+            "outgoing_edges": ["e13"]
+        },
+        "n9": {
+            "label": "child_safety_concerns",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.95,
+            "source_qa": ["qa2", "qa8"],
+            "incoming_edges": ["e8"],
+            "outgoing_edges": ["e14"]
+        },
+        "n10": {
+            "label": "family_recreation_options",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.8,
+            "source_qa": ["qa3", "qa9"],
+            "incoming_edges": ["e9"],
+            "outgoing_edges": ["e15"]
+        },
+        "n11": {
+            "label": "family_financial_stress",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.85,
+            "source_qa": ["qa4", "qa10"],
+            "incoming_edges": ["e10"],
+            "outgoing_edges": ["e16"]
+        },
+        "n12": {
+            "label": "commute_time_with_children",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.8,
+            "source_qa": ["qa5", "qa6"],
+            "incoming_edges": ["e11"],
+            "outgoing_edges": ["e17"]
+        },
+        "n13": {
+            "label": "child_educational_outcomes",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa7"],
+            "incoming_edges": ["e12", "e13"],
+            "outgoing_edges": ["e18"]
+        },
+        "n14": {
+            "label": "quality_of_family_life",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa2", "qa3", "qa5", "qa6", "qa8", "qa9"],
+            "incoming_edges": ["e14", "e15", "e17"],
+            "outgoing_edges": ["e19"]
+        },
+        "n15": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "behavioral_intention",
+            "confidence": 1.0,
+            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
+            "incoming_edges": ["e16", "e18", "e19"],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n2",
+            "function": {
+                "target": "n2",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.7],
+                    "bias": 0.6
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa7", "confidence": 0.95}
+            ],
+            "modifier": -0.7
+        },
+        "e2": {
+            "from": "n1",
+            "to": "n3",
+            "function": {
+                "target": "n3",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.6],
+                    "bias": 0.5
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa8"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa8", "confidence": 0.9}
+            ],
+            "modifier": -0.6
+        },
+        "e3": {
+            "from": "n1",
+            "to": "n4",
+            "function": {
+                "target": "n4",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.7],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3", "qa9"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa3", "confidence": 0.85},
+                {"qa_id": "qa9", "confidence": 0.85}
+            ],
+            "modifier": 0.7
+        },
+        "e4": {
+            "from": "n1",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.65],
+                    "bias": 0.5
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": -0.65
+        },
+        "e5": {
+            "from": "n1",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": 0.8
+        },
+        "e6": {
+            "from": "n2",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": ["n2"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa7", "confidence": 0.9}
+            ],
+            "modifier": -0.8
+        },
+        "e7": {
+            "from": "n2",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": ["n2"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.85],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.85},
+                {"qa_id": "qa7", "confidence": 0.85}
+            ],
+            "modifier": 0.85
+        },
+        "e8": {
+            "from": "n3",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": ["n3"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.9],
+                    "bias": 0.8
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa8"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.95},
+                {"qa_id": "qa8", "confidence": 0.95}
+            ],
+            "modifier": -0.9
+        },
+        "e9": {
+            "from": "n4",
+            "to": "n10",
+            "function": {
+                "target": "n10",
+                "inputs": ["n4"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3", "qa9"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa3", "confidence": 0.8},
+                {"qa_id": "qa9", "confidence": 0.8}
+            ],
+            "modifier": 0.9
+        },
+        "e10": {
+            "from": "n5",
+            "to": "n11",
+            "function": {
+                "target": "n11",
+                "inputs": ["n5"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.85],
+                    "bias": 0.8
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": -0.85
+        },
+        "e11": {
+            "from": "n6",
+            "to": "n12",
+            "function": {
+                "target": "n12",
+                "inputs": ["n6"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": 0.8
+        },
+        "e12": {
+            "from": "n7",
+            "to": "n13",
+            "function": {
+                "target": "n13",
+                "inputs": ["n7"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa7", "confidence": 0.9}
+            ],
+            "modifier": -0.8
+        },
+        "e13": {
+            "from": "n8",
+            "to": "n13",
+            "function": {
+                "target": "n13",
+                "inputs": ["n8"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.85],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.85},
+                {"qa_id": "qa7", "confidence": 0.85}
+            ],
+            "modifier": 0.85
+        },
+        "e14": {
+            "from": "n9",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n9"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.9],
+                    "bias": 0.8
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa8"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.95},
+                {"qa_id": "qa8", "confidence": 0.95}
+            ],
+            "modifier": -0.9
+        },
+        "e15": {
+            "from": "n10",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n10"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3", "qa9"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa3", "confidence": 0.8},
+                {"qa_id": "qa9", "confidence": 0.8}
+            ],
+            "modifier": 0.8
+        },
+        "e16": {
+            "from": "n11",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n11"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa4", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa4", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": -0.85
+        },
+        "e17": {
+            "from": "n12",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n12"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.7],
+                    "bias": 0.6
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.8},
+                {"qa_id": "qa6", "confidence": 0.8}
+            ],
+            "modifier": -0.7
+        },
+        "e18": {
+            "from": "n13",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n13"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.7,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa7"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa7", "confidence": 0.9}
+            ],
+            "modifier": -0.9
+        },
+        "e19": {
+            "from": "n14",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n14"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa3", "qa5", "qa6", "qa8", "qa9"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.9},
+                {"qa_id": "qa3", "confidence": 0.9},
+                {"qa_id": "qa5", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9},
+                {"qa_id": "qa8", "confidence": 0.9},
+                {"qa_id": "qa9", "confidence": 0.9}
+            ],
+            "modifier": -0.8
+        }
+    },
+    "qas": [
+        {
+            "qa_id": "qa1",
+            "question": "How do you think increasing residential density might affect your child's education?",
+            "answer": "I'm worried about the impact on local schools. With more families moving in, class sizes could increase, which might mean less individual attention for my children. Quality teachers can only spread themselves so thin. However, if the development brings more resources to the school - like better facilities or special programs - that could be a positive. It's a balance.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n2",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.95
+                }
+            }
+        },
+        {
+            "qa_id": "qa2",
+            "question": "What safety concerns do you have about increased residential density in your neighborhood?",
+            "answer": "With young kids, safety is always top of mind. More people means more traffic on residential streets where my children play. I worry about strangers and monitoring who's around my children when we're at parks or playgrounds. That said, more people can also mean more eyes on the street and potentially less crime, but the traffic concern is very real for me.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n3",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.6,
+                    "confidence_rating": 0.9
+                }
+            }
+        },
+        {
+            "qa_id": "qa3",
+            "question": "What family-friendly amenities would you like to see with new development?",
+            "answer": "If we're going to have more density, I'd like to see investments in playgrounds, splash pads, and family-friendly green spaces. Libraries with good children's programs, community centers with affordable activities, and safe bike paths would make a huge difference. Honestly, family-friendly restaurants with play areas would be great too - it's hard to find places where kids can be kids without disturbing others.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n4",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa4",
+            "question": "How does housing affordability influence your views on urban density changes?",
+            "answer": "We're trying to save for our kids' college funds while paying for childcare, which is incredibly expensive. If increased density pushes home prices or rents higher, that would be devastating for our family budget. We need a house with enough bedrooms and a yard, so downsizing isn't really an option with growing children. Affordable family-sized housing is essential for us.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n5",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.65,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa5",
+            "question": "How would increased traffic from higher density impact your daily family routines?",
+            "answer": "Our mornings are already a carefully orchestrated chaos - getting kids dressed, fed, and out the door for school and daycare before heading to work. Adding even 10-15 minutes of traffic time would be really difficult. And with after-school activities, doctor appointments, and errands, any additional congestion would mean less family time together, which is already precious and limited.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n6",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.8
+                }
+            }
+        },
+        {
+            "qa_id": "qa6",
+            "question": "How important is your commute time when considering where to live with your family?",
+            "answer": "Extremely important. Every minute spent commuting is a minute away from my children, and they're only young once. I've actually taken a slightly lower-paying job to be closer to home. When you have to handle childcare drop-offs and pickups with strict timing, or need to get home quickly for a sick child, proximity to work becomes even more critical.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n6",
+                    "to": "n12",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.8
+                }
+            }
+        },
+        {
+            "qa_id": "qa7",
+            "question": "What educational factors most influence your housing decisions?",
+            "answer": "School quality is probably the biggest factor in where we chose to live. We researched test scores, teacher-to-student ratios, enrichment programs, and special needs resources. We also considered the school's approach to learning - we wanted a place that nurtures curiosity and creativity, not just test preparation. I'd consider moving or even paying more to ensure my kids get the best educational foundation possible.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n2",
+                    "to": "n13",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.85,
+                    "confidence_rating": 0.9
+                }
+            }
+        },
+        {
+            "qa_id": "qa8",
+            "question": "How does neighborhood safety affect your children's daily activities?",
+            "answer": "Safety determines everything about how much freedom my kids have. In a safe neighborhood, I'd let my 6-year-old play in the front yard while I watch from the window, or eventually walk to a friend's house nearby. In an area I'm unsure about, they'd be restricted to the backyard or supervised activities. I want them to develop independence, but their safety comes first, so the neighborhood environment directly shapes their childhood experiences.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n3",
+                    "to": "n9",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.95
+                }
+            }
+        },
+        {
+            "qa_id": "qa9",
+            "question": "What recreational options for families matter most to you in your neighborhood?",
+            "answer": "We need green spaces where kids can run and play freely. Parks with playground equipment appropriate for different ages are essential since I have both a toddler and a school-age child. Walking trails, community pools, and recreation centers with affordable family classes are huge pluses. Without these amenities nearby, keeping kids active and entertained becomes much harder, especially on weekends and school breaks.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n4",
+                    "to": "n10",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.8
+                }
+            }
+        },
+        {
+            "qa_id": "qa10",
+            "question": "Under what conditions would you support increased residential density in your neighborhood?",
+            "answer": "I could support it if it came with guarantees about school funding to maintain quality as student populations grow, investments in family-friendly infrastructure like parks and libraries, and included affordable family-sized housing options. Traffic calming measures would be essential, and I'd want to see a thoughtful plan for phased growth rather than sudden massive changes. Basically, development that considers families' needs, not just maximizing units.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n5",
+                    "to": "n11",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.85,
+                    "confidence_rating": 0.85
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "perspective": "young_family",
+        "num_nodes": 15,
+        "num_edges": 19,
+        "num_qa_pairs": 10,
+        "focus_areas": [
+            "education_quality",
+            "child_safety",
+            "family_amenities",
+            "housing_affordability"
+        ],
+        "bias_patterns": [
+            "child_centered_decision_making",
+            "long_term_trajectory_focus",
+            "safety_prioritization"
+        ]
+    }
+} 

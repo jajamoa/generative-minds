@@ -1,0 +1,597 @@
+{
+    "agent_id": "sample_12",
+    "demographics": {
+        "age": 34,
+        "income": "$90,000-$120,000",
+        "education": "master's degree",
+        "occupation": "marketing manager",
+        "housing": "townhouse owner with two children"
+    },
+    "nodes": {
+        "n1": {
+            "label": "property_values",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_01"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e1",
+                "e2"
+            ]
+        },
+        "n2": {
+            "label": "community_character",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_02"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e3",
+                "e4"
+            ]
+        },
+        "n3": {
+            "label": "environmental_concerns",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_03"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e5"
+            ]
+        },
+        "n4": {
+            "label": "economic_opportunities",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_04"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e6"
+            ]
+        },
+        "n5": {
+            "label": "status_quo_preference",
+            "type": "binary",
+            "values": [
+                true,
+                false
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_05"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e7"
+            ],
+            "outgoing_edges": [
+                "e8"
+            ]
+        },
+        "n6": {
+            "label": "loss_aversion",
+            "type": "binary",
+            "values": [
+                true,
+                false
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_06"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e9"
+            ],
+            "outgoing_edges": [
+                "e10"
+            ]
+        },
+        "n7": {
+            "label": "social_influence",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_07"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e11"
+            ]
+        },
+        "n8": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [
+                true,
+                false
+            ],
+            "semantic_role": "behavioral_intention",
+            "appearance": {
+                "qa_ids": [
+                    "qa_08"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e8",
+                "e10",
+                "e11",
+                "e12"
+            ],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n1"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_05"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_05"
+            ]
+        },
+        "e2": {
+            "from": "n1",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": [
+                    "n1"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_06"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_06"
+            ]
+        },
+        "e3": {
+            "from": "n2",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": [
+                    "n2"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_05"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_05"
+            ]
+        },
+        "e4": {
+            "from": "n2",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": [
+                    "n2"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_06"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_06"
+            ]
+        },
+        "e5": {
+            "from": "n3",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n3"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e6": {
+            "from": "n4",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n4"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e7": {
+            "from": "n5",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n5"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e8": {
+            "from": "n5",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n5"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e9": {
+            "from": "n6",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n6"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e10": {
+            "from": "n6",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n6"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e11": {
+            "from": "n7",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n7"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        },
+        "e12": {
+            "from": "n8",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n8"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        }
+    },
+    "qas": [
+        {
+            "qa_id": "qa_01",
+            "question": "How do you think upzoning will affect property values in your neighborhood?",
+            "answer": "I'm concerned that upzoning might lead to a decrease in property values because of the potential for overdevelopment and increased density, which could make the area less desirable.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "property_values",
+                    "to": "status_quo_preference",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If property values were guaranteed to increase, then I would be more supportive of upzoning."
+            }
+        },
+        {
+            "qa_id": "qa_02",
+            "question": "What are your thoughts on how upzoning will change the character of your community?",
+            "answer": "I worry that upzoning will change the character of our community, making it feel less like a family-friendly neighborhood and more like a crowded urban area. This could impact the quality of life for my children.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "community_character",
+                    "to": "status_quo_preference",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If the community character could be preserved, I would be more open to upzoning."
+            }
+        },
+        {
+            "qa_id": "qa_03",
+            "question": "How do you think upzoning will impact the environment and sustainability in your area?",
+            "answer": "Upzoning could have positive environmental impacts by promoting more sustainable living and reducing the need for long commutes. However, I am also concerned about the strain on local resources and infrastructure.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "environmental_concerns",
+                    "to": "upzoning_stance",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If the environmental benefits were more clearly defined and guaranteed, I would be more supportive of upzoning."
+            }
+        },
+        {
+            "qa_id": "qa_04",
+            "question": "Do you see any economic opportunities or benefits from upzoning?",
+            "answer": "There could be economic benefits, such as increased investment and job opportunities, but I am skeptical about whether these benefits will outweigh the potential downsides, especially in the short term.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "economic_opportunities",
+                    "to": "upzoning_stance",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.6,
+                    "confidence_rating": 0.7
+                },
+                "counterfactual": "If the economic benefits were more immediate and tangible, I would be more supportive of upzoning."
+            }
+        },
+        {
+            "qa_id": "qa_05",
+            "question": "Do you prefer the status quo in your neighborhood, or are you open to changes brought by upzoning?",
+            "answer": "I generally prefer the status quo because it has worked well for me and my family. Change is always risky, and I don't want to jeopardize what we have now.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "status_quo_preference",
+                    "to": "upzoning_stance",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If the risks of upzoning were minimized, I might be more open to it."
+            }
+        },
+        {
+            "qa_id": "qa_06",
+            "question": "How do you feel about the potential losses you might face if upzoning goes through?",
+            "answer": "I am very concerned about the potential losses, both in terms of property value and the quality of life. The fear of losing what we have is a significant factor in my opposition to upzoning.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "loss_aversion",
+                    "to": "upzoning_stance",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If there were clear assurances that my property value and quality of life would not be negatively affected, I would be more open to upzoning."
+            }
+        },
+        {
+            "qa_id": "qa_07",
+            "question": "How much influence do your neighbors and community groups have on your opinion about upzoning?",
+            "answer": "My neighbors and community groups have a significant influence on my opinion. If they are against upzoning, I am more likely to oppose it as well, and vice versa. I trust their insights and experiences.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "social_influence",
+                    "to": "upzoning_stance",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If my neighbors and community groups were more supportive of upzoning, I would be more likely to support it as well."
+            }
+        },
+        {
+            "qa_id": "qa_08",
+            "question": "Overall, do you support or oppose upzoning in your neighborhood?",
+            "answer": "Overall, I oppose upzoning. The potential risks to property values, community character, and quality of life outweigh the possible benefits. I prefer the status quo and am wary of the changes upzoning might bring.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "upzoning_stance",
+                    "to": "upzoning_stance",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If the risks were significantly reduced and the benefits were more clearly defined, I might reconsider my stance on upzoning."
+            }
+        }
+    ]
+}

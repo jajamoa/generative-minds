@@ -173,13 +173,29 @@ Each QA record contains a question-answer pair and the extracted causal belief s
 **belief_structure**:
 ```json
 {
+  "from": "n1",
+  "to": "n2",
+  "direction": "negative"
+}
+```
+
+**belief_strength**:
+
+```json
+{
+  "estimated_probability": 0.75,
+  "confidence_rating": 0.8
+}
+```
+
+**belief_structure**:
+```json
+{
   "from": "node_id",                    // Source node ID
   "to": "node_id",                      // Target node ID
   "direction": Enum["positive", "negative"] // Causal effect direction
 }
 ```
-- "positive": Increase in source leads to increase in target
-- "negative": Increase in source leads to decrease in target
 
 **belief_strength**:
 
