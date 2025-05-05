@@ -28,31 +28,36 @@ Each node represents a belief variable involved in the person's reasoning proces
 | Field | Type | Description |
 |------|------|------|
 | id | string | Unique identifier for the variable |
-| type | string | One of: "binary", "categorical", "continuous" |
+| type | string | One of: "binary", "continuous" |
 | range | array | Required if type is "continuous" (e.g., [0, 1]) |
-| values | array | Required if type is "categorical" (e.g., ["happy", "neutral", "sad"]) |
+| semantic_role | string | Optional. One of: "external_state", "internal_affect", "behavioral_intention" |
+
+**Note on multi-category variables:**
+For variables that would naturally have multiple categories (like housing types, transportation modes, etc.), represent them as multiple binary variables. For example, instead of a single `HousingType` categorical variable, use multiple binary variables like `LivesInApartment`, `LivesInTownhouse`, etc.
 
 Example:
 ```json
 {
   "id": "Sunlight",
   "type": "continuous",
-  "range": [0.0, 1.0]
+  "range": [0.0, 1.0],
+  "semantic_role": "external_state"
 }
 ```
 
 ```json
 {
-  "id": "HousingType",
-  "type": "categorical",
-  "values": ["apartment", "townhouse", "single-family"]
+  "id": "LivesInApartment",
+  "type": "binary",
+  "semantic_role": "external_state"
 }
 ```
 
 ```json
 {
   "id": "SupportsPolicy",
-  "type": "binary"
+  "type": "binary",
+  "semantic_role": "behavioral_intention"
 }
 ```
 
@@ -211,10 +216,12 @@ Only "sigmoid" and "threshold" are retained for structural clarity, interpretabi
 {
   "agent_id": "user_001",
   "nodes": [
-    { "id": "Sunlight", "type": "continuous", "range": [0, 1] },
-    { "id": "Mood", "type": "continuous", "range": [0, 1] },
-    { "id": "NoiseLevel", "type": "continuous", "range": [0, 1] },
-    { "id": "MoveIntent", "type": "binary" }
+    { "id": "Sunlight", "type": "continuous", "range": [0, 1], "semantic_role": "external_state" },
+    { "id": "Mood", "type": "continuous", "range": [0, 1], "semantic_role": "internal_affect" },
+    { "id": "NoiseLevel", "type": "continuous", "range": [0, 1], "semantic_role": "external_state" },
+    { "id": "MoveIntent", "type": "binary", "semantic_role": "behavioral_intention" },
+    { "id": "LivesInApartment", "type": "binary", "semantic_role": "external_state" },
+    { "id": "LivesInTownhouse", "type": "binary", "semantic_role": "external_state" }
   ],
   "functions": [
     {
