@@ -1,0 +1,1014 @@
+{
+  "agent_id": "sample_23",
+  "demographics": {
+    "age": 31,
+    "income": "$60,000 - $100,000",
+    "education": "master's degree or higher",
+    "occupation": "technician",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "service_location",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "transportation_accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "community_support",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": []
+    },
+    "n5": {
+      "label": "vulnerable_population_needs",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e6",
+        "e7",
+        "e8",
+        "e9",
+        "e10"
+      ]
+    },
+    "n6": {
+      "label": "social_services",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n7": {
+      "label": "healthcare_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n8": {
+      "label": "education_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n9": {
+      "label": "employment_opportunities",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n10": {
+      "label": "affordable_housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n11": {
+      "label": "public_transport",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n12": {
+      "label": "community_cohesion",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n13": {
+      "label": "social_networks",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n5",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n5",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n6",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n7",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n8",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n9",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect the location of services in a community?",
+      "answer": "Higher urban density generally leads to more centralized and accessible service locations, as it becomes more cost-effective to provide services in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then service locations would be more spread out and less centralized."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density impact transportation accessibility?",
+      "answer": "Higher urban density typically improves transportation accessibility because it encourages the development of more efficient and frequent public transport systems.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then transportation accessibility would be reduced due to fewer and less frequent public transport options."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the location of services influence the needs of vulnerable populations?",
+      "answer": "Centralized and accessible service locations can better meet the needs of vulnerable populations by providing easier access to essential services like healthcare and social support.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service locations were more spread out, then vulnerable populations would have more difficulty accessing essential services."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does transportation accessibility affect the needs of vulnerable populations?",
+      "answer": "Improved transportation accessibility allows vulnerable populations to more easily reach essential services, thereby better meeting their needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation accessibility were poor, then vulnerable populations would struggle to access essential services."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do the needs of vulnerable populations influence the provision of social services?",
+      "answer": "The needs of vulnerable populations drive the provision of social services, as these services are designed to support and assist those who are most in need.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not significant, then the provision of social services would be less necessary."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do the needs of vulnerable populations influence healthcare access?",
+      "answer": "The needs of vulnerable populations highlight the importance of ensuring adequate healthcare access, as these groups often require more medical support and resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not significant, then the focus on healthcare access would be less critical."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do the needs of vulnerable populations influence education access?",
+      "answer": "The needs of vulnerable populations emphasize the importance of providing equitable education access, as these groups often face barriers to educational opportunities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not significant, then the focus on education access would be less critical."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do the needs of vulnerable populations influence employment opportunities?",
+      "answer": "The needs of vulnerable populations highlight the importance of creating more employment opportunities, as these groups often face challenges in finding stable and well-paying jobs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not significant, then the focus on employment opportunities would be less critical."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do the needs of vulnerable populations influence affordable housing?",
+      "answer": "The needs of vulnerable populations underscore the importance of providing affordable housing, as these groups often struggle with housing costs and instability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not significant, then the focus on affordable housing would be less critical."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How do the needs of vulnerable populations influence community cohesion?",
+      "answer": "Addressing the needs of vulnerable populations can enhance community cohesion by fostering a sense of inclusivity and support among all community members.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the needs of vulnerable populations were not addressed, then community cohesion might suffer due to a lack of inclusivity and support."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does the provision of social services influence community cohesion?",
+      "answer": "Effective social services can strengthen community cohesion by addressing the needs of vulnerable populations and promoting a sense of collective well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social services were inadequate, then community cohesion might weaken due to unmet needs and increased social tensions."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does healthcare access influence community cohesion?",
+      "answer": "Ensuring good healthcare access can enhance community cohesion by improving the overall health and well-being of the community, which fosters a sense of unity and support.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If healthcare access were poor, then community cohesion might weaken due to increased health issues and a lack of support."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does education access influence community cohesion?",
+      "answer": "Providing equitable education access can enhance community cohesion by ensuring that all community members, including vulnerable populations, have the opportunity to succeed and contribute.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If education access were limited, then community cohesion might weaken due to disparities in educational outcomes and opportunities."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How do employment opportunities influence community cohesion?",
+      "answer": "Creating more employment opportunities can enhance community cohesion by reducing economic disparities and fostering a sense of shared prosperity and stability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If employment opportunities were scarce, then community cohesion might weaken due to economic stress and social tensions."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does affordable housing influence community cohesion?",
+      "answer": "Providing affordable housing can enhance community cohesion by ensuring that all community members, including vulnerable populations, have stable and secure living conditions, which fosters a sense of belonging and support.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If affordable housing were limited, then community cohesion might weaken due to housing insecurity and social tensions."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does community cohesion influence the strength of social networks?",
+      "answer": "Strong community cohesion can lead to stronger and more supportive social networks, as community members feel more connected and willing to help one another.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community cohesion were weak, then social networks would be less strong and supportive."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do social networks influence an individual's stance on upzoning?",
+      "answer": "Strong and supportive social networks can influence an individual's stance on upzoning by providing a platform for discussing and advocating for policies that benefit the community, such as increasing housing density to address affordability and accessibility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social networks were weak, then an individual's stance on upzoning might be less influenced by community discussions and advocacy."
+      }
+    }
+  ]
+}

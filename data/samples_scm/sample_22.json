@@ -1,0 +1,1083 @@
+{
+  "agent_id": "sample_22",
+  "demographics": {
+    "age": 41,
+    "income": "$30,000 - $60,000",
+    "education": "high school",
+    "occupation": "educator",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e14",
+        "e15"
+      ]
+    },
+    "n2": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
+    },
+    "n3": {
+      "label": "sunlight",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "community_character",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "air_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "public_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "neighborhood_identity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "health",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "social_interaction",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n10": {
+      "label": "cultural_heritage",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n11": {
+      "label": "quality_of_life",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10",
+        "e11",
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n12": {
+      "label": "sustainable_design",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13",
+        "e18"
+      ]
+    },
+    "n13": {
+      "label": "user_experience",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "urban_form",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n15": {
+      "label": "aesthetics",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12",
+        "e16",
+        "e18"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e4": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e6": {
+      "from": "n6",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e10": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e11": {
+      "from": "n11",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e12": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e13": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e14": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e15": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e17": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e18": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does building height affect traffic in the area?",
+      "answer": "Building height increases traffic because taller buildings attract more people and activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building height were lower, there would be less traffic."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does building height have any impact on sunlight and community character?",
+      "answer": "Building height reduces sunlight and negatively impacts the community character by overshadowing and changing the neighborhood's feel.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building height were lower, there would be more sunlight and a better community character."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does traffic influence air quality in the area?",
+      "answer": "Increased traffic leads to poorer air quality due to more vehicle emissions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, the air quality would improve."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does sunlight contribute to the availability of public space?",
+      "answer": "Sunlight enhances the usability and attractiveness of public spaces, making them more inviting for people to use.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less sunlight, public spaces would be less inviting."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does community character influence neighborhood identity?",
+      "answer": "A strong community character helps to define and strengthen the neighborhood's unique identity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactical": "If the community character were weaker, the neighborhood identity would be less defined."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does air quality affect health in the area?",
+      "answer": "Poor air quality can lead to various health issues, such as respiratory problems and other illnesses.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If air quality were better, the health of residents would improve."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does the availability of public space influence social interaction?",
+      "answer": "More public space provides more opportunities for people to interact and socialize, leading to stronger community bonds.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less public space, social interactions would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does neighborhood identity influence cultural heritage?",
+      "answer": "A strong neighborhood identity helps to preserve and promote the cultural heritage of the area, making it more significant and valued.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the neighborhood identity were weaker, the cultural heritage would be less preserved."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does health affect the overall quality of life in the area?",
+      "answer": "Good health is essential for a high quality of life, as it allows people to enjoy their daily activities and be more productive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If health were poor, the quality of life would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does social interaction contribute to the quality of life in the area?",
+      "answer": "Social interaction is a key component of a good quality of life, as it fosters a sense of belonging and community support.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less social interaction, the quality of life would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does cultural heritage influence the quality of life in the area?",
+      "answer": "Cultural heritage enriches the quality of life by providing a sense of history, identity, and pride in the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural heritage were less prominent, the quality of life would be diminished."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does the overall quality of life influence your stance on upzoning?",
+      "answer": "A higher quality of life makes me more supportive of upzoning, as it indicates that the changes are beneficial for the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of life were lower, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does sustainable design influence user experience in the area?",
+      "answer": "Sustainable design improves the user experience by creating more comfortable, efficient, and environmentally friendly spaces.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sustainable design were not implemented, the user experience would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does user experience influence urban form in the area?",
+      "answer": "A positive user experience influences the development of a more functional and aesthetically pleasing urban form.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the user experience were negative, the urban form would be less appealing."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does urban form influence aesthetics in the area?",
+      "answer": "A well-designed urban form enhances the aesthetics of the area, making it more visually appealing and enjoyable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban form were poorly designed, the aesthetics would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How do aesthetics influence your stance on upzoning?",
+      "answer": "Aesthetically pleasing areas make me more supportive of upzoning, as it shows that the changes are visually and functionally beneficial.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the aesthetics were poor, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does sustainable design influence your stance on upzoning?",
+      "answer": "Sustainable design makes me more supportive of upzoning, as it indicates that the changes are environmentally responsible and beneficial for the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sustainable design were not a priority, I would be less supportive of upzoning."
+      }
+    }
+  ]
+}

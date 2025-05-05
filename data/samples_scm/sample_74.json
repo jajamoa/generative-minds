@@ -1,0 +1,1174 @@
+{
+  "agent_id": "sample_74",
+  "demographics": {
+    "age": 53,
+    "income": "< $30,000",
+    "education": "master's degree or higher",
+    "occupation": "technician",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e16"
+      ]
+    },
+    "n2": {
+      "label": "proximity_to_treatment",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "safe_housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n4": {
+      "label": "employment_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n5": {
+      "label": "prosocial_activities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n6": {
+      "label": "trigger_environment",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n7": {
+      "label": "recovery_support_network",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12",
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e8",
+        "e14",
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n8": {
+      "label": "community_integration",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14",
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e7",
+        "e18"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n9": {
+      "label": "accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_16",
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e10",
+        "e11",
+        "e12",
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "noise",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n11": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n12": {
+      "label": "green_spaces",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n13": {
+      "label": "public_transport",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_21"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n14": {
+      "label": "local_services",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17",
+        "e19"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n7",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n8",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n9",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n9",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n9",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n11",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n12",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n13",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n14",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n1",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect proximity to treatment?",
+      "answer": "Higher urban density generally increases the proximity to treatment facilities, making it easier for people to access them.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then proximity to treatment would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density influence the availability of safe housing?",
+      "answer": "Higher urban density often leads to more options for safe housing, as there are more buildings and spaces available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then the availability of safe housing would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density impact employment opportunities?",
+      "answer": "Higher urban density tends to increase employment opportunities, as there are more businesses and job openings in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then employment opportunities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does proximity to treatment affect the recovery support network?",
+      "answer": "Proximity to treatment facilities positively influences the recovery support network, as it makes it easier for individuals to access and engage with support services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If proximity to treatment were lower, then the recovery support network would likely be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does safe housing contribute to community integration?",
+      "answer": "Safe housing positively contributes to community integration, as it provides a stable and secure environment for individuals to connect with their community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safe housing were less available, then community integration would likely be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do employment opportunities influence prosocial activities?",
+      "answer": "Employment opportunities positively influence prosocial activities, as they provide individuals with the means and motivation to engage in community and social activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If employment opportunities were fewer, then prosocial activities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do prosocial activities contribute to community integration?",
+      "answer": "Prosocial activities positively contribute to community integration, as they foster a sense of belonging and connectedness among individuals in the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If prosocial activities were less frequent, then community integration would likely be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does the trigger environment affect the recovery support network?",
+      "answer": "A negative trigger environment can negatively impact the recovery support network, as it may lead to relapse and reduce the effectiveness of support services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the trigger environment were more positive, then the recovery support network would likely be more effective."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does the recovery support network influence the stance on upzoning?",
+      "answer": "A strong recovery support network positively influences the stance on upzoning, as it demonstrates the benefits of supportive and inclusive urban policies.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the recovery support network were weaker, then the stance on upzoning would likely be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does community integration affect the stance on upzoning?",
+      "answer": "Community integration positively influences the stance on upzoning, as it highlights the importance of inclusive and supportive urban policies that benefit the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community integration were weaker, then the stance on upzoning would likely be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does accessibility affect proximity to treatment?",
+      "answer": "Better accessibility positively affects proximity to treatment, as it makes it easier for individuals to reach treatment facilities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, then proximity to treatment would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does accessibility influence the availability of safe housing?",
+      "answer": "Better accessibility positively influences the availability of safe housing, as it allows for more efficient use of space and resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, then the availability of safe housing would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does accessibility impact employment opportunities?",
+      "answer": "Better accessibility positively impacts employment opportunities, as it allows for more efficient movement and access to job markets.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, then employment opportunities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does accessibility influence prosocial activities?",
+      "answer": "Better accessibility positively influences prosocial activities, as it allows for easier movement and participation in community events and activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, then prosocial activities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does noise affect the recovery support network?",
+      "answer": "High levels of noise can negatively impact the recovery support network, as it can create stress and disrupt the effectiveness of support services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If noise levels were lower, then the recovery support network would likely be more effective."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does traffic affect the recovery support network?",
+      "answer": "High levels of traffic can negatively impact the recovery support network, as it can create stress and disrupt the effectiveness of support services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic levels were lower, then the recovery support network would likely be more effective."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do green spaces contribute to community integration?",
+      "answer": "Green spaces positively contribute to community integration, as they provide a natural and relaxing environment for individuals to connect with their community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If green spaces were less available, then community integration would likely be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does public transport influence accessibility?",
+      "answer": "Public transport positively influences accessibility, as it provides a reliable and efficient means of transportation for individuals to move around the city.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transport were less available, then accessibility would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How do local services influence accessibility?",
+      "answer": "Local services positively influence accessibility, as they provide essential services and amenities within close proximity, making it easier for individuals to access what they need.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If local services were less available, then accessibility would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does urban density affect the trigger environment?",
+      "answer": "Higher urban density can negatively affect the trigger environment, as it may lead to more stressors and challenges that can trigger negative behaviors.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then the trigger environment would likely be less negative."
+      }
+    }
+  ]
+}

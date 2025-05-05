@@ -1,0 +1,1094 @@
+{
+  "agent_id": "sample_48",
+  "demographics": {
+    "age": 27,
+    "income": "$30,000 - $60,000",
+    "education": "some college",
+    "occupation": "business owner",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+      ]
+    },
+    "n2": {
+      "label": "parking_availability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n3": {
+      "label": "building_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n4": {
+      "label": "safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n5": {
+      "label": "navigation_complexity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n6": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "delivery_efficiency",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08",
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e7",
+        "e8",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15"
+      ]
+    },
+    "n8": {
+      "label": "security",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": []
+    },
+    "n9": {
+      "label": "routing_predictability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": []
+    },
+    "n10": {
+      "label": "logistics_cost",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n11": {
+      "label": "customer_satisfaction",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n12": {
+      "label": "time_pressure",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n13": {
+      "label": "urban_form",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e18"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e4": {
+      "from": "n1",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e5": {
+      "from": "n1",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e6": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e9": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e12": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e13": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e14": {
+      "from": "n7",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e16": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e17": {
+      "from": "n12",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e18": {
+      "from": "n13",
+      "to": "n1",
+      "function": {
+        "target": "n1",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban form affect building density?",
+      "answer": "Urban form significantly influences building density. A more compact and dense urban form typically leads to higher building density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban form were less compact, then building density would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the impact of building density on parking availability?",
+      "answer": "Higher building density often reduces parking availability because there is less space for parking lots and garages.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then parking availability would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does building density affect building access?",
+      "answer": "Higher building density generally improves building access by increasing the number of buildings and pathways, making it easier to reach various destinations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then building access would be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "What is the relationship between building density and safety?",
+      "answer": "Higher building density can sometimes lead to a decrease in perceived safety due to increased crowding and potential for crime.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then safety would be perceived as higher."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does building density influence navigation complexity?",
+      "answer": "Higher building density increases navigation complexity due to more buildings, streets, and pathways, making it harder to find one's way around.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then navigation complexity would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the effect of building density on traffic?",
+      "answer": "Higher building density often leads to more traffic congestion due to the increased number of people and vehicles in a smaller area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then traffic congestion would be less severe."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does parking availability affect delivery efficiency?",
+      "answer": "Better parking availability improves delivery efficiency by providing more convenient and accessible places for delivery vehicles to park and unload.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If parking availability were worse, then delivery efficiency would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "What is the impact of building access on delivery efficiency?",
+      "answer": "Improved building access enhances delivery efficiency by making it easier for delivery personnel to reach their destinations and complete deliveries.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building access were worse, then delivery efficiency would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does safety affect delivery efficiency?",
+      "answer": "Higher levels of safety improve delivery efficiency by reducing the risk of theft or other incidents that could delay or disrupt deliveries.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safety were lower, then delivery efficiency would be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the relationship between navigation complexity and delivery efficiency?",
+      "answer": "Higher navigation complexity can reduce delivery efficiency by making it more difficult for delivery personnel to find their way to their destinations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If navigation complexity were lower, then delivery efficiency would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does traffic affect delivery efficiency?",
+      "answer": "Higher traffic congestion can significantly reduce delivery efficiency by causing delays and increasing the time required to complete deliveries.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic were lighter, then delivery efficiency would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "What is the impact of delivery efficiency on security?",
+      "answer": "Higher delivery efficiency can enhance security by reducing the time that delivery personnel and goods are exposed to potential risks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If delivery efficiency were lower, then security would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does delivery efficiency affect routing predictability?",
+      "answer": "Higher delivery efficiency often leads to better routing predictability by ensuring that delivery routes are optimized and reliable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If delivery efficiency were lower, then routing predictability would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "What is the relationship between delivery efficiency and logistics cost?",
+      "answer": "Higher delivery efficiency can reduce logistics costs by minimizing the time and resources required to complete deliveries.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If delivery efficiency were lower, then logistics costs would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does delivery efficiency affect customer satisfaction?",
+      "answer": "Higher delivery efficiency typically leads to higher customer satisfaction by ensuring that deliveries are made on time and without issues.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If delivery efficiency were lower, then customer satisfaction would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What is the impact of logistics cost on time pressure?",
+      "answer": "Higher logistics costs can increase time pressure by requiring more time and effort to manage and control costs effectively.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If logistics costs were lower, then time pressure would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does customer satisfaction affect time pressure?",
+      "answer": "Higher customer satisfaction can reduce time pressure by creating a smoother and more efficient business environment, leading to fewer complaints and issues.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If customer satisfaction were lower, then time pressure would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "What is the relationship between time pressure and upzoning stance?",
+      "answer": "Higher time pressure can lead to a more favorable upzoning stance as individuals and businesses may see upzoning as a way to alleviate some of the pressures they face.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If time pressure were lower, then the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does urban form affect building density?",
+      "answer": "Urban form significantly influences building density. A more compact and dense urban form typically leads to higher building density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban form were less compact, then building density would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "What is the impact of building density on parking availability?",
+      "answer": "Higher building density often reduces parking availability because there is less space for parking lots and garages.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were lower, then parking availability would be higher."
+      }
+    }
+  ]
+}

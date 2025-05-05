@@ -1,0 +1,976 @@
+{
+  "agent_id": "sample_73",
+  "demographics": {
+    "age": 67,
+    "income": "> $100,000",
+    "education": "master's degree or higher",
+    "occupation": "educator",
+    "housing": "homeowner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e14",
+        "e15"
+      ]
+    },
+    "n2": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n3": {
+      "label": "sunlight",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
+    },
+    "n4": {
+      "label": "public_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n5": {
+      "label": "information_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n6": {
+      "label": "technological_equity",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n7": {
+      "label": "service_visibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n8": {
+      "label": "physical_accessibility",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n9": {
+      "label": "community_services",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n10": {
+      "label": "user_needs",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n11": {
+      "label": "barrier_reduction",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n12": {
+      "label": "knowledge_network",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n13": {
+      "label": "public_utility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e3": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e4": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e5": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e6": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e7": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e8": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e9": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e10": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e11": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    },
+    "e12": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_25"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_25"
+      ]
+    },
+    "e14": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e15": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e16": {
+      "from": "n2",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the height of buildings affect traffic in urban areas?",
+      "answer": "Higher buildings can lead to more traffic congestion as they attract more people and businesses, increasing the number of vehicles on the road.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, there would be less traffic congestion."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does the height of buildings have an impact on the amount of sunlight in public spaces?",
+      "answer": "Taller buildings can block sunlight, reducing the amount of natural light that reaches public spaces, which can make these areas less inviting.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, there would be more sunlight in public spaces."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the height of buildings influence the availability of public space?",
+      "answer": "Taller buildings can reduce the amount of available public space, as they often require more land for their foundations and amenities, leaving less room for open areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, there would be more public space available."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "What is the relationship between traffic and physical accessibility in urban areas?",
+      "answer": "Increased traffic can make it harder for people to move around, especially for those with mobility issues, reducing overall physical accessibility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, physical accessibility would improve."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does the amount of sunlight in public spaces affect the quality of these spaces?",
+      "answer": "More sunlight in public spaces makes them more inviting and enjoyable, encouraging people to use them more frequently.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less sunlight, public spaces would be less inviting."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Is there a connection between the quality of public spaces and the amount of information people have access to?",
+      "answer": "Well-maintained public spaces often have better information kiosks and signage, improving access to information for residents and visitors.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were poorly maintained, information access would be limited."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does access to information influence technological equity in a community?",
+      "answer": "Improved access to information can help bridge the digital divide by providing more people with the knowledge and resources needed to use technology effectively.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If information access were limited, technological equity would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Does technological equity have an impact on the visibility of services in a community?",
+      "answer": "Yes, when more people have access to technology, they can more easily find and use community services, making these services more visible and accessible.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If technological equity were low, service visibility would also be low."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does the visibility of services relate to physical accessibility in a community?",
+      "answer": "When services are more visible, it is easier for people to find and use them, which improves physical accessibility, especially for those with mobility issues.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service visibility were low, physical accessibility would also be low."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the relationship between physical accessibility and the quality of community services?",
+      "answer": "Improved physical accessibility allows more people to access and benefit from community services, leading to better service quality and utilization.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If physical accessibility were poor, community services would be underutilized."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do community services influence the needs of users in a community?",
+      "answer": "High-quality community services can better meet the needs of users, leading to greater satisfaction and a sense of well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community services were poor, user needs would not be met."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "Does meeting user needs lead to a reduction in barriers in a community?",
+      "answer": "Yes, when user needs are met, it reduces the barriers that prevent people from fully participating in community life, leading to a more inclusive environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If user needs were not met, barriers would remain high."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does barrier reduction contribute to the development of a knowledge network in a community?",
+      "answer": "Reducing barriers allows more people to participate in and contribute to the community, fostering the growth of a robust knowledge network.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If barriers remained high, the knowledge network would be less developed."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "What is the impact of a strong knowledge network on the provision of public utilities?",
+      "answer": "A strong knowledge network can lead to better-informed decisions about public utilities, resulting in more efficient and effective services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the knowledge network were weak, public utilities would be less efficient."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the quality of public utilities influence one's stance on upzoning in a community?",
+      "answer": "Better public utilities can make upzoning more appealing, as it ensures that the increased density is supported by adequate infrastructure and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public utilities were poor, upzoning would be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What is the relationship between the height of buildings and the quality of public utilities in a community?",
+      "answer": "Taller buildings can put more strain on public utilities, potentially leading to overburdened systems and reduced service quality.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, public utilities would be less strained."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does the quality of public utilities affect the stance on upzoning in a community?",
+      "answer": "Better public utilities can make upzoning more appealing, as it ensures that the increased density is supported by adequate infrastructure and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public utilities were poor, upzoning would be less favorable."
+      }
+    }
+  ]
+}

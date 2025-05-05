@@ -1,0 +1,1087 @@
+{
+  "agent_id": "sample_86",
+  "demographics": {
+    "age": 41,
+    "income": "$60,000 - $100,000",
+    "education": "high school",
+    "occupation": "healthcare worker",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "housing_availability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "rent_prices",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "application_strength",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "financial_position",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "temporary_housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "social_network",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "timing_strategies",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "market_competition",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e10",
+        "e11"
+      ]
+    },
+    "n10": {
+      "label": "quick_mobility",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n11": {
+      "label": "financial_credential",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n12": {
+      "label": "permanent_housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n13": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13",
+        "e14"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n8",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n9",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n9",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect housing availability?",
+      "answer": "As urban density increases, housing availability tends to decrease because there is less space for new housing developments.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, housing availability would likely be higher."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the relationship between urban density and rent prices?",
+      "answer": "Higher urban density often leads to higher rent prices due to increased demand and limited supply of housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, rent prices would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does housing availability influence application strength?",
+      "answer": "With more housing available, individuals can submit stronger applications as they have more options to choose from.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If housing availability were lower, application strength would likely be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "What is the impact of rent prices on financial position?",
+      "answer": "Higher rent prices can negatively impact one's financial position by increasing living costs and reducing disposable income.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If rent prices were lower, financial position would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does application strength affect temporary housing?",
+      "answer": "A strong application can increase the chances of securing temporary housing, as it demonstrates a stable and reliable tenant.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If application strength were weaker, securing temporary housing would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the effect of financial position on social network?",
+      "answer": "A better financial position can lead to a stronger social network, as individuals have more resources to engage in social activities and maintain relationships.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If financial position were worse, the social network would likely be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does temporary housing influence timing strategies?",
+      "answer": "Temporary housing can provide flexibility in timing strategies, allowing individuals to wait for better opportunities or conditions before making long-term housing decisions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing were not an option, timing strategies would be more constrained."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "What is the impact of social network on market competition?",
+      "answer": "A strong social network can help individuals navigate market competition by providing information, support, and connections that can give them an advantage.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the social network were weaker, navigating market competition would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do timing strategies affect quick mobility?",
+      "answer": "Effective timing strategies can enhance quick mobility by allowing individuals to move quickly when favorable conditions arise, such as a sudden drop in rent prices or an increase in housing availability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If timing strategies were poor, quick mobility would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the effect of market competition on financial credential?",
+      "answer": "High market competition can make it more difficult to secure a financial credential, as lenders and institutions may be more selective and cautious.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If market competition were lower, securing a financial credential would be easier."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does market competition influence permanent housing?",
+      "answer": "Market competition can make it more challenging to secure permanent housing, as there are more people vying for the same limited housing options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If market competition were lower, securing permanent housing would be easier."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "What is the impact of quick mobility on permanent housing?",
+      "answer": "Quick mobility can help individuals secure permanent housing by allowing them to act fast when a good opportunity arises, such as a desirable property becoming available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If quick mobility were not possible, securing permanent housing would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does financial credential affect upzoning stance?",
+      "answer": "Having a strong financial credential can make individuals more supportive of upzoning, as they may see it as an opportunity to invest in and benefit from new housing developments.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the financial credential were weaker, the upzoning stance might be less supportive."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "What is the effect of permanent housing on upzoning stance?",
+      "answer": "Individuals with permanent housing may be more open to upzoning, as they have a stable living situation and may see upzoning as a way to improve their community and property values.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If permanent housing were not secured, the upzoning stance might be more cautious."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does urban density affect the overall housing market?",
+      "answer": "Urban density has a significant impact on the overall housing market, influencing factors such as housing availability, rent prices, and the ability to secure both temporary and permanent housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, the housing market would likely be more balanced and accessible."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What is the role of social networks in navigating the housing market?",
+      "answer": "Social networks play a crucial role in navigating the housing market by providing information, support, and connections that can help individuals find better housing options and make informed decisions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without a strong social network, navigating the housing market would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does financial position influence the ability to secure permanent housing?",
+      "answer": "A strong financial position can significantly enhance the ability to secure permanent housing, as it provides the necessary resources and stability to make long-term housing commitments.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the financial position were weaker, securing permanent housing would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "What is the impact of market competition on the overall housing experience?",
+      "answer": "High market competition can make the overall housing experience more challenging, as it increases the difficulty of finding and securing both temporary and permanent housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If market competition were lower, the overall housing experience would be more manageable."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does the availability of temporary housing influence long-term housing decisions?",
+      "answer": "The availability of temporary housing can provide a buffer, allowing individuals to take their time in making long-term housing decisions without the pressure of immediate housing needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing were not available, long-term housing decisions would need to be made more urgently."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "What is the effect of quick mobility on the ability to adapt to changing housing conditions?",
+      "answer": "Quick mobility enhances the ability to adapt to changing housing conditions by allowing individuals to respond rapidly to new opportunities or challenges in the housing market.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If quick mobility were not possible, adapting to changing housing conditions would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does the financial credential affect the ability to secure a mortgage for permanent housing?",
+      "answer": "A strong financial credential can significantly improve the ability to secure a mortgage for permanent housing, as it demonstrates creditworthiness and financial stability to lenders.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the financial credential were weaker, securing a mortgage would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "What is the impact of having permanent housing on the willingness to support upzoning policies?",
+      "answer": "Individuals with permanent housing may be more willing to support upzoning policies, as they have a stable living situation and may see upzoning as a way to improve their community and property values.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If permanent housing were not secured, the willingness to support upzoning policies might be lower."
+      }
+    },
+    {
+      "qa_id": "qa_23",
+      "question": "How does the availability of housing affect the decision to stay in a high-density area?",
+      "answer": "The availability of housing in a high-density area can influence the decision to stay, as limited housing options may push individuals to consider moving to areas with more available housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If housing availability were higher, the decision to stay in a high-density area would be easier."
+      }
+    },
+    {
+      "qa_id": "qa_24",
+      "question": "What is the effect of rent prices on the decision to seek temporary housing?",
+      "answer": "High rent prices can drive individuals to seek temporary housing as a more affordable and flexible alternative to permanent housing, especially in high-density areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If rent prices were lower, the need to seek temporary housing would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_25",
+      "question": "How does the strength of an application affect the likelihood of securing temporary housing?",
+      "answer": "A strong application can significantly increase the likelihood of securing temporary housing, as it demonstrates reliability and financial stability to landlords and property managers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the application strength were weaker, securing temporary housing would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_26",
+      "question": "What is the impact of a strong social network on the ability to navigate the housing market?",
+      "answer": "A strong social network can greatly enhance the ability to navigate the housing market by providing valuable information, support, and connections that can help individuals find better housing options and make informed decisions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without a strong social network, navigating the housing market would be more challenging."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1015 @@
+{
+  "agent_id": "sample_90",
+  "demographics": {
+    "age": 28,
+    "income": "$30,000 - $60,000",
+    "education": "bachelor's degree",
+    "occupation": "educator",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "waste_stream_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "resource_sharing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "conscious_consumers",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "education",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "regulatory_support",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "complementary_businesses",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "circular_network",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "material_flow",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n10": {
+      "label": "system_redesign",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n11": {
+      "label": "value_chain",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n12": {
+      "label": "sustainability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n13": {
+      "label": "innovation",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "community_engagement",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n15": {
+      "label": "local_economy",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect waste stream access?",
+      "answer": "Higher urban density generally leads to better access to waste streams because of more efficient collection and management systems.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then waste stream access would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density influence resource sharing?",
+      "answer": "Higher urban density encourages resource sharing due to the proximity of people and resources, making it easier to share and collaborate.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then resource sharing would be less common."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does waste stream access contribute to the development of conscious consumers?",
+      "answer": "Access to waste streams helps in raising awareness and promoting responsible consumption, leading to more conscious consumers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If waste stream access were limited, then there would be fewer conscious consumers."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does resource sharing impact the development of conscious consumers?",
+      "answer": "Resource sharing fosters a culture of sustainability and responsibility, which contributes to the growth of conscious consumers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If resource sharing were less common, then there would be fewer conscious consumers."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do conscious consumers influence education?",
+      "answer": "Conscious consumers drive the demand for education on sustainability and responsible practices, leading to more educational initiatives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer conscious consumers, then there would be less emphasis on education."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does education support regulatory support for sustainable practices?",
+      "answer": "Education raises awareness and builds support for sustainable practices, leading to stronger regulatory support from the government.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If education were less effective, then regulatory support would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does regulatory support encourage the development of complementary businesses?",
+      "answer": "Regulatory support provides a favorable environment for complementary businesses, encouraging their growth and development.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If regulatory support were weak, then there would be fewer complementary businesses."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do complementary businesses contribute to the formation of a circular network?",
+      "answer": "Complementary businesses work together to create a circular network, where resources are reused and recycled, reducing waste and promoting sustainability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer complementary businesses, then the circular network would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does a circular network improve material flow?",
+      "answer": "A circular network optimizes material flow by ensuring that resources are efficiently reused and recycled, reducing waste and improving overall efficiency.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the circular network were less effective, then material flow would be less efficient."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does improved material flow lead to system redesign?",
+      "answer": "Improved material flow necessitates and supports the redesign of systems to be more sustainable and efficient, leading to better overall design.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If material flow were not improved, then system redesign would be less likely."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does system redesign impact the value chain?",
+      "answer": "System redesign enhances the value chain by making it more efficient, sustainable, and aligned with the principles of a circular economy.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If system redesign were not implemented, then the value chain would be less efficient."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does the value chain contribute to sustainability?",
+      "answer": "An optimized value chain promotes sustainability by ensuring that resources are used efficiently and waste is minimized, leading to a more sustainable system.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the value chain were not optimized, then sustainability would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does sustainability drive innovation?",
+      "answer": "Sustainability creates a need for new and innovative solutions, driving the development of new technologies and practices to meet environmental and social goals.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sustainability were not a priority, then innovation would be less driven."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does innovation enhance community engagement?",
+      "answer": "Innovation brings new and exciting opportunities for community involvement, leading to greater engagement and participation in sustainable practices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If innovation were lacking, then community engagement would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does community engagement support the local economy?",
+      "answer": "Community engagement fosters a strong local economy by promoting local businesses, creating jobs, and increasing economic activity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community engagement were low, then the local economy would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does the local economy influence the stance on upzoning?",
+      "answer": "A strong local economy can make people more resistant to upzoning, as they may fear changes that could disrupt the current economic balance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the local economy were weaker, then people might be more open to upzoning."
+      }
+    }
+  ]
+}

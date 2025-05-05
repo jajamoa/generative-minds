@@ -1,597 +1,428 @@
 {
-    "agent_id": "sample_12",
-    "demographics": {
-        "age": 34,
-        "income": "$90,000-$120,000",
-        "education": "master's degree",
-        "occupation": "marketing manager",
-        "housing": "townhouse owner with two children"
+  "agent_id": "sample_12",
+  "demographics": {
+    "age": 76,
+    "income": "$30,000 - $60,000",
+    "education": "some college",
+    "occupation": "retired",
+    "housing": "homeowner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "housing_supply",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1"
+      ]
     },
-    "nodes": {
-        "n1": {
-            "label": "property_values",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_01"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e1",
-                "e2"
-            ]
-        },
-        "n2": {
-            "label": "community_character",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_02"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e3",
-                "e4"
-            ]
-        },
-        "n3": {
-            "label": "environmental_concerns",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_03"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e5"
-            ]
-        },
-        "n4": {
-            "label": "economic_opportunities",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_04"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e6"
-            ]
-        },
-        "n5": {
-            "label": "status_quo_preference",
-            "type": "binary",
-            "values": [
-                true,
-                false
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_05"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e7"
-            ],
-            "outgoing_edges": [
-                "e8"
-            ]
-        },
-        "n6": {
-            "label": "loss_aversion",
-            "type": "binary",
-            "values": [
-                true,
-                false
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_06"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e9"
-            ],
-            "outgoing_edges": [
-                "e10"
-            ]
-        },
-        "n7": {
-            "label": "social_influence",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_07"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e11"
-            ]
-        },
-        "n8": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [
-                true,
-                false
-            ],
-            "semantic_role": "behavioral_intention",
-            "appearance": {
-                "qa_ids": [
-                    "qa_08"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e8",
-                "e10",
-                "e11",
-                "e12"
-            ],
-            "outgoing_edges": []
-        }
+    "n2": {
+      "label": "affordability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
     },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n1"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "less"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_05"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_05"
-            ]
-        },
-        "e2": {
-            "from": "n1",
-            "to": "n6",
-            "function": {
-                "target": "n6",
-                "inputs": [
-                    "n1"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "less"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_06"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_06"
-            ]
-        },
-        "e3": {
-            "from": "n2",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "less"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_05"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_05"
-            ]
-        },
-        "e4": {
-            "from": "n2",
-            "to": "n6",
-            "function": {
-                "target": "n6",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "less"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_06"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_06"
-            ]
-        },
-        "e5": {
-            "from": "n3",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n3"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.8
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e6": {
-            "from": "n4",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n4"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.8
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e7": {
-            "from": "n5",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n5"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e8": {
-            "from": "n5",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n5"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e9": {
-            "from": "n6",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n6"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e10": {
-            "from": "n6",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n6"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.5,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e11": {
-            "from": "n7",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n7"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.8
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        },
-        "e12": {
-            "from": "n8",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": [
-                    "n8"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.8
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_08"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_08"
-            ]
-        }
+    "n3": {
+      "label": "demand",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
     },
-    "qas": [
-        {
-            "qa_id": "qa_01",
-            "question": "How do you think upzoning will affect property values in your neighborhood?",
-            "answer": "I'm concerned that upzoning might lead to a decrease in property values because of the potential for overdevelopment and increased density, which could make the area less desirable.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "property_values",
-                    "to": "status_quo_preference",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If property values were guaranteed to increase, then I would be more supportive of upzoning."
-            }
+    "n4": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        {
-            "qa_id": "qa_02",
-            "question": "What are your thoughts on how upzoning will change the character of your community?",
-            "answer": "I worry that upzoning will change the character of our community, making it feel less like a family-friendly neighborhood and more like a crowded urban area. This could impact the quality of life for my children.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "community_character",
-                    "to": "status_quo_preference",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If the community character could be preserved, I would be more open to upzoning."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
         },
-        {
-            "qa_id": "qa_03",
-            "question": "How do you think upzoning will impact the environment and sustainability in your area?",
-            "answer": "Upzoning could have positive environmental impacts by promoting more sustainable living and reducing the need for long commutes. However, I am also concerned about the strain on local resources and infrastructure.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "environmental_concerns",
-                    "to": "upzoning_stance",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.7,
-                    "confidence_rating": 0.8
-                },
-                "counterfactual": "If the environmental benefits were more clearly defined and guaranteed, I would be more supportive of upzoning."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.7
+          ],
+          "bias": -0.1
         },
-        {
-            "qa_id": "qa_04",
-            "question": "Do you see any economic opportunities or benefits from upzoning?",
-            "answer": "There could be economic benefits, such as increased investment and job opportunities, but I am skeptical about whether these benefits will outweigh the potential downsides, especially in the short term.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "economic_opportunities",
-                    "to": "upzoning_stance",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.6,
-                    "confidence_rating": 0.7
-                },
-                "counterfactual": "If the economic benefits were more immediate and tangible, I would be more supportive of upzoning."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does an increase in housing supply affect affordability?",
+      "answer": "An increase in housing supply generally leads to better affordability as more options become available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
         },
-        {
-            "qa_id": "qa_05",
-            "question": "Do you prefer the status quo in your neighborhood, or are you open to changes brought by upzoning?",
-            "answer": "I generally prefer the status quo because it has worked well for me and my family. Change is always risky, and I don't want to jeopardize what we have now.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "status_quo_preference",
-                    "to": "upzoning_stance",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If the risks of upzoning were minimized, I might be more open to it."
-            }
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        {
-            "qa_id": "qa_06",
-            "question": "How do you feel about the potential losses you might face if upzoning goes through?",
-            "answer": "I am very concerned about the potential losses, both in terms of property value and the quality of life. The fear of losing what we have is a significant factor in my opposition to upzoning.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "loss_aversion",
-                    "to": "upzoning_stance",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If there were clear assurances that my property value and quality of life would not be negatively affected, I would be more open to upzoning."
-            }
+        "counterfactual": "If the housing supply were to decrease, then affordability would likely worsen."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is your opinion on the current housing supply in your area?",
+      "answer": "I believe the current housing supply is adequate but could be improved to make housing more affordable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
         },
-        {
-            "qa_id": "qa_07",
-            "question": "How much influence do your neighbors and community groups have on your opinion about upzoning?",
-            "answer": "My neighbors and community groups have a significant influence on my opinion. If they are against upzoning, I am more likely to oppose it as well, and vice versa. I trust their insights and experiences.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "social_influence",
-                    "to": "upzoning_stance",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If my neighbors and community groups were more supportive of upzoning, I would be more likely to support it as well."
-            }
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
         },
-        {
-            "qa_id": "qa_08",
-            "question": "Overall, do you support or oppose upzoning in your neighborhood?",
-            "answer": "Overall, I oppose upzoning. The potential risks to property values, community character, and quality of life outweigh the possible benefits. I prefer the status quo and am wary of the changes upzoning might bring.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "upzoning_stance",
-                    "to": "upzoning_stance",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If the risks were significantly reduced and the benefits were more clearly defined, I might reconsider my stance on upzoning."
-            }
-        }
-    ]
+        "counterfactual": "If the housing supply were to increase, then affordability would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does affordability influence the demand for housing?",
+      "answer": "Affordability has a significant impact on demand; when housing is more affordable, the demand tends to increase.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If affordability were to decrease, then the demand for housing would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "Do you think the current level of affordability is affecting the demand for housing?",
+      "answer": "Yes, I believe that the current level of affordability is making it difficult for people to find suitable housing, thus reducing demand.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.7
+        },
+        "counterfactual": "If affordability were to improve, then the demand for housing would likely increase."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does the demand for housing affect your stance on upzoning?",
+      "answer": "High demand for housing makes me more supportive of upzoning, as it can help increase the supply and meet the demand.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the demand for housing were to decrease, then my support for upzoning would likely diminish."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Do you think upzoning is a good solution to address the current housing demand?",
+      "answer": "Yes, I think upzoning is a good solution because it can help increase the housing supply and meet the high demand.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the demand for housing were to decrease, then upzoning might not be as necessary."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do you feel about the current upzoning policies in your area?",
+      "answer": "I am in favor of the current upzoning policies because they are helping to address the high demand for housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the demand for housing were to decrease, then I might not be as supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Do you think upzoning will have a positive impact on the housing market?",
+      "answer": "Yes, I believe upzoning will have a positive impact by increasing the housing supply and improving affordability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If upzoning were not implemented, then the housing market might continue to face challenges with supply and demand."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does the current housing supply affect your decision to support upzoning?",
+      "answer": "The current housing supply is a key factor; if it's low, I am more likely to support upzoning to increase the supply.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the housing supply were to increase, then my support for upzoning might decrease."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "Do you think increasing the housing supply will lead to better affordability?",
+      "answer": "Yes, I believe increasing the housing supply will lead to better affordability by providing more options and reducing prices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the housing supply were to decrease, then affordability would likely worsen."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does the current level of affordability affect your stance on upzoning?",
+      "answer": "If the current level of affordability is low, I am more likely to support upzoning to help improve it.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If affordability were to improve, then my support for upzoning might decrease."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "Do you think upzoning will help to reduce the demand for housing?",
+      "answer": "Yes, I believe upzoning will help to reduce the demand for housing by increasing the supply and making it more affordable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning were not implemented, then the demand for housing might continue to be high."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the current demand for housing affect your opinion on upzoning?",
+      "answer": "The current high demand for housing makes me more supportive of upzoning to help meet the need for more housing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the demand for housing were to decrease, then my support for upzoning might diminish."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "Do you think upzoning will have a long-term positive effect on the housing market?",
+      "answer": "Yes, I believe upzoning will have a long-term positive effect by increasing the housing supply and improving affordability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning were not implemented, then the housing market might continue to face challenges with supply and demand."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the current level of affordability affect your overall view on the housing market?",
+      "answer": "The current level of affordability is a major concern; if it's low, it affects my overall view negatively and makes me more supportive of solutions like upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If affordability were to improve, then my overall view on the housing market would be more positive."
+      }
+    }
+  ]
 }

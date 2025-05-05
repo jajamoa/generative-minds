@@ -1,0 +1,1159 @@
+{
+  "agent_id": "sample_54",
+  "demographics": {
+    "age": 59,
+    "income": "> $100,000",
+    "education": "some college",
+    "occupation": "retired",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e16"
+      ]
+    },
+    "n2": {
+      "label": "public_space_flexibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e5"
+      ]
+    },
+    "n3": {
+      "label": "infrastructure_capacity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n4": {
+      "label": "transportation_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e8",
+        "e9"
+      ]
+    },
+    "n5": {
+      "label": "emergency_planning",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n6": {
+      "label": "neighborhood_impact",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n7": {
+      "label": "cultural_contribution",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "event_logistics",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n9": {
+      "label": "audience_accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n10": {
+      "label": "safety",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n11": {
+      "label": "noise",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n12": {
+      "label": "green_space",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n13": {
+      "label": "parking",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n14": {
+      "label": "local_business_support",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e12",
+        "e17",
+        "e18"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n4",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n5",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n1",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n6",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n11",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n12",
+      "to": "n1",
+      "function": {
+        "target": "n1",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n13",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect public space flexibility?",
+      "answer": "Higher urban density generally increases the need for flexible public spaces to accommodate more people and activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, public spaces would be less flexible."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the relationship between urban density and infrastructure capacity?",
+      "answer": "Increased urban density often requires greater infrastructure capacity to support the growing population and their needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, the required infrastructure capacity would also be lower."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density impact transportation access?",
+      "answer": "Higher urban density usually leads to better transportation access due to the concentration of people and resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, transportation access might be less convenient."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does public space flexibility influence event logistics?",
+      "answer": "Flexible public spaces make it easier to organize and manage events, as they can adapt to different requirements and setups.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were less flexible, event logistics would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does public space flexibility affect audience accessibility?",
+      "answer": "Flexible public spaces improve audience accessibility by providing a variety of options for people to reach and enjoy events.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were less flexible, audience accessibility would be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does infrastructure capacity impact event logistics?",
+      "answer": "Greater infrastructure capacity supports more efficient and effective event logistics, allowing for better management and execution.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If infrastructure capacity were lower, event logistics would be more difficult to manage."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does infrastructure capacity contribute to safety?",
+      "answer": "Better infrastructure capacity enhances safety by providing robust and reliable systems that can handle higher demands and emergencies.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If infrastructure capacity were lower, safety measures would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does transportation access influence audience accessibility?",
+      "answer": "Good transportation access makes it easier for audiences to reach and participate in events, improving overall accessibility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation access were poor, audience accessibility would be significantly reduced."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does transportation access support local businesses?",
+      "answer": "Improved transportation access benefits local businesses by making it easier for customers to reach them, thus increasing their visibility and sales.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation access were poor, local businesses would struggle to attract customers."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does emergency planning enhance safety?",
+      "answer": "Effective emergency planning improves safety by ensuring that there are well-coordinated and timely responses to any potential incidents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If emergency planning were inadequate, safety would be compromised during emergencies."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does cultural contribution influence upzoning stance?",
+      "answer": "A strong cultural contribution can positively influence the upzoning stance by highlighting the benefits of diverse and vibrant communities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural contributions were minimal, the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do event logistics impact upzoning stance?",
+      "answer": "Efficient event logistics can positively influence the upzoning stance by demonstrating the community's ability to manage and benefit from increased density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If event logistics were poorly managed, the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does audience accessibility influence upzoning stance?",
+      "answer": "High audience accessibility can positively influence the upzoning stance by showing that the community can effectively accommodate and engage with a larger population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If audience accessibility were low, the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does safety influence upzoning stance?",
+      "answer": "Enhanced safety can positively influence the upzoning stance by ensuring that the community can handle the challenges of increased density without compromising security.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safety were compromised, the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does local business support influence upzoning stance?",
+      "answer": "Strong local business support can positively influence the upzoning stance by demonstrating the economic benefits and community support for increased density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If local business support were weak, the upzoning stance might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does parking availability relate to urban density?",
+      "answer": "Increased urban density often leads to a reduction in available parking, as more land is used for housing and other purposes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, parking availability would likely be higher."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does neighborhood impact influence upzoning stance?",
+      "answer": "Negative neighborhood impacts, such as displacement or loss of character, can negatively influence the upzoning stance by raising concerns about the effects of increased density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If neighborhood impacts were positive, the upzoning stance might be more favorable."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does noise level affect safety?",
+      "answer": "High noise levels can negatively impact safety by causing distractions and reducing the ability to hear and respond to potential dangers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n10",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If noise levels were lower, safety would be improved."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does green space availability influence urban density?",
+      "answer": "The presence of green spaces can negatively influence urban density, as these areas are often preserved and not used for development.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n1",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If green space availability were lower, urban density could be higher."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does parking availability influence upzoning stance?",
+      "answer": "Limited parking availability can negatively influence the upzoning stance by raising concerns about the practicality and convenience of living in a denser area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If parking availability were higher, the upzoning stance might be more favorable."
+      }
+    }
+  ]
+}

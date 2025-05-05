@@ -1,0 +1,1035 @@
+{
+  "agent_id": "sample_94",
+  "demographics": {
+    "age": 24,
+    "income": "$60,000 - $100,000",
+    "education": "some college",
+    "occupation": "healthcare worker",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
+    },
+    "n2": {
+      "label": "commute_time",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e6",
+        "e7"
+      ]
+    },
+    "n3": {
+      "label": "home_workspace_quality",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n4": {
+      "label": "digital_infrastructure",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n5": {
+      "label": "office_proximity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n6": {
+      "label": "public_transport_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n7": {
+      "label": "local_amenities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n8": {
+      "label": "community_engagement",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n9": {
+      "label": "work_life_balance",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n10": {
+      "label": "flexibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n11": {
+      "label": "environmental_impact",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n12": {
+      "label": "social_interaction",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n13": {
+      "label": "time_management",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14",
+        "e15",
+        "e17",
+        "e18",
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n5",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n11",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect commute time?",
+      "answer": "As urban density increases, commute times tend to increase due to more traffic and congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, commute times would be shorter."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density impact digital infrastructure?",
+      "answer": "Higher urban density often leads to better digital infrastructure as there is a higher demand for connectivity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, the quality of digital infrastructure might not be as high."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density influence office proximity?",
+      "answer": "With higher urban density, offices are generally closer together, making it easier to find a job nearby.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, offices might be more spread out, increasing travel distances."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does urban density affect home workspace quality?",
+      "answer": "High urban density can lead to smaller living spaces, which negatively impacts the quality of home workspaces.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, home workspaces would likely be more spacious and comfortable."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does commute time affect public transport access?",
+      "answer": "Longer commute times often indicate less accessible public transport, as people have to spend more time traveling.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commute times were shorter, public transport would be more accessible."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does commute time affect local amenities?",
+      "answer": "Longer commute times can make it harder to access local amenities, as people have less free time to use them.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commute times were shorter, local amenities would be more easily accessible."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does home workspace quality affect community engagement?",
+      "answer": "A better home workspace can lead to more community engagement, as people feel more comfortable and productive at home.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If home workspace quality were poor, community engagement might decrease."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does digital infrastructure affect work-life balance?",
+      "answer": "Better digital infrastructure can improve work-life balance by allowing more flexible work arrangements.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If digital infrastructure were poor, work-life balance might suffer due to limited flexibility."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does office proximity affect flexibility in work?",
+      "answer": "Closer office proximity allows for more flexibility in work, as it reduces the need for long commutes and allows for easier access to the workplace.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If office proximity were far, flexibility in work would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does public transport access affect environmental impact?",
+      "answer": "Better public transport access can reduce the environmental impact by decreasing the number of personal vehicles on the road.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transport access were poor, the environmental impact would be greater."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do local amenities affect social interaction?",
+      "answer": "More local amenities can enhance social interaction by providing more places for people to meet and socialize.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If local amenities were scarce, social interaction might decrease."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does community engagement affect time management?",
+      "answer": "Greater community engagement can help with time management by providing a sense of structure and routine.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community engagement were low, time management might be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does work-life balance affect upzoning stance?",
+      "answer": "Better work-life balance can make someone more supportive of upzoning, as it can lead to more flexible and balanced living conditions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If work-life balance were poor, support for upzoning might be lower."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does flexibility in work affect upzoning stance?",
+      "answer": "Flexibility in work can make someone more supportive of upzoning, as it aligns with the desire for more flexible living and working conditions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If flexibility in work were low, support for upzoning might be lower."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does environmental impact affect upzoning stance?",
+      "answer": "A higher environmental impact can make someone less supportive of upzoning, as they may be concerned about further negative effects on the environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the environmental impact were lower, support for upzoning might be higher."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does social interaction affect upzoning stance?",
+      "answer": "Greater social interaction can make someone more supportive of upzoning, as it can lead to a stronger sense of community and shared goals.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social interaction were low, support for upzoning might be lower."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does time management affect upzoning stance?",
+      "answer": "Better time management can make someone more supportive of upzoning, as it can lead to more efficient and balanced living conditions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If time management were poor, support for upzoning might be lower."
+      }
+    }
+  ]
+}

@@ -1,0 +1,929 @@
+{
+  "agent_id": "sample_39",
+  "demographics": {
+    "age": 70,
+    "income": "> $100,000",
+    "education": "master's degree or higher",
+    "occupation": "service worker",
+    "housing": "homeowner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "elderly_population_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "specialized_housing_options",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "accessible_design",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n4": {
+      "label": "service_demands",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n5": {
+      "label": "community_support_systems",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n6": {
+      "label": "institutional_care",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n7": {
+      "label": "aging_services_network",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n8": {
+      "label": "facility_requirements",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n9": {
+      "label": "population_trends",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n10": {
+      "label": "needs_forecasting",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n11": {
+      "label": "service_adaptation",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n12": {
+      "label": "care_quality",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n13": {
+      "label": "resource_allocation",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n8",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n9",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n12",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n12",
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14",
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14",
+        "qa_15"
+      ]
+    },
+    "e15": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the density of the elderly population affect the availability of specialized housing options?",
+      "answer": "The higher the density of the elderly population, the more likely there will be a greater availability of specialized housing options to meet their needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the elderly population density were lower, there would be fewer specialized housing options."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does the density of the elderly population influence accessible design in urban areas?",
+      "answer": "A higher density of the elderly population leads to a greater emphasis on accessible design to accommodate their needs and improve their quality of life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the elderly population density were lower, there would be less emphasis on accessible design."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the density of the elderly population impact service demands in the community?",
+      "answer": "As the density of the elderly population increases, the demand for services such as healthcare, transportation, and social support also increases.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the elderly population density were lower, the demand for these services would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do specialized housing options influence the development of community support systems?",
+      "answer": "The presence of specialized housing options can lead to the development of more robust community support systems, as these options often come with integrated support services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer specialized housing options, the community support systems might be less developed."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does accessible design influence the need for institutional care?",
+      "answer": "Accessible design in urban areas can reduce the need for institutional care by allowing the elderly to live independently for longer periods.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessible design were less prevalent, the need for institutional care would likely increase."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does the demand for services affect the aging services network?",
+      "answer": "Higher service demands drive the expansion and improvement of the aging services network, ensuring that the elderly have access to the necessary support and care.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the demand for services were lower, the aging services network might not be as well-developed."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do community support systems influence facility requirements?",
+      "answer": "Strong community support systems can reduce the need for additional facilities, as they provide many of the necessary services and support within the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community support systems were weaker, there would be a greater need for additional facilities."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does the need for institutional care influence facility requirements?",
+      "answer": "The need for institutional care directly influences the facility requirements, as more institutional care means more facilities are needed to accommodate the elderly.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the need for institutional care were lower, the facility requirements would also be lower."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does the aging services network affect population trends?",
+      "answer": "A well-developed aging services network can positively influence population trends by making the area more attractive to the elderly, leading to an increase in the elderly population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the aging services network were less developed, the population trends might not show as much growth in the elderly population."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How do facility requirements influence needs forecasting?",
+      "answer": "Understanding the facility requirements helps in accurately forecasting the needs of the elderly population, ensuring that future planning is based on realistic and comprehensive data.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If facility requirements were not considered, needs forecasting might be less accurate and less effective."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do population trends influence service adaptation?",
+      "answer": "Population trends, particularly the growth in the elderly population, drive the need for service adaptation to ensure that the services provided are relevant and sufficient.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If population trends did not show growth in the elderly population, the need for service adaptation would be less urgent."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does needs forecasting influence the quality of care?",
+      "answer": "Accurate needs forecasting ensures that the quality of care remains high by anticipating and addressing the specific needs of the elderly population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If needs forecasting were inaccurate, the quality of care might suffer due to unmet or misaligned needs."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does service adaptation influence resource allocation?",
+      "answer": "Effective service adaptation requires proper resource allocation to ensure that the necessary resources are available to meet the evolving needs of the elderly population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service adaptation were not properly managed, resource allocation might be inefficient, leading to gaps in service provision."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does the quality of care influence one's stance on upzoning?",
+      "answer": "High-quality care can make upzoning more favorable, as it demonstrates that the community is well-equipped to handle the needs of a growing elderly population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of care were poor, there might be more resistance to upzoning due to concerns about the community's ability to support the elderly."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does resource allocation influence one's stance on upzoning?",
+      "answer": "Proper resource allocation can make upzoning more acceptable, as it ensures that the necessary resources are in place to support the increased density of the elderly population.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If resource allocation were inadequate, there might be more opposition to upzoning due to concerns about the community's readiness."
+      }
+    }
+  ]
+}

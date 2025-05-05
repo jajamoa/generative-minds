@@ -1,0 +1,989 @@
+{
+  "agent_id": "sample_49",
+  "demographics": {
+    "age": 59,
+    "income": "$30,000 - $60,000",
+    "education": "master's degree or higher",
+    "occupation": "technician",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "pedestrian_flow",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "visibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "regulatory_enforcement",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n4": {
+      "label": "competition",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n5": {
+      "label": "clustering_benefits",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n6": {
+      "label": "weather_protection",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n7": {
+      "label": "survival_opportunity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e6",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e7",
+        "e13"
+      ]
+    },
+    "n8": {
+      "label": "foot_traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n9": {
+      "label": "informal_economy",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n10": {
+      "label": "urban_spaces",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10",
+        "e16"
+      ]
+    },
+    "n11": {
+      "label": "formal_planning",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n12": {
+      "label": "adaptive_utilization",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n13": {
+      "label": "quick_risk_assessment",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13",
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e5": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e6": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e7": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e8": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e9": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e10": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e11": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    },
+    "e12": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_25"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_25"
+      ]
+    },
+    "e13": {
+      "from": "n7",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e15": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e16": {
+      "from": "n10",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does pedestrian flow affect visibility in urban areas?",
+      "answer": "Increased pedestrian flow generally improves visibility as more people are present and noticeable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer pedestrians, visibility would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does pedestrian flow impact foot traffic in urban areas?",
+      "answer": "Higher pedestrian flow directly increases foot traffic, making the area more lively and vibrant.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If pedestrian flow decreased, foot traffic would also decrease."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does visibility influence regulatory enforcement in urban areas?",
+      "answer": "Improved visibility makes it easier for authorities to enforce regulations, as they can see more clearly what is happening.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If visibility were poor, regulatory enforcement would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does competition affect clustering benefits in urban areas?",
+      "answer": "High competition can reduce the benefits of clustering, as businesses may struggle to stand out.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If competition were lower, clustering benefits would be more pronounced."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does regulatory enforcement impact survival opportunities in urban areas?",
+      "answer": "Strict regulatory enforcement can limit survival opportunities for small businesses and informal economies.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If regulatory enforcement were more lenient, survival opportunities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do clustering benefits influence survival opportunities in urban areas?",
+      "answer": "Clustering benefits, such as shared resources and customer base, enhance survival opportunities for businesses.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If clustering benefits were reduced, survival opportunities would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does weather protection influence survival opportunities in urban areas?",
+      "answer": "Effective weather protection, such as covered walkways, enhances survival opportunities by providing a comfortable environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If weather protection were inadequate, survival opportunities would be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does survival opportunity impact foot traffic in urban areas?",
+      "answer": "Greater survival opportunities attract more foot traffic as businesses thrive and draw more customers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If survival opportunities were limited, foot traffic would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does foot traffic influence the informal economy in urban areas?",
+      "answer": "Increased foot traffic supports the informal economy by providing more potential customers and opportunities for transactions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If foot traffic were low, the informal economy would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does the informal economy impact urban spaces in urban areas?",
+      "answer": "A thriving informal economy can lead to more vibrant and dynamic urban spaces, as it brings life and activity to the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the informal economy were suppressed, urban spaces would be less lively."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do urban spaces influence formal planning in urban areas?",
+      "answer": "Well-designed and utilized urban spaces often lead to better formal planning, as they provide a clear example of what works well.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban spaces were poorly designed, formal planning would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does formal planning influence adaptive utilization in urban areas?",
+      "answer": "Good formal planning allows for adaptive utilization, as it provides a flexible framework that can be adjusted to changing needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If formal planning were rigid, adaptive utilization would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does adaptive utilization influence quick risk assessment in urban areas?",
+      "answer": "Adaptive utilization enables quicker risk assessment, as it allows for rapid adjustments and responses to emerging risks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If adaptive utilization were not possible, quick risk assessment would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does quick risk assessment influence upzoning stance in urban areas?",
+      "answer": "Effective quick risk assessment can support a positive upzoning stance, as it ensures that changes are made with a clear understanding of potential risks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If quick risk assessment were ineffective, the upzoning stance would be more cautious."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does survival opportunity influence upzoning stance in urban areas?",
+      "answer": "Greater survival opportunities can lead to a more favorable upzoning stance, as it indicates a robust and resilient urban environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If survival opportunities were limited, the upzoning stance would be more conservative."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How do urban spaces influence upzoning stance in urban areas?",
+      "answer": "Well-utilized and vibrant urban spaces can support a positive upzoning stance, as they demonstrate the benefits of higher density.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban spaces were underutilized, the upzoning stance would be more skeptical."
+      }
+    }
+  ]
+}

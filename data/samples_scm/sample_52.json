@@ -1,0 +1,937 @@
+{
+  "agent_id": "sample_52",
+  "demographics": {
+    "age": 53,
+    "income": "< $30,000",
+    "education": "some college",
+    "occupation": "business owner",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02",
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "soil_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04",
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "sunlight",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06",
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n4": {
+      "label": "community_gardens",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08",
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n5": {
+      "label": "green_space_network",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n6": {
+      "label": "food_production",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "education_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "building_shadows",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n9": {
+      "label": "soil_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n10": {
+      "label": "community_engagement",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n11": {
+      "label": "ecological_thinking",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n12": {
+      "label": "seasonal_planning",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n13": {
+      "label": "urban_agriculture_potential",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the height of buildings affect soil access in urban areas?",
+      "answer": "Taller buildings tend to reduce soil access due to increased concrete and less open ground.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, there would be more soil access."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the impact of building height on the amount of sunlight available in an area?",
+      "answer": "Higher buildings block more sunlight, reducing the amount of natural light in the surrounding area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If buildings were shorter, there would be more sunlight."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the height of buildings influence the presence of community gardens?",
+      "answer": "Taller buildings often lead to less space for community gardens, as they take up more ground area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If buildings were not so tall, there would be more space for community gardens."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does better soil access contribute to the green space network in a city?",
+      "answer": "Improved soil access allows for more green spaces, such as parks and gardens, which enhance the overall green space network.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If soil access were limited, the green space network would be less extensive."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does the amount of sunlight influence the development of community gardens?",
+      "answer": "More sunlight encourages the growth of plants and makes community gardens more viable and productive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less sunlight, community gardens would struggle to thrive."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do community gardens contribute to food production in urban areas?",
+      "answer": "Community gardens provide fresh produce, increasing local food production and availability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without community gardens, food production in urban areas would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does the green space network in a city affect education opportunities?",
+      "answer": "A robust green space network provides more educational opportunities, such as outdoor learning and environmental studies.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the green space network were limited, there would be fewer educational opportunities."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do building shadows affect the amount of sunlight in an area?",
+      "answer": "Building shadows can significantly reduce the amount of sunlight, especially in densely built areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If buildings cast fewer shadows, there would be more sunlight."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does soil quality affect soil access in urban areas?",
+      "answer": "Better soil quality makes it more feasible to have accessible soil, supporting more green spaces and gardens.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If soil quality were poor, soil access would be less beneficial."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does food production in urban areas influence community engagement?",
+      "answer": "Increased food production through urban agriculture fosters community engagement and social cohesion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If food production were low, community engagement would also be lower."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do education opportunities in a city influence ecological thinking among residents?",
+      "answer": "Greater education opportunities, particularly those related to the environment, promote ecological thinking and awareness.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If education opportunities were limited, ecological thinking would be less prevalent."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does community engagement support seasonal planning for urban agriculture?",
+      "answer": "Active community engagement helps in organizing and implementing seasonal planning for urban agriculture, ensuring year-round productivity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community engagement were low, seasonal planning would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does ecological thinking influence the potential for urban agriculture in a city?",
+      "answer": "Ecological thinking drives the adoption and expansion of urban agriculture, enhancing its potential and sustainability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If ecological thinking were less common, the potential for urban agriculture would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does seasonal planning for urban agriculture affect its potential in a city?",
+      "answer": "Effective seasonal planning ensures that urban agriculture is well-organized and maximizes its potential throughout the year.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If seasonal planning were poor, the potential for urban agriculture would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the potential for urban agriculture influence your stance on upzoning in the city?",
+      "answer": "The potential for urban agriculture makes me more supportive of upzoning, as it can provide more space for sustainable practices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the potential for urban agriculture were low, I would be less supportive of upzoning."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "agent_id": "sample_99",
+  "demographics": {
+    "age": 64,
+    "income": "$30,000 - $60,000",
+    "education": "high school",
+    "occupation": "service worker",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e14",
+        "e15"
+      ]
+    },
+    "n2": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "sunlight",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "community_character",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "public_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "neighborhood_identity",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "health",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "social_interaction",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n10": {
+      "label": "cultural_heritage",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n11": {
+      "label": "quality_of_life",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_12",
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9",
+        "e10",
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n12": {
+      "label": "information_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n13": {
+      "label": "procedural_participation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n14": {
+      "label": "relationship_maintenance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n15": {
+      "label": "precedent_implications",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e6": {
+      "from": "n6",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e10": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e11": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e12": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e13": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e14": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e15": {
+      "from": "n11",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e16": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e17": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect traffic?",
+      "answer": "Higher urban density generally leads to more traffic congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, there would be less traffic."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher urban density reduce sunlight and community character?",
+      "answer": "Yes, higher urban density can lead to reduced sunlight and a loss of community character.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, there would be more sunlight and better community character."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does increased traffic affect accessibility?",
+      "answer": "Increased traffic often reduces accessibility, making it harder for people to get around.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, accessibility would improve."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does sunlight affect public spaces?",
+      "answer": "More sunlight generally makes public spaces more inviting and enjoyable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less sunlight, public spaces would be less inviting."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does community character influence neighborhood identity?",
+      "answer": "A strong community character helps in forming a distinct and positive neighborhood identity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the community character were weaker, the neighborhood identity would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does accessibility impact health?",
+      "answer": "Better accessibility to services and amenities generally improves health outcomes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, health outcomes would likely decline."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do public spaces affect social interaction?",
+      "answer": "Well-designed public spaces encourage more social interaction among residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were poorly designed, social interaction would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does neighborhood identity contribute to cultural heritage?",
+      "answer": "A strong neighborhood identity helps preserve and enhance cultural heritage.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the neighborhood identity were weak, cultural heritage would be at risk."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does health impact quality of life?",
+      "answer": "Good health is a key component of a high quality of life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If health were poor, the quality of life would significantly decline."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does social interaction affect quality of life?",
+      "answer": "Social interaction is crucial for a high quality of life, as it fosters a sense of community and well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social interaction were limited, the quality of life would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does cultural heritage influence quality of life?",
+      "answer": "Cultural heritage enriches the quality of life by providing a sense of history and identity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural heritage were lost, the quality of life would diminish."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does quality of life influence your stance on upzoning?",
+      "answer": "A high quality of life generally leads to a more favorable stance on upzoning, as it suggests that the changes are beneficial.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n16",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of life were poor, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does quality of life impact your overall well-being?",
+      "answer": "Quality of life is a major factor in my overall well-being, affecting my happiness and satisfaction with my living environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of life were poor, my overall well-being would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does access to information affect procedural participation?",
+      "answer": "Access to information is crucial for effective procedural participation, as it allows for informed decision-making.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If access to information were limited, procedural participation would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does procedural participation influence relationship maintenance?",
+      "answer": "Procedural participation helps in maintaining relationships by fostering a sense of community and shared goals.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If procedural participation were low, relationships would be harder to maintain."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does relationship maintenance affect precedent implications?",
+      "answer": "Strong relationship maintenance ensures that precedents are respected and followed, leading to more stable and predictable outcomes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If relationship maintenance were poor, precedents would be less likely to be followed."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do precedent implications influence your stance on upzoning?",
+      "answer": "Precedent implications play a significant role in my stance on upzoning, as they provide a basis for understanding the potential long-term effects of such changes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the precedent implications were negative, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "What is your stance on upzoning, and why?",
+      "answer": "My stance on upzoning is influenced by various factors such as quality of life, precedent implications, and the overall impact on the community. If these factors are positive, I am more likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the factors were negative, I would be less supportive of upzoning."
+      }
+    }
+  ]
+}

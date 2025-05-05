@@ -1,0 +1,1192 @@
+{
+  "agent_id": "sample_77",
+  "demographics": {
+    "age": 34,
+    "income": "$30,000 - $60,000",
+    "education": "high school",
+    "occupation": "healthcare worker",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
+    },
+    "n2": {
+      "label": "protected_infrastructure",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e6"
+      ]
+    },
+    "n3": {
+      "label": "connectivity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e7",
+        "e8"
+      ]
+    },
+    "n4": {
+      "label": "car_independence",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e9",
+        "e10"
+      ]
+    },
+    "n5": {
+      "label": "transportation_cost",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n6": {
+      "label": "safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n7": {
+      "label": "air_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n8": {
+      "label": "noise",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n9": {
+      "label": "accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e20"
+      ]
+    },
+    "n10": {
+      "label": "public_transport",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e21"
+      ]
+    },
+    "n11": {
+      "label": "bike_lanes",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e22"
+      ]
+    },
+    "n12": {
+      "label": "pedestrian_paths",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e23"
+      ]
+    },
+    "n13": {
+      "label": "transit_equity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e24"
+      ]
+    },
+    "n14": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e25"
+      ]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e19",
+        "e25"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n1",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n3",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n4",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n4",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n5",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n7",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n8",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n9",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n11",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n12",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n13",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect the amount of protected infrastructure in a city?",
+      "answer": "Higher urban density generally leads to more protected infrastructure, as cities need to ensure the safety and sustainability of their built environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be less protected infrastructure."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the relationship between urban density and connectivity in a city?",
+      "answer": "Higher urban density often results in better connectivity, as there are more people and resources to support efficient transportation networks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, the city would have poorer connectivity."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density influence car independence in a city?",
+      "answer": "Higher urban density tends to increase car independence, as residents can rely more on public transportation and other non-car modes of travel.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, people would be more dependent on cars."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "Does higher urban density lead to higher transportation costs?",
+      "answer": "No, higher urban density generally leads to lower transportation costs, as it allows for more efficient use of public transportation and reduces the need for personal vehicles.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, transportation costs would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does protected infrastructure contribute to the safety of a city?",
+      "answer": "Protected infrastructure, such as well-maintained roads and buildings, enhances the safety of a city by reducing the risk of accidents and structural failures.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less protected infrastructure, the city would be less safe."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the impact of protected infrastructure on air quality in a city?",
+      "answer": "Protected infrastructure, such as green spaces and pollution control measures, can significantly improve air quality by reducing pollutants and enhancing the natural environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less protected infrastructure, air quality would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does connectivity affect the accessibility of a city?",
+      "answer": "Better connectivity in a city improves accessibility, making it easier for residents to reach various destinations and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity were poor, the city would be less accessible."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "What is the relationship between connectivity and the availability of public transportation?",
+      "answer": "Better connectivity in a city is often associated with more extensive and reliable public transportation systems, making it easier for residents to get around without a car.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity were poor, public transportation would be less available."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does car independence affect the presence of bike lanes in a city?",
+      "answer": "Greater car independence often leads to more bike lanes, as cities invest in infrastructure that supports alternative modes of transportation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If car independence were lower, there would be fewer bike lanes."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the impact of car independence on the presence of pedestrian paths in a city?",
+      "answer": "Greater car independence often leads to more pedestrian paths, as cities prioritize walkability and create safer, more accessible environments for pedestrians.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If car independence were lower, there would be fewer pedestrian paths."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does transportation cost affect transit equity in a city?",
+      "answer": "Lower transportation costs can improve transit equity by making it more affordable for all residents to access essential services and opportunities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation costs were higher, transit equity would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "Does safety in a city have an impact on noise levels?",
+      "answer": "Safety in a city can reduce noise levels, as secure and well-managed environments tend to have fewer disturbances and disruptions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city were less safe, noise levels would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does air quality affect traffic in a city?",
+      "answer": "Improved air quality can lead to better traffic conditions, as cleaner air often correlates with more efficient and sustainable transportation systems.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If air quality were worse, traffic conditions would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does noise in a city affect a person's stance on upzoning?",
+      "answer": "Higher noise levels in a city can make a person less likely to support upzoning, as they may associate increased density with more noise and disruption.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If noise levels were lower, a person might be more supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does accessibility in a city influence a person's stance on upzoning?",
+      "answer": "Better accessibility in a city can make a person more likely to support upzoning, as they may see the benefits of increased density in terms of improved access to services and amenities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were poor, a person might be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does the availability of public transportation affect a person's stance on upzoning?",
+      "answer": "The availability of public transportation can make a person more likely to support upzoning, as they may see the benefits of increased density in terms of better access to efficient and reliable transit options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transportation were less available, a person might be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do bike lanes in a city influence a person's stance on upzoning?",
+      "answer": "The presence of bike lanes can make a person more likely to support upzoning, as they may see the benefits of increased density in terms of better cycling infrastructure and reduced reliance on cars.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer bike lanes, a person might be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How do pedestrian paths in a city influence a person's stance on upzoning?",
+      "answer": "The presence of pedestrian paths can make a person more likely to support upzoning, as they may see the benefits of increased density in terms of better walkability and reduced reliance on cars.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer pedestrian paths, a person might be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does transit equity in a city influence a person's stance on upzoning?",
+      "answer": "Better transit equity can make a person more likely to support upzoning, as they may see the benefits of increased density in terms of more equitable access to transportation and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transit equity were worse, a person might be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does traffic in a city influence a person's stance on upzoning?",
+      "answer": "Worse traffic conditions can make a person less likely to support upzoning, as they may associate increased density with more congestion and delays.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic conditions were better, a person might be more supportive of upzoning."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1012 @@
+{
+  "agent_id": "sample_53",
+  "demographics": {
+    "age": 60,
+    "income": "> $100,000",
+    "education": "bachelor's degree",
+    "occupation": "retired",
+    "housing": "homeowner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e17"
+      ]
+    },
+    "n2": {
+      "label": "green_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3",
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "walking_routes",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e6"
+      ]
+    },
+    "n4": {
+      "label": "pet_services",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n5": {
+      "label": "pet_socialization",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n6": {
+      "label": "animal_regulations",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n7": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e10",
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "noise",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n9": {
+      "label": "safety",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "air_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n11": {
+      "label": "public_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n12": {
+      "label": "neighborhood_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e8",
+        "e9",
+        "e13",
+        "e14",
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n13": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does building density affect the amount of green space in a neighborhood?",
+      "answer": "As building density increases, the amount of green space typically decreases.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were to decrease, then the amount of green space would likely increase."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does building density impact the availability of walking routes?",
+      "answer": "Higher building density often leads to more walking routes being available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were to decrease, then the availability of walking routes would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the amount of green space influence pet socialization?",
+      "answer": "More green space provides more opportunities for pets to socialize with other pets and people.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less green space, then pet socialization would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does the amount of green space affect the quality of public spaces?",
+      "answer": "More green space generally improves the quality of public spaces.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less green space, then the quality of public spaces would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do walking routes influence pet socialization?",
+      "answer": "More walking routes provide more opportunities for pets to socialize with other pets and people.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer walking routes, then pet socialization would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do walking routes affect the quality of public spaces?",
+      "answer": "More walking routes generally improve the quality of public spaces by making them more accessible and enjoyable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer walking routes, then the quality of public spaces would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does the availability of pet services influence the overall quality of the neighborhood?",
+      "answer": "The availability of pet services positively contributes to the overall quality of the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer pet services, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does pet socialization contribute to the overall quality of the neighborhood?",
+      "answer": "Pet socialization positively contributes to the overall quality of the neighborhood by fostering a sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If pet socialization were to decrease, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do animal regulations impact the overall quality of the neighborhood?",
+      "answer": "Effective animal regulations positively contribute to the overall quality of the neighborhood by ensuring safety and well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If animal regulations were ineffective, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does traffic affect the safety of a neighborhood?",
+      "answer": "Increased traffic can negatively impact the safety of a neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic were to decrease, then the safety of the neighborhood would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does traffic affect air quality in a neighborhood?",
+      "answer": "Increased traffic can negatively impact air quality in a neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic were to decrease, then air quality in the neighborhood would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does noise affect the overall quality of the neighborhood?",
+      "answer": "Increased noise can negatively impact the overall quality of the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If noise were to decrease, then the overall quality of the neighborhood would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does safety affect the overall quality of the neighborhood?",
+      "answer": "Improved safety positively contributes to the overall quality of the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safety were to decrease, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does air quality affect the overall quality of the neighborhood?",
+      "answer": "Improved air quality positively contributes to the overall quality of the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If air quality were to decrease, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the quality of public spaces affect the overall quality of the neighborhood?",
+      "answer": "Improved quality of public spaces positively contributes to the overall quality of the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of public spaces were to decrease, then the overall quality of the neighborhood would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does the overall quality of the neighborhood influence your stance on upzoning?",
+      "answer": "If the overall quality of the neighborhood is high, I am less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the overall quality of the neighborhood were to decrease, then I would be more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does building density affect the availability of pet services?",
+      "answer": "Higher building density often leads to a decrease in the availability of pet services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building density were to decrease, then the availability of pet services would likely increase."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1178 @@
+{
+  "agent_id": "sample_20",
+  "demographics": {
+    "age": 18,
+    "income": "$60,000 - $100,000",
+    "education": "bachelor's degree",
+    "occupation": "student",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e16",
+        "e17"
+      ]
+    },
+    "n2": {
+      "label": "community_engagement",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2",
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "public_participation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "decision_transparency",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "historical_inequities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "development_outcomes",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "organizing_capacity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "fairness",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "inclusivity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n10": {
+      "label": "power_dynamics",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n11": {
+      "label": "collective_impact",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n12": {
+      "label": "planning_decisions",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n13": {
+      "label": "social_equity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n15": {
+      "label": "affordability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n16": {
+      "label": "environmental_sustainability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n17": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_33",
+          "qa_34"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14",
+        "e15",
+        "e18",
+        "e19"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e7": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e8": {
+      "from": "n7",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e9": {
+      "from": "n8",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e10": {
+      "from": "n9",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e11": {
+      "from": "n10",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e12": {
+      "from": "n11",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e13": {
+      "from": "n12",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    },
+    "e14": {
+      "from": "n13",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_25"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_25"
+      ]
+    },
+    "e15": {
+      "from": "n14",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_27"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_27"
+      ]
+    },
+    "e16": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e17": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e18": {
+      "from": "n15",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_29"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_29"
+      ]
+    },
+    "e19": {
+      "from": "n16",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n16"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_31"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_31"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect community engagement?",
+      "answer": "Higher urban density generally leads to more community engagement.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be less community engagement."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher urban density lead to less public participation?",
+      "answer": "Yes, higher urban density tends to reduce public participation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be more public participation."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does community engagement influence historical inequities?",
+      "answer": "Increased community engagement can help address and mitigate historical inequities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community engagement were lower, historical inequities would be more pronounced."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "What is the impact of community engagement on development outcomes?",
+      "answer": "Community engagement positively influences development outcomes by ensuring that projects meet local needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community engagement were lower, development outcomes would be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does public participation affect organizing capacity?",
+      "answer": "Public participation enhances organizing capacity by increasing the number of people involved in community initiatives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public participation were lower, organizing capacity would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Does decision transparency have a positive impact on fairness?",
+      "answer": "Yes, decision transparency contributes to a fairer decision-making process.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If decision transparency were lower, the decision-making process would be less fair."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does urban density affect decision transparency?",
+      "answer": "Higher urban density tends to reduce decision transparency.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, decision transparency would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Does addressing historical inequities lead to greater inclusivity?",
+      "answer": "Yes, addressing historical inequities promotes greater inclusivity in the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If historical inequities were not addressed, inclusivity would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do development outcomes influence power dynamics?",
+      "answer": "Positive development outcomes can shift power dynamics in favor of the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If development outcomes were negative, power dynamics would favor other stakeholders."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does organizing capacity contribute to collective impact?",
+      "answer": "Strong organizing capacity enhances the collective impact of community initiatives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If organizing capacity were weak, the collective impact would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "Does fairness in decision-making lead to better planning decisions?",
+      "answer": "Yes, fairness in decision-making results in more effective and equitable planning decisions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If fairness in decision-making were compromised, planning decisions would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does inclusivity influence social equity?",
+      "answer": "Inclusivity is a key factor in promoting social equity within the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If inclusivity were lower, social equity would be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do power dynamics affect accessibility?",
+      "answer": "Power dynamics play a crucial role in determining the accessibility of resources and opportunities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If power dynamics were different, accessibility would be affected."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "Does collective impact lead to better affordability?",
+      "answer": "Yes, a strong collective impact can improve affordability for the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If collective impact were weak, affordability would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How do planning decisions influence environmental sustainability?",
+      "answer": "Effective planning decisions are essential for promoting environmental sustainability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If planning decisions were poor, environmental sustainability would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "Does social equity influence one's stance on upzoning?",
+      "answer": "Yes, social equity is a significant factor in forming a positive stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n17",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social equity were not a concern, the stance on upzoning might be different."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does accessibility influence one's stance on upzoning?",
+      "answer": "Accessibility is a critical factor; if it is high, it may lead to a negative stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n17",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were low, the stance on upzoning might be more positive."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "Does affordability influence one's stance on upzoning?",
+      "answer": "Affordability is a key factor; if it is high, it supports a positive stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n17",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If affordability were low, the stance on upzoning might be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does environmental sustainability influence one's stance on upzoning?",
+      "answer": "Environmental sustainability is a significant factor; if it is high, it may lead to a negative stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n16",
+          "to": "n17",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If environmental sustainability were not a concern, the stance on upzoning might be more positive."
+      }
+    }
+  ]
+}

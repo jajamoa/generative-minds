@@ -1,0 +1,1292 @@
+{
+  "agent_id": "sample_91",
+  "demographics": {
+    "age": 31,
+    "income": "> $100,000",
+    "education": "some college",
+    "occupation": "technician",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04",
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e5"
+      ]
+    },
+    "n3": {
+      "label": "sunlight",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06",
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n4": {
+      "label": "space_flexibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08",
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e7",
+        "e22"
+      ]
+    },
+    "n5": {
+      "label": "privacy_management",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10",
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8",
+        "e23"
+      ]
+    },
+    "n6": {
+      "label": "accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12",
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8",
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n7": {
+      "label": "age_diverse_services",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14",
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n8": {
+      "label": "amenities_proximity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16",
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n9": {
+      "label": "mobility_levels",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_18",
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n10": {
+      "label": "family_system_accommodation",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_20",
+          "qa_21"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13",
+        "e24"
+      ]
+    },
+    "n11": {
+      "label": "inter_age_need_balancing",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_22",
+          "qa_23"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14",
+        "e25"
+      ]
+    },
+    "n12": {
+      "label": "community_character",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_24",
+          "qa_25"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14",
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n13": {
+      "label": "public_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_26",
+          "qa_27"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n14": {
+      "label": "neighborhood_identity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_28",
+          "qa_29"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n15": {
+      "label": "quality_of_life",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_30",
+          "qa_31"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17",
+        "e22",
+        "e23",
+        "e24",
+        "e25"
+      ],
+      "outgoing_edges": [
+        "e26"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_32",
+          "qa_33"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e26"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e22": {
+      "from": "n4",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e23": {
+      "from": "n5",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e24": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    },
+    "e25": {
+      "from": "n11",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e26": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does building height affect traffic?",
+      "answer": "Increased building height tends to increase traffic as more people move into the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building height were lower, there would be less traffic."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does building height affect sunlight?",
+      "answer": "Higher buildings tend to block more sunlight, reducing the amount of natural light in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building height were lower, there would be more sunlight."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does building height affect space flexibility?",
+      "answer": "Higher buildings often lead to less flexible use of space, as they are more rigid and less adaptable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building height were lower, there would be more flexibility in space use."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does traffic affect accessibility?",
+      "answer": "Increased traffic can make it harder to access certain areas, reducing overall accessibility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, accessibility would improve."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does traffic affect community character?",
+      "answer": "Increased traffic can negatively impact the community character by making the area feel more congested and less pleasant.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, the community character would be more positive."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does sunlight affect space flexibility?",
+      "answer": "More sunlight can enhance the flexibility of space, as it makes the area more inviting and usable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less sunlight, space flexibility would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does space flexibility affect privacy management?",
+      "answer": "Greater space flexibility allows for better management of privacy, as spaces can be adapted to meet different needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If space flexibility were lower, privacy management would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does privacy management affect accessibility?",
+      "answer": "Better privacy management can improve accessibility by making people feel more comfortable and secure in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If privacy management were worse, accessibility would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does accessibility affect age-diverse services?",
+      "answer": "Improved accessibility leads to better availability of age-diverse services, as more people can easily reach them.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were worse, age-diverse services would be less available."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How do age-diverse services affect amenities proximity?",
+      "answer": "Having a variety of age-diverse services improves the proximity of amenities, as more services are available within a short distance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If age-diverse services were fewer, amenities would be less proximate."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does amenities proximity affect mobility levels?",
+      "answer": "Better proximity of amenities enhances mobility levels, as people can more easily access the services they need.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If amenities were less proximate, mobility levels would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do mobility levels affect family system accommodation?",
+      "answer": "Higher mobility levels allow for better accommodation of family systems, as families can more easily access the resources they need.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If mobility levels were lower, family system accommodation would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does family system accommodation affect inter-age need balancing?",
+      "answer": "Better accommodation of family systems helps balance the needs of different age groups, as all members of the family can have their needs met.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If family system accommodation were worse, inter-age need balancing would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does inter-age need balancing affect community character?",
+      "answer": "Balancing the needs of different age groups positively impacts the community character, as it fosters a more inclusive and harmonious environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If inter-age need balancing were worse, the community character would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does community character affect public space?",
+      "answer": "A positive community character enhances the quality and usability of public spaces, as people are more likely to engage and take care of these areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the community character were negative, public spaces would be less well-maintained and used."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does public space affect neighborhood identity?",
+      "answer": "Well-maintained and accessible public spaces contribute to a stronger neighborhood identity, as they become a focal point for community activities and interactions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were poorly maintained, the neighborhood identity would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does neighborhood identity affect quality of life?",
+      "answer": "A strong neighborhood identity enhances the overall quality of life, as residents feel a greater sense of belonging and pride in their community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the neighborhood identity were weak, the quality of life would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does space flexibility affect quality of life?",
+      "answer": "Greater space flexibility contributes to a higher quality of life, as it allows for more versatile and comfortable living conditions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If space flexibility were lower, the quality of life would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does privacy management affect quality of life?",
+      "answer": "Effective privacy management enhances the quality of life, as it provides a sense of security and comfort in one's living environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If privacy management were poor, the quality of life would be negatively impacted."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does family system accommodation affect quality of life?",
+      "answer": "Accommodating the needs of family systems improves the quality of life, as it ensures that all family members have a comfortable and supportive living environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If family system accommodation were inadequate, the quality of life would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does inter-age need balancing affect quality of life?",
+      "answer": "Balancing the needs of different age groups enhances the quality of life, as it creates a more inclusive and supportive community environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If inter-age need balancing were poor, the quality of life would be negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does quality of life affect upzoning stance?",
+      "answer": "A higher quality of life generally leads to a more favorable stance on upzoning, as residents are more satisfied with their living conditions and open to changes that could further improve the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of life were lower, the stance on upzoning would be more negative."
+      }
+    }
+  ]
+}

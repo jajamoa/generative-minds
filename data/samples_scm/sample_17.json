@@ -1,0 +1,1192 @@
+{
+  "agent_id": "sample_17",
+  "demographics": {
+    "age": 65,
+    "income": "< $30,000",
+    "education": "high school",
+    "occupation": "educator",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "connectivity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3",
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "innovation_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e6"
+      ]
+    },
+    "n4": {
+      "label": "career_flexibility",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e7",
+        "e8"
+      ]
+    },
+    "n5": {
+      "label": "high_speed_internet",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n6": {
+      "label": "collaborative_spaces",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "tech_community_presence",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "work_efficiency",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n9": {
+      "label": "urban_innovation_ecosystem",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "networking_opportunities",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n11": {
+      "label": "remote_work_capability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n12": {
+      "label": "face_to_face_collaboration",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n13": {
+      "label": "infrastructure_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13",
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "innovation_potential",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n15": {
+      "label": "quality_of_life",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14",
+        "e15",
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17",
+        "e18"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n11",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n13",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n13",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n14",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect connectivity?",
+      "answer": "Higher urban density generally leads to better connectivity because more people and businesses are closer together, which can improve transportation and communication networks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the connectivity would likely be worse."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher urban density lead to more innovation opportunities?",
+      "answer": "Yes, higher urban density often leads to more innovation opportunities because it brings a larger and more diverse group of people together, fostering new ideas and collaborations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then there would likely be fewer innovation opportunities."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does connectivity influence the availability of high-speed internet?",
+      "answer": "Better connectivity in an area typically leads to improved infrastructure, including high-speed internet, as service providers are more likely to invest in well-connected areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the connectivity were poor, then the availability of high-speed internet would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "Does better connectivity lead to more collaborative spaces?",
+      "answer": "Yes, better connectivity often leads to more collaborative spaces because it makes it easier for people to come together and work on projects, leading to the creation of shared workspaces and meeting places.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the connectivity were poor, then there would likely be fewer collaborative spaces."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do innovation opportunities impact the presence of a tech community?",
+      "answer": "More innovation opportunities attract and support a tech community by providing a fertile ground for startups, research, and development, which in turn draws more tech professionals and enthusiasts.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer innovation opportunities, then the tech community presence would likely be smaller."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Do innovation opportunities improve work efficiency?",
+      "answer": "Yes, innovation opportunities can improve work efficiency by introducing new tools, processes, and technologies that help people work more effectively and productively.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer innovation opportunities, then work efficiency would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does career flexibility enable remote work capability?",
+      "answer": "Career flexibility, such as the ability to work from different locations or on flexible schedules, enables remote work capability by allowing individuals to adapt their work to their personal circumstances and preferences.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less career flexibility, then remote work capability would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Does career flexibility promote face-to-face collaboration?",
+      "answer": "While career flexibility primarily supports remote work, it can also promote face-to-face collaboration by allowing individuals to schedule in-person meetings and work sessions when needed, enhancing teamwork and communication.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less career flexibility, then face-to-face collaboration might be more challenging to arrange."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does high-speed internet affect work efficiency?",
+      "answer": "High-speed internet improves work efficiency by enabling faster data transfer, smoother video conferencing, and quicker access to cloud-based tools, which all contribute to more productive and seamless work experiences.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the internet speed were slower, then work efficiency would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "Do collaborative spaces enhance networking opportunities?",
+      "answer": "Yes, collaborative spaces provide a physical environment where people can meet, interact, and build relationships, which enhances networking opportunities and fosters a sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer collaborative spaces, then networking opportunities would likely be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does the presence of a tech community contribute to the urban innovation ecosystem?",
+      "answer": "The presence of a tech community is crucial for the urban innovation ecosystem because it provides a pool of talent, resources, and knowledge that drives technological advancements and supports the growth of innovative businesses and projects.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the tech community were smaller, then the urban innovation ecosystem would likely be less vibrant."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "Does work efficiency increase the potential for innovation?",
+      "answer": "Yes, work efficiency increases the potential for innovation by freeing up time and resources that can be dedicated to creative and exploratory activities, leading to new ideas and solutions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If work efficiency were lower, then the potential for innovation would likely be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the urban innovation ecosystem impact networking opportunities?",
+      "answer": "A strong urban innovation ecosystem provides a rich environment for networking, as it brings together a diverse group of innovators, entrepreneurs, and professionals who can share ideas, collaborate, and form valuable connections.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban innovation ecosystem were weaker, then networking opportunities would likely be fewer."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "Does the quality of life improve with better networking opportunities?",
+      "answer": "Yes, better networking opportunities can improve the quality of life by providing individuals with more social and professional connections, which can lead to better job prospects, personal growth, and a stronger sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If networking opportunities were limited, then the quality of life would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does remote work capability affect the quality of life?",
+      "answer": "Remote work capability can significantly improve the quality of life by offering more flexibility, reducing commute times, and allowing individuals to work in environments that suit their needs and preferences.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If remote work capability were limited, then the quality of life would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "Does face-to-face collaboration enhance the quality of life?",
+      "answer": "Yes, face-to-face collaboration can enhance the quality of life by fostering deeper and more meaningful interactions, building stronger relationships, and creating a more engaging and fulfilling work experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If face-to-face collaboration were limited, then the quality of life would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does infrastructure quality affect the availability of high-speed internet?",
+      "answer": "Better infrastructure quality, including advanced telecommunications and network infrastructure, directly contributes to the availability of high-speed internet by ensuring that the necessary hardware and services are in place.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the infrastructure quality were poor, then the availability of high-speed internet would likely be lower."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "Does infrastructure quality impact the number of collaborative spaces?",
+      "answer": "Yes, better infrastructure quality, such as reliable utilities and well-maintained public spaces, supports the creation and maintenance of collaborative spaces by making them more accessible and functional.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the infrastructure quality were poor, then there would likely be fewer collaborative spaces."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does the potential for innovation influence one's stance on upzoning?",
+      "answer": "A high potential for innovation can make someone more supportive of upzoning, as it suggests that the area has the capacity to grow and develop in positive ways, potentially leading to more opportunities and benefits for the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the potential for innovation were low, then the stance on upzoning might be less supportive."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "Does a higher quality of life make someone more likely to support upzoning?",
+      "answer": "Yes, a higher quality of life can make someone more likely to support upzoning, as they may see it as a way to maintain or even enhance the positive aspects of their living environment, such as better housing, amenities, and community resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of life were lower, then the support for upzoning might be less."
+      }
+    }
+  ]
+}

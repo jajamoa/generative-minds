@@ -1,0 +1,826 @@
+{
+  "agent_id": "sample_55",
+  "demographics": {
+    "age": 47,
+    "income": "$30,000 - $60,000",
+    "education": "some college",
+    "occupation": "student",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "facility_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_02",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8",
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e1"
+      ]
+    },
+    "n2": {
+      "label": "route_options",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
+    },
+    "n3": {
+      "label": "traffic_safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n4": {
+      "label": "maintenance_levels",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n5": {
+      "label": "lighting_adequacy",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n6": {
+      "label": "physical_activity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n7": {
+      "label": "connected_pathways",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n8": {
+      "label": "sports_facilities",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n9": {
+      "label": "multi_use_opportunities",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n10": {
+      "label": "challenge_seeking",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n11": {
+      "label": "route_optimization",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n12": {
+      "label": "built_environment",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n13": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n6",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n1",
+      "function": {
+        "target": "n1",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n1",
+      "function": {
+        "target": "n1",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n11",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the availability of facilities affect physical activity levels?",
+      "answer": "The more accessible the facilities, the higher the likelihood of engaging in physical activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer accessible facilities, then people would engage in less physical activity."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the impact of having more route options on physical activity?",
+      "answer": "Having more route options increases the likelihood of engaging in physical activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer route options, then people would engage in less physical activity."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does traffic safety influence physical activity?",
+      "answer": "Better traffic safety encourages more physical activity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic safety were worse, then people would engage in less physical activity."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do maintenance levels affect physical activity?",
+      "answer": "Higher maintenance levels lead to more physical activity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If maintenance levels were lower, then people would engage in less physical activity."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does adequate lighting influence physical activity?",
+      "answer": "Adequate lighting increases the likelihood of engaging in physical activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If lighting were inadequate, then people would engage in less physical activity."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does physical activity contribute to the built environment?",
+      "answer": "Increased physical activity leads to a better-built environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If physical activity were lower, then the built environment would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do connected pathways influence route options?",
+      "answer": "More connected pathways increase the number of route options available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer connected pathways, then there would be fewer route options."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do sports facilities affect facility access?",
+      "answer": "The presence of sports facilities improves facility access.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer sports facilities, then facility access would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do multi-use opportunities affect facility access?",
+      "answer": "Multi-use opportunities enhance facility access.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer multi-use opportunities, then facility access would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does challenge-seeking behavior influence route optimization?",
+      "answer": "People who seek challenges are more likely to optimize their routes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If people did not seek challenges, then they would be less likely to optimize their routes."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does route optimization influence route options?",
+      "answer": "Route optimization increases the number of route options available.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If route optimization were lower, then there would be fewer route options."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does the built environment influence upzoning stance?",
+      "answer": "A better-built environment leads to a more positive stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the built environment were worse, then the stance on upzoning would be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the presence of sports facilities affect facility access?",
+      "answer": "The presence of sports facilities improves facility access.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer sports facilities, then facility access would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How do multi-use opportunities affect facility access?",
+      "answer": "Multi-use opportunities enhance facility access.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer multi-use opportunities, then facility access would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the built environment influence upzoning stance?",
+      "answer": "A better-built environment leads to a more positive stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the built environment were worse, then the stance on upzoning would be more negative."
+      }
+    }
+  ]
+}

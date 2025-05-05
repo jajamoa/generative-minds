@@ -1,0 +1,1154 @@
+{
+  "agent_id": "sample_34",
+  "demographics": {
+    "age": 43,
+    "income": "< $30,000",
+    "education": "high school",
+    "occupation": "technician",
+    "housing": "homeowner"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "language_services",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e5"
+      ]
+    },
+    "n3": {
+      "label": "community_acceptance",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n4": {
+      "label": "economic_opportunity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n5": {
+      "label": "cultural_adaptation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n6": {
+      "label": "cross_cultural_exchange",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "inclusive_services",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "social_integration",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n9": {
+      "label": "belonging",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "employment",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n11": {
+      "label": "education",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n12": {
+      "label": "healthcare",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n13": {
+      "label": "housing_affordability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n14": {
+      "label": "transportation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n15": {
+      "label": "public_spaces",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e16",
+        "e17",
+        "e18",
+        "e19"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e9": {
+      "from": "n5",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_25"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_25"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_27"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_27"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_29"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_29"
+      ]
+    },
+    "e15": {
+      "from": "n11",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_31"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_31"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_32"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_32"
+      ]
+    },
+    "e17": {
+      "from": "n13",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_33"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_33"
+      ]
+    },
+    "e18": {
+      "from": "n14",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_34"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_34"
+      ]
+    },
+    "e19": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_35"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_35"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect the availability of language services in a community?",
+      "answer": "Higher urban density generally leads to more language services being available, as there is a greater need and demand for such services in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be fewer language services available."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher urban density influence community acceptance of new residents?",
+      "answer": "Yes, higher urban density can lead to better community acceptance, as diverse communities are more accustomed to welcoming new residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, community acceptance might be less welcoming."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "What is the relationship between language services and cultural adaptation in a community?",
+      "answer": "The availability of language services helps new residents adapt to the local culture, making it easier for them to integrate and feel at home.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without adequate language services, cultural adaptation would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do language services impact cross-cultural exchanges in a community?",
+      "answer": "Language services facilitate cross-cultural exchanges by enabling communication and understanding between different cultural groups, leading to a more integrated and harmonious community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without language services, cross-cultural exchanges would be less frequent and effective."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does community acceptance affect the provision of inclusive services?",
+      "answer": "Communities that are more accepting are more likely to provide inclusive services, ensuring that all residents, regardless of background, have access to necessary resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community acceptance were lower, inclusive services would be less available."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the connection between community acceptance and social integration?",
+      "answer": "Community acceptance plays a crucial role in social integration, as it fosters an environment where new residents feel welcome and can easily become part of the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community acceptance were lower, social integration would be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does urban density influence economic opportunities in a community?",
+      "answer": "Higher urban density often leads to more economic opportunities, as businesses and job markets tend to thrive in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be fewer economic opportunities."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does economic opportunity affect employment rates in a community?",
+      "answer": "Greater economic opportunity directly leads to higher employment rates, as more jobs and business opportunities are available to the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If economic opportunities were limited, employment rates would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does cultural adaptation contribute to a sense of belonging in a community?",
+      "answer": "Cultural adaptation helps new residents feel more at home and connected to their community, fostering a strong sense of belonging.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without successful cultural adaptation, a sense of belonging would be harder to achieve."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the impact of cross-cultural exchange on education in a community?",
+      "answer": "Cross-cultural exchange enriches the educational experience, providing students with a broader perspective and a more diverse learning environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without cross-cultural exchange, the educational experience would be less diverse and enriching."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does the availability of inclusive services affect healthcare in a community?",
+      "answer": "Inclusive services ensure that all residents have access to quality healthcare, improving overall health outcomes and well-being in the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If inclusive services were not available, healthcare access and outcomes would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "What is the relationship between social integration and housing affordability?",
+      "answer": "Social integration can improve housing affordability by creating a more stable and supportive community, which can help reduce housing costs and improve living conditions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without social integration, housing affordability would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does a sense of belonging influence transportation options in a community?",
+      "answer": "A strong sense of belonging can lead to better transportation options, as residents are more likely to advocate for and support improvements in public transportation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If residents did not feel a sense of belonging, they might be less involved in improving transportation options."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does employment affect the development of public spaces in a community?",
+      "answer": "Employment contributes to the development of public spaces, as employed residents have the means and motivation to support and use these spaces, leading to their improvement and maintenance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If employment rates were low, the development and maintenance of public spaces would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does education influence one's stance on upzoning in a community?",
+      "answer": "Education can shape a person's stance on upzoning, as it provides a better understanding of the benefits and potential drawbacks, leading to a more informed and positive view of upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without proper education, a person's stance on upzoning might be less informed and potentially negative."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does access to healthcare influence one's stance on upzoning in a community?",
+      "answer": "Access to quality healthcare can positively influence a person's stance on upzoning, as it demonstrates the benefits of having well-planned and accessible services, leading to a more favorable view of upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If healthcare access were poor, a person's stance on upzoning might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does housing affordability affect one's stance on upzoning in a community?",
+      "answer": "Housing affordability is a key factor in shaping one's stance on upzoning, as it highlights the need for more affordable housing options, leading to a more positive view of upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If housing were unaffordable, a person's stance on upzoning might be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does the availability of transportation options influence one's stance on upzoning in a community?",
+      "answer": "Good transportation options can positively influence a person's stance on upzoning, as it shows the benefits of having well-connected and accessible transportation, leading to a more favorable view of upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation options were poor, a person's stance on upzoning might be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does the development of public spaces influence one's stance on upzoning in a community?",
+      "answer": "Well-developed public spaces can positively influence a person's stance on upzoning, as it demonstrates the benefits of having well-maintained and accessible public areas, leading to a more favorable view of upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public spaces were poorly maintained, a person's stance on upzoning might be less favorable."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1126 @@
+{
+  "agent_id": "sample_95",
+  "demographics": {
+    "age": 45,
+    "income": "$60,000 - $100,000",
+    "education": "master's degree or higher",
+    "occupation": "professional",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e17"
+      ]
+    },
+    "n2": {
+      "label": "amenities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3",
+        "e4",
+        "e5"
+      ]
+    },
+    "n3": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e18",
+        "e19"
+      ]
+    },
+    "n4": {
+      "label": "social_connections",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n5": {
+      "label": "entertainment_options",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n6": {
+      "label": "career_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n7": {
+      "label": "recreation_facilities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n8": {
+      "label": "community_vibrancy",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n9": {
+      "label": "urban_lifestyle",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e13",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n10": {
+      "label": "life_satisfaction",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e8",
+        "e9",
+        "e10",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n11": {
+      "label": "walkability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n12": {
+      "label": "diversity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n13": {
+      "label": "public_spaces",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n14": {
+      "label": "chosen_family",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n13",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n11",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n12",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n9",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n1",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n3",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the height of buildings in a city affect the availability of amenities?",
+      "answer": "Taller buildings in a city generally lead to more amenities as they can accommodate more businesses and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the buildings were shorter, there would be fewer amenities available."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does the height of buildings in a city affect traffic?",
+      "answer": "Taller buildings in a city can lead to increased traffic due to more people and activities in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the buildings were shorter, there would be less traffic."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How do amenities in a city affect entertainment options?",
+      "answer": "More amenities in a city typically lead to better and more diverse entertainment options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer amenities, there would be fewer entertainment options."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do amenities in a city affect career opportunities?",
+      "answer": "More amenities in a city often correlate with more career opportunities as they attract more businesses and industries.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer amenities, there would be fewer career opportunities."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do amenities in a city affect recreation facilities?",
+      "answer": "More amenities in a city usually mean more and better recreation facilities, such as parks and sports centers.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer amenities, there would be fewer recreation facilities."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does traffic in a city affect community vibrancy?",
+      "answer": "High traffic in a city can negatively impact community vibrancy by making it less pleasant and more stressful for residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, the community would be more vibrant."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do social connections affect life satisfaction?",
+      "answer": "Strong social connections generally lead to higher life satisfaction as they provide emotional support and a sense of belonging.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social connections were weaker, life satisfaction would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do entertainment options in a city affect life satisfaction?",
+      "answer": "More and better entertainment options in a city generally lead to higher life satisfaction as they provide more leisure and enjoyment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer entertainment options, life satisfaction would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do career opportunities in a city affect life satisfaction?",
+      "answer": "More career opportunities in a city generally lead to higher life satisfaction as they provide better financial security and personal growth.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer career opportunities, life satisfaction would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How do recreation facilities in a city affect life satisfaction?",
+      "answer": "Better and more accessible recreation facilities in a city generally lead to higher life satisfaction as they provide more opportunities for physical and mental well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer recreation facilities, life satisfaction would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does community vibrancy affect urban lifestyle?",
+      "answer": "A vibrant community positively influences the urban lifestyle by creating a more engaging and enjoyable environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the community were less vibrant, the urban lifestyle would be less appealing."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do public spaces in a city affect community vibrancy?",
+      "answer": "More and better public spaces in a city generally lead to higher community vibrancy as they provide places for people to gather and interact.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer public spaces, the community would be less vibrant."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does walkability in a city affect urban lifestyle?",
+      "answer": "Better walkability in a city generally leads to a more enjoyable and active urban lifestyle as it encourages more walking and outdoor activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city were less walkable, the urban lifestyle would be less enjoyable."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does diversity in a city affect urban lifestyle?",
+      "answer": "Greater diversity in a city generally leads to a richer and more interesting urban lifestyle as it provides more cultural experiences and perspectives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city were less diverse, the urban lifestyle would be less rich and interesting."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does urban lifestyle affect your stance on upzoning?",
+      "answer": "A positive urban lifestyle generally makes me more supportive of upzoning as it suggests that the city is thriving and can handle more development.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban lifestyle were less positive, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does life satisfaction affect your stance on upzoning?",
+      "answer": "Higher life satisfaction generally makes me more supportive of upzoning as it indicates that the current living conditions are good and can be improved further.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If life satisfaction were lower, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does the height of buildings in a city affect walkability?",
+      "answer": "Taller buildings in a city can make it less walkable due to the increased density and potential for overcrowding.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the buildings were shorter, the city would be more walkable."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does traffic in a city affect community vibrancy?",
+      "answer": "High traffic in a city can negatively impact community vibrancy by making it less pleasant and more stressful for residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, the community would be more vibrant."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does traffic in a city affect walkability?",
+      "answer": "High traffic in a city can make it less walkable due to safety concerns and the overall unpleasantness of walking in a congested area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were less traffic, the city would be more walkable."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1188 @@
+{
+  "agent_id": "sample_97",
+  "demographics": {
+    "age": 54,
+    "income": "< $30,000",
+    "education": "bachelor's degree",
+    "occupation": "student",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "power_reliability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e5",
+        "e6"
+      ]
+    },
+    "n3": {
+      "label": "connectivity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n4": {
+      "label": "physical_security",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n5": {
+      "label": "natural_disaster_risk",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n6": {
+      "label": "cooling_efficiency",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n7": {
+      "label": "sustainable_energy_access",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n8": {
+      "label": "mission_critical_systems",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10",
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e7",
+        "e8",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n9": {
+      "label": "grid_stability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n10": {
+      "label": "redundancy_options",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n11": {
+      "label": "infrastructure_cost",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n12": {
+      "label": "environmental_impact",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n13": {
+      "label": "data_center_capacity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13",
+        "e15",
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n14": {
+      "label": "energy_consumption",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e18"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n15": {
+      "label": "operational_continuity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e19"
+      ],
+      "outgoing_edges": [
+        "e20"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e20"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n2",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n4",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n1",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n6",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n7",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect power reliability?",
+      "answer": "Higher urban density generally leads to better power reliability due to more robust infrastructure and maintenance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then power reliability would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is the relationship between urban density and cooling efficiency?",
+      "answer": "Increased urban density can lead to better cooling efficiency as more advanced and efficient systems are often implemented in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then cooling efficiency might not be as effective."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density influence sustainable energy access?",
+      "answer": "Higher urban density tends to increase access to sustainable energy sources as there is a greater demand and investment in renewable energy solutions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then sustainable energy access might be less available."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "Does power reliability impact mission-critical systems?",
+      "answer": "Yes, reliable power is essential for the proper functioning of mission-critical systems, ensuring they operate without interruption.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If power reliability were poor, then mission-critical systems would likely fail or perform poorly."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does connectivity affect mission-critical systems?",
+      "answer": "Good connectivity is crucial for mission-critical systems as it ensures that data and commands can be transmitted quickly and reliably.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity were poor, then mission-critical systems would likely experience delays and failures."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the role of physical security in mission-critical systems?",
+      "answer": "Physical security is vital for mission-critical systems as it protects the hardware and infrastructure from unauthorized access and damage.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If physical security were compromised, then mission-critical systems would be at risk of failure."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does natural disaster risk impact mission-critical systems?",
+      "answer": "High natural disaster risk can negatively impact mission-critical systems by causing damage and disruptions, leading to potential failures.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If natural disaster risk were low, then mission-critical systems would be more stable and reliable."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does cooling efficiency affect environmental impact?",
+      "answer": "Efficient cooling systems reduce the environmental impact by lowering energy consumption and emissions, making them more sustainable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cooling efficiency were poor, then the environmental impact would likely be higher."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does sustainable energy access influence environmental impact?",
+      "answer": "Access to sustainable energy sources reduces the environmental impact by decreasing reliance on fossil fuels and reducing carbon emissions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sustainable energy access were limited, then the environmental impact would be greater."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How do mission-critical systems affect data center capacity?",
+      "answer": "Effective mission-critical systems can enhance data center capacity by ensuring that the necessary resources and infrastructure are in place to handle high volumes of data and operations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If mission-critical systems were ineffective, then data center capacity would likely be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does grid stability contribute to redundancy options?",
+      "answer": "A stable grid provides more reliable redundancy options, ensuring that backup systems can function effectively in case of primary system failures.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If grid stability were poor, then redundancy options would be less reliable."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do redundancy options impact data center capacity?",
+      "answer": "Having robust redundancy options enhances data center capacity by providing multiple layers of protection and ensuring continuous operation even in the event of failures.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If redundancy options were limited, then data center capacity would be more vulnerable to disruptions."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does environmental impact influence data center capacity?",
+      "answer": "Reducing the environmental impact can improve data center capacity by promoting more sustainable and efficient operations, which can handle higher loads with fewer resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the environmental impact were high, then data center capacity would be less efficient and sustainable."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does infrastructure cost affect data center capacity?",
+      "answer": "Higher infrastructure costs can limit data center capacity as it may restrict the ability to invest in the necessary equipment and technology to support high-capacity operations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If infrastructure costs were lower, then data center capacity could be expanded more easily."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does data center capacity influence energy consumption?",
+      "answer": "Higher data center capacity typically leads to increased energy consumption as more powerful and numerous systems require more energy to operate.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If data center capacity were lower, then energy consumption would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does energy consumption affect operational continuity?",
+      "answer": "High energy consumption can negatively impact operational continuity by increasing the risk of power outages and system failures, especially if the energy supply is unreliable.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If energy consumption were lower, then operational continuity would be more stable and reliable."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does operational continuity influence upzoning stance?",
+      "answer": "Operational continuity is a key factor in supporting upzoning, as it ensures that the increased density and development can be managed effectively without major disruptions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If operational continuity were poor, then upzoning would be less supported."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does urban density affect natural disaster risk?",
+      "answer": "Higher urban density can increase natural disaster risk due to the concentration of people and infrastructure in a smaller area, making it more vulnerable to disasters.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then natural disaster risk would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does urban density influence power reliability?",
+      "answer": "Higher urban density generally leads to better power reliability due to more robust infrastructure and maintenance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then power reliability would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does urban density affect cooling efficiency?",
+      "answer": "Increased urban density can lead to better cooling efficiency as more advanced and efficient systems are often implemented in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, then cooling efficiency might not be as effective."
+      }
+    }
+  ]
+}

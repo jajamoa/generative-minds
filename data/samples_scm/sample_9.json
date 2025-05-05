@@ -1,56 +1,15 @@
 {
   "agent_id": "sample_9",
   "demographics": {
-    "age": 53,
-    "income": "$40,000-$80,000",
-    "education": "high school graduate",
-    "occupation": "Homeowner",
+    "age": 46,
+    "income": "< $30,000",
+    "education": "some college",
+    "occupation": "service worker",
     "housing": "homeowner"
   },
   "nodes": {
     "n1": {
-      "label": "property_value_concern",
-      "type": "binary",
-      "values": [
-        true,
-        false
-      ],
-      "semantic_role": "internal_affect",
-      "appearance": {
-        "qa_ids": [
-          "qa_01"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [],
-      "outgoing_edges": [
-        "e1"
-      ]
-    },
-    "n2": {
-      "label": "financial_investment_protection",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
-      ],
-      "semantic_role": "internal_affect",
-      "appearance": {
-        "qa_ids": [
-          "qa_02"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [
-        "e1"
-      ],
-      "outgoing_edges": [
-        "e2",
-        "e3"
-      ]
-    },
-    "n3": {
-      "label": "neighborhood_exclusivity",
+      "label": "density",
       "type": "continuous",
       "range": [
         0.0,
@@ -59,7 +18,52 @@
       "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
-          "qa_03"
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "property_value",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "neighborhood_exclusivity",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
         ],
         "frequency": 1
       },
@@ -67,11 +71,11 @@
         "e2"
       ],
       "outgoing_edges": [
-        "e4"
+        "e5"
       ]
     },
     "n4": {
-      "label": "perceived_status_impact",
+      "label": "status_impact",
       "type": "continuous",
       "range": [
         0.0,
@@ -80,79 +84,22 @@
       "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
-          "qa_04"
+          "qa_07",
+          "qa_08"
         ],
         "frequency": 1
       },
       "incoming_edges": [
-        "e3"
-      ],
-      "outgoing_edges": [
-        "e5"
-      ]
-    },
-    "n5": {
-      "label": "social_identity_preservation",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
-      ],
-      "semantic_role": "internal_affect",
-      "appearance": {
-        "qa_ids": [
-          "qa_05"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [
-        "e4",
+        "e3",
         "e5"
       ],
       "outgoing_edges": [
-        "e6"
-      ]
-    },
-    "n6": {
-      "label": "loss_aversion_bias",
-      "type": "binary",
-      "values": [
-        true,
-        false
-      ],
-      "semantic_role": "internal_affect",
-      "appearance": {
-        "qa_ids": [
-          "qa_06"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [],
-      "outgoing_edges": [
+        "e6",
         "e7"
       ]
     },
-    "n7": {
-      "label": "endowment_effect_bias",
-      "type": "binary",
-      "values": [
-        true,
-        false
-      ],
-      "semantic_role": "internal_affect",
-      "appearance": {
-        "qa_ids": [
-          "qa_07"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [],
-      "outgoing_edges": [
-        "e8"
-      ]
-    },
-    "n8": {
-      "label": "community_impact_perception",
+    "n5": {
+      "label": "financial_investment",
       "type": "continuous",
       "range": [
         0.0,
@@ -161,20 +108,151 @@
       "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
-          "qa_08"
+          "qa_09",
+          "qa_10"
         ],
         "frequency": 1
       },
       "incoming_edges": [
-        "e6",
-        "e7",
+        "e4"
+      ],
+      "outgoing_edges": [
         "e8"
+      ]
+    },
+    "n6": {
+      "label": "loss_aversion",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
       ],
       "outgoing_edges": [
         "e9"
       ]
     },
+    "n7": {
+      "label": "endowment_effect",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n8": {
+      "label": "social_identity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8",
+        "e9",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
     "n9": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n10": {
+      "label": "noise",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n11": {
+      "label": "quality_of_life",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e12",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n12": {
       "label": "upzoning_stance",
       "type": "binary",
       "values": [
@@ -184,12 +262,13 @@
       "semantic_role": "behavioral_intention",
       "appearance": {
         "qa_ids": [
-          "qa_09"
+          "qa_23",
+          "qa_24"
         ],
         "frequency": 1
       },
       "incoming_edges": [
-        "e9"
+        "e14"
       ],
       "outgoing_edges": []
     }
@@ -213,115 +292,91 @@
         "noise_std": 0.1,
         "support_qas": [
           "qa_01"
-        ]
+        ],
+        "confidence": 0.9
       },
       "support_qas": [
         "qa_01"
       ]
     },
     "e2": {
-      "from": "n2",
+      "from": "n1",
       "to": "n3",
       "function": {
         "target": "n3",
         "inputs": [
-          "n2"
+          "n1"
         ],
-        "function_type": "sigmoid",
+        "function_type": "threshold",
         "parameters": {
-          "weights": [
-            0.7
-          ],
-          "bias": -0.1
+          "threshold": 0.6,
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
           "qa_02"
-        ]
+        ],
+        "confidence": 0.8
       },
       "support_qas": [
         "qa_02"
       ]
     },
     "e3": {
-      "from": "n2",
+      "from": "n1",
       "to": "n4",
       "function": {
         "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
         "inputs": [
           "n2"
         ],
         "function_type": "sigmoid",
         "parameters": {
           "weights": [
-            0.6
-          ],
-          "bias": -0.3
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_02"
-        ]
-      },
-      "support_qas": [
-        "qa_02"
-      ]
-    },
-    "e4": {
-      "from": "n3",
-      "to": "n5",
-      "function": {
-        "target": "n5",
-        "inputs": [
-          "n3"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.6
+            0.8
           ],
           "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_03"
-        ]
-      },
-      "support_qas": [
-        "qa_03"
-      ]
-    },
-    "e5": {
-      "from": "n4",
-      "to": "n5",
-      "function": {
-        "target": "n5",
-        "inputs": [
-          "n4"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.7
-          ],
-          "bias": -0.1
-        },
-        "noise_std": 0.1,
-        "support_qas": [
           "qa_04"
-        ]
+        ],
+        "confidence": 0.9
       },
       "support_qas": [
         "qa_04"
       ]
     },
-    "e6": {
-      "from": "n5",
-      "to": "n8",
+    "e5": {
+      "from": "n3",
+      "to": "n4",
       "function": {
-        "target": "n8",
+        "target": "n4",
         "inputs": [
-          "n5"
+          "n3"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -333,13 +388,87 @@
         "noise_std": 0.1,
         "support_qas": [
           "qa_05"
-        ]
+        ],
+        "confidence": 0.9
       },
       "support_qas": [
         "qa_05"
       ]
     },
+    "e6": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
     "e7": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
       "from": "n6",
       "to": "n8",
       "function": {
@@ -349,19 +478,20 @@
         ],
         "function_type": "threshold",
         "parameters": {
-          "threshold": 0.5,
-          "direction": "greater"
+          "threshold": 0.6,
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_06"
-        ]
+          "qa_09"
+        ],
+        "confidence": 0.8
       },
       "support_qas": [
-        "qa_06"
+        "qa_09"
       ]
     },
-    "e8": {
+    "e10": {
       "from": "n7",
       "to": "n8",
       "function": {
@@ -371,48 +501,119 @@
         ],
         "function_type": "threshold",
         "parameters": {
-          "threshold": 0.5,
-          "direction": "greater"
+          "threshold": 0.6,
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_07"
-        ]
+          "qa_10"
+        ],
+        "confidence": 0.8
       },
       "support_qas": [
-        "qa_07"
+        "qa_10"
       ]
     },
-    "e9": {
+    "e11": {
       "from": "n8",
-      "to": "n9",
+      "to": "n11",
       "function": {
-        "target": "n9",
+        "target": "n11",
         "inputs": [
           "n8"
         ],
         "function_type": "sigmoid",
         "parameters": {
           "weights": [
-            0.9
+            0.8
           ],
-          "bias": -0.3
+          "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_08"
-        ]
+          "qa_11"
+        ],
+        "confidence": 0.9
       },
       "support_qas": [
-        "qa_08"
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n9",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.8
+      },
+      "support_qas": [
+        "qa_14"
       ]
     }
   },
   "qas": [
     {
       "qa_id": "qa_01",
-      "question": "Do you worry that upzoning will decrease your property value?",
-      "answer": "Yes, I am very concerned that upzoning will negatively impact my property value.",
+      "question": "How does urban density affect property value?",
+      "answer": "Higher urban density generally increases property value.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -420,104 +621,325 @@
           "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.9,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If upzoning did not affect property values, then I would be less worried."
+        "counterfactual": "If urban density decreases, then property values may decrease."
       }
     },
     {
       "qa_id": "qa_02",
-      "question": "How important is it to protect your financial investment in your home?",
-      "answer": "It is extremely important to protect the financial investment I have made in my home.",
+      "question": "Does higher urban density reduce neighborhood exclusivity?",
+      "answer": "Yes, higher urban density tends to reduce neighborhood exclusivity.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n2",
+          "from": "n1",
           "to": "n3",
-          "direction": "positive"
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
-          "confidence_rating": 0.9
+          "confidence_rating": 0.8
         },
-        "counterfactual": "If my financial investment was not at risk, I would be more open to upzoning."
+        "counterfactual": "If urban density decreases, then neighborhood exclusivity may increase."
       }
     },
     {
       "qa_id": "qa_03",
-      "question": "Do you feel that upzoning will make your neighborhood less exclusive?",
-      "answer": "Yes, I believe upzoning will make my neighborhood less exclusive and less desirable.",
+      "question": "Does urban density impact the perceived status of a neighborhood?",
+      "answer": "Higher urban density can negatively impact the perceived status of a neighborhood.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n3",
-          "to": "n5",
-          "direction": "positive"
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.8
         },
-        "counterfactual": "If upzoning did not change the exclusivity of my neighborhood, I would be less opposed."
+        "counterfactual": "If urban density decreases, then the perceived status of the neighborhood may improve."
       }
     },
     {
       "qa_id": "qa_04",
-      "question": "Do you think upzoning will affect your perceived status in the community?",
-      "answer": "Yes, I believe upzoning will lower my perceived status in the community.",
+      "question": "How does property value influence financial investment in a neighborhood?",
+      "answer": "Higher property values often lead to increased financial investment in the neighborhood.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n4",
+          "from": "n2",
           "to": "n5",
           "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If upzoning did not affect my perceived status, I would be less concerned."
+        "counterfactual": "If property values decrease, then financial investment may also decrease."
       }
     },
     {
       "qa_id": "qa_05",
-      "question": "Is preserving your social identity in the neighborhood important to you?",
-      "answer": "Yes, preserving my social identity in the neighborhood is very important to me.",
+      "question": "Does neighborhood exclusivity affect the perceived status of a neighborhood?",
+      "answer": "Yes, higher neighborhood exclusivity positively impacts the perceived status of a neighborhood.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n5",
-          "to": "n8",
+          "from": "n3",
+          "to": "n4",
           "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.9,
+          "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If my social identity was not at risk, I would be more open to upzoning."
+        "counterfactual": "If neighborhood exclusivity decreases, then the perceived status of the neighborhood may decline."
       }
     },
     {
       "qa_id": "qa_06",
-      "question": "Are you averse to the idea of losing what you currently have in your neighborhood?",
-      "answer": "Yes, I am very averse to the idea of losing the current state of my neighborhood.",
+      "question": "How does the perceived status of a neighborhood influence loss aversion?",
+      "answer": "A higher perceived status of a neighborhood can increase loss aversion among residents.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n6",
-          "to": "n8",
+          "from": "n4",
+          "to": "n6",
           "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perceived status of the neighborhood decreases, then loss aversion may also decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "Does the perceived status of a neighborhood affect the endowment effect?",
+      "answer": "Yes, a higher perceived status of a neighborhood can strengthen the endowment effect among residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perceived status of the neighborhood decreases, then the endowment effect may weaken."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does financial investment affect social identity in a neighborhood?",
+      "answer": "Increased financial investment can negatively impact social identity, as it may lead to gentrification and displacement.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.8
         },
-        "counterfactual": "If there was no risk of loss, I would be more open to upzoning."
+        "counterfactual": "If financial investment decreases, then social identity may be more preserved."
       }
     },
     {
-      "qa_id": "qa_07",
-      "question": "Do you feel a strong attachment to your current home and neighborhood?",
-      "answer": "Yes, I feel a very strong attachment to my current home and neighborhood.",
+      "qa_id": "qa_09",
+      "question": "Does loss aversion influence social identity in a neighborhood?",
+      "answer": "Yes, higher loss aversion can negatively impact social identity, as residents may resist changes that could benefit the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If loss aversion decreases, then social identity may be more adaptable to positive changes."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does the endowment effect influence social identity in a neighborhood?",
+      "answer": "The endowment effect can negatively impact social identity, as residents may overvalue their current situation and resist beneficial changes.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n7",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the endowment effect decreases, then social identity may be more open to positive changes."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does social identity affect the quality of life in a neighborhood?",
+      "answer": "A strong social identity can positively influence the quality of life in a neighborhood, as it fosters a sense of belonging and community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social identity weakens, then the quality of life in the neighborhood may decline."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does traffic impact the quality of life in a neighborhood?",
+      "answer": "Increased traffic can negatively impact the quality of life in a neighborhood, as it leads to congestion and pollution.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If traffic decreases, then the quality of life in the neighborhood may improve."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does noise impact the quality of life in a neighborhood?",
+      "answer": "Increased noise can negatively impact the quality of life in a neighborhood, as it disrupts peace and quiet.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If noise levels decrease, then the quality of life in the neighborhood may improve."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does the quality of life in a neighborhood influence one's stance on upzoning?",
+      "answer": "A lower quality of life in a neighborhood can lead to a more negative stance on upzoning, as residents may fear further deterioration.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the quality of life improves, then the stance on upzoning may become more positive."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does urban density affect property value and, in turn, financial investment?",
+      "answer": "Higher urban density increases property value, which in turn leads to increased financial investment in the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density decreases, then property values and financial investment may both decrease."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does the perceived status of a neighborhood influence loss aversion and the endowment effect?",
+      "answer": "A higher perceived status of a neighborhood can increase both loss aversion and the endowment effect, as residents may feel a stronger attachment to their current situation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perceived status of the neighborhood decreases, then both loss aversion and the endowment effect may weaken."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does the quality of life in a neighborhood influence one's stance on upzoning, considering the impact of traffic and noise?",
+      "answer": "A lower quality of life, influenced by high traffic and noise, can lead to a more negative stance on upzoning, as residents may fear further deterioration.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the quality of life improves, perhaps due to reduced traffic and noise, then the stance on upzoning may become more positive."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does the perceived status of a neighborhood, influenced by neighborhood exclusivity, affect loss aversion and the endowment effect?",
+      "answer": "A higher perceived status, influenced by neighborhood exclusivity, can increase both loss aversion and the endowment effect, as residents may feel a stronger attachment to their current situation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perceived status of the neighborhood decreases, perhaps due to reduced exclusivity, then both loss aversion and the endowment effect may weaken."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does the quality of life in a neighborhood, influenced by traffic and noise, affect one's stance on upzoning?",
+      "answer": "A lower quality of life, influenced by high traffic and noise, can lead to a more negative stance on upzoning, as residents may fear further deterioration.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the quality of life improves, perhaps due to reduced traffic and noise, then the stance on upzoning may become more positive."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does the perceived status of a neighborhood, influenced by neighborhood exclusivity, affect social identity, considering the impact of loss aversion and the endowment effect?",
+      "answer": "A higher perceived status, influenced by neighborhood exclusivity, can strengthen social identity, but this is tempered by the negative impact of loss aversion and the endowment effect, which can make residents resistant to change.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
           "to": "n8",
           "direction": "positive"
         },
@@ -525,41 +947,75 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If I did not feel such a strong attachment, I would be more open to upzoning."
+        "counterfactual": "If the perceived status of the neighborhood decreases, perhaps due to reduced exclusivity, then social identity may be more adaptable to positive changes."
       }
     },
     {
-      "qa_id": "qa_08",
-      "question": "How do you perceive the overall impact of upzoning on your community?",
-      "answer": "I perceive the overall impact of upzoning on my community as negative.",
+      "qa_id": "qa_21",
+      "question": "How does the quality of life in a neighborhood, influenced by traffic and noise, affect one's stance on upzoning, considering the impact of social identity?",
+      "answer": "A lower quality of life, influenced by high traffic and noise, can lead to a more negative stance on upzoning, as residents, influenced by their social identity, may fear further deterioration.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n8",
-          "to": "n9",
-          "direction": "positive"
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
         },
         "belief_strength": {
-          "estimated_probability": 0.9,
-          "confidence_rating": 0.9
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
         },
-        "counterfactual": "If the overall impact was positive, I would support upzoning."
+        "counterfactual": "If the quality of life improves, perhaps due to reduced traffic and noise, and if social identity is more adaptable, then the stance on upzoning may become more positive."
       }
     },
     {
-      "qa_id": "qa_09",
-      "question": "What is your stance on upzoning in your neighborhood?",
-      "answer": "I am against upzoning in my neighborhood due to the potential negative impacts on property values, exclusivity, and my social identity.",
+      "qa_id": "qa_22",
+      "question": "How does the perceived status of a neighborhood, influenced by neighborhood exclusivity, affect social identity, considering the impact of financial investment, loss aversion, and the endowment effect?",
+      "answer": "A higher perceived status, influenced by neighborhood exclusivity, can strengthen social identity, but this is tempered by the negative impact of financial investment, loss aversion, and the endowment effect, which can make residents resistant to change.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n8",
-          "to": "n9",
+          "from": "n4",
+          "to": "n8",
           "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.9,
+          "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If upzoning had no negative impacts, I would be more supportive."
+        "counterfactual": "If the perceived status of the neighborhood decreases, perhaps due to reduced exclusivity, and if financial investment, loss aversion, and the endowment effect are less pronounced, then social identity may be more adaptable to positive changes."
+      }
+    },
+    {
+      "qa_id": "qa_23",
+      "question": "How does the quality of life in a neighborhood, influenced by traffic and noise, affect one's stance on upzoning, considering the impact of social identity and the overall perception of the neighborhood?",
+      "answer": "A lower quality of life, influenced by high traffic and noise, can lead to a more negative stance on upzoning, as residents, influenced by their social identity and the overall perception of the neighborhood, may fear further deterioration.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the quality of life improves, perhaps due to reduced traffic and noise, and if social identity and the overall perception of the neighborhood are more positive, then the stance on upzoning may become more positive."
+      }
+    },
+    {
+      "qa_id": "qa_24",
+      "question": "How does the perceived status of a neighborhood, influenced by neighborhood exclusivity, affect social identity, considering the impact of financial investment, loss aversion, the endowment effect, and the overall quality of life?",
+      "answer": "A higher perceived status, influenced by neighborhood exclusivity, can strengthen social identity, but this is tempered by the negative impact of financial investment, loss aversion, the endowment effect, and a lower quality of life, which can make residents resistant to change.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perceived status of the neighborhood decreases, perhaps due to reduced exclusivity, and if financial investment, loss aversion, the endowment effect, and the quality of life are more balanced, then social identity may be more adaptable to positive changes."
       }
     }
   ]

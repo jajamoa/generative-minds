@@ -1,11 +1,11 @@
 {
-  "agent_id": "sample_8",
+  "agent_id": "sample_56",
   "demographics": {
-    "age": 38,
-    "income": "$60,000 - $100,000",
-    "education": "bachelor's degree",
-    "occupation": "service worker",
-    "housing": "homeowner"
+    "age": 66,
+    "income": "< $30,000",
+    "education": "some college",
+    "occupation": "technician",
+    "housing": "lives with family"
   },
   "nodes": {
     "n1": {
@@ -26,11 +26,11 @@
       "incoming_edges": [],
       "outgoing_edges": [
         "e1",
-        "e14"
+        "e10"
       ]
     },
     "n2": {
-      "label": "foot_traffic",
+      "label": "noise",
       "type": "continuous",
       "range": [
         0.0,
@@ -48,16 +48,15 @@
         "e1"
       ],
       "outgoing_edges": [
-        "e2",
-        "e3"
+        "e2"
       ]
     },
     "n3": {
-      "label": "commercial_rents",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
+      "label": "space_adequacy",
+      "type": "binary",
+      "values": [
+        true,
+        false
       ],
       "semantic_role": "external_state",
       "appearance": {
@@ -68,14 +67,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e14"
+        "e10"
       ],
       "outgoing_edges": [
-        "e15"
+        "e3"
       ]
     },
     "n4": {
-      "label": "customer_base",
+      "label": "internet_reliability",
       "type": "continuous",
       "range": [
         0.0,
@@ -89,15 +88,13 @@
         ],
         "frequency": 1
       },
-      "incoming_edges": [
-        "e2"
-      ],
+      "incoming_edges": [],
       "outgoing_edges": [
         "e4"
       ]
     },
     "n5": {
-      "label": "business_visibility",
+      "label": "power_infrastructure",
       "type": "continuous",
       "range": [
         0.0,
@@ -111,21 +108,19 @@
         ],
         "frequency": 1
       },
-      "incoming_edges": [
-        "e3"
-      ],
+      "incoming_edges": [],
       "outgoing_edges": [
         "e5"
       ]
     },
     "n6": {
-      "label": "operational_costs",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
+      "label": "walkable_amenities",
+      "type": "binary",
+      "values": [
+        true,
+        false
       ],
-      "semantic_role": "internal_affect",
+      "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
           "qa_11",
@@ -133,15 +128,13 @@
         ],
         "frequency": 1
       },
-      "incoming_edges": [
-        "e15"
-      ],
+      "incoming_edges": [],
       "outgoing_edges": [
         "e6"
       ]
     },
     "n7": {
-      "label": "competition",
+      "label": "psychological_boundaries",
       "type": "continuous",
       "range": [
         0.0,
@@ -156,14 +149,15 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e4"
+        "e6",
+        "e2"
       ],
       "outgoing_edges": [
-        "e13"
+        "e7"
       ]
     },
     "n8": {
-      "label": "local_economy",
+      "label": "home_environment",
       "type": "continuous",
       "range": [
         0.0,
@@ -178,14 +172,16 @@
         "frequency": 1
       },
       "incoming_edges": [
+        "e3",
+        "e4",
         "e5"
       ],
       "outgoing_edges": [
-        "e7"
+        "e8"
       ]
     },
     "n9": {
-      "label": "market_demand",
+      "label": "work_environment",
       "type": "continuous",
       "range": [
         0.0,
@@ -200,14 +196,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e6"
+        "e8"
       ],
       "outgoing_edges": [
-        "e8"
+        "e9"
       ]
     },
     "n10": {
-      "label": "regulatory_environment",
+      "label": "isolation_management",
       "type": "binary",
       "values": [
         true,
@@ -222,14 +218,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e13"
+        "e7"
       ],
       "outgoing_edges": [
-        "e9"
+        "e11"
       ]
     },
     "n11": {
-      "label": "community_support",
+      "label": "living_quality",
       "type": "continuous",
       "range": [
         0.0,
@@ -244,18 +240,19 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e7"
+        "e9",
+        "e11"
       ],
       "outgoing_edges": [
-        "e10"
+        "e12"
       ]
     },
     "n12": {
-      "label": "adaptability",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
       ],
       "semantic_role": "behavioral_intention",
       "appearance": {
@@ -266,31 +263,7 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e8",
-        "e9"
-      ],
-      "outgoing_edges": [
-        "e11"
-      ]
-    },
-    "n13": {
-      "label": "upzoning_stance",
-      "type": "binary",
-      "values": [
-        true,
-        false
-      ],
-      "semantic_role": "behavioral_intention",
-      "appearance": {
-        "qa_ids": [
-          "qa_25",
-          "qa_26"
-        ],
-        "frequency": 1
-      },
-      "incoming_edges": [
-        "e10",
-        "e11"
+        "e12"
       ],
       "outgoing_edges": []
     }
@@ -323,36 +296,34 @@
     },
     "e2": {
       "from": "n2",
-      "to": "n4",
+      "to": "n7",
       "function": {
-        "target": "n4",
+        "target": "n7",
         "inputs": [
           "n2"
         ],
-        "function_type": "sigmoid",
+        "function_type": "threshold",
         "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
+          "threshold": 0.6,
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_07"
+          "qa_04"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_07"
+        "qa_04"
       ]
     },
     "e3": {
-      "from": "n2",
-      "to": "n5",
+      "from": "n3",
+      "to": "n8",
       "function": {
-        "target": "n5",
+        "target": "n8",
         "inputs": [
-          "n2"
+          "n3"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -363,19 +334,19 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_09"
+          "qa_06"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_09"
+        "qa_06"
       ]
     },
     "e4": {
       "from": "n4",
-      "to": "n7",
+      "to": "n8",
       "function": {
-        "target": "n7",
+        "target": "n8",
         "inputs": [
           "n4"
         ],
@@ -388,12 +359,12 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_13"
+          "qa_08"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_13"
+        "qa_08"
       ]
     },
     "e5": {
@@ -413,42 +384,69 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_15"
+          "qa_10"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_15"
+        "qa_10"
       ]
     },
     "e6": {
       "from": "n6",
-      "to": "n9",
+      "to": "n7",
       "function": {
-        "target": "n9",
+        "target": "n7",
         "inputs": [
           "n6"
         ],
-        "function_type": "threshold",
+        "function_type": "sigmoid",
         "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_18"
+          "qa_12"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_18"
+        "qa_12"
       ]
     },
     "e7": {
-      "from": "n8",
-      "to": "n11",
+      "from": "n7",
+      "to": "n10",
       "function": {
-        "target": "n11",
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
         "inputs": [
           "n8"
         ],
@@ -461,19 +459,19 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_21"
+          "qa_16"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_21"
+        "qa_16"
       ]
     },
-    "e8": {
+    "e9": {
       "from": "n9",
-      "to": "n12",
+      "to": "n11",
       "function": {
-        "target": "n12",
+        "target": "n11",
         "inputs": [
           "n9"
         ],
@@ -486,90 +484,15 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_23"
+          "qa_18"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_23"
-      ]
-    },
-    "e9": {
-      "from": "n10",
-      "to": "n12",
-      "function": {
-        "target": "n12",
-        "inputs": [
-          "n10"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_24"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_24"
+        "qa_18"
       ]
     },
     "e10": {
-      "from": "n11",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n11"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_25"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_25"
-      ]
-    },
-    "e11": {
-      "from": "n12",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n12"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_26"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_26"
-      ]
-    },
-    "e14": {
       "from": "n1",
       "to": "n3",
       "function": {
@@ -584,49 +507,28 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_06"
+          "qa_02"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_06"
+        "qa_02"
       ]
     },
-    "e15": {
-      "from": "n3",
-      "to": "n6",
+    "e11": {
+      "from": "n10",
+      "to": "n11",
       "function": {
-        "target": "n6",
+        "target": "n11",
         "inputs": [
-          "n3"
+          "n10"
         ],
-        "function_type": "threshold",
+        "function_type": "sigmoid",
         "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_12"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_12"
-      ]
-    },
-    "e13": {
-      "from": "n7",
-      "to": "n10",
-      "function": {
-        "target": "n10",
-        "inputs": [
-          "n7"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
@@ -637,13 +539,36 @@
       "support_qas": [
         "qa_20"
       ]
+    },
+    "e12": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
     }
   },
   "qas": [
     {
       "qa_id": "qa_01",
-      "question": "How does urban density affect foot traffic in the area?",
-      "answer": "Higher urban density generally leads to more foot traffic as there are more people and activities in the area.",
+      "question": "How does urban density affect noise levels in the area?",
+      "answer": "Higher urban density generally leads to increased noise levels due to more people and activities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -654,13 +579,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the urban density were lower, then foot traffic would decrease."
+        "counterfactual": "If the urban density were lower, then the noise levels would likely be lower."
       }
     },
     {
       "qa_id": "qa_02",
-      "question": "What is your view on the impact of urban density on the local environment?",
-      "answer": "Urban density can have both positive and negative impacts on the local environment, such as increased pollution but also better use of resources.",
+      "question": "Does higher urban density lead to a decrease in space adequacy?",
+      "answer": "Yes, higher urban density often results in less adequate personal space due to crowding.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -668,87 +593,155 @@
           "direction": "negative"
         },
         "belief_strength": {
-          "estimated_probability": 0.6,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
+        "counterfactual": "If the urban density were lower, then space adequacy would likely be better."
       }
     },
     {
       "qa_id": "qa_03",
-      "question": "How does foot traffic influence the customer base for local businesses?",
-      "answer": "Increased foot traffic typically leads to a larger customer base as more people are exposed to and visit local businesses.",
+      "question": "What is the impact of noise on psychological boundaries?",
+      "answer": "High noise levels can negatively impact psychological boundaries, making it harder to feel at ease.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
-          "to": "n4",
-          "direction": "positive"
+          "to": "n7",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then the customer base for local businesses would decrease."
+        "counterfactual": "If the noise levels were lower, then psychological boundaries would likely be better maintained."
       }
     },
     {
       "qa_id": "qa_04",
-      "question": "In what way does foot traffic affect business visibility?",
-      "answer": "Higher foot traffic increases business visibility as more people see and become aware of the businesses in the area.",
+      "question": "How does noise affect the management of isolation?",
+      "answer": "Noise can make it difficult to manage isolation effectively, as it can be a source of constant distraction and stress.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
-          "to": "n5",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the noise levels were lower, then managing isolation would likely be easier."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does space adequacy influence the home environment?",
+      "answer": "Adequate space positively impacts the home environment by providing a comfortable and functional living space.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then business visibility would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_05",
-      "question": "How does urban density affect commercial rents?",
-      "answer": "Higher urban density often leads to lower commercial rents due to increased supply and competition.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n1",
-          "to": "n3",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
+        "counterfactual": "If space adequacy were poor, then the home environment would likely be less comfortable."
       }
     },
     {
       "qa_id": "qa_06",
-      "question": "What is the relationship between commercial rents and operational costs for businesses?",
-      "answer": "Lower commercial rents generally lead to lower operational costs for businesses, making it easier to operate profitably.",
+      "question": "What is the effect of space adequacy on the home environment?",
+      "answer": "Having adequate space in the home environment makes it more pleasant and functional for daily living.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n3",
-          "to": "n6",
-          "direction": "negative"
+          "to": "n8",
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If commercial rents were higher, then operational costs for businesses would increase."
+        "counterfactual": "If space adequacy were poor, then the home environment would likely be less pleasant."
       }
     },
     {
       "qa_id": "qa_07",
-      "question": "How does a larger customer base affect the level of competition among businesses?",
-      "answer": "A larger customer base can lead to increased competition as more businesses try to capture the market share.",
+      "question": "How does internet reliability affect the home environment?",
+      "answer": "Reliable internet enhances the home environment by supporting work, education, and entertainment.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the internet were unreliable, then the home environment would likely be less functional."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "What is the impact of reliable internet on the home environment?",
+      "answer": "Reliable internet improves the home environment by enabling smooth communication and access to online resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the internet were unreliable, then the home environment would likely be less convenient."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does power infrastructure affect the home environment?",
+      "answer": "A robust power infrastructure ensures a stable and reliable home environment, supporting all electrical needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the power infrastructure were poor, then the home environment would likely be less stable."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the effect of power infrastructure on the home environment?",
+      "answer": "Good power infrastructure is essential for a functional home environment, ensuring that all electrical devices work properly.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the power infrastructure were poor, then the home environment would likely be less functional."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do walkable amenities affect psychological boundaries?",
+      "answer": "Walkable amenities can positively impact psychological boundaries by providing easy access to outdoor spaces and community areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
           "to": "n7",
           "direction": "positive"
         },
@@ -756,135 +749,101 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the customer base were smaller, then the level of competition among businesses would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_08",
-      "question": "What is the impact of a larger customer base on the local economy?",
-      "answer": "A larger customer base can boost the local economy by increasing sales and economic activity in the area.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n4",
-          "to": "n8",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If the customer base were smaller, then the local economy would be less vibrant."
-      }
-    },
-    {
-      "qa_id": "qa_09",
-      "question": "How does business visibility influence the local economy?",
-      "answer": "Increased business visibility can boost the local economy by attracting more customers and generating more economic activity.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n5",
-          "to": "n8",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If business visibility were lower, then the local economy would be less vibrant."
-      }
-    },
-    {
-      "qa_id": "qa_10",
-      "question": "What is the effect of business visibility on community support?",
-      "answer": "Higher business visibility can lead to greater community support as the community becomes more aware and engaged with local businesses.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n5",
-          "to": "n11",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If business visibility were lower, then community support would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_11",
-      "question": "How do operational costs affect market demand?",
-      "answer": "Lower operational costs can lead to lower prices and better products, which can increase market demand.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n6",
-          "to": "n9",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If operational costs were higher, then market demand would decrease."
+        "counterfactual": "If there were fewer walkable amenities, then psychological boundaries might be more restricted."
       }
     },
     {
       "qa_id": "qa_12",
-      "question": "What is the relationship between operational costs and adaptability?",
-      "answer": "Lower operational costs can make businesses more adaptable as they have more financial flexibility to respond to changes.",
+      "question": "What is the effect of walkable amenities on psychological boundaries?",
+      "answer": "Walkable amenities enhance psychological boundaries by allowing individuals to easily access and enjoy outdoor spaces.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n6",
-          "to": "n12",
-          "direction": "negative"
+          "to": "n7",
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If operational costs were higher, then adaptability would decrease."
+        "counterfactual": "If there were fewer walkable amenities, then psychological boundaries might be more limited."
       }
     },
     {
       "qa_id": "qa_13",
-      "question": "How does competition affect the regulatory environment?",
-      "answer": "High competition can lead to a more restrictive regulatory environment as businesses and authorities try to manage the market.",
+      "question": "How does the psychological boundary affect the management of isolation?",
+      "answer": "Strong psychological boundaries help in managing isolation by providing a sense of control and comfort.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n7",
           "to": "n10",
-          "direction": "negative"
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If competition were lower, then the regulatory environment would be less restrictive."
+        "counterfactual": "If psychological boundaries were weak, then managing isolation would likely be more challenging."
       }
     },
     {
       "qa_id": "qa_14",
-      "question": "What is the impact of competition on community support?",
-      "answer": "High competition can sometimes reduce community support as businesses may focus more on competing rather than engaging with the community.",
+      "question": "What is the impact of psychological boundaries on isolation management?",
+      "answer": "Healthy psychological boundaries are crucial for effective isolation management, as they help maintain mental well-being.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n7",
-          "to": "n11",
-          "direction": "negative"
+          "to": "n10",
+          "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If competition were lower, then community support would increase."
+        "counterfactual": "If psychological boundaries were weak, then managing isolation would likely be more difficult."
       }
     },
     {
       "qa_id": "qa_15",
-      "question": "How does the local economy influence community support?",
-      "answer": "A strong local economy can lead to greater community support as people feel more optimistic and engaged with their community.",
+      "question": "How does the home environment affect the work environment?",
+      "answer": "A positive home environment can contribute to a better work environment by providing a supportive and comfortable base.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the home environment were poor, then the work environment would likely be less productive."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What is the effect of the home environment on the work environment?",
+      "answer": "A good home environment supports a better work environment by reducing stress and enhancing productivity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the home environment were poor, then the work environment would likely be less efficient."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does the work environment affect the quality of living?",
+      "answer": "A good work environment positively impacts the quality of living by providing financial stability and job satisfaction.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
           "to": "n11",
           "direction": "positive"
         },
@@ -892,194 +851,126 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the local economy were weaker, then community support would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_16",
-      "question": "What is the impact of the local economy on adaptability?",
-      "answer": "A strong local economy can provide more resources and opportunities, making businesses more adaptable.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n8",
-          "to": "n12",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If the local economy were weaker, then adaptability would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_17",
-      "question": "How does market demand influence adaptability?",
-      "answer": "Higher market demand can make businesses more adaptable as they have more incentives to innovate and respond to customer needs.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n9",
-          "to": "n12",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If market demand were lower, then adaptability would decrease."
+        "counterfactual": "If the work environment were poor, then the quality of living would likely be lower."
       }
     },
     {
       "qa_id": "qa_18",
-      "question": "What is the effect of market demand on the regulatory environment?",
-      "answer": "Higher market demand can lead to a more supportive regulatory environment as authorities aim to foster growth and innovation.",
+      "question": "What is the effect of the work environment on the quality of living?",
+      "answer": "A positive work environment enhances the quality of living by improving overall well-being and financial security.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n9",
-          "to": "n10",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If market demand were lower, then the regulatory environment would be less supportive."
+        "counterfactual": "If the work environment were poor, then the quality of living would likely be worse."
       }
     },
     {
       "qa_id": "qa_19",
-      "question": "How does the regulatory environment affect adaptability?",
-      "answer": "A supportive regulatory environment can make businesses more adaptable by providing clear guidelines and reducing uncertainty.",
+      "question": "How does isolation management affect the quality of living?",
+      "answer": "Effective isolation management positively impacts the quality of living by reducing stress and enhancing well-being.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
-          "to": "n12",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then adaptability would decrease."
+        "counterfactual": "If isolation management were poor, then the quality of living would likely be lower."
       }
     },
     {
       "qa_id": "qa_20",
-      "question": "What is the impact of the regulatory environment on upzoning stance?",
-      "answer": "A supportive regulatory environment can encourage a positive stance on upzoning as it aligns with policies that promote growth and development.",
+      "question": "What is the effect of isolation management on the quality of living?",
+      "answer": "Good isolation management contributes to a higher quality of living by promoting mental and emotional well-being.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
-          "to": "n13",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then the upzoning stance would be more negative."
+        "counterfactual": "If isolation management were poor, then the quality of living would likely be worse."
       }
     },
     {
       "qa_id": "qa_21",
-      "question": "How does community support influence upzoning stance?",
-      "answer": "Strong community support can lead to a more positive stance on upzoning as the community sees the benefits of increased development.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n11",
-          "to": "n13",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If community support were lower, then the upzoning stance would be more negative."
-      }
-    },
-    {
-      "qa_id": "qa_22",
-      "question": "What is the effect of community support on adaptability?",
-      "answer": "Strong community support can enhance adaptability by providing a supportive environment for businesses to experiment and grow.",
+      "question": "How does the quality of living affect the stance on upzoning?",
+      "answer": "A high quality of living may lead to a more favorable stance on upzoning, as it indicates a well-functioning community.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n11",
           "to": "n12",
-          "direction": "positive"
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then adaptability would decrease."
+        "counterfactual": "If the quality of living were low, then the stance on upzoning would likely be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "What is the effect of the quality of living on the stance on upzoning?",
+      "answer": "A high quality of living can lead to a more positive stance on upzoning, as it suggests that the community is thriving.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of living were low, then the stance on upzoning would likely be more skeptical."
       }
     },
     {
       "qa_id": "qa_23",
-      "question": "How does adaptability influence upzoning stance?",
-      "answer": "Greater adaptability can lead to a more positive stance on upzoning as businesses are more capable of adjusting to changes and new opportunities.",
+      "question": "How does the stance on upzoning reflect the overall quality of living?",
+      "answer": "A positive stance on upzoning often reflects a high quality of living, as it indicates confidence in the community's future.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n12",
-          "to": "n13",
-          "direction": "positive"
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If adaptability were lower, then the upzoning stance would be more negative."
+        "counterfactual": "If the quality of living were low, then the stance on upzoning would likely be more negative."
       }
     },
     {
       "qa_id": "qa_24",
-      "question": "What is the impact of adaptability on the regulatory environment?",
-      "answer": "Greater adaptability can lead to a more supportive regulatory environment as businesses are more capable of complying with and influencing regulations.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n12",
-          "to": "n10",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If adaptability were lower, then the regulatory environment would be less supportive."
-      }
-    },
-    {
-      "qa_id": "qa_25",
-      "question": "How does community support influence the final decision on upzoning?",
-      "answer": "Strong community support can lead to a more favorable decision on upzoning as the community sees the benefits and supports the change.",
+      "question": "What is the relationship between the stance on upzoning and the quality of living?",
+      "answer": "A favorable stance on upzoning is often associated with a high quality of living, as it suggests that the community is well-managed and prosperous.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n11",
-          "to": "n13",
-          "direction": "positive"
+          "to": "n12",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then the upzoning decision would be less favorable."
-      }
-    },
-    {
-      "qa_id": "qa_26",
-      "question": "What is the effect of adaptability on the final decision on upzoning?",
-      "answer": "Greater adaptability can lead to a more favorable decision on upzoning as businesses are more capable of adjusting to the changes and seeing the long-term benefits.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n12",
-          "to": "n13",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If adaptability were lower, then the upzoning decision would be less favorable."
+        "counterfactual": "If the quality of living were low, then the stance on upzoning would likely be more negative."
       }
     }
   ]

@@ -1,0 +1,1115 @@
+{
+  "agent_id": "sample_92",
+  "demographics": {
+    "age": 43,
+    "income": "> $100,000",
+    "education": "high school",
+    "occupation": "educator",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "urban_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02",
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e14",
+        "e15",
+        "e16"
+      ]
+    },
+    "n2": {
+      "label": "protected_lanes",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04",
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2",
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "surface_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06",
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n4": {
+      "label": "parking_infrastructure",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08",
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n5": {
+      "label": "charging_infrastructure",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_10",
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n6": {
+      "label": "intermodal_connections",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n7": {
+      "label": "topography",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n8": {
+      "label": "journey_smoothness",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14",
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e8",
+        "e12",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n9": {
+      "label": "safety_navigation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n10": {
+      "label": "infrastructure_safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10",
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n11": {
+      "label": "parking_availability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e20"
+      ]
+    },
+    "n12": {
+      "label": "charging_availability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e21"
+      ]
+    },
+    "n13": {
+      "label": "modality_needs",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_20",
+          "qa_21"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17",
+        "e18",
+        "e19",
+        "e20",
+        "e21"
+      ],
+      "outgoing_edges": [
+        "e22"
+      ]
+    },
+    "n14": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e22"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e8": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e10": {
+      "from": "n4",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e11": {
+      "from": "n5",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e12": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e17": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e18": {
+      "from": "n9",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e19": {
+      "from": "n10",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e20": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e21": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e22": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
+    },
+    "e14": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e15": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e16": {
+      "from": "n1",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect the presence of protected lanes?",
+      "answer": "Increased urban density generally leads to more protected lanes being implemented.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be fewer protected lanes."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher urban density have an impact on surface quality?",
+      "answer": "Higher urban density tends to decrease the quality of surfaces due to increased wear and tear.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, surface quality would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density affect parking and charging infrastructure?",
+      "answer": "Higher urban density often results in less parking and charging infrastructure due to space constraints.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be more parking and charging infrastructure."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do protected lanes contribute to journey smoothness?",
+      "answer": "Protected lanes make journeys smoother by providing a safer and more predictable travel environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without protected lanes, journeys would be less smooth."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "Do protected lanes enhance safety during navigation?",
+      "answer": "Yes, protected lanes significantly enhance safety during navigation by reducing the risk of accidents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without protected lanes, navigation would be less safe."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does surface quality affect journey smoothness?",
+      "answer": "Better surface quality makes journeys smoother by reducing bumps and unevenness.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If surface quality were poor, journeys would be bumpier and less smooth."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "What is the relationship between surface quality and urban density?",
+      "answer": "Higher urban density often leads to poorer surface quality due to increased wear and tear.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, surface quality would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does parking infrastructure influence infrastructure safety?",
+      "answer": "Good parking infrastructure improves overall infrastructure safety by reducing the risk of accidents and congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If parking infrastructure were poor, infrastructure safety would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does urban density affect parking infrastructure?",
+      "answer": "Higher urban density often results in less parking infrastructure due to space constraints.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be more parking infrastructure."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does charging infrastructure impact infrastructure safety?",
+      "answer": "Adequate charging infrastructure enhances infrastructure safety by providing reliable and safe charging options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If charging infrastructure were inadequate, infrastructure safety would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does urban density affect charging infrastructure?",
+      "answer": "Higher urban density often results in less charging infrastructure due to space constraints.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, there would be more charging infrastructure."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do intermodal connections affect journey smoothness?",
+      "answer": "Good intermodal connections make journeys smoother by providing seamless transitions between different modes of transportation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "Without good intermodal connections, journeys would be less smooth."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does topography influence journey smoothness?",
+      "answer": "Flat and even topography contributes to smoother journeys, while hilly or uneven terrain can make journeys bumpier.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the topography were hilly, journeys would be less smooth."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does journey smoothness influence modality needs?",
+      "answer": "Smooth journeys reduce the need for multiple modalities as they provide a comfortable and efficient travel experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If journeys were bumpy, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does surface quality affect journey smoothness?",
+      "answer": "Better surface quality makes journeys smoother by reducing bumps and unevenness.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If surface quality were poor, journeys would be bumpier and less smooth."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does safety during navigation influence modality needs?",
+      "answer": "Enhanced safety during navigation reduces the need for multiple modalities as it provides a secure and reliable travel experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If navigation were less safe, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does infrastructure safety influence modality needs?",
+      "answer": "Improved infrastructure safety reduces the need for multiple modalities as it provides a secure and reliable travel environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If infrastructure safety were poor, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does parking availability influence modality needs?",
+      "answer": "Greater parking availability reduces the need for multiple modalities as it provides convenient and accessible parking options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If parking availability were low, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does charging availability influence modality needs?",
+      "answer": "Greater charging availability reduces the need for multiple modalities as it provides convenient and reliable charging options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If charging availability were low, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How do modality needs influence upzoning stance?",
+      "answer": "Lower modality needs lead to a more positive stance on upzoning, as it indicates a more efficient and satisfactory transportation system.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If modality needs were high, the stance on upzoning would be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does journey smoothness influence modality needs?",
+      "answer": "Smooth journeys reduce the need for multiple modalities as they provide a comfortable and efficient travel experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If journeys were bumpy, the need for multiple modalities would increase."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does the need for multiple modalities influence upzoning stance?",
+      "answer": "A lower need for multiple modalities leads to a more positive stance on upzoning, as it indicates a more efficient and satisfactory transportation system.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the need for multiple modalities were high, the stance on upzoning would be more negative."
+      }
+    }
+  ]
+}

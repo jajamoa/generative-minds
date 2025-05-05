@@ -1,372 +1,520 @@
 {
-    "agent_id": "sample_11",
-    "demographics": {
-        "age": 72,
-        "income": "$30,000-$45,000",
-        "education": "high school graduate",
-        "occupation": "retired nurse",
-        "housing": "homeowner in older neighborhood"
+  "agent_id": "sample_11",
+  "demographics": {
+    "age": 35,
+    "income": "< $30,000",
+    "education": "some college",
+    "occupation": "technician",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1"
+      ]
     },
-    "nodes": {
-        "n1": {
-            "label": "property_values_concern",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_01",
-                    "qa_02"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e1",
-                "e2"
-            ]
-        },
-        "n2": {
-            "label": "neighborhood_character_importance",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_02",
-                    "qa_03"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e3",
-                "e4"
-            ]
-        },
-        "n3": {
-            "label": "fear_of_change",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_04"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e5"
-            ]
-        },
-        "n4": {
-            "label": "community_benefit_perception",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_05"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e6"
-            ]
-        },
-        "n5": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [
-                true,
-                false
-            ],
-            "semantic_role": "behavioral_intention",
-            "appearance": {
-                "qa_ids": [
-                    "qa_06"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e1",
-                "e2",
-                "e3",
-                "e4",
-                "e5",
-                "e6"
-            ],
-            "outgoing_edges": []
-        }
+    "n2": {
+      "label": "school_crowding",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
     },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n1"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        -0.8
-                    ],
-                    "bias": 0.5
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_01"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_01"
-            ]
-        },
-        "e2": {
-            "from": "n2",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.6
-                    ],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_02"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_02"
-            ]
-        },
-        "e3": {
-            "from": "n2",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        -0.4
-                    ],
-                    "bias": 0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_03"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_03"
-            ]
-        },
-        "e4": {
-            "from": "n3",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n3"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.7
-                    ],
-                    "bias": -0.4
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_04"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_04"
-            ]
-        },
-        "e5": {
-            "from": "n3",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n3"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.5
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_04"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_04"
-            ]
-        },
-        "e6": {
-            "from": "n4",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n4"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        -0.8
-                    ],
-                    "bias": 0.5
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_05"
-                ],
-                "confidence": 0.9
-            },
-            "support_qas": [
-                "qa_05"
-            ]
-        }
+    "n3": {
+      "label": "class_size",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
     },
-    "qas": [
-        {
-            "qa_id": "qa_01",
-            "question": "How do you feel about the potential impact of upzoning on your property values?",
-            "answer": "I'm worried that upzoning might lower my property value. I've heard stories from friends where new developments made their neighborhoods less desirable.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n5",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If there were more evidence that upzoning increases property values, then I might be more supportive."
-            }
+    "n4": {
+      "label": "education_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n5": {
+      "label": "child_success",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n6": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        {
-            "qa_id": "qa_02",
-            "question": "How important is maintaining the character of your neighborhood to you?",
-            "answer": "It's very important. I love the way our neighborhood looks and feels. I don't want it to lose its charm and become just another crowded, noisy area.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n2",
-                    "to": "n5",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.7,
-                    "confidence_rating": 0.8
-                },
-                "counterfactual": "If the changes could be done in a way that preserves the character, I might be more open to it."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        {
-            "qa_id": "qa_03",
-            "question": "Do you think upzoning will change the character of your neighborhood?",
-            "answer": "Yes, I think it will. More people and buildings will make it feel different, and I'm not sure if I like that change.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n2",
-                    "to": "n5",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.6,
-                    "confidence_rating": 0.7
-                },
-                "counterfactual": "If the changes were minimal and well-planned, I might be less concerned."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
         },
-        {
-            "qa_id": "qa_04",
-            "question": "Are you afraid that upzoning will bring too much change to your neighborhood?",
-            "answer": "Yes, I am. Change can be scary, and I worry that the neighborhood won't be the same. I like things the way they are.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n3",
-                    "to": "n5",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.7,
-                    "confidence_rating": 0.8
-                },
-                "counterfactual": "If the changes were gradual and we had more control over them, I might feel better."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e4": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        {
-            "qa_id": "qa_05",
-            "question": "Do you see any benefits for the community from upzoning?",
-            "answer": "I suppose it could help with housing shortages, but I'm not sure if the benefits outweigh the risks. I need more information to be convinced.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n4",
-                    "to": "n5",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.5,
-                    "confidence_rating": 0.7
-                },
-                "counterfactual": "If I saw clear, tangible benefits for the community, I might be more supportive."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
         },
-        {
-            "qa_id": "qa_06",
-            "question": "Overall, do you support or oppose upzoning in your neighborhood?",
-            "answer": "I oppose it. The risks seem too high, and I'm not convinced the benefits are worth it. I'd rather keep things the way they are.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n5",
-                    "to": "n5",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If I saw more evidence that upzoning would benefit both me and the community, I might reconsider."
-            }
-        }
-    ]
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect school crowding?",
+      "answer": "Higher urban density leads to more crowded schools.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the schools would be less crowded."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "What is your opinion on the impact of urban density on school crowding?",
+      "answer": "I believe that as urban density increases, school crowding also increases.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the schools would be less crowded."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does school crowding affect class size?",
+      "answer": "More crowded schools lead to larger class sizes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the schools were less crowded, then the class sizes would be smaller."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "Do you think school crowding has an effect on class size?",
+      "answer": "Yes, I believe that more crowded schools result in larger class sizes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the schools were less crowded, then the class sizes would be smaller."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does class size affect education quality?",
+      "answer": "Larger class sizes tend to decrease the quality of education.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the class sizes were smaller, then the quality of education would improve."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "Do you think class size has an impact on the quality of education?",
+      "answer": "Yes, I believe that larger class sizes negatively impact the quality of education.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the class sizes were smaller, then the quality of education would improve."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does the quality of education affect a child's success?",
+      "answer": "Better quality education leads to higher chances of a child's success.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of education were lower, then the child's success would be less likely."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Do you think the quality of education affects a child's future success?",
+      "answer": "Yes, I believe that better quality education increases the likelihood of a child's success.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of education were lower, then the child's success would be less likely."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does a child's success affect your stance on upzoning?",
+      "answer": "If my child is successful, I am less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If my child were not successful, then I would be more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "Do you think a child's success influences your stance on upzoning?",
+      "answer": "Yes, I believe that if my child is successful, I am less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If my child were not successful, then I would be more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does urban density indirectly affect your stance on upzoning through its impact on education and child success?",
+      "answer": "Higher urban density leads to more crowded schools, larger class sizes, and lower education quality, which can reduce a child's success and make me less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the schools would be less crowded, class sizes smaller, and education quality higher, leading to a higher chance of my child's success and making me more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "Do you think urban density has a significant impact on your stance on upzoning through its effects on education and child success?",
+      "answer": "Yes, I believe that higher urban density negatively impacts education and child success, which in turn makes me less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the schools would be less crowded, class sizes smaller, and education quality higher, leading to a higher chance of my child's success and making me more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the quality of education influence your decision on upzoning?",
+      "answer": "Better quality education makes me more likely to support upzoning because it positively affects my child's success.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of education were lower, then I would be less likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "Do you think the quality of education plays a role in your stance on upzoning?",
+      "answer": "Yes, I believe that better quality education makes me more likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the quality of education were lower, then I would be less likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the relationship between urban density and school crowding affect your overall view on upzoning?",
+      "answer": "The relationship between higher urban density and more crowded schools, which leads to larger class sizes and lower education quality, makes me less likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, then the schools would be less crowded, class sizes smaller, and education quality higher, making me more likely to support upzoning."
+      }
+    }
+  ]
 }

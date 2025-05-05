@@ -1,15 +1,15 @@
 {
-  "agent_id": "sample_8",
+  "agent_id": "sample_31",
   "demographics": {
-    "age": 38,
+    "age": 24,
     "income": "$60,000 - $100,000",
-    "education": "bachelor's degree",
-    "occupation": "service worker",
-    "housing": "homeowner"
+    "education": "high school",
+    "occupation": "retired",
+    "housing": "lives with family"
   },
   "nodes": {
     "n1": {
-      "label": "density",
+      "label": "building_height",
       "type": "continuous",
       "range": [
         0.0,
@@ -26,11 +26,11 @@
       "incoming_edges": [],
       "outgoing_edges": [
         "e1",
-        "e14"
+        "e15"
       ]
     },
     "n2": {
-      "label": "foot_traffic",
+      "label": "public_spaces",
       "type": "continuous",
       "range": [
         0.0,
@@ -53,7 +53,7 @@
       ]
     },
     "n3": {
-      "label": "commercial_rents",
+      "label": "transportation",
       "type": "continuous",
       "range": [
         0.0,
@@ -68,20 +68,21 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e14"
+        "e15"
       ],
       "outgoing_edges": [
-        "e15"
+        "e4",
+        "e5"
       ]
     },
     "n4": {
-      "label": "customer_base",
+      "label": "peer_interaction",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "external_state",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_07",
@@ -93,17 +94,17 @@
         "e2"
       ],
       "outgoing_edges": [
-        "e4"
+        "e6"
       ]
     },
     "n5": {
-      "label": "business_visibility",
+      "label": "cultural_expression",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "external_state",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_09",
@@ -115,11 +116,11 @@
         "e3"
       ],
       "outgoing_edges": [
-        "e5"
+        "e7"
       ]
     },
     "n6": {
-      "label": "operational_costs",
+      "label": "independent_mobility",
       "type": "continuous",
       "range": [
         0.0,
@@ -134,14 +135,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e15"
+        "e4"
       ],
       "outgoing_edges": [
-        "e6"
+        "e8"
       ]
     },
     "n7": {
-      "label": "competition",
+      "label": "sense_of_belonging",
       "type": "continuous",
       "range": [
         0.0,
@@ -156,14 +157,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e4"
+        "e6"
       ],
       "outgoing_edges": [
-        "e13"
+        "e9"
       ]
     },
     "n8": {
-      "label": "local_economy",
+      "label": "identity_construction",
       "type": "continuous",
       "range": [
         0.0,
@@ -178,14 +179,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e5"
+        "e7"
       ],
       "outgoing_edges": [
-        "e7"
+        "e10"
       ]
     },
     "n9": {
-      "label": "market_demand",
+      "label": "social_spaces",
       "type": "continuous",
       "range": [
         0.0,
@@ -200,20 +201,20 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e6"
+        "e8"
       ],
       "outgoing_edges": [
-        "e8"
+        "e11"
       ]
     },
     "n10": {
-      "label": "regulatory_environment",
-      "type": "binary",
-      "values": [
-        true,
-        false
+      "label": "transit_accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
       ],
-      "semantic_role": "internal_affect",
+      "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
           "qa_19",
@@ -222,14 +223,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e13"
+        "e5"
       ],
       "outgoing_edges": [
-        "e9"
+        "e12"
       ]
     },
     "n11": {
-      "label": "community_support",
+      "label": "community_engagement",
       "type": "continuous",
       "range": [
         0.0,
@@ -244,14 +245,15 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e7"
+        "e9",
+        "e10"
       ],
       "outgoing_edges": [
-        "e10"
+        "e13"
       ]
     },
     "n12": {
-      "label": "adaptability",
+      "label": "urban_environment_quality",
       "type": "continuous",
       "range": [
         0.0,
@@ -266,11 +268,12 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e8",
-        "e9"
+        "e11",
+        "e12",
+        "e13"
       ],
       "outgoing_edges": [
-        "e11"
+        "e14"
       ]
     },
     "n13": {
@@ -289,8 +292,7 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e10",
-        "e11"
+        "e14"
       ],
       "outgoing_edges": []
     }
@@ -338,12 +340,12 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_07"
+          "qa_03"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_07"
+        "qa_03"
       ]
     },
     "e3": {
@@ -363,6 +365,106 @@
         },
         "noise_std": 0.1,
         "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
           "qa_09"
         ],
         "confidence": 0.9
@@ -371,13 +473,38 @@
         "qa_09"
       ]
     },
-    "e4": {
-      "from": "n4",
-      "to": "n7",
+    "e8": {
+      "from": "n6",
+      "to": "n9",
       "function": {
-        "target": "n7",
+        "target": "n9",
         "inputs": [
-          "n4"
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e9": {
+      "from": "n7",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n7"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -396,13 +523,13 @@
         "qa_13"
       ]
     },
-    "e5": {
-      "from": "n5",
-      "to": "n8",
+    "e10": {
+      "from": "n8",
+      "to": "n11",
       "function": {
-        "target": "n8",
+        "target": "n11",
         "inputs": [
-          "n5"
+          "n8"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -421,36 +548,63 @@
         "qa_15"
       ]
     },
-    "e6": {
-      "from": "n6",
-      "to": "n9",
+    "e11": {
+      "from": "n9",
+      "to": "n12",
       "function": {
-        "target": "n9",
+        "target": "n12",
         "inputs": [
-          "n6"
+          "n9"
         ],
-        "function_type": "threshold",
+        "function_type": "sigmoid",
         "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_18"
+          "qa_17"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_18"
+        "qa_17"
       ]
     },
-    "e7": {
-      "from": "n8",
-      "to": "n11",
+    "e12": {
+      "from": "n10",
+      "to": "n12",
       "function": {
-        "target": "n11",
+        "target": "n12",
         "inputs": [
-          "n8"
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e13": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -469,20 +623,18 @@
         "qa_21"
       ]
     },
-    "e8": {
-      "from": "n9",
-      "to": "n12",
+    "e14": {
+      "from": "n12",
+      "to": "n13",
       "function": {
-        "target": "n12",
+        "target": "n13",
         "inputs": [
-          "n9"
+          "n12"
         ],
-        "function_type": "sigmoid",
+        "function_type": "threshold",
         "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
+          "threshold": 0.6,
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
@@ -494,82 +646,7 @@
         "qa_23"
       ]
     },
-    "e9": {
-      "from": "n10",
-      "to": "n12",
-      "function": {
-        "target": "n12",
-        "inputs": [
-          "n10"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_24"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_24"
-      ]
-    },
-    "e10": {
-      "from": "n11",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n11"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_25"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_25"
-      ]
-    },
-    "e11": {
-      "from": "n12",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n12"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_26"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_26"
-      ]
-    },
-    "e14": {
+    "e15": {
       "from": "n1",
       "to": "n3",
       "function": {
@@ -577,73 +654,29 @@
         "inputs": [
           "n1"
         ],
-        "function_type": "threshold",
+        "function_type": "sigmoid",
         "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_06"
+          "qa_02"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_06"
-      ]
-    },
-    "e15": {
-      "from": "n3",
-      "to": "n6",
-      "function": {
-        "target": "n6",
-        "inputs": [
-          "n3"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_12"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_12"
-      ]
-    },
-    "e13": {
-      "from": "n7",
-      "to": "n10",
-      "function": {
-        "target": "n10",
-        "inputs": [
-          "n7"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_20"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_20"
+        "qa_02"
       ]
     }
   },
   "qas": [
     {
       "qa_id": "qa_01",
-      "question": "How does urban density affect foot traffic in the area?",
-      "answer": "Higher urban density generally leads to more foot traffic as there are more people and activities in the area.",
+      "question": "How does the height of buildings affect the availability of public spaces?",
+      "answer": "Taller buildings often lead to more public spaces as they can accommodate more people and activities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -654,13 +687,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the urban density were lower, then foot traffic would decrease."
+        "counterfactual": "If building heights were lower, there would be fewer public spaces."
       }
     },
     {
       "qa_id": "qa_02",
-      "question": "What is your view on the impact of urban density on the local environment?",
-      "answer": "Urban density can have both positive and negative impacts on the local environment, such as increased pollution but also better use of resources.",
+      "question": "What is the impact of building height on transportation?",
+      "answer": "Higher building heights tend to negatively impact transportation by increasing traffic and congestion.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -668,16 +701,16 @@
           "direction": "negative"
         },
         "belief_strength": {
-          "estimated_probability": 0.6,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
+        "counterfactual": "If building heights were lower, transportation would be less affected."
       }
     },
     {
       "qa_id": "qa_03",
-      "question": "How does foot traffic influence the customer base for local businesses?",
-      "answer": "Increased foot traffic typically leads to a larger customer base as more people are exposed to and visit local businesses.",
+      "question": "How do public spaces influence peer interaction?",
+      "answer": "More public spaces provide more opportunities for peer interaction, leading to a positive effect.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
@@ -688,13 +721,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then the customer base for local businesses would decrease."
+        "counterfactual": "If there were fewer public spaces, peer interaction would decrease."
       }
     },
     {
       "qa_id": "qa_04",
-      "question": "In what way does foot traffic affect business visibility?",
-      "answer": "Higher foot traffic increases business visibility as more people see and become aware of the businesses in the area.",
+      "question": "What is the relationship between public spaces and cultural expression?",
+      "answer": "Public spaces are essential for cultural expression, as they provide a platform for various cultural activities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
@@ -705,47 +738,47 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then business visibility would decrease."
+        "counterfactual": "If there were fewer public spaces, cultural expression would be limited."
       }
     },
     {
       "qa_id": "qa_05",
-      "question": "How does urban density affect commercial rents?",
-      "answer": "Higher urban density often leads to lower commercial rents due to increased supply and competition.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n1",
-          "to": "n3",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
-      }
-    },
-    {
-      "qa_id": "qa_06",
-      "question": "What is the relationship between commercial rents and operational costs for businesses?",
-      "answer": "Lower commercial rents generally lead to lower operational costs for businesses, making it easier to operate profitably.",
+      "question": "How does transportation affect independent mobility?",
+      "answer": "Better transportation options enhance independent mobility, allowing people to travel more freely.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n3",
           "to": "n6",
-          "direction": "negative"
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If commercial rents were higher, then operational costs for businesses would increase."
+        "counterfactual": "If transportation were poor, independent mobility would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the impact of transportation on transit accessibility?",
+      "answer": "Improved transportation directly increases transit accessibility, making it easier for people to get around.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation were worse, transit accessibility would be lower."
       }
     },
     {
       "qa_id": "qa_07",
-      "question": "How does a larger customer base affect the level of competition among businesses?",
-      "answer": "A larger customer base can lead to increased competition as more businesses try to capture the market share.",
+      "question": "How does peer interaction influence the sense of belonging?",
+      "answer": "Increased peer interaction fosters a stronger sense of belonging, as people feel more connected to their community.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n4",
@@ -756,13 +789,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the customer base were smaller, then the level of competition among businesses would decrease."
+        "counterfactual": "If peer interaction were less, the sense of belonging would be weaker."
       }
     },
     {
       "qa_id": "qa_08",
-      "question": "What is the impact of a larger customer base on the local economy?",
-      "answer": "A larger customer base can boost the local economy by increasing sales and economic activity in the area.",
+      "question": "What is the impact of peer interaction on identity construction?",
+      "answer": "Peer interaction plays a crucial role in identity construction, as it helps individuals form and express their identities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n4",
@@ -773,13 +806,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the customer base were smaller, then the local economy would be less vibrant."
+        "counterfactual": "If peer interaction were less, identity construction would be more challenging."
       }
     },
     {
       "qa_id": "qa_09",
-      "question": "How does business visibility influence the local economy?",
-      "answer": "Increased business visibility can boost the local economy by attracting more customers and generating more economic activity.",
+      "question": "How does cultural expression influence identity construction?",
+      "answer": "Cultural expression is a key factor in identity construction, as it allows individuals to connect with their cultural roots and values.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n5",
@@ -790,13 +823,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If business visibility were lower, then the local economy would be less vibrant."
+        "counterfactual": "If cultural expression were limited, identity construction would be more difficult."
       }
     },
     {
       "qa_id": "qa_10",
-      "question": "What is the effect of business visibility on community support?",
-      "answer": "Higher business visibility can lead to greater community support as the community becomes more aware and engaged with local businesses.",
+      "question": "What is the impact of cultural expression on community engagement?",
+      "answer": "Cultural expression enhances community engagement by fostering a sense of shared identity and purpose.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n5",
@@ -807,81 +840,81 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If business visibility were lower, then community support would decrease."
+        "counterfactual": "If cultural expression were limited, community engagement would be lower."
       }
     },
     {
       "qa_id": "qa_11",
-      "question": "How do operational costs affect market demand?",
-      "answer": "Lower operational costs can lead to lower prices and better products, which can increase market demand.",
+      "question": "How does independent mobility influence social spaces?",
+      "answer": "Greater independent mobility leads to more frequent use of social spaces, enhancing their importance and utility.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n6",
           "to": "n9",
-          "direction": "negative"
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If operational costs were higher, then market demand would decrease."
+        "counterfactual": "If independent mobility were lower, social spaces would be used less frequently."
       }
     },
     {
       "qa_id": "qa_12",
-      "question": "What is the relationship between operational costs and adaptability?",
-      "answer": "Lower operational costs can make businesses more adaptable as they have more financial flexibility to respond to changes.",
+      "question": "What is the impact of independent mobility on urban environment quality?",
+      "answer": "Enhanced independent mobility improves the overall quality of the urban environment by reducing congestion and improving access to amenities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n6",
           "to": "n12",
-          "direction": "negative"
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If operational costs were higher, then adaptability would decrease."
+        "counterfactual": "If independent mobility were lower, the urban environment quality would suffer."
       }
     },
     {
       "qa_id": "qa_13",
-      "question": "How does competition affect the regulatory environment?",
-      "answer": "High competition can lead to a more restrictive regulatory environment as businesses and authorities try to manage the market.",
+      "question": "How does the sense of belonging influence community engagement?",
+      "answer": "A strong sense of belonging encourages higher levels of community engagement, as people feel more invested in their community.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n7",
-          "to": "n10",
-          "direction": "negative"
+          "to": "n11",
+          "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If competition were lower, then the regulatory environment would be less restrictive."
+        "counterfactual": "If the sense of belonging were weaker, community engagement would be lower."
       }
     },
     {
       "qa_id": "qa_14",
-      "question": "What is the impact of competition on community support?",
-      "answer": "High competition can sometimes reduce community support as businesses may focus more on competing rather than engaging with the community.",
+      "question": "What is the impact of the sense of belonging on urban environment quality?",
+      "answer": "A strong sense of belonging contributes to a better urban environment quality, as people take more care of their surroundings.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n7",
-          "to": "n11",
-          "direction": "negative"
+          "to": "n12",
+          "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "counterfactual": "If competition were lower, then community support would increase."
+        "counterfactual": "If the sense of belonging were weaker, the urban environment quality would be lower."
       }
     },
     {
       "qa_id": "qa_15",
-      "question": "How does the local economy influence community support?",
-      "answer": "A strong local economy can lead to greater community support as people feel more optimistic and engaged with their community.",
+      "question": "How does identity construction influence community engagement?",
+      "answer": "Stronger identity construction leads to higher community engagement, as individuals feel more connected to their community.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n8",
@@ -892,13 +925,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the local economy were weaker, then community support would decrease."
+        "counterfactual": "If identity construction were weaker, community engagement would be lower."
       }
     },
     {
       "qa_id": "qa_16",
-      "question": "What is the impact of the local economy on adaptability?",
-      "answer": "A strong local economy can provide more resources and opportunities, making businesses more adaptable.",
+      "question": "What is the impact of identity construction on urban environment quality?",
+      "answer": "Identity construction contributes to a better urban environment quality, as individuals take pride in their community and work to improve it.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n8",
@@ -909,13 +942,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the local economy were weaker, then adaptability would decrease."
+        "counterfactual": "If identity construction were weaker, the urban environment quality would be lower."
       }
     },
     {
       "qa_id": "qa_17",
-      "question": "How does market demand influence adaptability?",
-      "answer": "Higher market demand can make businesses more adaptable as they have more incentives to innovate and respond to customer needs.",
+      "question": "How do social spaces influence urban environment quality?",
+      "answer": "Well-maintained and well-used social spaces contribute positively to the overall quality of the urban environment.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n9",
@@ -926,30 +959,30 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If market demand were lower, then adaptability would decrease."
+        "counterfactual": "If social spaces were neglected, the urban environment quality would be lower."
       }
     },
     {
       "qa_id": "qa_18",
-      "question": "What is the effect of market demand on the regulatory environment?",
-      "answer": "Higher market demand can lead to a more supportive regulatory environment as authorities aim to foster growth and innovation.",
+      "question": "What is the impact of social spaces on community engagement?",
+      "answer": "Social spaces are essential for community engagement, as they provide a place for people to gather and interact.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n9",
-          "to": "n10",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If market demand were lower, then the regulatory environment would be less supportive."
+        "counterfactual": "If social spaces were less available, community engagement would be lower."
       }
     },
     {
       "qa_id": "qa_19",
-      "question": "How does the regulatory environment affect adaptability?",
-      "answer": "A supportive regulatory environment can make businesses more adaptable by providing clear guidelines and reducing uncertainty.",
+      "question": "How does transit accessibility influence urban environment quality?",
+      "answer": "Good transit accessibility improves the overall quality of the urban environment by reducing congestion and improving access to amenities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
@@ -960,47 +993,30 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then adaptability would decrease."
+        "counterfactual": "If transit accessibility were poor, the urban environment quality would be lower."
       }
     },
     {
       "qa_id": "qa_20",
-      "question": "What is the impact of the regulatory environment on upzoning stance?",
-      "answer": "A supportive regulatory environment can encourage a positive stance on upzoning as it aligns with policies that promote growth and development.",
+      "question": "What is the impact of transit accessibility on community engagement?",
+      "answer": "Improved transit accessibility enhances community engagement by making it easier for people to participate in community activities.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
-          "to": "n13",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then the upzoning stance would be more negative."
+        "counterfactual": "If transit accessibility were poor, community engagement would be lower."
       }
     },
     {
       "qa_id": "qa_21",
-      "question": "How does community support influence upzoning stance?",
-      "answer": "Strong community support can lead to a more positive stance on upzoning as the community sees the benefits of increased development.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n11",
-          "to": "n13",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If community support were lower, then the upzoning stance would be more negative."
-      }
-    },
-    {
-      "qa_id": "qa_22",
-      "question": "What is the effect of community support on adaptability?",
-      "answer": "Strong community support can enhance adaptability by providing a supportive environment for businesses to experiment and grow.",
+      "question": "How does community engagement influence urban environment quality?",
+      "answer": "High levels of community engagement lead to a better urban environment quality, as people work together to improve their surroundings.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n11",
@@ -1011,47 +1027,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then adaptability would decrease."
+        "counterfactual": "If community engagement were low, the urban environment quality would be lower."
       }
     },
     {
-      "qa_id": "qa_23",
-      "question": "How does adaptability influence upzoning stance?",
-      "answer": "Greater adaptability can lead to a more positive stance on upzoning as businesses are more capable of adjusting to changes and new opportunities.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n12",
-          "to": "n13",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If adaptability were lower, then the upzoning stance would be more negative."
-      }
-    },
-    {
-      "qa_id": "qa_24",
-      "question": "What is the impact of adaptability on the regulatory environment?",
-      "answer": "Greater adaptability can lead to a more supportive regulatory environment as businesses are more capable of complying with and influencing regulations.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n12",
-          "to": "n10",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If adaptability were lower, then the regulatory environment would be less supportive."
-      }
-    },
-    {
-      "qa_id": "qa_25",
-      "question": "How does community support influence the final decision on upzoning?",
-      "answer": "Strong community support can lead to a more favorable decision on upzoning as the community sees the benefits and supports the change.",
+      "qa_id": "qa_22",
+      "question": "What is the impact of community engagement on upzoning stance?",
+      "answer": "Strong community engagement can lead to a more favorable stance on upzoning, as people see the benefits of increased density and improved infrastructure.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n11",
@@ -1062,13 +1044,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then the upzoning decision would be less favorable."
+        "counterfactual": "If community engagement were low, the stance on upzoning would be less favorable."
       }
     },
     {
-      "qa_id": "qa_26",
-      "question": "What is the effect of adaptability on the final decision on upzoning?",
-      "answer": "Greater adaptability can lead to a more favorable decision on upzoning as businesses are more capable of adjusting to the changes and seeing the long-term benefits.",
+      "qa_id": "qa_23",
+      "question": "How does urban environment quality influence upzoning stance?",
+      "answer": "A high-quality urban environment can lead to a more favorable stance on upzoning, as people see the benefits of maintaining and improving their surroundings.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n12",
@@ -1079,7 +1061,58 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If adaptability were lower, then the upzoning decision would be less favorable."
+        "counterfactual": "If the urban environment quality were poor, the stance on upzoning would be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_24",
+      "question": "What is the impact of urban environment quality on community engagement?",
+      "answer": "A high-quality urban environment encourages higher levels of community engagement, as people feel more connected and invested in their surroundings.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban environment quality were poor, community engagement would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_25",
+      "question": "How does upzoning stance influence the overall urban development?",
+      "answer": "A positive stance on upzoning can lead to more sustainable and efficient urban development, as it allows for higher density and better use of resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the stance on upzoning were negative, urban development would be less sustainable and efficient."
+      }
+    },
+    {
+      "qa_id": "qa_26",
+      "question": "What is the impact of upzoning stance on community engagement?",
+      "answer": "A positive stance on upzoning can enhance community engagement by involving more people in the decision-making process and promoting a sense of ownership.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the stance on upzoning were negative, community engagement would be lower."
       }
     }
   ]

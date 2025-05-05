@@ -1,15 +1,15 @@
 {
-  "agent_id": "sample_8",
+  "agent_id": "sample_16",
   "demographics": {
-    "age": 38,
+    "age": 57,
     "income": "$60,000 - $100,000",
-    "education": "bachelor's degree",
+    "education": "master's degree or higher",
     "occupation": "service worker",
     "housing": "homeowner"
   },
   "nodes": {
     "n1": {
-      "label": "density",
+      "label": "population_density",
       "type": "continuous",
       "range": [
         0.0,
@@ -26,11 +26,11 @@
       "incoming_edges": [],
       "outgoing_edges": [
         "e1",
-        "e14"
+        "e2"
       ]
     },
     "n2": {
-      "label": "foot_traffic",
+      "label": "traffic_congestion",
       "type": "continuous",
       "range": [
         0.0,
@@ -48,18 +48,17 @@
         "e1"
       ],
       "outgoing_edges": [
-        "e2",
-        "e3"
+        "e14"
       ]
     },
     "n3": {
-      "label": "commercial_rents",
+      "label": "emergency_response_time",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "external_state",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_05",
@@ -75,7 +74,7 @@
       ]
     },
     "n4": {
-      "label": "customer_base",
+      "label": "healthcare_accessibility",
       "type": "continuous",
       "range": [
         0.0,
@@ -93,17 +92,18 @@
         "e2"
       ],
       "outgoing_edges": [
+        "e3",
         "e4"
       ]
     },
     "n5": {
-      "label": "business_visibility",
+      "label": "commute_convenience",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "external_state",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_09",
@@ -112,14 +112,15 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e3"
+        "e3",
+        "e13"
       ],
       "outgoing_edges": [
         "e5"
       ]
     },
     "n6": {
-      "label": "operational_costs",
+      "label": "work_life_balance",
       "type": "continuous",
       "range": [
         0.0,
@@ -134,14 +135,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e15"
+        "e5"
       ],
       "outgoing_edges": [
         "e6"
       ]
     },
     "n7": {
-      "label": "competition",
+      "label": "community_health_resources",
       "type": "continuous",
       "range": [
         0.0,
@@ -159,11 +160,12 @@
         "e4"
       ],
       "outgoing_edges": [
-        "e13"
+        "e7",
+        "e8"
       ]
     },
     "n8": {
-      "label": "local_economy",
+      "label": "affordability",
       "type": "continuous",
       "range": [
         0.0,
@@ -178,14 +180,14 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e5"
+        "e6"
       ],
       "outgoing_edges": [
-        "e7"
+        "e12"
       ]
     },
     "n9": {
-      "label": "market_demand",
+      "label": "service_quality",
       "type": "continuous",
       "range": [
         0.0,
@@ -200,20 +202,21 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e6"
+        "e7",
+        "e15"
       ],
       "outgoing_edges": [
-        "e8"
+        "e9"
       ]
     },
     "n10": {
-      "label": "regulatory_environment",
+      "label": "public_transportation",
       "type": "binary",
       "values": [
         true,
         false
       ],
-      "semantic_role": "internal_affect",
+      "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
           "qa_19",
@@ -221,21 +224,20 @@
         ],
         "frequency": 1
       },
-      "incoming_edges": [
-        "e13"
-      ],
+      "incoming_edges": [],
       "outgoing_edges": [
-        "e9"
+        "e13",
+        "e14"
       ]
     },
     "n11": {
-      "label": "community_support",
+      "label": "healthcare_facility_capacity",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "behavioral_intention",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_21",
@@ -244,20 +246,20 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e7"
+        "e8"
       ],
       "outgoing_edges": [
         "e10"
       ]
     },
     "n12": {
-      "label": "adaptability",
+      "label": "patient_outcomes",
       "type": "continuous",
       "range": [
         0.0,
         1.0
       ],
-      "semantic_role": "behavioral_intention",
+      "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
           "qa_23",
@@ -266,8 +268,8 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e8",
-        "e9"
+        "e9",
+        "e10"
       ],
       "outgoing_edges": [
         "e11"
@@ -289,8 +291,8 @@
         "frequency": 1
       },
       "incoming_edges": [
-        "e10",
-        "e11"
+        "e11",
+        "e12"
       ],
       "outgoing_edges": []
     }
@@ -322,12 +324,37 @@
       ]
     },
     "e2": {
-      "from": "n2",
+      "from": "n1",
       "to": "n4",
       "function": {
         "target": "n4",
         "inputs": [
-          "n2"
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -344,31 +371,6 @@
       },
       "support_qas": [
         "qa_07"
-      ]
-    },
-    "e3": {
-      "from": "n2",
-      "to": "n5",
-      "function": {
-        "target": "n5",
-        "inputs": [
-          "n2"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_09"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_09"
       ]
     },
     "e4": {
@@ -388,19 +390,19 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_13"
+          "qa_08"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_13"
+        "qa_08"
       ]
     },
     "e5": {
       "from": "n5",
-      "to": "n8",
+      "to": "n6",
       "function": {
-        "target": "n8",
+        "target": "n6",
         "inputs": [
           "n5"
         ],
@@ -413,44 +415,121 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_15"
+          "qa_09"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_15"
+        "qa_09"
       ]
     },
     "e6": {
       "from": "n6",
-      "to": "n9",
+      "to": "n8",
       "function": {
-        "target": "n9",
+        "target": "n8",
         "inputs": [
           "n6"
         ],
-        "function_type": "threshold",
+        "function_type": "sigmoid",
         "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_18"
+          "qa_11"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_18"
+        "qa_11"
       ]
     },
     "e7": {
-      "from": "n8",
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e8": {
+      "from": "n7",
       "to": "n11",
       "function": {
         "target": "n11",
         "inputs": [
-          "n8"
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e10": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
         ],
         "function_type": "sigmoid",
         "parameters": {
@@ -469,20 +548,18 @@
         "qa_21"
       ]
     },
-    "e8": {
-      "from": "n9",
-      "to": "n12",
+    "e11": {
+      "from": "n12",
+      "to": "n13",
       "function": {
-        "target": "n12",
+        "target": "n13",
         "inputs": [
-          "n9"
+          "n12"
         ],
-        "function_type": "sigmoid",
+        "function_type": "threshold",
         "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
+          "threshold": 0.6,
+          "direction": "greater"
         },
         "noise_std": 0.1,
         "support_qas": [
@@ -494,139 +571,116 @@
         "qa_23"
       ]
     },
-    "e9": {
-      "from": "n10",
-      "to": "n12",
+    "e12": {
+      "from": "n8",
+      "to": "n13",
       "function": {
-        "target": "n12",
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e13": {
+      "from": "n10",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e14": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e15": {
+      "from": "n3",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e16": {
+      "from": "n10",
+      "to": "n2",
+      "function": {
+        "target": "n2",
         "inputs": [
           "n10"
         ],
         "function_type": "sigmoid",
         "parameters": {
           "weights": [
-            0.8
+            -0.8
           ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_24"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_24"
-      ]
-    },
-    "e10": {
-      "from": "n11",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n11"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_25"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_25"
-      ]
-    },
-    "e11": {
-      "from": "n12",
-      "to": "n13",
-      "function": {
-        "target": "n13",
-        "inputs": [
-          "n12"
-        ],
-        "function_type": "sigmoid",
-        "parameters": {
-          "weights": [
-            0.8
-          ],
-          "bias": -0.2
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_26"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_26"
-      ]
-    },
-    "e14": {
-      "from": "n1",
-      "to": "n3",
-      "function": {
-        "target": "n3",
-        "inputs": [
-          "n1"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_06"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_06"
-      ]
-    },
-    "e15": {
-      "from": "n3",
-      "to": "n6",
-      "function": {
-        "target": "n6",
-        "inputs": [
-          "n3"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
-        },
-        "noise_std": 0.1,
-        "support_qas": [
-          "qa_12"
-        ],
-        "confidence": 0.9
-      },
-      "support_qas": [
-        "qa_12"
-      ]
-    },
-    "e13": {
-      "from": "n7",
-      "to": "n10",
-      "function": {
-        "target": "n10",
-        "inputs": [
-          "n7"
-        ],
-        "function_type": "threshold",
-        "parameters": {
-          "threshold": 0.6,
-          "direction": "less"
+          "bias": 0.2
         },
         "noise_std": 0.1,
         "support_qas": [
@@ -642,8 +696,8 @@
   "qas": [
     {
       "qa_id": "qa_01",
-      "question": "How does urban density affect foot traffic in the area?",
-      "answer": "Higher urban density generally leads to more foot traffic as there are more people and activities in the area.",
+      "question": "How does population density affect traffic congestion?",
+      "answer": "As population density increases, traffic congestion tends to increase.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
@@ -654,33 +708,16 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the urban density were lower, then foot traffic would decrease."
+        "counterfactual": "If the population density were lower, then traffic congestion would be less."
       }
     },
     {
       "qa_id": "qa_02",
-      "question": "What is your view on the impact of urban density on the local environment?",
-      "answer": "Urban density can have both positive and negative impacts on the local environment, such as increased pollution but also better use of resources.",
+      "question": "How does population density influence healthcare accessibility?",
+      "answer": "Higher population density generally improves healthcare accessibility.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
-          "to": "n3",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.6,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
-      }
-    },
-    {
-      "qa_id": "qa_03",
-      "question": "How does foot traffic influence the customer base for local businesses?",
-      "answer": "Increased foot traffic typically leads to a larger customer base as more people are exposed to and visit local businesses.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n2",
           "to": "n4",
           "direction": "positive"
         },
@@ -688,16 +725,84 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then the customer base for local businesses would decrease."
+        "counterfactual": "If the population density were lower, then healthcare accessibility would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does traffic congestion impact emergency response time?",
+      "answer": "Increased traffic congestion leads to longer emergency response times.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic congestion were reduced, then emergency response times would be shorter."
       }
     },
     {
       "qa_id": "qa_04",
-      "question": "In what way does foot traffic affect business visibility?",
-      "answer": "Higher foot traffic increases business visibility as more people see and become aware of the businesses in the area.",
+      "question": "What is the relationship between traffic congestion and public transportation?",
+      "answer": "Good public transportation can help reduce traffic congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transportation were not available, then traffic congestion would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does emergency response time affect service quality?",
+      "answer": "Longer emergency response times can negatively impact the overall service quality.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n9",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If emergency response times were shorter, then service quality would be better."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "What is the effect of traffic congestion on emergency response time?",
+      "answer": "Traffic congestion can significantly increase emergency response times.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic congestion were reduced, then emergency response times would be shorter."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does healthcare accessibility affect commute convenience?",
+      "answer": "Better healthcare accessibility often correlates with more convenient commutes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
           "to": "n5",
           "direction": "positive"
         },
@@ -705,47 +810,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If foot traffic were lower, then business visibility would decrease."
+        "counterfactual": "If healthcare accessibility were worse, then commute convenience would be lower."
       }
     },
     {
-      "qa_id": "qa_05",
-      "question": "How does urban density affect commercial rents?",
-      "answer": "Higher urban density often leads to lower commercial rents due to increased supply and competition.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n1",
-          "to": "n3",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If the urban density were lower, then commercial rents might be higher due to less competition."
-      }
-    },
-    {
-      "qa_id": "qa_06",
-      "question": "What is the relationship between commercial rents and operational costs for businesses?",
-      "answer": "Lower commercial rents generally lead to lower operational costs for businesses, making it easier to operate profitably.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n3",
-          "to": "n6",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If commercial rents were higher, then operational costs for businesses would increase."
-      }
-    },
-    {
-      "qa_id": "qa_07",
-      "question": "How does a larger customer base affect the level of competition among businesses?",
-      "answer": "A larger customer base can lead to increased competition as more businesses try to capture the market share.",
+      "qa_id": "qa_08",
+      "question": "What is the impact of healthcare accessibility on community health resources?",
+      "answer": "Improved healthcare accessibility leads to better community health resources.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n4",
@@ -756,33 +827,50 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the customer base were smaller, then the level of competition among businesses would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_08",
-      "question": "What is the impact of a larger customer base on the local economy?",
-      "answer": "A larger customer base can boost the local economy by increasing sales and economic activity in the area.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n4",
-          "to": "n8",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If the customer base were smaller, then the local economy would be less vibrant."
+        "counterfactual": "If healthcare accessibility were worse, then community health resources would be fewer."
       }
     },
     {
       "qa_id": "qa_09",
-      "question": "How does business visibility influence the local economy?",
-      "answer": "Increased business visibility can boost the local economy by attracting more customers and generating more economic activity.",
+      "question": "How does commute convenience influence work-life balance?",
+      "answer": "More convenient commutes contribute to a better work-life balance.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commute convenience were worse, then work-life balance would be poorer."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the effect of public transportation on commute convenience?",
+      "answer": "Good public transportation makes commutes more convenient.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transportation were not available, then commute convenience would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does work-life balance affect affordability?",
+      "answer": "A better work-life balance can lead to improved affordability as people have more time to manage their finances.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
           "to": "n8",
           "direction": "positive"
         },
@@ -790,16 +878,50 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If business visibility were lower, then the local economy would be less vibrant."
+        "counterfactual": "If work-life balance were worse, then affordability would be lower."
       }
     },
     {
-      "qa_id": "qa_10",
-      "question": "What is the effect of business visibility on community support?",
-      "answer": "Higher business visibility can lead to greater community support as the community becomes more aware and engaged with local businesses.",
+      "qa_id": "qa_12",
+      "question": "What is the impact of commute convenience on work-life balance?",
+      "answer": "More convenient commutes contribute to a better work-life balance.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commute convenience were worse, then work-life balance would be poorer."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do community health resources affect service quality?",
+      "answer": "Better community health resources lead to higher service quality.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community health resources were fewer, then service quality would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "What is the impact of community health resources on healthcare facility capacity?",
+      "answer": "Better community health resources can improve the capacity of healthcare facilities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
           "to": "n11",
           "direction": "positive"
         },
@@ -807,16 +929,67 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If business visibility were lower, then community support would decrease."
+        "counterfactual": "If community health resources were fewer, then healthcare facility capacity would be lower."
       }
     },
     {
-      "qa_id": "qa_11",
-      "question": "How do operational costs affect market demand?",
-      "answer": "Lower operational costs can lead to lower prices and better products, which can increase market demand.",
+      "qa_id": "qa_15",
+      "question": "How does affordability influence upzoning stance?",
+      "answer": "Improved affordability can make people more likely to support upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If affordability were worse, then support for upzoning would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What is the effect of work-life balance on affordability?",
+      "answer": "A better work-life balance can lead to improved affordability as people have more time to manage their finances.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If work-life balance were worse, then affordability would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does service quality affect patient outcomes?",
+      "answer": "Higher service quality leads to better patient outcomes.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service quality were lower, then patient outcomes would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "What is the impact of emergency response time on service quality?",
+      "answer": "Longer emergency response times can negatively impact the overall service quality.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
           "to": "n9",
           "direction": "negative"
         },
@@ -824,183 +997,64 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If operational costs were higher, then market demand would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_12",
-      "question": "What is the relationship between operational costs and adaptability?",
-      "answer": "Lower operational costs can make businesses more adaptable as they have more financial flexibility to respond to changes.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n6",
-          "to": "n12",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If operational costs were higher, then adaptability would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_13",
-      "question": "How does competition affect the regulatory environment?",
-      "answer": "High competition can lead to a more restrictive regulatory environment as businesses and authorities try to manage the market.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n7",
-          "to": "n10",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If competition were lower, then the regulatory environment would be less restrictive."
-      }
-    },
-    {
-      "qa_id": "qa_14",
-      "question": "What is the impact of competition on community support?",
-      "answer": "High competition can sometimes reduce community support as businesses may focus more on competing rather than engaging with the community.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n7",
-          "to": "n11",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.7,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If competition were lower, then community support would increase."
-      }
-    },
-    {
-      "qa_id": "qa_15",
-      "question": "How does the local economy influence community support?",
-      "answer": "A strong local economy can lead to greater community support as people feel more optimistic and engaged with their community.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n8",
-          "to": "n11",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If the local economy were weaker, then community support would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_16",
-      "question": "What is the impact of the local economy on adaptability?",
-      "answer": "A strong local economy can provide more resources and opportunities, making businesses more adaptable.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n8",
-          "to": "n12",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If the local economy were weaker, then adaptability would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_17",
-      "question": "How does market demand influence adaptability?",
-      "answer": "Higher market demand can make businesses more adaptable as they have more incentives to innovate and respond to customer needs.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n9",
-          "to": "n12",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If market demand were lower, then adaptability would decrease."
-      }
-    },
-    {
-      "qa_id": "qa_18",
-      "question": "What is the effect of market demand on the regulatory environment?",
-      "answer": "Higher market demand can lead to a more supportive regulatory environment as authorities aim to foster growth and innovation.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n9",
-          "to": "n10",
-          "direction": "positive"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.8,
-          "confidence_rating": 0.9
-        },
-        "counterfactual": "If market demand were lower, then the regulatory environment would be less supportive."
+        "counterfactual": "If emergency response times were shorter, then service quality would be better."
       }
     },
     {
       "qa_id": "qa_19",
-      "question": "How does the regulatory environment affect adaptability?",
-      "answer": "A supportive regulatory environment can make businesses more adaptable by providing clear guidelines and reducing uncertainty.",
+      "question": "How does public transportation affect commute convenience?",
+      "answer": "Good public transportation makes commutes more convenient.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
-          "to": "n12",
+          "to": "n5",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then adaptability would decrease."
+        "counterfactual": "If public transportation were not available, then commute convenience would be lower."
       }
     },
     {
       "qa_id": "qa_20",
-      "question": "What is the impact of the regulatory environment on upzoning stance?",
-      "answer": "A supportive regulatory environment can encourage a positive stance on upzoning as it aligns with policies that promote growth and development.",
+      "question": "What is the effect of public transportation on traffic congestion?",
+      "answer": "Good public transportation can help reduce traffic congestion.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n10",
-          "to": "n13",
-          "direction": "positive"
+          "to": "n2",
+          "direction": "negative"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If the regulatory environment were more restrictive, then the upzoning stance would be more negative."
+        "counterfactual": "If public transportation were not available, then traffic congestion would be higher."
       }
     },
     {
       "qa_id": "qa_21",
-      "question": "How does community support influence upzoning stance?",
-      "answer": "Strong community support can lead to a more positive stance on upzoning as the community sees the benefits of increased development.",
+      "question": "How do community health resources affect healthcare facility capacity?",
+      "answer": "Better community health resources can improve the capacity of healthcare facilities.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n11",
-          "to": "n13",
+          "from": "n7",
+          "to": "n11",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then the upzoning stance would be more negative."
+        "counterfactual": "If community health resources were fewer, then healthcare facility capacity would be lower."
       }
     },
     {
       "qa_id": "qa_22",
-      "question": "What is the effect of community support on adaptability?",
-      "answer": "Strong community support can enhance adaptability by providing a supportive environment for businesses to experiment and grow.",
+      "question": "What is the impact of healthcare facility capacity on patient outcomes?",
+      "answer": "Higher healthcare facility capacity leads to better patient outcomes.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n11",
@@ -1011,13 +1065,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then adaptability would decrease."
+        "counterfactual": "If healthcare facility capacity were lower, then patient outcomes would be worse."
       }
     },
     {
       "qa_id": "qa_23",
-      "question": "How does adaptability influence upzoning stance?",
-      "answer": "Greater adaptability can lead to a more positive stance on upzoning as businesses are more capable of adjusting to changes and new opportunities.",
+      "question": "How do patient outcomes influence upzoning stance?",
+      "answer": "Better patient outcomes can make people more likely to support upzoning.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n12",
@@ -1028,33 +1082,33 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If adaptability were lower, then the upzoning stance would be more negative."
+        "counterfactual": "If patient outcomes were worse, then support for upzoning would be lower."
       }
     },
     {
       "qa_id": "qa_24",
-      "question": "What is the impact of adaptability on the regulatory environment?",
-      "answer": "Greater adaptability can lead to a more supportive regulatory environment as businesses are more capable of complying with and influencing regulations.",
+      "question": "What is the effect of healthcare facility capacity on patient outcomes?",
+      "answer": "Higher healthcare facility capacity leads to better patient outcomes.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n12",
-          "to": "n10",
+          "from": "n11",
+          "to": "n12",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If adaptability were lower, then the regulatory environment would be less supportive."
+        "counterfactual": "If healthcare facility capacity were lower, then patient outcomes would be worse."
       }
     },
     {
       "qa_id": "qa_25",
-      "question": "How does community support influence the final decision on upzoning?",
-      "answer": "Strong community support can lead to a more favorable decision on upzoning as the community sees the benefits and supports the change.",
+      "question": "How does affordability influence upzoning stance?",
+      "answer": "Improved affordability can make people more likely to support upzoning.",
       "parsed_belief": {
         "belief_structure": {
-          "from": "n11",
+          "from": "n8",
           "to": "n13",
           "direction": "positive"
         },
@@ -1062,13 +1116,13 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If community support were lower, then the upzoning decision would be less favorable."
+        "counterfactual": "If affordability were worse, then support for upzoning would be lower."
       }
     },
     {
       "qa_id": "qa_26",
-      "question": "What is the effect of adaptability on the final decision on upzoning?",
-      "answer": "Greater adaptability can lead to a more favorable decision on upzoning as businesses are more capable of adjusting to the changes and seeing the long-term benefits.",
+      "question": "What is the effect of patient outcomes on upzoning stance?",
+      "answer": "Better patient outcomes can make people more likely to support upzoning.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n12",
@@ -1079,7 +1133,7 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If adaptability were lower, then the upzoning decision would be less favorable."
+        "counterfactual": "If patient outcomes were worse, then support for upzoning would be lower."
       }
     }
   ]

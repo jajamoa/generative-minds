@@ -1,0 +1,975 @@
+{
+  "agent_id": "sample_72",
+  "demographics": {
+    "age": 37,
+    "income": "> $100,000",
+    "education": "high school",
+    "occupation": "healthcare worker",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "connectivity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3",
+        "e14"
+      ]
+    },
+    "n3": {
+      "label": "digital_infrastructure",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "workspace_options",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "temporary_housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n6": {
+      "label": "visa_policies",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n7": {
+      "label": "cultural_experience",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n8": {
+      "label": "international_transit",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8",
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n9": {
+      "label": "location_arbitrage",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n10": {
+      "label": "experience_maximization",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n11": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n1",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n2",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect connectivity?",
+      "answer": "Higher urban density generally improves connectivity because more people and businesses are closer together, leading to better transportation and communication networks.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density decreases, then connectivity will likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density influence the development of digital infrastructure?",
+      "answer": "Higher urban density can lead to better digital infrastructure as there is a higher demand for internet and communication services in densely populated areas.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density decreases, then the development of digital infrastructure may slow down."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does connectivity impact workspace options?",
+      "answer": "Better connectivity provides more workspace options as it allows for remote work and easier access to different locations, making it easier to find suitable workspaces.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity is poor, then workspace options will be limited."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does digital infrastructure affect workspace options?",
+      "answer": "Better digital infrastructure enhances workspace options by enabling more efficient and flexible work arrangements, such as remote work and virtual collaboration.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If digital infrastructure is inadequate, then workspace options will be limited."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How do workspace options influence temporary housing?",
+      "answer": "More workspace options can lead to an increase in temporary housing as people may need short-term accommodations while working in different locations or during transitions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If workspace options are limited, then the need for temporary housing will decrease."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does temporary housing affect visa policies?",
+      "answer": "Temporary housing can influence visa policies by creating a demand for more flexible and short-term visa options, as people may need to stay in a location for a limited time.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing is not needed, then visa policies may remain more rigid."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does temporary housing impact cultural experiences?",
+      "answer": "Temporary housing can enhance cultural experiences by allowing people to live in different neighborhoods and interact with diverse communities, leading to a richer cultural experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing is not available, then cultural experiences may be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do visa policies affect international transit?",
+      "answer": "Flexible visa policies can facilitate international transit by making it easier for people to travel and work in different countries, leading to more frequent and smoother international travel.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If visa policies are strict, then international transit will be more difficult."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do cultural experiences influence international transit?",
+      "answer": "Richer cultural experiences can encourage more international transit as people may want to explore and experience different cultures, leading to more frequent and diverse travel.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural experiences are limited, then international transit may be less frequent."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does international transit affect location arbitrage?",
+      "answer": "Frequent and smooth international transit can enable location arbitrage by allowing people to take advantage of cost differences and opportunities in different locations, leading to more strategic and flexible living and working arrangements.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If international transit is difficult, then location arbitrage will be less feasible."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does location arbitrage influence experience maximization?",
+      "answer": "Location arbitrage can enhance experience maximization by allowing people to choose the best locations for their needs and preferences, leading to a more fulfilling and satisfying life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If location arbitrage is not possible, then experience maximization will be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does experience maximization affect upzoning stance?",
+      "answer": "Experience maximization can lead to a more positive upzoning stance as people may support changes that allow for more diverse and flexible living and working arrangements, enhancing their overall experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If experience maximization is not a priority, then upzoning stance may be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does urban density negatively impact cultural experiences?",
+      "answer": "High urban density can sometimes have a negative impact on cultural experiences by making it more crowded and less personal, leading to a less authentic and enjoyable cultural experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density is lower, then cultural experiences may be more authentic and enjoyable."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does connectivity negatively affect visa policies?",
+      "answer": "High connectivity can sometimes complicate visa policies by increasing the number of people who want to move and work in different locations, leading to more complex and restrictive visa regulations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity is lower, then visa policies may be simpler and more flexible."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does the availability of workspace options influence your decision to live in a certain area?",
+      "answer": "The availability of workspace options is a key factor in deciding where to live, as it affects my ability to work efficiently and flexibly.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If workspace options are limited, I might choose to live in a different area."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How do you think international transit impacts your ability to maximize experiences?",
+      "answer": "International transit plays a crucial role in maximizing experiences by allowing me to explore different cultures and opportunities, which enriches my life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If international transit is difficult, my ability to maximize experiences will be limited."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do you feel about the relationship between temporary housing and cultural experiences?",
+      "answer": "I believe that temporary housing can greatly enhance cultural experiences by allowing me to immerse myself in different communities and lifestyles.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing is not available, my cultural experiences may be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How do you think the quality of digital infrastructure affects your workspace options?",
+      "answer": "Good digital infrastructure is essential for expanding my workspace options, as it allows for remote work and flexible collaboration, which is very important to me.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If digital infrastructure is poor, my workspace options will be limited."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does the availability of international transit influence your decisions about where to live and work?",
+      "answer": "The availability of international transit is a significant factor in my decisions about where to live and work, as it allows me to take advantage of opportunities in different locations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If international transit is not available, my decisions about where to live and work will be more limited."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How do you think the quality of connectivity affects your ability to maximize experiences?",
+      "answer": "Good connectivity is essential for maximizing experiences, as it allows me to stay connected with friends and family, access information, and work efficiently, all of which contribute to a more fulfilling life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If connectivity is poor, my ability to maximize experiences will be limited."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How do you feel about the relationship between experience maximization and your upzoning stance?",
+      "answer": "I believe that experience maximization is closely tied to my upzoning stance, as I support changes that allow for more diverse and flexible living and working arrangements, which enhance my overall experience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If experience maximization is not a priority, my upzoning stance may be more negative."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How do you think the quality of temporary housing affects your ability to engage in location arbitrage?",
+      "answer": "The quality of temporary housing is crucial for engaging in location arbitrage, as it allows me to live and work in different locations without the long-term commitment, which is very important for my lifestyle.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If temporary housing is not available or of poor quality, my ability to engage in location arbitrage will be limited."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1194 @@
+{
+  "agent_id": "sample_19",
+  "demographics": {
+    "age": 18,
+    "income": "$60,000 - $100,000",
+    "education": "master's degree or higher",
+    "occupation": "healthcare worker",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02",
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "community_stability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04",
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e10",
+        "e18"
+      ]
+    },
+    "n3": {
+      "label": "service_accessibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06",
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e19"
+      ]
+    },
+    "n4": {
+      "label": "social_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08",
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e20"
+      ]
+    },
+    "n5": {
+      "label": "economic_security",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10",
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e11",
+        "e21"
+      ]
+    },
+    "n6": {
+      "label": "intergenerational_relationships",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12",
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e22"
+      ]
+    },
+    "n7": {
+      "label": "leisure_activities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14",
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e7",
+        "e23"
+      ]
+    },
+    "n8": {
+      "label": "fixed_income",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_16",
+          "qa_17"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e8",
+        "e24"
+      ]
+    },
+    "n9": {
+      "label": "changes_in_cost_of_living",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_18",
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e25"
+      ]
+    },
+    "n10": {
+      "label": "familiar_environment",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_20",
+          "qa_21"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6",
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e9",
+        "e10"
+      ]
+    },
+    "n11": {
+      "label": "risk_aversion",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_22",
+          "qa_23"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n12": {
+      "label": "preference_for_familiarity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_24",
+          "qa_25"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n13": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_26",
+          "qa_27"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12",
+        "e13",
+        "e18",
+        "e19",
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e6": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e9": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    },
+    "e10": {
+      "from": "n10",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e11": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e12": {
+      "from": "n11",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
+    },
+    "e13": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_24"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_24"
+      ]
+    },
+    "e18": {
+      "from": "n2",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e19": {
+      "from": "n3",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e20": {
+      "from": "n4",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e21": {
+      "from": "n5",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e22": {
+      "from": "n6",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e23": {
+      "from": "n7",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e24": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e25": {
+      "from": "n9",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect community stability?",
+      "answer": "Higher urban density generally leads to better community stability because it fosters a sense of community and shared experiences.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, the community stability would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density impact service accessibility?",
+      "answer": "Higher urban density typically improves service accessibility as more services are concentrated in a smaller area, making them more accessible to residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, service accessibility would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density influence social opportunities?",
+      "answer": "Higher urban density often increases social opportunities as there are more people and events in a smaller area, leading to more social interactions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the urban density were lower, social opportunities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does community stability affect economic security?",
+      "answer": "Community stability can negatively impact economic security if the community is too stable and resistant to change, leading to fewer economic opportunities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the community were less stable, economic security might improve due to more dynamic economic conditions."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does community stability influence upzoning stance?",
+      "answer": "Community stability tends to make people more resistant to upzoning, as they prefer to maintain the current environment and avoid changes that could disrupt the community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the community were less stable, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does service accessibility impact intergenerational relationships?",
+      "answer": "Better service accessibility can enhance intergenerational relationships by providing more opportunities for different age groups to interact and engage in shared activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service accessibility were lower, intergenerational relationships might suffer."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does service accessibility influence upzoning stance?",
+      "answer": "Service accessibility can make people more resistant to upzoning, as they may fear that changes could disrupt the current level of service accessibility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If service accessibility were not a concern, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do social opportunities impact leisure activities?",
+      "answer": "More social opportunities generally lead to more leisure activities as people have more options and chances to engage in various activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer social opportunities, leisure activities would likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do social opportunities influence upzoning stance?",
+      "answer": "Social opportunities can make people more resistant to upzoning, as they may fear that changes could disrupt the current social dynamics and activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If social opportunities were not a concern, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does economic security impact fixed income?",
+      "answer": "Economic security can negatively impact fixed income if the economy is too stable and wages do not keep up with the cost of living, leading to financial strain.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the economy were more dynamic, fixed income might be more sustainable."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does economic security influence upzoning stance?",
+      "answer": "Economic security can make people more resistant to upzoning, as they may fear that changes could destabilize their financial situation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If economic security were not a concern, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do intergenerational relationships impact familiar environment?",
+      "answer": "Strong intergenerational relationships contribute to a more familiar and stable environment, as different age groups share common experiences and values.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If intergenerational relationships were weaker, the environment might feel less familiar."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do intergenerational relationships influence upzoning stance?",
+      "answer": "Intergenerational relationships can make people more resistant to upzoning, as they may want to preserve the current environment that supports these relationships.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If intergenerational relationships were not a priority, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How do leisure activities impact familiar environment?",
+      "answer": "Engaging in leisure activities contributes to a more familiar and enjoyable environment, as people have more positive experiences and connections in their community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If leisure activities were less available, the environment might feel less familiar."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How do leisure activities influence upzoning stance?",
+      "answer": "Leisure activities can make people more resistant to upzoning, as they may fear that changes could disrupt the current enjoyable and familiar environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If leisure activities were not a concern, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does fixed income impact changes in the cost of living?",
+      "answer": "A fixed income can negatively impact the ability to cope with changes in the cost of living, as the income does not adjust to rising costs, leading to financial strain.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the income were not fixed, it might be easier to manage changes in the cost of living."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does fixed income influence upzoning stance?",
+      "answer": "Fixed income can make people more resistant to upzoning, as they may fear that changes could increase the cost of living and further strain their finances.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the income were not fixed, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How do changes in the cost of living impact upzoning stance?",
+      "answer": "Changes in the cost of living can make people more resistant to upzoning, as they may fear that changes could further increase the cost of living and financial strain.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the cost of living were not a concern, people might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does a familiar environment impact risk aversion?",
+      "answer": "A familiar environment can increase risk aversion as people are more comfortable and less willing to take risks that could disrupt their current situation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the environment were less familiar, people might be less risk-averse."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does a familiar environment impact preference for familiarity?",
+      "answer": "A familiar environment can strengthen the preference for familiarity, as people value the comfort and stability of what they know.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the environment were less familiar, the preference for familiarity might be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does risk aversion influence upzoning stance?",
+      "answer": "Risk aversion can make people more resistant to upzoning, as they may fear that changes could bring about negative outcomes and uncertainties.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If people were less risk-averse, they might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does preference for familiarity influence upzoning stance?",
+      "answer": "Preference for familiarity can make people more resistant to upzoning, as they may want to maintain the current environment and avoid changes that could disrupt their familiar surroundings.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If people had less preference for familiarity, they might be more open to upzoning."
+      }
+    }
+  ]
+}

@@ -1,24 +1,25 @@
 {
   "agent_id": "sample_10",
   "demographics": {
-    "age": 79,
-    "income": "$40,000-$80,000",
-    "education": "high school graduate",
-    "occupation": "Elderly Resident (Simplified)",
-    "housing": "mixed housing situation"
+    "age": 78,
+    "income": "$60,000 - $100,000",
+    "education": "high school",
+    "occupation": "healthcare worker",
+    "housing": "homeowner"
   },
   "nodes": {
     "n1": {
-      "label": "tall_buildings_presence",
-      "type": "binary",
-      "values": [
-        true,
-        false
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
       ],
       "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
-          "qa_01"
+          "qa_01",
+          "qa_02"
         ],
         "frequency": 1
       },
@@ -29,15 +30,16 @@
     },
     "n2": {
       "label": "elevator_reliability",
-      "type": "continuous",
-      "range": [
-        0.0,
-        1.0
+      "type": "binary",
+      "values": [
+        true,
+        false
       ],
       "semantic_role": "external_state",
       "appearance": {
         "qa_ids": [
-          "qa_02"
+          "qa_03",
+          "qa_04"
         ],
         "frequency": 1
       },
@@ -49,7 +51,7 @@
       ]
     },
     "n3": {
-      "label": "personal_mobility_impact",
+      "label": "mobility",
       "type": "continuous",
       "range": [
         0.0,
@@ -58,7 +60,8 @@
       "semantic_role": "internal_affect",
       "appearance": {
         "qa_ids": [
-          "qa_03"
+          "qa_05",
+          "qa_06"
         ],
         "frequency": 1
       },
@@ -79,7 +82,8 @@
       "semantic_role": "behavioral_intention",
       "appearance": {
         "qa_ids": [
-          "qa_04"
+          "qa_07",
+          "qa_08"
         ],
         "frequency": 1
       },
@@ -101,18 +105,16 @@
         "function_type": "threshold",
         "parameters": {
           "threshold": 0.5,
-          "direction": "greater"
+          "direction": "less"
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_01",
-          "qa_02"
+          "qa_01"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_01",
-        "qa_02"
+        "qa_01"
       ]
     },
     "e2": {
@@ -132,14 +134,12 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_02",
-          "qa_03"
+          "qa_05"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_02",
-        "qa_03"
+        "qa_05"
       ]
     },
     "e3": {
@@ -157,73 +157,122 @@
         },
         "noise_std": 0.1,
         "support_qas": [
-          "qa_03",
-          "qa_04"
+          "qa_07"
         ],
         "confidence": 0.9
       },
       "support_qas": [
-        "qa_03",
-        "qa_04"
+        "qa_07"
       ]
     }
   },
   "qas": [
     {
       "qa_id": "qa_01",
-      "question": "Do you think there are tall buildings in the area?",
-      "answer": "Yes, I see more tall buildings being built.",
+      "question": "How does the height of buildings affect the reliability of elevators?",
+      "answer": "Taller buildings tend to have more issues with elevator reliability, as there are more floors and more usage.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n1",
           "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, elevator reliability would likely improve."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Do you think taller buildings generally have better or worse elevator service?",
+      "answer": "Taller buildings generally have worse elevator service because of the increased wear and tear on the elevators.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, elevator service would likely be better."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "What factors do you think influence the reliability of elevators in tall buildings?",
+      "answer": "The number of floors, the frequency of use, and the quality of maintenance all play a role in elevator reliability in tall buildings.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, these factors would be less of an issue, leading to better elevator reliability."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How important is elevator reliability to you in a tall building?",
+      "answer": "Elevator reliability is very important to me in a tall building because it affects my daily mobility and comfort.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
           "direction": "positive"
         },
         "belief_strength": {
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If there were no tall buildings, then elevator reliability would not be a concern."
+        "counterfactual": "If elevators were unreliable, my mobility and comfort would be significantly impacted."
       }
     },
     {
-      "qa_id": "qa_02",
-      "question": "How reliable do you find the elevators in tall buildings?",
-      "answer": "The elevators are often unreliable and break down frequently.",
+      "qa_id": "qa_05",
+      "question": "How does the reliability of elevators impact your mobility in a tall building?",
+      "answer": "Reliable elevators greatly improve my mobility in a tall building, allowing me to move around easily and without stress.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n2",
           "to": "n3",
-          "direction": "negative"
+          "direction": "positive"
         },
         "belief_strength": {
-          "estimated_probability": 0.6,
-          "confidence_rating": 0.8
-        },
-        "counterfactual": "If the elevators were more reliable, my personal mobility would be less affected."
-      }
-    },
-    {
-      "qa_id": "qa_03",
-      "question": "How does the reliability of elevators affect your personal mobility?",
-      "answer": "Unreliable elevators make it very difficult for me to move around, especially with my limited mobility.",
-      "parsed_belief": {
-        "belief_structure": {
-          "from": "n3",
-          "to": "n4",
-          "direction": "negative"
-        },
-        "belief_strength": {
-          "estimated_probability": 0.7,
+          "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If my personal mobility was not impacted, I might be more open to upzoning."
+        "counterfactual": "If elevators were unreliable, my mobility would be severely limited, making it difficult to navigate the building."
       }
     },
     {
-      "qa_id": "qa_04",
-      "question": "What is your stance on upzoning given the current situation with tall buildings and elevators?",
-      "answer": "I am against upzoning because it will lead to more tall buildings with unreliable elevators, making it even harder for me to get around.",
+      "qa_id": "qa_06",
+      "question": "Would you prefer living in a building with reliable elevators over one with frequent breakdowns?",
+      "answer": "I would definitely prefer living in a building with reliable elevators, as it ensures that I can move around freely and without inconvenience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If elevators were frequently breaking down, it would make living in the building very inconvenient and stressful."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does your ability to move around in a building affect your stance on upzoning?",
+      "answer": "My ability to move around in a building greatly influences my stance on upzoning. If I can move around easily, I am more open to upzoning, but if mobility is an issue, I am against it.",
       "parsed_belief": {
         "belief_structure": {
           "from": "n3",
@@ -234,7 +283,143 @@
           "estimated_probability": 0.8,
           "confidence_rating": 0.9
         },
-        "counterfactual": "If my personal mobility was not a concern, I might have a different stance on upzoning."
+        "counterfactual": "If my mobility was not affected, I might be more supportive of upzoning, but since it is, I am against it."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "Do you think upzoning will improve or worsen the mobility of residents in the area?",
+      "answer": "I think upzoning will worsen the mobility of residents in the area, as it will lead to taller buildings and potentially more issues with elevator reliability.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning did not affect mobility, I might be more supportive of it, but since it does, I am against it."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do you feel about the current height of buildings in your area?",
+      "answer": "I feel that the current height of buildings in my area is manageable, but any increase in height would negatively impact elevator reliability and my mobility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the height of buildings remained the same, elevator reliability and my mobility would not be affected."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "Do you think the city should focus on improving elevator reliability before considering upzoning?",
+      "answer": "Yes, I believe the city should focus on improving elevator reliability before considering upzoning, as it directly impacts the quality of life for residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If elevator reliability was already high, upzoning might be more acceptable, but currently, it is a major concern."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "What changes would you like to see in the city's upzoning policies?",
+      "answer": "I would like to see the city's upzoning policies include strict requirements for elevator reliability and maintenance, to ensure that residents' mobility is not compromised.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning policies included strong measures for elevator reliability, I might be more supportive of them."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do you think the city can balance the need for more housing with the need for reliable elevators?",
+      "answer": "The city can balance the need for more housing with the need for reliable elevators by setting strict standards for elevator maintenance and ensuring that new buildings are designed with reliable elevator systems.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city set strict standards for elevator maintenance, the negative impact of taller buildings on elevator reliability could be mitigated."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do you think the city can ensure that residents in tall buildings have good mobility?",
+      "answer": "The city can ensure that residents in tall buildings have good mobility by investing in reliable and well-maintained elevator systems, and by providing alternative transportation options within the building.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city invested in reliable elevator systems and alternative transportation, residents' mobility would be much better."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How do you think upzoning will affect the overall quality of life in the area?",
+      "answer": "I think upzoning will negatively affect the overall quality of life in the area, as it will lead to taller buildings, which can cause issues with elevator reliability and reduce residents' mobility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning did not lead to taller buildings, the quality of life might not be as negatively affected."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "Do you think the city should consider the impact of upzoning on older residents like yourself?",
+      "answer": "Yes, I think the city should definitely consider the impact of upzoning on older residents like myself, as we are more dependent on reliable elevators and good mobility for our daily lives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the city considered the needs of older residents, upzoning policies might be more balanced and considerate."
       }
     }
   ]
