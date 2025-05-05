@@ -1,0 +1,1347 @@
+{
+  "agent_id": "sample_18",
+  "demographics": {
+    "age": 66,
+    "income": "> $100,000",
+    "education": "some college",
+    "occupation": "business owner",
+    "housing": "public housing"
+  },
+  "nodes": {
+    "n1": {
+      "label": "building_height",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e19",
+        "e20"
+      ]
+    },
+    "n2": {
+      "label": "public_transportation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2",
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "accessible_design",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2",
+        "e19"
+      ],
+      "outgoing_edges": [
+        "e4",
+        "e5"
+      ]
+    },
+    "n4": {
+      "label": "specialized_services",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e20"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n5": {
+      "label": "retrofitting",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n6": {
+      "label": "spatial_distribution",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e9",
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "housing",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "medical_facilities",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n9": {
+      "label": "universal_design",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "exclusion_risks",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e21"
+      ]
+    },
+    "n11": {
+      "label": "equitable_design",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n12": {
+      "label": "community_participation",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n13": {
+      "label": "independence",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n14": {
+      "label": "traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e22"
+      ]
+    },
+    "n15": {
+      "label": "noise",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e21"
+      ],
+      "outgoing_edges": [
+        "e23"
+      ]
+    },
+    "n16": {
+      "label": "safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14",
+        "e22"
+      ],
+      "outgoing_edges": [
+        "e17"
+      ]
+    },
+    "n17": {
+      "label": "quality_of_life",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_33",
+          "qa_34"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e16",
+        "e23"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n18": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_35",
+          "qa_36"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17",
+        "e18"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e14": {
+      "from": "n11",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e15": {
+      "from": "n12",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    },
+    "e16": {
+      "from": "n13",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_25"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_25"
+      ]
+    },
+    "e17": {
+      "from": "n16",
+      "to": "n18",
+      "function": {
+        "target": "n18",
+        "inputs": [
+          "n16"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_31"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_31"
+      ]
+    },
+    "e18": {
+      "from": "n17",
+      "to": "n18",
+      "function": {
+        "target": "n18",
+        "inputs": [
+          "n17"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_33"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_33"
+      ]
+    },
+    "e19": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e20": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e21": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e22": {
+      "from": "n14",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_27"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_27"
+      ]
+    },
+    "e23": {
+      "from": "n15",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_29"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_29"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the building height affect public transportation?",
+      "answer": "Higher building heights can improve public transportation by increasing the density of people and thus the demand for better public transit.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, there would be less demand for public transportation."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does the building height impact accessible design?",
+      "answer": "Higher building heights can negatively impact accessible design by making it more difficult to implement accessibility features in tall buildings.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If building heights were lower, it would be easier to implement accessible design features."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does public transportation influence accessible design?",
+      "answer": "Good public transportation can positively influence accessible design by making it easier for people with disabilities to access different parts of the city.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transportation were poor, accessible design would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does public transportation affect specialized services?",
+      "answer": "Good public transportation can enhance the availability and accessibility of specialized services by making it easier for people to reach them.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transportation were poor, specialized services would be less accessible."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does accessible design impact retrofitting?",
+      "answer": "Accessible design can positively influence retrofitting by making it easier to adapt existing buildings to be more inclusive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessible design were not a priority, retrofitting would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does accessible design affect spatial distribution?",
+      "answer": "Accessible design can positively influence spatial distribution by ensuring that all areas of the city are designed to be inclusive and accessible to everyone.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessible design were not a priority, spatial distribution would be less equitable."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How do specialized services impact housing?",
+      "answer": "Specialized services can positively influence housing by providing necessary support and amenities that make living in the area more attractive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If specialized services were not available, housing would be less desirable."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do specialized services affect medical facilities?",
+      "answer": "Specialized services can positively influence medical facilities by ensuring that they are well-equipped and staffed to handle specific needs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If specialized services were not available, medical facilities would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does retrofitting impact universal design?",
+      "answer": "Retrofitting can positively influence universal design by adapting existing structures to be more inclusive and accessible to all.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If retrofitting were not done, universal design would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does spatial distribution affect exclusion risks?",
+      "answer": "Spatial distribution can positively influence exclusion risks by ensuring that all areas of the city are designed to be inclusive and accessible to everyone.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If spatial distribution were poorly managed, exclusion risks would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does spatial distribution impact equitable design?",
+      "answer": "Spatial distribution can positively influence equitable design by ensuring that all areas of the city are designed to be fair and inclusive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If spatial distribution were poorly managed, equitable design would be less effective."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does housing impact community participation?",
+      "answer": "Housing can positively influence community participation by providing stable and affordable homes that encourage residents to engage with their community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If housing were unstable or unaffordable, community participation would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do medical facilities impact independence?",
+      "answer": "Medical facilities can positively influence independence by providing the necessary support and care that allows individuals to live independently.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If medical facilities were not available, independence would be harder to achieve."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does universal design impact traffic?",
+      "answer": "Universal design can positively influence traffic by making it easier for all types of vehicles and pedestrians to navigate the city, reducing congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n14",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If universal design were not a priority, traffic would be worse."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does equitable design impact safety?",
+      "answer": "Equitable design can positively influence safety by ensuring that all areas of the city are designed to be safe and secure for everyone.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If equitable design were not a priority, safety would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does community participation impact quality of life?",
+      "answer": "Community participation can positively influence quality of life by fostering a sense of belonging and engagement, which improves overall well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n17",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community participation were low, quality of life would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does independence impact quality of life?",
+      "answer": "Independence can positively influence quality of life by allowing individuals to have control over their lives and make their own choices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n17",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If independence were limited, quality of life would be lower."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does safety impact upzoning stance?",
+      "answer": "Safety can positively influence upzoning stance by making it more likely that people will support policies that increase density if they feel safe in their environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n16",
+          "to": "n18",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safety were a concern, people would be less likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does exclusion risk impact noise?",
+      "answer": "Exclusion risks can negatively impact noise by creating areas where certain groups are marginalized and may experience higher levels of noise pollution.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If exclusion risks were lower, noise levels would be more evenly distributed."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does traffic impact safety?",
+      "answer": "Traffic can negatively impact safety by increasing the risk of accidents and making it more dangerous to travel on the roads.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n16",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic were reduced, safety would be improved."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does noise impact quality of life?",
+      "answer": "Noise can negatively impact quality of life by creating an unpleasant and stressful environment, which can lead to health and well-being issues.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n17",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If noise levels were lower, quality of life would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does quality of life impact upzoning stance?",
+      "answer": "Quality of life can positively influence upzoning stance by making it more likely that people will support policies that improve their overall well-being.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n17",
+          "to": "n18",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If quality of life were lower, people would be less likely to support upzoning."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1294 @@
+{
+  "agent_id": "sample_50",
+  "demographics": {
+    "age": 38,
+    "income": "$30,000 - $60,000",
+    "education": "high school",
+    "occupation": "service worker",
+    "housing": "lives with family"
+  },
+  "nodes": {
+    "n1": {
+      "label": "performance_spaces",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "cultural_clustering",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03",
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e3",
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "audience_accessibility",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05",
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n4": {
+      "label": "neighborhood_affordability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07",
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e19"
+      ],
+      "outgoing_edges": [
+        "e5",
+        "e14"
+      ]
+    },
+    "n5": {
+      "label": "sound_regulations",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_13",
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e11",
+        "e12"
+      ]
+    },
+    "n6": {
+      "label": "neighbor_tolerance",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15",
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10",
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n7": {
+      "label": "creative_opportunity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09",
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e3",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "community_resonance",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11",
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e7",
+        "e8",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "urban_vitality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n10": {
+      "label": "artistic_opportunities",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_19",
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9",
+        "e11",
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n11": {
+      "label": "venue_availability",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_21",
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n12": {
+      "label": "audience_demographics",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_23",
+          "qa_24"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e5",
+        "e12"
+      ]
+    },
+    "n13": {
+      "label": "cultural_support_systems",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_25",
+          "qa_26"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13",
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "neighborhood_character",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_27",
+          "qa_28"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e17",
+        "e18"
+      ]
+    },
+    "n15": {
+      "label": "local_economy",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_29",
+          "qa_30"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e18"
+      ],
+      "outgoing_edges": [
+        "e19"
+      ]
+    },
+    "n16": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_31",
+          "qa_32"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n3",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n8",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n11",
+      "to": "n1",
+      "function": {
+        "target": "n1",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n12",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n13",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n13",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n14",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    },
+    "e21": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e22": {
+      "from": "n15",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the availability of performance spaces influence cultural clustering in a neighborhood?",
+      "answer": "The availability of performance spaces positively influences cultural clustering, as more venues attract and support a diverse range of cultural activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer performance spaces, then cultural clustering would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How do performance spaces affect creative opportunities in a community?",
+      "answer": "Performance spaces provide more creative opportunities by offering venues for artists and performers to showcase their work, leading to a vibrant artistic environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer performance spaces, then creative opportunities would be limited."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does cultural clustering impact creative opportunities in a community?",
+      "answer": "Cultural clustering enhances creative opportunities by fostering a supportive environment where artists and performers can collaborate and inspire each other.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural clustering were less, then creative opportunities would also decrease."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does cultural clustering influence community resonance in a neighborhood?",
+      "answer": "Cultural clustering strengthens community resonance by bringing people together through shared cultural experiences, leading to a stronger sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural clustering were less, then community resonance would weaken."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does neighborhood affordability affect audience accessibility to cultural events?",
+      "answer": "Neighborhood affordability positively impacts audience accessibility, as more affordable areas allow a broader range of people to participate in cultural events.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If neighborhoods were less affordable, then audience accessibility would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does audience accessibility contribute to creative opportunities in a community?",
+      "answer": "Audience accessibility supports creative opportunities by ensuring that a wide audience can engage with and support artistic endeavors, encouraging more creative activity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If audience accessibility were lower, then creative opportunities would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does audience accessibility enhance community resonance in a neighborhood?",
+      "answer": "Audience accessibility strengthens community resonance by allowing more people to participate in and benefit from cultural activities, fostering a sense of belonging and connection.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If audience accessibility were lower, then community resonance would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does neighbor tolerance influence community resonance in a neighborhood?",
+      "answer": "Neighbor tolerance positively influences community resonance, as a tolerant community is more likely to support and engage in cultural activities, leading to a stronger sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If neighbor tolerance were lower, then community resonance would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does community resonance contribute to artistic opportunities in a neighborhood?",
+      "answer": "Community resonance enhances artistic opportunities by creating a supportive and engaged community that values and promotes artistic expression, leading to more opportunities for artists.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If community resonance were weaker, then artistic opportunities would be fewer."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does urban vitality influence artistic opportunities in a community?",
+      "answer": "Urban vitality positively influences artistic opportunities by providing a dynamic and vibrant environment that attracts and supports a diverse range of artistic activities.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban vitality were lower, then artistic opportunities would be fewer."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do sound regulations affect neighbor tolerance in a community?",
+      "answer": "Sound regulations negatively impact neighbor tolerance, as strict regulations can limit the ability of residents to enjoy and participate in cultural activities, leading to less tolerance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sound regulations were less strict, then neighbor tolerance would increase."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How do sound regulations influence community resonance in a neighborhood?",
+      "answer": "Sound regulations negatively impact community resonance, as they can restrict the ability of residents to fully engage in and enjoy cultural activities, leading to a weaker sense of community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If sound regulations were less strict, then community resonance would be stronger."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How do creative opportunities influence artistic opportunities in a community?",
+      "answer": "Creative opportunities positively influence artistic opportunities by providing a supportive environment where artists can develop and showcase their work, leading to more opportunities for artistic expression.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If creative opportunities were fewer, then artistic opportunities would also decrease."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How does venue availability affect the number of performance spaces in a neighborhood?",
+      "answer": "Venue availability positively influences the number of performance spaces, as more available venues provide more opportunities for cultural activities and performances.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n1",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If venue availability were lower, then the number of performance spaces would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How do artistic opportunities influence a person's stance on upzoning in a neighborhood?",
+      "answer": "Artistic opportunities positively influence a person's stance on upzoning, as more opportunities for artistic expression can lead to a more vibrant and culturally rich community, making upzoning more appealing.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If artistic opportunities were fewer, then a person's stance on upzoning would be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How do audience demographics affect audience accessibility to cultural events?",
+      "answer": "Audience demographics positively influence audience accessibility, as a diverse and inclusive audience can better access and participate in a wide range of cultural events.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If audience demographics were less diverse, then audience accessibility would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How do audience demographics influence cultural support systems in a community?",
+      "answer": "Audience demographics positively influence cultural support systems, as a diverse and engaged audience can provide more robust support for cultural activities and initiatives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If audience demographics were less diverse, then cultural support systems would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How do cultural support systems influence cultural clustering in a neighborhood?",
+      "answer": "Cultural support systems positively influence cultural clustering by providing resources and support for cultural activities, leading to a more vibrant and diverse cultural scene.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural support systems were weaker, then cultural clustering would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How do cultural support systems influence community resonance in a neighborhood?",
+      "answer": "Cultural support systems positively influence community resonance by providing the necessary resources and support for cultural activities, leading to a stronger and more connected community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If cultural support systems were weaker, then community resonance would be weaker."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does neighborhood character influence neighbor tolerance in a community?",
+      "answer": "Neighborhood character positively influences neighbor tolerance, as a strong and positive neighborhood character fosters a more understanding and accepting community.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If neighborhood character were weaker, then neighbor tolerance would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does neighborhood character influence the local economy in a community?",
+      "answer": "Neighborhood character positively influences the local economy by attracting businesses and residents, leading to a more vibrant and economically active area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If neighborhood character were weaker, then the local economy would suffer."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does the local economy influence neighborhood affordability in a community?",
+      "answer": "The local economy positively influences neighborhood affordability by providing more job opportunities and economic stability, making it easier for residents to afford living in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the local economy were weaker, then neighborhood affordability would decrease."
+      }
+    }
+  ]
+}

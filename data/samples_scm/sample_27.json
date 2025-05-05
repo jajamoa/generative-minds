@@ -1,0 +1,995 @@
+{
+  "agent_id": "sample_27",
+  "demographics": {
+    "age": 62,
+    "income": "> $100,000",
+    "education": "some college",
+    "occupation": "technician",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "population_density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "foot_traffic",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "commercial_visibility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "customer_base",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "regional_competition",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n6": {
+      "label": "brand_positioning",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e16"
+      ]
+    },
+    "n7": {
+      "label": "construction_impacts",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e6",
+        "e7"
+      ]
+    },
+    "n8": {
+      "label": "long_term_growth",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n9": {
+      "label": "short_term_losses",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n10": {
+      "label": "shopping_patterns",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8",
+        "e11"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n11": {
+      "label": "local_economy",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_12"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n12": {
+      "label": "retail_space",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n13": {
+      "label": "rental_costs",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_14"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14"
+      ]
+    },
+    "n14": {
+      "label": "operational_efficiency",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e15"
+      ]
+    },
+    "n15": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15",
+        "e16"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e9": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e10": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e11": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e12": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e13": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n13",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n14",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n6",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does population density affect foot traffic?",
+      "answer": "Higher population density generally leads to more foot traffic in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the population density decreases, then foot traffic will also decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "Does higher population density increase commercial visibility?",
+      "answer": "Yes, higher population density increases the visibility of commercial establishments.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the population density is low, then commercial visibility will be lower."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "What is the impact of foot traffic on the customer base?",
+      "answer": "Increased foot traffic usually results in a larger customer base for businesses.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If foot traffic decreases, the customer base will likely shrink."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does commercial visibility influence regional competition?",
+      "answer": "Greater commercial visibility can attract more competitors to the region.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commercial visibility is low, regional competition will be less intense."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "What effect does the size of the customer base have on brand positioning?",
+      "answer": "A larger customer base can strengthen a brand's position in the market.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the customer base is small, the brand's position may weaken."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does regional competition affect brand positioning?",
+      "answer": "High regional competition can negatively impact a brand's positioning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If regional competition is low, the brand's position will be stronger."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does brand positioning influence one's stance on upzoning?",
+      "answer": "Strong brand positioning can lead to a more favorable stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the brand's position is weak, the stance on upzoning may be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "What are the impacts of construction on short-term losses and long-term growth?",
+      "answer": "Construction can lead to short-term losses but is often beneficial for long-term growth.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there is no construction, short-term losses will be minimal, but long-term growth may be limited."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does long-term growth influence shopping patterns?",
+      "answer": "Long-term growth can lead to changes in shopping patterns as the area develops.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If long-term growth is stagnant, shopping patterns will remain unchanged."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is the effect of short-term losses on shopping patterns?",
+      "answer": "Short-term losses can temporarily disrupt shopping patterns in the area.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there are no short-term losses, shopping patterns will be stable."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How do shopping patterns affect the local economy?",
+      "answer": "Changes in shopping patterns can significantly impact the local economy, either positively or negatively.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If shopping patterns remain constant, the local economy will not be affected."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "What is the relationship between the local economy and retail space?",
+      "answer": "A strong local economy can support more retail space, while a weak economy may lead to a reduction in retail space.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the local economy is weak, the amount of retail space will likely decrease."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the availability of retail space affect rental costs?",
+      "answer": "More available retail space can lead to lower rental costs, while limited space can drive up costs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If retail space is scarce, rental costs will be higher."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "What is the impact of rental costs on operational efficiency?",
+      "answer": "High rental costs can reduce operational efficiency by increasing overhead expenses.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If rental costs are low, operational efficiency will be higher."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How does operational efficiency influence one's stance on upzoning?",
+      "answer": "Improved operational efficiency can lead to a more positive stance on upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n14",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If operational efficiency is poor, the stance on upzoning may be less favorable."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "What factors contribute to your stance on upzoning?",
+      "answer": "My stance on upzoning is influenced by various factors such as brand positioning and operational efficiency.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If brand positioning and operational efficiency are both strong, my stance on upzoning will be more positive."
+      }
+    }
+  ]
+}

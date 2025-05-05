@@ -1,0 +1,1339 @@
+{
+  "agent_id": "sample_28",
+  "demographics": {
+    "age": 78,
+    "income": "$30,000 - $60,000",
+    "education": "some college",
+    "occupation": "student",
+    "housing": "renter"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01",
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    },
+    "n2": {
+      "label": "traffic_flow",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n3": {
+      "label": "infrastructure_capacity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n4": {
+      "label": "mode_choices",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n5": {
+      "label": "system_resilience",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4",
+        "e5",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n6": {
+      "label": "multimodal_integration",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8",
+        "e9",
+        "e10"
+      ]
+    },
+    "n7": {
+      "label": "public_transit_use",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n8": {
+      "label": "car_usage",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": [
+        "e12"
+      ]
+    },
+    "n9": {
+      "label": "pedestrian_activity",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_11"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "bike_lanes",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_12",
+          "qa_13"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e11",
+        "e13"
+      ],
+      "outgoing_edges": [
+        "e14",
+        "e15"
+      ]
+    },
+    "n11": {
+      "label": "road_congestion",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_14",
+          "qa_15"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e14"
+      ],
+      "outgoing_edges": [
+        "e16",
+        "e17"
+      ]
+    },
+    "n12": {
+      "label": "transportation_emissions",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_16"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e16"
+      ],
+      "outgoing_edges": [
+        "e18"
+      ]
+    },
+    "n13": {
+      "label": "air_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_17",
+          "qa_18"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e18"
+      ],
+      "outgoing_edges": [
+        "e22"
+      ]
+    },
+    "n14": {
+      "label": "noise_pollution",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_19"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e17"
+      ],
+      "outgoing_edges": [
+        "e23"
+      ]
+    },
+    "n15": {
+      "label": "accessibility",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_20"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e15"
+      ],
+      "outgoing_edges": [
+        "e21"
+      ]
+    },
+    "n16": {
+      "label": "safety",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_21"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e21"
+      ],
+      "outgoing_edges": [
+        "e24"
+      ]
+    },
+    "n17": {
+      "label": "travel_time",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_22"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e24"
+      ],
+      "outgoing_edges": [
+        "e25"
+      ]
+    },
+    "n18": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_23"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e22",
+        "e23",
+        "e25"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e10": {
+      "from": "n6",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e11": {
+      "from": "n7",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e12": {
+      "from": "n8",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_13"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_13"
+      ]
+    },
+    "e14": {
+      "from": "n10",
+      "to": "n11",
+      "function": {
+        "target": "n11",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_14"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_14"
+      ]
+    },
+    "e15": {
+      "from": "n10",
+      "to": "n15",
+      "function": {
+        "target": "n15",
+        "inputs": [
+          "n10"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_15"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_15"
+      ]
+    },
+    "e16": {
+      "from": "n11",
+      "to": "n12",
+      "function": {
+        "target": "n12",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_16"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_16"
+      ]
+    },
+    "e17": {
+      "from": "n11",
+      "to": "n14",
+      "function": {
+        "target": "n14",
+        "inputs": [
+          "n11"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_17"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_17"
+      ]
+    },
+    "e18": {
+      "from": "n12",
+      "to": "n13",
+      "function": {
+        "target": "n13",
+        "inputs": [
+          "n12"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_18"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_18"
+      ]
+    },
+    "e19": {
+      "from": "n13",
+      "to": "n18",
+      "function": {
+        "target": "n18",
+        "inputs": [
+          "n13"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_19"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_19"
+      ]
+    },
+    "e20": {
+      "from": "n14",
+      "to": "n18",
+      "function": {
+        "target": "n18",
+        "inputs": [
+          "n14"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_20"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_20"
+      ]
+    },
+    "e21": {
+      "from": "n15",
+      "to": "n16",
+      "function": {
+        "target": "n16",
+        "inputs": [
+          "n15"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_21"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_21"
+      ]
+    },
+    "e22": {
+      "from": "n16",
+      "to": "n17",
+      "function": {
+        "target": "n17",
+        "inputs": [
+          "n16"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_22"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_22"
+      ]
+    },
+    "e23": {
+      "from": "n17",
+      "to": "n18",
+      "function": {
+        "target": "n18",
+        "inputs": [
+          "n17"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_23"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_23"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does urban density affect traffic flow?",
+      "answer": "Higher urban density generally leads to more traffic flow.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, traffic flow would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does urban density impact infrastructure capacity?",
+      "answer": "Higher urban density increases the need for greater infrastructure capacity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, the need for infrastructure capacity would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does urban density influence mode choices?",
+      "answer": "Higher urban density encourages a wider range of mode choices, such as walking and public transit.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density were lower, people would have fewer mode choices."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does traffic flow contribute to system resilience?",
+      "answer": "Improved traffic flow enhances the overall system resilience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic flow were worse, system resilience would be negatively impacted."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does infrastructure capacity contribute to system resilience?",
+      "answer": "Greater infrastructure capacity improves system resilience.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If infrastructure capacity were lower, system resilience would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How do mode choices affect system resilience?",
+      "answer": "A variety of mode choices can enhance system resilience by providing more options during disruptions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were fewer mode choices, system resilience would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does system resilience support multimodal integration?",
+      "answer": "A resilient system is better able to integrate multiple modes of transportation effectively.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the system were less resilient, multimodal integration would be more challenging."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does multimodal integration promote public transit use?",
+      "answer": "Effective multimodal integration encourages more people to use public transit.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If multimodal integration were poor, fewer people would use public transit."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does multimodal integration affect car usage?",
+      "answer": "Good multimodal integration can reduce car usage as people find alternative modes of transportation.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If multimodal integration were poor, car usage would increase."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does multimodal integration impact pedestrian activity?",
+      "answer": "Effective multimodal integration increases pedestrian activity by making it easier and safer to walk.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If multimodal integration were poor, pedestrian activity would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does public transit use influence the development of bike lanes?",
+      "answer": "Increased public transit use often leads to more investment in bike lanes as part of a broader sustainable transport strategy.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transit use were low, there would be less incentive to develop bike lanes."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does car usage affect the development of bike lanes?",
+      "answer": "High car usage tends to discourage the development of bike lanes due to competing space and safety concerns.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n10",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If car usage were lower, there would be more support for developing bike lanes."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does pedestrian activity influence the development of bike lanes?",
+      "answer": "High levels of pedestrian activity often lead to more investment in bike lanes as part of a broader active transport strategy.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If pedestrian activity were low, there would be less incentive to develop bike lanes."
+      }
+    },
+    {
+      "qa_id": "qa_14",
+      "question": "How do bike lanes affect road congestion?",
+      "answer": "Bike lanes can reduce road congestion by providing an alternative to car travel.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n11",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were no bike lanes, road congestion would be higher."
+      }
+    },
+    {
+      "qa_id": "qa_15",
+      "question": "How do bike lanes improve accessibility?",
+      "answer": "Bike lanes enhance accessibility by providing a safe and efficient mode of transportation for many people.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n10",
+          "to": "n15",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were no bike lanes, accessibility would be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_16",
+      "question": "How does road congestion affect transportation emissions?",
+      "answer": "Higher road congestion leads to increased transportation emissions due to idling and slower travel times.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n12",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If road congestion were lower, transportation emissions would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_17",
+      "question": "How does road congestion impact air quality?",
+      "answer": "Higher road congestion results in poorer air quality due to increased emissions from vehicles.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If road congestion were lower, air quality would improve."
+      }
+    },
+    {
+      "qa_id": "qa_18",
+      "question": "How does transportation emissions affect air quality?",
+      "answer": "Higher transportation emissions lead to poorer air quality.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n12",
+          "to": "n13",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If transportation emissions were lower, air quality would be better."
+      }
+    },
+    {
+      "qa_id": "qa_19",
+      "question": "How does road congestion impact noise pollution?",
+      "answer": "Higher road congestion leads to increased noise pollution due to more vehicles on the road.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n11",
+          "to": "n14",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If road congestion were lower, noise pollution would decrease."
+      }
+    },
+    {
+      "qa_id": "qa_20",
+      "question": "How does accessibility affect safety?",
+      "answer": "Improved accessibility leads to better safety, as people have more options to travel safely.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n15",
+          "to": "n16",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If accessibility were poor, safety would be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_21",
+      "question": "How does safety affect travel time?",
+      "answer": "Better safety reduces travel time by minimizing delays and disruptions.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n16",
+          "to": "n17",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If safety were poor, travel time would increase."
+      }
+    },
+    {
+      "qa_id": "qa_22",
+      "question": "How does travel time influence your stance on upzoning?",
+      "answer": "Shorter travel times make me more supportive of upzoning, as it indicates a well-functioning transportation system.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n17",
+          "to": "n18",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If travel times were longer, I would be less supportive of upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_23",
+      "question": "How does air quality influence your stance on upzoning?",
+      "answer": "Better air quality makes me more supportive of upzoning, as it indicates a healthier environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n13",
+          "to": "n18",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If air quality were poor, I would be less supportive of upzoning."
+      }
+    }
+  ]
+}
