@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "total_topological_motifs": 12,
+    "total_semantic_groups": 9,
+    "total_augmented_motifs": 50
+  },
+  "motif_groups": [
+    {
+      "group_key": "M3.3_size_3_1",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M3.3_size_3_2",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M3.3_size_3_3",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M1_size_3_1",
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 4
+    },
+    {
+      "group_key": "M1_size_3_1_augmented",
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "M2.3_size_4_bootstrapped",
+      "augmented": true,
+      "parent_group": "M2.3_size_4",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    {
+      "group_key": "M2.3_size_3_bootstrapped",
+      "augmented": true,
+      "parent_group": "M2.3_size_3",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    {
+      "group_key": "M2.3_size_5_bootstrapped",
+      "augmented": true,
+      "parent_group": "M2.3_size_5",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    {
+      "group_key": "M3.3_size_4_bootstrapped",
+      "augmented": true,
+      "parent_group": "M3.3_size_4",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    {
+      "group_key": "M3.3_size_3_1_bootstrapped",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "M3.3_size_3_2_bootstrapped",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_2",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "M3.3_size_3_3_bootstrapped",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_3",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "M3.3_size_5_bootstrapped",
+      "augmented": true,
+      "parent_group": "M3.3_size_5",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    {
+      "group_key": "M1_size_3_1_bootstrapped",
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    }
+  ]
+}
