@@ -1,0 +1,738 @@
+{
+    "agent_id": "sample_2",
+    "demographics": {
+        "age": 35,
+        "income": "$30,000-$50,000",
+        "education": "master of fine arts",
+        "occupation": "visual artist"
+    },
+    "nodes": {
+        "n1": {
+            "label": "upzoning_proposal",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa1", "qa2", "qa3"],
+            "incoming_edges": [],
+            "outgoing_edges": ["e1", "e2", "e3", "e4"]
+        },
+        "n2": {
+            "label": "studio_affordability",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.95,
+            "source_qa": ["qa1", "qa6"],
+            "incoming_edges": ["e1"],
+            "outgoing_edges": ["e5", "e12"]
+        },
+        "n3": {
+            "label": "cultural_spaces",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa2", "qa7"],
+            "incoming_edges": ["e2"],
+            "outgoing_edges": ["e6", "e13"]
+        },
+        "n4": {
+            "label": "neighborhood_character",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa3"],
+            "incoming_edges": ["e3"],
+            "outgoing_edges": ["e7"]
+        },
+        "n5": {
+            "label": "gallery_accessibility",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.8,
+            "source_qa": ["qa4"],
+            "incoming_edges": ["e4"],
+            "outgoing_edges": ["e8"]
+        },
+        "n6": {
+            "label": "creative_livelihood",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa5", "qa6"],
+            "incoming_edges": ["e5"],
+            "outgoing_edges": ["e9"]
+        },
+        "n7": {
+            "label": "inspiration_from_place",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.85,
+            "source_qa": ["qa7", "qa8"],
+            "incoming_edges": ["e6"],
+            "outgoing_edges": ["e10"]
+        },
+        "n8": {
+            "label": "aesthetic_integrity",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "internal_affect",
+            "confidence": 0.8,
+            "source_qa": ["qa8"],
+            "incoming_edges": ["e7"],
+            "outgoing_edges": ["e11"]
+        },
+        "n9": {
+            "label": "audience_accessibility",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "external_state",
+            "confidence": 0.85,
+            "source_qa": ["qa9"],
+            "incoming_edges": ["e8"],
+            "outgoing_edges": ["e14"]
+        },
+        "n10": {
+            "label": "financial_stability",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa5", "qa10"],
+            "incoming_edges": ["e9", "e12"],
+            "outgoing_edges": ["e15"]
+        },
+        "n11": {
+            "label": "creative_expression",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.85,
+            "source_qa": ["qa8", "qa10"],
+            "incoming_edges": ["e10", "e13"],
+            "outgoing_edges": ["e16"]
+        },
+        "n12": {
+            "label": "creative_community_presence",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "external_state",
+            "confidence": 0.9,
+            "source_qa": ["qa3", "qa9"],
+            "incoming_edges": ["e11", "e14"],
+            "outgoing_edges": ["e17"]
+        },
+        "n13": {
+            "label": "personal_displacement_risk",
+            "type": "continuous",
+            "range": [0.0, 1.0],
+            "semantic_role": "internal_affect",
+            "confidence": 0.95,
+            "source_qa": ["qa1", "qa5"],
+            "incoming_edges": ["e15"],
+            "outgoing_edges": ["e18"]
+        },
+        "n14": {
+            "label": "artistic_identity",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "internal_affect",
+            "confidence": 0.9,
+            "source_qa": ["qa8", "qa10"],
+            "incoming_edges": ["e16", "e17"],
+            "outgoing_edges": ["e19"]
+        },
+        "n15": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [true, false],
+            "semantic_role": "behavioral_intention",
+            "confidence": 1.0,
+            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
+            "incoming_edges": ["e18", "e19"],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n2",
+            "function": {
+                "target": "n2",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.8],
+                    "bias": 0.7
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [{"qa_id": "qa1", "confidence": 0.95}],
+            "modifier": -0.8
+        },
+        "e2": {
+            "from": "n1",
+            "to": "n3",
+            "function": {
+                "target": "n3",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.6, 0.2],
+                    "bias": 0.5
+                },
+                "noise_std": 0.2,
+                "support_qas": ["qa2"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa2", "confidence": 0.85}],
+            "modifier": -0.6
+        },
+        "e3": {
+            "from": "n1",
+            "to": "n4",
+            "function": {
+                "target": "n4",
+                "inputs": ["n1"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.7,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [{"qa_id": "qa3", "confidence": 0.9}],
+            "modifier": -0.7
+        },
+        "e4": {
+            "from": "n1",
+            "to": "n5",
+            "function": {
+                "target": "n5",
+                "inputs": ["n1"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.4],
+                    "bias": 0.1
+                },
+                "noise_std": 0.2,
+                "support_qas": ["qa4"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa4", "confidence": 0.8}],
+            "modifier": 0.4
+        },
+        "e5": {
+            "from": "n2",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": ["n2"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa6"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.9},
+                {"qa_id": "qa6", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e6": {
+            "from": "n3",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": ["n3"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa7", "qa8"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa7", "confidence": 0.85},
+                {"qa_id": "qa8", "confidence": 0.85}
+            ],
+            "modifier": 0.8
+        },
+        "e7": {
+            "from": "n4",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": ["n4"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "equal"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa8"],
+                "confidence": 0.8
+            },
+            "aggregate_confidence": 0.8,
+            "evidence": [{"qa_id": "qa8", "confidence": 0.8}],
+            "modifier": 0.7
+        },
+        "e8": {
+            "from": "n5",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": ["n5"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.7],
+                    "bias": -0.1
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa9"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+            "modifier": 0.7
+        },
+        "e9": {
+            "from": "n6",
+            "to": "n10",
+            "function": {
+                "target": "n10",
+                "inputs": ["n6"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa5", "qa10"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa5", "confidence": 0.9},
+                {"qa_id": "qa10", "confidence": 0.9}
+            ],
+            "modifier": 0.8
+        },
+        "e10": {
+            "from": "n7",
+            "to": "n11",
+            "function": {
+                "target": "n11",
+                "inputs": ["n7"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.3
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa8", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa8", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": 0.9
+        },
+        "e11": {
+            "from": "n8",
+            "to": "n12",
+            "function": {
+                "target": "n12",
+                "inputs": ["n8"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "equal"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3", "qa9"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa3", "confidence": 0.85},
+                {"qa_id": "qa9", "confidence": 0.85}
+            ],
+            "modifier": 0.7
+        },
+        "e12": {
+            "from": "n2",
+            "to": "n10",
+            "function": {
+                "target": "n10",
+                "inputs": ["n2"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.9],
+                    "bias": -0.4
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa10"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.9},
+                {"qa_id": "qa10", "confidence": 0.9}
+            ],
+            "modifier": 0.9
+        },
+        "e13": {
+            "from": "n3",
+            "to": "n11",
+            "function": {
+                "target": "n11",
+                "inputs": ["n3"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [0.8],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa2", "qa10"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [
+                {"qa_id": "qa2", "confidence": 0.85},
+                {"qa_id": "qa10", "confidence": 0.85}
+            ],
+            "modifier": 0.8
+        },
+        "e14": {
+            "from": "n9",
+            "to": "n12",
+            "function": {
+                "target": "n12",
+                "inputs": ["n9"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa9"],
+                "confidence": 0.85
+            },
+            "aggregate_confidence": 0.85,
+            "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
+            "modifier": 0.6
+        },
+        "e15": {
+            "from": "n10",
+            "to": "n13",
+            "function": {
+                "target": "n13",
+                "inputs": ["n10"],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [-0.9],
+                    "bias": 0.8
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa5"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa5", "confidence": 0.95}
+            ],
+            "modifier": -0.9
+        },
+        "e16": {
+            "from": "n11",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n11"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.7,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa8", "qa10"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa8", "confidence": 0.9},
+                {"qa_id": "qa10", "confidence": 0.9}
+            ],
+            "modifier": 0.8
+        },
+        "e17": {
+            "from": "n12",
+            "to": "n14",
+            "function": {
+                "target": "n14",
+                "inputs": ["n12"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "equal"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa3", "qa9"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa3", "confidence": 0.9},
+                {"qa_id": "qa9", "confidence": 0.9}
+            ],
+            "modifier": 0.7
+        },
+        "e18": {
+            "from": "n13",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n13"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.7,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa1", "qa5"],
+                "confidence": 0.95
+            },
+            "aggregate_confidence": 0.95,
+            "evidence": [
+                {"qa_id": "qa1", "confidence": 0.95},
+                {"qa_id": "qa5", "confidence": 0.95}
+            ],
+            "modifier": -0.9
+        },
+        "e19": {
+            "from": "n14",
+            "to": "n15",
+            "function": {
+                "target": "n15",
+                "inputs": ["n14"],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.5,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": ["qa8", "qa10"],
+                "confidence": 0.9
+            },
+            "aggregate_confidence": 0.9,
+            "evidence": [
+                {"qa_id": "qa8", "confidence": 0.9},
+                {"qa_id": "qa10", "confidence": 0.9}
+            ],
+            "modifier": -0.8
+        }
+    },
+    "qas": [
+        {
+            "qa_id": "qa1",
+            "question": "How does upzoning affect your ability to maintain an affordable studio?",
+            "answer": "Upzoning in arts districts typically leads to higher rents as developers buy up industrial spaces for luxury housing. My studio rent has already doubled in the last five years, and I'm concerned further upzoning would push artists like me out entirely.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n2",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.95
+                }
+            }
+        },
+        {
+            "qa_id": "qa2",
+            "question": "What impact would rezoning have on cultural spaces in the neighborhood?",
+            "answer": "We've already lost three gallery spaces and a community theater to condo development. New buildings rarely include affordable cultural spaces, and those that are included often have restrictive policies that limit artistic freedom.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n3",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa3",
+            "question": "How important is the current neighborhood character to your work?",
+            "answer": "This neighborhood's industrial aesthetic and artistic community directly influence my creative process. The older buildings, street art, and mix of workshops create an authentic environment that new developments can't replicate.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n4",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                }
+            }
+        },
+        {
+            "qa_id": "qa4",
+            "question": "Could new development bring benefits like more gallery spaces?",
+            "answer": "New development could potentially create more exhibition opportunities if developers are required to include gallery spaces at affordable rates. I've seen successful models where 10% of new development is dedicated to arts spaces.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n5",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.6,
+                    "confidence_rating": 0.8
+                }
+            }
+        },
+        {
+            "qa_id": "qa5",
+            "question": "How does housing affordability impact your creative livelihood?",
+            "answer": "It's already difficult to sustain myself as an artist. If studio and housing costs rise further, I'll need to take more commercial work or move to a different city entirely, which would disconnect me from my audience and community.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n6",
+                    "to": "n10",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                }
+            }
+        },
+        {
+            "qa_id": "qa6",
+            "question": "What specific aspects of building changes affect your work process?",
+            "answer": "I need high ceilings, natural light, loading access, and the ability to make noise and use certain materials. Most new buildings restrict these activities, and the affordable units are usually too small for creative production.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n2",
+                    "to": "n6",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                }
+            }
+        },
+        {
+            "qa_id": "qa7",
+            "question": "How do cultural spaces contribute to your creative process?",
+            "answer": "The ability to see other artists' work in local galleries, attend performances, and participate in community events directly feeds my creative practice. These interactions spark new ideas and approaches in my work.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n3",
+                    "to": "n7",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa8",
+            "question": "What role does aesthetic inspiration from the neighborhood play in your work?",
+            "answer": "The gritty, authentic character of this area with its industrial past appears directly in my compositions. The textures, materials, and visual rhythms of old buildings inform my artistic language. Losing these would fundamentally change my work.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n7",
+                    "to": "n11",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa9",
+            "question": "How does the presence of other artists affect your professional development?",
+            "answer": "Being around other creators provides critique, collaboration opportunities, and a support network essential for artistic growth. As artists are displaced, these connections weaken, making it harder to develop and share work.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n9",
+                    "to": "n12",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.85
+                }
+            }
+        },
+        {
+            "qa_id": "qa10",
+            "question": "How do economic pressures affect your artistic expression?",
+            "answer": "Financial insecurity directly impacts my ability to take creative risks. When worried about displacement, I tend to create more commercial work rather than pursuing experimental projects that advance my practice but may not sell immediately.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n10",
+                    "to": "n11",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "perspective": "artist",
+        "num_nodes": 15,
+        "num_edges": 19,
+        "num_qa_pairs": 10,
+        "focus_areas": [
+            "creative_livelihood",
+            "cultural_spaces",
+            "aesthetic_environment",
+            "community_connection"
+        ],
+        "bias_patterns": [
+            "status_quo_preference",
+            "conditional_acceptance_of_change"
+        ]
+    }
+} 
