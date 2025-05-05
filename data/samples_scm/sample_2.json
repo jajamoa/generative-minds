@@ -1,0 +1,323 @@
+{
+  "agent_id": "sample_2",
+  "nodes": [
+    {
+      "id": "HousingDensity",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "HousingAffordability",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "CommuteTimes",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "LocalBusinessSupport",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "EnvironmentalImpact",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "PublicTransitUse",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "CommunityDiversity",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "PersonalWorkLifeBalance",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "internal_affect"
+    },
+    {
+      "id": "EconomicVitality",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "SupportsUpzoning",
+      "type": "binary",
+      "semantic_role": "behavioral_intention"
+    }
+  ],
+  "functions": [
+    {
+      "target": "HousingAffordability",
+      "inputs": ["HousingDensity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.8],
+        "bias": -0.3
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa1"],
+      "confidence": 0.9
+    },
+    {
+      "target": "CommuteTimes",
+      "inputs": ["HousingDensity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [-0.7],
+        "bias": 0.8
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa2"],
+      "confidence": 0.85
+    },
+    {
+      "target": "LocalBusinessSupport",
+      "inputs": ["HousingDensity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.6],
+        "bias": 0.2
+      },
+      "noise_std": 0.2,
+      "support_qas": ["qa3"],
+      "confidence": 0.8
+    },
+    {
+      "target": "EnvironmentalImpact",
+      "inputs": ["CommuteTimes", "HousingDensity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.6, -0.7],
+        "bias": 0.4
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa4"],
+      "confidence": 0.85
+    },
+    {
+      "target": "PublicTransitUse",
+      "inputs": ["HousingDensity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.8],
+        "bias": -0.1
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa5"],
+      "confidence": 0.9
+    },
+    {
+      "target": "CommunityDiversity",
+      "inputs": ["HousingAffordability"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.7],
+        "bias": 0.1
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa6"],
+      "confidence": 0.85
+    },
+    {
+      "target": "PersonalWorkLifeBalance",
+      "inputs": ["CommuteTimes"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [-0.8],
+        "bias": 0.9
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa7"],
+      "confidence": 0.9
+    },
+    {
+      "target": "EconomicVitality",
+      "inputs": ["LocalBusinessSupport", "CommunityDiversity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.6, 0.5],
+        "bias": -0.2
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa8"],
+      "confidence": 0.85
+    },
+    {
+      "target": "SupportsUpzoning",
+      "inputs": ["HousingAffordability", "PersonalWorkLifeBalance", "EnvironmentalImpact", "EconomicVitality"],
+      "function_type": "threshold",
+      "parameters": {
+        "threshold": 0.6,
+        "direction": "greater"
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa9"],
+      "confidence": 0.95
+    }
+  ],
+  "qas": [
+    {
+      "qa_id": "qa1",
+      "question": "How do you think housing density affects affordability?",
+      "answer": "More housing units in an area generally lead to improved affordability through increased supply. When we restrict housing density, we artificially constrain supply and prices rise accordingly.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingDensity",
+          "to": "HousingAffordability",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        }
+      }
+    },
+    {
+      "qa_id": "qa2",
+      "question": "What effect does housing density have on commute times?",
+      "answer": "Higher density housing, especially near job centers, significantly reduces commute times. People can live closer to where they work instead of being forced into distant suburbs.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingDensity",
+          "to": "CommuteTimes",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa3",
+      "question": "How might increased housing density impact local businesses?",
+      "answer": "More residents in an area provides more customers for local businesses, increasing foot traffic and supporting a wider variety of shops and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingDensity",
+          "to": "LocalBusinessSupport",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.8
+        }
+      }
+    },
+    {
+      "qa_id": "qa4",
+      "question": "What do you think about housing density and environmental impact?",
+      "answer": "Denser housing is generally more environmentally friendly. It reduces urban sprawl, preserves natural areas, and leads to shorter commutes, which lowers carbon emissions. When people can walk or take transit instead of driving, the positive environmental impact is substantial.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingDensity",
+          "to": "EnvironmentalImpact",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.85
+        },
+        "counterfactual": "If we continued with low-density development, we'd see more sprawl and environmental degradation."
+      }
+    },
+    {
+      "qa_id": "qa5",
+      "question": "Does housing density affect public transit usage?",
+      "answer": "Absolutely. Higher density areas make public transit more financially viable and efficient. More riders per route means better service can be provided, creating a positive feedback loop of improved transit options.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingDensity",
+          "to": "PublicTransitUse",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        }
+      }
+    },
+    {
+      "qa_id": "qa6",
+      "question": "How does housing affordability impact community diversity?",
+      "answer": "When housing is more affordable, communities can maintain economic and social diversity. Without affordable options, neighborhoods become homogeneous and lose the rich tapestry of different backgrounds and perspectives.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingAffordability",
+          "to": "CommunityDiversity",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa7",
+      "question": "How do commute times affect your personal life?",
+      "answer": "Long commutes are brutal for work-life balance. When I lived farther from work, I lost hours each day that could have been spent with family or on personal activities. Shorter commutes directly improve quality of life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "CommuteTimes",
+          "to": "PersonalWorkLifeBalance",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If my commute was shorter, I'd have significantly more free time for personal activities."
+      }
+    },
+    {
+      "qa_id": "qa8",
+      "question": "How do local businesses and community diversity contribute to economic vitality?",
+      "answer": "Strong local businesses create jobs and keep money circulating in the community. A diverse community brings varied skills, perspectives, and entrepreneurial ideas. Together, they create a resilient and innovative local economy.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "LocalBusinessSupport",
+          "to": "EconomicVitality",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa9",
+      "question": "What's your overall position on upzoning in your community?",
+      "answer": "I strongly support upzoning, especially near transit and job centers. The benefits of improved affordability, reduced commutes, environmental sustainability, and economic vitality far outweigh the concerns. My own quality of life would improve with denser housing options, and I believe it would make our community stronger and more inclusive.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "HousingAffordability",
+          "to": "SupportsUpzoning",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.9,
+          "confidence_rating": 0.95
+        },
+        "counterfactual": "If upzoning led to worse affordability and environmental outcomes, I might oppose it, but the evidence suggests the opposite."
+      }
+    }
+  ]
+} 

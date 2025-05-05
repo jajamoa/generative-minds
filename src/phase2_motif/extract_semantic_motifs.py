@@ -193,8 +193,8 @@ def extract_motifs_with_nx(G, motif_types=None, min_size=3, max_size=5):
             # Use VF2 algorithm to find all subgraph matches
             matcher = nx.algorithms.isomorphism.DiGraphMatcher(G, template)
             
-            # Find all subgraph isomorphisms (limited to prevent excessive matches)
-            max_matches = 20  # Limit to prevent too many matches
+            # Find all subgraph isomorphisms (increased limit to allow more matches)
+            max_matches = 80  # Increased from 20 to 80
             match_count = 0
             
             # Collect subgraph instances
