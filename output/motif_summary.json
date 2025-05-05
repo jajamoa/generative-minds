@@ -1,0 +1,41 @@
+{
+  "stats": {
+    "total_topological_motifs": 12,
+    "total_semantic_groups": 9,
+    "total_augmented_motifs": 0
+  },
+  "motif_groups": [
+    {
+      "group_key": "M3.3_size_3_1",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M3.3_size_3_2",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M3.3_size_3_3",
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "M1_size_3_1",
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 4
+    }
+  ]
+}
