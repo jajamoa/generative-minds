@@ -1,0 +1,55 @@
+```mermaid
+flowchart TD
+    n1[building_density]
+    n2[parking_availability]
+    n3[building_access]
+    n4[safety]
+    n5[navigation_complexity]
+    n6[traffic]
+    n7[delivery_efficiency]
+    n8[security]
+    n9[routing_predictability]
+    n10[logistics_cost]
+    n11[customer_satisfaction]
+    n12[time_pressure]
+    n13[urban_form]
+    n14[upzoning_stance]
+
+    n1 --x n2
+    n1 --> n3
+    n1 --x n4
+    n1 --> n5
+    n1 --> n6
+    n2 --> n7
+    n3 --> n7
+    n4 --> n7
+    n5 --x n7
+    n6 --x n7
+    n7 --> n8
+    n7 --> n9
+    n7 --x n10
+    n7 --> n11
+    n10 --x n12
+    n11 --> n12
+    n12 --> n14
+    n13 --> n1
+
+    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#00AA00,stroke-width:2px
+    linkStyle 13 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 14 stroke:#00AA00,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+    linkStyle 16 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 17 stroke:#00AA00,stroke-width:2px
+```

@@ -1,0 +1,58 @@
+```mermaid
+flowchart TD
+n1[density]
+n2[traffic]
+n3[road_design]
+n4[ride_demand]
+n5[waiting_zones]
+n6[congestion]
+n7[accessibility]
+n8[earnings]
+n9[time_of_day]
+n10[route_optimization]
+n11[passenger_convenience]
+n12[safety]
+n13[noise]
+n14[parking]
+n15[upzoning_stance]
+n1 --> n2
+n1 --> n4
+n1 --x n14
+n2 --> n6
+n2 --x n7
+n2 --x n12
+n3 --> n7
+n3 --> n11
+n4 --> n8
+n5 --> n11
+n6 --x n8
+n7 --> n10
+n8 --> n15
+n9 --> n4
+n9 --> n10
+n10 --> n15
+n11 --> n15
+n12 --> n15
+n13 --x n15
+n14 --x n15
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#00AA00,stroke-width:2px
+linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#00AA00,stroke-width:2px
+linkStyle 8 stroke:#00AA00,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 11 stroke:#00AA00,stroke-width:2px
+linkStyle 12 stroke:#00AA00,stroke-width:2px
+linkStyle 13 stroke:#00AA00,stroke-width:2px
+linkStyle 14 stroke:#00AA00,stroke-width:2px
+linkStyle 15 stroke:#00AA00,stroke-width:2px
+linkStyle 16 stroke:#00AA00,stroke-width:2px
+linkStyle 17 stroke:#00AA00,stroke-width:2px
+linkStyle 18 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 19 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

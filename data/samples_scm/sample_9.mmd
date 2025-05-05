@@ -1,25 +1,43 @@
 ```mermaid
 flowchart TD
-    n1[environmental_concerns]
-    n2[rent_stability]
-    n3[community_character]
-    n4[economic_opportunities]
-    n5[urban_density_belief]
-    n6[upzoning_stance]
-    
-    n1 --x n2
-    n1 --x n3
-    n1 --x n4
-    n2 --x n5
-    n3 --x n5
-    n4 --x n5
-    n5 --x n6
-    
-    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+n1[density]
+n2[property_value]
+n3[neighborhood_exclusivity]
+n4[status_impact]
+n5[financial_investment]
+n6[loss_aversion]
+n7[endowment_effect]
+n8[social_identity]
+n9[traffic]
+n10[noise]
+n11[quality_of_life]
+n12[upzoning_stance]
+n1 --> n2
+n1 --x n3
+n1 --x n4
+n2 --> n5
+n3 --> n4
+n4 --> n6
+n4 --> n7
+n5 --x n8
+n6 --x n8
+n7 --x n8
+n8 --> n11
+n9 --x n11
+n10 --x n11
+n11 --x n12
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#00AA00,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 9 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 10 stroke:#00AA00,stroke-width:2px
+linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 13 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
 ```

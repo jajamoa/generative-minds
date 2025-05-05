@@ -1,789 +1,576 @@
 {
-    "agent_id": "sample_3",
-    "demographics": {
-        "age": 38,
-        "income": "$85,000-$110,000",
-        "education": "bachelor's degree",
-        "occupation": "marketing manager"
-    },
-    "nodes": {
-        "n1": {
-            "label": "urban_density",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa2", "qa3"],
-            "incoming_edges": [],
-            "outgoing_edges": ["e1", "e2", "e3", "e4"]
-        },
-        "n2": {
-            "label": "public_transit_service_frequency",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa1", "qa4"],
-            "incoming_edges": ["e1"],
-            "outgoing_edges": ["e5", "e6"]
-        },
-        "n3": {
-            "label": "traffic_congestion",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa5"],
-            "incoming_edges": ["e2"],
-            "outgoing_edges": ["e7", "e8"]
-        },
-        "n4": {
-            "label": "walkability",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.8,
-            "source_qa": ["qa3", "qa6"],
-            "incoming_edges": ["e3"],
-            "outgoing_edges": ["e9", "e10"]
-        },
-        "n5": {
-            "label": "transportation_mode_options",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa4", "qa6"],
-            "incoming_edges": ["e4"],
-            "outgoing_edges": ["e11"]
-        },
-        "n6": {
-            "label": "transit_reliability",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.8,
-            "source_qa": ["qa7"],
-            "incoming_edges": ["e5"],
-            "outgoing_edges": ["e12"]
-        },
-        "n7": {
-            "label": "transit_commute_time",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa7", "qa10"],
-            "incoming_edges": ["e6"],
-            "outgoing_edges": ["e13"]
-        },
-        "n8": {
-            "label": "driving_stress",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa5", "qa8"],
-            "incoming_edges": ["e7"],
-            "outgoing_edges": ["e14"]
-        },
-        "n9": {
-            "label": "car_commute_time",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa5", "qa10"],
-            "incoming_edges": ["e8"],
-            "outgoing_edges": ["e15"]
-        },
-        "n10": {
-            "label": "work_life_balance",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa9", "qa10"],
-            "incoming_edges": ["e9"],
-            "outgoing_edges": ["e16"]
-        },
-        "n11": {
-            "label": "physical_activity",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.8,
-            "source_qa": ["qa6", "qa8"],
-            "incoming_edges": ["e10"],
-            "outgoing_edges": ["e17"]
-        },
-        "n12": {
-            "label": "transportation_flexibility",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa9"],
-            "incoming_edges": ["e11"],
-            "outgoing_edges": ["e18"]
-        },
-        "n13": {
-            "label": "transit_satisfaction",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa4", "qa7"],
-            "incoming_edges": ["e12", "e13"],
-            "outgoing_edges": ["e19"]
-        },
-        "n14": {
-            "label": "driving_satisfaction",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.8,
-            "source_qa": ["qa5", "qa8"],
-            "incoming_edges": ["e14", "e15"],
-            "outgoing_edges": ["e20"]
-        },
-        "n15": {
-            "label": "commute_satisfaction",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa10"],
-            "incoming_edges": ["e16", "e17", "e18", "e19", "e20"],
-            "outgoing_edges": ["e21"]
-        },
-        "n16": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [true, false],
-            "semantic_role": "behavioral_intention",
-            "confidence": 1.0,
-            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
-            "incoming_edges": ["e21"],
-            "outgoing_edges": []
-        }
-    },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n2",
-            "function": {
-                "target": "n2",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa4"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.85},
-                {"qa_id": "qa4", "confidence": 0.85}
-            ],
-            "modifier": 0.8
-        },
-        "e2": {
-            "from": "n1",
-            "to": "n3",
-            "function": {
-                "target": "n3",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.7],
-                    "bias": -0.1
-                },
-                "noise_std": 0.2,
-                "support_qas": ["qa2", "qa5"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa5", "confidence": 0.9}
-            ],
-            "modifier": 0.7
-        },
-        "e3": {
-            "from": "n1",
-            "to": "n4",
-            "function": {
-                "target": "n4",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa3", "qa6"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa3", "confidence": 0.8},
-                {"qa_id": "qa6", "confidence": 0.8}
-            ],
-            "modifier": 0.9
-        },
-        "e4": {
-            "from": "n1",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa6"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa6", "confidence": 0.85}
-            ],
-            "modifier": 0.8
-        },
-        "e5": {
-            "from": "n2",
-            "to": "n6",
-            "function": {
-                "target": "n6",
-                "inputs": ["n2"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.7],
-                    "bias": -0.1
-                },
-                "noise_std": 0.2,
-                "support_qas": ["qa7"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [{"qa_id": "qa7", "confidence": 0.8}],
-            "modifier": 0.7
-        },
-        "e6": {
-            "from": "n2",
-            "to": "n7",
-            "function": {
-                "target": "n7",
-                "inputs": ["n2"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.8
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa7", "qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa7", "confidence": 0.9},
-                {"qa_id": "qa10", "confidence": 0.9}
-            ],
-            "modifier": -0.9
-        },
-        "e7": {
-            "from": "n3",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": ["n3"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa8"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.85},
-                {"qa_id": "qa8", "confidence": 0.85}
-            ],
-            "modifier": 0.9
-        },
-        "e8": {
-            "from": "n3",
-            "to": "n9",
-            "function": {
-                "target": "n9",
-                "inputs": ["n3"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": 0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.9},
-                {"qa_id": "qa10", "confidence": 0.9}
-            ],
-            "modifier": 0.8
-        },
-        "e9": {
-            "from": "n4",
-            "to": "n10",
-            "function": {
-                "target": "n10",
-                "inputs": ["n4"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.7],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9", "qa10"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa9", "confidence": 0.85},
-                {"qa_id": "qa10", "confidence": 0.85}
-            ],
-            "modifier": 0.7
-        },
-        "e10": {
-            "from": "n4",
-            "to": "n11",
-            "function": {
-                "target": "n11",
-                "inputs": ["n4"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa6", "qa8"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa6", "confidence": 0.8},
-                {"qa_id": "qa8", "confidence": 0.8}
-            ],
-            "modifier": 0.9
-        },
-        "e11": {
-            "from": "n5",
-            "to": "n12",
-            "function": {
-                "target": "n12",
-                "inputs": ["n5"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [{"qa_id": "qa9", "confidence": 0.85}],
-            "modifier": 0.9
-        },
-        "e12": {
-            "from": "n6",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n6"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa7"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa7", "confidence": 0.85}
-            ],
-            "modifier": 0.8
-        },
-        "e13": {
-            "from": "n7",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n7"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.5
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa7"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa7", "confidence": 0.85}
-            ],
-            "modifier": -0.9
-        },
-        "e14": {
-            "from": "n8",
-            "to": "n14",
-            "function": {
-                "target": "n14",
-                "inputs": ["n8"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.5
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa8"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.8},
-                {"qa_id": "qa8", "confidence": 0.8}
-            ],
-            "modifier": -0.9
-        },
-        "e15": {
-            "from": "n9",
-            "to": "n14",
-            "function": {
-                "target": "n14",
-                "inputs": ["n9"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.8],
-                    "bias": 0.9
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa8"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.8},
-                {"qa_id": "qa8", "confidence": 0.8}
-            ],
-            "modifier": -0.8
-        },
-        "e16": {
-            "from": "n10",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n10"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.7],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-            "modifier": 0.7
-        },
-        "e17": {
-            "from": "n11",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n11"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.6],
-                    "bias": 0.0
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-            "modifier": 0.6
-        },
-        "e18": {
-            "from": "n12",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n12"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-            "modifier": 0.8
-        },
-        "e19": {
-            "from": "n13",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n13"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-            "modifier": 0.9
-        },
-        "e20": {
-            "from": "n14",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n14"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [{"qa_id": "qa10", "confidence": 0.9}],
-            "modifier": 0.8
-        },
-        "e21": {
-            "from": "n15",
-            "to": "n16",
-            "function": {
-                "target": "n16",
-                "inputs": ["n15"],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.6,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa10"],
-                "confidence": 1.0
-            },
-            "aggregate_confidence": 1.0,
-            "evidence": [{"qa_id": "qa10", "confidence": 1.0}],
-            "modifier": 0.9
-        }
-    },
-    "qas": [
-        {
-            "qa_id": "qa1",
-            "question": "How does urban density affect public transit availability?",
-            "answer": "Higher density generally supports better public transit. With more people living in an area, transit agencies can justify more frequent service and more routes, which makes taking transit much more practical for commuting.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n2",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa2",
-            "question": "What is the relationship between urban density and traffic congestion?",
-            "answer": "It's complicated. More density can mean more cars on the road initially, but at higher densities, better transit options and walkability can actually reduce car dependence. In my experience, mid-level density without good transit creates the worst congestion.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n3",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.7,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa3",
-            "question": "How does density affect walkability?",
-            "answer": "Higher density places tend to be much more walkable. When homes, shops, and offices are closer together, more destinations are within walking distance. This makes it practical to walk for many more trips rather than having to drive everywhere.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n4",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.8
-                }
-            }
-        },
-        {
-            "qa_id": "qa4",
-            "question": "What transportation options do you value for your commute?",
-            "answer": "I value having multiple options. I primarily take the train, but I like being able to drive, bike, or use ride-share services when needed. The best thing about my current location is that transit is frequent enough that I don't need to check schedules - I just show up and wait a few minutes.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n2",
-                    "to": "n13",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa5",
-            "question": "How does traffic congestion impact your driving experience?",
-            "answer": "Traffic congestion makes driving stressful and unpredictable. What should be a 20-minute drive can take 45 minutes or more during rush hour. The stress of sitting in traffic and constantly having to adjust my schedule to account for potential delays really detracts from my quality of life.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n3",
-                    "to": "n8",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa6",
-            "question": "How important is walkability for your daily activities?",
-            "answer": "I value walkability highly. Since moving to a more walkable neighborhood, I walk to the grocery store, restaurants, and even to the transit station for my commute. I'm getting more exercise naturally, and I enjoy the chance to be outside and see my neighborhood rather than just driving through it.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n4",
-                    "to": "n11",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.8
-                }
-            }
-        },
-        {
-            "qa_id": "qa7",
-            "question": "What factors affect your satisfaction with public transit?",
-            "answer": "Frequency and reliability are the most important factors. When transit comes every 5-10 minutes, I don't need to plan my day around a schedule. Reliability means I can count on consistent commute times. Also, when transit is faster than driving due to dedicated lanes or rail, that makes it much more appealing.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n7",
-                    "to": "n13",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa8",
-            "question": "How do different commute methods affect your stress levels?",
-            "answer": "Driving in traffic is by far the most stressful. Taking transit is much better because I can read or work instead of focusing on the road. Walking or biking are actually the best for my mental health - I arrive at work feeling energized rather than stressed, and the physical activity helps clear my mind.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n8",
-                    "to": "n14",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.8
-                }
-            }
-        },
-        {
-            "qa_id": "qa9",
-            "question": "How does transportation flexibility impact your lifestyle?",
-            "answer": "Having multiple viable transportation options makes my life much more flexible. If transit is delayed, I can grab a rideshare. If the weather is nice, I can walk or bike. I don't feel trapped in one mode, and I can adapt to different situations. This flexibility means I can be more spontaneous and worry less about logistics.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n12",
-                    "to": "n15",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa10",
-            "question": "Overall, how does your commuting experience affect your support for density changes?",
-            "answer": "My experience has made me strongly support increased density. When I lived in a low-density area, I was completely car-dependent, spent hours in traffic, and had no alternatives. Now in a dense neighborhood, I have multiple transportation options, my commute is more reliable, and I have more time for myself. The transportation benefits alone make me favor upzoning.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n15",
-                    "to": "n16",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 1.0
-                }
-            }
-        }
-    ],
-    "metadata": {
-        "perspective": "commuter",
-        "num_nodes": 16,
-        "num_edges": 21,
-        "num_qa_pairs": 10,
-        "focus_areas": [
-            "transportation_reliability",
-            "commute_time",
-            "mode_choice",
-            "quality_of_life"
+  "agent_id": "commuter_1",
+  "demographics": {
+    "age": 57,
+    "income": "$40,000-$80,000",
+    "education": "high school graduate",
+    "occupation": "Commuter",
+    "housing": "mixed housing situation"
+  },
+  "nodes": {
+    "n1": {
+      "label": "transit_service_quality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01"
         ],
-        "bias_patterns": [
-            "utility_maximization",
-            "experience-based_evaluation"
-        ]
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
+    },
+    "n2": {
+      "label": "traffic_congestion",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n3": {
+      "label": "commute_time",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n4": {
+      "label": "mode_choice_car",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n5": {
+      "label": "mode_choice_public_transit",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n6": {
+      "label": "pragmatic_utility",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5",
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n7": {
+      "label": "urban_density_increase",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n8": {
+      "label": "improved_functionality",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n9": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7",
+        "e9"
+      ],
+      "outgoing_edges": []
     }
-} 
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n4",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n6",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the quality of transit service affect traffic congestion?",
+      "answer": "Better transit service reduces traffic congestion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the transit service quality is poor, then traffic congestion will increase."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does the quality of transit service affect commute time?",
+      "answer": "Better transit service reduces commute time.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the transit service quality is poor, then commute time will increase."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does traffic congestion influence the choice to use a car for commuting?",
+      "answer": "Higher traffic congestion increases the likelihood of choosing a car for commuting.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If traffic congestion is low, then the likelihood of choosing a car for commuting decreases."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does commute time influence the choice to use public transit for commuting?",
+      "answer": "Shorter commute times increase the likelihood of choosing public transit for commuting.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If commute time is long, then the likelihood of choosing public transit for commuting decreases."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does the choice to use a car for commuting affect pragmatic utility?",
+      "answer": "Using a car for commuting decreases pragmatic utility due to higher costs and longer commute times.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If a car is not chosen for commuting, then pragmatic utility may increase."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does the choice to use public transit for commuting affect pragmatic utility?",
+      "answer": "Using public transit for commuting increases pragmatic utility due to lower costs and shorter commute times.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If public transit is not chosen for commuting, then pragmatic utility may decrease."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does pragmatic utility influence the stance on upzoning?",
+      "answer": "Higher pragmatic utility increases the likelihood of supporting upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If pragmatic utility is low, then the likelihood of supporting upzoning decreases."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does an increase in urban density affect the perception of improved functionality?",
+      "answer": "An increase in urban density improves the perception of functionality due to better access to services and reduced commute times.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban density does not increase, then the perception of improved functionality may not change."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does the perception of improved functionality influence the stance on upzoning?",
+      "answer": "A positive perception of improved functionality increases the likelihood of supporting upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the perception of improved functionality is negative, then the likelihood of supporting upzoning decreases."
+      }
+    }
+  ]
+}

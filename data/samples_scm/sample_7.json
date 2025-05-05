@@ -1,619 +1,764 @@
 {
-    "agent_id": "sample_7",
-    "demographics": {
-        "age": 36,
-        "income": "$55,000-$75,000",
-        "education": "master's degree in environmental science",
-        "occupation": "environmental non-profit coordinator",
-        "housing": "apartment renter in mixed-use building"
+  "agent_id": "sample_7",
+  "demographics": {
+    "age": 30,
+    "income": "$40,000-$80,000",
+    "education": "high school graduate",
+    "occupation": "Environmentalist",
+    "housing": "mixed housing situation"
+  },
+  "nodes": {
+    "n1": {
+      "label": "density_increase",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1",
+        "e2"
+      ]
     },
-    "nodes": {
-        "n1": {
-            "label": "urban_density_increase",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa2", "qa3"],
-            "incoming_edges": [],
-            "outgoing_edges": ["e1", "e2", "e3", "e4", "e5"]
-        },
-        "n2": {
-            "label": "carbon_emissions_per_capita",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.95,
-            "source_qa": ["qa1", "qa10"],
-            "incoming_edges": ["e1"],
-            "outgoing_edges": ["e6"]
-        },
-        "n3": {
-            "label": "green_space_preservation",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa6"],
-            "incoming_edges": ["e2"],
-            "outgoing_edges": ["e7", "e8"]
-        },
-        "n4": {
-            "label": "public_transit_utilization",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa3"],
-            "incoming_edges": ["e3"],
-            "outgoing_edges": ["e9"]
-        },
-        "n5": {
-            "label": "building_energy_efficiency",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa4", "qa10"],
-            "incoming_edges": ["e4"],
-            "outgoing_edges": ["e10"]
-        },
-        "n6": {
-            "label": "stormwater_management_challenges",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.8,
-            "source_qa": ["qa5", "qa6"],
-            "incoming_edges": ["e5"],
-            "outgoing_edges": ["e11"]
-        },
-        "n7": {
-            "label": "climate_impact_concern",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.95,
-            "source_qa": ["qa1", "qa10"],
-            "incoming_edges": ["e6"],
-            "outgoing_edges": ["e12"]
-        },
-        "n8": {
-            "label": "urban_biodiversity",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa6"],
-            "incoming_edges": ["e7"],
-            "outgoing_edges": ["e13"]
-        },
-        "n9": {
-            "label": "urban_heat_island_effect",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa2", "qa7"],
-            "incoming_edges": ["e8"],
-            "outgoing_edges": ["e14"]
-        },
-        "n10": {
-            "label": "car_dependency_reduction",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa3"],
-            "incoming_edges": ["e9"],
-            "outgoing_edges": ["e15"]
-        },
-        "n11": {
-            "label": "resource_consumption_efficiency",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa4", "qa8"],
-            "incoming_edges": ["e10"],
-            "outgoing_edges": ["e16"]
-        },
-        "n12": {
-            "label": "water_quality_concerns",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.8,
-            "source_qa": ["qa5", "qa6"],
-            "incoming_edges": ["e11"],
-            "outgoing_edges": ["e17"]
-        },
-        "n13": {
-            "label": "ecological_resilience",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa6", "qa7"],
-            "incoming_edges": ["e13", "e14"],
-            "outgoing_edges": ["e18"]
-        },
-        "n14": {
-            "label": "transportation_sustainability",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa3", "qa9"],
-            "incoming_edges": ["e15"],
-            "outgoing_edges": ["e19"]
-        },
-        "n15": {
-            "label": "environmental_tradeoff_assessment",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa8", "qa9", "qa10"],
-            "incoming_edges": ["e12", "e16", "e17", "e18", "e19"],
-            "outgoing_edges": ["e20"]
-        },
-        "n16": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [true, false],
-            "semantic_role": "behavioral_intention",
-            "confidence": 1.0,
-            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
-            "incoming_edges": ["e20"],
-            "outgoing_edges": []
-        }
+    "n2": {
+      "label": "resource_efficiency",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
     },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n2",
-            "function": {
-                "target": "n2",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.8],
-                    "bias": 0.7
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa10"],
-                "confidence": 0.95
-            },
-            "aggregate_confidence": 0.95,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.95},
-                {"qa_id": "qa10", "confidence": 0.95}
-            ],
-            "modifier": -0.8
+    "n3": {
+      "label": "green_space_loss",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n4": {
+      "label": "ecological_impact",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3",
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n5": {
+      "label": "climate_considerations",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n6": {
+      "label": "urban_ecology_concerns",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n7": {
+      "label": "environmental_evaluation",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e10"
+      ]
+    },
+    "n8": {
+      "label": "sustainability_focus",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e11"
+      ]
+    },
+    "n9": {
+      "label": "principled_decision",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e10",
+        "e11",
+        "e12"
+      ],
+      "outgoing_edges": [
+        "e13"
+      ]
+    },
+    "n10": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e13"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        "e2": {
-            "from": "n1",
-            "to": "n3",
-            "function": {
-                "target": "n3",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.6],
-                    "bias": 0.5
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa6"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa6", "confidence": 0.9}
-            ],
-            "modifier": -0.6
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n1",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": 0.2
         },
-        "e3": {
-            "from": "n1",
-            "to": "n4",
-            "function": {
-                "target": "n4",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.85],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa3"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.9},
-                {"qa_id": "qa3", "confidence": 0.9}
-            ],
-            "modifier": 0.85
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e3": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.7
+          ],
+          "bias": -0.1
         },
-        "e4": {
-            "from": "n1",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.7],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa10"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa10", "confidence": 0.85}
-            ],
-            "modifier": 0.7
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e4": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.7
+          ],
+          "bias": 0.1
         },
-        "e5": {
-            "from": "n1",
-            "to": "n6",
-            "function": {
-                "target": "n6",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.65],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa6"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.8},
-                {"qa_id": "qa6", "confidence": 0.8}
-            ],
-            "modifier": 0.65
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e5": {
+      "from": "n2",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.6
+          ],
+          "bias": -0.1
         },
-        "e6": {
-            "from": "n2",
-            "to": "n7",
-            "function": {
-                "target": "n7",
-                "inputs": ["n2"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.8
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa10"],
-                "confidence": 0.95
-            },
-            "aggregate_confidence": 0.95,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.95},
-                {"qa_id": "qa10", "confidence": 0.95}
-            ],
-            "modifier": -0.9
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e6": {
+      "from": "n3",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.6
+          ],
+          "bias": 0.1
         },
-        "e7": {
-            "from": "n3",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": ["n3"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa6"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa6", "confidence": 0.9}
-            ],
-            "modifier": 0.9
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e7": {
+      "from": "n4",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.5
+          ],
+          "bias": -0.1
         },
-        "e8": {
-            "from": "n3",
-            "to": "n9",
-            "function": {
-                "target": "n9",
-                "inputs": ["n3"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.8],
-                    "bias": 0.7
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa7"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.85},
-                {"qa_id": "qa7", "confidence": 0.85}
-            ],
-            "modifier": -0.8
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e8": {
+      "from": "n5",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.5
+          ],
+          "bias": -0.1
         },
-        "e9": {
-            "from": "n4",
-            "to": "n10",
-            "function": {
-                "target": "n10",
-                "inputs": ["n4"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa3"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.9},
-                {"qa_id": "qa3", "confidence": 0.9}
-            ],
-            "modifier": 0.9
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e9": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.5
+          ],
+          "bias": 0.1
         },
-        "e10": {
-            "from": "n5",
-            "to": "n11",
-            "function": {
-                "target": "n11",
-                "inputs": ["n5"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.85],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa8"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa8", "confidence": 0.85}
-            ],
-            "modifier": 0.85
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e10": {
+      "from": "n7",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
         },
-        "e11": {
-            "from": "n6",
-            "to": "n12",
-            "function": {
-                "target": "n12",
-                "inputs": ["n6"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa6"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.8},
-                {"qa_id": "qa6", "confidence": 0.8}
-            ],
-            "modifier": 0.8
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    },
+    "e11": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
         },
-        "e12": {
-            "from": "n7",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n7"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.95],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa10"],
-                "confidence": 0.95
-            },
-            "aggregate_confidence": 0.95,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.95},
-                {"qa_id": "qa10", "confidence": 0.95}
-            ],
-            "modifier": 0.95
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_10"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_10"
+      ]
+    },
+    "e12": {
+      "from": "n1",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
         },
-        "e13": {
-            "from": "n8",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n8"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa6", "qa7"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa6", "confidence": 0.9},
-                {"qa_id": "qa7", "confidence": 0.9}
-            ],
-            "modifier": 0.9
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_11"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_11"
+      ]
+    },
+    "e13": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
         },
-        "e14": {
-            "from": "n9",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n9"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.8],
-                    "bias": 0.7
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa6", "qa7"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.85},
-                {"qa_id": "qa6", "confidence": 0.85},
-                {"qa_id": "qa7", "confidence": 0.85}
-            ],
-            "modifier": -0.8
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_12"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_12"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does an increase in urban density affect resource efficiency?",
+      "answer": "An increase in urban density generally leads to higher resource efficiency because it allows for more efficient use of infrastructure and services.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
         },
-        "e15": {
-            "from": "n10",
-            "to": "n14",
-            "function": {
-                "target": "n14",
-                "inputs": ["n10"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa3", "qa9"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.9},
-                {"qa_id": "qa3", "confidence": 0.9},
-                {"qa_id": "qa9", "confidence": 0.9}
-            ],
-            "modifier": 0.9
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "e16": {
-            "from": "n11",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n11"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.85],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa8"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa8", "confidence": 0.85}
-            ],
-            "modifier": 0.85
+        "counterfactual": "If the increase in urban density is poorly managed, then resource efficiency may not improve."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does an increase in urban density affect green space loss?",
+      "answer": "An increase in urban density often results in a reduction of green spaces as land is used for more buildings and infrastructure.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n3",
+          "direction": "negative"
         },
-        "e17": {
-            "from": "n12",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n12"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.7],
-                    "bias": 0.6
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa6"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.8},
-                {"qa_id": "qa6", "confidence": 0.8}
-            ],
-            "modifier": -0.7
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
         },
-        "e18": {
-            "from": "n13",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n13"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa6", "qa7"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa6", "confidence": 0.9},
-                {"qa_id": "qa7", "confidence": 0.9}
-            ],
-            "modifier": 0.8
+        "counterfactual": "If the increase in urban density is carefully planned with green spaces in mind, then green space loss can be minimized."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does resource efficiency influence ecological impact?",
+      "answer": "Higher resource efficiency generally reduces the ecological impact by minimizing waste and optimizing the use of resources.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "positive"
         },
-        "e19": {
-            "from": "n14",
-            "to": "n15",
-            "function": {
-                "target": "n15",
-                "inputs": ["n14"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa3", "qa9"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.9},
-                {"qa_id": "qa3", "confidence": 0.9},
-                {"qa_id": "qa9", "confidence": 0.9}
-            ],
-            "modifier": 0.9
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
         },
-        "e20": {
-            "from": "n15",
-            "to": "n16",
-            "function": {
-                "target": "n16",
-                "inputs": ["n15"],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.7,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa8", "qa9", "qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa8", "confidence": 0.9},
-                {"qa_id": "qa9", "confidence": 0.9},
-                {"qa_id": "qa10", "confidence": 0.9}
-            ],
-            "modifier": 0.9
-        }
-    }} 
+        "counterfactual": "If resource efficiency is not effectively implemented, then the ecological impact may not be reduced."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How does green space loss influence ecological impact?",
+      "answer": "Green space loss typically increases the ecological impact by reducing natural habitats and decreasing the ability of the environment to absorb pollutants.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If green spaces are preserved or created, then the ecological impact can be mitigated."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does resource efficiency influence climate considerations?",
+      "answer": "Resource efficiency can positively influence climate considerations by reducing greenhouse gas emissions and promoting sustainable practices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n5",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If resource efficiency is not prioritized, then climate considerations may not be adequately addressed."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does green space loss influence urban ecology concerns?",
+      "answer": "Green space loss increases urban ecology concerns by reducing biodiversity and the overall health of the urban ecosystem.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If green spaces are protected, then urban ecology concerns can be alleviated."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does the ecological impact influence environmental evaluation?",
+      "answer": "The ecological impact is a critical factor in environmental evaluation, as it directly affects the sustainability and health of the environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.5,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the ecological impact is minimal, then the environmental evaluation will be more favorable."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How do climate considerations influence sustainability focus?",
+      "answer": "Climate considerations are a key driver of sustainability focus, as they highlight the need for long-term, environmentally friendly practices.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.5,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If climate considerations are ignored, then the sustainability focus may be weakened."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How do urban ecology concerns influence environmental evaluation?",
+      "answer": "Urban ecology concerns play a significant role in environmental evaluation, as they reflect the overall health and sustainability of the urban environment.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.5,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If urban ecology concerns are addressed, then the environmental evaluation will be more positive."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "How does the environmental evaluation influence a principled decision?",
+      "answer": "A thorough environmental evaluation is crucial for making a principled decision, as it provides a comprehensive understanding of the environmental impacts.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the environmental evaluation is incomplete, then the principled decision may be compromised."
+      }
+    },
+    {
+      "qa_id": "qa_11",
+      "question": "How does the sustainability focus influence a principled decision?",
+      "answer": "A strong sustainability focus is essential for making a principled decision, as it ensures that the decision aligns with long-term environmental goals.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the sustainability focus is weak, then the principled decision may not fully address environmental concerns."
+      }
+    },
+    {
+      "qa_id": "qa_12",
+      "question": "How does the principled decision influence the upzoning stance?",
+      "answer": "A principled decision, based on a thorough environmental evaluation and a strong sustainability focus, will determine the upzoning stance.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the principled decision is not made, then the upzoning stance may not align with environmental values."
+      }
+    },
+    {
+      "qa_id": "qa_13",
+      "question": "How does the direct impact of density increase influence the principled decision?",
+      "answer": "The direct impact of density increase, such as the immediate changes in the urban environment, can influence the principled decision by highlighting the need for careful planning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.5,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If the density increase is not well-managed, then the principled decision may be more cautious."
+      }
+    }
+  ]
+}

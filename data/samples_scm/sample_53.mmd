@@ -1,0 +1,50 @@
+```mermaid
+flowchart TD
+n1[building_density]
+n2[green_space]
+n3[walking_routes]
+n4[pet_services]
+n5[pet_socialization]
+n6[animal_regulations]
+n7[traffic]
+n8[noise]
+n9[safety]
+n10[air_quality]
+n11[public_space]
+n12[neighborhood_quality]
+n13[upzoning_stance]
+n1 --> n2
+n1 --> n3
+n1 --x n4
+n2 --> n5
+n2 --> n11
+n3 --> n5
+n3 --> n11
+n4 --> n12
+n5 --> n12
+n6 --> n12
+n7 --x n9
+n7 --x n10
+n8 --x n12
+n9 --> n12
+n10 --> n12
+n11 --> n12
+n12 --x n13
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#00AA00,stroke-width:2px
+linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#00AA00,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#00AA00,stroke-width:2px
+linkStyle 8 stroke:#00AA00,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 13 stroke:#00AA00,stroke-width:2px
+linkStyle 14 stroke:#00AA00,stroke-width:2px
+linkStyle 15 stroke:#00AA00,stroke-width:2px
+linkStyle 16 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

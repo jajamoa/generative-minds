@@ -1,63 +1,54 @@
 ```mermaid
 flowchart TD
-    n1[urban_density]
-    n2[public_transit_service_frequency]
-    n3[traffic_congestion]
-    n4[walkability]
-    n5[transportation_mode_options]
-    n6[transit_reliability]
-    n7[transit_commute_time]
-    n8[driving_stress]
-    n9[car_commute_time]
-    n10[work_life_balance]
-    n11[physical_activity]
-    n12[transportation_flexibility]
-    n13[transit_satisfaction]
-    n14[driving_satisfaction]
-    n15[commute_satisfaction]
-    n16[upzoning_stance]
-    
-    n1 --> n2
-    n1 --> n3
-    n1 --> n4
-    n1 --> n5
-    n2 --> n6
-    n2 --x n7
-    n3 --> n8
-    n3 --> n9
-    n4 --> n10
-    n4 --> n11
-    n5 --> n12
-    n6 --> n13
-    n7 --x n13
-    n8 --x n14
-    n9 --x n14
-    n10 --> n15
-    n11 --> n15
-    n12 --> n15
-    n13 --> n15
-    n14 --> n15
-    n15 --> n16
-    
-    linkStyle 0 stroke:#00AA00,stroke-width:2px
-    linkStyle 1 stroke:#00AA00,stroke-width:2px
-    linkStyle 2 stroke:#00AA00,stroke-width:2px
-    linkStyle 3 stroke:#00AA00,stroke-width:2px
-    linkStyle 4 stroke:#00AA00,stroke-width:2px
-    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 6 stroke:#00AA00,stroke-width:2px
-    linkStyle 7 stroke:#00AA00,stroke-width:2px
-    linkStyle 8 stroke:#00AA00,stroke-width:2px
-    linkStyle 9 stroke:#00AA00,stroke-width:2px
-    linkStyle 10 stroke:#00AA00,stroke-width:2px
-    linkStyle 11 stroke:#00AA00,stroke-width:2px
-    linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 13 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 14 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 15 stroke:#00AA00,stroke-width:2px
-    linkStyle 16 stroke:#00AA00,stroke-width:2px
-    linkStyle 17 stroke:#00AA00,stroke-width:2px
-    linkStyle 18 stroke:#00AA00,stroke-width:2px
-    linkStyle 19 stroke:#00AA00,stroke-width:2px
-    linkStyle 20 stroke:#00AA00,stroke-width:2px
-``` 
+n1[density]
+n2[transit_service]
+n3[traffic_congestion]
+n4[commute_time]
+n5[mode_choice]
+n6[walkability]
+n7[bikeability]
+n8[parking]
+n9[public_transport_usage]
+n10[car_usage]
+n11[transport_cost]
+n12[environmental_impact]
+n13[health_benefits]
+n14[quality_of_life]
+n15[upzoning_stance]
+n1 --> n2
+n1 --x n3
+n1 --> n6
+n1 --> n7
+n1 --x n8
+n2 --> n4
+n3 --> n4
+n5 --> n9
+n5 --> n10
+n6 --> n13
+n7 --> n13
+n8 --> n10
+n9 --> n11
+n10 --> n11
+n11 --> n14
+n12 --> n14
+n13 --> n14
+n14 --> n15
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 2 stroke:#00AA00,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#00AA00,stroke-width:2px
+linkStyle 8 stroke:#00AA00,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#00AA00,stroke-width:2px
+linkStyle 11 stroke:#00AA00,stroke-width:2px
+linkStyle 12 stroke:#00AA00,stroke-width:2px
+linkStyle 13 stroke:#00AA00,stroke-width:2px
+linkStyle 14 stroke:#00AA00,stroke-width:2px
+linkStyle 15 stroke:#00AA00,stroke-width:2px
+linkStyle 16 stroke:#00AA00,stroke-width:2px
+linkStyle 17 stroke:#00AA00,stroke-width:2px
+```

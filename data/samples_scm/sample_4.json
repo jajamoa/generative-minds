@@ -1,674 +1,609 @@
 {
-    "agent_id": "sample_4",
-    "demographics": {
-        "age": 72,
-        "income": "$30,000-$45,000",
-        "education": "high school graduate",
-        "occupation": "retired nurse"
-    },
-    "nodes": {
-        "n1": {
-            "label": "building_development_proposal",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa1", "qa2", "qa3"],
-            "incoming_edges": [],
-            "outgoing_edges": ["e1", "e2", "e3", "e4"]
-        },
-        "n2": {
-            "label": "healthcare_facility_proximity",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.95,
-            "source_qa": ["qa1", "qa7"],
-            "incoming_edges": ["e1"],
-            "outgoing_edges": ["e5"]
-        },
-        "n3": {
-            "label": "emergency_services_access",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa8"],
-            "incoming_edges": ["e2"],
-            "outgoing_edges": ["e6"]
-        },
-        "n4": {
-            "label": "familiar_environment_predictability",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.85,
-            "source_qa": ["qa3", "qa4"],
-            "incoming_edges": ["e3"],
-            "outgoing_edges": ["e7"]
-        },
-        "n5": {
-            "label": "construction_disruption",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.8,
-            "source_qa": ["qa4", "qa10"],
-            "incoming_edges": ["e4"],
-            "outgoing_edges": ["e8", "e9"]
-        },
-        "n6": {
-            "label": "medical_care_accessibility",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "external_state",
-            "confidence": 0.95,
-            "source_qa": ["qa1", "qa7"],
-            "incoming_edges": ["e5"],
-            "outgoing_edges": ["e10"]
-        },
-        "n7": {
-            "label": "safety_during_emergency",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa2", "qa8"],
-            "incoming_edges": ["e6"],
-            "outgoing_edges": ["e11"]
-        },
-        "n8": {
-            "label": "cognitive_comfort",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa3", "qa9"],
-            "incoming_edges": ["e7"],
-            "outgoing_edges": ["e12"]
-        },
-        "n9": {
-            "label": "mobility_challenges",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa5", "qa6"],
-            "incoming_edges": ["e8"],
-            "outgoing_edges": ["e13"]
-        },
-        "n10": {
-            "label": "daily_routine_disruption",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa4", "qa9"],
-            "incoming_edges": ["e9"],
-            "outgoing_edges": ["e14"]
-        },
-        "n11": {
-            "label": "perceived_health_security",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.9,
-            "source_qa": ["qa7", "qa8"],
-            "incoming_edges": ["e10", "e11"],
-            "outgoing_edges": ["e15"]
-        },
-        "n12": {
-            "label": "anxiety_about_change",
-            "type": "continuous",
-            "range": [0.0, 1.0],
-            "semantic_role": "internal_affect",
-            "confidence": 0.85,
-            "source_qa": ["qa9", "qa10"],
-            "incoming_edges": ["e12", "e13", "e14"],
-            "outgoing_edges": ["e16"]
-        },
-        "n13": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [true, false],
-            "semantic_role": "behavioral_intention",
-            "confidence": 1.0,
-            "source_qa": ["qa1", "qa2", "qa3", "qa4", "qa5", "qa6", "qa7", "qa8", "qa9", "qa10"],
-            "incoming_edges": ["e15", "e16"],
-            "outgoing_edges": []
-        }
-    },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n2",
-            "function": {
-                "target": "n2",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.7],
-                    "bias": 0.6
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa7"],
-                "confidence": 0.95
-            },
-            "aggregate_confidence": 0.95,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.95},
-                {"qa_id": "qa7", "confidence": 0.95}
-            ],
-            "modifier": -0.7
-        },
-        "e2": {
-            "from": "n1",
-            "to": "n3",
-            "function": {
-                "target": "n3",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.8],
-                    "bias": 0.7
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa8"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa8", "confidence": 0.9}
-            ],
-            "modifier": -0.8
-        },
-        "e3": {
-            "from": "n1",
-            "to": "n4",
-            "function": {
-                "target": "n4",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.8
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa3", "qa4"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa3", "confidence": 0.85},
-                {"qa_id": "qa4", "confidence": 0.85}
-            ],
-            "modifier": -0.9
-        },
-        "e4": {
-            "from": "n1",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": ["n1"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa10"],
-                "confidence": 0.8
-            },
-            "aggregate_confidence": 0.8,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.8},
-                {"qa_id": "qa10", "confidence": 0.8}
-            ],
-            "modifier": 0.9
-        },
-        "e5": {
-            "from": "n2",
-            "to": "n6",
-            "function": {
-                "target": "n6",
-                "inputs": ["n2"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa1", "qa7"],
-                "confidence": 0.95
-            },
-            "aggregate_confidence": 0.95,
-            "evidence": [
-                {"qa_id": "qa1", "confidence": 0.95},
-                {"qa_id": "qa7", "confidence": 0.95}
-            ],
-            "modifier": 0.9
-        },
-        "e6": {
-            "from": "n3",
-            "to": "n7",
-            "function": {
-                "target": "n7",
-                "inputs": ["n3"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa2", "qa8"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa2", "confidence": 0.9},
-                {"qa_id": "qa8", "confidence": 0.9}
-            ],
-            "modifier": 0.9
-        },
-        "e7": {
-            "from": "n4",
-            "to": "n8",
-            "function": {
-                "target": "n8",
-                "inputs": ["n4"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa3", "qa9"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa3", "confidence": 0.85},
-                {"qa_id": "qa9", "confidence": 0.85}
-            ],
-            "modifier": 0.9
-        },
-        "e8": {
-            "from": "n5",
-            "to": "n9",
-            "function": {
-                "target": "n9",
-                "inputs": ["n5"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa5", "qa6"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa5", "confidence": 0.9},
-                {"qa_id": "qa6", "confidence": 0.9}
-            ],
-            "modifier": 0.8
-        },
-        "e9": {
-            "from": "n5",
-            "to": "n10",
-            "function": {
-                "target": "n10",
-                "inputs": ["n5"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa4", "qa9"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa4", "confidence": 0.85},
-                {"qa_id": "qa9", "confidence": 0.85}
-            ],
-            "modifier": 0.9
-        },
-        "e10": {
-            "from": "n6",
-            "to": "n11",
-            "function": {
-                "target": "n11",
-                "inputs": ["n6"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.3
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa7", "qa8"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa7", "confidence": 0.9},
-                {"qa_id": "qa8", "confidence": 0.9}
-            ],
-            "modifier": 0.9
-        },
-        "e11": {
-            "from": "n7",
-            "to": "n11",
-            "function": {
-                "target": "n11",
-                "inputs": ["n7"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa7", "qa8"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa7", "confidence": 0.9},
-                {"qa_id": "qa8", "confidence": 0.9}
-            ],
-            "modifier": 0.9
-        },
-        "e12": {
-            "from": "n8",
-            "to": "n12",
-            "function": {
-                "target": "n12",
-                "inputs": ["n8"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [-0.9],
-                    "bias": 0.8
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9", "qa10"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa9", "confidence": 0.85},
-                {"qa_id": "qa10", "confidence": 0.85}
-            ],
-            "modifier": -0.9
-        },
-        "e13": {
-            "from": "n9",
-            "to": "n12",
-            "function": {
-                "target": "n12",
-                "inputs": ["n9"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.8],
-                    "bias": -0.1
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9", "qa10"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa9", "confidence": 0.85},
-                {"qa_id": "qa10", "confidence": 0.85}
-            ],
-            "modifier": 0.8
-        },
-        "e14": {
-            "from": "n10",
-            "to": "n12",
-            "function": {
-                "target": "n12",
-                "inputs": ["n10"],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [0.9],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9", "qa10"],
-                "confidence": 0.85
-            },
-            "aggregate_confidence": 0.85,
-            "evidence": [
-                {"qa_id": "qa9", "confidence": 0.85},
-                {"qa_id": "qa10", "confidence": 0.85}
-            ],
-            "modifier": 0.9
-        },
-        "e15": {
-            "from": "n11",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n11"],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.6,
-                    "direction": "less"
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa7", "qa8"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa7", "confidence": 0.9},
-                {"qa_id": "qa8", "confidence": 0.9}
-            ],
-            "modifier": -0.9
-        },
-        "e16": {
-            "from": "n12",
-            "to": "n13",
-            "function": {
-                "target": "n13",
-                "inputs": ["n12"],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.7,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": ["qa9", "qa10"],
-                "confidence": 0.9
-            },
-            "aggregate_confidence": 0.9,
-            "evidence": [
-                {"qa_id": "qa9", "confidence": 0.9},
-                {"qa_id": "qa10", "confidence": 0.9}
-            ],
-            "modifier": -0.9
-        }
-    },
-    "qas": [
-        {
-            "qa_id": "qa1",
-            "question": "How important is the proximity to healthcare facilities for you when considering neighborhood changes?",
-            "answer": "Access to my doctors and the medical center is absolutely critical. At my age, I need to know I can get to my specialists quickly and reliably. If development makes it harder to reach my healthcare providers or increases the distance, that would be a serious concern for me.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n2",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.95
-                }
-            }
-        },
-        {
-            "qa_id": "qa2",
-            "question": "What concerns do you have about emergency services during and after construction?",
-            "answer": "I worry that ambulances and emergency vehicles might have trouble getting through if the streets are narrowed or there's construction. Every minute counts in an emergency at my age. I've had to call an ambulance twice in the past five years, and I need to know help can reach me quickly.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n3",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa3",
-            "question": "How does familiarity with your neighborhood affect your daily life?",
-            "answer": "I've lived here for over 30 years and I know every corner and shortcut. That familiarity gives me confidence to get around independently. When things change suddenly, I get disoriented more easily than I used to. I rely on landmarks that I've known for decades.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n4",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa4",
-            "question": "What impact would construction and development have on your daily routines?",
-            "answer": "Construction noise and detours would be very disruptive. I have a set schedule for my medications, meals, and activities. Having to take different routes or deal with construction obstacles would make simple errands much more challenging and stressful.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n5",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.8
-                }
-            }
-        },
-        {
-            "qa_id": "qa5",
-            "question": "How do your mobility challenges influence your views on neighborhood development?",
-            "answer": "With my arthritis and using a cane sometimes, uneven pavement from construction or changes to sidewalks can make getting around dangerous. I need predictable, well-maintained walking surfaces. Even temporary disruptions can prevent me from reaching important destinations safely.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n5",
-                    "to": "n9",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa6",
-            "question": "What features of the built environment are most important for your accessibility needs?",
-            "answer": "I need benches for resting, well-maintained sidewalks without trip hazards, and good street lighting. Buildings with steps and no ramps or elevators are impossible for me on bad days. When developers don't consider these things, entire areas become inaccessible to people like me.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n9",
-                    "to": "n12",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa7",
-            "question": "How does access to medical facilities affect your sense of security?",
-            "answer": "Knowing I can get to my doctor quickly gives me peace of mind. My health conditions require regular monitoring, and any change that threatens my access to healthcare creates tremendous anxiety. When you're older, medical emergencies aren't theoretical - they're a constant possibility you plan around.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n6",
-                    "to": "n11",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa8",
-            "question": "What safety concerns do you have regarding neighborhood changes?",
-            "answer": "Besides emergency vehicle access, I worry about evacuation routes and clear signage during emergencies. Unfamiliar layouts or temporary routes during construction could be dangerous in a crisis. After development, I worry about increased traffic making street crossings less safe for someone who moves more slowly.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n7",
-                    "to": "n11",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                }
-            }
-        },
-        {
-            "qa_id": "qa9",
-            "question": "How does the prospect of neighborhood change affect your emotional well-being?",
-            "answer": "Constant change makes me feel anxious. The familiar gives me comfort, and sudden changes are harder to adapt to than they were when I was younger. I've seen many changes over the decades, but the pace now seems faster and more disruptive than it used to be.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n8",
-                    "to": "n12",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.85
-                }
-            }
-        },
-        {
-            "qa_id": "qa10",
-            "question": "What would make you more supportive of development in your neighborhood?",
-            "answer": "I could support changes if developers demonstrated genuine concern for seniors' needs - guaranteed healthcare access during construction, clear communication about timeline and impacts, and community meetings at times and places accessible to older people. We need a voice in planning, not just being informed after decisions are made.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n12",
-                    "to": "n13",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.9,
-                    "confidence_rating": 0.9
-                }
-            }
-        }
-    ],
-    "metadata": {
-        "perspective": "elderly_resident",
-        "num_nodes": 13,
-        "num_edges": 16,
-        "num_qa_pairs": 10,
-        "focus_areas": [
-            "healthcare_accessibility",
-            "emergency_preparedness",
-            "environmental_stability",
-            "mobility_considerations"
+  "agent_id": "elderly_resident_1",
+  "demographics": {
+    "age": 67,
+    "income": "$40,000-$80,000",
+    "education": "high school graduate",
+    "occupation": "Elderly Resident",
+    "housing": "mixed housing situation"
+  },
+  "nodes": {
+    "n1": {
+      "label": "access_to_healthcare",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01"
         ],
-        "bias_patterns": [
-            "present_bias",
-            "heightened_loss_aversion",
-            "status_quo_preference"
-        ]
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1"
+      ]
+    },
+    "n2": {
+      "label": "emergency_services_availability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e2"
+      ]
+    },
+    "n3": {
+      "label": "familiar_community_resources",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e3"
+      ]
+    },
+    "n4": {
+      "label": "service_disruption_concerns",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "outgoing_edges": [
+        "e4"
+      ]
+    },
+    "n5": {
+      "label": "predictability_and_stability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_05"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e4"
+      ],
+      "outgoing_edges": [
+        "e5"
+      ]
+    },
+    "n6": {
+      "label": "loss_aversion",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_06"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e5"
+      ],
+      "outgoing_edges": [
+        "e6"
+      ]
+    },
+    "n7": {
+      "label": "present_bias",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_07"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e6"
+      ],
+      "outgoing_edges": [
+        "e7"
+      ]
+    },
+    "n8": {
+      "label": "upzoning_impact_on_safety",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_08"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e7"
+      ],
+      "outgoing_edges": [
+        "e8"
+      ]
+    },
+    "n9": {
+      "label": "upzoning_impact_on_medical_access",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_09"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e8"
+      ],
+      "outgoing_edges": [
+        "e9"
+      ]
+    },
+    "n10": {
+      "label": "upzoning_stance",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_10"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e9"
+      ],
+      "outgoing_edges": []
     }
-} 
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            -0.8
+          ],
+          "bias": -0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03"
+      ]
+    },
+    "e4": {
+      "from": "n4",
+      "to": "n5",
+      "function": {
+        "target": "n5",
+        "inputs": [
+          "n4"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_04"
+      ]
+    },
+    "e5": {
+      "from": "n5",
+      "to": "n6",
+      "function": {
+        "target": "n6",
+        "inputs": [
+          "n5"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "less"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_05"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_05"
+      ]
+    },
+    "e6": {
+      "from": "n6",
+      "to": "n7",
+      "function": {
+        "target": "n7",
+        "inputs": [
+          "n6"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.6,
+          "direction": "greater"
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_06"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_06"
+      ]
+    },
+    "e7": {
+      "from": "n7",
+      "to": "n8",
+      "function": {
+        "target": "n8",
+        "inputs": [
+          "n7"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_07"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_07"
+      ]
+    },
+    "e8": {
+      "from": "n8",
+      "to": "n9",
+      "function": {
+        "target": "n9",
+        "inputs": [
+          "n8"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_08"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_08"
+      ]
+    },
+    "e9": {
+      "from": "n9",
+      "to": "n10",
+      "function": {
+        "target": "n10",
+        "inputs": [
+          "n9"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": 0.2
+        },
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_09"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_09"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "How does the availability of healthcare services influence your concern about service disruption during upzoning?",
+      "answer": "If there is good access to healthcare services, I am less concerned about service disruption during upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there is poor access to healthcare services, then I would be more concerned about service disruption during upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How does the availability of emergency services influence your concern about service disruption during upzoning?",
+      "answer": "If there is good availability of emergency services, I am less concerned about service disruption during upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there is poor availability of emergency services, then I would be more concerned about service disruption during upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the presence of familiar community resources influence your concern about service disruption during upzoning?",
+      "answer": "If there are many familiar community resources, I am less concerned about service disruption during upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there are few familiar community resources, then I would be more concerned about service disruption during upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "How do concerns about service disruption affect your sense of predictability and stability in the neighborhood?",
+      "answer": "If I have fewer concerns about service disruption, I feel a greater sense of predictability and stability in the neighborhood.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n4",
+          "to": "n5",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I have more concerns about service disruption, then I would feel a lesser sense of predictability and stability in the neighborhood."
+      }
+    },
+    {
+      "qa_id": "qa_05",
+      "question": "How does your sense of predictability and stability in the neighborhood influence your loss aversion?",
+      "answer": "If I feel a greater sense of predictability and stability, I am less likely to experience loss aversion.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n5",
+          "to": "n6",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I feel a lesser sense of predictability and stability, then I would be more likely to experience loss aversion."
+      }
+    },
+    {
+      "qa_id": "qa_06",
+      "question": "How does your level of loss aversion influence your present bias?",
+      "answer": "If I experience high loss aversion, I am more likely to have a present bias.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n6",
+          "to": "n7",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I experience low loss aversion, then I would be less likely to have a present bias."
+      }
+    },
+    {
+      "qa_id": "qa_07",
+      "question": "How does your present bias influence your perception of the impact of upzoning on safety?",
+      "answer": "If I have a present bias, I am more likely to perceive upzoning as having a negative impact on safety.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n7",
+          "to": "n8",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I do not have a present bias, then I would be less likely to perceive upzoning as having a negative impact on safety."
+      }
+    },
+    {
+      "qa_id": "qa_08",
+      "question": "How does your perception of the impact of upzoning on safety influence your perception of the impact on medical access?",
+      "answer": "If I perceive upzoning as having a negative impact on safety, I am more likely to perceive it as having a negative impact on medical access.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n8",
+          "to": "n9",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I perceive upzoning as having a positive impact on safety, then I would be less likely to perceive it as having a negative impact on medical access."
+      }
+    },
+    {
+      "qa_id": "qa_09",
+      "question": "How does your perception of the impact of upzoning on medical access influence your overall stance on upzoning?",
+      "answer": "If I perceive upzoning as having a negative impact on medical access, I am more likely to oppose upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I perceive upzoning as having a positive impact on medical access, then I would be more likely to support upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_10",
+      "question": "What is your overall stance on upzoning based on the above factors?",
+      "answer": "Based on my concerns about service disruption, predictability, and the impact on medical access, I am generally opposed to upzoning.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n9",
+          "to": "n10",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If I had fewer concerns about service disruption and felt that upzoning would improve medical access, then I would be more likely to support upzoning."
+      }
+    }
+  ]
+}

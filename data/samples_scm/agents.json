@@ -1,0 +1,602 @@
+[
+  {
+    "id": "1",
+    "role": "Community Resident Perspective",
+    "description": "Captures the perspective of neighborhood residents concerned with quality of life impacts. Focuses on traffic congestion, sunlight access, community character, and perceived threats to neighborhood identity from building height increases.",
+    "decision_structure": "- Complex multi-path reasoning (12 nodes, 13 edges)\n- Multiple interconnected concerns affecting quality of life\n- Demonstrates strong loss aversion bias toward existing neighborhood character\n- Weighted heavily toward perceived negative impacts of development\n- Significant emphasis on aesthetic and emotional factors in decision-making"
+  },
+  {
+    "id": "2",
+    "role": "Artist/Creative Worker Perspective",
+    "description": "Models decision-making of artists concerned with cultural spaces, studio affordability, and neighborhood character. Shows how development impacts aesthetic inspiration, creative community presence, and artistic expression, with particular attention to displacement risks.",
+    "decision_structure": "- Moderately complex network (14 nodes, 17 edges)\n- Balances economic concerns (studio affordability) with cultural considerations\n- Exhibits mixed stances based on competing priorities (gallery access vs. displacement)\n- Emphasizes collective creative identity more than individual impacts\n- Cognitive biases: status quo preference with conditional acceptance of change"
+  },
+  {
+    "id": "3",
+    "role": "Commuter Perspective",
+    "description": "Charts how transportation users evaluate development based on transit service, traffic congestion, commute times, and mode choices. Demonstrates links between urban density, transportation options, and commute satisfaction.",
+    "decision_structure": "- Detailed transportation-focused network (15 nodes, 18 edges)\n- Multiple parallel evaluation paths based on mode choice\n- Pragmatic utility-maximizing approach to density evaluation\n- Minimal emotional attachment to neighborhood aesthetics\n- Less susceptible to status quo bias, more open to change that improves functionality"
+  },
+  {
+    "id": "4",
+    "role": "Elderly Resident Perspective",
+    "description": "Analyzes how older residents prioritize access to healthcare, emergency services, and familiar community resources when evaluating neighborhood change.",
+    "decision_structure": "- Moderately complex reasoning (12 nodes, 13 edges)\n- Safety and medical accessibility as primary concerns\n- Heavy emphasis on predictability and stability in immediate environment\n- Shows concern about service disruption during development phases\n- Cognitive biases: present bias and heightened loss aversion"
+  },
+  {
+    "id": "5",
+    "role": "Young Family Perspective",
+    "description": "Models decision-making of parents with young children focusing on education quality, safety, and family-friendly amenities.",
+    "decision_structure": "- Well-developed network (14 nodes, 17 edges) \n- Multiple evaluation criteria centered on child well-being\n- Strong consideration of long-term neighborhood trajectory\n- Balances concerns about school crowding with access to family amenities\n- Shows willingness to accept density if child-specific needs are addressed"
+  },
+  {
+    "id": "6",
+    "role": "Low-Income Tenant Perspective",
+    "description": "Examines how economically vulnerable residents evaluate development based on affordability, displacement risk, and access to opportunity.",
+    "decision_structure": "- Complex vulnerability-focused network (13 nodes, 16 edges)\n- Demonstrates economic precarity as central decision factor\n- Strong emphasis on tenant protections and anti-displacement measures\n- Evaluates development primarily through economic security lens\n- Cognitive pattern: acute sensitivity to promises vs. reality gap"
+  },
+  {
+    "id": "7",
+    "role": "Environmentalist Perspective",
+    "description": "Captures how sustainability-focused residents evaluate development through ecological impact, resource efficiency, and climate considerations.",
+    "decision_structure": "- Detailed environmental impact network (15 nodes, 19 edges)\n- Multiple parallel environmental evaluation criteria\n- Demonstrates sophisticated systems thinking about urban ecology\n- Values density for efficiency while concerned about green space loss\n- Shows principled rather than self-interest driven decision path"
+  },
+  {
+    "id": "8",
+    "role": "Small Business Owner Perspective",
+    "description": "Maps how local entrepreneurs evaluate neighborhood change based on customer base, commercial rents, and business visibility factors.",
+    "decision_structure": "- Business viability focused network (13 nodes, 16 edges)\n- Practical economic considerations dominate decision structure\n- Shows how customer demographics interact with business model\n- Balances opportunity from increased foot traffic against rent concerns\n- Cognitive pattern: adaptability with pragmatic constraints"
+  },
+  {
+    "id": "9",
+    "role": "Homeowner Perspective",
+    "description": "Models how property owners (often with NIMBY tendencies) evaluate development through property values, neighborhood exclusivity, and perceived status impacts.",
+    "decision_structure": "- Property-focused reasoning (12 nodes, 14 edges)\n- Strong emphasis on financial investment protection\n- Shows status maintenance as significant decision factor\n- Clear pattern of social identity preservation reasoning\n- Cognitive biases: loss aversion and endowment effect prominently featured"
+  },
+  {
+    "id": "10",
+    "role": "Elderly Resident (Simplified)",
+    "description": "Extremely simplified decision path focused on mobility challenges. Shows straightforward connections between tall buildings, elevator access, and personal mobility needs with minimal decision complexity.",
+    "decision_structure": "- Highly simplified linear path (5 nodes, 5 edges)\n- Focused exclusively on personal mobility limitations\n- Direct causal chain: tall buildings → elevator reliability → personal mobility\n- These factors directly determine stance without broader considerations\n- Lacks understanding of wider urban planning implications\n- Cognitive biases: status quo bias and concreteness bias"
+  },
+  {
+    "id": "11",
+    "role": "Parent with School-Age Children (Simplified)",
+    "description": "Linear single-path reasoning focused exclusively on classroom crowding concerns. Demonstrates tunnel vision where neighborhood density directly impacts school quality and child success.",
+    "decision_structure": "- Completely linear single-path thinking (6 nodes, 5 edges)\n- Tunnel vision focusing on single factor: children's education\n- Simple chain: density → school crowding → class size → education quality → child success\n- Catastrophizing thinking, equating development directly with educational decline\n- Ignores potential mitigating factors, exhibits zero-sum thinking"
+  },
+  {
+    "id": "12",
+    "role": "Pro-Density Millennial (Simplified)",
+    "description": "Minimal decision structure showing basic supply-and-demand understanding of housing economics. Illustrates oversimplified reasoning that more housing automatically means improved affordability.",
+    "decision_structure": "- Minimal logical pathway (4 nodes, 3 edges)\n- Oversimplified economic understanding\n- Focus solely on supply-demand relationship, ignoring complex factors\n- Simplistic understanding of housing construction and affordability\n- Cognitive biases: confirmation bias and single-cause fallacy"
+  },
+  {
+    "id": "13",
+    "role": "Immigrant Family Perspective",
+    "description": "Complex network incorporating cultural preservation, community support networks, and multigenerational considerations. Shows how neighborhood attachment forms through interconnected factors of language accessibility, cultural continuity, and family stability.",
+    "decision_structure": "- Rich multifaceted network (17 nodes, 21 edges)\n- Balances cultural preservation with economic opportunity\n- Strong emphasis on mutual support networks and community resilience\n- Highlights importance of language accessibility and multigenerational housing\n- Demonstrates sophisticated integration of cultural, economic and social factors"
+  },
+  {
+    "id": "14",
+    "role": "Student Perspective",
+    "description": "Decision structure focused on housing affordability, campus proximity, and academic impacts. Links rental costs to study space, part-time work requirements, and ultimately to academic success and graduation timelines.",
+    "decision_structure": "- Education-centered network (17 nodes, 21 edges)\n- Multiple pathways connecting housing to academic outcomes\n- Shows how housing costs affect study environment, work hours, and stress\n- Clear prioritization of proximity to campus and transportation options\n- Strong connection between housing stability and overall college experience"
+  },
+  {
+    "id": "15",
+    "role": "Sustainable Business Owner",
+    "description": "Integration of business viability with environmental and community values. Maps relationships between urban density, customer foot traffic, transportation options, operational decisions, and alignment with sustainability mission.",
+    "decision_structure": "- Sophisticated value-aligned business network (20 nodes, 25 edges)\n- Balances profit considerations with environmental commitment\n- Shows complex interplay between transportation, carbon footprint and business operations\n- Demonstrates how community integration supports business model\n- Cognitive pattern: principled approach with practical business constraints"
+  },
+  {
+    "id": "16",
+    "role": "Healthcare Worker Perspective",
+    "description": "Analyzes how healthcare workers evaluate urban development based on commute convenience, community healthcare needs, and work-life balance. Shows the relationship between healthcare facility accessibility and population density, and how this impacts service quality.",
+    "decision_structure": "- Moderately complex network (13 nodes, 16 edges)\n- Focus on balance between community health resources and population growth\n- Emphasis on emergency service response time and relationship to traffic congestion\n- Considers healthcare worker affordability and ability to serve community\n- Cognitive pattern: combination of pragmatism and professional mission"
+  },
+  {
+    "id": "17",
+    "role": "Tech Worker Perspective",
+    "description": "Explores how technology professionals evaluate communities based on connectivity, innovation opportunities, and career flexibility. Focuses on high-speed internet infrastructure, collaborative spaces, and presence of tech community.",
+    "decision_structure": "- Complex network (16 nodes, 20 edges)\n- Emphasis on technological infrastructure's impact on work efficiency\n- Focus on urban innovation ecosystem and networking opportunities\n- Balances remote work capability with face-to-face collaboration needs\n- Cognitive pattern: future-oriented, focused on efficiency and innovation potential"
+  },
+  {
+    "id": "18",
+    "role": "Disabled Person Perspective",
+    "description": "Detailed analysis of how people with disabilities evaluate urban development based on accessible design, public transportation, and availability of specialized services. Shows how design decisions impact daily independence and community participation.",
+    "decision_structure": "- Complex accessibility network (18 nodes, 22 edges)\n- Multiple evaluation paths based on different disability type requirements\n- Emphasis on universal design and retrofitting of older buildings\n- Focus on spatial distribution of services, housing, and medical facilities\n- Cognitive pattern: high sensitivity to exclusion risks, emphasis on equitable design"
+  },
+  {
+    "id": "19",
+    "role": "Retiree Perspective",
+    "description": "Simulates how retirees evaluate urban density based on community stability, service accessibility, and social opportunities. Shows how fixed incomes, intergenerational relationships, and leisure opportunities influence perceptions of change.",
+    "decision_structure": "- Moderately complex network (14 nodes, 17 edges)\n- Emphasis on community stability and value of familiar environments\n- Focus on economic security and changes in cost of living\n- Values social connections and intergenerational interaction opportunities\n- Cognitive biases: risk aversion to sudden changes and preference for familiar environments"
+  },
+  {
+    "id": "20",
+    "role": "Community Organizer Perspective",
+    "description": "Shows how community activists evaluate development through collective impact, community engagement, and power dynamics. Analyzes views on public participation processes and decision-making transparency.",
+    "decision_structure": "- Complex community impact network (17 nodes, 21 edges)\n- Focus on fairness and inclusivity of decision-making processes\n- Emphasis on relationship between community organizing capacity and development outcomes\n- Values connection between historical inequities and current planning decisions\n- Cognitive pattern: systems thinking and historical context analysis"
+  },
+  {
+    "id": "21",
+    "role": "Urban Planner Perspective",
+    "description": "Explores how professional planners evaluate development according to best practices, long-term outlook, and balancing multiple interests. Shows how theoretical frameworks, data, and interdisciplinary impacts shape planning decisions.",
+    "decision_structure": "- Highly complex professional network (19 nodes, 24 edges)\n- Multi-dimensional criteria based on planning theory and empirical evidence\n- Balances technical considerations with social equity factors\n- Focus on long-term urban evolution and planning cycles\n- Cognitive pattern: holistic systems thinking and interdisciplinary integration"
+  },
+  {
+    "id": "22",
+    "role": "Architect Perspective",
+    "description": "Analyzes how design professionals weigh aesthetics, functionality, and urban form. Shows relationships between design innovation and local traditions, user experience and cityscape.",
+    "decision_structure": "- Complex aesthetic and functional network (16 nodes, 20 edges)\n- Balances innovative design with community context\n- Focus on form, function, and human experience\n- Emphasis on integration of sustainable building with community character\n- Cognitive pattern: visual-spatial thinking and three-dimensional problem solving"
+  },
+  {
+    "id": "23",
+    "role": "Social Worker Perspective",
+    "description": "Explores how social service providers evaluate development based on vulnerable population needs, service distribution, and social support networks. Focus on service accessibility and community cohesion.",
+    "decision_structure": "- Complex welfare-oriented network (15 nodes, 19 edges)\n- Vulnerable population needs as core decision factor\n- Focus on service location and transportation accessibility\n- Values integrity of community support systems\n- Cognitive pattern: needs-driven, focused on systemic barriers"
+  },
+  {
+    "id": "24",
+    "role": "Educator Perspective",
+    "description": "Models how teachers and school administrators assess development impacts on educational environments. Analyzes relationship between student populations, resource allocation, and educational quality.",
+    "decision_structure": "- Moderately complex education network (14 nodes, 18 edges)\n- Focus on school capacity in relation to residential development\n- Balances educational needs of diverse student populations\n- Emphasis on learning environment quality and community stability\n- Cognitive pattern: focus on educational continuity and equitable opportunity"
+  },
+  {
+    "id": "25",
+    "role": "Local Preservationist Perspective",
+    "description": "Shows how historic preservation advocates evaluate change through historic value, architectural integrity, and cultural narratives. Focus on balance between heritage protection and economic development.",
+    "decision_structure": "- Complex preservation network (16 nodes, 19 edges)\n- Multiple criteria based on tangible and intangible cultural heritage\n- Emphasis on historical continuity and place identity\n- Focus on balance between preservation and adaptive reuse\n- Cognitive biases: strong preference for historical value and cautious attitude toward change"
+  },
+  {
+    "id": "26",
+    "role": "Public Health Expert Perspective",
+    "description": "Analyzes how public health officials evaluate urban form impacts on health outcomes. Focus on air quality, activity-friendly design, and access to health services.",
+    "decision_structure": "- Detailed health impact network (17 nodes, 22 edges)\n- Multiple pathways analyzing different health determinants\n- Emphasis on preventive environmental design\n- Focus on relationship between urban form and health inequities\n- Cognitive pattern: evidence-based systematic causal analysis"
+  },
+  {
+    "id": "27",
+    "role": "Retailer Perspective",
+    "description": "Explores how retail business owners evaluate urban changes based on customer traffic, commercial visibility, and competitive landscape. Analyzes relationship between population density and shopping patterns.",
+    "decision_structure": "- Business-driven network (15 nodes, 18 edges)\n- Focus on foot traffic and commercial visibility\n- Emphasis on regional competition and brand positioning\n- Balances short-term construction impacts with long-term customer growth\n- Cognitive pattern: market-oriented and adaptive business strategies"
+  },
+  {
+    "id": "28",
+    "role": "Transportation Engineer Perspective",
+    "description": "Analyzes how transportation experts evaluate development based on flow patterns, infrastructure capacity, and multimodal systems. Focus on relationship between transportation network resilience and density.",
+    "decision_structure": "- Highly complex transportation network (18 nodes, 23 edges)\n- Multi-level analysis of traffic flows, mode choices, and infrastructure capacity\n- Uses system dynamics models to assess transportation changes\n- Focus on integration and optimization of different transportation modes\n- Cognitive pattern: quantitative analysis and system optimization thinking"
+  },
+  {
+    "id": "29",
+    "role": "Climate Change Expert Perspective",
+    "description": "Shows how climate scientists evaluate development impacts on greenhouse gas emissions, resource consumption, and climate resilience. Focus on relationship between density and sustainability.",
+    "decision_structure": "- Complex climate impact network (17 nodes, 21 edges)\n- Systematic assessment based on multiple environmental indicators\n- Emphasis on relationship between long-term climate impacts and short-term development decisions\n- Focus on building efficiency, transportation emissions, and land use\n- Cognitive pattern: long-term systems thinking and cross-scale risk analysis"
+  },
+  {
+    "id": "30",
+    "role": "Child's Perspective",
+    "description": "Explores how young residents evaluate urban environments through play spaces, sense of safety, and exploration opportunities. Focus on relationship between child-friendly design and development.",
+    "decision_structure": "- Simplified but multidimensional network (10 nodes, 12 edges)\n- Focus on accessible play spaces and social development\n- Emphasis on balance between safety and exploration\n- Evaluates environment through direct experience\n- Cognitive pattern: concrete experience-oriented, focused on immediate experience quality"
+  },
+  {
+    "id": "31",
+    "role": "Adolescent Perspective",
+    "description": "Analyzes how teenagers evaluate urban environments based on social spaces, transportation independence, and identity expression. Focus on use of public spaces and sense of belonging.",
+    "decision_structure": "- Moderately complex network (13 nodes, 16 edges)\n- Emphasis on social spaces and peer interaction\n- Focus on independent mobility and public transit accessibility\n- Values spaces for cultural expression and identity construction\n- Cognitive pattern: socially-oriented and identity-exploring"
+  },
+  {
+    "id": "32",
+    "role": "Homeless Person Perspective",
+    "description": "In-depth analysis of how homeless individuals evaluate urban spaces based on shelter availability, service access, and survival strategies. Shows how urban design impacts the most vulnerable populations.",
+    "decision_structure": "- Basic survival network (14 nodes, 17 edges)\n- Focus on shelter, safety, and basic service accessibility\n- Emphasis on urban design inclusivity for informal use\n- Values accessibility of supportive services and housing pathways\n- Cognitive pattern: prioritizes immediate needs and safety"
+  },
+  {
+    "id": "33",
+    "role": "Urban Agriculture Advocate Perspective",
+    "description": "Explores how food system activists evaluate development impacts on urban growing, community gardens, and food security. Focus on relationship between land use and local food production.",
+    "decision_structure": "- Moderately complex food system network (15 nodes, 18 edges)\n- Focus on land access and food production opportunities\n- Balances food security with other land use needs\n- Emphasis on community control and local resource autonomy\n- Cognitive pattern: circular economy thinking and local self-sufficiency"
+  },
+  {
+    "id": "34",
+    "role": "Recent Immigrant Perspective",
+    "description": "Analyzes how recent immigrants evaluate communities based on cultural inclusivity, economic opportunity, and integration support. Focus on language services, community acceptance, and development of belonging.",
+    "decision_structure": "- Complex integration network (16 nodes, 20 edges)\n- Multiple evaluation paths based on diverse cultural background needs\n- Emphasis on balance between economic opportunity and cultural adaptation\n- Focus on cross-cultural exchange and inclusive services\n- Cognitive pattern: cross-cultural navigation and adaptive strategies"
+  },
+  {
+    "id": "35",
+    "role": "Religious Leader Perspective",
+    "description": "Models how faith community leaders evaluate urban changes based on faith facility accessibility, community practices, and values. Focus on community cohesion and faith expression.",
+    "decision_structure": "- Moderately complex value-oriented network (14 nodes, 17 edges)\n- Focus on worship spaces and community gathering places\n- Emphasis on alignment between community values and development patterns\n- Values different spatial needs of multi-generational congregants\n- Cognitive pattern: values-centered assessment framework"
+  },
+  {
+    "id": "36",
+    "role": "Hospitality and Tourism Perspective",
+    "description": "Analyzes how tourism industry professionals evaluate urban development based on visitor experience, transportation connections, and cultural attractions. Focus on relationship between city character and tourist flows.",
+    "decision_structure": "- Tourism-oriented network (15 nodes, 19 edges)\n- Focus on city distinctiveness and visitor appeal\n- Balances authenticity with visitor convenience\n- Emphasis on transportation connections and destination accessibility\n- Cognitive pattern: focus on experience quality and market competitiveness"
+  },
+  {
+    "id": "37",
+    "role": "Real Estate Developer Perspective",
+    "description": "Explores how developers evaluate project feasibility based on market demand, regulatory environment, and return on investment. Focus on relationship between planning constraints and value creation.",
+    "decision_structure": "- Complex economic decision network (16 nodes, 20 edges)\n- Financial viability as core decision factor\n- Focus on balance between regulatory and market risks\n- Emphasis on time costs and capital returns\n- Cognitive pattern: risk management and opportunity maximization"
+  },
+  {
+    "id": "38",
+    "role": "Urban Designer Perspective",
+    "description": "Analyzes how design professionals evaluate urban form based on human scale, vitality, and spatial quality. Focus on relationship between buildings and public realm.",
+    "decision_structure": "- Highly complex design network (18 nodes, 23 edges)\n- Multi-level analysis of urban morphology and user experience\n- Emphasis on spatial sequence and urban fabric continuity\n- Focus on interface activation and public realm quality\n- Cognitive pattern: visual-spatial thinking and holistic environmental perception"
+  },
+  {
+    "id": "39",
+    "role": "Elder Care Provider Perspective",
+    "description": "Models how elder care institutions evaluate community impacts on senior service needs. Focus on relationship between aging population trends and facility requirements.",
+    "decision_structure": "- Moderately complex aging services network (14 nodes, 17 edges)\n- Focus on elderly population density and service demands\n- Emphasis on accessible design and specialized housing options\n- Values balance between community support systems and institutional care\n- Cognitive pattern: needs forecasting and service adaptation"
+  },
+  {
+    "id": "40",
+    "role": "Single Professional Perspective",
+    "description": "Explores how single working professionals evaluate urban environments based on social opportunities, amenities, and lifestyle compatibility. Focus on urban vitality and personal network building.",
+    "decision_structure": "- Moderately complex network (13 nodes, 16 edges)\n- Focus on social venues and lifestyle convenience\n- Emphasis on balance between work opportunities and cultural/recreational options\n- Values transportation efficiency and non-work activity accessibility\n- Cognitive pattern: flexibility and quality of life balancing"
+  },
+  {
+    "id": "41",
+    "role": "LGBTQ+ Community Perspective",
+    "description": "Analyzes how LGBTQ+ residents evaluate urban environments based on inclusivity, safety, and community recognition. Focus on relationship between spatial belonging and identity expression.",
+    "decision_structure": "- Complex identity network (16 nodes, 20 edges)\n- Focus on community safety and cultural inclusivity\n- Emphasis on identity-affirming spaces and social support\n- Values spatial needs of diverse family structures\n- Cognitive pattern: identity safety assessment and community building"
+  },
+  {
+    "id": "42",
+    "role": "Non-Profit Organization Perspective",
+    "description": "Explores how social sector organizations evaluate development impacts on their client populations, resource accessibility, and organizational capacity. Focus on volunteer engagement and community needs.",
+    "decision_structure": "- Moderately complex service network (15 nodes, 18 edges)\n- Focus on client needs and service delivery matching\n- Emphasis on relationship between volunteer engagement and community support\n- Values affordable space and organizational sustainability\n- Cognitive pattern: mission-driven and resource optimization"
+  },
+  {
+    "id": "43",
+    "role": "Urban Forestry Expert Perspective",
+    "description": "Analyzes how green infrastructure specialists evaluate development impacts on tree canopy, ecosystem services, and urban livability. Focus on balance between natural and built environments.",
+    "decision_structure": "- Complex ecological network (16 nodes, 20 edges)\n- Multiple pathways analyzing different ecosystem services\n- Emphasis on balance between long-term ecological health and immediate development needs\n- Focus on systemic distribution of green infrastructure\n- Cognitive pattern: long-term ecosystem thinking and multi-scale assessment"
+  },
+  {
+    "id": "44",
+    "role": "Community Health Center Perspective",
+    "description": "Models how health service providers evaluate development impacts on service demands, accessibility, and public health outcomes. Focus on access barriers for vulnerable populations.",
+    "decision_structure": "- Service-oriented network (15 nodes, 18 edges)\n- Focus on population characteristics and patterns of healthcare needs\n- Emphasis on preventive services and resource allocation\n- Values accessibility for transportation-dependent patients\n- Cognitive pattern: public health systems thinking and needs forecasting"
+  },
+  {
+    "id": "45",
+    "role": "Cultural Heritage Expert Perspective",
+    "description": "Analyzes how cultural resource specialists evaluate development impacts on tangible and intangible heritage. Focus on preservation of cultural narratives, collective memory, and place identity.",
+    "decision_structure": "- Highly complex cultural network (17 nodes, 21 edges)\n- Multi-dimensional assessment including material, social, and symbolic values\n- Emphasis on balance between cultural continuity and evolution\n- Focus on relationship between local narratives and built form\n- Cognitive pattern: historical connectivity and cultural perspective"
+  },
+  {
+    "id": "46",
+    "role": "Construction Worker Perspective",
+    "description": "Analyzes how construction industry workers evaluate urban development based on job opportunities, workplace safety, and industry sustainability. Examines the relationship between building regulations, labor conditions, and job security.",
+    "decision_structure": "- Practical job-focused network (14 nodes, 17 edges)\n- Emphasis on employment stability and project pipeline\n- Focus on site conditions and commute feasibility\n- Balances economic opportunity against physically demanding work\n- Cognitive pattern: concrete assessment of immediate impacts and long-term industry trends"
+  },
+  {
+    "id": "47",
+    "role": "Ride-Share Driver Perspective",
+    "description": "Explores how gig economy transportation workers evaluate urban development through road accessibility, ride demand patterns, and waiting zones. Examines the relationship between density, traffic, and earning potential.",
+    "decision_structure": "- Transportation-economy network (15 nodes, 18 edges)\n- Multiple evaluation paths based on time-of-day operation patterns\n- Emphasis on road design and traffic flow efficiency\n- Focused on passenger pickup/dropoff convenience and congestion impacts\n- Cognitive pattern: route optimization and opportunity-cost calculation"
+  },
+  {
+    "id": "48",
+    "role": "Delivery Worker Perspective",
+    "description": "Models how delivery personnel evaluate neighborhood changes based on accessibility, safety, and efficiency metrics. Shows relationships between urban form, building design, and last-mile logistics.",
+    "decision_structure": "- Logistics-focused network (14 nodes, 17 edges)\n- Strong emphasis on building access and parking availability\n- Concerns with security and navigation complexity\n- Values predictable routing and efficient delivery completion\n- Cognitive pattern: spatial problem-solving under time pressure"
+  },
+  {
+    "id": "49",
+    "role": "Street Vendor Perspective",
+    "description": "Analyzes how informal economy workers assess urban spaces based on foot traffic, regulatory tolerance, and weather protection. Shows intersection of formal planning with informal economic activity.",
+    "decision_structure": "- Survival-opportunity network (13 nodes, 16 edges)\n- Focus on pedestrian flow patterns and visibility\n- Strong emphasis on regulatory enforcement patterns\n- Balanced consideration of competition and clustering benefits\n- Cognitive pattern: adaptive space utilization and quick risk assessment"
+  },
+  {
+    "id": "50",
+    "role": "Performing Artist Perspective",
+    "description": "Examines how performers evaluate neighborhoods based on venue availability, audience demographics, and cultural support systems. Shows relationship between urban vitality and artistic opportunity.",
+    "decision_structure": "- Creative opportunity network (16 nodes, 20 edges)\n- Focus on performance spaces and cultural clustering\n- Emphasis on audience accessibility and neighborhood affordability\n- Consideration of sound regulations and neighbor tolerance\n- Cognitive pattern: creative expression valuation and community resonance"
+  },
+  {
+    "id": "51",
+    "role": "Freelancer Perspective",
+    "description": "Models how independent workers assess locations based on workspace options, client proximity, and networking opportunities. Shows relationship between urban form and self-employment viability.",
+    "decision_structure": "- Flexible work-lifestyle network (15 nodes, 19 edges)\n- Strong focus on third places and flexible working environments\n- Emphasis on internet infrastructure and connectivity\n- Values diversity of urban amenities and scheduling flexibility\n- Cognitive pattern: work-life integration and resource optimization"
+  },
+  {
+    "id": "52",
+    "role": "Urban Gardener Perspective",
+    "description": "Analyzes how gardening enthusiasts evaluate development through green space access, soil quality, and cultivation opportunities. Examines tensions between densification and urban agriculture potential.",
+    "decision_structure": "- Green space network (14 nodes, 17 edges)\n- Focus on soil access and community garden preservation\n- Strong consideration of sunlight patterns and building shadows\n- Emphasis on community food production and education opportunities\n- Cognitive pattern: ecological thinking and seasonal planning"
+  },
+  {
+    "id": "53",
+    "role": "Dog Owner Perspective",
+    "description": "Explores how pet owners evaluate neighborhoods based on animal infrastructure, walking routes, and pet-friendly amenities. Shows how companion animal needs shape perceptions of urban quality.",
+    "decision_structure": "- Pet-centered network (13 nodes, 16 edges)\n- Primary focus on accessible green space and walking routes\n- Concerned with animal-friendly regulations and restrictions\n- Values pet socialization opportunities and service proximity\n- Cognitive pattern: daily routine assessment and interspecies needs consideration"
+  },
+  {
+    "id": "54",
+    "role": "Festival Organizer Perspective",
+    "description": "Models how event planners assess urban spaces for temporary cultural activities based on logistics, permitting, and audience accessibility. Shows relationship between urban form and cultural event viability.",
+    "decision_structure": "- Event management network (15 nodes, 19 edges)\n- Focus on public space flexibility and infrastructure capacity\n- Strong emphasis on transportation access and emergency planning\n- Balanced consideration of neighborhood impact and cultural contribution\n- Cognitive pattern: complex logistics coordination and experiential quality assessment"
+  },
+  {
+    "id": "55",
+    "role": "Recreational Athlete Perspective",
+    "description": "Examines how sports participants evaluate urban environments based on facility access, route options, and safety considerations. Shows relationship between physical activity opportunity and built environment.",
+    "decision_structure": "- Activity-enabling network (14 nodes, 17 edges)\n- Focus on dedicated sports facilities and multi-use opportunities\n- Emphasis on connected pathway systems and traffic safety\n- Consideration of maintenance levels and lighting adequacy\n- Cognitive pattern: physical challenge seeking and route optimization"
+  },
+  {
+    "id": "56",
+    "role": "Remote Worker Perspective",
+    "description": "Analyzes how fully remote employees evaluate residential locations independently of commuting concerns, focusing on living quality and digital connectivity. Shows shifting priorities in post-pandemic work arrangements.",
+    "decision_structure": "- Home-centered work network (15 nodes, 18 edges)\n- Primary focus on residential space adequacy and noise factors\n- Strong emphasis on internet reliability and power infrastructure\n- Values walkable amenities and psychological boundaries\n- Cognitive pattern: home-work environment optimization and isolation management"
+  },
+  {
+    "id": "57",
+    "role": "Low-Income Senior Perspective",
+    "description": "Explores the unique challenges faced by older adults with limited financial resources in evaluating housing density. Examines intersections of age, income, and access needs.",
+    "decision_structure": "- Vulnerability-focused network (16 nodes, 20 edges)\n- Primary concern with housing stability and affordability\n- Strong emphasis on service proximity and walking accessibility\n- Critical focus on utility costs and maintenance requirements\n- Cognitive pattern: fixed-income constraints and limited mobility adaptations"
+  },
+  {
+    "id": "58",
+    "role": "Single Parent Perspective",
+    "description": "Models how single-parent households evaluate neighborhoods based on childcare access, time-efficiency, and support networks. Shows unique constraints in balancing work and child-raising responsibilities.",
+    "decision_structure": "- Parenting logistics network (15 nodes, 19 edges)\n- Focus on school-work-home proximity and transportation options\n- Strong emphasis on childcare availability and after-school programs\n- Values community support systems and family-friendly infrastructure\n- Cognitive pattern: time-efficiency maximization and support resource navigation"
+  },
+  {
+    "id": "59",
+    "role": "Nightshift Worker Perspective",
+    "description": "Analyzes how non-standard work hours shape evaluations of urban environments based on 24-hour services, reverse commuting, and sleep compatibility. Shows the city from a non-conventional temporal perspective.",
+    "decision_structure": "- Time-shifted assessment network (14 nodes, 17 edges)\n- Focus on transportation availability during off-peak hours\n- Strong emphasis on noise mitigation and sleep compatibility\n- Consideration of service and amenity availability on alternative schedules\n- Cognitive pattern: counter-cyclical optimization and temporal adaptation"
+  },
+  {
+    "id": "60",
+    "role": "First-Generation College Student Perspective",
+    "description": "Explores how educational pioneers navigate urban environments with limited familial guidance, focusing on educational accessibility and socioeconomic navigation. Shows relationship between urban form and social mobility.",
+    "decision_structure": "- Educational opportunity network (15 nodes, 18 edges)\n- Primary focus on educational institution accessibility and affordability\n- Strong emphasis on employment opportunities and cost management\n- Values supportive community resources and mentor availability\n- Cognitive pattern: navigation of unfamiliar systems and strategic resource allocation"
+  },
+  {
+    "id": "61",
+    "role": "Mixed-Status Family Perspective",
+    "description": "Examines how families with varying immigration statuses evaluate neighborhoods based on safety, cultural inclusivity, and access to services. Shows intersection of legal status with urban experience.",
+    "decision_structure": "- Legal navigation network (16 nodes, 20 edges)\n- Focus on trust in local institutions and enforcement policies\n- Strong emphasis on documentation-neutral services and resources\n- Values multicultural acceptance and protection from discrimination\n- Cognitive pattern: risk assessment and strategic visibility management"
+  },
+  {
+    "id": "62",
+    "role": "Urban Forager Perspective",
+    "description": "Models how urban foraging practitioners evaluate development through ecological diversity, access to edible landscapes, and pollution concerns. Shows informal food systems within urban environments.",
+    "decision_structure": "- Urban ecology network (14 nodes, 17 edges)\n- Focus on ecological diversity and plant access rights\n- Strong emphasis on contamination sources and historical land use\n- Values knowledge sharing opportunities and seasonal considerations\n- Cognitive pattern: ecological knowledge application and sustainability ethics"
+  },
+  {
+    "id": "63",
+    "role": "Public Transit Operator Perspective",
+    "description": "Analyzes how transit workers assess urban design through route efficiency, traffic interaction, and passenger accommodation. Shows technical understanding of transportation infrastructure needs.",
+    "decision_structure": "- Transit operations network (15 nodes, 19 edges)\n- Focus on street design and vehicle maneuverability\n- Strong emphasis on passenger volume patterns and stop design\n- Consideration of safety hazards and route optimization\n- Cognitive pattern: system reliability focus and routine disruption management"
+  },
+  {
+    "id": "64",
+    "role": "Virtual Reality Designer Perspective",
+    "description": "Explores how spatial computing professionals evaluate physical environments through adaptability to digital overlays, spatial mapping potential, and interaction possibilities. Shows emerging relations between physical and virtual urban space.",
+    "decision_structure": "- Physical-digital interface network (16 nodes, 20 edges)\n- Focus on architectural features suitable for augmentation\n- Strong emphasis on spatial complexity and distinctive landmarks\n- Values diversity of textures and lighting conditions for digital enhancement\n- Cognitive pattern: layered reality thinking and interactive potential assessment"
+  },
+  {
+    "id": "65",
+    "role": "Refugee Perspective",
+    "description": "Models how forcibly displaced individuals evaluate new urban environments based on safety, community support, and adaptation resources. Shows unique concerns of those rebuilding lives in unfamiliar contexts.",
+    "decision_structure": "- Resettlement adaptation network (15 nodes, 19 edges)\n- Primary focus on housing stability and basic needs access\n- Strong emphasis on welcoming community and cultural navigation support\n- Values educational and employment pathways and language accessibility\n- Cognitive pattern: security prioritization and cultural transition management"
+  },
+  {
+    "id": "66",
+    "role": "Urban Explorer Perspective",
+    "description": "Analyzes how recreational urban adventurers evaluate city spaces through historical layering, accessibility challenges, and photographic potential. Shows alternative valuation of abandoned or overlooked spaces.",
+    "decision_structure": "- Discovery-oriented network (13 nodes, 16 edges)\n- Focus on architectural diversity and historical remnants\n- Strong emphasis on access points and exploration routes\n- Values unprogrammed spaces and aesthetic decay patterns\n- Cognitive pattern: curiosity-driven assessment and narrative construction"
+  },
+  {
+    "id": "67",
+    "role": "Accessibility Advocate Perspective",
+    "description": "Explores how disability rights activists evaluate urban changes through universal design implementation, policy enforcement, and inclusive planning processes. Shows systematic approach to equity in the built environment.",
+    "decision_structure": "- Rights-based assessment network (16 nodes, 20 edges)\n- Focus on compliance monitoring and design standard implementation\n- Strong emphasis on participatory planning processes\n- Values seamless journey experiences across public and private realms\n- Cognitive pattern: barrier identification and systemic solution development"
+  },
+  {
+    "id": "68",
+    "role": "Municipal Bond Investor Perspective",
+    "description": "Models how public finance investors evaluate urban development through fiscal impact, governance quality, and long-term growth potential. Shows market-based assessment of municipal sustainability.",
+    "decision_structure": "- Financial sustainability network (15 nodes, 19 edges)\n- Focus on tax base diversity and infrastructure maintenance funding\n- Strong emphasis on governance stability and debt management\n- Values economic resilience indicators and demographic trends\n- Cognitive pattern: risk-return analysis with long-term projection focus"
+  },
+  {
+    "id": "69",
+    "role": "Zero-Waste Advocate Perspective",
+    "description": "Analyzes how waste reduction activists evaluate urban systems through material flows, circular economy potential, and consumption patterns. Shows systems thinking about urban metabolism.",
+    "decision_structure": "- Circular resources network (16 nodes, 20 edges)\n- Focus on waste infrastructure and reuse opportunities\n- Strong emphasis on consumption reduction and product lifecycle\n- Values local materials economy and repair culture\n- Cognitive pattern: waste stream analysis and system redesign thinking"
+  },
+  {
+    "id": "70",
+    "role": "Recent Graduate Perspective",
+    "description": "Explores how young adults transitioning from education to workforce evaluate locations based on career launching, social networking, and identity exploration. Shows life-stage specific urban needs.",
+    "decision_structure": "- Early career network (14 nodes, 17 edges)\n- Focus on employment opportunity density and industry clustering\n- Strong emphasis on affordable housing with roommate compatibility\n- Values social connection opportunities and lifestyle amenities\n- Cognitive pattern: future-building optimism with practical constraint navigation"
+  },
+  {
+    "id": "71",
+    "role": "Classroom Teacher Perspective",
+    "description": "Models how K-12 educators evaluate neighborhood changes through impacts on student well-being, school resources, and community learning connections. Shows educational ecosystem concerns.",
+    "decision_structure": "- Educational impact network (15 nodes, 18 edges)\n- Focus on student housing stability and environmental stressors\n- Strong emphasis on community resource connections and safety\n- Values diverse learning opportunities and family support systems\n- Cognitive pattern: whole-child welfare assessment and education quality protection"
+  },
+  {
+    "id": "72",
+    "role": "Digital Nomad Perspective",
+    "description": "Analyzes how location-independent professionals evaluate temporary living environments based on connectivity, international accessibility, and temporary accommodation. Shows hypermobile lifestyle needs.",
+    "decision_structure": "- Transient-optimized network (14 nodes, 17 edges)\n- Focus on digital infrastructure reliability and workspace options\n- Strong emphasis on temporary housing markets and visa policies\n- Values cultural experience quality and international transit connections\n- Cognitive pattern: location arbitrage calculation and experience maximization"
+  },
+  {
+    "id": "73",
+    "role": "Library Professional Perspective",
+    "description": "Explores how information specialists evaluate neighborhoods through knowledge access, digital divide concerns, and public space utility. Shows information equity considerations in urban form.",
+    "decision_structure": "- Information access network (14 nodes, 17 edges)\n- Focus on physical accessibility and service visibility\n- Strong emphasis on diverse user needs and technological equity\n- Values co-location with complementary community services\n- Cognitive pattern: community information needs assessment and barrier reduction"
+  },
+  {
+    "id": "74",
+    "role": "Addiction Recovery Perspective",
+    "description": "Models how individuals in recovery evaluate environments based on trigger management, support service access, and community integration. Shows health-based environmental assessment.",
+    "decision_structure": "- Recovery support network (15 nodes, 18 edges)\n- Focus on proximity to treatment services and support meetings\n- Strong emphasis on trigger environment management and safe housing\n- Values employment pathways and prosocial activity options\n- Cognitive pattern: risk avoidance planning and recovery resource mapping"
+  },
+  {
+    "id": "75",
+    "role": "Private Security Professional Perspective",
+    "description": "Analyzes how security workers evaluate urban environments through defensible space principles, surveillance capability, and emergency response. Shows safety-focused assessment of design.",
+    "decision_structure": "- Security assessment network (14 nodes, 17 edges)\n- Focus on sightlines, access control points, and lighting adequacy\n- Strong emphasis on territorial reinforcement and maintenance levels\n- Values emergency service coordination and communication infrastructure\n- Cognitive pattern: vulnerability scanning and defensive positioning analysis"
+  },
+  {
+    "id": "76",
+    "role": "Urban Wildlife Manager Perspective",
+    "description": "Explores how wildlife specialists evaluate urban development through habitat connectivity, species adaptation, and human-animal conflict prevention. Shows ecological management in built environments.",
+    "decision_structure": "- Urban ecology network (16 nodes, 20 edges)\n- Focus on habitat patches and corridor connectivity\n- Strong emphasis on human-wildlife conflict management\n- Values native species support and ecological education opportunities\n- Cognitive pattern: ecosystem function analysis and adaptative management planning"
+  },
+  {
+    "id": "77",
+    "role": "Alternative Transportation Advocate Perspective",
+    "description": "Models how sustainable mobility activists evaluate urban form through non-car mobility potential, infrastructure equity, and pollution reduction. Shows transportation justice considerations.",
+    "decision_structure": "- Mobility justice network (15 nodes, 19 edges)\n- Focus on protected infrastructure for vulnerable road users\n- Strong emphasis on connectivity between transit modes and destinations\n- Values car-independence feasibility and transportation cost equity\n- Cognitive pattern: sustainable mobility systems thinking and barrier identification"
+  },
+  {
+    "id": "78",
+    "role": "Outdoor Recreation Retailer Perspective",
+    "description": "Analyzes how outdoor equipment businesses evaluate locations based on activity proximity, customer demographics, and lifestyle compatibility. Shows commercial-recreational relationships.",
+    "decision_structure": "- Lifestyle business network (14 nodes, 17 edges)\n- Focus on customer accessibility and regional recreation assets\n- Strong emphasis on community activity patterns and seasonal fluctuations\n- Values complementary business ecosystems and brand alignment\n- Cognitive pattern: recreational market analysis and destination positioning"
+  },
+  {
+    "id": "79",
+    "role": "Community Media Producer Perspective",
+    "description": "Explores how local media creators evaluate neighborhoods through story generation, cultural documentation, and community voice amplification. Shows communication ecology considerations.",
+    "decision_structure": "- Local narrative network (15 nodes, 18 edges)\n- Focus on event access and community relationship building\n- Strong emphasis on diverse voice representation and cultural capture\n- Values institutional transparency and information democratization\n- Cognitive pattern: narrative identification and community connection development"
+  },
+  {
+    "id": "80",
+    "role": "Craft Beverage Producer Perspective",
+    "description": "Models how brewers, distillers, and other beverage makers evaluate locations based on production requirements, regulatory environment, and consumption culture. Shows specialized manufacturing concerns.",
+    "decision_structure": "- Production-hospitality network (16 nodes, 20 edges)\n- Focus on zoning compatibility and infrastructure requirements\n- Strong emphasis on visitor experience and distribution logistics\n- Values complementary food systems and local identity incorporation\n- Cognitive pattern: production process optimization and place-based branding"
+  },
+  {
+    "id": "81",
+    "role": "Minority Faith Practitioner Perspective",
+    "description": "Analyzes how religious minorities evaluate urban environments through worship space access, cultural acceptance, and community safety. Shows specialized needs of underrepresented belief systems.",
+    "decision_structure": "- Religious minority network (15 nodes, 18 edges)\n- Focus on dedicated worship space availability and adaptation options\n- Strong emphasis on community perception and discrimination protection\n- Values proximity to dietary requirement resources and cultural practices\n- Cognitive pattern: balance between visibility and security considerations"
+  },
+  {
+    "id": "82",
+    "role": "Dating App User Perspective",
+    "description": "Explores how actively dating individuals assess neighborhoods through social opportunity density, meeting place quality, and date logistics. Shows relationship-seeking environmental assessment.",
+    "decision_structure": "- Social connection network (13 nodes, 16 edges)\n- Focus on venue variety and social activity options\n- Strong emphasis on transportation options and schedule compatibility\n- Values safety considerations and privacy-publicity balance\n- Cognitive pattern: social opportunity optimization and impression management"
+  },
+  {
+    "id": "83",
+    "role": "Live-Work Artist Perspective",
+    "description": "Models how artists with combined studio-residence needs evaluate locations based on space affordability, zoning flexibility, and creative community. Shows specialized space-use considerations.",
+    "decision_structure": "- Creative production network (15 nodes, 18 edges)\n- Focus on space adaptability and manufacturing compatibility\n- Strong emphasis on noise tolerance and material transportation\n- Values creative community proximity and visitor accessibility\n- Cognitive pattern: space utility maximization and creative ecosystem navigation"
+  },
+  {
+    "id": "84",
+    "role": "Car Enthusiast Perspective",
+    "description": "Analyzes how automobile hobbyists evaluate urban environments through parking availability, garage access, and driving experience. Shows car-centered urban assessment.",
+    "decision_structure": "- Automobile-focused network (14 nodes, 17 edges)\n- Primary concern with parking adequacy and storage security\n- Strong emphasis on road quality and maintenance\n- Values car service proximity and enthusiast gathering potential\n- Cognitive pattern: vehicle-centered mobility assessment and ownership experience protection"
+  },
+  {
+    "id": "85",
+    "role": "Placemaking Professional Perspective",
+    "description": "Explores how placemaking specialists evaluate neighborhoods through public space potential, community engagement opportunity, and identity strengthening. Shows professional public realm analysis.",
+    "decision_structure": "- Place quality network (16 nodes, 20 edges)\n- Focus on social interaction affordances and spatial flexibility\n- Strong emphasis on local narrative incorporation and cultural expression\n- Values democratic space management and maintenance sustainability\n- Cognitive pattern: spatial sociology analysis and human-centered design thinking"
+  },
+  {
+    "id": "86",
+    "role": "Competitive Renter Perspective",
+    "description": "Models how housing seekers in tight markets navigate urban environments with high competition, focusing on application advantages, quick mobility, and financial positioning. Shows market constraint adaptation.",
+    "decision_structure": "- Housing acquisition network (14 nodes, 17 edges)\n- Focus on timing strategies and application strengthening\n- Strong emphasis on financial credential preparation\n- Values temporary housing options and social network leverage\n- Cognitive pattern: competitive market navigation and constraint optimization"
+  },
+  {
+    "id": "87",
+    "role": "Financial Advisor Perspective",
+    "description": "Analyzes how financial professionals guide clients on location decisions through investment potential, cost structure, and wealth building opportunity. Shows financially-optimized spatial decision making.",
+    "decision_structure": "- Wealth consideration network (15 nodes, 18 edges)\n- Focus on property appreciation patterns and tax implications\n- Strong emphasis on housing expense ratios and opportunity costs\n- Values development trajectory assessment and risk diversification\n- Cognitive pattern: long-term financial projection and asset optimization"
+  },
+  {
+    "id": "88",
+    "role": "Pedestrian Advocate Perspective",
+    "description": "Explores how walkability activists evaluate urban design through pedestrian safety, experience quality, and prioritization in infrastructure decisions. Shows foot-first urban assessment.",
+    "decision_structure": "- Pedestrian-centered network (15 nodes, 19 edges)\n- Focus on sidewalk quality and crossing safety\n- Strong emphasis on interesting streetscapes and human scale\n- Values traffic calming measures and pedestrian-priority designs\n- Cognitive pattern: walkable environment assessment and pedestrian dignity assertion"
+  },
+  {
+    "id": "89",
+    "role": "Culinary Tourism Operator Perspective",
+    "description": "Models how food tourism businesses evaluate neighborhoods through culinary diversity, authenticity narratives, and visitor accommodation. Shows food-centered urban experience creation.",
+    "decision_structure": "- Culinary experience network (15 nodes, 18 edges)\n- Focus on food establishment diversity and cultural representation\n- Strong emphasis on food story authenticity and sensory environment\n- Values logistical planning ease and complementary cultural experiences\n- Cognitive pattern: taste experience curation and narrative development"
+  },
+  {
+    "id": "90",
+    "role": "Circular Economy Entrepreneur Perspective",
+    "description": "Analyzes how sustainability-focused business owners evaluate locations based on material flow access, like-minded customer bases, and collaborative opportunities. Shows regenerative economics in practice.",
+    "decision_structure": "- Circular business network (16 nodes, 20 edges)\n- Focus on waste stream access and resource sharing opportunities\n- Strong emphasis on conscious consumer demographics and education\n- Values supportive regulatory environment and complementary businesses\n- Cognitive pattern: system redesign thinking and value chain reconstruction"
+  },
+  {
+    "id": "91",
+    "role": "Intergenerational Household Perspective",
+    "description": "Explores how multi-generation families evaluate housing options through flexibility, privacy balancing, and diverse age-group needs. Shows complex family structure accommodation.",
+    "decision_structure": "- Multi-age accommodation network (16 nodes, 20 edges)\n- Focus on space flexibility and privacy management\n- Strong emphasis on accessibility across mobility levels\n- Values proximity to age-diverse services and amenities\n- Cognitive pattern: inter-age need balancing and family system accommodation"
+  },
+  {
+    "id": "92",
+    "role": "Micromobility User Perspective",
+    "description": "Models how e-scooter, bike-share, and personal micromobility users evaluate urban form through infrastructure safety, parking accommodation, and journey smoothness. Shows emerging transportation modality needs.",
+    "decision_structure": "- Micromobility network (14 nodes, 17 edges)\n- Focus on protected lane availability and surface quality\n- Strong emphasis on secure parking and charging infrastructure\n- Values intermodal connection points and topography considerations\n- Cognitive pattern: small vehicle journey optimization and safety navigation"
+  },
+  {
+    "id": "93",
+    "role": "Sensory-Sensitive Individual Perspective",
+    "description": "Analyzes how people with sensory processing differences evaluate environments through stimulation management, predictability, and accommodation features. Shows neurodiversity considerations in urban design.",
+    "decision_structure": "- Sensory navigation network (15 nodes, 18 edges)\n- Focus on noise levels and controllable stimulation\n- Strong emphasis on predictable patterns and transition zones\n- Values sensory retreat options and alternative navigation paths\n- Cognitive pattern: stimulation assessment and coping resource identification"
+  },
+  {
+    "id": "94",
+    "role": "Telecommuter with In-Office Requirements Perspective",
+    "description": "Explores how hybrid workers evaluate locations balancing remote work capability with occasional office attendance. Shows emerging work pattern space considerations.",
+    "decision_structure": "- Hybrid work network (14 nodes, 17 edges)\n- Focus on home workspace quality with commute tolerance\n- Strong emphasis on digital-physical work transitions\n- Values time-use optimization and spatial flexibility\n- Cognitive pattern: bifurcated environment optimization and schedule management"
+  },
+  {
+    "id": "95",
+    "role": "Childless-by-Choice Perspective",
+    "description": "Models how intentionally childless individuals and couples evaluate neighborhoods through adult-oriented amenities, community connection, and lifestyle values. Shows non-traditional household priorities.",
+    "decision_structure": "- Adult-focused lifestyle network (14 nodes, 17 edges)\n- Focus on career and recreation-centered amenities\n- Strong emphasis on chosen family social connections\n- Values urban vibrancy and diverse entertainment options\n- Cognitive pattern: life satisfaction optimization outside traditional family structures"
+  },
+  {
+    "id": "96",
+    "role": "Interfaith Community Leader Perspective",
+    "description": "Analyzes how multi-faith organization leaders evaluate neighborhoods through cooperation potential, diversity embrace, and shared space utilization. Shows collaborative spiritual considerations.",
+    "decision_structure": "- Interfaith connection network (15 nodes, 18 edges)\n- Focus on neutral gathering spaces and equitable visibility\n- Strong emphasis on diverse accessibility needs and practices\n- Values educational exchange opportunities and conflict resolution resources\n- Cognitive pattern: pluralistic assessment and bridge-building opportunity identification"
+  },
+  {
+    "id": "97",
+    "role": "Data Center Operator Perspective",
+    "description": "Explores how digital infrastructure managers evaluate locations through power reliability, connectivity, security, and environmental factors. Shows physical requirements of virtual systems.",
+    "decision_structure": "- Digital infrastructure network (16 nodes, 20 edges)\n- Focus on power grid stability and redundancy options\n- Strong emphasis on physical security and natural disaster risk\n- Values cooling efficiency and sustainable energy access\n- Cognitive pattern: risk minimization and mission-critical systems protection"
+  },
+  {
+    "id": "98",
+    "role": "Ethical Fashion Consumer Perspective",
+    "description": "Models how conscious clothing shoppers evaluate retail environments through supply chain transparency, sustainability claims, and consumption alternatives. Shows values-based purchasing decision making.",
+    "decision_structure": "- Ethical consumption network (15 nodes, 18 edges)\n- Focus on transparency access and verification options\n- Strong emphasis on secondhand and local maker alternatives\n- Values repair infrastructure and materials education\n- Cognitive pattern: values-aligned purchasing and consumption impact assessment"
+  },
+  {
+    "id": "99",
+    "role": "Neighborhood Association Leader Perspective",
+    "description": "Analyzes how residents in formal leadership roles evaluate development through process influence, precedent concerns, and member interest representation. Shows organized residential power dynamics.",
+    "decision_structure": "- Community representation network (16 nodes, 20 edges)\n- Focus on procedural participation and information access\n- Strong emphasis on precedent implications and neighborhood plan adherence\n- Values relationship maintenance with officials and developers\n- Cognitive pattern: constituent interest balancing and strategic negotiation positioning"
+  },
+  {
+    "id": "100",
+    "role": "Pandemic-Cautious Individual Perspective",
+    "description": "Explores how COVID-conscious people evaluate spaces through ventilation quality, distancing capability, and health protection features. Shows pandemic-informed spatial assessment with ongoing relevance.",
+    "decision_structure": "- Health safety network (14 nodes, 17 edges)\n- Focus on air quality and ventilation system evaluation\n- Strong emphasis on density management and outdoor access\n- Values hygiene infrastructure and space flexibility\n- Cognitive pattern: infection risk assessment and precautionary decision making"
+  }
+]

@@ -1,50 +1,41 @@
 ```mermaid
 flowchart TD
-    n1[building_development_proposal]
-    n2[healthcare_facility_proximity]
-    n3[emergency_services_access]
-    n4[familiar_environment_predictability]
-    n5[construction_disruption]
-    n6[medical_care_accessibility]
-    n7[safety_during_emergency]
-    n8[cognitive_comfort]
-    n9[mobility_challenges]
-    n10[daily_routine_disruption]
-    n11[perceived_health_security]
-    n12[anxiety_about_change]
-    n13[upzoning_stance]
-    
-    n1 --x n2
+    n1[density]
+    n2[accessibility]
+    n3[safety]
+    n4[medical_services]
+    n5[emergency_services]
+    n6[community_resources]
+    n7[service_disruption]
+    n8[predictability]
+    n9[stability]
+    n10[environment_change]
+    n11[loss_aversion]
+    n12[upzoning_stance]
+    n1 --> n2
     n1 --x n3
-    n1 --x n4
-    n1 --> n5
-    n2 --> n6
-    n3 --> n7
-    n4 --> n8
-    n5 --> n9
-    n5 --> n10
-    n6 --> n11
-    n7 --> n11
-    n8 --x n12
-    n9 --> n12
-    n10 --> n12
-    n11 --x n13
-    n12 --x n13
-    
-    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    n2 --> n4
+    n2 --> n5
+    n3 --> n6
+    n4 --> n7
+    n5 --> n7
+    n6 --> n8
+    n7 --x n8
+    n8 --> n9
+    n9 --x n10
+    n10 --> n11
+    n11 --x n12
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
     linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
     linkStyle 3 stroke:#00AA00,stroke-width:2px
     linkStyle 4 stroke:#00AA00,stroke-width:2px
-    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
     linkStyle 6 stroke:#00AA00,stroke-width:2px
-    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
     linkStyle 8 stroke:#00AA00,stroke-width:2px
-    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
     linkStyle 10 stroke:#00AA00,stroke-width:2px
     linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 12 stroke:#00AA00,stroke-width:2px
-    linkStyle 13 stroke:#00AA00,stroke-width:2px
-    linkStyle 14 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 15 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-``` 
+    linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

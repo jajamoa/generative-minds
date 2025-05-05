@@ -1,0 +1,48 @@
+```mermaid
+flowchart TD
+    n1[population_density]
+    n2[traffic_congestion]
+    n3[emergency_response_time]
+    n4[healthcare_accessibility]
+    n5[commute_convenience]
+    n6[work_life_balance]
+    n7[community_health_resources]
+    n8[affordability]
+    n9[service_quality]
+    n10[public_transportation]
+    n11[healthcare_facility_capacity]
+    n12[patient_outcomes]
+    n13[upzoning_stance]
+    n1 --> n2
+    n1 --> n4
+    n2 --x n3
+    n3 --x n9
+    n4 --> n5
+    n4 --> n7
+    n5 --> n6
+    n6 --> n8
+    n7 --> n9
+    n7 --> n11
+    n8 --> n13
+    n9 --> n12
+    n10 --> n5
+    n10 --x n2
+    n11 --> n12
+    n12 --> n13
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 12 stroke:#00AA00,stroke-width:2px
+    linkStyle 13 stroke:#00AA00,stroke-width:2px
+    linkStyle 14 stroke:#00AA00,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+```

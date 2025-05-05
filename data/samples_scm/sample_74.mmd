@@ -1,0 +1,58 @@
+```mermaid
+flowchart TD
+n1[density]
+n2[proximity_to_treatment]
+n3[safe_housing]
+n4[employment_opportunities]
+n5[prosocial_activities]
+n6[trigger_environment]
+n7[recovery_support_network]
+n8[community_integration]
+n9[accessibility]
+n10[noise]
+n11[traffic]
+n12[green_spaces]
+n13[public_transport]
+n14[local_services]
+n15[upzoning_stance]
+n1 --> n2
+n1 --> n3
+n1 --> n4
+n1 --x n6
+n2 --> n7
+n3 --> n8
+n4 --> n5
+n5 --> n8
+n6 --x n7
+n7 --> n15
+n8 --> n15
+n9 --> n2
+n9 --> n3
+n9 --> n4
+n9 --> n5
+n10 --x n7
+n11 --x n7
+n12 --> n8
+n13 --> n9
+n14 --> n9
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#00AA00,stroke-width:2px
+linkStyle 2 stroke:#00AA00,stroke-width:2px
+linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 4 stroke:#00AA00,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#00AA00,stroke-width:2px
+linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#00AA00,stroke-width:2px
+linkStyle 11 stroke:#00AA00,stroke-width:2px
+linkStyle 12 stroke:#00AA00,stroke-width:2px
+linkStyle 13 stroke:#00AA00,stroke-width:2px
+linkStyle 14 stroke:#00AA00,stroke-width:2px
+linkStyle 15 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 16 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 17 stroke:#00AA00,stroke-width:2px
+linkStyle 18 stroke:#00AA00,stroke-width:2px
+linkStyle 19 stroke:#00AA00,stroke-width:2px
+```

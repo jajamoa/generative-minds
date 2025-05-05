@@ -1,43 +1,38 @@
 ```mermaid
 flowchart TD
-    n1[building_height_increase]
-    n2[traffic_congestion]
-    n3[sunlight_access]
-    n4[community_character]
-    n5[air_quality]
-    n6[public_space_quality]
-    n7[neighborhood_identity]
-    n8[health_impact]
-    n9[social_interaction]
-    n10[cultural_heritage]
-    n11[quality_of_life]
-    n12[upzoning_stance]
-    
-    n1 --> n2
-    n1 --x n3
-    n1 --x n4
-    n2 --x n5
-    n3 --> n6
-    n4 --> n7
-    n5 --x n8
-    n6 --> n9
-    n7 --> n10
-    n8 --x n11
-    n9 --> n11
-    n10 --> n11
-    n11 --x n12
-    
-    linkStyle 0 stroke:#00AA00,stroke-width:2px
-    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 4 stroke:#00AA00,stroke-width:2px
-    linkStyle 5 stroke:#00AA00,stroke-width:2px
-    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 7 stroke:#00AA00,stroke-width:2px
-    linkStyle 8 stroke:#00AA00,stroke-width:2px
-    linkStyle 9 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 10 stroke:#00AA00,stroke-width:2px
-    linkStyle 11 stroke:#00AA00,stroke-width:2px
-    linkStyle 12 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-``` 
+n1[building_height]
+n2[traffic]
+n3[sunlight]
+n4[community_character]
+n5[noise]
+n6[green_space]
+n7[neighborhood_identity]
+n8[visual_aesthetics]
+n9[emotional_comfort]
+n10[quality_of_life]
+n11[upzoning_stance]
+n1 --> n2
+n1 --x n3
+n1 --x n4
+n2 --> n5
+n3 --> n6
+n4 --> n7
+n5 --x n10
+n6 --> n10
+n7 --> n8
+n8 --> n9
+n9 --> n10
+n10 --x n11
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#00AA00,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 7 stroke:#00AA00,stroke-width:2px
+linkStyle 8 stroke:#00AA00,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#00AA00,stroke-width:2px
+linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

@@ -1,22 +1,19 @@
 ```mermaid
 flowchart TD
-    n1[property_values_concern]
-    n2[neighborhood_character_importance]
-    n3[fear_of_change]
-    n4[community_benefit_perception]
-    n5[upzoning_stance]
-    
-    n1 --x n5
-    n2 --x n5
-    n2 --x n5
-    n3 --x n5
-    n3 --x n5
-    n4 --x n5
-    
-    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    n1[density]
+    n2[school_crowding]
+    n3[class_size]
+    n4[education_quality]
+    n5[child_success]
+    n6[upzoning_stance]
+    n1 --> n2
+    n2 --> n3
+    n3 --x n4
+    n4 --> n5
+    n5 --x n6
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
     linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
     linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
 ```

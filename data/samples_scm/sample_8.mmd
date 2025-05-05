@@ -1,29 +1,44 @@
 ```mermaid
 flowchart TD
-    n1[property_values_concern]
-    n2[community_character_concern]
-    n3[economic_benefit_perception]
-    n4[environmental_concern]
-    n5[change_resistance]
-    n6[urban_density_knowledge]
-    n7[neighborhood_change_anxiety]
-    n8[upzoning_stance]
-
-    n1 --x n8
-    n2 --x n8
-    n3 --x n8
-    n4 --x n8
-    n5 --x n8
-    n6 --x n8
-    n6 --x n7
-    n7 --x n8
-
-    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+n1[density]
+n2[foot_traffic]
+n3[commercial_rents]
+n4[customer_base]
+n5[business_visibility]
+n6[operational_costs]
+n7[competition]
+n8[local_economy]
+n9[market_demand]
+n10[regulatory_environment]
+n11[community_support]
+n12[adaptability]
+n13[upzoning_stance]
+n1 --> n2
+n1 --x n3
+n2 --> n4
+n2 --> n5
+n3 --x n6
+n4 --> n7
+n5 --> n8
+n6 --x n9
+n7 --x n10
+n8 --> n11
+n9 --> n12
+n10 --> n12
+n11 --> n13
+n12 --> n13
+linkStyle 0 stroke:#00AA00,stroke-width:2px
+linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 2 stroke:#00AA00,stroke-width:2px
+linkStyle 3 stroke:#00AA00,stroke-width:2px
+linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 5 stroke:#00AA00,stroke-width:2px
+linkStyle 6 stroke:#00AA00,stroke-width:2px
+linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+linkStyle 9 stroke:#00AA00,stroke-width:2px
+linkStyle 10 stroke:#00AA00,stroke-width:2px
+linkStyle 11 stroke:#00AA00,stroke-width:2px
+linkStyle 12 stroke:#00AA00,stroke-width:2px
+linkStyle 13 stroke:#00AA00,stroke-width:2px
 ```

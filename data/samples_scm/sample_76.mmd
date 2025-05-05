@@ -1,0 +1,53 @@
+```mermaid
+flowchart TD
+    n1[building_density]
+    n2[habitat_patches]
+    n3[corridor_connectivity]
+    n4[species_adaptation]
+    n5[human_wildlife_conflict]
+    n6[ecological_education]
+    n7[native_species_support]
+    n8[green_spaces]
+    n9[urban_noise]
+    n10[air_quality]
+    n11[water_quality]
+    n12[light_pollution]
+    n13[food_sources]
+    n14[shelter_availability]
+    n15[public_safety]
+    n16[upzoning_stance]
+    n1 --> n2
+    n1 --> n3
+    n2 --> n4
+    n3 --> n4
+    n4 --x n5
+    n5 --x n6
+    n6 --> n7
+    n7 --> n8
+    n8 --> n13
+    n8 --> n14
+    n9 --x n10
+    n10 --> n11
+    n11 --> n12
+    n12 --x n13
+    n13 --> n14
+    n14 --> n15
+    n15 --x n16
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#00AA00,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 11 stroke:#00AA00,stroke-width:2px
+    linkStyle 12 stroke:#00AA00,stroke-width:2px
+    linkStyle 13 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 14 stroke:#00AA00,stroke-width:2px
+    linkStyle 15 stroke:#00AA00,stroke-width:2px
+    linkStyle 16 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```

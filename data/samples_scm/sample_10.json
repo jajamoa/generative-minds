@@ -1,351 +1,241 @@
 {
-    "agent_id": "sample_10",
-    "demographics": {
-        "age": 29,
-        "income": "$40,000-$55,000",
-        "education": "associate degree",
-        "occupation": "public transportation operator",
-        "housing": "apartment renter in urban area"
+  "agent_id": "sample_10",
+  "demographics": {
+    "age": 79,
+    "income": "$40,000-$80,000",
+    "education": "high school graduate",
+    "occupation": "Elderly Resident (Simplified)",
+    "housing": "mixed housing situation"
+  },
+  "nodes": {
+    "n1": {
+      "label": "tall_buildings_presence",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_01"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [],
+      "outgoing_edges": [
+        "e1"
+      ]
     },
-    "nodes": {
-        "n1": {
-            "label": "rent_affordability",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_01"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e1",
-                "e2"
-            ]
-        },
-        "n2": {
-            "label": "neighborhood_character",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "external_state",
-            "appearance": {
-                "qa_ids": [
-                    "qa_02"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [],
-            "outgoing_edges": [
-                "e3",
-                "e4"
-            ]
-        },
-        "n3": {
-            "label": "fear_of_change",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_03"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e1",
-                "e3"
-            ],
-            "outgoing_edges": [
-                "e5"
-            ]
-        },
-        "n4": {
-            "label": "hope_for_improvement",
-            "type": "continuous",
-            "range": [
-                0.0,
-                1.0
-            ],
-            "semantic_role": "internal_affect",
-            "appearance": {
-                "qa_ids": [
-                    "qa_04"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e2",
-                "e4"
-            ],
-            "outgoing_edges": [
-                "e6"
-            ]
-        },
-        "n5": {
-            "label": "upzoning_stance",
-            "type": "binary",
-            "values": [
-                true,
-                false
-            ],
-            "semantic_role": "behavioral_intention",
-            "appearance": {
-                "qa_ids": [
-                    "qa_05"
-                ],
-                "frequency": 1
-            },
-            "incoming_edges": [
-                "e5",
-                "e6"
-            ],
-            "outgoing_edges": []
-        }
+    "n2": {
+      "label": "elevator_reliability",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "external_state",
+      "appearance": {
+        "qa_ids": [
+          "qa_02"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e1"
+      ],
+      "outgoing_edges": [
+        "e2"
+      ]
     },
-    "edges": {
-        "e1": {
-            "from": "n1",
-            "to": "n3",
-            "function": {
-                "target": "n3",
-                "inputs": [
-                    "n1"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        -0.5
-                    ],
-                    "bias": 0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_01"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_01"
-            ]
-        },
-        "e2": {
-            "from": "n1",
-            "to": "n4",
-            "function": {
-                "target": "n4",
-                "inputs": [
-                    "n1"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.5
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_01"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_01"
-            ]
-        },
-        "e3": {
-            "from": "n2",
-            "to": "n3",
-            "function": {
-                "target": "n3",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        0.5
-                    ],
-                    "bias": -0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_02"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_02"
-            ]
-        },
-        "e4": {
-            "from": "n2",
-            "to": "n4",
-            "function": {
-                "target": "n4",
-                "inputs": [
-                    "n2"
-                ],
-                "function_type": "sigmoid",
-                "parameters": {
-                    "weights": [
-                        -0.5
-                    ],
-                    "bias": 0.2
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_02"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_02"
-            ]
-        },
-        "e5": {
-            "from": "n3",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n3"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.6,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_03"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_03"
-            ]
-        },
-        "e6": {
-            "from": "n4",
-            "to": "n5",
-            "function": {
-                "target": "n5",
-                "inputs": [
-                    "n4"
-                ],
-                "function_type": "threshold",
-                "parameters": {
-                    "threshold": 0.6,
-                    "direction": "greater"
-                },
-                "noise_std": 0.1,
-                "support_qas": [
-                    "qa_04"
-                ],
-                "confidence": 0.8
-            },
-            "support_qas": [
-                "qa_04"
-            ]
-        }
+    "n3": {
+      "label": "personal_mobility_impact",
+      "type": "continuous",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "semantic_role": "internal_affect",
+      "appearance": {
+        "qa_ids": [
+          "qa_03"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e2"
+      ],
+      "outgoing_edges": [
+        "e3"
+      ]
     },
-    "qas": [
-        {
-            "qa_id": "qa_01",
-            "question": "How do you think upzoning will affect the affordability of your rent?",
-            "answer": "I'm worried that if they allow more buildings, it might drive up the prices and make it harder for me to afford my apartment. But I also hope that with more apartments, there might be more options and the prices could go down.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n1",
-                    "to": "n3",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.7,
-                    "confidence_rating": 0.8
-                },
-                "counterfactual": "If upzoning leads to more affordable housing, then I would support it."
-            }
+    "n4": {
+      "label": "upzoning_stance",
+      "type": "binary",
+      "values": [
+        true,
+        false
+      ],
+      "semantic_role": "behavioral_intention",
+      "appearance": {
+        "qa_ids": [
+          "qa_04"
+        ],
+        "frequency": 1
+      },
+      "incoming_edges": [
+        "e3"
+      ],
+      "outgoing_edges": []
+    }
+  },
+  "edges": {
+    "e1": {
+      "from": "n1",
+      "to": "n2",
+      "function": {
+        "target": "n2",
+        "inputs": [
+          "n1"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "greater"
         },
-        {
-            "qa_id": "qa_02",
-            "question": "What are your thoughts on how upzoning will change the character of your neighborhood?",
-            "answer": "I really like the way my neighborhood is now. I'm afraid that if they start building a lot more, it might lose its charm and become too crowded. But I also see that some changes could bring in new businesses and make it more vibrant.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n2",
-                    "to": "n3",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.6,
-                    "confidence_rating": 0.7
-                },
-                "counterfactual": "If upzoning preserves the neighborhood's character, then I would be more open to it."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_01",
+          "qa_02"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_01",
+        "qa_02"
+      ]
+    },
+    "e2": {
+      "from": "n2",
+      "to": "n3",
+      "function": {
+        "target": "n3",
+        "inputs": [
+          "n2"
+        ],
+        "function_type": "sigmoid",
+        "parameters": {
+          "weights": [
+            0.8
+          ],
+          "bias": -0.2
         },
-        {
-            "qa_id": "qa_03",
-            "question": "Do you feel anxious about the potential changes from upzoning?",
-            "answer": "Yeah, I do. I've seen other neighborhoods change and it can be pretty scary. I don't want to lose what I have here, and I'm not sure if the changes will be for the better or worse.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n3",
-                    "to": "n5",
-                    "direction": "negative"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.8,
-                    "confidence_rating": 0.9
-                },
-                "counterfactual": "If I knew the changes would be positive, I wouldn't be as anxious."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_02",
+          "qa_03"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_02",
+        "qa_03"
+      ]
+    },
+    "e3": {
+      "from": "n3",
+      "to": "n4",
+      "function": {
+        "target": "n4",
+        "inputs": [
+          "n3"
+        ],
+        "function_type": "threshold",
+        "parameters": {
+          "threshold": 0.5,
+          "direction": "less"
         },
-        {
-            "qa_id": "qa_04",
-            "question": "Are you hopeful that upzoning could bring some positive changes to your neighborhood?",
-            "answer": "I am a bit hopeful. If it means more affordable places to live and maybe some new shops and restaurants, that could be good. But I'm still cautious because I don't want to lose what makes this place special.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n4",
-                    "to": "n5",
-                    "direction": "positive"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.6,
-                    "confidence_rating": 0.7
-                },
-                "counterfactual": "If upzoning only brings negative changes, I would be against it."
-            }
+        "noise_std": 0.1,
+        "support_qas": [
+          "qa_03",
+          "qa_04"
+        ],
+        "confidence": 0.9
+      },
+      "support_qas": [
+        "qa_03",
+        "qa_04"
+      ]
+    }
+  },
+  "qas": [
+    {
+      "qa_id": "qa_01",
+      "question": "Do you think there are tall buildings in the area?",
+      "answer": "Yes, I see more tall buildings being built.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n1",
+          "to": "n2",
+          "direction": "positive"
         },
-        {
-            "qa_id": "qa_05",
-            "question": "Overall, do you support or oppose upzoning in your neighborhood?",
-            "answer": "I'm on the fence. I see both the potential benefits and the risks. I think it depends on how it's done and whether it will really help people like me who are just trying to get by.",
-            "parsed_belief": {
-                "belief_structure": {
-                    "from": "n5",
-                    "to": "n5",
-                    "direction": "neutral"
-                },
-                "belief_strength": {
-                    "estimated_probability": 0.5,
-                    "confidence_rating": 0.6
-                },
-                "counterfactual": "If I had more information and guarantees, I might be more likely to support upzoning."
-            }
-        }
-    ]
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If there were no tall buildings, then elevator reliability would not be a concern."
+      }
+    },
+    {
+      "qa_id": "qa_02",
+      "question": "How reliable do you find the elevators in tall buildings?",
+      "answer": "The elevators are often unreliable and break down frequently.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n2",
+          "to": "n3",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.8
+        },
+        "counterfactual": "If the elevators were more reliable, my personal mobility would be less affected."
+      }
+    },
+    {
+      "qa_id": "qa_03",
+      "question": "How does the reliability of elevators affect your personal mobility?",
+      "answer": "Unreliable elevators make it very difficult for me to move around, especially with my limited mobility.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If my personal mobility was not impacted, I might be more open to upzoning."
+      }
+    },
+    {
+      "qa_id": "qa_04",
+      "question": "What is your stance on upzoning given the current situation with tall buildings and elevators?",
+      "answer": "I am against upzoning because it will lead to more tall buildings with unreliable elevators, making it even harder for me to get around.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "n3",
+          "to": "n4",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If my personal mobility was not a concern, I might have a different stance on upzoning."
+      }
+    }
+  ]
 }

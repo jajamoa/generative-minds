@@ -1,37 +1,13 @@
 ```mermaid
 flowchart TD
-    n1[property_values]
-    n2[community_character]
-    n3[environmental_concerns]
-    n4[economic_opportunities]
-    n5[status_quo_preference]
-    n6[loss_aversion]
-    n7[social_influence]
-    n8[upzoning_stance]
-
-    n1 --x n5
-    n1 --x n6
-    n2 --x n5
-    n2 --x n6
-    n3 --x n8
-    n4 --x n8
-    n5 --x n8
-    n5 --x n8
-    n6 --x n8
-    n6 --x n8
-    n7 --x n8
-    n8 --x n8
-
-    linkStyle 0 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    n1[housing_supply]
+    n2[affordability]
+    n3[demand]
+    n4[upzoning_stance]
+    n1 --> n2
+    n2 --x n3
+    n3 --> n4
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
     linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 4 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 6 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 8 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 9 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 10 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
-    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
 ```

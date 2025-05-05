@@ -1,0 +1,39 @@
+```mermaid
+flowchart TD
+    n1[density]
+    n2[noise]
+    n3[space_adequacy]
+    n4[internet_reliability]
+    n5[power_infrastructure]
+    n6[walkable_amenities]
+    n7[psychological_boundaries]
+    n8[home_environment]
+    n9[work_environment]
+    n10[isolation_management]
+    n11[living_quality]
+    n12[upzoning_stance]
+    n1 --> n2
+    n1 --x n3
+    n2 --x n7
+    n3 --> n8
+    n4 --> n8
+    n5 --> n8
+    n6 --> n7
+    n7 --> n10
+    n8 --> n9
+    n9 --> n11
+    n10 --> n11
+    n11 --x n12
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 3 stroke:#00AA00,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#00AA00,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#00AA00,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#00AA00,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+```
