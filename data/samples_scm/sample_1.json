@@ -1,0 +1,373 @@
+{
+  "agent_id": "sample_1",
+  "nodes": [
+    {
+      "id": "BuildingHeightIncrease",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "TrafficCongestion",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "SunlightAccess",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "CommunityCharacter",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "AirQuality",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "PublicSpaceQuality",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "NeighborhoodIdentity",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "HealthImpact",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "internal_affect"
+    },
+    {
+      "id": "SocialInteraction",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "CulturalHeritage",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "external_state"
+    },
+    {
+      "id": "QualityOfLife",
+      "type": "continuous",
+      "range": [0, 1],
+      "semantic_role": "internal_affect"
+    },
+    {
+      "id": "SupportsUpzoning",
+      "type": "binary",
+      "semantic_role": "behavioral_intention"
+    }
+  ],
+  "functions": [
+    {
+      "target": "TrafficCongestion",
+      "inputs": ["BuildingHeightIncrease"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.8],
+        "bias": -0.2
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa1"],
+      "confidence": 0.9
+    },
+    {
+      "target": "SunlightAccess",
+      "inputs": ["BuildingHeightIncrease"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [-0.7],
+        "bias": 0.9
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa2"],
+      "confidence": 0.85
+    },
+    {
+      "target": "CommunityCharacter",
+      "inputs": ["BuildingHeightIncrease"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [-0.6],
+        "bias": 0.8
+      },
+      "noise_std": 0.2,
+      "support_qas": ["qa3"],
+      "confidence": 0.8
+    },
+    {
+      "target": "AirQuality",
+      "inputs": ["TrafficCongestion"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [-0.8],
+        "bias": 0.9
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa4"],
+      "confidence": 0.85
+    },
+    {
+      "target": "PublicSpaceQuality",
+      "inputs": ["SunlightAccess"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.7],
+        "bias": 0.1
+      },
+      "noise_std": 0.2,
+      "support_qas": ["qa5"],
+      "confidence": 0.8
+    },
+    {
+      "target": "NeighborhoodIdentity",
+      "inputs": ["CommunityCharacter"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.8],
+        "bias": 0.1
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa6"],
+      "confidence": 0.85
+    },
+    {
+      "target": "HealthImpact",
+      "inputs": ["AirQuality"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.7],
+        "bias": 0.1
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa7"],
+      "confidence": 0.9
+    },
+    {
+      "target": "SocialInteraction",
+      "inputs": ["PublicSpaceQuality"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.6],
+        "bias": 0.2
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa8"],
+      "confidence": 0.85
+    },
+    {
+      "target": "CulturalHeritage",
+      "inputs": ["NeighborhoodIdentity"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.7],
+        "bias": 0.2
+      },
+      "noise_std": 0.2,
+      "support_qas": ["qa9"],
+      "confidence": 0.8
+    },
+    {
+      "target": "QualityOfLife",
+      "inputs": ["HealthImpact", "SocialInteraction", "CulturalHeritage"],
+      "function_type": "sigmoid",
+      "parameters": {
+        "weights": [0.8, 0.7, 0.6],
+        "bias": -0.5
+      },
+      "noise_std": 0.15,
+      "support_qas": ["qa10"],
+      "confidence": 0.85
+    },
+    {
+      "target": "SupportsUpzoning",
+      "inputs": ["QualityOfLife"],
+      "function_type": "threshold",
+      "parameters": {
+        "threshold": 0.5,
+        "direction": "greater"
+      },
+      "noise_std": 0.1,
+      "support_qas": ["qa10"],
+      "confidence": 0.9
+    }
+  ],
+  "qas": [
+    {
+      "qa_id": "qa1",
+      "question": "How does increasing building height affect traffic in the neighborhood?",
+      "answer": "Higher buildings bring more residents and visitors, leading to increased traffic congestion and parking issues.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "BuildingHeightIncrease",
+          "to": "TrafficCongestion",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.9
+        }
+      }
+    },
+    {
+      "qa_id": "qa2",
+      "question": "What impact does taller buildings have on sunlight access?",
+      "answer": "Taller buildings can significantly reduce sunlight access to surrounding areas, affecting both public spaces and private residences.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "BuildingHeightIncrease",
+          "to": "SunlightAccess",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa3",
+      "question": "How does building height affect the character of our community?",
+      "answer": "Sudden increases in building height can dramatically change the character and scale of our neighborhood, potentially losing its unique identity.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "BuildingHeightIncrease",
+          "to": "CommunityCharacter",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.8
+        }
+      }
+    },
+    {
+      "qa_id": "qa4",
+      "question": "What is the relationship between traffic and air quality?",
+      "answer": "Increased traffic leads to higher emissions and poorer air quality, which can have serious health implications for residents.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "TrafficCongestion",
+          "to": "AirQuality",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa5",
+      "question": "How does sunlight access affect public spaces?",
+      "answer": "Adequate sunlight is crucial for the usability and enjoyment of public spaces, affecting both physical comfort and social interaction.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "SunlightAccess",
+          "to": "PublicSpaceQuality",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        }
+      }
+    },
+    {
+      "qa_id": "qa6",
+      "question": "What role does community character play in neighborhood identity?",
+      "answer": "The unique character of our community is fundamental to our neighborhood's identity and sense of place.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "CommunityCharacter",
+          "to": "NeighborhoodIdentity",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.8,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa7",
+      "question": "How does air quality impact resident health?",
+      "answer": "Poor air quality can lead to respiratory problems and other health issues, particularly for vulnerable populations.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "AirQuality",
+          "to": "HealthImpact",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
+        }
+      }
+    },
+    {
+      "qa_id": "qa8",
+      "question": "How do public spaces affect social interaction in the community?",
+      "answer": "High-quality public spaces promote social interaction, community bonds, and a sense of belonging.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "PublicSpaceQuality",
+          "to": "SocialInteraction",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.6,
+          "confidence_rating": 0.85
+        }
+      }
+    },
+    {
+      "qa_id": "qa9",
+      "question": "What is the relationship between neighborhood identity and cultural heritage?",
+      "answer": "Strong neighborhood identity helps preserve and promote cultural heritage, which enriches community life.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "NeighborhoodIdentity",
+          "to": "CulturalHeritage",
+          "direction": "positive"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.8
+        }
+      }
+    },
+    {
+      "qa_id": "qa10",
+      "question": "How do all these factors affect your stance on upzoning?",
+      "answer": "When I consider how upzoning could negatively impact our quality of life through reduced sunlight, changed community character, increased traffic, poorer air quality, and potential loss of cultural heritage, I have to oppose it. The potential harm to our health, social connections, and neighborhood identity outweighs the benefits.",
+      "parsed_belief": {
+        "belief_structure": {
+          "from": "QualityOfLife",
+          "to": "SupportsUpzoning",
+          "direction": "negative"
+        },
+        "belief_strength": {
+          "estimated_probability": 0.7,
+          "confidence_rating": 0.9
+        },
+        "counterfactual": "If upzoning could be done while preserving sunlight access, community character, and limiting traffic increases, I might support it."
+      }
+    }
+  ]
+} 
