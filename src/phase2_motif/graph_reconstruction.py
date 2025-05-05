@@ -171,81 +171,123 @@ class MotifBasedReconstructor:
         self, target_node: str, max_iterations: int = 100, min_score: float = 0.3
     ) -> nx.DiGraph:
         """
-        Reconstruct a causal graph ending at the target node.
-        The target node should be the final outcome (leaf node).
+        Reconstruct causal graph with improved diversity and node merging.
         """
-        # Initialize graph with target node
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
 
         covered_nodes = {target_node}
-        # Instead of starting from target, we look for nodes that point to it
         frontier = {target_node}
-        motif_set = []
+        used_motif_types = set()
 
         iteration = 0
         while frontier and iteration < max_iterations:
             iteration += 1
             new_frontier = set()
 
-            # Process each frontier node
             for f_node in frontier:
-                # Find motifs where current node is the target
+                # Now candidates returns (motif, score, motif_node, group_key)
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
 
-                # Add multiple good candidates
-                for motif, score, motif_node in candidates:
+                # Updated unpacking to include group_key
+                for motif, score, motif_node, group_key in candidates:
                     if score >= min_score:
-                        self._integrate_motif_reverse(G, motif, f_node, covered_nodes)
-                        motif_set.append(motif)
+                        motif_type = group_key.split("_")[0]
+                        if (
+                            motif_type not in used_motif_types
+                            or len(used_motif_types) >= 3
+                        ):
+                            self._integrate_motif_reverse(
+                                G, motif, f_node, covered_nodes
+                            )
+                            used_motif_types.add(motif_type)
 
-                        # Add new nodes to frontier
-                        new_nodes = set(G.nodes()) - covered_nodes
-                        new_frontier.update(new_nodes)
+                            # Update frontier with new nodes
+                            new_nodes = set(G.nodes()) - covered_nodes
+                            new_frontier.update(new_nodes)
 
             frontier = new_frontier
 
-            if not new_frontier:
+            # Early stopping if graph becomes too large
+            if len(G.nodes()) > 50:
                 break
 
         return G
 
     def find_motif_candidates_reverse(
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
-    ) -> List[Tuple[nx.DiGraph, float, str]]:
+    ) -> List[Tuple[nx.DiGraph, float, str, str]]:
         """
-        Find candidate motifs where the target node is the outcome.
+        Find candidate motifs where target node is the outcome.
+        Enhanced to promote motif diversity and better coverage.
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
+        used_motif_types = set()  # Track used motif types
 
         for group_key, motifs in self.motif_library.semantic_motifs.items():
+            motif_type = group_key.split("_")[
+                0
+            ]  # Extract base motif type (M1, M2.3, etc.)
+
             for motif in motifs:
-                # Look for nodes that have no outgoing edges (outcomes) in the motif
+                # Find outcome nodes (nodes with no outgoing edges)
                 for motif_node in motif.nodes():
-                    if motif.out_degree(motif_node) == 0:  # This is an outcome node
+                    if motif.out_degree(motif_node) == 0:
                         motif_label = motif.nodes[motif_node].get("label", "")
 
-                        # Calculate semantic similarity
-                        similarity = self.similarity_engine.node_similarity(
+                        # Calculate comprehensive score
+                        semantic_sim = self.similarity_engine.node_similarity(
                             motif_label, target_label
                         )
 
-                        if similarity >= self.similarity_threshold:
-                            # Calculate extendability score
-                            extendability = self._calculate_extendability_reverse(
+                        if semantic_sim >= self.similarity_threshold:
+                            # Calculate additional scores
+                            structural_score = self._calculate_structural_fit(
                                 motif, motif_node, current_graph, target_node
                             )
+                            coverage_score = self._calculate_coverage_score(
+                                motif, covered_nodes
+                            )
 
-                            score = 0.6 * similarity + 0.4 * extendability
-                            candidates.append((motif, score, motif_node))
+                            # Add diversity bonus if motif type not used
+                            diversity_bonus = (
+                                0.2 if motif_type not in used_motif_types else 0
+                            )
 
+                            # Weighted combination of scores
+                            final_score = (
+                                0.4 * semantic_sim
+                                + 0.2 * structural_score
+                                + 0.2 * coverage_score
+                                + 0.2 * diversity_bonus
+                            )
+
+                            candidates.append(
+                                (motif, final_score, motif_node, group_key)
+                            )
+                            used_motif_types.add(motif_type)
+
+        # Sort by score but ensure diversity in top candidates
         candidates.sort(key=lambda x: x[1], reverse=True)
-        return candidates
 
-    def _calculate_extendability_reverse(
+        # Filter to ensure diverse motif types in top results
+        diverse_candidates = []
+        seen_types = set()
+
+        for candidate in candidates:
+            motif_type = candidate[3].split("_")[0]
+            if motif_type not in seen_types:
+                diverse_candidates.append(candidate)
+                seen_types.add(motif_type)
+                if len(diverse_candidates) >= 5:  # Limit to top 5 diverse motifs
+                    break
+
+        return diverse_candidates
+
+    def _calculate_structural_fit(
         self,
         motif: nx.DiGraph,
         motif_node: str,
@@ -253,7 +295,7 @@ class MotifBasedReconstructor:
         target_node: str,
     ) -> float:
         """
-        Calculate extendability score for reverse building.
+        Calculate structural fit score for reverse building.
         """
         # Count incoming edges that could be added
         motif_in = motif.in_degree(motif_node)
@@ -266,6 +308,22 @@ class MotifBasedReconstructor:
         max_possible = motif.number_of_edges()
         return potential_new_edges / max_possible if max_possible > 0 else 0
 
+    def _calculate_coverage_score(
+        self,
+        motif: nx.DiGraph,
+        covered_nodes: Set[str],
+    ) -> float:
+        """
+        Calculate coverage score for reverse building.
+        """
+        # Count nodes in motif that are not covered
+        uncovered_nodes = set(motif.nodes()) - covered_nodes
+        uncovered_count = len(uncovered_nodes)
+
+        # Normalize score
+        max_possible = motif.number_of_nodes()
+        return uncovered_count / max_possible if max_possible > 0 else 0
+
     def _integrate_motif_reverse(
         self,
         G: nx.DiGraph,
@@ -274,33 +332,47 @@ class MotifBasedReconstructor:
         covered_nodes: Set[str],
     ) -> None:
         """
-        Integrate a motif into the graph, ensuring correct edge directions.
+        Integrate a motif into the graph with improved node merging and relationship preservation.
         """
         node_mapping = {}
         node_mapping[target_node] = target_node
 
-        # First add all nodes
+        # Track node labels for duplicate detection
+        label_to_node = {G.nodes[n].get("label", ""): n for n in G.nodes()}
+
+        # First add all nodes with improved merging
         for node in motif.nodes():
             if node in node_mapping:
                 continue
 
             new_label = motif.nodes[node].get("label", "")
+
+            # First check exact label matches
+            if new_label in label_to_node:
+                node_mapping[node] = label_to_node[new_label]
+                continue
+
+            # Then check semantic similarity
             mergeable_node = self._find_mergeable_node(G, new_label)
 
             if mergeable_node:
                 node_mapping[node] = mergeable_node
+                label_to_node[new_label] = mergeable_node
             else:
-                G.add_node(node, label=new_label)
-                node_mapping[node] = node
+                # Generate unique node ID
+                node_id = f"n{len(G.nodes()) + 1}"
+                G.add_node(node_id, **motif.nodes[node])
+                node_mapping[node] = node_id
+                label_to_node[new_label] = node_id
 
-        # Then add edges with correct direction
+        # Then add edges with preserved attributes
         for u, v in motif.edges():
             mapped_u = node_mapping[u]
             mapped_v = node_mapping[v]
             if not G.has_edge(mapped_u, mapped_v):
-                # Randomly assign positive/negative relationship
-                edge_type = "positive" if np.random.random() > 0.5 else "negative"
-                G.add_edge(mapped_u, mapped_v, relationship=edge_type)
+                # Copy all edge attributes from motif
+                edge_attrs = motif.edges[u, v]
+                G.add_edge(mapped_u, mapped_v, **edge_attrs)
 
         covered_nodes.update(node_mapping.values())
 
@@ -462,11 +534,6 @@ class MotifBasedReconstructor:
         frontier = {seed_node}
         visualization_files = []
 
-        # Save initial state
-        init_path = os.path.join(output_dir, f"step_0_initial.png")
-        self.visualize_reconstruction(G, output_dir, f"step_0_initial.png")
-        visualization_files.append(init_path)
-
         iteration = 0
         while frontier and iteration < max_iterations:
             iteration += 1
@@ -491,11 +558,6 @@ class MotifBasedReconstructor:
 
             # Update frontier
             frontier = self.update_frontier(G, covered_nodes)
-
-            # Visualize current state
-            step_path = os.path.join(output_dir, f"step_{iteration}.png")
-            self.visualize_reconstruction(G, output_dir, f"step_{iteration}.png")
-            visualization_files.append(step_path)
 
         return visualization_files
 
@@ -654,10 +716,13 @@ def main(args):
         max_iterations=args.max_iterations,
         output_dir=args.output_dir,
     )
-    print(
-        f"Process visualization steps saved to: {os.path.dirname(process_viz_paths[0])}"
-    )
-    print(f"Generated {len(process_viz_paths)} step-by-step visualizations")
+
+    if len(process_viz_paths) > 0:
+        print(
+            f"Process visualization steps saved to: {os.path.dirname(process_viz_paths[0])}"
+        )
+    else:
+        print("No step-by-step visualizations generated")
 
     # Save graph as JSON
     json_path = reconstructor.save_as_json(reconstructed_graph, args.output_dir)
