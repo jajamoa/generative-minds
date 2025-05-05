@@ -1,0 +1,570 @@
+{
+    "agent_id": "sample_13",
+    "demographics": {
+        "age": 25,
+        "income": "$80,000-$100,000",
+        "education": "bachelor's degree in computer science",
+        "occupation": "software engineer",
+        "housing": "apartment renter in tech hub area"
+    },
+    "nodes": {
+        "n1": {
+            "label": "rent_affordability",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_01"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e1",
+                "e2"
+            ]
+        },
+        "n2": {
+            "label": "property_values",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_02"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e3"
+            ]
+        },
+        "n3": {
+            "label": "neighborhood_character",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_03"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e4"
+            ]
+        },
+        "n4": {
+            "label": "environmental_impact",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_04"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e5"
+            ]
+        },
+        "n5": {
+            "label": "community_benefit",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "external_state",
+            "appearance": {
+                "qa_ids": [
+                    "qa_05"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [],
+            "outgoing_edges": [
+                "e6"
+            ]
+        },
+        "n6": {
+            "label": "fear_of_change",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_06"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e1",
+                "e4"
+            ],
+            "outgoing_edges": [
+                "e7"
+            ]
+        },
+        "n7": {
+            "label": "hope_for_improvement",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_07"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e2",
+                "e5"
+            ],
+            "outgoing_edges": [
+                "e8"
+            ]
+        },
+        "n8": {
+            "label": "economic_self_interest",
+            "type": "continuous",
+            "range": [
+                0.0,
+                1.0
+            ],
+            "semantic_role": "internal_affect",
+            "appearance": {
+                "qa_ids": [
+                    "qa_08"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e3"
+            ],
+            "outgoing_edges": [
+                "e9"
+            ]
+        },
+        "n9": {
+            "label": "upzoning_stance",
+            "type": "binary",
+            "values": [
+                true,
+                false
+            ],
+            "semantic_role": "behavioral_intention",
+            "appearance": {
+                "qa_ids": [
+                    "qa_09"
+                ],
+                "frequency": 1
+            },
+            "incoming_edges": [
+                "e7",
+                "e8",
+                "e9"
+            ],
+            "outgoing_edges": []
+        }
+    },
+    "edges": {
+        "e1": {
+            "from": "n1",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": [
+                    "n1"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        -0.8
+                    ],
+                    "bias": 0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_01"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_01"
+            ]
+        },
+        "e2": {
+            "from": "n1",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": [
+                    "n1"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_01"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_01"
+            ]
+        },
+        "e3": {
+            "from": "n2",
+            "to": "n8",
+            "function": {
+                "target": "n8",
+                "inputs": [
+                    "n2"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_02"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_02"
+            ]
+        },
+        "e4": {
+            "from": "n3",
+            "to": "n6",
+            "function": {
+                "target": "n6",
+                "inputs": [
+                    "n3"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_03"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_03"
+            ]
+        },
+        "e5": {
+            "from": "n4",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": [
+                    "n4"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_04"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_04"
+            ]
+        },
+        "e6": {
+            "from": "n5",
+            "to": "n7",
+            "function": {
+                "target": "n7",
+                "inputs": [
+                    "n5"
+                ],
+                "function_type": "sigmoid",
+                "parameters": {
+                    "weights": [
+                        0.8
+                    ],
+                    "bias": -0.2
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_05"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_05"
+            ]
+        },
+        "e7": {
+            "from": "n6",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": [
+                    "n6"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "less"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_06"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_06"
+            ]
+        },
+        "e8": {
+            "from": "n7",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": [
+                    "n7"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_07"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_07"
+            ]
+        },
+        "e9": {
+            "from": "n8",
+            "to": "n9",
+            "function": {
+                "target": "n9",
+                "inputs": [
+                    "n8"
+                ],
+                "function_type": "threshold",
+                "parameters": {
+                    "threshold": 0.6,
+                    "direction": "greater"
+                },
+                "noise_std": 0.1,
+                "support_qas": [
+                    "qa_08"
+                ],
+                "confidence": 0.9
+            },
+            "support_qas": [
+                "qa_08"
+            ]
+        }
+    },
+    "qas": [
+        {
+            "qa_id": "qa_01",
+            "question": "How do you feel about the potential impact of upzoning on your rent affordability?",
+            "answer": "I'm concerned that upzoning could initially increase my rent, but in the long term, it might make housing more affordable.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n1",
+                    "to": "n6",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If upzoning leads to a significant increase in new housing, then my rent might become more affordable."
+            }
+        },
+        {
+            "qa_id": "qa_02",
+            "question": "Do you think upzoning will affect property values in the neighborhood?",
+            "answer": "I believe upzoning could lead to an initial dip in property values, but over time, it might stabilize or even increase as the area becomes more desirable.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n2",
+                    "to": "n8",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If upzoning is managed well and attracts more businesses and amenities, then property values might increase."
+            }
+        },
+        {
+            "qa_id": "qa_03",
+            "question": "How do you think upzoning will change the character of the neighborhood?",
+            "answer": "I worry that upzoning could change the character of the neighborhood, making it less unique and more crowded.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n3",
+                    "to": "n6",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.9,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If upzoning is done with careful planning and community input, then the neighborhood character might be preserved."
+            }
+        },
+        {
+            "qa_id": "qa_04",
+            "question": "What are your thoughts on the environmental impact of upzoning?",
+            "answer": "I think upzoning could have positive environmental impacts by reducing urban sprawl and promoting more sustainable living.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n4",
+                    "to": "n7",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If upzoning leads to more green spaces and public transportation, then the environmental impact could be very positive."
+            }
+        },
+        {
+            "qa_id": "qa_05",
+            "question": "Do you see any community benefits from upzoning?",
+            "answer": "Yes, I think upzoning can bring more diversity and economic opportunities to the community, which could be beneficial for everyone.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n5",
+                    "to": "n7",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If upzoning leads to more mixed-use developments and better public services, then the community benefits could be significant."
+            }
+        },
+        {
+            "qa_id": "qa_06",
+            "question": "How does the fear of change influence your stance on upzoning?",
+            "answer": "I do have some fear of change, especially if it means the neighborhood I love might become unrecognizable.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n6",
+                    "to": "n9",
+                    "direction": "negative"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If the changes are gradual and involve the community, then my fear of change might be reduced."
+            }
+        },
+        {
+            "qa_id": "qa_07",
+            "question": "How does the hope for improvement influence your stance on upzoning?",
+            "answer": "I am hopeful that upzoning could lead to improvements in the neighborhood, such as better infrastructure and more affordable housing.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n7",
+                    "to": "n9",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.8,
+                    "confidence_rating": 0.9
+                },
+                "counterfactual": "If upzoning leads to tangible improvements, then my support for it would increase."
+            }
+        },
+        {
+            "qa_id": "qa_08",
+            "question": "How do your economic self-interests influence your stance on upzoning?",
+            "answer": "Economically, I see the potential for both short-term and long-term gains, but I also worry about the initial costs and uncertainties.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n8",
+                    "to": "n9",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.7,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If upzoning leads to a more stable and growing economy, then my economic self-interests would align with supporting it."
+            }
+        },
+        {
+            "qa_id": "qa_09",
+            "question": "Overall, what is your stance on upzoning?",
+            "answer": "I am cautiously supportive of upzoning, as long as it is done thoughtfully and with community input. The potential benefits outweigh my concerns, but I still have some reservations.",
+            "parsed_belief": {
+                "belief_structure": {
+                    "from": "n9",
+                    "to": "n9",
+                    "direction": "positive"
+                },
+                "belief_strength": {
+                    "estimated_probability": 0.6,
+                    "confidence_rating": 0.8
+                },
+                "counterfactual": "If upzoning is implemented without proper planning and community involvement, then I would be against it."
+            }
+        }
+    ]
+}

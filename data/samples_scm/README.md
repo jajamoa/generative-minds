@@ -1012,4 +1012,3 @@ Explores how COVID-conscious people evaluate spaces through ventilation quality,
 - Strong emphasis on density management and outdoor access
 - Values hygiene infrastructure and space flexibility
 - Cognitive pattern: infection risk assessment and precautionary decision making
-
