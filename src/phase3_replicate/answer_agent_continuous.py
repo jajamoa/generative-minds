@@ -110,6 +110,7 @@ def simulate_graph(
                 if node == intervention_node:
                     prob_values[node] = intervention_prob
                 else:
+                    # NOTE: 0.1 for debugging, the actual value is 0.5
                     prob_values[node] = 0.1
             else:
                 parent_impacts = []
@@ -128,7 +129,7 @@ def simulate_graph(
                         i * w for i, w in zip(parent_impacts, weights)
                     )
 
-                    sensitivity = 5.0
+                    sensitivity = 10.0
                     prob = 1 / (1 + np.exp(-sensitivity * combined_impact))
                 else:
                     impact = parent_impacts[0]
