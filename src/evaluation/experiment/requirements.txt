@@ -1,0 +1,18 @@
+# Core dependencies
+numpy>=1.24.0
+scipy>=1.10.0
+pyyaml>=6.0.0
+pydantic>=2.0.0
+
+# Data analysis and visualization
+pandas>=2.0.0
+plotly>=5.13.0
+
+# Optional: for development and testing
+pytest>=7.0.0  # for testing
+black>=22.0.0  # for code formatting
+mypy>=1.0.0   # for type checking
+geopandas>=0.14.0 # for geojson handling
+
+# Progress bar
+tqdm>=4.66.0 

@@ -1,0 +1,24 @@
+# census_config.yaml
+
+year: 2023
+dataset: "acs5"
+
+variables:
+  population:
+    - code: "B11004_001E"
+      description: "Estimate!!Total:	Family Type by Presence and Age of Related Children Under 18 Years"
+    - code: "B11004_004E"
+      description: "Estimate!!Total:!!Married-couple family:!!With related children of the householder under 18 years:!!Under 6 years only	Family Type by Presence and Age of Related Children Under 18 Years"
+  mobility:
+    - code: "B08006_001E"
+      description: "Estimate!!Total:	Sex of Workers by Means of Transportation to Work"
+    - code: "B08006_034E"
+      description: "Estimate!!Total:!!Male:!!Worked from home	Sex of Workers by Means of Transportation to Work"
+
+Zipcode:
+  - code: "94102"
+    description: "San Francisco ZIP near downtown | https://www.unitedstateszipcodes.org/94102/"
+  - code: "94103"
+    description: "Another SF ZIP with mixed residential & commercial"
+  - code: "94104"
+    description: "Primarily a business area of SF"

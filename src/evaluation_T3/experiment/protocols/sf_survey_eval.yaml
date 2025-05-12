@@ -1,0 +1,20 @@
+name: "sf_survey_evaluation"
+description: "Evaluate agent opinions on San Francisco zoning proposals against survey data"
+
+model: "census"    # which model to use for simulation
+population: 50     # number of agents to simulate
+
+input:
+  proposals:       # list of input proposal files
+    - "sf_rezoning_proposal.json"
+  region: "san_francisco"
+
+evaluation:
+  ground_truth: "sf_prolific_survey/processed/response_reactions_mapped.json"
+  evaluators:  # list of evaluators to run
+    - "opinion_score"
+    - "reason_match"
+
+output:
+  save_intermediate: true
+  log_level: "INFO" 

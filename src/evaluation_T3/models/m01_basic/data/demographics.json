@@ -1,0 +1,131 @@
+{
+    "boston": {
+        "age_distribution": {
+            "18-24": 15,
+            "25-34": 25,
+            "35-44": 20,
+            "45-54": 15,
+            "55-64": 15,
+            "65-85": 10
+        },
+        "income_distribution": {
+            "low_income": 30,
+            "middle_income": 50,
+            "high_income": 20
+        },
+        "education_distribution": {
+            "high_school_or_below": 30,
+            "bachelor": 40,
+            "postgraduate": 30
+        },
+        "occupation_distribution": {
+            "blue_collar": 30,
+            "white_collar": 50,
+            "self_employed": 10,
+            "retired": 10
+        },
+        "gender_distribution": {
+            "male": 50,
+            "female": 50
+        },
+        "religion_distribution": {
+            "christianity": 40,
+            "islam": 20,
+            "non_religious": 30,
+            "other": 10
+        },
+        "race_distribution": {
+            "white": 50,
+            "black": 20,
+            "asian": 15,
+            "hispanic": 10,
+            "other": 5
+        }
+    },
+    "new_york": {
+        "age_distribution": {
+            "18-24": 15,
+            "25-34": 25,
+            "35-44": 20,
+            "45-54": 15,
+            "55-64": 15,
+            "65-85": 10
+        },
+        "income_distribution": {
+            "low_income": 30,
+            "middle_income": 50,
+            "high_income": 20
+        },
+        "education_distribution": {
+            "high_school_or_below": 30,
+            "bachelor": 40,
+            "postgraduate": 30
+        },
+        "occupation_distribution": {
+            "blue_collar": 30,
+            "white_collar": 50,
+            "self_employed": 10,
+            "retired": 10
+        },
+        "gender_distribution": {
+            "male": 50,
+            "female": 50
+        },
+        "religion_distribution": {
+            "christianity": 40,
+            "islam": 20,
+            "non_religious": 30,
+            "other": 10
+        },
+        "race_distribution": {
+            "white": 50,
+            "black": 20,
+            "asian": 15,
+            "hispanic": 10,
+            "other": 5
+        }
+    },
+    "default": {
+        "age_distribution": {
+            "18-24": 15,
+            "25-34": 25,
+            "35-44": 20,
+            "45-54": 15,
+            "55-64": 15,
+            "65-85": 10
+        },
+        "income_distribution": {
+            "low_income": 30,
+            "middle_income": 50,
+            "high_income": 20
+        },
+        "education_distribution": {
+            "high_school_or_below": 30,
+            "bachelor": 40,
+            "postgraduate": 30
+        },
+        "occupation_distribution": {
+            "blue_collar": 30,
+            "white_collar": 50,
+            "self_employed": 10,
+            "retired": 10
+        },
+        "gender_distribution": {
+            "male": 50,
+            "female": 50
+        },
+        "religion_distribution": {
+            "christianity": 40,
+            "islam": 20,
+            "non_religious": 30,
+            "other": 10
+        },
+        "race_distribution": {
+            "white": 50,
+            "black": 20,
+            "asian": 15,
+            "hispanic": 10,
+            "other": 5
+        }
+    }
+}

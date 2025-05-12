@@ -1,0 +1,31 @@
+name: sf_height_survey_census_mock
+model: census
+population: 100
+region: san_francisco
+
+# Input configuration - Using the same proposal file for all 9 scenarios to mock the experiment
+# Path must be relative to src/experiment/eval/data
+input:
+  proposals:
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+
+# Evaluation configuration - Using mapped reactions for ground truth comparison
+evaluation:
+  ground_truth: sf_prolific_survey/processed/response_reactions_mapped.json
+  evaluators:  # list of evaluators to run
+    - "opinion_score"
+    - "reason_match"
+
+# Model-specific configuration - Using proper path relative to project root
+model_config:
+  agent_data_file: src/models/m03_census/census_data/agents_100.json
+  temperature: 0.7
+  max_tokens: 800 

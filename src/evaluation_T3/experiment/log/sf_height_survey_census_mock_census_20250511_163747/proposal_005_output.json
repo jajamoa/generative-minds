@@ -1,0 +1,56 @@
+{
+  "mock_agent_000": {
+    "opinions": {
+      "2.3": 3
+    },
+    "reasons": {
+      "2.3": [
+        "F",
+        "G"
+      ]
+    }
+  },
+  "mock_agent_001": {
+    "opinions": {
+      "2.3": 7
+    },
+    "reasons": {
+      "2.3": [
+        "G",
+        "D"
+      ]
+    }
+  },
+  "mock_agent_002": {
+    "opinions": {
+      "2.3": 9
+    },
+    "reasons": {
+      "2.3": [
+        "J"
+      ]
+    }
+  },
+  "mock_agent_003": {
+    "opinions": {
+      "2.3": 8
+    },
+    "reasons": {
+      "2.3": [
+        "C",
+        "E"
+      ]
+    }
+  },
+  "mock_agent_004": {
+    "opinions": {
+      "2.3": 6
+    },
+    "reasons": {
+      "2.3": [
+        "H",
+        "E"
+      ]
+    }
+  }
+}

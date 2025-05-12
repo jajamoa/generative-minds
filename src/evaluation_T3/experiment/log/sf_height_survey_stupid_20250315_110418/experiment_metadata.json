@@ -1,0 +1,29 @@
+{
+  "name": "sf_height_survey",
+  "description": "Evaluate agent opinions on different building heights in SF neighborhoods",
+  "model": "stupid",
+  "population": 7,
+  "input": {
+    "proposals": [
+      "sample_proposal.json"
+    ]
+  },
+  "region": "san_francisco",
+  "evaluation": {
+    "metrics": [
+      {
+        "type": "group_distribution",
+        "ground_truth": "sample_group_distribution_gt.json"
+      }
+    ]
+  },
+  "output": {
+    "save_intermediate": true,
+    "log_level": "INFO"
+  },
+  "runtime": {
+    "start_time": "2025-03-15T11:04:18.565897",
+    "end_time": "2025-03-15T11:04:24.539018",
+    "duration_seconds": 5.973121
+  }
+}

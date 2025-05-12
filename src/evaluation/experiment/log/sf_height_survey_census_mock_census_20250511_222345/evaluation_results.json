@@ -1,0 +1,173 @@
+{
+  "proposal_006": {
+    "opinion_score": {
+      "mean_absolute_error": 2.277227722772277,
+      "wasserstein_similarity": 0.36200716845878134,
+      "region_errors": {
+        "3.1": 2.277227722772277
+      },
+      "region_wasserstein_similarity": {
+        "3.1": 0.0
+      },
+      "correlation": 0.06974663282154582
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.559040590405904,
+      "region_wasserstein": {
+        "3.1": 0.559040590405904
+      }
+    }
+  },
+  "proposal_003": {
+    "opinion_score": {
+      "mean_absolute_error": 2.4356435643564356,
+      "wasserstein_similarity": 0.35943060498220636,
+      "region_errors": {
+        "2.1": 2.4356435643564356
+      },
+      "region_wasserstein_similarity": {
+        "2.1": 0.0
+      },
+      "correlation": 0.007460344041297807
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5829725829725828,
+      "region_wasserstein": {
+        "2.1": 0.5829725829725828
+      }
+    }
+  },
+  "proposal_000": {
+    "opinion_score": {
+      "mean_absolute_error": 2.4158415841584158,
+      "wasserstein_similarity": 0.3594306049822064,
+      "region_errors": {
+        "1.1": 2.4158415841584158
+      },
+      "region_wasserstein_similarity": {
+        "1.1": 0.0
+      },
+      "correlation": -0.09912675325236683
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5849420849420849,
+      "region_wasserstein": {
+        "1.1": 0.5849420849420849
+      }
+    }
+  },
+  "proposal_005": {
+    "opinion_score": {
+      "mean_absolute_error": 2.762376237623762,
+      "wasserstein_similarity": 0.3796992481203008,
+      "region_errors": {
+        "2.3": 2.762376237623762
+      },
+      "region_wasserstein_similarity": {
+        "2.3": 0.0
+      },
+      "correlation": -0.0691690481577165
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5741354808147797,
+      "region_wasserstein": {
+        "2.3": 0.5741354808147797
+      }
+    }
+  },
+  "proposal_002": {
+    "opinion_score": {
+      "mean_absolute_error": 2.6435643564356437,
+      "wasserstein_similarity": 0.39763779527559057,
+      "region_errors": {
+        "1.3": 2.6435643564356437
+      },
+      "region_wasserstein_similarity": {
+        "1.3": 0.0
+      },
+      "correlation": -0.22980507678705012
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5714285714285714,
+      "region_wasserstein": {
+        "1.3": 0.5714285714285714
+      }
+    }
+  },
+  "proposal_007": {
+    "opinion_score": {
+      "mean_absolute_error": 2.0693069306930694,
+      "wasserstein_similarity": 0.49029126213592233,
+      "region_errors": {
+        "3.2": 2.0693069306930694
+      },
+      "region_wasserstein_similarity": {
+        "3.2": 0.0
+      },
+      "correlation": 0.021589384131095485
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5738636363636362,
+      "region_wasserstein": {
+        "3.2": 0.5738636363636362
+      }
+    }
+  },
+  "proposal_004": {
+    "opinion_score": {
+      "mean_absolute_error": 2.108910891089109,
+      "wasserstein_similarity": 0.42083333333333334,
+      "region_errors": {
+        "2.2": 2.108910891089109
+      },
+      "region_wasserstein_similarity": {
+        "2.2": 0.0
+      },
+      "correlation": 0.08298762564673276
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5832531280076997,
+      "region_wasserstein": {
+        "2.2": 0.5832531280076997
+      }
+    }
+  },
+  "proposal_001": {
+    "opinion_score": {
+      "mean_absolute_error": 2.4554455445544554,
+      "wasserstein_similarity": 0.40562248995983935,
+      "region_errors": {
+        "1.2": 2.4554455445544554
+      },
+      "region_wasserstein_similarity": {
+        "1.2": 0.0
+      },
+      "correlation": 0.007331667363914091
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.6000000000000001,
+      "region_wasserstein": {
+        "1.2": 0.6000000000000001
+      }
+    }
+  },
+  "proposal_008": {
+    "opinion_score": {
+      "mean_absolute_error": 2.6633663366336635,
+      "wasserstein_similarity": 0.43162393162393164,
+      "region_errors": {
+        "3.3": 2.6633663366336635
+      },
+      "region_wasserstein_similarity": {
+        "3.3": 0.0
+      },
+      "correlation": -0.24530485462728874
+    },
+    "reason_match": {
+      "wasserstein_similarity": 0.5574977000919964,
+      "region_wasserstein": {
+        "3.3": 0.5574977000919964
+      }
+    }
+  }
+}

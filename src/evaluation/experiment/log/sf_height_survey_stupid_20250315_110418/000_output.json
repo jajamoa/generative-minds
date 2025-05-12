@@ -1,0 +1,146 @@
+{
+  "summary": {
+    "support": 0,
+    "oppose": 7,
+    "neutral": 0
+  },
+  "comments": [
+    {
+      "id": 1,
+      "agent": {
+        "age": 33,
+        "income_level": "middle_income",
+        "education_level": "postgraduate",
+        "occupation": "other",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.81026,
+        "lng": -122.438531
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a resident living fairly close to the rezoning area, I am concerned about the impact a height increase to 65 feet could have on the neighborhood's overall aesthetics and property values."
+    },
+    {
+      "id": 2,
+      "agent": {
+        "age": 47,
+        "income_level": "middle_income",
+        "education_level": "high_school",
+        "occupation": "retired",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.789392,
+        "lng": -122.385487
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it may lead to increased traffic and noise in the area, impacting the quiet residential character."
+    },
+    {
+      "id": 3,
+      "agent": {
+        "age": 81,
+        "income_level": "middle_income",
+        "education_level": "bachelor",
+        "occupation": "white_collar",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.747293,
+        "lng": -122.481444
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As an elderly resident living nearby, I am concerned that the increased height limit could negatively impact the character of our neighborhood and potentially decrease property values."
+    },
+    {
+      "id": 4,
+      "agent": {
+        "age": 37,
+        "income_level": "low_income",
+        "education_level": "postgraduate",
+        "occupation": "retired",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.757492,
+        "lng": -122.433915
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a retired resident with a master's degree, I value the peaceful and low-rise character of our neighborhood. Increasing the height limit to 65 feet may disrupt the community's charm and potentially decrease property values."
+    },
+    {
+      "id": 5,
+      "agent": {
+        "age": 28,
+        "income_level": "low_income",
+        "education_level": "postgraduate",
+        "occupation": "retired",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.712351,
+        "lng": -122.473191
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a retired individual living nearby, I value the peace and character of our residential zone. Increasing the height limit may disrupt the community's aesthetic and potentially lower property values."
+    },
+    {
+      "id": 6,
+      "agent": {
+        "age": 50,
+        "income_level": "low_income",
+        "education_level": "high_school",
+        "occupation": "service",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.74452,
+        "lng": -122.427173
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I am against the rezoning proposal as it may increase traffic, overshadow surrounding buildings, and disrupt the current community character."
+    },
+    {
+      "id": 7,
+      "agent": {
+        "age": 39,
+        "income_level": "low_income",
+        "education_level": "some_college",
+        "occupation": "student",
+        "gender": "male"
+      },
+      "location": {
+        "lat": 37.760215,
+        "lng": -122.41821
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it could potentially impact the character of the residential area, increase traffic, and reduce the value of nearby properties."
+    }
+  ],
+  "key_themes": {
+    "support": [],
+    "oppose": [
+      "overshadowing",
+      "aesthetics",
+      "concern",
+      "traffic",
+      "property values",
+      "noise",
+      "residential character",
+      "property value",
+      "community character",
+      "neighborhood character",
+      "neighborhood impact",
+      "neighborhood charm",
+      "peace"
+    ]
+  }
+}

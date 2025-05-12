@@ -1,0 +1,31 @@
+name: sf_height_survey_census_mock
+model: twolayer
+population: 14
+region: san_francisco
+
+# Input configuration - Using the same proposal file for all 9 scenarios to mock the experiment
+# Path must be relative to src/experiment/eval/data
+input:
+  proposals:
+    - sf_prolific_survey/processed/mock_proposals/1.1.json
+    - sf_prolific_survey/processed/mock_proposals/1.2.json
+    - sf_prolific_survey/processed/mock_proposals/1.3.json
+    - sf_prolific_survey/processed/mock_proposals/2.1.json
+    - sf_prolific_survey/processed/mock_proposals/2.2.json
+    - sf_prolific_survey/processed/mock_proposals/2.3.json
+    - sf_prolific_survey/processed/mock_proposals/3.1.json
+    - sf_prolific_survey/processed/mock_proposals/3.2.json
+    - sf_prolific_survey/processed/mock_proposals/3.3.json
+
+# Evaluation configuration - Using mapped reactions for ground truth comparison
+evaluation:
+  ground_truth: sf_prolific_survey/processed/response_reactions_mapped.json
+  evaluators:  # list of evaluators to run
+    - "opinion_score"
+    - "reason_match"
+
+# Model-specific configuration - Using proper path relative to project root
+model_config:
+  agent_data_file: src/models/m03_census/census_data/agents_with_geo.json
+  temperature: 0.7
+  max_tokens: 800 

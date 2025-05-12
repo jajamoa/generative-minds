@@ -1,0 +1,143 @@
+{
+  "summary": {
+    "support": 0,
+    "oppose": 7,
+    "neutral": 0
+  },
+  "comments": [
+    {
+      "id": 1,
+      "agent": {
+        "age": 47,
+        "income_level": "low_income",
+        "education_level": "some_college",
+        "occupation": "student",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.744409,
+        "lng": -122.497713
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it could potentially lead to increased traffic, noise, and a change in the neighborhood's character."
+    },
+    {
+      "id": 2,
+      "agent": {
+        "age": 22,
+        "income_level": "low_income",
+        "education_level": "high_school",
+        "occupation": "white_collar",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.759965,
+        "lng": -122.461507
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal because the increased height limit could potentially disrupt the peaceful residential area and affect property values negatively."
+    },
+    {
+      "id": 3,
+      "agent": {
+        "age": 21,
+        "income_level": "low_income",
+        "education_level": "high_school",
+        "occupation": "student",
+        "gender": "male"
+      },
+      "location": {
+        "lat": 37.784479,
+        "lng": -122.398759
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it could potentially lead to increased traffic, noise, and overshadowing of nearby properties."
+    },
+    {
+      "id": 4,
+      "agent": {
+        "age": 52,
+        "income_level": "high_income",
+        "education_level": "postgraduate",
+        "occupation": "other",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.777403,
+        "lng": -122.498325
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a resident living nearby, I am concerned about the impact of taller buildings on the neighborhood's character and potential traffic congestion."
+    },
+    {
+      "id": 5,
+      "agent": {
+        "age": 25,
+        "income_level": "high_income",
+        "education_level": "high_school",
+        "occupation": "other",
+        "gender": "male"
+      },
+      "location": {
+        "lat": 37.797469,
+        "lng": -122.464726
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a young resident living 8 km away, I am concerned about the impact of taller buildings on the community character and property values."
+    },
+    {
+      "id": 6,
+      "agent": {
+        "age": 38,
+        "income_level": "low_income",
+        "education_level": "postgraduate",
+        "occupation": "service",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.751125,
+        "lng": -122.406893
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it could negatively impact the character of our community and potentially lead to increased traffic and congestion in the area."
+    },
+    {
+      "id": 7,
+      "agent": {
+        "age": 20,
+        "income_level": "middle_income",
+        "education_level": "postgraduate",
+        "occupation": "retired",
+        "gender": "other"
+      },
+      "location": {
+        "lat": 37.793544,
+        "lng": -122.472911
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it may increase traffic and noise near my residential area and potentially decrease property value."
+    }
+  ],
+  "key_themes": {
+    "support": [],
+    "oppose": [
+      "neighborhood character",
+      "traffic congestion",
+      "community character",
+      "noise",
+      "property value",
+      "distance",
+      "congestion",
+      "traffic",
+      "disruption",
+      "impact on community"
+    ]
+  }
+}

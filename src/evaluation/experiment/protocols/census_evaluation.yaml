@@ -1,0 +1,30 @@
+name: sf_height_survey_census
+model: census
+population: 100
+region: san_francisco
+
+# Input configuration
+input:
+  proposals:
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_100m.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_40.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_65.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_80.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_105.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_130.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_160.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_200.json
+    - eval/data/sf_rezoning_plan/processed/sf_proposal_2024_height_240.json
+
+# Evaluation configuration
+evaluation:
+  ground_truth: eval/data/sf_prolific_survey/processed/response_reactions_mapped.json
+  evaluators:
+    - opinion_accuracy
+    - reason_alignment
+
+# Model-specific configuration
+model_config:
+  agent_data_file: models/m03_census/census_data/agents_100.json
+  temperature: 0.7
+  max_tokens: 800 

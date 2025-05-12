@@ -1,0 +1,74 @@
+{
+  "distribution_by_group": {
+    "sample_group_distribution_gt": {
+      "ground_truth": {
+        "under_40": {
+          "support": 0.7,
+          "neutral": 0.2,
+          "oppose": 0.1
+        },
+        "over_40": {
+          "support": 0.3,
+          "neutral": 0.2,
+          "oppose": 0.5
+        },
+        "overall": {
+          "support": 0.5,
+          "neutral": 0.2,
+          "oppose": 0.3
+        }
+      },
+      "predicted": {
+        "under_40": {
+          "support": 0.0,
+          "neutral": 0.0,
+          "oppose": 1.0
+        },
+        "over_40": {
+          "support": 0.0,
+          "neutral": 0.0,
+          "oppose": 1.0
+        },
+        "overall": {
+          "support": 0.0,
+          "neutral": 0.0,
+          "oppose": 1.0
+        }
+      },
+      "group_metrics": {
+        "under_40": {
+          "js_divergence": 0.7249809149335342,
+          "chi_square": 0.8181818180483471,
+          "total_variation": 0.9
+        },
+        "over_40": {
+          "js_divergence": 0.46450140402245904,
+          "chi_square": 0.3333333332277778,
+          "total_variation": 0.5
+        }
+      },
+      "average_metrics": {
+        "avg_js_divergence": 0.5947411594779967,
+        "avg_chi_square": 0.5757575756380624,
+        "avg_total_variation": 0.7
+      },
+      "metadata": {
+        "type": "distribution_by_group",
+        "group_by": "agent.age",
+        "question": "Would you support building more housing in your neighborhood?",
+        "groups": {
+          "under_40": {
+            "min": 0,
+            "max": 40,
+            "sample_size": 50
+          },
+          "over_40": {
+            "min": 40,
+            "max": 999,
+            "sample_size": 50
+          }
+        }
+      }
+    }
+  }
+}
