@@ -71,6 +71,13 @@ class MotifBasedReconstructor:
 
     def _demographic_similarity(self, demo_of_motif: str, demo_of_target: str) -> float:
         """Calculate similarity between two demographics."""
+        NONSENSE_DEMOGRAPHICS = ["unknown", "other", "", " ", "none", None]
+        if (
+            demo_of_target in NONSENSE_DEMOGRAPHICS
+            or demo_of_motif in NONSENSE_DEMOGRAPHICS
+        ):
+            return 0.0
+
         if demo_of_motif == demo_of_target:
             return 1.0
 
@@ -496,175 +503,6 @@ class MotifBasedReconstructor:
 
         return frontier
 
-    def visualize_reconstruction(
-        self,
-        G: nx.DiGraph,
-        output_dir: str = "output/reconstruction",
-        filename: str = "reconstructed_graph.png",
-        show_labels: bool = True,
-    ) -> str:
-        """
-        Visualize the reconstructed graph with enhanced styling.
-
-        Args:
-            G: Reconstructed NetworkX DiGraph
-            output_dir: Directory to save visualization
-            filename: Output filename
-            show_labels: Whether to show node labels
-
-        Returns:
-            Path to saved visualization file
-        """
-        # Create output directory if it doesn't exist
-        os.makedirs(output_dir, exist_ok=True)
-
-        # Set up the figure
-        plt.figure(figsize=(15, 10))
-
-        # Calculate node positions using a spring layout
-        # Increase k for more spacing between nodes
-        pos = nx.spring_layout(G, k=1.5, iterations=50)
-
-        # Calculate node properties for visualization
-        node_sizes = []
-        node_colors = []
-
-        for node in G.nodes():
-            # Size based on degree centrality
-            degree = G.in_degree(node) + G.out_degree(node)
-            node_sizes.append(2000 + (degree * 500))
-
-            # Color based on node type
-            if node == "upzoning_stance":
-                node_colors.append("lightcoral")  # Seed node
-            elif G.in_degree(node) == 0:
-                node_colors.append("lightblue")  # Source nodes
-            elif G.out_degree(node) == 0:
-                node_colors.append("lightgreen")  # Sink nodes
-            else:
-                node_colors.append("lightyellow")  # Intermediate nodes
-
-        # Draw nodes
-        nx.draw_networkx_nodes(
-            G,
-            pos,
-            node_size=node_sizes,
-            node_color=node_colors,
-            edgecolors="gray",
-            linewidths=2,
-            alpha=0.8,
-        )
-
-        # Draw edges with arrows
-        nx.draw_networkx_edges(
-            G, pos, edge_color="gray", arrows=True, arrowsize=20, width=2, alpha=0.6
-        )
-
-        # Add labels if requested
-        if show_labels:
-            # Create custom labels with line breaks
-            labels = {}
-            for node in G.nodes():
-                label = G.nodes[node].get("label", str(node))
-                # Break long labels
-                if len(label) > 20:
-                    words = label.split()
-                    new_label = ""
-                    line = ""
-                    for word in words:
-                        if len(line + " " + word) > 20:
-                            new_label += line + "\n"
-                            line = word
-                        else:
-                            line += " " + word if line else word
-                    new_label += line
-                    labels[node] = new_label
-                else:
-                    labels[node] = label
-
-            nx.draw_networkx_labels(
-                G, pos, labels=labels, font_size=8, font_weight="bold"
-            )
-
-        # Add legend
-        legend_elements = [
-            Patch(facecolor="lightcoral", edgecolor="gray", label="Seed Node"),
-            Patch(facecolor="lightblue", edgecolor="gray", label="Source Nodes"),
-            Patch(facecolor="lightgreen", edgecolor="gray", label="Sink Nodes"),
-            Patch(
-                facecolor="lightyellow", edgecolor="gray", label="Intermediate Nodes"
-            ),
-            Line2D([0], [0], color="gray", lw=2, label="Causal Link"),
-        ]
-        plt.legend(handles=legend_elements, loc="upper left", bbox_to_anchor=(1, 1))
-
-        # Set title and adjust layout
-        plt.title("Reconstructed Causal Graph", pad=20, size=16)
-        plt.axis("off")
-        plt.tight_layout()
-
-        # Save the visualization
-        output_path = os.path.join(output_dir, filename)
-        plt.savefig(output_path, bbox_inches="tight", dpi=300)
-        plt.close()
-
-        return output_path
-
-    def visualize_reconstruction_process(
-        self,
-        seed_node: str,
-        max_iterations: int = 100,
-        output_dir: str = "output/reconstruction_process",
-    ) -> List[str]:
-        """
-        Visualize the step-by-step reconstruction process.
-
-        Args:
-            seed_node: Starting node
-            max_iterations: Maximum number of iterations
-            output_dir: Directory to save visualizations
-
-        Returns:
-            List of paths to saved visualization files
-        """
-        # Create output directory
-        os.makedirs(output_dir, exist_ok=True)
-
-        # Initialize graph
-        G = nx.DiGraph()
-        G.add_node(seed_node, label=seed_node)
-
-        covered_nodes = {seed_node}
-        frontier = {seed_node}
-        visualization_files = []
-
-        iteration = 0
-        while frontier and iteration < max_iterations:
-            iteration += 1
-
-            # Find and add best motif (same as before)
-            best_motif = None
-            best_score = -1
-            best_frontier_node = None
-
-            for f_node in frontier:
-                candidates = self.find_motif_candidates(f_node, covered_nodes, G)
-                if candidates and candidates[0][1] > best_score:
-                    best_motif = candidates[0][0]
-                    best_score = candidates[0][1]
-                    best_frontier_node = f_node
-
-            if best_motif is None:
-                break
-
-            # Integrate motif
-            self._integrate_motif(G, best_motif, best_frontier_node, covered_nodes)
-
-            # Update frontier
-            frontier = self.update_frontier(G, covered_nodes)
-
-        return visualization_files
-
     def save_as_json(
         self, G: nx.DiGraph, output_dir: str, filename: str = "reconstructed_graph.json"
     ) -> str:
@@ -840,28 +678,6 @@ def main(args):
 
     # Create visualizations
     print("\nGenerating visualizations...")
-
-    # Single visualization of final graph
-    final_viz_path = reconstructor.visualize_reconstruction(
-        reconstructed_graph,
-        output_dir=args.output_dir,
-        filename="final_reconstruction.png",
-    )
-    print(f"Final visualization saved to: {final_viz_path}")
-
-    # Step-by-step visualization of the process
-    process_viz_paths = reconstructor.visualize_reconstruction_process(
-        args.seed_node,
-        max_iterations=args.max_iterations,
-        output_dir=args.output_dir,
-    )
-
-    if len(process_viz_paths) > 0:
-        print(
-            f"Process visualization steps saved to: {os.path.dirname(process_viz_paths[0])}"
-        )
-    else:
-        print("No step-by-step visualizations generated")
 
     # Save graph as JSON
     json_path = reconstructor.save_as_json(reconstructed_graph, args.output_dir)
