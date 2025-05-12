@@ -141,6 +141,45 @@ class MotifLibrary:
         
         return G
     
+
+    def get_demographic_statistics(samples_dir: str) -> dict:
+        demographic_stats = {}
+        total_samples = 0
+        
+        for filename in os.listdir(samples_dir):
+            if filename.endswith('.json'):
+                file_path = os.path.join(samples_dir, filename)
+                try:
+                    with open(file_path, 'r') as f:
+                        data = json.load(f)
+                    
+                    metadata = data.get("metadata", {})
+                    demographic = metadata.get("perspective", "unknown")
+                    
+                    if demographic not in demographic_stats:
+                        demographic_stats[demographic] = {
+                            "count": 0,
+                            "samples": []
+                        }
+                    
+                    demographic_stats[demographic]["count"] += 1
+                    demographic_stats[demographic]["samples"].append(filename)
+                    total_samples += 1
+                    
+                except Exception as e:
+                    print(f"Error reading {filename}: {e}")
+        
+        for demo in demographic_stats:
+            demographic_stats[demo]["percentage"] = (
+                demographic_stats[demo]["count"] / total_samples * 100
+            )
+        
+        return {
+            "distribution": demographic_stats,
+            "total_samples": total_samples,
+            "unique_demographics": list(demographic_stats.keys())
+        }
+    
     def extract_topological_motifs(self, G, motif_types=None, sample_id=None):
         """
         Extract motifs from a graph using topology-based analysis with demographic tracking.
