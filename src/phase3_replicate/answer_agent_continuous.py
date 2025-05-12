@@ -44,6 +44,7 @@ def load_and_build_dag(json_file: str) -> tuple[dict, dict]:
         dag[target]["parents"].append((source, modifier))
         dag[source]["children"].append((target, modifier))
 
+    print(f"DEBUG: DAG: {dag}")
     return dag, node_labels
 
 
@@ -173,10 +174,15 @@ def process_question_and_sample(
     # Create reverse mapping (label to node_id)
     label_to_id = {label: node_id for node_id, label in node_labels.items()}
 
-    # TODO: Implement actual extraction
-    node_label = "building_height_increase"
-    prob = 0.9
-    explanation = "BLABLABLA"
+    # # TODO: Implement actual extraction
+    # node_label = "building_height_increase"
+    # prob = 0.9
+    # explanation = "BLABLABLA"
+
+    intervention = extractor.extract_intervention(dag, question)
+    if not intervention:
+        raise ValueError("Could not determine intervention from question")
+    node_label, prob, explanation = intervention
 
     # Get node ID for the intervention
     if node_label not in label_to_id:
