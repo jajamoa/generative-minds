@@ -48,6 +48,8 @@ class MotifLibrary:
         self.topological_motifs = {}  # Dictionary keyed by motif type and size
         self.semantic_motifs = {}     # Dictionary keyed by semantic group ID
         self.motif_metadata = {}      # Store metadata for each motif group
+        self.motif_demographics = {}  # Store demographic info for each motif
+        self.demographic_distribution = {}  # Overall demographic distribution
         
         # Initialize semantic similarity engine
         self.similarity_engine = SemanticSimilarityEngine(use_wordnet=True)
@@ -139,13 +141,14 @@ class MotifLibrary:
         
         return G
     
-    def extract_topological_motifs(self, G, motif_types=None):
+    def extract_topological_motifs(self, G, motif_types=None, sample_id=None):
         """
-        Extract motifs from a graph using topology-based analysis.
+        Extract motifs from a graph using topology-based analysis with demographic tracking.
         
         Args:
             G: NetworkX DiGraph to analyze
             motif_types: List of motif types to search for (default: all)
+            sample_id: Identifier for the sample (for demographic tracking)
             
         Returns:
             Dictionary of found motifs grouped by type and size
@@ -154,6 +157,12 @@ class MotifLibrary:
             motif_types = list(self.motif_types.keys())
         
         topological_motifs = defaultdict(list)
+        
+        demographic = G.graph.get("metadata", {}).get("perspective", "unknown")
+        
+        if demographic not in self.demographic_distribution:
+            self.demographic_distribution[demographic] = 0
+        self.demographic_distribution[demographic] += 1
         
         # Step 1: Track central nodes of each motif type
         # We only track center nodes, not all nodes in motifs
@@ -217,6 +226,11 @@ class MotifLibrary:
                         
                         # Extract the subgraph
                         subgraph = G.subgraph(nodes).copy()
+                        
+                        # Add demographic information to the subgraph
+                        subgraph.graph["demographic"] = demographic
+                        subgraph.graph["sample_id"] = sample_id
+                        
                         subgraphs.append(subgraph)
                         
                         # Mark central node as processed for future fork patterns
@@ -233,6 +247,11 @@ class MotifLibrary:
                         
                         # Extract the subgraph
                         subgraph = G.subgraph(nodes).copy()
+                        
+                        # Add demographic information to the subgraph
+                        subgraph.graph["demographic"] = demographic
+                        subgraph.graph["sample_id"] = sample_id
+                        
                         subgraphs.append(subgraph)
                         
                         # Mark central node as processed for future collider patterns
@@ -242,6 +261,11 @@ class MotifLibrary:
                         # For chains, we only accept size 3
                         if len(nodes) == 3:
                             subgraph = G.subgraph(nodes).copy()
+                            
+                            # Add demographic information to the subgraph
+                            subgraph.graph["demographic"] = demographic
+                            subgraph.graph["sample_id"] = sample_id
+                            
                             subgraphs.append(subgraph)
                     
                     match_count += 1
@@ -254,6 +278,20 @@ class MotifLibrary:
                     key = f"{motif_type}_size_{size}"
                     topological_motifs[key] = subgraphs
                     print(f"  Found {len(subgraphs)} instances of {key}")
+                    
+                    # 记录每个motif的demographic信息
+                    full_key = f"{sample_id}_{key}" if sample_id else key
+                    if full_key not in self.motif_demographics:
+                        self.motif_demographics[full_key] = []
+                    
+                    # 为每个subgraph记录demographic
+                    for subgraph in subgraphs:
+                        self.motif_demographics[full_key].append({
+                            "demographic": demographic,
+                            "sample_id": sample_id,
+                            "motif_type": motif_type,
+                            "size": size
+                        })
         
         # Remove empty entries
         topological_motifs = {k: v for k, v in topological_motifs.items() if v}
