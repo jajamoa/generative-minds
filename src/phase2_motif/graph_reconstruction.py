@@ -17,6 +17,7 @@ from matplotlib.patches import Patch
 from matplotlib.lines import Line2D
 import argparse
 import json
+from motif_library import MotifLibrary, get_demographic_statistics
 
 
 class MotifBasedReconstructor:
@@ -25,6 +26,8 @@ class MotifBasedReconstructor:
         motif_library: MotifLibrary,
         similarity_threshold: float = 0.4,
         node_merge_threshold: float = 0.8,
+        target_demographic: str = None,
+        demographic_weight: float = 0.3,
     ):
         """
         Initialize the reconstructor.
@@ -38,6 +41,54 @@ class MotifBasedReconstructor:
         self.similarity_threshold = similarity_threshold
         self.node_merge_threshold = node_merge_threshold
         self.similarity_engine = SemanticSimilarityEngine(use_wordnet=True)
+        self.target_demographic = target_demographic
+        self.demographic_weight = demographic_weight
+        self.demographic_scores = self._calculate_demographic_scores()
+
+    def _calculate_demographic_scores(self):
+        """Calculate demographic similarity scores for all demographics."""
+        scores = {}
+        
+        # Get demographic distribution
+        total_samples = sum(self.motif_library.demographic_distribution.values())
+        if total_samples == 0:
+            return scores
+        
+        # Calculate score for each demographic
+        for demo, count in self.motif_library.demographic_distribution.items():
+            # Base score: inverse weight based on frequency (rare demographics score higher)
+            rarity_score = 1.0 - (count / total_samples)
+            
+            # Similarity score: similarity to target demographic
+            if self.target_demographic:
+                similarity = self._demographic_similarity(demo, self.target_demographic)
+            else:
+                similarity = 0.5  # If no target demographic, assign medium score
+            
+            scores[demo] = 0.3 * rarity_score + 0.7 * similarity
+        
+        return scores
+
+    def _demographic_similarity(self, demo1: str, demo2: str) -> float:
+        """Calculate similarity between two demographics."""
+        if demo1 == demo2:
+            return 1.0
+        
+        # Simple similarity calculation, can be customized based on actual demographic categories
+        # For example, adjacent age groups have higher similarity
+        demographic_map = {
+            "young": ["middle_aged"],
+            "middle_aged": ["young", "elderly"],
+            "elderly": ["middle_aged"],
+            "urban": ["suburban"],
+            "suburban": ["urban", "rural"],
+            "rural": ["suburban"],
+        }
+        
+        if demo1 in demographic_map and demo2 in demographic_map[demo1]:
+            return 0.6
+        
+        return 0.2  # Default low similarity
 
     def find_motif_candidates(
         self, frontier_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
@@ -172,6 +223,7 @@ class MotifBasedReconstructor:
     ) -> nx.DiGraph:
         """
         Reconstruct causal graph with improved diversity and node merging.
+        Also tracks demographic diversity.
         """
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
@@ -179,6 +231,9 @@ class MotifBasedReconstructor:
         covered_nodes = {target_node}
         frontier = {target_node}
         used_motif_types = set()
+        
+        # Initialize demographic tracking
+        self.used_demographics = set()
 
         iteration = 0
         while frontier and iteration < max_iterations:
@@ -186,17 +241,20 @@ class MotifBasedReconstructor:
             new_frontier = set()
 
             for f_node in frontier:
-                # Now candidates returns (motif, score, motif_node, group_key)
+                # Now candidates returns (motif, score, motif_node, group_key, demographic)
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
 
-                # Updated unpacking to include group_key
-                for motif, score, motif_node, group_key in candidates:
+                # Updated unpacking to include demographic - 这里是修复的地方
+                for motif, score, motif_node, group_key, demographic in candidates:
                     if score >= min_score:
                         motif_type = group_key.split("_")[0]
+                        
+                        # Consider both motif type and demographic diversity
                         if (
                             motif_type not in used_motif_types
+                            or demographic not in self.used_demographics
                             or len(used_motif_types) >= 3
                         ):
                             self._integrate_motif_reverse(
@@ -207,30 +265,33 @@ class MotifBasedReconstructor:
                             # Update frontier with new nodes
                             new_nodes = set(G.nodes()) - covered_nodes
                             new_frontier.update(new_nodes)
+                            
+                            # Only break inner loop if we added a motif
+                            break
 
-            frontier = new_frontier
+                frontier = new_frontier
 
-            # Early stopping if graph becomes too large
-            if len(G.nodes()) > 50:
-                break
+                # Early stopping if graph becomes too large
+                if len(G.nodes()) > 50:
+                    break
 
         return G
-
     def find_motif_candidates_reverse(
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
-    ) -> List[Tuple[nx.DiGraph, float, str, str]]:
+    ) -> List[Tuple[nx.DiGraph, float, str, str, str]]:
         """
-        Find candidate motifs where target node is the outcome.
+        Find candidate motifs where target node is the outcome, with demographic scoring.
         Enhanced to promote motif diversity and better coverage.
+        
+        Returns:
+            List of tuples: (motif, score, motif_node, group_key, demographic)
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
         used_motif_types = set()  # Track used motif types
 
         for group_key, motifs in self.motif_library.semantic_motifs.items():
-            motif_type = group_key.split("_")[
-                0
-            ]  # Extract base motif type (M1, M2.3, etc.)
+            motif_type = group_key.split("_")[0]  # Extract base motif type (M1, M2.3, etc.)
 
             for motif in motifs:
                 # Find outcome nodes (nodes with no outgoing edges)
@@ -256,17 +317,35 @@ class MotifBasedReconstructor:
                             diversity_bonus = (
                                 0.2 if motif_type not in used_motif_types else 0
                             )
-
-                            # Weighted combination of scores
+                            
+                            # Get motif's demographic information
+                            motif_demographic = motif.graph.get("demographic", "unknown")
+                            
+                            # Calculate demographic score
+                            demo_score = self.demographic_scores.get(motif_demographic, 0.5)
+                            
+                            # Add demographic diversity bonus
+                            demo_diversity_bonus = 0.0
+                            if hasattr(self, 'used_demographics'):
+                                if motif_demographic not in self.used_demographics:
+                                    demo_diversity_bonus = 0.1
+                            
+                            # Weighted combination of scores with demographic consideration
                             final_score = (
-                                0.4 * semantic_sim
-                                + 0.2 * structural_score
-                                + 0.2 * coverage_score
-                                + 0.2 * diversity_bonus
+                                (1 - self.demographic_weight) * (
+                                    0.4 * semantic_sim
+                                    + 0.2 * structural_score
+                                    + 0.2 * coverage_score
+                                    + 0.2 * diversity_bonus
+                                )
+                                + self.demographic_weight * (
+                                    0.8 * demo_score
+                                    + 0.2 * demo_diversity_bonus
+                                )
                             )
 
                             candidates.append(
-                                (motif, final_score, motif_node, group_key)
+                                (motif, final_score, motif_node, group_key, motif_demographic)
                             )
                             used_motif_types.add(motif_type)
 
@@ -276,14 +355,27 @@ class MotifBasedReconstructor:
         # Filter to ensure diverse motif types in top results
         diverse_candidates = []
         seen_types = set()
+        seen_demographics = set()
 
         for candidate in candidates:
             motif_type = candidate[3].split("_")[0]
-            if motif_type not in seen_types:
+            demographic = candidate[4]
+            
+            # Prioritize diversity in both motif type and demographic
+            if motif_type not in seen_types or demographic not in seen_demographics:
                 diverse_candidates.append(candidate)
                 seen_types.add(motif_type)
+                seen_demographics.add(demographic)
                 if len(diverse_candidates) >= 5:  # Limit to top 5 diverse motifs
                     break
+
+        # If we don't have enough diverse candidates, add the highest scoring ones
+        if len(diverse_candidates) < 5:
+            for candidate in candidates:
+                if candidate not in diverse_candidates:
+                    diverse_candidates.append(candidate)
+                    if len(diverse_candidates) >= 5:
+                        break
 
         return diverse_candidates
 
@@ -679,13 +771,49 @@ def main(args):
     Example usage of the improved motif-based reconstruction.
     """
     # Load motif library
-    library = MotifLibrary.load_library(args.motif_library)
+    # library = MotifLibrary.load_library(args.motif_library)
 
     # Create reconstructor with adjusted parameters
+    # reconstructor = MotifBasedReconstructor(
+    #     library,
+    #     similarity_threshold=0.3,  # Lower threshold to find more matches
+    #     node_merge_threshold=0.8,  # High threshold for merging to avoid false positives
+    # )
+    
+    """Use demographic-aware motif reconstruction."""
+    # First analyze demographic distribution
+    samples_dir = os.path.dirname(args.motif_library).replace("output", "")
+    demo_stats = get_demographic_statistics(samples_dir)
+    
+    print("Demographic Distribution:")
+    print("-" * 40)
+    for demo, info in demo_stats["distribution"].items():
+        print(f"{demo}: {info['count']} samples ({info['percentage']:.1f}%)")
+    print()
+    
+    # Load motif library
+    library = MotifLibrary.load_library(args.motif_library)
+    
+    # Select target demographic (can be obtained from command line arguments)
+    if hasattr(args, 'target_demographic'):
+        target_demographic = args.target_demographic
+    else:
+        # Default to using the most common demographic
+        most_common = max(
+            demo_stats["distribution"].items(),
+            key=lambda x: x[1]["count"]
+        )[0]
+        target_demographic = most_common
+    
+    print(f"Target demographic: {target_demographic}")
+    
+    # Create demographic-aware reconstructor
     reconstructor = MotifBasedReconstructor(
         library,
-        similarity_threshold=0.3,  # Lower threshold to find more matches
-        node_merge_threshold=0.8,  # High threshold for merging to avoid false positives
+        similarity_threshold=0.3,
+        node_merge_threshold=0.8,
+        target_demographic=target_demographic,
+        demographic_weight=0.3,  # 30% weight for demographic scoring
     )
 
     # Reconstruct graph from seed
@@ -742,6 +870,13 @@ if __name__ == "__main__":
     )
     args.add_argument(
         "--motif_library", type=str, default="data/samples/output/motif_library.json"
+    )
+    args.add_argument(
+        "--target_demographic", type=str, help="Target demographic for reconstruction"
+    )
+    args.add_argument(
+        "--demographic_weight", type=float, default=0.3,
+        help="Weight for demographic scoring (0-1)"
     )
     args = args.parse_args()
     main(args)

@@ -4,7 +4,7 @@
       "id": "upzoning_stance",
       "label": "upzoning_stance",
       "type": "concept",
-      "in_degree": 6,
+      "in_degree": 4,
       "out_degree": 0
     },
     "n2": {
@@ -12,7 +12,7 @@
       "label": "building height increase",
       "type": "concept",
       "in_degree": 0,
-      "out_degree": 2
+      "out_degree": 1
     },
     "n3": {
       "id": "n3",
@@ -25,7 +25,7 @@
       "id": "n4",
       "label": "family health",
       "type": "concept",
-      "in_degree": 1,
+      "in_degree": 0,
       "out_degree": 1
     },
     "n5": {
@@ -34,34 +34,6 @@
       "type": "concept",
       "in_degree": 0,
       "out_degree": 1
-    },
-    "n6": {
-      "id": "n6",
-      "label": "property value",
-      "type": "concept",
-      "in_degree": 1,
-      "out_degree": 1
-    },
-    "n7": {
-      "id": "n7",
-      "label": "childhood obesity",
-      "type": "concept",
-      "in_degree": 0,
-      "out_degree": 4
-    },
-    "n8": {
-      "id": "n8",
-      "label": "quality of life",
-      "type": "concept",
-      "in_degree": 1,
-      "out_degree": 0
-    },
-    "n9": {
-      "id": "n9",
-      "label": "community diversity",
-      "type": "concept",
-      "in_degree": 1,
-      "out_degree": 0
     }
   },
   "edges": {
@@ -73,62 +45,26 @@
     },
     "e1": {
       "id": "e1",
-      "source": "n2",
-      "target": "n6",
+      "source": "n3",
+      "target": "upzoning_stance",
       "type": "causal"
     },
     "e2": {
       "id": "e2",
-      "source": "n3",
+      "source": "n4",
       "target": "upzoning_stance",
       "type": "causal"
     },
     "e3": {
       "id": "e3",
-      "source": "n4",
-      "target": "upzoning_stance",
-      "type": "causal"
-    },
-    "e4": {
-      "id": "e4",
       "source": "n5",
       "target": "upzoning_stance",
-      "type": "causal"
-    },
-    "e5": {
-      "id": "e5",
-      "source": "n6",
-      "target": "upzoning_stance",
-      "type": "causal"
-    },
-    "e6": {
-      "id": "e6",
-      "source": "n7",
-      "target": "n4",
-      "type": "causal"
-    },
-    "e7": {
-      "id": "e7",
-      "source": "n7",
-      "target": "n8",
-      "type": "causal"
-    },
-    "e8": {
-      "id": "e8",
-      "source": "n7",
-      "target": "upzoning_stance",
-      "type": "causal"
-    },
-    "e9": {
-      "id": "e9",
-      "source": "n7",
-      "target": "n9",
       "type": "causal"
     }
   },
   "metadata": {
     "description": "Reconstructed causal graph from motifs",
-    "node_count": 9,
-    "edge_count": 10
+    "node_count": 5,
+    "edge_count": 4
   }
 }
