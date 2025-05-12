@@ -1,0 +1,22 @@
+name: "sf_height_survey"
+description: "Evaluate agent opinions on building heights in SF"
+
+# Model configuration
+model: "census"       # Model options: census, twolayer, stupid, basic
+population: 30        # Number of agents to simulate
+
+# Input data
+input:
+  proposals:
+    - "samples/sample_proposal.json"  # Path relative to data directory
+
+# Evaluation settings
+evaluation:
+  ground_truth: "sf_prolific_survey/processed/survey_responses.json"
+  evaluators:
+    - "opinion_score"  # Corresponds to OpinionScoreEvaluator in evaluators/survey_evaluator.py
+    - "reason_match"   # Corresponds to ReasonMatchEvaluator in evaluators/survey_evaluator.py
+
+# Output settings
+output:
+  log_level: "INFO" 

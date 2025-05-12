@@ -1,0 +1,17 @@
+description: Evaluate agent opinions on different building heights in SF neighborhoods
+evaluation:
+  metrics:
+  - ground_truth: sample_group_distribution_gt.json
+    type: group_distribution
+  - ground_truth: sample_individual_gt.json
+    type: individual_match
+input:
+  proposals:
+  - sample_proposal.json
+model: stupid
+name: sf_height_survey
+output:
+  log_level: INFO
+  save_intermediate: true
+population: 2
+region: san_francisco

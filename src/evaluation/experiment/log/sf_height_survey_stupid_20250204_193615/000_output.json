@@ -1,0 +1,53 @@
+{
+  "summary": {
+    "support": 0,
+    "oppose": 100,
+    "neutral": 0
+  },
+  "comments": [
+    {
+      "id": 1,
+      "agent": {
+        "age": 34,
+        "income_level": "middle_income",
+        "education_level": "bachelor",
+        "occupation": "other",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.765343,
+        "lng": -122.479391
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "As a resident living nearby, I am concerned about the impact of increased building height on the neighborhood's character and property values."
+    },
+    {
+      "id": 2,
+      "agent": {
+        "age": 79,
+        "income_level": "high_income",
+        "education_level": "high_school",
+        "occupation": "retired",
+        "gender": "female"
+      },
+      "location": {
+        "lat": 37.784107,
+        "lng": -122.408557
+      },
+      "cell_id": "10_15",
+      "opinion": "oppose",
+      "comment": "I oppose the rezoning proposal as it may affect the character of our residential area and potentially decrease property values."
+    }
+  ],
+  "key_themes": {
+    "support": [],
+    "oppose": [
+      "neighborhood character",
+      "community impact",
+      "property value",
+      "community character",
+      "residential area"
+    ]
+  }
+}

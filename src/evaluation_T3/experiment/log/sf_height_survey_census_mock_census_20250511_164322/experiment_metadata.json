@@ -1,0 +1,36 @@
+{
+  "name": "sf_height_survey_census_mock",
+  "model": "census",
+  "population": 11,
+  "region": "san_francisco",
+  "input": {
+    "proposals": [
+      "sf_prolific_survey/processed/mock_proposals/1.1.json",
+      "sf_prolific_survey/processed/mock_proposals/1.2.json",
+      "sf_prolific_survey/processed/mock_proposals/1.3.json",
+      "sf_prolific_survey/processed/mock_proposals/2.1.json",
+      "sf_prolific_survey/processed/mock_proposals/2.2.json",
+      "sf_prolific_survey/processed/mock_proposals/2.3.json",
+      "sf_prolific_survey/processed/mock_proposals/3.1.json",
+      "sf_prolific_survey/processed/mock_proposals/3.2.json",
+      "sf_prolific_survey/processed/mock_proposals/3.3.json"
+    ]
+  },
+  "evaluation": {
+    "ground_truth": "sf_prolific_survey/processed/SF_version2_5.4_responses_reactions_mapped.json",
+    "evaluators": [
+      "opinion_score",
+      "reason_match"
+    ]
+  },
+  "model_config": {
+    "agent_data_file": "/src/evaluation/models/m03_census/census_data/agents_with_geo.json",
+    "temperature": 0.7,
+    "max_tokens": 800
+  },
+  "runtime": {
+    "start_time": "2025-05-11T16:43:22.643931",
+    "end_time": "2025-05-11T16:43:22.733586",
+    "duration_seconds": 0.089655
+  }
+}

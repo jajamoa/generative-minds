@@ -1,0 +1,160 @@
+[
+    {
+        "id": 0,
+        "coordinates": {
+            "lat": 42.903643,
+            "lng": 115.873809
+        },
+        "agent": {
+            "age": 47,
+            "Geo Mobility": "Moved from abroad",
+            "householder type": "Renter occupied",
+            "Gross rent": "not computed",
+            "means of transportation": "Walked",
+            "income": "With income:!!$25,000 to $34,999",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    },
+    {
+        "id": 1,
+        "coordinates": {
+            "lat": 38.336428,
+            "lng": 101.929934
+        },
+        "agent": {
+            "age": 49,
+            "Geo Mobility": "Moved within same county",
+            "householder type": "Renter occupied",
+            "Gross rent": "not computed",
+            "means of transportation": "Walked",
+            "income": "With income:!!$65,000 to $74,999",
+            "occupation": "Production, transportation, and material moving occupations"
+        }
+    },
+    {
+        "id": 2,
+        "coordinates": {
+            "lat": 37.078564,
+            "lng": 108.873688
+        },
+        "agent": {
+            "age": 76,
+            "Geo Mobility": "Moved from different county within same state",
+            "householder type": "Owner occupied",
+            "means of transportation": "Worked from home",
+            "income": "With income:!!$75,000 or more",
+            "occupation": "Production, transportation, and material moving occupations"
+        }
+    },
+    {
+        "id": 3,
+        "coordinates": {
+            "lat": 30.374616,
+            "lng": 105.874301
+        },
+        "agent": {
+            "age": 33,
+            "Geo Mobility": "Moved from abroad",
+            "householder type": "Renter occupied",
+            "Gross rent": "20-24.9 percent",
+            "means of transportation": "Walked",
+            "income": "With income:!!$1 to $9,999 or loss",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    },
+    {
+        "id": 4,
+        "coordinates": {
+            "lat": 30.840232,
+            "lng": 118.842825
+        },
+        "agent": {
+            "age": 40,
+            "Geo Mobility": "Moved within same county",
+            "householder type": "Renter occupied",
+            "Gross rent": "30-34.9 percent",
+            "means of transportation": "Worked from home",
+            "income": "With income:!!$10,000 to $14,999",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    },
+    {
+        "id": 5,
+        "coordinates": {
+            "lat": 47.752912,
+            "lng": 103.94701
+        },
+        "agent": {
+            "age": 60,
+            "Geo Mobility": "Moved from different state",
+            "householder type": "Renter occupied",
+            "Gross rent": "not computed",
+            "means of transportation": "Public transportation (excluding taxicab)",
+            "income": "No income",
+            "occupation": "Sales and office occupations"
+        }
+    },
+    {
+        "id": 6,
+        "coordinates": {
+            "lat": 35.558184,
+            "lng": 107.468659
+        },
+        "agent": {
+            "age": 52,
+            "Geo Mobility": "Moved within same county",
+            "householder type": "Renter occupied",
+            "Gross rent": "not computed",
+            "means of transportation": "Worked from home",
+            "income": "With income:!!$75,000 or more",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    },
+    {
+        "id": 7,
+        "coordinates": {
+            "lat": 31.996919,
+            "lng": 103.922443
+        },
+        "agent": {
+            "age": 31,
+            "Geo Mobility": "Moved from abroad",
+            "householder type": "Renter occupied",
+            "Gross rent": "less than 20 percent",
+            "means of transportation": "Public transportation (excluding taxicab)",
+            "income": "With income:!!$35,000 to $49,999",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    },
+    {
+        "id": 8,
+        "coordinates": {
+            "lat": 49.802448,
+            "lng": 106.65052
+        },
+        "agent": {
+            "age": 37,
+            "Geo Mobility": "Moved from different county within same state",
+            "householder type": "Owner occupied",
+            "means of transportation": "Public transportation (excluding taxicab)",
+            "income": "With income:!!$75,000 or more",
+            "occupation": "Sales and office occupations"
+        }
+    },
+    {
+        "id": 9,
+        "coordinates": {
+            "lat": 43.167738,
+            "lng": 115.607731
+        },
+        "agent": {
+            "age": 29,
+            "Geo Mobility": "Moved from different state",
+            "householder type": "Renter occupied",
+            "Gross rent": "20-24.9 percent",
+            "means of transportation": "Worked from home",
+            "income": "With income:!!$75,000 or more",
+            "occupation": "Management, business, science, and arts occupations"
+        }
+    }
+]
