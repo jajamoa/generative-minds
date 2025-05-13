@@ -22,6 +22,7 @@ from models.m04_census_twolayer.model import CensusTwoLayer
 from models.m05_naive.model import NaiveBaseline
 from models.m06_transcript.model import Transcript
 from models.m08_CoT.model import CoT
+from models.m09_Reflexion.model import Reflexion
 from experiment.eval.utils.data_utils import DataManager, create_zoning_proposal
 from experiment.eval.evaluators import evaluate_experiment_dir
 
@@ -32,7 +33,8 @@ AVAILABLE_MODELS = {
     "twolayer": CensusTwoLayer,
     "naive": NaiveBaseline,
     "transcript": Transcript,
-    "CoT": CoT
+    "CoT": CoT,
+    "Reflexion": Reflexion
 }
 
 def get_project_root() -> Path:
