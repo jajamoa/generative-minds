@@ -293,213 +293,164 @@ class MotifBasedReconstructor:
         self, target_node: str, max_iterations: int = 100, min_score: float = 0.3
     ) -> nx.DiGraph:
         """
-        Reconstruct causal graph with improved diversity and node merging.
+        Two-phase reconstruction starting from upzoning_stance.
         """
+        print("Starting graph reconstruction...")
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
-
         covered_nodes = {target_node}
-        frontier = {target_node}  # 从目标节点开始
+
+        # Phase 1: Initial growth from target_node
+        print("Phase 1: Growing from target node...")
+        candidates = self.find_motif_candidates_reverse(target_node, covered_nodes, G)
+
+        # Sort by score and take top candidates
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        initial_motifs = candidates[:3]
+
+        print(f"Found {len(initial_motifs)} initial motifs to add")
+        for motif, score, motif_node, _, _ in initial_motifs:
+            self._integrate_motif_reverse(
+                G, motif, target_node, motif_node, covered_nodes
+            )
+
+        print(f"After Phase 1: {len(G.nodes())} nodes, {len(G.edges())} edges")
+
+        # Phase 2: Grow from other nodes
+        print("Phase 2: Growing from other nodes...")
+        frontier = set(G.nodes()) - {target_node}
         used_motif_types = set()
+        max_nodes = 15
 
         iteration = 0
-        while frontier and iteration < max_iterations:
+        while frontier and iteration < max_iterations and len(G.nodes()) < max_nodes:
             iteration += 1
+            print(f"Iteration {iteration}, Current frontier size: {len(frontier)}")
             new_frontier = set()
 
-            # handle each frontier node
-            for f_node in frontier:
-                # find candidate motifs
+            for f_node in list(frontier):
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
 
-                # handle each candidate motif
-                for motif, score, motif_node, group_key, demographic in candidates:
+                # Take best candidates
+                for motif, score, motif_node, group_key, _ in sorted(
+                    candidates, key=lambda x: x[1], reverse=True
+                )[:2]:
                     if score >= min_score:
-                        # get motif type
-                        motif_type = group_key.split("_")[0]
+                        # Check size limit
+                        new_nodes_count = len(set(motif.nodes()) - covered_nodes)
+                        if len(G.nodes()) + new_nodes_count > max_nodes:
+                            continue
 
-                        # check if should add this motif
-                        if (
-                            motif_type not in used_motif_types
-                            or len(used_motif_types) >= 3
-                        ):  # allow duplicate motif types
+                        # Integrate motif
+                        old_nodes = set(G.nodes())
+                        self._integrate_motif_reverse(
+                            G, motif, f_node, motif_node, covered_nodes
+                        )
 
-                            # integrate motif into graph
-                            old_nodes = set(G.nodes())
-                            self._integrate_motif_reverse(
-                                G, motif, f_node, covered_nodes
-                            )
+                        # Update frontier
+                        new_nodes = set(G.nodes()) - old_nodes
+                        new_frontier.update(
+                            node
+                            for node in new_nodes
+                            if node != target_node
+                            and G.in_degree(node)
+                            == 0  # Only add nodes that could accept incoming edges
+                        )
+                        break
 
-                            # update frontier
-                            new_nodes = set(G.nodes()) - old_nodes
-                            new_frontier.update(new_nodes)
-
-                            # update used motif types
-                            used_motif_types.add(motif_type)
-
-                            # only add one motif for each frontier node
-                            break
-
-            # update frontier to new discovered nodes
             frontier = new_frontier
+            print(
+                f"After iteration {iteration}: {len(G.nodes())} nodes, {len(G.edges())} edges"
+            )
 
-            # check graph size
-            if len(G.nodes()) > 50:  # limit graph size
-                break
+        print("Cleaning up stance node connections...")
+        # Remove any outgoing edges from stance node
+        outgoing_edges = list(G.out_edges(target_node))
+        if outgoing_edges:
+            print(
+                f"Removing {len(outgoing_edges)} invalid outgoing edges from {target_node}"
+            )
+            for source, target in outgoing_edges:
+                G.remove_edge(source, target)
+                # Try to reverse the edge direction if it makes sense
+                if not nx.has_path(G, target, target_node):
+                    G.add_edge(target, source, modifier=1.0)
 
-            # if no new frontier nodes, but graph is still small, try using other nodes as frontier
-            if not frontier and len(G.nodes()) < 10:
-                potential_nodes = [n for n in G.nodes() if G.in_degree(n) == 0]
-                frontier.update(potential_nodes)
+        # Verify one last time that all nodes have a path to target_node
+        for node in G.nodes():
+            if node != target_node and not nx.has_path(G, node, target_node):
+                G.add_edge(node, target_node, modifier=1.0)
 
+        print(f"Final graph: {len(G.nodes())} nodes, {len(G.edges())} edges")
+        print(f"Stance node ({target_node}) out degree: {G.out_degree(target_node)}")
         return G
 
     def find_motif_candidates_reverse(
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
     ) -> List[Tuple[nx.DiGraph, float, str, str, str]]:
         """
-        Find candidate motifs where target node is the outcome, with enhanced demographic scoring.
-
-        Args:
-            target_node: The node to extend from
-            covered_nodes: Set of nodes already in the graph
-            current_graph: Current state of the graph
-
-        Returns:
-            List of tuples: (motif, score, motif_node, group_key, demographic)
+        Find candidate motifs where target node is the outcome.
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
-        used_motif_types = set()
+
+        # Debug print
+        print(f"Finding candidates for target node: {target_label}")
 
         for group_key, motifs in self.motif_library.semantic_motifs.items():
-            motif_type = group_key.split("_")[0]
-
             for motif in motifs:
-                # Initialize motif_demographic here for each motif
-                motif_demographic = "unknown"
-
+                # For each node in the motif
                 for motif_node in motif.nodes():
-                    if motif.out_degree(motif_node) == 0:  # Find leaf nodes
-                        motif_label = motif.nodes[motif_node].get("label", "")
+                    motif_label = motif.nodes[motif_node].get("label", "")
 
-                        # Calculate semantic similarity
-                        semantic_sim = self.similarity_engine.node_similarity(
-                            motif_label, target_label
+                    # Calculate semantic similarity
+                    semantic_sim = self.similarity_engine.node_similarity(
+                        motif_label, target_label
+                    )
+
+                    if semantic_sim >= self.similarity_threshold:
+                        # If this is upzoning_stance, ensure it has no out-degree
+                        if "upzoning_stance" in motif_label.lower():
+                            if motif.out_degree(motif_node) > 0:
+                                continue
+
+                        # Calculate scores
+                        structural_score = self._calculate_structural_fit(
+                            motif, motif_node, current_graph, target_node
+                        )
+                        coverage_score = self._calculate_coverage_score(
+                            motif, covered_nodes
                         )
 
-                        if semantic_sim >= self.similarity_threshold:
-                            # Calculate base scores
-                            structural_score = self._calculate_structural_fit(
-                                motif, motif_node, current_graph, target_node
+                        # Calculate final score
+                        final_score = (
+                            0.4 * semantic_sim
+                            + 0.3 * structural_score
+                            + 0.3 * coverage_score
+                        )
+
+                        # Get demographic info
+                        motif_demographic = (
+                            motif.graph.get("demographic", "unknown")
+                            if hasattr(motif, "graph")
+                            else "unknown"
+                        )
+
+                        candidates.append(
+                            (
+                                motif,
+                                final_score,
+                                motif_node,
+                                group_key,
+                                motif_demographic,
                             )
-                            coverage_score = self._calculate_coverage_score(
-                                motif, covered_nodes
-                            )
-                            diversity_bonus = (
-                                0.2 if motif_type not in used_motif_types else 0
-                            )
+                        )
 
-                            # Initialize demographic scores
-                            demo_score = 0.5  # Default medium score
-                            demo_diversity_bonus = 0.0
-                            demo_relevance = 0.0
-
-                            # Calculate demographic scores if available
-                            if (
-                                hasattr(self, "demographic_scores")
-                                and self.demographic_scores
-                            ):
-                                if hasattr(motif, "graph"):
-                                    motif_demographic = motif.graph.get(
-                                        "demographic", "unknown"
-                                    )
-
-                                    # Get base demographic score
-                                    demo_score = self.demographic_scores.get(
-                                        motif_demographic, 0.5
-                                    )
-
-                                    # Calculate demographic diversity bonus
-                                    if hasattr(self, "used_demographics"):
-                                        if (
-                                            motif_demographic
-                                            not in self.used_demographics
-                                        ):
-                                            demo_diversity_bonus = 0.2
-
-                                    # Calculate demographic relevance if target exists
-                                    if self.target_demographic:
-                                        demo_relevance = self._demographic_similarity(
-                                            motif_demographic, self.target_demographic
-                                        )
-
-                            # Calculate base score (non-demographic factors)
-                            base_score = (
-                                0.4 * semantic_sim  # Semantic similarity
-                                + 0.3 * structural_score  # Structural fit
-                                + 0.2 * coverage_score  # Coverage
-                                + 0.1 * diversity_bonus  # Diversity bonus
-                            )
-
-                            # Calculate demographic score
-                            demo_combined_score = (
-                                0.5 * demo_score  # Base demographic score
-                                + 0.3 * demo_relevance  # Demographic relevance
-                                + 0.2 * demo_diversity_bonus  # Demographic diversity
-                            )
-
-                            # Calculate final score with demographic weight
-                            final_score = (
-                                (1 - self.demographic_weight) * base_score
-                                + self.demographic_weight * demo_combined_score
-                            )
-
-                            candidates.append(
-                                (
-                                    motif,
-                                    final_score,
-                                    motif_node,
-                                    group_key,
-                                    motif_demographic,
-                                )
-                            )
-                            used_motif_types.add(motif_type)
-
-        # Sort and filter candidates for diversity
-        candidates.sort(key=lambda x: x[1], reverse=True)
-        diverse_candidates = []
-        seen_types = set()
-        seen_demographics = set()
-
-        # First select high-scoring diverse candidates
-        for candidate in candidates:
-            motif_type = candidate[3].split("_")[0]
-            demographic = candidate[4]
-
-            # Ensure both motif type and demographic diversity
-            if (
-                motif_type not in seen_types or demographic not in seen_demographics
-            ) and candidate[1] >= self.similarity_threshold:
-                diverse_candidates.append(candidate)
-                seen_types.add(motif_type)
-                seen_demographics.add(demographic)
-                if len(diverse_candidates) >= 5:
-                    break
-
-        # Fill remaining slots with highest scoring candidates
-        if len(diverse_candidates) < 5:
-            remaining_candidates = [
-                c for c in candidates if c not in diverse_candidates
-            ]
-            remaining_candidates.sort(key=lambda x: x[1], reverse=True)
-            diverse_candidates.extend(
-                remaining_candidates[: 5 - len(diverse_candidates)]
-            )
-
-        return diverse_candidates
+        # Debug print
+        print(f"Found {len(candidates)} candidates")
+        return candidates
 
     def _calculate_structural_fit(
         self,
@@ -543,26 +494,44 @@ class MotifBasedReconstructor:
         G: nx.DiGraph,
         motif: nx.DiGraph,
         target_node: str,
+        motif_node: str,
         covered_nodes: Set[str],
     ) -> None:
         """
-        Integrate a motif into the graph with improved node merging and relationship preservation.
+        Integrate a motif into the graph while ensuring path connectivity to target node.
+        The target_node (upzoning_stance) should never have outgoing edges.
+
+        Args:
+            G: The growing graph
+            motif: The motif to integrate
+            target_node: The target node (usually upzoning_stance)
+            motif_node: The node in the motif that matches the target_node
+            covered_nodes: Set of already covered nodes
         """
+        # Create a copy of the motif to modify
+        motif_copy = motif.copy()
+
+        # Remove any edges in the motif where motif_node is the source
+        # This ensures we don't copy any outgoing edges from the target node
+        outgoing_edges = list(motif_copy.out_edges(motif_node))
+        for u, v in outgoing_edges:
+            motif_copy.remove_edge(u, v)
+
         node_mapping = {}
         node_mapping[target_node] = target_node
 
-        # handle all nodes first
-        for node in motif.nodes():
-            if node in node_mapping:
-                continue
+        # Step 1: First map the target node and its direct predecessors
+        target_predecessors = list(motif_copy.predecessors(motif_node))
+        for pred in target_predecessors:
+            new_label = motif_copy.nodes[pred].get("label", "")
 
-            new_label = motif.nodes[node].get("label", "")
-
-            # try to find a mergeable node
+            # Try to find mergeable node that has a path to target
             mergeable = None
             max_similarity = 0
 
             for existing_node in G.nodes():
+                if existing_node == target_node:  # Skip comparing with target node
+                    continue
                 existing_label = G.nodes[existing_node].get("label", "")
                 similarity = self.similarity_engine.node_similarity(
                     new_label, existing_label
@@ -576,30 +545,93 @@ class MotifBasedReconstructor:
                     mergeable = existing_node
 
             if mergeable:
-                # merge to existing node
+                node_mapping[pred] = mergeable
+            else:
+                new_node = f"n{len(G.nodes()) + 1}"
+                G.add_node(new_node, label=new_label)
+                node_mapping[pred] = new_node
+                # Add direct edge to target to ensure path exists
+                G.add_edge(new_node, target_node, modifier=1.0)
+
+        # Step 2: Map remaining nodes
+        remaining_nodes = [n for n in motif_copy.nodes() if n not in node_mapping]
+        for node in remaining_nodes:
+            new_label = motif_copy.nodes[node].get("label", "")
+
+            # Try to find mergeable node
+            mergeable = None
+            max_similarity = 0
+
+            for existing_node in G.nodes():
+                if existing_node == target_node:  # Skip comparing with target node
+                    continue
+                existing_label = G.nodes[existing_node].get("label", "")
+                similarity = self.similarity_engine.node_similarity(
+                    new_label, existing_label
+                )
+
+                if (
+                    similarity > max_similarity
+                    and similarity >= self.node_merge_threshold
+                ):
+                    max_similarity = similarity
+                    mergeable = existing_node
+
+            if mergeable:
                 node_mapping[node] = mergeable
             else:
-                # add as new node
                 new_node = f"n{len(G.nodes()) + 1}"
                 G.add_node(new_node, label=new_label)
                 node_mapping[node] = new_node
 
-        # add all edges
-        for u, v in motif.edges():
+        # Step 3: Add edges
+        for u, v in motif_copy.edges():
             mapped_u = node_mapping[u]
             mapped_v = node_mapping[v]
 
-            # check if creating a cycle
-            if not nx.has_path(G, mapped_v, mapped_u):
-                if not G.has_edge(mapped_u, mapped_v):
-                    # get edge attributes
-                    edge_attrs = motif.edges[u, v]
+            # Double check to never add edges where upzoning_stance is the source
+            if mapped_u == target_node:
+                continue
+
+            if not G.has_edge(mapped_u, mapped_v):
+                # Check if adding this edge would create a cycle
+                if not nx.has_path(G, mapped_v, mapped_u):
+                    # Get edge attributes
+                    edge_attrs = motif_copy.edges[u, v]
                     if "modifier" not in edge_attrs:
                         edge_attrs["modifier"] = 1.0
 
-                    # add edge and its attributes
+                    # Add the edge
                     G.add_edge(mapped_u, mapped_v, **edge_attrs)
 
+        # Step 4: Ensure all nodes have a path to target
+        for node in G.nodes():
+            if node != target_node and not nx.has_path(G, node, target_node):
+                # Find the closest node that has a path to target
+                best_intermediate = None
+                best_similarity = -1
+
+                for intermediate in G.nodes():
+                    if (
+                        intermediate != node
+                        and intermediate != target_node
+                        and nx.has_path(G, intermediate, target_node)
+                    ):
+                        similarity = self.similarity_engine.node_similarity(
+                            G.nodes[node].get("label", ""),
+                            G.nodes[intermediate].get("label", ""),
+                        )
+                        if similarity > best_similarity:
+                            best_similarity = similarity
+                            best_intermediate = intermediate
+
+                if best_intermediate:
+                    G.add_edge(node, best_intermediate, modifier=1.0)
+                else:
+                    # If no good intermediate found, connect directly to target
+                    G.add_edge(node, target_node, modifier=1.0)
+
+        # Update covered nodes
         covered_nodes.update(node_mapping.values())
 
     def update_frontier(self, G: nx.DiGraph, covered_nodes: Set[str]) -> Set[str]:
