@@ -340,23 +340,8 @@ class BayesianNetwork(Census):
         return normalized_contributions
 
     def reconstruct_graph(self) -> Dict:
-        """Reconstruct the graph from motif library using agent's complete demographics."""
+        """Reconstruct the graph from motif library."""
         try:
-            # Parse target demographic if it's a string (from json.dumps)
-            if isinstance(self.target_demographic, str):
-                try:
-                    agent_profile = json.loads(self.target_demographic)
-                except json.JSONDecodeError:
-                    agent_profile = {"type": self.target_demographic}
-            else:
-                agent_profile = self.target_demographic
-
-            print("\nUsing Agent Demographics:")
-            print("-" * 40)
-            for key, value in agent_profile.items():
-                print(f"{key}: {value}")
-            print()
-
             # Load motif library with better error handling
             try:
                 library = MotifLibrary.load_library(self.motif_library_name)
@@ -366,19 +351,17 @@ class BayesianNetwork(Census):
                     )
                     print("Creating empty motif library with default settings")
                     library = MotifLibrary()
-                    library.demographic_distribution = {str(agent_profile): 1.0}
             except Exception as e:
                 print(f"Error loading motif library: {str(e)}")
                 print("Creating empty motif library with default settings")
                 library = MotifLibrary()
-                library.demographic_distribution = {str(agent_profile): 1.0}
 
-            # Create reconstructor with agent's complete demographic profile
+            # Create reconstructor without demographic information
             reconstructor = MotifBasedReconstructor(
                 library,
                 similarity_threshold=getattr(self.config, "similarity_threshold", 0.3),
                 node_merge_threshold=getattr(self.config, "node_merge_threshold", 0.8),
-                target_demographic=agent_profile,  # input agent profile
+                target_demographic=self.target_demographic,
                 demographic_weight=self.demographic_weight,
             )
 
@@ -389,7 +372,6 @@ class BayesianNetwork(Census):
 
             print(f"\nReconstructed graph has {len(reconstructed_graph.nodes())} nodes")
             print(f"Reconstructed graph has {len(reconstructed_graph.edges())} edges")
-
             print(
                 "-------------------------- Graph Reconstruction Complete --------------------------"
             )
@@ -399,10 +381,9 @@ class BayesianNetwork(Census):
         except Exception as e:
             print(f"Error during graph reconstruction: {str(e)}")
             print("Creating minimal default graph")
-            dag = {"node_0": {"parents": [], "children": []}}
-            node_labels = {"node_0": self.seed_node}
-
-        return dag, node_labels
+            G = nx.DiGraph()
+            G.add_node(self.seed_node, label=self.seed_node)
+            return G
 
     def _graph_to_json(self, dag: Dict, node_labels: Dict) -> Dict[str, Any]:
         """Convert DAG to JSON format.
@@ -470,8 +451,8 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # # TODO: for debug, only use the first 2 agents
-        # for agent_data in agents_data[:2]:
+        # # TODO: for debug, only use the first 5 agents
+        # for agent_data in agents_data[:5]:
 
         # Process each agent
         for agent_data in agents_data:
@@ -490,6 +471,10 @@ class BayesianNetwork(Census):
                 dag, node_labels = self.load_graph(graph=graph)
                 graph_json = self._graph_to_json(dag, node_labels)
 
+                import pdb
+
+                pdb.set_trace()
+
                 # Extract intervention from proposal
                 node_label, intervention_prob, explanation, expected_effects = (
                     self.extractor.extract_intervention(
@@ -499,7 +484,6 @@ class BayesianNetwork(Census):
                 )
 
                 # Run simulations
-
                 # baseline
                 base_results = self.simulate_intervention(
                     dag=dag, node_labels=node_labels
@@ -542,9 +526,6 @@ class BayesianNetwork(Census):
                     "graph": graph_json,
                     "demographic": agent_profile,  # save the complete demographic information
                 }
-                # print("-------------------------------------")
-                # print(results)
-                # print("-------------------------------------")
 
             except Exception as e:
                 print(f"Error processing agent {agent_id}: {str(e)}")

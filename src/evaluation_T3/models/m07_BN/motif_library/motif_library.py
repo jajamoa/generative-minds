@@ -950,69 +950,47 @@ class MotifLibrary:
             return False
 
     @classmethod
-    def load_library(cls, file_path: str = "motif_library.json"):
-        """
-        Load a motif library from a file.
+    def load_library(cls, json_path: str) -> "MotifLibrary":
+        """Load motif library from JSON file."""
+        library = cls()
 
-        Args:
-            file_path: Path to the library file
-
-        Returns:
-            MotifLibrary instance
-        """
         try:
-            # Load JSON data
-            with open(file_path, "r") as f:
-                library_data = json.load(f)
+            with open(json_path, "r") as f:
+                data = json.load(f)
 
-            # Create a new library instance
-            library = cls(
-                min_motif_size=library_data.get("min_motif_size", 3),
-                max_motif_size=library_data.get("max_motif_size", 5),
-                min_semantic_similarity=library_data.get(
-                    "min_semantic_similarity", 0.4
-                ),
-            )
+            # Load basic parameters
+            library.min_motif_size = data.get("min_motif_size", 3)
+            library.max_motif_size = data.get("max_motif_size", 5)
+            library.min_semantic_similarity = data.get("min_semantic_similarity", 0.4)
 
-            # Restore library stats and metadata
-            library.stats = library_data.get("stats", {})
-            library.motif_metadata = library_data.get("motif_metadata", {})
-
-            # Restore semantic motifs by converting serialized data back to NetworkX graphs
-            for group_key, serialized_motifs in library_data.get(
-                "semantic_motifs", {}
-            ).items():
+            # Load semantic motifs and convert them to NetworkX graphs
+            semantic_motifs_data = data.get("semantic_motifs", {})
+            for group_key, motifs in semantic_motifs_data.items():
                 library.semantic_motifs[group_key] = []
-
-                for motif_data in serialized_motifs:
+                for motif_data in motifs:
                     G = nx.DiGraph()
 
                     # Add nodes with labels
-                    for node in motif_data.get("nodes", []):
-                        G.add_node(node)
+                    for node, label in motif_data.get("node_labels", {}).items():
+                        G.add_node(node, label=label)
 
                     # Add edges
                     for edge in motif_data.get("edges", []):
                         if len(edge) >= 2:
                             G.add_edge(edge[0], edge[1])
 
-                    # Add node labels
-                    for node, label in motif_data.get("node_labels", {}).items():
-                        if node in G.nodes():
-                            G.nodes[node]["label"] = label
-
                     library.semantic_motifs[group_key].append(G)
 
-            print(f"Motif library loaded from {file_path}")
             print(
-                f"Contains {len(library.semantic_motifs)} motif groups with {library.stats.get('total_motifs', 0)} total motifs"
+                f"Loaded {len(library.semantic_motifs)} motif groups with "
+                f"{sum(len(motifs) for motifs in library.semantic_motifs.values())} total motifs"
             )
 
+        except Exception as e:
+            print(f"Error loading motif library: {str(e)}")
             return library
 
-        except Exception as e:
-            print(f"Error loading motif library: {e}")
-            return None
+        return library
 
     def export_to_json(self, file_path):
         """
@@ -1047,9 +1025,6 @@ class MotifLibrary:
         except Exception as e:
             print(f"Error exporting motif library summary: {e}")
             return False
-
-
-# Helper functions for working with the motif library
 
 
 def load_graph_from_json(file_path):

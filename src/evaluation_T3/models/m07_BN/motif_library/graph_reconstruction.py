@@ -47,27 +47,35 @@ class MotifBasedReconstructor:
         self.demographic_scores = self._calculate_demographic_scores()
 
     def _calculate_demographic_scores(self):
-        """Calculate demographic similarity scores for all demographics."""
+        """Calculate demographic similarity scores with finer-grained feature matching."""
         scores = {}
 
-        # Get demographic distribution
-        total_samples = sum(self.motif_library.demographic_distribution.values())
-        if total_samples == 0:
+        # if no demographic information, return empty dict
+        if not self.motif_library.demographic_distribution:
             return scores
 
-        # Calculate score for each demographic
-        for demo, count in self.motif_library.demographic_distribution.items():
-            # Base score: inverse weight based on frequency
-            rarity_score = 1.0 - (count / total_samples)
+        # if no target demographic or format is wrong, return empty dict
+        if not self.target_demographic or not isinstance(self.target_demographic, dict):
+            return scores
 
-            # Similarity score: similarity to target demographic(s)
-            if self.target_demographic:
-                similarity = self._demographic_similarity(demo, self.target_demographic)
+        # get all features of target demographic
+        target_features = set()
+        for key, value in self.target_demographic.items():
+            if isinstance(value, (list, set)):
+                target_features.update(value)
             else:
-                similarity = 0.5  # if no target demographic, give medium score
+                target_features.add(str(value))
 
-            # consider rarity and similarity
-            scores[demo] = 0.3 * rarity_score + 0.7 * similarity
+        for demo, count in self.motif_library.demographic_distribution.items():
+            frequency_score = 1.0 - (
+                count / sum(self.motif_library.demographic_distribution.values())
+            )
+            demo_features = set(str(demo).split("_"))
+            matching_features = len(target_features.intersection(demo_features))
+            feature_score = matching_features / max(
+                len(target_features), len(demo_features)
+            )
+            scores[demo] = 0.3 * frequency_score + 0.7 * feature_score
 
         return scores
 
@@ -101,7 +109,9 @@ class MotifBasedReconstructor:
             # calculate similarity for each feature
             similarities = []
             for feature, value in key_features.items():
-                if feature in demo_of_motif:  # if motif's demographic contains this feature
+                if (
+                    feature in demo_of_motif
+                ):  # if motif's demographic contains this feature
                     if feature == "age":
                         # age difference calculation
                         try:
@@ -112,7 +122,9 @@ class MotifBasedReconstructor:
                                 max(0, 1 - age_diff / 50)
                             )  # 50 years difference considered completely different
                         except:
-                            similarities.append(0.5)  # if cannot compare, give medium score
+                            similarities.append(
+                                0.5
+                            )  # if cannot compare, give medium score
                     else:
                         # exact match for other features
                         similarities.append(1.0 if str(value) in demo_of_motif else 0.0)
@@ -282,57 +294,65 @@ class MotifBasedReconstructor:
     ) -> nx.DiGraph:
         """
         Reconstruct causal graph with improved diversity and node merging.
-        Also tracks demographic diversity.
         """
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
 
         covered_nodes = {target_node}
-        frontier = {target_node}
+        frontier = {target_node}  # 从目标节点开始
         used_motif_types = set()
-
-        # Initialize demographic tracking
-        self.used_demographics = set()
 
         iteration = 0
         while frontier and iteration < max_iterations:
             iteration += 1
             new_frontier = set()
 
+            # handle each frontier node
             for f_node in frontier:
-                # Now candidates returns (motif, score, motif_node, group_key, demographic)
+                # find candidate motifs
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
 
-                # Updated unpacking to include demographic - 这里是修复的地方
+                # handle each candidate motif
                 for motif, score, motif_node, group_key, demographic in candidates:
                     if score >= min_score:
+                        # get motif type
                         motif_type = group_key.split("_")[0]
 
-                        # Consider both motif type and demographic diversity
+                        # check if should add this motif
                         if (
                             motif_type not in used_motif_types
-                            or demographic not in self.used_demographics
                             or len(used_motif_types) >= 3
-                        ):
+                        ):  # allow duplicate motif types
+
+                            # integrate motif into graph
+                            old_nodes = set(G.nodes())
                             self._integrate_motif_reverse(
                                 G, motif, f_node, covered_nodes
                             )
-                            used_motif_types.add(motif_type)
 
-                            # Update frontier with new nodes
-                            new_nodes = set(G.nodes()) - covered_nodes
+                            # update frontier
+                            new_nodes = set(G.nodes()) - old_nodes
                             new_frontier.update(new_nodes)
 
-                            # Only break inner loop if we added a motif
+                            # update used motif types
+                            used_motif_types.add(motif_type)
+
+                            # only add one motif for each frontier node
                             break
 
-                frontier = new_frontier
+            # update frontier to new discovered nodes
+            frontier = new_frontier
 
-                # Early stopping if graph becomes too large
-                if len(G.nodes()) > 50:
-                    break
+            # check graph size
+            if len(G.nodes()) > 50:  # limit graph size
+                break
+
+            # if no new frontier nodes, but graph is still small, try using other nodes as frontier
+            if not frontier and len(G.nodes()) < 10:
+                potential_nodes = [n for n in G.nodes() if G.in_degree(n) == 0]
+                frontier.update(potential_nodes)
 
         return G
 
@@ -340,70 +360,101 @@ class MotifBasedReconstructor:
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
     ) -> List[Tuple[nx.DiGraph, float, str, str, str]]:
         """
-        Find candidate motifs where target node is the outcome, with demographic scoring.
-        Enhanced to promote motif diversity and better coverage.
+        Find candidate motifs where target node is the outcome, with enhanced demographic scoring.
+
+        Args:
+            target_node: The node to extend from
+            covered_nodes: Set of nodes already in the graph
+            current_graph: Current state of the graph
 
         Returns:
             List of tuples: (motif, score, motif_node, group_key, demographic)
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
-        used_motif_types = set()  # Track used motif types
+        used_motif_types = set()
 
         for group_key, motifs in self.motif_library.semantic_motifs.items():
-            motif_type = group_key.split("_")[
-                0
-            ]  # Extract base motif type (M1, M2.3, etc.)
+            motif_type = group_key.split("_")[0]
 
             for motif in motifs:
-                # Find outcome nodes (nodes with no outgoing edges)
+                # Initialize motif_demographic here for each motif
+                motif_demographic = "unknown"
+
                 for motif_node in motif.nodes():
-                    if motif.out_degree(motif_node) == 0:
+                    if motif.out_degree(motif_node) == 0:  # Find leaf nodes
                         motif_label = motif.nodes[motif_node].get("label", "")
 
-                        # Calculate comprehensive score
+                        # Calculate semantic similarity
                         semantic_sim = self.similarity_engine.node_similarity(
                             motif_label, target_label
                         )
 
                         if semantic_sim >= self.similarity_threshold:
-                            # Calculate additional scores
+                            # Calculate base scores
                             structural_score = self._calculate_structural_fit(
                                 motif, motif_node, current_graph, target_node
                             )
                             coverage_score = self._calculate_coverage_score(
                                 motif, covered_nodes
                             )
-
-                            # Add diversity bonus if motif type not used
                             diversity_bonus = (
                                 0.2 if motif_type not in used_motif_types else 0
                             )
 
-                            # Get motif's demographic information
-                            motif_demographic = motif.graph.get(
-                                "demographic", "unknown"
+                            # Initialize demographic scores
+                            demo_score = 0.5  # Default medium score
+                            demo_diversity_bonus = 0.0
+                            demo_relevance = 0.0
+
+                            # Calculate demographic scores if available
+                            if (
+                                hasattr(self, "demographic_scores")
+                                and self.demographic_scores
+                            ):
+                                if hasattr(motif, "graph"):
+                                    motif_demographic = motif.graph.get(
+                                        "demographic", "unknown"
+                                    )
+
+                                    # Get base demographic score
+                                    demo_score = self.demographic_scores.get(
+                                        motif_demographic, 0.5
+                                    )
+
+                                    # Calculate demographic diversity bonus
+                                    if hasattr(self, "used_demographics"):
+                                        if (
+                                            motif_demographic
+                                            not in self.used_demographics
+                                        ):
+                                            demo_diversity_bonus = 0.2
+
+                                    # Calculate demographic relevance if target exists
+                                    if self.target_demographic:
+                                        demo_relevance = self._demographic_similarity(
+                                            motif_demographic, self.target_demographic
+                                        )
+
+                            # Calculate base score (non-demographic factors)
+                            base_score = (
+                                0.4 * semantic_sim  # Semantic similarity
+                                + 0.3 * structural_score  # Structural fit
+                                + 0.2 * coverage_score  # Coverage
+                                + 0.1 * diversity_bonus  # Diversity bonus
                             )
 
                             # Calculate demographic score
-                            demo_score = self.demographic_scores.get(
-                                motif_demographic, 0.5
+                            demo_combined_score = (
+                                0.5 * demo_score  # Base demographic score
+                                + 0.3 * demo_relevance  # Demographic relevance
+                                + 0.2 * demo_diversity_bonus  # Demographic diversity
                             )
 
-                            # Add demographic diversity bonus
-                            demo_diversity_bonus = 0.0
-                            if hasattr(self, "used_demographics"):
-                                if motif_demographic not in self.used_demographics:
-                                    demo_diversity_bonus = 0.1
-
-                            # Weighted combination of scores with demographic consideration
-                            final_score = (1 - self.demographic_weight) * (
-                                0.4 * semantic_sim
-                                + 0.2 * structural_score
-                                + 0.2 * coverage_score
-                                + 0.2 * diversity_bonus
-                            ) + self.demographic_weight * (
-                                0.8 * demo_score + 0.2 * demo_diversity_bonus
+                            # Calculate final score with demographic weight
+                            final_score = (
+                                (1 - self.demographic_weight) * base_score
+                                + self.demographic_weight * demo_combined_score
                             )
 
                             candidates.append(
@@ -417,33 +468,36 @@ class MotifBasedReconstructor:
                             )
                             used_motif_types.add(motif_type)
 
-        # Sort by score but ensure diversity in top candidates
+        # Sort and filter candidates for diversity
         candidates.sort(key=lambda x: x[1], reverse=True)
-
-        # Filter to ensure diverse motif types in top results
         diverse_candidates = []
         seen_types = set()
         seen_demographics = set()
 
+        # First select high-scoring diverse candidates
         for candidate in candidates:
             motif_type = candidate[3].split("_")[0]
             demographic = candidate[4]
 
-            # Prioritize diversity in both motif type and demographic
-            if motif_type not in seen_types or demographic not in seen_demographics:
+            # Ensure both motif type and demographic diversity
+            if (
+                motif_type not in seen_types or demographic not in seen_demographics
+            ) and candidate[1] >= self.similarity_threshold:
                 diverse_candidates.append(candidate)
                 seen_types.add(motif_type)
                 seen_demographics.add(demographic)
-                if len(diverse_candidates) >= 5:  # Limit to top 5 diverse motifs
+                if len(diverse_candidates) >= 5:
                     break
 
-        # If we don't have enough diverse candidates, add the highest scoring ones
+        # Fill remaining slots with highest scoring candidates
         if len(diverse_candidates) < 5:
-            for candidate in candidates:
-                if candidate not in diverse_candidates:
-                    diverse_candidates.append(candidate)
-                    if len(diverse_candidates) >= 5:
-                        break
+            remaining_candidates = [
+                c for c in candidates if c not in diverse_candidates
+            ]
+            remaining_candidates.sort(key=lambda x: x[1], reverse=True)
+            diverse_candidates.extend(
+                remaining_candidates[: 5 - len(diverse_candidates)]
+            )
 
         return diverse_candidates
 
@@ -497,46 +551,54 @@ class MotifBasedReconstructor:
         node_mapping = {}
         node_mapping[target_node] = target_node
 
-        # Track node labels for duplicate detection
-        label_to_node = {G.nodes[n].get("label", ""): n for n in G.nodes()}
-
-        # First add all nodes with improved merging
+        # handle all nodes first
         for node in motif.nodes():
             if node in node_mapping:
                 continue
 
             new_label = motif.nodes[node].get("label", "")
 
-            # First check exact label matches
-            if new_label in label_to_node:
-                node_mapping[node] = label_to_node[new_label]
-                continue
+            # try to find a mergeable node
+            mergeable = None
+            max_similarity = 0
 
-            # Then check semantic similarity
-            mergeable_node = self._find_mergeable_node(G, new_label)
+            for existing_node in G.nodes():
+                existing_label = G.nodes[existing_node].get("label", "")
+                similarity = self.similarity_engine.node_similarity(
+                    new_label, existing_label
+                )
 
-            if mergeable_node:
-                node_mapping[node] = mergeable_node
-                label_to_node[new_label] = mergeable_node
+                if (
+                    similarity > max_similarity
+                    and similarity >= self.node_merge_threshold
+                ):
+                    max_similarity = similarity
+                    mergeable = existing_node
+
+            if mergeable:
+                # merge to existing node
+                node_mapping[node] = mergeable
             else:
-                # Generate unique node ID
-                node_id = f"n{len(G.nodes()) + 1}"
-                G.add_node(node_id, **motif.nodes[node])
-                node_mapping[node] = node_id
-                label_to_node[new_label] = node_id
+                # add as new node
+                new_node = f"n{len(G.nodes()) + 1}"
+                G.add_node(new_node, label=new_label)
+                node_mapping[node] = new_node
 
-        # Then add edges with preserved attributes
+        # add all edges
         for u, v in motif.edges():
             mapped_u = node_mapping[u]
             mapped_v = node_mapping[v]
-            if not G.has_edge(mapped_u, mapped_v):
-                # Get edge attributes from motif
-                edge_attrs = motif.edges[u, v]
-                # Ensure modifier exists
-                if "modifier" not in edge_attrs:
-                    edge_attrs["modifier"] = 1.0  # Default to positive influence
-                # Add edge with attributes
-                G.add_edge(mapped_u, mapped_v, **edge_attrs)
+
+            # check if creating a cycle
+            if not nx.has_path(G, mapped_v, mapped_u):
+                if not G.has_edge(mapped_u, mapped_v):
+                    # get edge attributes
+                    edge_attrs = motif.edges[u, v]
+                    if "modifier" not in edge_attrs:
+                        edge_attrs["modifier"] = 1.0
+
+                    # add edge and its attributes
+                    G.add_edge(mapped_u, mapped_v, **edge_attrs)
 
         covered_nodes.update(node_mapping.values())
 

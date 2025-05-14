@@ -36,7 +36,7 @@ model_config:
   seed_node: "upzoning_stance"
   max_iterations: 20
   target_demographic: null # Will use most common demographic from data
-  demographic_weight: 0.3
+  demographic_weight: 0.6
 
   # Paths
   motif_library_name: "models/m07_BN/motif_library/motif_library.json" # Path relative to src/evaluation_T3
