@@ -365,8 +365,34 @@ class MotifBasedReconstructor:
                 f"After iteration {iteration}: {len(G.nodes())} nodes, {len(G.edges())} edges"
             )
 
-        print("Cleaning up stance node connections...")
-        # Remove any outgoing edges from stance node
+        print("Cleaning up graph...")
+        # 1. Convert all labels to use underscores
+        for node in G.nodes():
+            old_label = G.nodes[node].get("label", "")
+            new_label = old_label.replace(" ", "_").lower()
+            G.nodes[node]["label"] = new_label
+
+        # 2. Merge all upzoning stance nodes
+        nodes_to_merge = []
+        for node in G.nodes():
+            label = G.nodes[node].get("label", "").lower()
+            if "upzoning_stance" in label or "upzoning stance" in label:
+                if node != target_node:  # Don't include the target node itself
+                    nodes_to_merge.append(node)
+
+        if nodes_to_merge:
+            print(f"Merging {len(nodes_to_merge)} additional upzoning stance nodes")
+            for node in nodes_to_merge:
+                # Get all incoming edges
+                incoming = list(G.in_edges(node))
+                # Add these edges to target_node
+                for source, _ in incoming:
+                    if not G.has_edge(source, target_node):
+                        G.add_edge(source, target_node, modifier=1.0)
+                # Remove the duplicate node
+                G.remove_node(node)
+
+        # 3. Remove any outgoing edges from stance node
         outgoing_edges = list(G.out_edges(target_node))
         if outgoing_edges:
             print(
@@ -378,7 +404,7 @@ class MotifBasedReconstructor:
                 if not nx.has_path(G, target, target_node):
                     G.add_edge(target, source, modifier=1.0)
 
-        # Verify one last time that all nodes have a path to target_node
+        # 4. Final connectivity check
         for node in G.nodes():
             if node != target_node and not nx.has_path(G, node, target_node):
                 G.add_edge(node, target_node, modifier=1.0)
@@ -523,7 +549,9 @@ class MotifBasedReconstructor:
         # Step 1: First map the target node and its direct predecessors
         target_predecessors = list(motif_copy.predecessors(motif_node))
         for pred in target_predecessors:
-            new_label = motif_copy.nodes[pred].get("label", "")
+            new_label = (
+                motif_copy.nodes[pred].get("label", "").replace(" ", "_").lower()
+            )
 
             # Try to find mergeable node that has a path to target
             mergeable = None
@@ -532,7 +560,7 @@ class MotifBasedReconstructor:
             for existing_node in G.nodes():
                 if existing_node == target_node:  # Skip comparing with target node
                     continue
-                existing_label = G.nodes[existing_node].get("label", "")
+                existing_label = G.nodes[existing_node].get("label", "").lower()
                 similarity = self.similarity_engine.node_similarity(
                     new_label, existing_label
                 )
@@ -550,7 +578,6 @@ class MotifBasedReconstructor:
                 new_node = f"n{len(G.nodes()) + 1}"
                 G.add_node(new_node, label=new_label)
                 node_mapping[pred] = new_node
-                # Add direct edge to target to ensure path exists
                 G.add_edge(new_node, target_node, modifier=1.0)
 
         # Step 2: Map remaining nodes
