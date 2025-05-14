@@ -9,7 +9,7 @@ by iteratively adding best-matching motifs.
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
-from typing import Dict, Set, List, Tuple, Optional
+from typing import Dict, Set, List, Tuple, Optional, Union
 from .motif_library import MotifLibrary, get_demographic_statistics
 from .semantic_similarity import SemanticSimilarityEngine
 import os
@@ -25,7 +25,7 @@ class MotifBasedReconstructor:
         motif_library: MotifLibrary,
         similarity_threshold: float = 0.4,
         node_merge_threshold: float = 0.8,
-        target_demographic: str = None,
+        target_demographic: Union[str, Dict, List] = None,
         demographic_weight: float = 0.3,
     ):
         """
@@ -35,6 +35,8 @@ class MotifBasedReconstructor:
             motif_library: Loaded MotifLibrary instance
             similarity_threshold: Threshold for semantic similarity matching
             node_merge_threshold: Threshold for merging similar nodes
+            target_demographic: Target demographic(s) - can be string, dict, or list
+            demographic_weight: Weight for demographic scoring
         """
         self.motif_library = motif_library
         self.similarity_threshold = similarity_threshold
@@ -55,49 +57,97 @@ class MotifBasedReconstructor:
 
         # Calculate score for each demographic
         for demo, count in self.motif_library.demographic_distribution.items():
-            # Base score: inverse weight based on frequency (rare demographics score higher)
+            # Base score: inverse weight based on frequency
             rarity_score = 1.0 - (count / total_samples)
 
-            # Similarity score: similarity to target demographic
+            # Similarity score: similarity to target demographic(s)
             if self.target_demographic:
                 similarity = self._demographic_similarity(demo, self.target_demographic)
             else:
-                similarity = 0.5  # If no target demographic, assign medium score
+                similarity = 0.5  # if no target demographic, give medium score
 
+            # consider rarity and similarity
             scores[demo] = 0.3 * rarity_score + 0.7 * similarity
 
         return scores
 
-    def _demographic_similarity(self, demo_of_motif: str, demo_of_target: str) -> float:
-        """Calculate similarity between two demographics."""
+    def _demographic_similarity(
+        self, demo_of_motif: str, target_demo: Union[str, Dict, List]
+    ) -> float:
+        """Calculate similarity between motif's demographic and target demographic(s).
+
+        Args:
+            demo_of_motif: Demographic of the motif
+            target_demo: Target demographic(s) - can be string, dict, or list
+
+        Returns:
+            float: Similarity score between 0 and 1
+        """
         NONSENSE_DEMOGRAPHICS = ["unknown", "other", "", " ", "none", None]
-        if (
-            demo_of_target in NONSENSE_DEMOGRAPHICS
-            or demo_of_motif in NONSENSE_DEMOGRAPHICS
-        ):
+
+        if demo_of_motif in NONSENSE_DEMOGRAPHICS:
             return 0.0
 
-        if demo_of_motif == demo_of_target:
-            return 1.0
+        # if target_demo is a dict (full agent profile)
+        if isinstance(target_demo, dict):
+            # extract key demographic features
+            key_features = {
+                "householder type": target_demo.get("householder type", "Unknown"),
+                "Geo Mobility": target_demo.get("Geo Mobility", "Unknown"),
+                "income": target_demo.get("income", "Unknown"),
+                "age": target_demo.get("age", 0),
+            }
 
-        # Simple similarity calculation, can be customized based on actual demographic categories
-        # For example, adjacent age groups have higher similarity
-        demographic_map = {
-            "young": ["middle_aged"],
-            "middle_aged": ["young", "elderly"],
-            "elderly": ["middle_aged"],
-            "urban": ["suburban"],
-            "suburban": ["urban", "rural"],
-            "rural": ["suburban"],
-        }
+            # calculate similarity for each feature
+            similarities = []
+            for feature, value in key_features.items():
+                if feature in demo_of_motif:  # if motif's demographic contains this feature
+                    if feature == "age":
+                        # age difference calculation
+                        try:
+                            age_diff = abs(
+                                int(value) - int(demo_of_motif.split("_")[1])
+                            )
+                            similarities.append(
+                                max(0, 1 - age_diff / 50)
+                            )  # 50 years difference considered completely different
+                        except:
+                            similarities.append(0.5)  # if cannot compare, give medium score
+                    else:
+                        # exact match for other features
+                        similarities.append(1.0 if str(value) in demo_of_motif else 0.0)
 
-        if (
-            demo_of_motif in demographic_map
-            and demo_of_target in demographic_map[demo_of_motif]
-        ):
-            return 0.6
+            return sum(similarities) / len(similarities) if similarities else 0.0
 
-        return 0.2  # Default low similarity
+        # if target_demo is a list (multiple demographic features)
+        elif isinstance(target_demo, list):
+            # Calculate similarity with each target demographic, take max
+            similarities = [
+                self._demographic_similarity(demo_of_motif, single_demo)
+                for single_demo in target_demo
+                if single_demo not in NONSENSE_DEMOGRAPHICS
+            ]
+            return max(similarities) if similarities else 0.0
+
+        # if target_demo is a string (single demographic feature)
+        else:
+            if target_demo in NONSENSE_DEMOGRAPHICS:
+                return 0.0
+
+            if demo_of_motif == target_demo:
+                return 1.0
+
+            demo_features = demo_of_motif.split("_")
+            target_features = str(target_demo).split("_")
+
+            matching_features = sum(
+                1
+                for f1 in demo_features
+                for f2 in target_features
+                if f1.lower() == f2.lower()
+            )
+
+            return matching_features / max(len(demo_features), len(target_features))
 
     def find_motif_candidates(
         self, frontier_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph

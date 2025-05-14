@@ -27,7 +27,7 @@ evaluation:
 # Model-specific configuration
 model_config:
   # Base model parameters
-  agent_data_file: "experiment_T3/eval/data/sf_prolific_survey/responses_5.11_with_geo.json" # Path relative to src/evaluation
+  agent_data_file: "experiment/eval/data/sf_prolific_survey/responses_5.11_with_geo.json" # Path relative to src/evaluation_T3
   temperature: 0.7
   max_tokens: 800
 
@@ -39,13 +39,13 @@ model_config:
   demographic_weight: 0.3
 
   # Paths
-  motif_library_name: "src/evaluation_T3/models/m07_BN/motif_library/motif_library.json"
-  output_dir: "src/evaluation_T3/models/m07_BN/graph_reconstruction"
-  graph_path: "src/evaluation_T3/models/m07_BN/graph_reconstruction/reconstructed_graph.json" # Path relative to src/evaluation
+  motif_library_name: "models/m07_BN/motif_library/motif_library.json" # Path relative to src/evaluation_T3
+  output_dir: "models/m07_BN/graph_reconstruction" # Path relative to src/evaluation_T3
+  graph_path: "models/m07_BN/graph_reconstruction/reconstructed_graph.json" # Path relative to src/evaluation_T3
 
   # Graph reconstruction parameters
   similarity_threshold: 0.3 # For semantic matching in reconstruction
   node_merge_threshold: 0.8 # For merging similar nodes
 
   # Additional transcript-specific configurations
-  transcript_dir: "experiment_T3/models/m06_transcript/data/processed_transcript" # Directory containing transcript files
+  transcript_dir: "models/m06_transcript/data/processed_transcript" # Path relative to src/evaluation_T3
