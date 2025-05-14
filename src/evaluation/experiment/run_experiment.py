@@ -36,7 +36,7 @@ AVAILABLE_MODELS = {
     "naive": NaiveBaseline,
     "transcript": Transcript,
     "CoT": CoT,
-    "Reflexion": Reflexion
+    "Reflexion": Reflexion,
     "BN": BayesianNetwork,
 }
 

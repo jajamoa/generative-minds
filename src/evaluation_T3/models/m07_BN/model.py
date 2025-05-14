@@ -470,11 +470,11 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # TODO: for debug, only use the first 2 agents
-        for agent_data in agents_data[:2]:
+        # # TODO: for debug, only use the first 2 agents
+        # for agent_data in agents_data[:2]:
 
-            # # Process each agent
-            # for agent_data in agents_data:
+        # Process each agent
+        for agent_data in agents_data:
 
             agent_id = agent_data["id"]
             try:
