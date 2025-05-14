@@ -286,8 +286,8 @@ Now revise your evaluation to address these reflections. Use exactly the same fo
 
         prompt = f"""You are an independent evaluator assigned to assess the following housing policy proposal in {region}.
 
-Proposal Description:
-{proposal_desc}
+    Proposal Description:
+    {proposal_desc}
 
 Consider how this proposal might affect the community across multiple dimensions. Rate EACH of the following aspects on a scale of 1-5, where:
 1 = Very Negative Impact
@@ -297,29 +297,29 @@ Consider how this proposal might affect the community across multiple dimensions
 5 = Very Positive Impact
 
 Also provide an overall opinion rating from 1-10 where:
-1-2 = Strongly Oppose
-3-4 = Oppose
-5-6 = Neutral
-7-8 = Support
-9-10 = Strongly Support
+    1-2 = Strongly Oppose  
+    3-4 = Oppose  
+    5-6 = Neutral  
+    7-8 = Support  
+    9-10 = Strongly Support
 
 Required Response Format:
-Rating: [1-10]
-Reasons:
-A: [1-5] (Housing supply and availability)
-B: [1-5] (Affordability for low/middle-income residents)
-C: [1-5] (Neighborhood character impact)
-D: [1-5] (Infrastructure capacity)
-E: [1-5] (Economic development)
-F: [1-5] (Environmental impact)
-G: [1-5] (Transit access)
-H: [1-5] (Displacement risk)
-I: [1-5] (Equity and social justice)
-J: [1-5] (Public amenities)
-K: [1-5] (Property values)
-L: [1-5] (Historical preservation)
+    Rating: [1-10]  
+    Reasons:  
+    A: [1-5] (Housing supply and availability)  
+    B: [1-5] (Affordability for low/middle-income residents)  
+    C: [1-5] (Neighborhood character impact)  
+    D: [1-5] (Infrastructure capacity)  
+    E: [1-5] (Economic development)  
+    F: [1-5] (Environmental impact)  
+    G: [1-5] (Transit access)  
+    H: [1-5] (Displacement risk)  
+    I: [1-5] (Equity and social justice)  
+    J: [1-5] (Public amenities)  
+    K: [1-5] (Property values)  
+    L: [1-5] (Historical preservation)
 
-Consider:
+    Consider:
 1. Overall housing supply and affordability
 2. Infrastructure and services capacity
 3. Community character and quality of life
@@ -327,7 +327,7 @@ Consider:
 5. Social equity and accessibility
 
 Format your response EXACTLY as shown above, with one rating (1-10) and twelve reason scores (1-5 each).
-"""
+    """
         return prompt
 
     

@@ -1,1 +1,1 @@
-from .model import Transcript 
+from .model import M10_1000ppl 

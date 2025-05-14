@@ -23,6 +23,7 @@ from models.m05_naive.model import NaiveBaseline
 from models.m06_transcript.model import Transcript
 from models.m08_CoT.model import CoT
 from models.m09_Reflexion.model import Reflexion
+from models.m10_1000ppl.model import M10_1000ppl
 from experiment.eval.utils.data_utils import DataManager, create_zoning_proposal
 from experiment.eval.evaluators import evaluate_experiment_dir
 
@@ -34,7 +35,8 @@ AVAILABLE_MODELS = {
     "naive": NaiveBaseline,
     "transcript": Transcript,
     "CoT": CoT,
-    "Reflexion": Reflexion
+    "Reflexion": Reflexion,
+    "1000ppl": M10_1000ppl
 }
 
 def get_project_root() -> Path:
