@@ -35,34 +35,50 @@ class QwenExtractor:
         self.model = model
 
     def extract_intervention(
-        self, causal_graph: Dict, question: str
+        self, graph_info: Dict, question: str
     ) -> Optional[Tuple[str, float, str]]:
         """
         Extract intervention from question based on causal graph structure
 
         Args:
-            causal_graph: Dictionary with format:
-                {node_id: {'parents': [(parent_id, modifier)],
-                          'children': [(child_id, modifier)]}}
+            graph_info: Dictionary containing:
+                - dag: {node_id: {'parents': [(parent_id, modifier)],
+                                'children': [(child_id, modifier)]}}
+                - node_labels: {node_id: label}
             question: Question text to analyze
 
         Returns:
             Tuple of (node_id, intervention_value, explanation) or None
         """
-        nodes = list(causal_graph.keys())
-        edges = []
+        causal_graph = graph_info["dag"]
+        node_labels = graph_info["node_labels"]
 
+        # Get nodes and their labels
+        nodes_with_labels = {
+            node_id: node_labels.get(node_id, node_id)
+            for node_id in causal_graph.keys()
+        }
+
+        edges = []
         for node_id, node_data in causal_graph.items():
             for child, modifier in node_data["children"]:
-                edges.append({"source": node_id, "target": child, "modifier": modifier})
+                edges.append(
+                    {
+                        "source": node_id,
+                        "source_label": node_labels.get(node_id, node_id),
+                        "target": child,
+                        "target_label": node_labels.get(child, child),
+                        "modifier": modifier,
+                    }
+                )
 
         prompt = f"""
 Given a causal Bayesian network about urban development impacts with these nodes:
 
 Nodes:
-{', '.join(nodes)}
+{', '.join(f"{node_id} ({label})" for node_id, label in nodes_with_labels.items())}
 
-Key relationships:
+Relationships:
 {self._format_key_relationships(edges)}
 
 For this question:
@@ -85,13 +101,18 @@ Consider:
 Return JSON:
 {{
     "intervention_node": "exact node id",
-    "intervention_value": 0.7,
+    "intervention_value": "some value between 0 and 1",
     "explanation": "why this intervention makes sense",
     "expected_effects": ["list of likely affected downstream nodes"]
 }}
 """
 
         try:
+            print("------------- PROMPT -------------")
+            GREEN = "\033[92m"
+            END = "\033[0m"
+            print(f"{GREEN}{prompt}{END}")
+            print("------------- PROMPT -------------")
             response = dashscope.Generation.call(
                 api_key=self.api_key,
                 model=self.model,
@@ -106,6 +127,12 @@ Return JSON:
                 temperature=0.1,
             )
 
+            print("------------- RESPONSE -------------")
+            YELLOW = "\033[93m"
+            END = "\033[0m"
+            print(f"{YELLOW}{response.output.choices[0].message.content}{END}")
+            print("------------- RESPONSE -------------")
+
             if response.status_code == 200:
                 content = response.output.choices[0].message.content
                 result = json.loads(self._clean_json_string(content))
@@ -114,14 +141,16 @@ Return JSON:
                     node = result["intervention_node"]
                     value = result.get("intervention_value", 0.5)
                     explanation = result.get("explanation", "")
-                    effects = result.get("expected_effects", [])
+                    expected_effects = result.get("expected_effects", [])
 
                     # Validate node exists
-                    if node in nodes:
+                    if node in nodes_with_labels:
                         logger.info(f"Found intervention: do({node}) = {value}")
                         logger.info(f"Explanation: {explanation}")
-                        logger.info(f"Expected effects on: {', '.join(effects)}")
-                        return node, value, explanation
+                        logger.info(
+                            f"Expected effects on: {', '.join(expected_effects)}"
+                        )
+                        return node, value, explanation, expected_effects
 
             return None
 
@@ -136,9 +165,9 @@ Return JSON:
             modifier = edge["modifier"]
             direction = "increases" if modifier > 0 else "decreases"
             relationships.append(
-                f"- {edge['source']} {direction} {edge['target']} (strength: {abs(modifier):.1f})"
+                f"- {edge['source']} ({edge['source_label']}) {direction} {edge['target']} ({edge['target_label']}) (strength: {abs(modifier):.1f})"
             )
-        return "\n".join(relationships[:5]) + "\n(and more...)"
+        return "\n".join(relationships) + "\n"
 
     def _clean_json_string(self, json_str):
         """Clean JSON string"""

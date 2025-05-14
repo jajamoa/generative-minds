@@ -5,6 +5,15 @@ from typing import Dict, Tuple, Optional, List, Any
 from models.base import ModelConfig
 from ..m03_census.model import Census, REASON_MAPPING, SCENARIO_MAPPING
 from scipy.stats import entropy
+import os
+
+
+def ensure_evaluation_prefix(path: str) -> str:
+    """Ensure path has src/evaluation prefix if not already present."""
+    prefix = "src/evaluation"
+    if not path.startswith(prefix) and not path.startswith("/"):
+        return os.path.join(prefix, path)
+    return path
 
 
 class BayesianNetwork(Census):
@@ -16,9 +25,58 @@ class BayesianNetwork(Census):
         self.node_labels = None
         self.label_to_id = None
         self.id_to_label = None
-        self.graph_path = getattr(
-            self.config, "graph_path", "data/samples/sample_1.json"
+        self.agent_data_file = ensure_evaluation_prefix(
+            getattr(self.config, "agent_data_file", "data/samples/sample_1.json")
         )
+
+        self.motif_library_name = ensure_evaluation_prefix(
+            getattr(
+                self.config,
+                "motif_library_name",
+                os.path.join(
+                    os.path.dirname(os.path.abspath(__file__)),
+                    "motif_library",
+                    "motif_library.json",
+                ),
+            )
+        )
+
+        agent_data_path = ensure_evaluation_prefix(
+            getattr(
+                self.config,
+                "agent_data_file",
+                "experiment/eval/data/sf_prolific_survey/responses_5.11_with_geo.json",
+            )
+        )
+        self.agent_data_file = agent_data_path
+        self.agent_ids = list(set(self._load_agent_ids(agent_data_path)))
+
+        # TODO: it is just a place holder, the graph should be loaded again for each agent
+        self.dag, self.node_labels = self.load_graph("data/samples/sample_1.json")
+
+    def _load_agent_ids(self, agent_data_path: str) -> list:
+        """Load only agent IDs from the agent data file.
+
+        Args:
+            agent_data_path: Path to the agent data JSON file.
+
+        Returns:
+            List of agent IDs.
+        """
+        try:
+            if os.path.exists(agent_data_path):
+                with open(agent_data_path, "r", encoding="utf-8") as f:
+                    raw_agents = json.load(f)
+                return [
+                    agent.get("id", f"agent_{i:03d}")
+                    for i, agent in enumerate(raw_agents)
+                ]
+            else:
+                print(f"WARNING: Agent data file not found: {agent_data_path}")
+                return [f"agent_{i:03d}" for i in range(14)]  # Default to 14 agents
+        except Exception as e:
+            print(f"ERROR: Failed to load agent IDs: {str(e)}")
+            return [f"agent_{i:03d}" for i in range(14)]  # Default to 14 agents
 
     def load_graph(self, json_file: str) -> tuple[dict, dict]:
         """
@@ -243,14 +301,6 @@ class BayesianNetwork(Census):
         Returns:
             A dictionary with participant IDs as keys, containing opinions and reasons
         """
-        # Auto-load graph if not loaded
-        if self.dag is None:
-            try:
-                self.dag, self.node_labels = self.load_graph(self.graph_path)
-            except Exception as e:
-                raise ValueError(
-                    f"Failed to load graph from {self.graph_path}: {str(e)}"
-                )
 
         # Get proposal ID and convert to scenario ID
         proposal_id = proposal.get("proposal_id", "proposal_000")
@@ -258,57 +308,56 @@ class BayesianNetwork(Census):
             proposal_id, "1.1"
         )  # Default to "1.1" if not found
 
-        node_label, intervention_prob, explanation = (
-            self.extractor.extract_intervention(
-                self.dag, self._create_proposal_description(proposal)
-            )
-        )
-
-        # Run simulations
-        base_results = self.simulate_intervention()
-        intervention_results = self.simulate_intervention(
-            intervention_node=node_label,
-            intervention_prob=intervention_prob,
-        )
-
-        # Calculate changes
-        changes = {
-            node: intervention_results[node]["mean"] - base_results[node]["mean"]
-            for node in self.dag
-        }
-
-        # Get stance node
-        stance_nodes = [
-            node
-            for node, label in self.node_labels.items()
-            if "stance" in label.lower()
-        ]
-        stance_node = stance_nodes[0] if stance_nodes else None
-
-        # Compute node contributions
-        contributions = self.compute_node_contributions(
-            base_results, intervention_results, stance_node
-        )
-
-        # Format results
         results = {}
 
-        opinion_score = round(intervention_results[stance_node]["mean"] * 10)
+        for agent_id in self.agent_ids[:2]:
 
-        # Create a single agent response with filtered reasons
-        agent_id = "bn_agent_001"
-        results[agent_id] = {
-            "opinions": {
-                # NOTE: it is actually a Bernoulli distribution
-                scenario_id: opinion_score
-            },
-            "reasons": {
-                scenario_id: {
-                    self.node_labels[node]: round(contrib_score * 4 + 1)
-                    for node, contrib_score in contributions
-                }
-            },
-        }
+            # TODO: for each agent, the graph should be loaded again, now just use self.dag as a place holder
+            causal_graph = self.dag
+
+            # Extract intervention from proposal
+            node_label, intervention_prob, explanation, expected_effects = (
+                self.extractor.extract_intervention(
+                    {"dag": self.dag, "node_labels": self.node_labels},
+                    self._create_proposal_description(proposal),
+                )
+            )
+
+            # Run simulations
+            base_results = self.simulate_intervention()
+            intervention_results = self.simulate_intervention(
+                intervention_node=node_label,
+                intervention_prob=intervention_prob,
+            )
+
+            # Get stance node
+            stance_nodes = [
+                node
+                for node, label in self.node_labels.items()
+                if "stance" in label.lower()
+            ]
+            stance_node = stance_nodes[0] if stance_nodes else None
+
+            # Compute node contributions
+            contributions = self.compute_node_contributions(
+                base_results, intervention_results, stance_node
+            )
+
+            opinion_score = round(intervention_results[stance_node]["mean"] * 10)
+
+            # Create a single agent response with filtered reasons
+            results[agent_id] = {
+                "opinions": {
+                    # NOTE: it is actually a Bernoulli distribution
+                    scenario_id: opinion_score
+                },
+                "reasons": {
+                    scenario_id: {
+                        self.node_labels[node]: round(contrib_score * 4 + 1)
+                        for node, contrib_score in contributions
+                    }
+                },
+            }
 
         return results
 
