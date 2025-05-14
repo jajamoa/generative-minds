@@ -310,8 +310,10 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        for agent_id in self.agent_ids[:2]:
-
+        # # TODO: for debug, only use the first 2 agents
+        # for agent_id in self.agent_ids[:2]:
+        
+        for agent_id in self.agent_ids:
             # TODO: for each agent, the graph should be loaded again, now just use self.dag as a place holder
             causal_graph = self.dag
 
