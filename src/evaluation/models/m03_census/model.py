@@ -6,7 +6,7 @@ from typing import Dict, Any, Tuple, List, Optional
 from collections import Counter, defaultdict
 import requests
 import googlemaps
-from math import sqrt
+from math import sqrt, radians, sin, cos, asin, pi
 
 from ..base import BaseModel, ModelConfig
 from .components.llm import OpenAILLM
@@ -357,51 +357,92 @@ class Census(BaseModel):
             print(f"Warning: Failed to get transit information: {str(e)}")
             return None
     
+    def _calculate_haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+        """Calculate the Haversine distance between two points on Earth.
+        
+        Args:
+            lat1: Latitude of first point in degrees
+            lon1: Longitude of first point in degrees
+            lat2: Latitude of second point in degrees
+            lon2: Longitude of second point in degrees
+            
+        Returns:
+            Distance in kilometers
+        """
+        # Convert decimal degrees to radians
+        lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
+        
+        # Haversine formula
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+        c = 2 * asin(sqrt(a))
+        r = 6371  # Radius of Earth in kilometers
+        
+        return c * r
+
+    def _calculate_distance_to_affected_area(self, agent_lat: float, agent_lon: float, cells: Dict[str, Any]) -> float:
+        """Calculate the minimum distance from an agent to any affected cell in the proposal.
+        
+        Args:
+            agent_lat: Agent's latitude
+            agent_lon: Agent's longitude
+            cells: Dictionary of cells from the proposal
+            
+        Returns:
+            Minimum distance in kilometers
+        """
+        min_distance = float('inf')
+        
+        for cell in cells.values():
+            bbox = cell.get('bbox', {})
+            if not bbox:
+                continue
+            
+            # Calculate center of the cell
+            cell_lat = (bbox['north'] + bbox['south']) / 2
+            cell_lon = (bbox['east'] + bbox['west']) / 2
+            
+            # Calculate distance to this cell
+            distance = self._calculate_haversine_distance(agent_lat, agent_lon, cell_lat, cell_lon)
+            min_distance = min(min_distance, distance)
+        print(f"DEBUG: Agent {agent_lat}, {agent_lon} is {min_distance:.2f}km from affected area")
+        return min_distance
+
     async def _generate_opinion(self, 
                               agent: Dict[str, Any], 
                               proposal: Dict[str, Any],
                               proposal_desc: str,
                               region: str) -> Dict[str, Any]:
-        """Generate opinion and reasons for a proposal for a specific agent.
-        
-        Args:
-            agent: A dictionary containing agent demographic data.
-            proposal: A dictionary containing the rezoning proposal details.
-            proposal_desc: A human-readable description of the proposal.
-            region: The target region name.
-            
-        Returns:
-            A dictionary with opinions and reasons.
-        """
-        # Get scenario ID from proposal ID or use a default
-        scenario_id = "1.1"  # Default scenario ID
-        if self.current_proposal_id and self.current_proposal_id in SCENARIO_MAPPING:
-            scenario_id = SCENARIO_MAPPING[self.current_proposal_id]
-        
-        print(f"DEBUG: Generating opinion for scenario_id={scenario_id}")
-        
-        # Build prompt based on proposal and agent details
-        prompt = self._build_opinion_prompt(agent, proposal_desc, region)
-        print(f"DEBUG: Prompt length: {len(prompt)} characters")
-        
-        # Generate response from LLM
+        """Generate opinion using agent demographics and location."""
         try:
+            # Calculate distance to affected area
+            agent_coords = agent.get("coordinates", {})
+            agent_lat = agent_coords.get("lat")
+            agent_lon = agent_coords.get("lng")
+            
+            distance_km = None
+            if agent_lat is not None and agent_lon is not None:
+                distance_km = self._calculate_distance_to_affected_area(
+                    agent_lat, agent_lon, 
+                    proposal.get("cells", {})
+                )
+                print(f"DEBUG: Agent {agent.get('id')} is {distance_km:.2f}km from affected area")
+            
+            # Build prompt with distance information
+            prompt = self._build_opinion_prompt(agent, proposal_desc, region, distance_km)
+            
+            # Generate and parse response
+            temp = self.temperature
             response = await self.llm.generate(
-                prompt, 
-                temperature=self.temperature,
+                prompt,
+                temperature=temp,
                 max_tokens=self.max_tokens
             )
-            print(f"DEBUG: Received response of length {len(response)} characters")
-        except Exception as e:
-            print(f"ERROR: LLM generation failed: {str(e)}")
-            return self._generate_fallback_opinion(scenario_id)
-        
-        try:
-            # Parse the response to extract rating and reason scores
-            rating, reason_scores = self._parse_opinion_response(response)
-            print(f"DEBUG: Extracted rating={rating}, reason_scores={reason_scores}")
             
-            # Format into the expected output structure
+            rating, reason_scores = self._parse_opinion_response(response)
+            
+            scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
             return {
                 "opinions": {
                     scenario_id: rating
@@ -411,61 +452,47 @@ class Census(BaseModel):
                 }
             }
         except Exception as e:
-            print(f"ERROR: Failed to parse response: {str(e)}")
-            return self._generate_fallback_opinion(scenario_id)
-    
+            print(f"ERROR: Opinion generation failed: {str(e)}")
+            return self._generate_fallback_opinion(SCENARIO_MAPPING.get(self.current_proposal_id, "1.1"))
+
     def _build_opinion_prompt(self, 
                              agent: Dict[str, Any], 
                              proposal_desc: str,
-                             region: str) -> str:
-        """Build a prompt for generating opinions on a housing policy proposal.
+                             region: str,
+                             distance_km: Optional[float] = None) -> str:
+        """Build a prompt for generating opinions."""
+        # Extract agent demographics
+        agent_info = agent.get("agent", {})
+        geo_content = agent.get("geo_content", {})
         
-        Args:
-            agent: A dictionary containing agent demographic data.
-            proposal_desc: A human-readable description of the proposal.
-            region: The target region name.
-            
-        Returns:
-            A string containing the prompt for the LLM.
-        """
-        # Handle possible different agent data formats
-        agent_data = {}
-        if "agent" in agent and isinstance(agent["agent"], dict):
-            agent_data = agent["agent"]
-        elif isinstance(agent, dict):
-            agent_data = agent
-        
-        geo = agent.get("geo_content", {})
-        geo_narrative = geo.get("narrative", "")
-        neighborhood = geo.get("neighborhood", "unknown")
-        
-        # Extract more detailed demographic information
-        housing_status = agent_data.get("householder type", "unknown")
-        rent_burden = agent_data.get("Gross rent", "unknown")
-        mobility = agent_data.get("Geo Mobility", "unknown")
-        transportation = agent_data.get("means of transportation", "unknown")
-        marital_status = agent_data.get("marital status", "unknown")
-        has_children = agent_data.get("has children under 18", False)
-        children_age = agent_data.get("children age range", "No Children")
-        
-        prompt = f"""As a resident of {region} living in the {neighborhood} neighborhood, evaluate this housing policy proposal based on your personal circumstances and local context.
+        # Build demographic context
+        context = f"""As a resident of {region} with the following characteristics:
+- Age: {agent_info.get('age')}
+- Housing: {agent_info.get('householder type')}
+- Transportation: {agent_info.get('means of transportation')}
+- Income: {agent_info.get('income')}
+- Occupation: {agent_info.get('occupation')}
+- Marital Status: {agent_info.get('marital status')}
+- Has Children Under 18: {agent_info.get('has children under 18')}
+- Neighborhood: {geo_content.get('neighborhood', 'Unknown')}
+"""
 
-Your Personal Profile:
-- Age: {agent_data.get('age', 'unknown')} years old
-- Income: {agent_data.get('income', 'unknown')}
-- Occupation: {agent_data.get('occupation', 'unknown')}
-- Housing: {housing_status} with {rent_burden} of income spent on housing
-- Mobility History: {mobility}
-- Transportation: {transportation}
-- Family: {marital_status}, {children_age if has_children else 'no children'}
+        # Add distance information if available
+        if distance_km is not None:
+            context += f"- Distance from affected area: {distance_km:.2f} kilometers\n"
+        
+        # Add neighborhood context
+        if geo_content.get("narrative"):
+            context += f"\nYour neighborhood context:\n{geo_content['narrative']}\n"
 
-Your Neighborhood Context:
-{geo_narrative}
+        # Build the complete prompt
+        prompt = f"""{context}
 
-Proposed Housing Policy Changes:
+Please evaluate this housing policy proposal:
+
 {proposal_desc}
 
-Consider how this proposal might affect you and your community across multiple dimensions. Rate EACH of the following aspects on a scale of 1-5, where:
+Consider how this proposal might affect you, your neighborhood, and the broader community across multiple dimensions. Rate EACH of the following aspects on a scale of 1-5, where:
 1 = Very Negative Impact
 2 = Somewhat Negative Impact
 3 = Neutral/No Impact
@@ -495,14 +522,7 @@ J: [1-5] (Public amenities)
 K: [1-5] (Property values)
 L: [1-5] (Historical preservation)
 
-Consider:
-1. Your personal housing situation and needs
-2. Your daily transportation and commute patterns
-3. Your neighborhood's character and amenities
-4. Local infrastructure and services
-5. Economic impacts on you and your community
-6. Environmental and quality of life effects
-
+Consider your personal circumstances, neighborhood context, and distance from the affected area when evaluating each aspect.
 Format your response EXACTLY as shown above, with one rating (1-10) and twelve reason scores (1-5 each).
 """
         return prompt
