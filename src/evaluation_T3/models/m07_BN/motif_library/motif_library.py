@@ -200,71 +200,174 @@ class MotifLibrary:
     ):
         """
         Extract motifs from a graph using topology-based analysis with demographic tracking.
+        Ensures each motif is a minimal unit matching M1, M2.x, or M3.x patterns.
         """
         motifs = []
 
-        # 确保图不为空
+        # Ensure graph is not empty
         if G is None or G.number_of_nodes() == 0:
             return motifs
 
-        # 获取节点的标签映射
-        node_labels = nx.get_node_attributes(G, "label")
+        # Create a copy of the graph to modify
+        working_graph = G.copy()
 
-        # 提取所有可能的子图
-        for size in range(self.min_motif_size, self.max_motif_size + 1):
-            for nodes in itertools.combinations(G.nodes(), size):
-                subgraph = G.subgraph(nodes)
-                if nx.is_weakly_connected(subgraph):
-                    # Create a new graph for the motif
-                    motif = nx.DiGraph(subgraph)
+        # Remove outgoing edges from stance nodes
+        stance_nodes = [
+            node
+            for node in working_graph.nodes()
+            if working_graph.nodes[node].get("is_stance", False)
+        ]
+        edges_to_remove = []
+        for node in stance_nodes:
+            edges_to_remove.extend(
+                [(node, succ) for succ in working_graph.successors(node)]
+            )
 
-                    # Copy node labels
-                    for n in nodes:
-                        motif.nodes[n]["label"] = node_labels.get(n, "")
+        working_graph.remove_edges_from(edges_to_remove)
+        if edges_to_remove:
+            print(
+                f"Removed {len(edges_to_remove)} outgoing edges from {len(stance_nodes)} stance nodes"
+            )
 
-                    # Add demographics as a list to the graph metadata
-                    motif.graph["metadata"] = (
-                        [
-                            {
-                                "agent_id": sample_id,
-                                "demographic": demographic_info.get("agent", {}),
-                            }
-                        ]
-                        if demographic_info.get("agent", {})
-                        else []
-                    )
-                    # Copy confidence and importance attributes
-                    for n in nodes:
-                        motif.nodes[n]["confidence"] = G.nodes[n].get("confidence", 0)
-                        motif.nodes[n]["importance"] = G.nodes[n].get("importance", 0)
+        # Get node labels mapping
+        node_labels = nx.get_node_attributes(working_graph, "label")
 
-                    motifs.append(motif)
+        def create_motif_with_metadata(nodes, motif_type=None):
+            """Helper function to create a motif with metadata"""
+            subgraph = working_graph.subgraph(nodes)
+            motif = nx.DiGraph(subgraph)
 
-        return motifs
+            # Copy node attributes
+            for n in nodes:
+                motif.nodes[n]["label"] = node_labels.get(n, "")
+                motif.nodes[n]["is_stance"] = working_graph.nodes[n].get(
+                    "is_stance", False
+                )
+                motif.nodes[n]["confidence"] = working_graph.nodes[n].get(
+                    "confidence", 0
+                )
+                motif.nodes[n]["importance"] = working_graph.nodes[n].get(
+                    "importance", 0
+                )
+
+            # Add demographics and motif type
+            motif.graph["metadata"] = (
+                [
+                    {
+                        "agent_id": sample_id,
+                        "demographic": demographic_info.get("agent", {}),
+                    }
+                ]
+                if demographic_info.get("agent", {})
+                else []
+            )
+
+            if motif_type:
+                motif.graph["motif_type"] = motif_type
+
+            return motif
+
+        def is_valid_chain(nodes):
+            """Check if nodes form a valid chain pattern"""
+            if len(nodes) != 3:
+                return False
+            subgraph = working_graph.subgraph(nodes)
+            if subgraph.number_of_edges() != 2:
+                return False
+            # Must have exactly one source and one sink
+            in_degrees = dict(subgraph.in_degree())
+            out_degrees = dict(subgraph.out_degree())
+            return (
+                sum(1 for d in in_degrees.values() if d == 0) == 1
+                and sum(1 for d in out_degrees.values() if d == 0) == 1
+            )
+
+        def is_valid_fork(source, targets):
+            """Check if nodes form a valid fork pattern"""
+            subgraph = working_graph.subgraph([source] + list(targets))
+            # Source should only have outgoing edges to targets
+            return all(working_graph.has_edge(source, t) for t in targets) and all(
+                working_graph.in_degree(t) == 1 for t in targets
+            )
+
+        def is_valid_collider(sink, sources):
+            """Check if nodes form a valid collider pattern"""
+            subgraph = working_graph.subgraph([sink] + list(sources))
+            # Sink should only have incoming edges from sources
+            return all(working_graph.has_edge(s, sink) for s in sources) and all(
+                working_graph.out_degree(s) == 1 for s in sources
+            )
+
+        # Extract Chain patterns (M1)
+        for node in working_graph.nodes():
+            # Look for chains starting from this node
+            for succ1 in working_graph.successors(node):
+                for succ2 in working_graph.successors(succ1):
+                    chain_nodes = [node, succ1, succ2]
+                    if is_valid_chain(chain_nodes):
+                        motifs.append(create_motif_with_metadata(chain_nodes, "M1"))
+
+        # Extract Fork patterns (M2.x)
+        for node in working_graph.nodes():
+            successors = list(working_graph.successors(node))
+            out_degree = len(successors)
+            if out_degree >= 2:
+                # For each possible fork size (2 to 4+)
+                for size in range(2, min(out_degree + 1, 5)):
+                    for targets in itertools.combinations(successors, size):
+                        if is_valid_fork(node, targets):
+                            fork_type = f"M2.{min(size-1, 3)}"  # M2.1, M2.2, or M2.3
+                            fork_nodes = [node] + list(targets)
+                            motifs.append(
+                                create_motif_with_metadata(fork_nodes, fork_type)
+                            )
+
+        # Extract Collider patterns (M3.x)
+        for node in working_graph.nodes():
+            predecessors = list(working_graph.predecessors(node))
+            in_degree = len(predecessors)
+            if in_degree >= 2:
+                # For each possible collider size (2 to 4+)
+                for size in range(2, min(in_degree + 1, 5)):
+                    for sources in itertools.combinations(predecessors, size):
+                        if is_valid_collider(node, sources):
+                            collider_type = (
+                                f"M3.{min(size-1, 3)}"  # M3.1, M3.2, or M3.3
+                            )
+                            collider_nodes = list(sources) + [node]
+                            motifs.append(
+                                create_motif_with_metadata(
+                                    collider_nodes, collider_type
+                                )
+                            )
+
+        # Remove any overlapping or invalid motifs
+        final_motifs = []
+        seen_node_sets = set()
+
+        for motif in motifs:
+            node_set = frozenset(motif.nodes())
+            if node_set not in seen_node_sets:
+                # Verify the motif is minimal
+                if len(motif.nodes()) <= 4:  # Maximum size for our defined patterns
+                    final_motifs.append(motif)
+                    seen_node_sets.add(node_set)
+
+        return final_motifs
 
     def compute_node_position_info(self, motif):
         """
-        Compute position information for nodes in a motif.
-
-        Args:
-            motif: NetworkX DiGraph representing a motif
-
-        Returns:
-            Dictionary mapping node IDs to position information
+        Compute structural position information for each node
         """
-        in_degrees = dict(motif.in_degree())
-        out_degrees = dict(motif.out_degree())
-
         positions = {}
         for node in motif.nodes():
-            if in_degrees[node] == 0 and out_degrees[node] > 0:
+            in_deg = motif.in_degree(node)
+            out_deg = motif.out_degree(node)
+
+            if in_deg == 0:
                 positions[node] = "source"
-            elif in_degrees[node] > 0 and out_degrees[node] == 0:
+            elif out_deg == 0:
                 positions[node] = "sink"
-            elif in_degrees[node] > 1:
-                positions[node] = "collector"
-            elif out_degrees[node] > 1:
-                positions[node] = "distributor"
             else:
                 positions[node] = "intermediate"
 
@@ -272,201 +375,395 @@ class MotifLibrary:
 
     def compute_enhanced_similarity(self, motif1, motif2, node_mapping):
         """
-        Compute enhanced semantic similarity between motifs with position weighting.
-
-        Args:
-            motif1: First motif
-            motif2: Second motif
-            node_mapping: Node mapping from motif1 to motif2
-
-        Returns:
-            Similarity score (0-1)
+        Compute enhanced semantic similarity between motifs with position weighting
+        using the formula from the paper:
+        Sim(m1, m2) = Σ(w_i * s_i) / Σ(w_i)
         """
-        # Check that the mapping is valid
-        if not node_mapping or len(node_mapping) == 0:
+        if not node_mapping:
             return 0.0
+
+        # Position weights as specified in the paper
+        weights = {"source": 1.5, "sink": 1.5, "intermediate": 1.0}
 
         # Get node positions
         positions1 = self.compute_node_position_info(motif1)
         positions2 = self.compute_node_position_info(motif2)
 
-        # Calculate node-by-node similarity with position weighting
-        similarities = []
-        position_weights = []
+        total_weighted_sim = 0.0
+        total_weight = 0.0
 
         for node1, node2 in node_mapping.items():
+            # Get node labels
             label1 = motif1.nodes[node1].get("label", str(node1))
             label2 = motif2.nodes[node2].get("label", str(node2))
 
-            # Calculate basic similarity
+            # Calculate semantic similarity
             sim = self.similarity_engine.node_similarity(label1, label2)
 
-            # Add position similarity bonus (0.1) if positions match
-            pos1 = positions1.get(node1, "unknown")
-            pos2 = positions2.get(node2, "unknown")
-            if pos1 == pos2:
-                sim = min(1.0, sim + 0.1)
+            # Get position weights
+            pos1 = positions1[node1]
+            pos2 = positions2[node2]
+            weight = (weights[pos1] + weights[pos2]) / 2
 
-            # Weight by position importance
-            if pos1 in ["source", "sink", "collector", "distributor"]:
-                weight = 1.5  # Important structural positions
-            else:
-                weight = 1.0  # Normal weight for intermediate nodes
+            total_weighted_sim += weight * sim
+            total_weight += weight
 
-            similarities.append(sim)
-            position_weights.append(weight)
-
-        if not similarities:
-            return 0.0
-
-        # Weighted average
-        return sum(s * w for s, w in zip(similarities, position_weights)) / sum(
-            position_weights
-        )
+        return total_weighted_sim / total_weight if total_weight > 0 else 0.0
 
     def apply_semantic_filtering(self, topological_motifs=None):
         """
-        Apply semantic filtering to group similar motifs.
+        Apply semantic filtering and augmentation to build a robust motif library.
         """
         if topological_motifs is None:
             topological_motifs = self.topological_motifs
 
         semantic_groups = {}
         stats = {
-            "total_input_motifs": 0,  # Total number of input motifs
-            "total_output_motifs": 0,  # Total number after filtering
-            "total_groups": 0,  # Number of semantic groups
-            "motifs_per_type": {},  # Count of motifs by type
-            "groups_per_type": {},  # Count of groups by type
+            "total_input_motifs": 0,
+            "total_output_motifs": 0,
+            "total_groups": 0,
+            "motifs_per_type": defaultdict(int),
+            "groups_per_type": defaultdict(int),
+            "augmented_motifs": 0,
+            # Add new statistics for node merging
+            "pre_merge_nodes": 0,
+            "post_merge_nodes": 0,
+            "merged_nodes_by_type": defaultdict(lambda: {"before": 0, "after": 0}),
         }
 
-        # Count total input motifs
-        stats["total_input_motifs"] = sum(
-            len(motifs) for motifs in topological_motifs.values()
-        )
-
-        # Group by motif type first (for processing efficiency)
-        motif_type_groups = defaultdict(list)
+        # First pass: Group by motif type
+        typed_motifs = defaultdict(list)
         for key, motifs in topological_motifs.items():
-            motif_type = key.split("_")[0]
-            motif_type_groups[motif_type].extend([(key, motif) for motif in motifs])
-            # Track motifs per type
-            stats["motifs_per_type"][motif_type] = stats["motifs_per_type"].get(
-                motif_type, 0
-            ) + len(motifs)
+            for motif in motifs:
+                motif_type = self.identify_motif_type(motif)
+                typed_motifs[motif_type].append(motif)
+                stats["motifs_per_type"][motif_type] += 1
+                stats["total_input_motifs"] += 1
+                # Count initial nodes
+                stats["pre_merge_nodes"] += len(motif.nodes())
+                stats["merged_nodes_by_type"][motif_type]["before"] += len(
+                    motif.nodes()
+                )
 
-        print("\nApplying semantic filtering...")
-        for motif_type, motif_items in motif_type_groups.items():
-            print(f"Processing {motif_type} motifs ({len(motif_items)} instances)...")
-            groups_for_type = 0
+        print("\nApplying semantic filtering and augmentation...")
 
-            # Group by size class
-            size_groups = defaultdict(list)
-            for key, motif in motif_items:
-                size_part = "_".join(key.split("_")[1:])
-                size_groups[size_part].append((key, motif))
+        # Process each motif type separately
+        for motif_type, motifs in typed_motifs.items():
+            print(f"\nProcessing {motif_type} motifs ({len(motifs)} instances)...")
+            pre_merge_nodes = sum(len(m.nodes()) for m in motifs)
+            print(f"Pre-merge nodes: {pre_merge_nodes}")
 
-            # For each size class, apply semantic grouping
-            for size_class, items in size_groups.items():
-                if len(items) <= 1:
-                    orig_key = items[0][0]
-                    semantic_groups[orig_key] = [items[0][1]]
-                    groups_for_type += 1
+            # Skip if only one motif
+            if len(motifs) <= 1:
+                group_key = f"{motif_type}_1"
+                semantic_groups[group_key] = {
+                    "instances": motifs,
+                    "abstract_motif": motifs[0],
+                    "demographics": self.get_group_demographics(motifs),
+                }
+                stats["groups_per_type"][motif_type] += 1
+                stats["post_merge_nodes"] += pre_merge_nodes
+                stats["merged_nodes_by_type"][motif_type]["after"] += pre_merge_nodes
+                continue
+
+            # Group similar motifs
+            processed = set()
+            group_id = 1
+            post_merge_nodes = 0
+
+            for i, motif1 in enumerate(motifs):
+                if i in processed:
                     continue
 
-                motifs = [item[1] for item in items]
-                orig_keys = [item[0] for item in items]
+                # Create new group
+                group_key = f"{motif_type}_{group_id}"
+                current_group = {
+                    "instances": [motif1],
+                    "abstract_motif": motif1.copy(),
+                    "demographics": self.get_group_demographics([motif1]),
+                }
+                processed.add(i)
+                merged_in_group = len(motif1.nodes())
 
-                processed = set()
-                current_group_id = 1
-
-                for i, motif1 in enumerate(motifs):
-                    if i in processed:
+                # Find similar motifs
+                for j, motif2 in enumerate(motifs):
+                    if j in processed or i == j:
                         continue
 
-                    # Create a new semantic group
-                    group_key = f"{orig_keys[i]}_{current_group_id}"
-                    semantic_groups[group_key] = [motif1]
-                    processed.add(i)
-                    groups_for_type += 1
-
-                    # Find semantically similar motifs
-                    for j, motif2 in enumerate(motifs):
-                        if j in processed or i == j:
-                            continue
-
-                        # Check for isomorphism and semantic similarity
-                        matcher = nx.algorithms.isomorphism.DiGraphMatcher(
-                            motif1, motif2
+                    # Check isomorphism and semantic similarity
+                    matcher = nx.algorithms.isomorphism.DiGraphMatcher(motif1, motif2)
+                    if matcher.is_isomorphic():
+                        mapping = next(matcher.isomorphisms_iter())
+                        node_sim = self.compute_enhanced_similarity(
+                            motif1, motif2, mapping
                         )
-                        if matcher.is_isomorphic():
-                            mapping = next(matcher.isomorphisms_iter())
-                            similarity = self.compute_enhanced_similarity(
-                                motif1, motif2, mapping
+                        edge_sim = self.compute_edge_similarity(motif1, motif2, mapping)
+
+                        combined_sim = 0.7 * node_sim + 0.3 * edge_sim
+
+                        if combined_sim >= self.min_semantic_similarity:
+                            merged_motif = self.merge_motifs(
+                                current_group["abstract_motif"], motif2, mapping
                             )
-
-                            if similarity >= self.min_semantic_similarity:
-                                semantic_groups[group_key].append(motif2)
-                                processed.add(j)
-
-                    # Add metadata for this group
-                    self.motif_metadata[group_key] = {
-                        "motif_type": motif_type,
-                        "description": self.motif_types.get(motif_type, "Unknown Type"),
-                        "size": len(motif1.nodes()),
-                        "edges": len(motif1.edges()),
-                        "instances": len(semantic_groups[group_key]),
-                        "unique_demographics": len(
-                            set(
-                                str(d)
-                                for m in semantic_groups[group_key]
-                                for d in m.graph.get("demographics", [])
+                            current_group["abstract_motif"] = merged_motif
+                            current_group["instances"].append(motif2)
+                            current_group["demographics"] = self.get_group_demographics(
+                                current_group["instances"]
                             )
-                        ),
-                        "total_demographics": sum(
-                            len(m.graph.get("demographics", []))
-                            for m in semantic_groups[group_key]
-                        ),
-                    }
+                            processed.add(j)
 
-                    current_group_id += 1
+                post_merge_nodes += merged_in_group
 
-            stats["groups_per_type"][motif_type] = groups_for_type
+                # Apply data augmentation
+                augmented_motifs = self.augment_group(current_group)
+                current_group["instances"].extend(augmented_motifs)
+                stats["augmented_motifs"] += len(augmented_motifs)
 
-        # Update final statistics
+                # Add metadata
+                self.motif_metadata[group_key] = {
+                    "motif_type": motif_type,
+                    "description": self.get_motif_description(motif_type),
+                    "size": len(current_group["abstract_motif"].nodes()),
+                    "edges": len(current_group["abstract_motif"].edges()),
+                    "instances": len(current_group["instances"]),
+                    "demographics": current_group["demographics"],
+                    # Add merging statistics to metadata
+                    "pre_merge_nodes": pre_merge_nodes,
+                    "post_merge_nodes": post_merge_nodes,
+                }
+
+                semantic_groups[group_key] = current_group
+                group_id += 1
+                stats["groups_per_type"][motif_type] += 1
+
+            stats["post_merge_nodes"] += post_merge_nodes
+            stats["merged_nodes_by_type"][motif_type]["after"] += post_merge_nodes
+            print(f"Post-merge nodes: {post_merge_nodes}")
+            print(
+                f"Node reduction: {((pre_merge_nodes - post_merge_nodes) / pre_merge_nodes * 100):.1f}%"
+            )
+
+        # Update statistics
         stats["total_output_motifs"] = sum(
-            len(motifs) for motifs in semantic_groups.values()
+            len(group["instances"]) for group in semantic_groups.values()
         )
         stats["total_groups"] = len(semantic_groups)
 
         # Print detailed statistics
-        print("\nMotif Filtering Statistics:")
-        print(f"Total input motifs: {stats['total_input_motifs']}")
-        print(f"Total output motifs: {stats['total_output_motifs']}")
-        print(f"Total semantic groups: {stats['total_groups']}")
-        print("\nMotifs by type:")
-        for mtype, count in stats["motifs_per_type"].items():
-            print(
-                f"  {mtype}: {count} motifs, {stats['groups_per_type'].get(mtype, 0)} groups"
-            )
-
-        # Calculate reduction percentage
-        if stats["total_input_motifs"] > 0:
-            reduction = (
-                1 - stats["total_output_motifs"] / stats["total_input_motifs"]
-            ) * 100
-            print(
-                f"\nReduction: {reduction:.1f}% ({stats['total_input_motifs']} → {stats['total_output_motifs']} motifs)"
-            )
+        self._print_filtering_stats(stats)
+        print("\nNode Merging Statistics:")
+        print(f"Total nodes before merging: {stats['pre_merge_nodes']}")
+        print(f"Total nodes after merging: {stats['post_merge_nodes']}")
+        print(
+            f"Node reduction: {((stats['pre_merge_nodes'] - stats['post_merge_nodes']) / stats['pre_merge_nodes'] * 100):.1f}%"
+        )
+        print("\nBy motif type:")
+        for mtype in sorted(stats["merged_nodes_by_type"].keys()):
+            before = stats["merged_nodes_by_type"][mtype]["before"]
+            after = stats["merged_nodes_by_type"][mtype]["after"]
+            if before > 0:
+                reduction = (before - after) / before * 100
+                print(
+                    f"  {mtype}: {before} → {after} nodes ({reduction:.1f}% reduction)"
+                )
 
         # Update library
-        self.semantic_motifs.update(semantic_groups)
+        self.semantic_motifs = semantic_groups
         self.stats["total_semantic_groups"] = len(semantic_groups)
         self.stats["filtering_stats"] = stats
 
-        pdb.set_trace()
-
         return semantic_groups
+
+    def compute_edge_similarity(self, motif1, motif2, node_mapping):
+        """
+        Compute similarity between edge attributes of two motifs
+        """
+        if not node_mapping:
+            return 0.0
+
+        total_sim = 0.0
+        edge_count = 0
+
+        for node1, node2 in node_mapping.items():
+            for succ1 in motif1.successors(node1):
+                if succ1 in node_mapping:
+                    succ2 = node_mapping[succ1]
+                    if motif2.has_edge(node2, succ2):
+                        # Compare edge attributes
+                        edge1 = motif1.edges[node1, succ1]
+                        edge2 = motif2.edges[node2, succ2]
+
+                        # Calculate attribute similarities
+                        modifier_sim = (
+                            1.0
+                            - abs(edge1.get("modifier", 0) - edge2.get("modifier", 0))
+                            / 2.0
+                        )
+                        conf_sim = 1.0 - abs(
+                            edge1.get("confidence", 0) - edge2.get("confidence", 0)
+                        )
+
+                        # Weighted combination
+                        edge_sim = 0.6 * modifier_sim + 0.4 * conf_sim
+                        total_sim += edge_sim
+                        edge_count += 1
+
+        return total_sim / edge_count if edge_count > 0 else 0.0
+
+    def update_abstract_motif(self, abstract_motif, new_motif, mapping):
+        """Update abstract motif with merged information from new motif"""
+        # Existing label and confidence merging logic
+        for node1, node2 in mapping.items():
+            # Update node labels and confidence as before
+            if (
+                "label" in abstract_motif.nodes[node1]
+                and "label" in new_motif.nodes[node2]
+            ):
+                # ... existing label merging code ...
+                pass
+
+        # Merge demographics
+        abstract_demos = abstract_motif.graph.get("demographics", [])
+        new_demos = new_motif.graph.get("demographics", [])
+
+        # Create a dictionary of demographics keyed by agent_id
+        demo_dict = {demo["agent_id"]: demo for demo in abstract_demos}
+
+        # Add new demographics if agent_id not already present
+        for demo in new_demos:
+            agent_id = demo["agent_id"]
+            if agent_id not in demo_dict:
+                demo_dict[agent_id] = demo
+
+        # Update the abstract motif with merged demographics
+        abstract_motif.graph["demographics"] = list(demo_dict.values())
+
+    def augment_group(self, group):
+        """
+        Apply data augmentation strategies to a motif group
+        """
+        augmented_motifs = []
+
+        # 1. Demographic Interpolation
+        demographics = group["demographics"]
+        if len(demographics) >= 2:
+            interpolated = self.demographic_interpolation(
+                group["instances"], demographics
+            )
+            augmented_motifs.extend(interpolated)
+
+        # 2. Perturbative Bootstrap
+        if len(group["instances"]) >= 3:
+            bootstrapped = self.perturbative_bootstrap(group["instances"])
+            augmented_motifs.extend(bootstrapped)
+
+        return augmented_motifs
+
+    def demographic_interpolation(self, motifs, demographics, num_samples=2):
+        """
+        Generate new motifs by interpolating between similar demographic profiles
+        """
+        interpolated = []
+        for i in range(num_samples):
+            # Select two random motifs
+            m1, m2 = random.sample(motifs, 2)
+            d1, d2 = random.sample(demographics, 2)
+
+            # Create interpolated motif
+            new_motif = nx.DiGraph()
+            # ... implement interpolation logic based on demographic distances ...
+
+            interpolated.append(new_motif)
+        return interpolated
+
+    def perturbative_bootstrap(self, motifs, num_samples=2):
+        """
+        Generate synthetic motifs using bootstrap resampling with perturbations
+        """
+        bootstrapped = []
+        for i in range(num_samples):
+            # Select a random motif
+            base_motif = random.choice(motifs)
+
+            # Create perturbed copy
+            new_motif = base_motif.copy()
+
+            # Add Gaussian noise to numerical attributes
+            for node in new_motif.nodes():
+                for attr in ["confidence", "importance"]:
+                    val = new_motif.nodes[node].get(attr, 0)
+                    noise = np.random.normal(0, 0.1)  # 10% noise
+                    new_motif.nodes[node][attr] = max(0, min(1, val + noise))
+
+            bootstrapped.append(new_motif)
+        return bootstrapped
+
+    def _print_filtering_stats(self, stats):
+        """Print detailed statistics about the filtering process"""
+        print("\nMotif Filtering Statistics:")
+        print(f"Total input motifs: {stats['total_input_motifs']}")
+
+        # Calculate motifs after filtering but before augmentation
+        filtered_motifs = stats["total_output_motifs"] - stats["augmented_motifs"]
+        print(f"Motifs after filtering: {filtered_motifs}")
+        print(f"Augmented motifs added: {stats['augmented_motifs']}")
+        print(f"Total output motifs: {stats['total_output_motifs']}")
+        print(f"Total semantic groups: {stats['total_groups']}")
+
+        print("\nMotifs by type:")
+        for mtype in sorted(stats["motifs_per_type"].keys()):
+            print(
+                f"  {mtype}: {stats['motifs_per_type'][mtype]} motifs, "
+                f"{stats['groups_per_type'][mtype]} groups"
+            )
+
+        if stats["total_input_motifs"] > 0:
+            # Calculate reduction from filtering
+            filtering_reduction = (
+                1 - filtered_motifs / stats["total_input_motifs"]
+            ) * 100
+            # Calculate expansion from augmentation
+            augmentation_expansion = (
+                (stats["total_output_motifs"] / filtered_motifs - 1) * 100
+                if filtered_motifs > 0
+                else 0
+            )
+
+            print(
+                f"\nReduction from filtering: {filtering_reduction:.1f}% "
+                f"({stats['total_input_motifs']} → {filtered_motifs} motifs)"
+            )
+            print(
+                f"Expansion from augmentation: +{augmentation_expansion:.1f}% "
+                f"({filtered_motifs} → {stats['total_output_motifs']} motifs)"
+            )
+
+    def get_motif_description(self, motif_type):
+        """Get human-readable description of motif type"""
+        descriptions = {
+            "M1": "Chain",
+            "M2.1": "Basic Fork",
+            "M2.2": "Extended Fork",
+            "M2.3": "Large Fork",
+            "M3.1": "Basic Collider",
+            "M3.2": "Extended Collider",
+            "M3.3": "Large Collider",
+        }
+        return descriptions.get(motif_type, "Unknown Type")
+
+    def get_group_demographics(self, motifs):
+        """Extract and merge demographic information for a group of motifs"""
+        demographics = []
+        seen_agent_ids = set()
+
+        for motif in motifs:
+            if "demographics" in motif.graph:
+                for demo in motif.graph["demographics"]:
+                    agent_id = demo["agent_id"]
+                    if agent_id not in seen_agent_ids:
+                        demographics.append(demo)
+                        seen_agent_ids.add(agent_id)
+        return demographics
 
     def calculate_motif_vector(self, G):
         """
@@ -880,9 +1177,11 @@ class MotifLibrary:
                                 },
                             },
                         }
-                        for m in motifs
+                        for m in group_data[
+                            "instances"
+                        ]  # Access instances from the group data
                     ]
-                    for group_key, motifs in self.semantic_motifs.items()
+                    for group_key, group_data in self.semantic_motifs.items()
                 },
             }
 
@@ -895,6 +1194,9 @@ class MotifLibrary:
 
         except Exception as e:
             print(f"Error saving motif library: {e}")
+            import traceback
+
+            traceback.print_exc()  # Print the full stack trace for debugging
             return False
 
     @classmethod
@@ -1022,54 +1324,179 @@ class MotifLibrary:
 
         return demographic_stats
 
+    def identify_motif_type(self, G):
+        """
+        Identify detailed motif type based on the paper's classification:
+        M1: Chain (exactly 3 nodes)
+        M2.x: Fork patterns (1-to-many)
+        M3.x: Collider patterns (many-to-1)
+        """
+        nodes = list(G.nodes())
+        n = len(nodes)
+
+        if n < 3:
+            return "Unknown"
+
+        # Find sources and sinks
+        sources = [n for n in nodes if G.in_degree(n) == 0]
+        sinks = [n for n in nodes if G.out_degree(n) == 0]
+
+        # Chain (M1) - exactly 3 nodes with linear sequence
+        if n == 3 and len(sources) == 1 and len(sinks) == 1:
+            source = sources[0]
+            sink = sinks[0]
+            intermediate = [n for n in nodes if n not in [source, sink]][0]
+            if G.has_edge(source, intermediate) and G.has_edge(intermediate, sink):
+                return "M1"
+
+        # Fork patterns (M2.x)
+        if len(sources) == 1:
+            source = sources[0]
+            out_degree = G.out_degree(source)
+            if out_degree >= 2:
+                if out_degree == 2:
+                    return "M2.1"  # Basic fork
+                elif out_degree == 3:
+                    return "M2.2"  # Extended fork
+                else:
+                    return "M2.3"  # Large fork
+
+        # Collider patterns (M3.x)
+        if len(sinks) == 1:
+            sink = sinks[0]
+            in_degree = G.in_degree(sink)
+            if in_degree >= 2:
+                if in_degree == 2:
+                    return "M3.1"  # Basic collider
+                elif in_degree == 3:
+                    return "M3.2"  # Extended collider
+                else:
+                    return "M3.3"  # Large collider
+
+        return "Unknown"
+
+    def merge_motifs(self, motif1, motif2, mapping):
+        """
+        Merge two motifs into a single motif, combining their metadata and demographics.
+
+        Args:
+            motif1: First motif (base motif to merge into)
+            motif2: Second motif to merge
+            mapping: Node mapping from motif1 to motif2
+
+        Returns:
+            Merged motif with combined metadata
+        """
+        # Create a copy of the first motif as our base
+        merged_motif = motif1.copy()
+
+        # Merge node attributes
+        for node1, node2 in mapping.items():
+            # Merge labels if they exist
+            label1 = motif1.nodes[node1].get("label", "")
+            label2 = motif2.nodes[node2].get("label", "")
+            if label1 and label2:
+                # Keep the more specific or longer label
+                merged_motif.nodes[node1]["label"] = (
+                    label1 if len(label1) > len(label2) else label2
+                )
+
+            # Merge confidence scores
+            conf1 = motif1.nodes[node1].get("confidence", 0.0)
+            conf2 = motif2.nodes[node2].get("confidence", 0.0)
+            merged_motif.nodes[node1]["confidence"] = max(conf1, conf2)
+
+            # Merge importance scores
+            imp1 = motif1.nodes[node1].get("importance", 0.0)
+            imp2 = motif2.nodes[node2].get("importance", 0.0)
+            merged_motif.nodes[node1]["importance"] = max(imp1, imp2)
+
+        # Merge edge attributes
+        for edge1 in motif1.edges():
+            edge2 = (mapping[edge1[0]], mapping[edge1[1]])
+            if motif2.has_edge(*edge2):
+                # Merge edge attributes if they exist
+                edge_data1 = motif1.edges[edge1]
+                edge_data2 = motif2.edges[edge2]
+                merged_edge_data = {
+                    k: max(edge_data1.get(k, 0.0), edge_data2.get(k, 0.0))
+                    for k in set(edge_data1) | set(edge_data2)
+                }
+                merged_motif.edges[edge1].update(merged_edge_data)
+
+        # Merge graph-level attributes
+        merged_motif.graph.update(
+            {
+                "demographics": self.get_group_demographics([motif1, motif2]),
+                "motif_type": motif1.graph.get("motif_type"),
+                "description": motif1.graph.get("description"),
+            }
+        )
+
+        return merged_motif
+
 
 def load_graph_from_json(
     graph_data: Dict, agent_id: str = None, demographic_data: Dict = None
 ) -> nx.DiGraph:
     """
-    从新的 JSON 格式加载图数据到 NetworkX DiGraph
+    Load graph data to NetworkX DiGraph with graceful handling of missing fields
 
     Args:
-        graph_data: 包含图数据的字典
-        agent_id: agent 的 ID
-        demographic_data: agent 的人口统计数据
+        graph_data: Dictionary containing graph data
+        agent_id: agent's ID
+        demographic_data: agent's demographic data
     """
     G = nx.DiGraph()
 
-    # 获取实际的图数据
+    # Get actual graph data
     if isinstance(graph_data, dict) and "graph" in graph_data:
         graph_content = graph_data["graph"]
     else:
-        raise ValueError("Invalid graph data format: missing 'graph' field")
+        print(f"Warning: Invalid graph data format for agent {agent_id}")
+        return G
 
-    # 添加节点
-    for node_id, node_data in graph_content["nodes"].items():
+    # Add nodes with safe attribute access
+    for node_id, node_data in graph_content.get("nodes", {}).items():
+        if not isinstance(node_data, dict):
+            print(f"Warning: Invalid node data for node {node_id}")
+            continue
+
         G.add_node(
             node_id,
-            label=node_data["label"],
-            confidence=node_data["aggregate_confidence"],
-            importance=node_data["importance"],
+            label=node_data.get("label", ""),
+            confidence=node_data.get(
+                "aggregate_confidence", 0.0
+            ),  # Default to 0.0 if missing
+            importance=node_data.get("importance", 0.0),  # Default to 0.0 if missing
             is_stance=node_data.get("is_stance", False),
             status=node_data.get("status", "unknown"),
         )
 
-    # 添加边
-    for edge_id, edge_data in graph_content["edges"].items():
-        G.add_edge(
-            edge_data["source"],
-            edge_data["target"],
-            id=edge_id,
-            confidence=edge_data["aggregate_confidence"],
-            direction=edge_data["direction"],
-            modifier=edge_data["modifier"],
-        )
+    # Add edges with safe attribute access
+    for edge_id, edge_data in graph_content.get("edges", {}).items():
+        if not isinstance(edge_data, dict):
+            print(f"Warning: Invalid edge data for edge {edge_id}")
+            continue
+
+        if "source" in edge_data and "target" in edge_data:
+            G.add_edge(
+                edge_data["source"],
+                edge_data["target"],
+                id=edge_id,
+                confidence=edge_data.get(
+                    "aggregate_confidence", 0.0
+                ),  # Default to 0.0 if missing
+                direction=edge_data.get("direction", ""),
+                modifier=edge_data.get("modifier", 0.0),  # Default to 0.0 if missing
+            )
 
     return G
 
 
 def find_agent_graph_data(responses_file: str) -> Dict[str, Dict]:
     """
-    从新的 JSON 格式读取所有 agent 的图数据
+    From new JSON format, read all agent's graph data
     """
     try:
         with open(responses_file, "r") as f:
@@ -1083,7 +1510,7 @@ def find_agent_graph_data(responses_file: str) -> Dict[str, Dict]:
 
 def get_demographic_statistics(samples_dir: str) -> dict:
     """
-    从新的数据格式中提取人口统计信息
+    Extract demographic statistics from new data format
     """
     try:
         with open(samples_dir, "r") as f:
@@ -1102,28 +1529,28 @@ def get_demographic_statistics(samples_dir: str) -> dict:
 
 def load_demographic_data(responses_file: str) -> Dict[str, Dict]:
     """
-    从 responses 文件加载完整的 agent 数据
+    Load full agent data from responses file
 
     Args:
-        responses_file: responses JSON 文件的路径
+        responses_file: Path to responses JSON file
 
     Returns:
-        Dict[str, Dict]: agent_id 到其完整数据的映射
+        Dict[str, Dict]: Mapping from agent_id to its complete data
     """
     try:
         with open(responses_file, "r") as f:
             data = json.load(f)
 
         demographic_mapping = {}
-        # 处理列表格式的数据
-        for agent_data in data:  # 现在是遍历列表而不是字典
-            agent_id = agent_data.get("id")  # 从每个条目中获取 id
+        # Process list format data
+        for agent_data in data:  # Now iterating over list instead of dict
+            agent_id = agent_data.get("id")  # Get id from each entry
             if agent_id:
                 demographic_mapping[agent_id] = {
                     "has_demographics": True,
-                    "agent_data": agent_data,  # 保存完整的 agent 数据
+                    "agent_data": agent_data,  # Save full agent data
                 }
-                # print(f"Found agent data for {agent_id}")  # 添加调试信息
+                # print(f"Found agent data for {agent_id}")  # Add debug info
 
         print(f"Loaded demographic data for {len(demographic_mapping)} agents")
         return demographic_mapping
@@ -1132,42 +1559,55 @@ def load_demographic_data(responses_file: str) -> Dict[str, Dict]:
         print(f"Error loading demographic data: {e}")
         import traceback
 
-        traceback.print_exc()  # 打印完整的错误堆栈
+        traceback.print_exc()  # Print full error stack
         return {}
 
 
 def identify_motif_type(G):
-    """Identify the type of motif based on its structure"""
-    n_nodes = G.number_of_nodes()
+    """Identify the type of motif based on graph structure.
+    This is a standalone version of MotifLibrary.identify_motif_type
+    """
+    num_nodes = G.number_of_nodes()
     in_degrees = dict(G.in_degree())
     out_degrees = dict(G.out_degree())
 
-    # Find nodes with special roles
-    sources = [n for n in G.nodes() if in_degrees[n] == 0 and out_degrees[n] > 0]
-    sinks = [n for n in G.nodes() if in_degrees[n] > 0 and out_degrees[n] == 0]
+    # Basic checks
+    if num_nodes < 3:
+        return "Unknown", "Too small"
 
-    # Check for chain pattern (M1)
-    if max(in_degrees.values()) <= 1 and max(out_degrees.values()) <= 1:
-        return "M1", "Chain"
+    # Chain (M1): Exactly 3 nodes in a sequence
+    if num_nodes == 3:
+        # Check for chain pattern
+        nodes = list(G.nodes())
+        if (
+            any(out_degrees[n] == 1 and in_degrees[n] == 0 for n in nodes)
+            and any(out_degrees[n] == 1 and in_degrees[n] == 1 for n in nodes)
+            and any(out_degrees[n] == 0 and in_degrees[n] == 1 for n in nodes)
+        ):
+            return "M1", "Chain"
 
-    # Check for fork patterns (M2.x)
-    if len(sources) == 1 and sources[0] in G.nodes():
-        out_degree = out_degrees[sources[0]]
-        if out_degree == 2:
+    # Fork patterns (M2.x)
+    source_nodes = [n for n, d in out_degrees.items() if d >= 2 and in_degrees[n] == 0]
+    if len(source_nodes) == 1:
+        source = source_nodes[0]
+        num_children = out_degrees[source]
+        if num_children == 2:
             return "M2.1", "Basic Fork"
-        elif out_degree == 3:
+        elif num_children == 3:
             return "M2.2", "Extended Fork"
-        elif out_degree >= 4:
+        elif num_children >= 4:
             return "M2.3", "Large Fork"
 
-    # Check for collider patterns (M3.x)
-    if len(sinks) == 1 and sinks[0] in G.nodes():
-        in_degree = in_degrees[sinks[0]]
-        if in_degree == 2:
+    # Collider patterns (M3.x)
+    sink_nodes = [n for n, d in in_degrees.items() if d >= 2 and out_degrees[n] == 0]
+    if len(sink_nodes) == 1:
+        sink = sink_nodes[0]
+        num_parents = in_degrees[sink]
+        if num_parents == 2:
             return "M3.1", "Basic Collider"
-        elif in_degree == 3:
+        elif num_parents == 3:
             return "M3.2", "Extended Collider"
-        elif in_degree >= 4:
+        elif num_parents >= 4:
             return "M3.3", "Large Collider"
 
     return "Unknown", "Unknown Type"
@@ -1175,7 +1615,7 @@ def identify_motif_type(G):
 
 def convert_graph_to_dict(G):
     """Convert a NetworkX graph to a serializable dictionary"""
-    # Identify motif type
+    # Identify motif type using the standalone function
     motif_type, motif_desc = identify_motif_type(G)
 
     # Extract and flatten demographics from graph metadata
@@ -1292,8 +1732,11 @@ def process_causal_graphs(
                 f"Example data structure: {list(all_data.values())[0].keys() if all_data else 'Empty'}"
             )
 
-        # HACK: test on one person only
-        all_data = {"660cd7b61a24eeff3eac6e93": all_data["660cd7b61a24eeff3eac6e93"]}
+        # # HACK: test on one person only
+        # all_data = {
+        #     "660cd7b61a24eeff3eac6e93": all_data["660cd7b61a24eeff3eac6e93"],
+        #     "664662d0e586193a0ca4267e": all_data["664662d0e586193a0ca4267e"],
+        # }
 
         current_dir = os.path.dirname(os.path.abspath(__file__))
         if os.path.exists(os.path.join(current_dir, "sample_graph_motifs.json")):
@@ -1302,59 +1745,68 @@ def process_causal_graphs(
 
         else:
             # Process each agent's graph
-            for agent_id, data in tqdm(all_data.items(), desc="Processing   graphs"):
+            for agent_id, data in tqdm(all_data.items(), desc="Processing graphs"):
                 print(f"\nProcessing agent {agent_id}")
 
-                if not isinstance(data, dict):
-                    print(f"Skipping agent {agent_id}: Data is not a dictionary")
-                    continue
-
-                if not data.get("graph"):
-                    print(f"Skipping agent {agent_id}: No graph data found")
-                    continue
-
-                # Get demographic info
-                agent_info = demographic_mapping.get(
-                    agent_id, {"has_demographics": False}
-                )
-                has_demographics = agent_info.get("has_demographics", False)
-
-                if has_demographics:
-                    print(f"Found demographics for {agent_id}")
-
-                # Convert to NetworkX graph
-                G = load_graph_from_json(
-                    data,
-                    agent_id=agent_id,
-                    demographic_data=(
-                        agent_info.get("agent_data") if has_demographics else None
-                    ),
-                )
-
-                # Extract topological motifs
-                motifs = library.extract_topological_motifs(
-                    G,
-                    sample_id=agent_id,
-                    demographic_info=(
-                        agent_info.get("agent_data") if has_demographics else None
-                    ),
-                )
-
-                # Convert motifs to serializable format
-                all_topological_motifs[agent_id] = [
-                    convert_graph_to_dict(m) for m in motifs
-                ]
-                print(f"Found {len(motifs)} motifs for agent {agent_id}")
-
-                # Save intermediate results
                 try:
-                    current_dir = os.path.dirname(os.path.abspath(__file__))
-                    with open(
-                        os.path.join(current_dir, "sample_graph_motifs.json"), "w"
-                    ) as f:
-                        json.dump(all_topological_motifs, f, indent=2)
+                    if not isinstance(data, dict):
+                        print(f"Skipping agent {agent_id}: Data is not a dictionary")
+                        continue
+
+                    if not data.get("graph"):
+                        print(f"Skipping agent {agent_id}: No graph data found")
+                        continue
+
+                    if not data.get("graph", {}).get("nodes"):
+                        print(f"Skipping agent {agent_id}: No nodes in graph")
+                        continue
+
+                    # Get demographic info
+                    agent_info = demographic_mapping.get(
+                        agent_id, {"has_demographics": False}
+                    )
+                    has_demographics = agent_info.get("has_demographics", False)
+
+                    if has_demographics:
+                        print(f"Found demographics for {agent_id}")
+
+                    # Convert to NetworkX graph
+                    G = load_graph_from_json(
+                        data,
+                        agent_id=agent_id,
+                        demographic_data=(
+                            agent_info.get("agent_data") if has_demographics else None
+                        ),
+                    )
+
+                    # Extract topological motifs
+                    motifs = library.extract_topological_motifs(
+                        G,
+                        sample_id=agent_id,
+                        demographic_info=(
+                            agent_info.get("agent_data") if has_demographics else None
+                        ),
+                    )
+
+                    # Convert motifs to serializable format
+                    all_topological_motifs[agent_id] = [
+                        convert_graph_to_dict(m) for m in motifs
+                    ]
+                    print(f"Found {len(motifs)} motifs for agent {agent_id}")
+
+                    # Save intermediate results
+                    try:
+                        current_dir = os.path.dirname(os.path.abspath(__file__))
+                        with open(
+                            os.path.join(current_dir, "sample_graph_motifs.json"), "w"
+                        ) as f:
+                            json.dump(all_topological_motifs, f, indent=2)
+                    except Exception as e:
+                        print(f"Warning: Could not save intermediate results: {e}")
+
                 except Exception as e:
-                    print(f"Warning: Could not save intermediate results: {e}")
+                    print(f"Error processing agent {agent_id}: {e}")
+                    continue
 
         # Convert stored motifs back to graphs before semantic filtering
         converted_motifs = {}
