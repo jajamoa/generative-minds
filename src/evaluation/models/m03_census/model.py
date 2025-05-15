@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import asyncio
 from pathlib import Path
 from typing import Dict, Any, Tuple, List, Optional
 
@@ -133,33 +134,8 @@ class Census(BaseModel):
             # Generate mock data for testing/debugging
             return self._generate_mock_results()
         
-        results = {}
-        
-        # Process each agent (limit to 3 for testing if needed)
-        # raw_agents = raw_agents[:3]  # Uncomment to process only 3 agents for testing
-        
-        for i, raw_agent in enumerate(raw_agents):
-            participant_id = raw_agent.get("id")
-            if not participant_id:
-                participant_id = f"agent_{i:03d}"
-                
-            print(f"DEBUG: Processing agent {i+1}/{len(raw_agents)}: {participant_id}")
-            
-            # Generate opinion and reasons for this proposal
-            try:
-                opinion_data = await self._generate_opinion(
-                    raw_agent, 
-                    proposal,
-                    proposal_desc,
-                    region
-                )
-                results[participant_id] = opinion_data
-            except Exception as e:
-                print(f"ERROR: Failed to generate opinion for agent {participant_id}: {str(e)}")
-                # Generate fallback data for this agent
-                results[participant_id] = self._generate_fallback_opinion(
-                    SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
-                )
+        # Use parallel processing for agents
+        results = await self._process_agents_parallel(raw_agents, proposal, proposal_desc, region)
         
         print(f"DEBUG: Completed processing {len(results)} agents")
         return results
@@ -239,6 +215,94 @@ class Census(BaseModel):
                 desc += f", and {len(zone_info) - 3} more zone types"
         
         return desc
+    
+    async def _process_agents_parallel(self, 
+                                    raw_agents: List[Dict[str, Any]], 
+                                    proposal: Dict[str, Any],
+                                    proposal_desc: str,
+                                    region: str) -> Dict[str, Any]:
+        """Process multiple agents in parallel.
+        
+        Args:
+            raw_agents: List of agent data dictionaries.
+            proposal: The rezoning proposal details.
+            proposal_desc: Human-readable description of the proposal.
+            region: The target region name.
+            
+        Returns:
+            Dictionary with agent opinions and reasons.
+        """
+        results = {}
+        tasks = []
+        
+        # Create async tasks for each agent
+        for i, raw_agent in enumerate(raw_agents):
+            participant_id = raw_agent.get("id")
+            if not participant_id:
+                participant_id = f"agent_{i:03d}"
+            
+            # Create task for each agent
+            task = self._generate_opinion_task(participant_id, raw_agent, proposal, proposal_desc, region)
+            tasks.append(task)
+        
+        # Execute all tasks concurrently with a semaphore to limit concurrency
+        # This prevents overwhelming the API with too many requests
+        semaphore = asyncio.Semaphore(10)  # Limit to 10 concurrent requests
+        
+        async def bounded_generate(participant_id, raw_agent, proposal, proposal_desc, region):
+            async with semaphore:
+                try:
+                    return participant_id, await self._generate_opinion(raw_agent, proposal, proposal_desc, region)
+                except Exception as e:
+                    print(f"ERROR: Failed to generate opinion for agent {participant_id}: {str(e)}")
+                    scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
+                    return participant_id, self._generate_fallback_opinion(scenario_id)
+        
+        # Create bounded tasks
+        bounded_tasks = [
+            bounded_generate(
+                raw_agent.get("id", f"agent_{i:03d}"), 
+                raw_agent, 
+                proposal, 
+                proposal_desc, 
+                region
+            )
+            for i, raw_agent in enumerate(raw_agents)
+        ]
+        
+        # Wait for all tasks to complete
+        for task_result in await asyncio.gather(*bounded_tasks):
+            participant_id, opinion_data = task_result
+            results[participant_id] = opinion_data
+            
+        return results
+        
+    async def _generate_opinion_task(self, 
+                                  participant_id: str,
+                                  raw_agent: Dict[str, Any], 
+                                  proposal: Dict[str, Any],
+                                  proposal_desc: str,
+                                  region: str) -> Tuple[str, Dict[str, Any]]:
+        """Generate an opinion task for a single agent.
+        
+        Args:
+            participant_id: The ID of the agent.
+            raw_agent: The agent data dictionary.
+            proposal: The rezoning proposal details.
+            proposal_desc: Human-readable description of the proposal.
+            region: The target region name.
+            
+        Returns:
+            Tuple of (participant_id, opinion_data).
+        """
+        try:
+            opinion_data = await self._generate_opinion(raw_agent, proposal, proposal_desc, region)
+            return participant_id, opinion_data
+        except Exception as e:
+            print(f"ERROR: Failed to generate opinion for agent {participant_id}: {str(e)}")
+            # Generate fallback data for this agent
+            scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
+            return participant_id, self._generate_fallback_opinion(scenario_id)
     
     async def _generate_opinion(self, 
                               agent: Dict[str, Any], 
