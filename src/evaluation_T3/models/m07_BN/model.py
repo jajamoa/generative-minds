@@ -471,10 +471,6 @@ class BayesianNetwork(Census):
                 dag, node_labels = self.load_graph(graph=graph)
                 graph_json = self._graph_to_json(dag, node_labels)
 
-                import pdb
-
-                pdb.set_trace()
-
                 # Extract intervention from proposal
                 node_label, intervention_prob, explanation, expected_effects = (
                     self.extractor.extract_intervention(
