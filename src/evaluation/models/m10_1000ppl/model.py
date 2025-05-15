@@ -5,6 +5,7 @@ from typing import Dict, Any, Optional
 
 from ..base import ModelConfig
 from ..m03_census.model import Census, REASON_MAPPING, SCENARIO_MAPPING
+from ..m03_census.utils.spatial_utils import calculate_distance_to_affected_area, create_proposal_description
 
 class M10_1000ppl(Census):
     """A model that generates opinions using transcript and expert reflection data."""
@@ -94,6 +95,19 @@ class M10_1000ppl(Census):
         transcript_data = self._load_transcript(agent_id)
         expert_reflection_data = self._load_expert_reflection(agent_id)
         
+        # Calculate distance if coordinates are available
+        distance_km = None
+        if agent:
+            coords = agent.get("coordinates", {})
+            lat = coords.get("lat")
+            lon = coords.get("lng")
+            if lat is not None and lon is not None:
+                distance_km = calculate_distance_to_affected_area(
+                    lat, lon,
+                    proposal.get("cells", {})
+                )
+                print(f"DEBUG: Agent {agent_id} is {distance_km:.2f}km from affected area")
+        
         # Only proceed if we have both data sources
         if not transcript_data or not expert_reflection_data:
             print(f"ERROR: Missing data for agent {agent_id}. Transcript: {bool(transcript_data)}, Reflection: {bool(expert_reflection_data)}")
@@ -104,6 +118,8 @@ class M10_1000ppl(Census):
             transcript_data,
             expert_reflection_data,
             proposal_desc,
+            agent,
+            distance_km,
             region
         )
         
@@ -131,6 +147,8 @@ class M10_1000ppl(Census):
                                             transcript: Dict[str, Any],
                                             expert_reflection: Dict[str, Any],
                                             proposal_desc: str,
+                                            agent: Dict[str, Any],
+                                            distance_km: float,
                                             region: str) -> str:
         """Build a prompt using transcript and expert reflection data.
         
@@ -138,6 +156,8 @@ class M10_1000ppl(Census):
             transcript: The transcript data dictionary.
             expert_reflection: The expert reflection data.
             proposal_desc: Human-readable proposal description.
+            agent: The agent data containing geolocation content.
+            distance_km: Distance from agent to affected area in kilometers.
             region: The target region name.
             
         Returns:
@@ -153,6 +173,16 @@ class M10_1000ppl(Census):
             answer = qa.get("answer", "").strip()
             if question and answer:
                 context += f"Q: {question}\nA: {answer}\n\n"
+
+        # Add location context if available
+        location_context = ""
+        if agent:
+            geo_content = agent.get("geo_content", {})
+            if geo_content.get("narrative"):
+                location_context += f"\nYour neighborhood context:\n{geo_content['narrative']}"
+        
+        if distance_km is not None:
+            location_context += f"\nYour distance from the affected area: {distance_km:.2f} kilometers"
         
         # Extract expert reflections
         expert_insights = "Expert Analysis:\n"
@@ -161,7 +191,7 @@ class M10_1000ppl(Census):
             expert_insights += "\n".join(reflections) + "\n\n"
         
         # Build the complete prompt
-        prompt = f"""Based on the following interview transcript and expert analysis of a community member in {region}, evaluate this housing policy proposal:
+        prompt = f"""Based on the following interview transcript and expert analysis of a community member in {region}, evaluate this housing policy proposal:{location_context}
 
 {context}
 
@@ -200,9 +230,10 @@ J: [1-5] (Public amenities)
 K: [1-5] (Property values)
 L: [1-5] (Historical preservation)
 
-Base your evaluation ONLY on the provided interview transcript and expert analysis.
+Base your evaluation on the provided interview transcript, expert analysis, and your location context.
 Format your response EXACTLY as shown above, with one rating (1-10) and twelve reason scores (1-5 each).
 """
+        print(f"DEBUG: Generated prompt: {prompt}")
         return prompt
 
     def _generate_fallback_opinion(self) -> Dict[str, Any]:
