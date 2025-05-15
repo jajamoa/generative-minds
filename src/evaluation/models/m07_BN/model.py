@@ -400,22 +400,22 @@ class BayesianNetwork(Census):
 
             self.dag, self.node_labels = self.load_graph(raw_causal_graph)
 
-            # # remove the out degree of stance node
-            # # NOTE: this is a hack to make the stance node not affect the other nodes
-            # for node in stance_nodes:
-            #     children_to_process = self.dag[node]["children"]
+            # remove the out degree of stance node
+            # NOTE: this is a hack to make the stance node not affect the other nodes
+            for node in stance_nodes:
+                children_to_process = self.dag[node]["children"]
 
-            #     # handle each child node
-            #     for child_id, _ in children_to_process:
-            #         # remove the stance node from the child node's parents
-            #         self.dag[child_id]["parents"] = [
-            #             (parent_id, modifier)
-            #             for parent_id, modifier in self.dag[child_id]["parents"]
-            #             if parent_id != node
-            #         ]
+                # handle each child node
+                for child_id, _ in children_to_process:
+                    # remove the stance node from the child node's parents
+                    self.dag[child_id]["parents"] = [
+                        (parent_id, modifier)
+                        for parent_id, modifier in self.dag[child_id]["parents"]
+                        if parent_id != node
+                    ]
 
-            #     # clear the children of the stance node
-            #     self.dag[node]["children"] = []
+                # clear the children of the stance node
+                self.dag[node]["children"] = []
 
             retried = 0
             while retried < 5:

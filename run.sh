@@ -4,11 +4,11 @@
 
 # python -m experiment.run_experiment --protocol experiment/protocols/SF_transcript_survey_evaluation_5.11.yaml
 
-# python src/evaluation/experiment/run_experiment.py --protocol src/evaluation/experiment/protocols/SF_BN_survey_evaluation.yaml
+python src/evaluation/experiment/run_experiment.py --protocol src/evaluation/experiment/protocols/SF_BN_survey_evaluation.yaml
 
 # python src/evaluation_T3/models/m07_BN/motif_library/motif_library.py --input data/samples --output data/samples/output
 
-python src/evaluation_T3/experiment/run_experiment.py --protocol src/evaluation_T3/experiment/protocols/SF_BN_survey_evaluation.yaml
+# python src/evaluation_T3/experiment/run_experiment.py --protocol src/evaluation_T3/experiment/protocols/SF_BN_survey_evaluation.yaml
 
 # python src/phase2_motif/motif_library.py --input data/samples --output data/samples/output
 
