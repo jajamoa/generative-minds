@@ -1,17 +1,19 @@
 import os
 import random
 import json
+import asyncio
 import requests
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
 
 from ..base import BaseModel, ModelConfig
-from ..m03_census.components.llm import OpenAILLM
+from ..m05_naive.model import NaiveBaseline
 from ..m03_census.model import REASON_MAPPING, SCENARIO_MAPPING
 from ..m03_census.utils.spatial_utils import calculate_distance_to_affected_area, create_proposal_description
+from ..m03_census.components.llm import OpenAILLM, create_llm
 
-class CoT(BaseModel):
+class CoT(NaiveBaseline):
     """A CoT model using only proposal/grid info, no demographics."""
 
     def __init__(self, config: ModelConfig = None):
@@ -21,8 +23,7 @@ class CoT(BaseModel):
             config: Model configuration containing settings.
         """
         super().__init__(config)
-        self.llm = OpenAILLM()
-        
+                
         # Get custom OpenAI parameters if provided
         self.temperature = getattr(self.config, "temperature", 0.7)
         self.max_tokens = getattr(self.config, "max_tokens", 800)
@@ -40,6 +41,8 @@ class CoT(BaseModel):
         
         # Track which proposal we're currently processing
         self.current_proposal_id = None
+
+        self.batch_size = getattr(self.config, "batch_size", 5)  # Number of parallel requests
 
     def _load_agent_ids(self, agent_data_path: str) -> list:
         """Load only agent IDs from the agent data file.
@@ -65,7 +68,7 @@ class CoT(BaseModel):
     async def simulate_opinions(self,
                               region: str,
                               proposal: Dict[str, Any]) -> Dict[str, Any]:
-        """Simulate opinions using OpenAI based only on proposal information.
+        """Simulate opinions using parallel processing.
         
         Args:
             region: The target region name.
@@ -74,20 +77,16 @@ class CoT(BaseModel):
         Returns:
             A dictionary with multiple participants containing opinions and reasons.
         """
-        # Extract proposal ID from metadata if available
+        # Extract proposal ID and get scenario ID
         self.current_proposal_id = proposal.get("proposal_id", None)
+        scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
         print(f"DEBUG simulate_opinions: Processing proposal_id={self.current_proposal_id}")
         
-        # Get scenario ID
-        scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
-        
-        # Prepare readable description of the proposal
+        # Prepare proposal description
         proposal_desc = self._create_proposal_description(proposal)
         print(f"DEBUG: Generated proposal description: {proposal_desc[:100]}...")
         
-        results = {}
-        
-        # Load full agent data for location information
+        # Load agent data
         agent_data_path = os.path.join(os.path.dirname(__file__), "..", "m03_census", "census_data", "agents_with_geo.json")
         try:
             with open(agent_data_path, 'r', encoding='utf-8') as f:
@@ -97,54 +96,97 @@ class CoT(BaseModel):
             print(f"WARNING: Failed to load agent data: {str(e)}")
             agent_dict = {}
         
-        # Generate opinions for each agent ID
-        for participant_id in self.agent_ids:
-            try:
-                # Get agent data and calculate distance if available
-                agent = agent_dict.get(participant_id)
-                distance_km = None
-                
-                if agent:
-                    coords = agent.get("coordinates", {})
-                    lat = coords.get("lat")
-                    lon = coords.get("lng")
-                    if lat is not None and lon is not None:
-                        distance_km = calculate_distance_to_affected_area(
-                            lat, lon,
-                            proposal.get("cells", {})
-                        )
-                        print(f"DEBUG: Agent {participant_id} is {distance_km:.2f}km from affected area")
-                
-                # Build prompt and generate response with different temperature for variety
-                prompt = self._build_prompt(proposal_desc, region, agent=agent, distance_km=distance_km)
-                temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))  # Add some randomness to temperature
-                
-                response = await self.llm.generate(
-                    prompt, 
-                    temperature=temp,
-                    max_tokens=self.max_tokens
+        results = {}
+        
+        # Process agents in batches
+        for i in range(0, len(self.agent_ids), self.batch_size):
+            batch = self.agent_ids[i:i + self.batch_size]
+            tasks = []
+            
+            # Create tasks for each agent in the batch
+            for participant_id in batch:
+                task = self._process_single_agent(
+                    participant_id, 
+                    agent_dict.get(participant_id),
+                    proposal,
+                    proposal_desc,
+                    region,
+                    scenario_id
                 )
-                
-                # Parse the response
-                rating, reason_scores = self._parse_response(response)
-                print(f"DEBUG: Generated opinion for {participant_id}: rating={rating}")
-                
-                results[participant_id] = {
-                    "opinions": {
-                        scenario_id: rating
-                    },
-                    "reasons": {
-                        scenario_id: reason_scores
-                    }
-                }
-                
-            except Exception as e:
-                print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
-                # Generate fallback opinion for this participant
-                results[participant_id] = self._generate_fallback_opinion_single(scenario_id)
+                tasks.append(task)
+            
+            # Run batch of tasks concurrently
+            batch_results = await asyncio.gather(*tasks)
+            
+            # Update results with batch results
+            for participant_id, result in zip(batch, batch_results):
+                results[participant_id] = result
         
         return results
-    
+
+    async def _process_single_agent(self,
+                                  participant_id: str,
+                                  agent: Optional[Dict[str, Any]],
+                                  proposal: Dict[str, Any],
+                                  proposal_desc: str,
+                                  region: str,
+                                  scenario_id: str) -> Dict[str, Any]:
+        """Process a single agent's opinion generation.
+        
+        Args:
+            participant_id: The ID of the participant.
+            agent: The agent data dictionary.
+            proposal: The proposal dictionary.
+            proposal_desc: The proposal description.
+            region: The target region name.
+            scenario_id: The scenario ID.
+            
+        Returns:
+            A dictionary containing the agent's opinions and reasons.
+        """
+        try:
+            # Load complete agent data including geo content
+            agent_data = self._load_agent_data(participant_id)
+            
+            # Calculate distance if coordinates available
+            distance_km = None
+            if agent_data:
+                coords = agent_data.get("coordinates", {})
+                lat = coords.get("lat")
+                lon = coords.get("lng")
+                if lat is not None and lon is not None:
+                    distance_km = calculate_distance_to_affected_area(
+                        lat, lon,
+                        proposal.get("cells", {})
+                    )
+                    print(f"DEBUG: Agent {participant_id} is {distance_km:.2f}km from affected area")
+            
+            # Generate and parse response
+            prompt = self._build_prompt(proposal_desc, region, agent=agent_data, distance_km=distance_km)
+            temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))
+            
+            response = await self.llm.generate(
+                prompt,
+                temperature=temp,
+                max_tokens=self.max_tokens
+            )
+            
+            rating, reason_scores = self._parse_response(response)
+            print(f"DEBUG: Generated opinion for {participant_id}: rating={rating}")
+            
+            return {
+                "opinions": {
+                    scenario_id: rating
+                },
+                "reasons": {
+                    scenario_id: reason_scores
+                }
+            }
+            
+        except Exception as e:
+            print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
+            return self._generate_fallback_opinion_single(scenario_id)
+
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
         """Create a readable description of the proposal using spatial utils."""
         return create_proposal_description(proposal)

@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import asyncio
 from pathlib import Path
 from typing import Dict, Any, Tuple, List, Optional
 from collections import Counter, defaultdict
@@ -9,7 +10,7 @@ import googlemaps
 from math import sqrt, radians, sin, cos, asin, pi
 
 from ..base import BaseModel, ModelConfig
-from .components.llm import OpenAILLM
+from .components.llm import OpenAILLM, create_llm
 from .utils.spatial_utils import (
     calculate_haversine_distance,
     calculate_distance_to_affected_area,
@@ -66,11 +67,23 @@ class Census(BaseModel):
             config: Model configuration containing settings.
         """
         super().__init__(config)
-        self.llm = OpenAILLM()
         
-        # Get custom OpenAI parameters if provided
+        # Get LLM configuration
+        llm_provider = getattr(self.config, "llm_provider", "openai")
+        llm_model = getattr(self.config, "llm_model", None)
+        
+        # Initialize LLM using factory
+        try:
+            self.llm = create_llm(provider=llm_provider, model=llm_model)
+        except Exception as e:
+            print(f"WARNING: Failed to initialize {llm_provider} LLM: {str(e)}")
+            print("Falling back to OpenAI GPT-4")
+            self.llm = create_llm(provider="openai", model="gpt-4")
+        
+        # Get custom LLM parameters if provided
         self.temperature = getattr(self.config, "temperature", 0.7)
         self.max_tokens = getattr(self.config, "max_tokens", 800)
+        self.batch_size = getattr(self.config, "batch_size", 5)  # Number of parallel requests
         
         # Load agent data
         default_agent_file = os.path.join(os.path.dirname(__file__), "census_data", "agents_with_geo.json")
@@ -108,7 +121,7 @@ class Census(BaseModel):
             return []
 
     async def simulate_opinions(self, region: str, proposal: Dict[str, Any]) -> Dict[str, Any]:
-        """Simulate opinions using OpenAI with census demographic data.
+        """Simulate opinions using parallel processing.
         
         Args:
             region: The target region name.
@@ -129,34 +142,93 @@ class Census(BaseModel):
         
         results = {}
         
-        # Generate opinions for each agent
-        for agent in self.agent_data:
-            participant_id = agent.get("id")
-            if not participant_id:
-                continue
-                
-            try:
-                # Calculate distance to affected area
-                agent_coords = agent.get("coordinates", {})
-                agent_lat = agent_coords.get("lat")
-                agent_lon = agent_coords.get("lng")
-                
-                distance_km = None
-                if agent_lat is not None and agent_lon is not None:
-                    distance_km = calculate_distance_to_affected_area(
-                        agent_lat, agent_lon, 
-                        proposal.get("cells", {})
-                    )
-                
-                # Generate opinion
-                opinion = await self._generate_opinion(agent, proposal, proposal_desc, region)
-                results[participant_id] = opinion
-                
-            except Exception as e:
-                print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
-                results[participant_id] = self._generate_fallback_opinion(scenario_id)
+        # Process agents in batches
+        for i in range(0, len(self.agent_data), self.batch_size):
+            batch = self.agent_data[i:i + self.batch_size]
+            tasks = []
+            
+            # Create tasks for each agent in the batch
+            for agent in batch:
+                participant_id = agent.get("id")
+                if not participant_id:
+                    continue
+                    
+                task = self._process_single_agent(
+                    agent,
+                    proposal,
+                    proposal_desc,
+                    region,
+                    scenario_id
+                )
+                tasks.append(task)
+            
+            # Run batch of tasks concurrently
+            batch_results = await asyncio.gather(*tasks)
+            
+            # Update results with batch results
+            for agent, result in zip(batch, batch_results):
+                participant_id = agent.get("id")
+                if participant_id:
+                    results[participant_id] = result
         
         return results
+
+    async def _process_single_agent(self,
+                                  agent: Dict[str, Any],
+                                  proposal: Dict[str, Any],
+                                  proposal_desc: str,
+                                  region: str,
+                                  scenario_id: str) -> Dict[str, Any]:
+        """Process a single agent's opinion generation.
+        
+        Args:
+            agent: The agent data dictionary.
+            proposal: The proposal dictionary.
+            proposal_desc: The proposal description.
+            region: The target region name.
+            scenario_id: The scenario ID.
+            
+        Returns:
+            A dictionary containing the agent's opinions and reasons.
+        """
+        try:
+            # Calculate distance to affected area
+            agent_coords = agent.get("coordinates", {})
+            agent_lat = agent_coords.get("lat")
+            agent_lon = agent_coords.get("lng")
+            
+            distance_km = None
+            if agent_lat is not None and agent_lon is not None:
+                distance_km = self._calculate_distance_to_affected_area(
+                    agent_lat, agent_lon, 
+                    proposal.get("cells", {})
+                )
+                print(f"DEBUG: Agent {agent.get('id')} is {distance_km:.2f}km from affected area")
+            
+            # Build prompt with distance information
+            prompt = self._build_opinion_prompt(agent, proposal_desc, region, distance_km)
+            
+            # Generate and parse response
+            temp = self.temperature
+            response = await self.llm.generate(
+                prompt,
+                temperature=temp,
+                max_tokens=self.max_tokens
+            )
+            
+            rating, reason_scores = self._parse_opinion_response(response)
+            
+            return {
+                "opinions": {
+                    scenario_id: rating
+                },
+                "reasons": {
+                    scenario_id: reason_scores
+                }
+            }
+        except Exception as e:
+            print(f"ERROR: Opinion generation failed: {str(e)}")
+            return self._generate_fallback_opinion(scenario_id)
 
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
         """Generate a richer, geo-aware description for a rezoning proposal."""
@@ -301,52 +373,6 @@ class Census(BaseModel):
         print(f"DEBUG: Agent {agent_lat}, {agent_lon} is {min_distance:.2f}km from affected area")
         return min_distance
 
-    async def _generate_opinion(self, 
-                              agent: Dict[str, Any], 
-                              proposal: Dict[str, Any],
-                              proposal_desc: str,
-                              region: str) -> Dict[str, Any]:
-        """Generate opinion using agent demographics and location."""
-        try:
-            # Calculate distance to affected area
-            agent_coords = agent.get("coordinates", {})
-            agent_lat = agent_coords.get("lat")
-            agent_lon = agent_coords.get("lng")
-            
-            distance_km = None
-            if agent_lat is not None and agent_lon is not None:
-                distance_km = self._calculate_distance_to_affected_area(
-                    agent_lat, agent_lon, 
-                    proposal.get("cells", {})
-                )
-                print(f"DEBUG: Agent {agent.get('id')} is {distance_km:.2f}km from affected area")
-            
-            # Build prompt with distance information
-            prompt = self._build_opinion_prompt(agent, proposal_desc, region, distance_km)
-            
-            # Generate and parse response
-            temp = self.temperature
-            response = await self.llm.generate(
-                prompt,
-                temperature=temp,
-                max_tokens=self.max_tokens
-            )
-            
-            rating, reason_scores = self._parse_opinion_response(response)
-            
-            scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
-            return {
-                "opinions": {
-                    scenario_id: rating
-                },
-                "reasons": {
-                    scenario_id: reason_scores
-                }
-            }
-        except Exception as e:
-            print(f"ERROR: Opinion generation failed: {str(e)}")
-            return self._generate_fallback_opinion(SCENARIO_MAPPING.get(self.current_proposal_id, "1.1"))
-
     def _build_opinion_prompt(self, 
                              agent: Dict[str, Any], 
                              proposal_desc: str,
@@ -360,12 +386,15 @@ class Census(BaseModel):
         # Build demographic context
         context = f"""As a resident of {region} with the following characteristics:
 - Age: {agent_info.get('age')}
+- Geo mobility: {agent_info.get('Geo Mobility')}
 - Housing: {agent_info.get('householder type')}
+- Gross rent: {agent_info.get('Gross rent')}
 - Transportation: {agent_info.get('means of transportation')}
 - Income: {agent_info.get('income')}
 - Occupation: {agent_info.get('occupation')}
-- Marital Status: {agent_info.get('marital status')}
-- Has Children Under 18: {agent_info.get('has children under 18')}
+- Marital Status: {agent_info.get('family type')}
+- Has Children Under 18: {agent_info.get('children')}
+- Housing experience: {agent_info.get('housing experience')}
 - Neighborhood: {geo_content.get('neighborhood', 'Unknown')}
 """
 

@@ -1,5 +1,6 @@
 import os
 import json
+import asyncio
 from pathlib import Path
 from typing import Dict, Any, Optional
 
@@ -25,6 +26,9 @@ class M10_1000ppl(Census):
         
         print(f"DEBUG M10_1000ppl.__init__: transcript_dir={self.transcript_dir}")
         print(f"DEBUG M10_1000ppl.__init__: expert_reflection_dir={self.expert_reflection_dir}")
+        
+        # Inherit batch_size from config or use default
+        self.batch_size = getattr(self.config, "batch_size", 5)
 
     def _load_transcript(self, agent_id: str) -> Optional[Dict[str, Any]]:
         """Load transcript data for a specific agent.
@@ -73,75 +77,115 @@ class M10_1000ppl(Census):
             print(f"ERROR: Failed to load expert reflection for agent {agent_id}: {str(e)}")
             return None
                 
-    async def _generate_opinion(self, 
-                              agent: Dict[str, Any], 
-                              proposal: Dict[str, Any],
-                              proposal_desc: str,
-                              region: str) -> Dict[str, Any]:
-        """Generate opinion using transcript and expert reflection data.
+    async def simulate_opinions(self, region: str, proposal: Dict[str, Any]) -> Dict[str, Any]:
+        """Simulate opinions using parallel processing with transcript and expert reflection data."""
+        self.current_proposal_id = proposal.get("proposal_id", None)
+        print(f"DEBUG simulate_opinions: Processing proposal_id={self.current_proposal_id}")
         
-        Args:
-            agent: The agent data dictionary (only used for ID).
-            proposal: The proposal dictionary.
-            proposal_desc: Human-readable proposal description.
-            region: The target region name.
-            
-        Returns:
-            A dictionary containing the generated opinion and reasons.
-        """
-        agent_id = agent.get("id")
-        
-        # Load both transcript and expert reflection
-        transcript_data = self._load_transcript(agent_id)
-        expert_reflection_data = self._load_expert_reflection(agent_id)
-        
-        # Calculate distance if coordinates are available
-        distance_km = None
-        if agent:
-            coords = agent.get("coordinates", {})
-            lat = coords.get("lat")
-            lon = coords.get("lng")
-            if lat is not None and lon is not None:
-                distance_km = calculate_distance_to_affected_area(
-                    lat, lon,
-                    proposal.get("cells", {})
-                )
-                print(f"DEBUG: Agent {agent_id} is {distance_km:.2f}km from affected area")
-        
-        # Only proceed if we have both data sources
-        if not transcript_data or not expert_reflection_data:
-            print(f"ERROR: Missing data for agent {agent_id}. Transcript: {bool(transcript_data)}, Reflection: {bool(expert_reflection_data)}")
-            return self._generate_fallback_opinion()
-        
-        # Generate opinion using both data sources
-        prompt = self._build_opinion_prompt_with_transcript(
-            transcript_data,
-            expert_reflection_data,
-            proposal_desc,
-            agent,
-            distance_km,
-            region
-        )
-        
-        # Generate and parse response
-        temp = self.temperature
-        response = await self.llm.generate(
-            prompt,
-            temperature=temp,
-            max_tokens=self.max_tokens
-        )
-        
-        rating, reason_scores = self._parse_opinion_response(response)
+        # Get scenario ID
         scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
         
-        return {
-            "opinions": {
-                scenario_id: rating
-            },
-            "reasons": {
-                scenario_id: reason_scores
+        # Prepare proposal description
+        proposal_desc = create_proposal_description(proposal)
+        print(f"DEBUG: Generated proposal description: {proposal_desc[:100]}...")
+        
+        results = {}
+        
+        # Process agents in batches
+        for i in range(0, len(self.agent_data), self.batch_size):
+            batch = self.agent_data[i:i + self.batch_size]
+            tasks = []
+            
+            # Create tasks for each agent in the batch
+            for agent in batch:
+                participant_id = agent.get("id")
+                if not participant_id:
+                    continue
+                    
+                task = self._process_single_agent(
+                    agent,
+                    proposal,
+                    proposal_desc,
+                    region,
+                    scenario_id
+                )
+                tasks.append(task)
+            
+            # Run batch of tasks concurrently
+            batch_results = await asyncio.gather(*tasks)
+            
+            # Update results with batch results
+            for agent, result in zip(batch, batch_results):
+                participant_id = agent.get("id")
+                if participant_id:
+                    results[participant_id] = result
+        
+        return results
+
+    async def _process_single_agent(self,
+                                  agent: Dict[str, Any],
+                                  proposal: Dict[str, Any],
+                                  proposal_desc: str,
+                                  region: str,
+                                  scenario_id: str) -> Dict[str, Any]:
+        """Process a single agent's opinion generation with transcript and expert reflection."""
+        try:
+            agent_id = agent.get("id")
+            
+            # Load both transcript and expert reflection
+            transcript_data = self._load_transcript(agent_id)
+            expert_reflection_data = self._load_expert_reflection(agent_id)
+            
+            # Calculate distance if coordinates are available
+            distance_km = None
+            if agent:
+                coords = agent.get("coordinates", {})
+                lat = coords.get("lat")
+                lon = coords.get("lng")
+                if lat is not None and lon is not None:
+                    distance_km = calculate_distance_to_affected_area(
+                        lat, lon,
+                        proposal.get("cells", {})
+                    )
+                    print(f"DEBUG: Agent {agent_id} is {distance_km:.2f}km from affected area")
+            
+            # Only proceed if we have both data sources
+            if not transcript_data or not expert_reflection_data:
+                print(f"ERROR: Missing data for agent {agent_id}. Transcript: {bool(transcript_data)}, Reflection: {bool(expert_reflection_data)}")
+                return self._generate_fallback_opinion()
+            
+            # Generate opinion using both data sources
+            prompt = self._build_opinion_prompt_with_transcript(
+                transcript_data,
+                expert_reflection_data,
+                proposal_desc,
+                agent,
+                distance_km,
+                region
+            )
+            
+            # Generate and parse response
+            temp = self.temperature
+            response = await self.llm.generate(
+                prompt,
+                temperature=temp,
+                max_tokens=self.max_tokens
+            )
+            
+            rating, reason_scores = self._parse_opinion_response(response)
+            
+            return {
+                "opinions": {
+                    scenario_id: rating
+                },
+                "reasons": {
+                    scenario_id: reason_scores
+                }
             }
-        }
+            
+        except Exception as e:
+            print(f"ERROR: Opinion generation failed for agent {agent_id}: {str(e)}")
+            return self._generate_fallback_opinion()
 
     def _build_opinion_prompt_with_transcript(self,
                                             transcript: Dict[str, Any],
