@@ -219,57 +219,64 @@ class BayesianNetwork(Census):
         node_samples = {node: [] for node in self.dag}
         topo_order = self._get_topological_order()
 
-        for _ in range(num_samples):
-            prob_values = {}
+        try:
+            for _ in range(num_samples):
+                prob_values = {}
 
-            for node in topo_order:
-                if not self.dag[node]["parents"]:  # Root node
-                    if node == intervention_node:
-                        prob_values[node] = intervention_prob
+                for node in topo_order:
+                    if not self.dag[node]["parents"]:  # Root node
+                        if node == intervention_node:
+                            prob_values[node] = intervention_prob
+                        else:
+                            prob_values[node] = 0.5  # Base probability
                     else:
-                        prob_values[node] = 0.5  # Base probability
-                else:
-                    parent_impacts = []
-                    total_modifier = 0
+                        parent_impacts = []
+                        total_modifier = 0
 
-                    for parent_id, modifier in self.dag[node]["parents"]:
-                        parent_prob = prob_values[parent_id]
-                        impact = self._calculate_impact(parent_prob, modifier)
-                        parent_impacts.append(impact)
-                        total_modifier += abs(modifier)
+                        for parent_id, modifier in self.dag[node]["parents"]:
+                            parent_prob = prob_values[parent_id]
+                            impact = self._calculate_impact(parent_prob, modifier)
+                            parent_impacts.append(impact)
+                            total_modifier += abs(modifier)
 
-                    if len(parent_impacts) > 1:
-                        weights = [
-                            abs(m) / total_modifier
-                            for _, m in self.dag[node]["parents"]
-                        ]
-                        combined_impact = sum(
-                            i * w for i, w in zip(parent_impacts, weights)
-                        )
-                        sensitivity = 10.0
-                        prob = 1 / (1 + np.exp(-sensitivity * combined_impact))
+                        if len(parent_impacts) > 1:
+                            weights = [
+                                abs(m) / total_modifier
+                                for _, m in self.dag[node]["parents"]
+                            ]
+                            combined_impact = sum(
+                                i * w for i, w in zip(parent_impacts, weights)
+                            )
+                            sensitivity = 10.0
+                            prob = 1 / (1 + np.exp(-sensitivity * combined_impact))
+                        else:
+                            impact = parent_impacts[0]
+                            prob = 1 / (1 + np.exp(-2.0 * impact))
+
+                        prob_values[node] = min(0.95, max(0.05, prob))
+
+                    # Only sample leaf nodes
+                    if not self.dag[node]["children"]:
+                        sample = np.random.binomial(n=1, p=prob_values[node])
                     else:
-                        impact = parent_impacts[0]
-                        prob = 1 / (1 + np.exp(-2.0 * impact))
+                        sample = prob_values[node]
+                    node_samples[node].append(sample)
 
-                    prob_values[node] = min(0.95, max(0.05, prob))
+            # Calculate statistics
+            results = {}
+            for node in self.dag:
+                samples = node_samples[node]
+                results[node] = {
+                    "mean": np.mean(samples),
+                    "std": np.std(samples),
+                    "samples": samples,
+                }
+        except Exception as e:
+            print(f"Error simulating intervention: {e}")
+            import pdb
 
-                # Only sample leaf nodes
-                if not self.dag[node]["children"]:
-                    sample = np.random.binomial(n=1, p=prob_values[node])
-                else:
-                    sample = prob_values[node]
-                node_samples[node].append(sample)
-
-        # Calculate statistics
-        results = {}
-        for node in self.dag:
-            samples = node_samples[node]
-            results[node] = {
-                "mean": np.mean(samples),
-                "std": np.std(samples),
-                "samples": samples,
-            }
+            pdb.set_trace()
+            return {}
 
         return results
 
@@ -376,11 +383,12 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # TODO: for debug, only use the first 2 agents
-        # for agent_id in self.agent_ids[:15]:
+        print("-------------------------------------------------------")
 
-        for agent_id in self.agent_ids:
-            # TODO: for each agent, the graph should be loaded again, now just use self.dag as a place holder
+        # TODO: for debug, only use the first 2 agents
+        for agent_id in self.agent_ids[:30]:
+
+            # for agent_id in self.agent_ids:
 
             raw_causal_graph, stance_nodes = find_agent_graph_data(
                 agent_id, responses_file_path
@@ -392,13 +400,37 @@ class BayesianNetwork(Census):
 
             self.dag, self.node_labels = self.load_graph(raw_causal_graph)
 
-            # Extract intervention from proposal
-            node_label, intervention_prob, explanation, expected_effects = (
-                self.extractor.extract_intervention(
-                    {"dag": self.dag, "node_labels": self.node_labels},
-                    self._create_proposal_description(proposal),
-                )
-            )
+            # # remove the out degree of stance node
+            # # NOTE: this is a hack to make the stance node not affect the other nodes
+            # for node in stance_nodes:
+            #     children_to_process = self.dag[node]["children"]
+
+            #     # handle each child node
+            #     for child_id, _ in children_to_process:
+            #         # remove the stance node from the child node's parents
+            #         self.dag[child_id]["parents"] = [
+            #             (parent_id, modifier)
+            #             for parent_id, modifier in self.dag[child_id]["parents"]
+            #             if parent_id != node
+            #         ]
+
+            #     # clear the children of the stance node
+            #     self.dag[node]["children"] = []
+
+            retried = 0
+            while retried < 5:
+                try:
+                    node_label, intervention_prob, explanation, expected_effects = (
+                        self.extractor.extract_intervention(
+                            {"dag": self.dag, "node_labels": self.node_labels},
+                            self._create_proposal_description(proposal),
+                        )
+                    )
+                    break
+                except Exception as e:
+                    retried += 1
+                    print(f"Error extracting intervention: {e}")
+                    continue
 
             # Run simulations
             base_results = self.simulate_intervention()
@@ -421,6 +453,7 @@ class BayesianNetwork(Census):
                 "opinions": {
                     # NOTE: it is actually a Bernoulli distribution
                     scenario_id: opinion_score
+                    # scenario_id: 1
                 },
                 "reasons": {
                     scenario_id: {
