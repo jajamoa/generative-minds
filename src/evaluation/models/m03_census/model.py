@@ -10,6 +10,13 @@ from math import sqrt, radians, sin, cos, asin, pi
 
 from ..base import BaseModel, ModelConfig
 from .components.llm import OpenAILLM
+from .utils.spatial_utils import (
+    calculate_haversine_distance,
+    calculate_distance_to_affected_area,
+    get_neighborhood_name,
+    get_nearby_transit,
+    create_proposal_description
+)
 
 
 # Default grid bounds (San Francisco area)
@@ -50,13 +57,13 @@ SCENARIO_MAPPING = {
 }
 
 class Census(BaseModel):
-    """A model that generates opinions using OpenAI API and agent data from a JSON file."""
-    
+    """A model that generates opinions using census demographic data."""
+
     def __init__(self, config: ModelConfig = None):
-        """Initialize model components and set the path to the agent data JSON file.
+        """Initialize model components.
         
         Args:
-            config: Model configuration containing settings such as population and agent_data_file.
+            config: Model configuration containing settings.
         """
         super().__init__(config)
         self.llm = OpenAILLM()
@@ -65,109 +72,96 @@ class Census(BaseModel):
         self.temperature = getattr(self.config, "temperature", 0.7)
         self.max_tokens = getattr(self.config, "max_tokens", 800)
         
-        # Load the agent file
+        # Load agent data
         default_agent_file = os.path.join(os.path.dirname(__file__), "census_data", "agents_with_geo.json")
         agent_data_path = getattr(self.config, "agent_data_file", default_agent_file)
         
         # If it's a relative path, make it relative to src/evaluation
         if not os.path.isabs(agent_data_path):
-            # Get the evaluation directory (two levels up from current file)
             evaluation_dir = Path(__file__).parent.parent.parent
             agent_data_path = os.path.join(evaluation_dir, agent_data_path)
         
-        self.agent_data_file = agent_data_path
-        print(f"DEBUG Census.__init__: agent_data_file={self.agent_data_file}")
+        self.agent_data = self._load_agent_data(agent_data_path)
+        self.agent_ids = [agent.get("id", f"agent_{i:03d}") for i, agent in enumerate(self.agent_data)]
         
-        # Track which proposal we're currently processing (for scenario ID mapping)
+        # Track which proposal we're currently processing
         self.current_proposal_id = None
-    
-    async def simulate_opinions(self,
-                               region: str,
-                               proposal: Dict[str, Any]) -> Dict[str, Any]:
-        """Simulate opinions using OpenAI based on agent information from a JSON file.
+
+    def _load_agent_data(self, agent_data_path: str) -> list:
+        """Load agent data from JSON file.
+        
+        Args:
+            agent_data_path: Path to the agent data JSON file.
+            
+        Returns:
+            List of agent data dictionaries.
+        """
+        try:
+            if os.path.exists(agent_data_path):
+                with open(agent_data_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            else:
+                print(f"WARNING: Agent data file not found: {agent_data_path}")
+                return []
+        except Exception as e:
+            print(f"ERROR: Failed to load agent data: {str(e)}")
+            return []
+
+    async def simulate_opinions(self, region: str, proposal: Dict[str, Any]) -> Dict[str, Any]:
+        """Simulate opinions using OpenAI with census demographic data.
         
         Args:
             region: The target region name.
             proposal: A dictionary containing the rezoning proposal details.
-        
+            
         Returns:
-            A dictionary with participant IDs as keys, each containing opinions and reasons.
-            Output format:
-            {
-                "<participant_id>": {
-                    "opinions": {
-                        "<scenario_id>": <rating_1_to_10>,
-                        ...
-                    },
-                    "reasons": {
-                        "<scenario_id>": ["A", "C", "D"],
-                        ...
-                    }
-                },
-                ...
-            }
+            A dictionary with multiple participants containing opinions and reasons.
         """
-        # Extract proposal ID from metadata if available
         self.current_proposal_id = proposal.get("proposal_id", None)
         print(f"DEBUG simulate_opinions: Processing proposal_id={self.current_proposal_id}")
         
-        # Extract grid bounds and height limits info
-        grid_bounds = proposal.get("gridConfig", {}).get("bounds", DEFAULT_GRID_BOUNDS)
-        height_limits = proposal.get("heightLimits", {})
+        # Get scenario ID
+        scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
         
         # Prepare readable description of the proposal
-        proposal_desc = self._create_proposal_description(proposal)
+        proposal_desc = create_proposal_description(proposal)
         print(f"DEBUG: Generated proposal description: {proposal_desc[:100]}...")
-        
-        # Verify agent_data_file exists
-        if not os.path.exists(self.agent_data_file):
-            print(f"ERROR: Agent data file not found: {self.agent_data_file}")
-            # Generate mock data for testing/debugging
-            return self._generate_mock_results()
-        
-        # Load agents from JSON file
-        print(f"DEBUG: Loading agents from: {self.agent_data_file}")
-        try:
-            with open(self.agent_data_file, 'r', encoding='utf-8') as f:
-                raw_agents = json.load(f)
-            
-            print(f"DEBUG: Loaded {len(raw_agents)} agents")
-        except Exception as e:
-            print(f"ERROR: Failed to load agents: {str(e)}")
-            # Generate mock data for testing/debugging
-            return self._generate_mock_results()
         
         results = {}
         
-        # Process each agent (limit to 3 for testing if needed)
-        # raw_agents = raw_agents[:3]  # Uncomment to process only 3 agents for testing
-        
-        for i, raw_agent in enumerate(raw_agents):
-            participant_id = raw_agent.get("id")
+        # Generate opinions for each agent
+        for agent in self.agent_data:
+            participant_id = agent.get("id")
             if not participant_id:
-                participant_id = f"agent_{i:03d}"
+                continue
                 
-            print(f"DEBUG: Processing agent {i+1}/{len(raw_agents)}: {participant_id}")
-            
-            # Generate opinion and reasons for this proposal
             try:
-                opinion_data = await self._generate_opinion(
-                    raw_agent, 
-                    proposal,
-                    proposal_desc,
-                    region
-                )
-                results[participant_id] = opinion_data
+                # Calculate distance to affected area
+                agent_coords = agent.get("coordinates", {})
+                agent_lat = agent_coords.get("lat")
+                agent_lon = agent_coords.get("lng")
+                
+                distance_km = None
+                if agent_lat is not None and agent_lon is not None:
+                    distance_km = calculate_distance_to_affected_area(
+                        agent_lat, agent_lon, 
+                        proposal.get("cells", {})
+                    )
+                
+                # Generate opinion
+                opinion = await self._generate_opinion(agent, proposal, proposal_desc, region)
+                results[participant_id] = opinion
+                
             except Exception as e:
-                print(f"ERROR: Failed to generate opinion for agent {participant_id}: {str(e)}")
-                # Generate fallback data for this agent
-                results[participant_id] = self._generate_fallback_opinion(
-                    SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
-                )
+                print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
+                results[participant_id] = self._generate_fallback_opinion(scenario_id)
         
-        print(f"DEBUG: Completed processing {len(results)} agents")
         return results
-    
+
+    def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
+        """Generate a richer, geo-aware description for a rezoning proposal."""
+        return create_proposal_description(proposal)
+
     def _generate_mock_results(self) -> Dict[str, Any]:
         """Generate mock results for testing/debugging purposes."""
         print("DEBUG: Generating mock results for testing")
@@ -192,108 +186,6 @@ class Census(BaseModel):
             }
         
         return results
-    
-    def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
-        """Generate a richer, geo-aware description for a rezoning proposal."""
-        
-        # Extract basic proposal information
-        height_limits = proposal.get("heightLimits", {})
-        default_height = height_limits.get("default", 0)
-        grid_config = proposal.get("gridConfig", {})
-        cell_size = grid_config.get("cellSize", 100)
-        cells = proposal.get("cells", {})
-        
-        # Create a dictionary to group cells by their characteristics
-        zone_info = defaultdict(lambda: {
-            'cells': [],
-            'coordinates': [],
-            'count': 0
-        })
-        
-        # Process each cell and group by category and height
-        for cell_id, cell in cells.items():
-            category = cell.get("category", "unknown")
-            height = cell.get("heightLimit", default_height)
-            
-            # Create a unique identifier for this zone type
-            zone_type = (category, height)  # Use tuple instead of string
-            
-            try:
-                bbox = cell.get("bbox", {})
-                if bbox:
-                    lat_center = (bbox["north"] + bbox["south"]) / 2
-                    lon_center = (bbox["east"] + bbox["west"]) / 2
-                    
-                    zone_info[zone_type]['cells'].append(cell)
-                    zone_info[zone_type]['coordinates'].append((lat_center, lon_center))
-                    zone_info[zone_type]['count'] += 1
-            except (KeyError, TypeError) as e:
-                print(f"Warning: Could not process cell {cell_id}: {str(e)}")
-                continue
-        
-        # Start with overview
-        total_blocks = len(cells)
-        desc = f"This rezoning proposal affects {total_blocks} city blocks in San Francisco"
-        if total_blocks > 0:
-            desc += f", each approximately {cell_size} meters square"
-        desc += ". "
-        
-        # Describe zones by type
-        zone_descriptions = []
-        for (category, height), info in zone_info.items():
-            try:
-                num_blocks = info['count']
-                if num_blocks == 0:
-                    continue
-                
-                # Calculate approximate area
-                area_sqm = num_blocks * (cell_size * cell_size)
-                area_acres = area_sqm * 0.000247105  # Convert to acres
-                
-                # Get central coordinates for this zone
-                coords = info['coordinates']
-                if coords:
-                    central_lat = sum(c[0] for c in coords) / len(coords)
-                    central_lon = sum(c[1] for c in coords) / len(coords)
-                    
-                    # Try to get neighborhood name for this zone
-                    neighborhood = self._get_neighborhood_name(central_lat, central_lon)
-                    
-                    zone_desc = (
-                        f"{num_blocks} blocks ({area_acres:.1f} acres) "
-                        f"zoned for {category.replace('_', ' ')} "
-                        f"with a height limit of {height} feet"
-                    )
-                    if neighborhood:
-                        zone_desc += f" in the {neighborhood} area"
-                    zone_descriptions.append(zone_desc)
-            except Exception as e:
-                print(f"Warning: Could not process zone {category}_{height}: {str(e)}")
-                continue
-        
-        if zone_descriptions:
-            desc += "The proposal includes: " + "; ".join(zone_descriptions[:3])
-            if len(zone_descriptions) > 3:
-                desc += f"; and {len(zone_descriptions) - 3} additional zoning changes"
-            desc += ". "
-        
-        # Add impact summary
-        desc += (
-            "This rezoning would affect local housing capacity, neighborhood character, "
-            "and urban development patterns. "
-            "The height limits are designed to balance housing needs with neighborhood context. "
-        )
-        
-        # Add transit context if available
-        transit_info = self._get_nearby_transit({f"{cat}_{h}": coords 
-                                               for (cat, h), info in zone_info.items() 
-                                               for coords in [info['coordinates']] if coords})
-        if transit_info:
-            desc += transit_info
-        
-        # Print final description for debugging
-        print(f"DEBUG: Final proposal description:\n{desc.strip()}")
-        return desc.strip()
 
     def _get_neighborhood_name(self, lat: float, lon: float) -> Optional[str]:
         """Get neighborhood name from coordinates using Google Maps API."""
