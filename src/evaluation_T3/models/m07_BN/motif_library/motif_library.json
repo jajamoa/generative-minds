@@ -3,1736 +3,1949 @@
   "max_motif_size": 5,
   "min_semantic_similarity": 0.4,
   "stats": {
-    "total_topological_motifs": 12,
-    "total_semantic_groups": 9,
-    "total_augmented_motifs": 50
+    "total_topological_motifs": 0,
+    "total_semantic_groups": 15,
+    "total_augmented_motifs": 0,
+    "filtering_stats": {
+      "total_input_motifs": 29,
+      "total_output_motifs": 29,
+      "total_groups": 15,
+      "motifs_per_type": {
+        "660cd7b61a24eeff3eac6e93": 29
+      },
+      "groups_per_type": {
+        "660cd7b61a24eeff3eac6e93": 15
+      }
+    }
   },
   "motif_metadata": {
-    "M3.3_size_3_1": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+    "660cd7b61a24eeff3eac6e93_1": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 1
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_3_2": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+    "660cd7b61a24eeff3eac6e93_2": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 1
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_3_3": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+    "660cd7b61a24eeff3eac6e93_3": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 1
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M1_size_3_1": {
-      "motif_type": "M1",
-      "description": "Chain",
+    "660cd7b61a24eeff3eac6e93_4": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 4
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M1_size_3_1_augmented": {
-      "motif_type": "M1",
-      "description": "Chain",
+    "660cd7b61a24eeff3eac6e93_5": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M1_size_3_1",
-      "augmentation_method": "nearest_neighbor"
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M2.3_size_4_bootstrapped": {
-      "augmented": true,
-      "parent_group": "M2.3_size_4",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
+    "660cd7b61a24eeff3eac6e93_6": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M2.3_size_3_bootstrapped": {
-      "augmented": true,
-      "parent_group": "M2.3_size_3",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
+    "660cd7b61a24eeff3eac6e93_7": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M2.3_size_5_bootstrapped": {
-      "augmented": true,
-      "parent_group": "M2.3_size_5",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
+    "660cd7b61a24eeff3eac6e93_8": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 2,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_4_bootstrapped": {
-      "augmented": true,
-      "parent_group": "M3.3_size_4",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
+    "660cd7b61a24eeff3eac6e93_9": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_3_1_bootstrapped": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M3.3_size_3_1",
-      "augmentation_method": "bootstrapping"
+    "660cd7b61a24eeff3eac6e93_10": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 3,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_3_2_bootstrapped": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M3.3_size_3_2",
-      "augmentation_method": "bootstrapping"
+    "660cd7b61a24eeff3eac6e93_11": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_3_3_bootstrapped": {
-      "motif_type": "M3.3",
-      "description": "Large Collider",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M3.3_size_3_3",
-      "augmentation_method": "bootstrapping"
+    "660cd7b61a24eeff3eac6e93_12": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M3.3_size_5_bootstrapped": {
-      "augmented": true,
-      "parent_group": "M3.3_size_5",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
+    "660cd7b61a24eeff3eac6e93_13": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     },
-    "M1_size_3_1_bootstrapped": {
-      "motif_type": "M1",
-      "description": "Chain",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M1_size_3_1",
-      "augmentation_method": "bootstrapping"
+    "660cd7b61a24eeff3eac6e93_14": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 2,
+      "unique_demographics": 0,
+      "total_demographics": 0
+    },
+    "660cd7b61a24eeff3eac6e93_15": {
+      "motif_type": "660cd7b61a24eeff3eac6e93",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 1,
+      "unique_demographics": 0,
+      "total_demographics": 0
     }
   },
   "semantic_motifs": {
-    "M2.3_size_4": [
+    "660cd7b61a24eeff3eac6e93_1": [
       {
         "nodes": [
-          "n1",
-          "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "building height increase",
-          "n7": "daycare options",
-          "n4": "outdoor play space",
-          "n2": "traffic density"
-        }
-      }
-    ],
-    "M2.3_size_3": [
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "building height increase",
-          "n2": "neighborhood character",
-          "n4": "traffic congestion"
-        }
-      }
-    ],
-    "M2.3_size_5": [
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
+          "n19",
+          "n23",
           "n1"
         ],
         "edges": [
           [
-            "n1",
-            "n2"
+            "n23",
+            "n1"
           ],
           [
             "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
+            "n19"
           ]
         ],
         "node_labels": {
-          "n3": "gallery spaces",
-          "n5": "community diversity",
-          "n2": "studio affordability",
-          "n4": "aesthetic inspiration",
-          "n1": "building height increase"
+          "n19": "Increase in traffic",
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n19": 0.85,
+            "n23": 0.9,
+            "n1": 0.8357142857142856
+          },
+          "importance": {
+            "n19": 0.7,
+            "n23": 0.8,
+            "n1": 0.8076923076923077
+          }
         }
-      }
-    ],
-    "M3.3_size_4": [
+      },
       {
         "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
+          "n19",
+          "n1",
+          "n39"
         ],
         "edges": [
           [
-            "n2",
-            "n3"
+            "n1",
+            "n19"
           ],
           [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
+            "n39",
+            "n1"
           ]
         ],
         "node_labels": {
-          "n2": "neighborhood character",
-          "n3": "property value",
-          "n4": "traffic congestion",
-          "n5": "new residents"
+          "n19": "Increase in traffic",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n19": 0.85,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n19": 0.7,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
+        }
+      },
+      {
+        "nodes": [
+          "n19",
+          "n1",
+          "n43"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n19"
+          ],
+          [
+            "n43",
+            "n1"
+          ]
+        ],
+        "node_labels": {
+          "n19": "Increase in traffic",
+          "n1": "Support for Upzoning",
+          "n43": "Affordable Housing"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n19": 0.85,
+            "n1": 0.8357142857142856,
+            "n43": 0.7
+          },
+          "importance": {
+            "n19": 0.7,
+            "n1": 0.8076923076923077,
+            "n43": 0.8
+          }
         }
       }
     ],
-    "M3.3_size_3_1": [
+    "660cd7b61a24eeff3eac6e93_2": [
       {
         "nodes": [
-          "n3",
-          "n4",
-          "n10"
+          "n23",
+          "n1",
+          "n39"
+        ],
+        "edges": [
+          [
+            "n23",
+            "n1"
+          ],
+          [
+            "n39",
+            "n1"
+          ]
+        ],
+        "node_labels": {
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "M3.1",
+          "motif_description": "Basic Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n23": 0.9,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n23": 0.8,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
+        }
+      },
+      {
+        "nodes": [
+          "n23",
+          "n1",
+          "n43"
+        ],
+        "edges": [
+          [
+            "n23",
+            "n1"
+          ],
+          [
+            "n43",
+            "n1"
+          ]
+        ],
+        "node_labels": {
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning",
+          "n43": "Affordable Housing"
+        },
+        "metadata": {
+          "motif_type": "M3.1",
+          "motif_description": "Basic Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n23": 0.9,
+            "n1": 0.8357142857142856,
+            "n43": 0.7
+          },
+          "importance": {
+            "n23": 0.8,
+            "n1": 0.8076923076923077,
+            "n43": 0.8
+          }
+        }
+      },
+      {
+        "nodes": [
+          "n43",
+          "n1",
+          "n39"
+        ],
+        "edges": [
+          [
+            "n43",
+            "n1"
+          ],
+          [
+            "n39",
+            "n1"
+          ]
+        ],
+        "node_labels": {
+          "n43": "Affordable Housing",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "M3.1",
+          "motif_description": "Basic Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n43": 0.7,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n43": 0.8,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_3": [
+      {
+        "nodes": [
+          "n15",
+          "n30",
+          "n3"
         ],
         "edges": [
           [
             "n3",
-            "n10"
+            "n30"
           ],
           [
-            "n4",
-            "n10"
+            "n3",
+            "n15"
           ]
         ],
         "node_labels": {
-          "n3": "school accessibility",
-          "n4": "outdoor play space",
-          "n10": "peer socialization"
+          "n15": "Housing value",
+          "n30": "Negative economic effects",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M2.1",
+          "motif_description": "Basic Fork",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n30": 0.75,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n30": 0.7600000000000001,
+            "n3": 0.8030303030303032
+          }
+        }
+      },
+      {
+        "nodes": [
+          "n15",
+          "n46",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n46"
+          ],
+          [
+            "n3",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n15": "Housing value",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M2.1",
+          "motif_description": "Basic Fork",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
+        }
+      },
+      {
+        "nodes": [
+          "n30",
+          "n46",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n46"
+          ]
+        ],
+        "node_labels": {
+          "n30": "Negative economic effects",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M2.1",
+          "motif_description": "Basic Fork",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n30": 0.75,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n30": 0.7600000000000001,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
         }
       }
     ],
-    "M3.3_size_3_2": [
+    "660cd7b61a24eeff3eac6e93_4": [
       {
         "nodes": [
-          "n6",
+          "n15",
           "n7",
-          "n5"
+          "n3"
         ],
         "edges": [
           [
             "n7",
-            "n6"
+            "n3"
           ],
           [
-            "n5",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n6": "parental stress",
-          "n7": "daycare options",
-          "n5": "commute time"
-        }
-      }
-    ],
-    "M3.3_size_3_3": [
-      {
-        "nodes": [
-          "n13",
-          "n9",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n9",
-            "n13"
-          ],
-          [
-            "n6",
-            "n13"
-          ]
-        ],
-        "node_labels": {
-          "n13": "family health",
-          "n9": "childhood obesity",
-          "n6": "parental stress"
-        }
-      }
-    ],
-    "M3.3_size_5": [
-      {
-        "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
-        ],
-        "edges": [
-          [
-            "n14",
-            "n15"
-          ],
-          [
-            "n12",
-            "n15"
-          ],
-          [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
+            "n3",
             "n15"
           ]
         ],
         "node_labels": {
-          "n14": "child development",
-          "n12": "community belonging",
-          "n13": "family health",
-          "n15": "quality of life",
-          "n11": "future opportunity"
-        }
-      }
-    ],
-    "M1_size_3_1": [
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
+          "n15": "Housing value",
+          "n7": "Upzoning policies",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
           ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n5": "new residents",
-          "n6": "upzoning stance"
+          "confidence": {
+            "n15": 0.7,
+            "n7": 0.7,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n7": 0.8,
+            "n3": 0.8030303030303032
+          }
         }
       },
       {
         "nodes": [
-          "n2",
-          "n3",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n3",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n2": "neighborhood character",
-          "n3": "property value",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
-          ],
-          [
-            "n4",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n4": "traffic congestion",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n3",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n3",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n1": "building height increase",
-          "n3": "property value",
-          "n6": "upzoning stance"
-        }
-      }
-    ],
-    "M1_size_3_1_augmented": [
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n3",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n2": "neighborhood character",
-          "n3": "property value",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n5": "new residents",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n5": "new residents",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n5": "new residents",
-          "n6": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n6"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n3": "property value",
-          "n5": "new congestion",
-          "n6": "stance upzoning"
-        }
-      }
-    ],
-    "M2.3_size_4_bootstrapped": [
-      {
-        "nodes": [
-          "n1",
           "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "property value",
-          "n7": "daycare options",
-          "n4": "school accessibility",
-          "n2": "school accessibility"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "family health",
-          "n7": "new residents",
-          "n4": "new congestion",
-          "n2": "building height increase"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "upzoning stance",
-          "n7": "property value",
-          "n4": "outdoor play space",
-          "n2": "new congestion"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "commute time",
-          "n7": "quality of life",
-          "n4": "future opportunity",
-          "n2": "upzoning stance"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n7",
-          "n4",
-          "n2"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n7"
-          ]
-        ],
-        "node_labels": {
-          "n1": "building height increase",
-          "n7": "daycare options",
-          "n4": "outdoor play space",
-          "n2": "childhood obesity"
-        }
-      }
-    ],
-    "M2.3_size_3_bootstrapped": [
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "daycare options",
-          "n2": "family health",
-          "n4": "traffic congestion"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "peer socialization",
-          "n2": "neighborhood character",
-          "n4": "new residents"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "family health",
-          "n2": "neighborhood character",
-          "n4": "property value"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "studio affordability",
-          "n2": "parental stress",
-          "n4": "neighborhood character"
-        }
-      },
-      {
-        "nodes": [
-          "n1",
-          "n2",
-          "n4"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n4"
-          ]
-        ],
-        "node_labels": {
-          "n1": "building height increase",
-          "n2": "neighborhood character",
-          "n4": "stance upzoning"
-        }
-      }
-    ],
-    "M2.3_size_5_bootstrapped": [
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
-          "n1"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
-          ]
-        ],
-        "node_labels": {
-          "n3": "gallery spaces",
-          "n5": "outdoor play space",
-          "n2": "school accessibility",
-          "n4": "gallery spaces",
-          "n1": "parental stress"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
-          "n1"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
-          ]
-        ],
-        "node_labels": {
-          "n3": "stance upzoning",
-          "n5": "community diversity",
-          "n2": "gallery spaces",
-          "n4": "aesthetic inspiration",
-          "n1": "traffic density"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
-          "n1"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
-          ]
-        ],
-        "node_labels": {
-          "n3": "future opportunity",
-          "n5": "stance upzoning",
-          "n2": "upzoning stance",
-          "n4": "aesthetic inspiration",
-          "n1": "commute time"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
-          "n1"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
-          ]
-        ],
-        "node_labels": {
-          "n3": "aesthetic inspiration",
-          "n5": "property value",
-          "n2": "outdoor play space",
-          "n4": "aesthetic inspiration",
-          "n1": "family health"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n5",
-          "n2",
-          "n4",
-          "n1"
-        ],
-        "edges": [
-          [
-            "n1",
-            "n2"
-          ],
-          [
-            "n1",
-            "n3"
-          ],
-          [
-            "n1",
-            "n4"
-          ],
-          [
-            "n1",
-            "n5"
-          ]
-        ],
-        "node_labels": {
-          "n3": "outdoor play space",
-          "n5": "upzoning stance",
-          "n2": "new congestion",
-          "n4": "child development",
-          "n1": "traffic density"
-        }
-      }
-    ],
-    "M3.3_size_4_bootstrapped": [
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n2": "traffic density",
-          "n3": "commute time",
-          "n4": "building height increase",
-          "n5": "outdoor play space"
-        }
-      },
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n2": "neighborhood character",
-          "n3": "community diversity",
-          "n4": "traffic congestion",
-          "n5": "daycare options"
-        }
-      },
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n2": "commute time",
-          "n3": "daycare options",
-          "n4": "upzoning stance",
-          "n5": "traffic density"
-        }
-      },
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n2": "building height increase",
-          "n3": "peer socialization",
-          "n4": "building height increase",
-          "n5": "childhood obesity"
-        }
-      },
-      {
-        "nodes": [
-          "n2",
-          "n3",
-          "n4",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n2",
-            "n3"
-          ],
-          [
-            "n4",
-            "n3"
-          ],
-          [
-            "n5",
-            "n3"
-          ]
-        ],
-        "node_labels": {
-          "n2": "community belonging",
-          "n3": "traffic density",
-          "n4": "traffic congestion",
-          "n5": "stance upzoning"
-        }
-      }
-    ],
-    "M3.3_size_3_1_bootstrapped": [
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n10"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n10"
-          ],
-          [
-            "n4",
-            "n10"
-          ]
-        ],
-        "node_labels": {
-          "n3": "upzoning stance",
-          "n4": "aesthetic inspiration",
-          "n10": "child development"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n10"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n10"
-          ],
-          [
-            "n4",
-            "n10"
-          ]
-        ],
-        "node_labels": {
-          "n3": "gallery spaces",
-          "n4": "outdoor play space",
-          "n10": "traffic congestion"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n10"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n10"
-          ],
-          [
-            "n4",
-            "n10"
-          ]
-        ],
-        "node_labels": {
-          "n3": "school accessibility",
-          "n4": "peer socialization",
-          "n10": "parental stress"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n10"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n10"
-          ],
-          [
-            "n4",
-            "n10"
-          ]
-        ],
-        "node_labels": {
-          "n3": "community diversity",
-          "n4": "commute time",
-          "n10": "future opportunity"
-        }
-      },
-      {
-        "nodes": [
-          "n3",
-          "n4",
-          "n10"
-        ],
-        "edges": [
-          [
-            "n3",
-            "n10"
-          ],
-          [
-            "n4",
-            "n10"
-          ]
-        ],
-        "node_labels": {
-          "n3": "peer socialization",
-          "n4": "outdoor play space",
-          "n10": "peer socialization"
-        }
-      }
-    ],
-    "M3.3_size_3_2_bootstrapped": [
-      {
-        "nodes": [
-          "n6",
-          "n7",
-          "n5"
+          "n30",
+          "n3"
         ],
         "edges": [
           [
             "n7",
-            "n6"
+            "n3"
           ],
           [
-            "n5",
-            "n6"
+            "n3",
+            "n30"
           ]
         ],
         "node_labels": {
-          "n6": "traffic congestion",
-          "n7": "neighborhood character",
-          "n5": "school accessibility"
+          "n7": "Upzoning policies",
+          "n30": "Negative economic effects",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n7": 0.7,
+            "n30": 0.75,
+            "n3": 0.825
+          },
+          "importance": {
+            "n7": 0.8,
+            "n30": 0.7600000000000001,
+            "n3": 0.8030303030303032
+          }
         }
       },
       {
         "nodes": [
-          "n6",
           "n7",
-          "n5"
+          "n46",
+          "n3"
         ],
         "edges": [
           [
             "n7",
-            "n6"
+            "n3"
           ],
           [
-            "n5",
-            "n6"
+            "n3",
+            "n46"
           ]
         ],
         "node_labels": {
-          "n6": "upzoning stance",
-          "n7": "daycare options",
-          "n5": "property value"
-        }
-      },
-      {
-        "nodes": [
-          "n6",
-          "n7",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n7",
-            "n6"
+          "n7": "Upzoning policies",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M1",
+          "motif_description": "Chain",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
           ],
-          [
-            "n5",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n6": "parental stress",
-          "n7": "upzoning stance",
-          "n5": "outdoor play space"
-        }
-      },
-      {
-        "nodes": [
-          "n6",
-          "n7",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n7",
-            "n6"
-          ],
-          [
-            "n5",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n6": "parental stress",
-          "n7": "peer socialization",
-          "n5": "new congestion"
-        }
-      },
-      {
-        "nodes": [
-          "n6",
-          "n7",
-          "n5"
-        ],
-        "edges": [
-          [
-            "n7",
-            "n6"
-          ],
-          [
-            "n5",
-            "n6"
-          ]
-        ],
-        "node_labels": {
-          "n6": "property value",
-          "n7": "daycare options",
-          "n5": "studio affordability"
+          "confidence": {
+            "n7": 0.7,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n7": 0.8,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
         }
       }
     ],
-    "M3.3_size_3_3_bootstrapped": [
+    "660cd7b61a24eeff3eac6e93_5": [
       {
         "nodes": [
-          "n13",
-          "n9",
-          "n6"
+          "n30",
+          "n32",
+          "n3"
         ],
         "edges": [
           [
-            "n9",
-            "n13"
+            "n32",
+            "n30"
           ],
           [
-            "n6",
-            "n13"
+            "n3",
+            "n30"
           ]
         ],
         "node_labels": {
-          "n13": "community diversity",
-          "n9": "childhood obesity",
-          "n6": "peer socialization"
-        }
-      },
-      {
-        "nodes": [
-          "n13",
-          "n9",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n9",
-            "n13"
+          "n30": "Negative economic effects",
+          "n32": "Time-dependent outcomes",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M3.1",
+          "motif_description": "Basic Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
           ],
-          [
-            "n6",
-            "n13"
-          ]
-        ],
-        "node_labels": {
-          "n13": "family health",
-          "n9": "child development",
-          "n6": "parental stress"
-        }
-      },
-      {
-        "nodes": [
-          "n13",
-          "n9",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n9",
-            "n13"
-          ],
-          [
-            "n6",
-            "n13"
-          ]
-        ],
-        "node_labels": {
-          "n13": "aesthetic inspiration",
-          "n9": "parental stress",
-          "n6": "parental stress"
-        }
-      },
-      {
-        "nodes": [
-          "n13",
-          "n9",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n9",
-            "n13"
-          ],
-          [
-            "n6",
-            "n13"
-          ]
-        ],
-        "node_labels": {
-          "n13": "aesthetic inspiration",
-          "n9": "new residents",
-          "n6": "daycare options"
-        }
-      },
-      {
-        "nodes": [
-          "n13",
-          "n9",
-          "n6"
-        ],
-        "edges": [
-          [
-            "n9",
-            "n13"
-          ],
-          [
-            "n6",
-            "n13"
-          ]
-        ],
-        "node_labels": {
-          "n13": "outdoor play space",
-          "n9": "new residents",
-          "n6": "commute time"
+          "confidence": {
+            "n30": 0.75,
+            "n32": 0.85,
+            "n3": 0.825
+          },
+          "importance": {
+            "n30": 0.7600000000000001,
+            "n32": 0.8,
+            "n3": 0.8030303030303032
+          }
         }
       }
     ],
-    "M3.3_size_5_bootstrapped": [
+    "660cd7b61a24eeff3eac6e93_6": [
       {
         "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
+          "n19",
+          "n23",
+          "n1",
+          "n39"
         ],
         "edges": [
           [
-            "n14",
-            "n15"
+            "n23",
+            "n1"
           ],
           [
-            "n12",
-            "n15"
+            "n1",
+            "n19"
           ],
           [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
-            "n15"
+            "n39",
+            "n1"
           ]
         ],
         "node_labels": {
-          "n14": "child development",
-          "n12": "traffic density",
-          "n13": "studio affordability",
-          "n15": "quality of life",
-          "n11": "future opportunity"
+          "n19": "Increase in traffic",
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n19": 0.85,
+            "n23": 0.9,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n19": 0.7,
+            "n23": 0.8,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
         }
       },
       {
         "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
+          "n19",
+          "n23",
+          "n1",
+          "n43"
         ],
         "edges": [
           [
-            "n14",
-            "n15"
+            "n23",
+            "n1"
           ],
           [
-            "n12",
-            "n15"
+            "n1",
+            "n19"
           ],
           [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
-            "n15"
+            "n43",
+            "n1"
           ]
         ],
         "node_labels": {
-          "n14": "commute time",
-          "n12": "parental stress",
-          "n13": "school accessibility",
-          "n15": "new congestion",
-          "n11": "future opportunity"
+          "n19": "Increase in traffic",
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning",
+          "n43": "Affordable Housing"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n19": 0.85,
+            "n23": 0.9,
+            "n1": 0.8357142857142856,
+            "n43": 0.7
+          },
+          "importance": {
+            "n19": 0.7,
+            "n23": 0.8,
+            "n1": 0.8076923076923077,
+            "n43": 0.8
+          }
         }
       },
       {
         "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
+          "n43",
+          "n19",
+          "n1",
+          "n39"
         ],
         "edges": [
           [
-            "n14",
-            "n15"
+            "n43",
+            "n1"
           ],
           [
-            "n12",
-            "n15"
+            "n1",
+            "n19"
           ],
           [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
-            "n15"
+            "n39",
+            "n1"
           ]
         ],
         "node_labels": {
-          "n14": "stance upzoning",
-          "n12": "school accessibility",
-          "n13": "community diversity",
-          "n15": "child development",
-          "n11": "quality of life"
-        }
-      },
-      {
-        "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
-        ],
-        "edges": [
-          [
-            "n14",
-            "n15"
+          "n43": "Affordable Housing",
+          "n19": "Increase in traffic",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
           ],
-          [
-            "n12",
-            "n15"
-          ],
-          [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
-            "n15"
-          ]
-        ],
-        "node_labels": {
-          "n14": "child development",
-          "n12": "childhood obesity",
-          "n13": "quality of life",
-          "n15": "gallery spaces",
-          "n11": "traffic congestion"
-        }
-      },
-      {
-        "nodes": [
-          "n14",
-          "n12",
-          "n13",
-          "n15",
-          "n11"
-        ],
-        "edges": [
-          [
-            "n14",
-            "n15"
-          ],
-          [
-            "n12",
-            "n15"
-          ],
-          [
-            "n13",
-            "n15"
-          ],
-          [
-            "n11",
-            "n15"
-          ]
-        ],
-        "node_labels": {
-          "n14": "child development",
-          "n12": "future opportunity",
-          "n13": "studio affordability",
-          "n15": "quality of life",
-          "n11": "child development"
+          "confidence": {
+            "n43": 0.7,
+            "n19": 0.85,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n43": 0.8,
+            "n19": 0.7,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
         }
       }
     ],
-    "M1_size_3_1_bootstrapped": [
+    "660cd7b61a24eeff3eac6e93_7": [
       {
         "nodes": [
-          "n3",
-          "n5",
-          "n6"
+          "n43",
+          "n23",
+          "n1",
+          "n39"
         ],
         "edges": [
           [
-            "n3",
-            "n6"
+            "n43",
+            "n1"
           ],
           [
-            "n5",
-            "n3"
+            "n23",
+            "n1"
+          ],
+          [
+            "n39",
+            "n1"
           ]
         ],
         "node_labels": {
-          "n3": "traffic congestion",
-          "n5": "new residents",
-          "n6": "stance upzoning"
+          "n43": "Affordable Housing",
+          "n23": "Local government regulation",
+          "n1": "Support for Upzoning",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "M3.2",
+          "motif_description": "Extended Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n43": 0.7,
+            "n23": 0.9,
+            "n1": 0.8357142857142856,
+            "n39": 0.9
+          },
+          "importance": {
+            "n43": 0.8,
+            "n23": 0.8,
+            "n1": 0.8076923076923077,
+            "n39": 0.8
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_8": [
+      {
+        "nodes": [
+          "n15",
+          "n30",
+          "n32",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n32",
+            "n30"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n15": "Housing value",
+          "n30": "Negative economic effects",
+          "n32": "Time-dependent outcomes",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n30": 0.75,
+            "n32": 0.85,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n30": 0.7600000000000001,
+            "n32": 0.8,
+            "n3": 0.8030303030303032
+          }
         }
       },
       {
         "nodes": [
-          "n3",
-          "n5",
-          "n6"
+          "n30",
+          "n32",
+          "n46",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n32",
+            "n30"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n46"
+          ]
+        ],
+        "node_labels": {
+          "n30": "Negative economic effects",
+          "n32": "Time-dependent outcomes",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n30": 0.75,
+            "n32": 0.85,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n30": 0.7600000000000001,
+            "n32": 0.8,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_9": [
+      {
+        "nodes": [
+          "n15",
+          "n30",
+          "n46",
+          "n3"
         ],
         "edges": [
           [
             "n3",
-            "n6"
+            "n30"
           ],
           [
-            "n5",
-            "n3"
+            "n3",
+            "n46"
+          ],
+          [
+            "n3",
+            "n15"
           ]
         ],
         "node_labels": {
-          "n3": "outdoor play space",
-          "n5": "new residents",
-          "n6": "aesthetic inspiration"
+          "n15": "Housing value",
+          "n30": "Negative economic effects",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M2.2",
+          "motif_description": "Extended Fork",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n30": 0.75,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n30": 0.7600000000000001,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_10": [
+      {
+        "nodes": [
+          "n15",
+          "n30",
+          "n7",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n7",
+            "n3"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n15": "Housing value",
+          "n30": "Negative economic effects",
+          "n7": "Upzoning policies",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n30": 0.75,
+            "n7": 0.7,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n30": 0.7600000000000001,
+            "n7": 0.8,
+            "n3": 0.8030303030303032
+          }
         }
       },
       {
         "nodes": [
-          "n3",
-          "n5",
-          "n6"
+          "n15",
+          "n7",
+          "n46",
+          "n3"
         ],
         "edges": [
           [
-            "n3",
-            "n6"
+            "n7",
+            "n3"
           ],
           [
-            "n5",
-            "n3"
+            "n3",
+            "n46"
+          ],
+          [
+            "n3",
+            "n15"
           ]
         ],
         "node_labels": {
-          "n3": "stance upzoning",
-          "n5": "new residents",
-          "n6": "childhood obesity"
+          "n15": "Housing value",
+          "n7": "Upzoning policies",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n15": 0.7,
+            "n7": 0.7,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n15": 0.7000000000000001,
+            "n7": 0.8,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
         }
       },
       {
         "nodes": [
+          "n7",
+          "n30",
+          "n46",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n7",
+            "n3"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n46"
+          ]
+        ],
+        "node_labels": {
+          "n7": "Upzoning policies",
+          "n30": "Negative economic effects",
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n7": 0.7,
+            "n30": 0.75,
+            "n46": 0.8,
+            "n3": 0.825
+          },
+          "importance": {
+            "n7": 0.8,
+            "n30": 0.7600000000000001,
+            "n46": 0.6,
+            "n3": 0.8030303030303032
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_11": [
+      {
+        "nodes": [
+          "n7",
+          "n30",
+          "n32",
+          "n3"
+        ],
+        "edges": [
+          [
+            "n7",
+            "n3"
+          ],
+          [
+            "n32",
+            "n30"
+          ],
+          [
+            "n3",
+            "n30"
+          ]
+        ],
+        "node_labels": {
+          "n7": "Upzoning policies",
+          "n30": "Negative economic effects",
+          "n32": "Time-dependent outcomes",
+          "n3": "Increasing housing density"
+        },
+        "metadata": {
+          "motif_type": "M3.1",
+          "motif_description": "Basic Collider",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n7": 0.7,
+            "n30": 0.75,
+            "n32": 0.85,
+            "n3": 0.825
+          },
+          "importance": {
+            "n7": 0.8,
+            "n30": 0.7600000000000001,
+            "n32": 0.8,
+            "n3": 0.8030303030303032
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_12": [
+      {
+        "nodes": [
+          "n23",
+          "n19",
+          "n1",
+          "n43",
+          "n39"
+        ],
+        "edges": [
+          [
+            "n23",
+            "n1"
+          ],
+          [
+            "n1",
+            "n19"
+          ],
+          [
+            "n43",
+            "n1"
+          ],
+          [
+            "n39",
+            "n1"
+          ]
+        ],
+        "node_labels": {
+          "n23": "Local government regulation",
+          "n19": "Increase in traffic",
+          "n1": "Support for Upzoning",
+          "n43": "Affordable Housing",
+          "n39": "Compact development"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n23": 0.9,
+            "n19": 0.85,
+            "n1": 0.8357142857142856,
+            "n43": 0.7,
+            "n39": 0.9
+          },
+          "importance": {
+            "n23": 0.8,
+            "n19": 0.7,
+            "n1": 0.8076923076923077,
+            "n43": 0.8,
+            "n39": 0.8
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_13": [
+      {
+        "nodes": [
+          "n46",
           "n3",
-          "n5",
-          "n6"
+          "n15",
+          "n32",
+          "n30"
         ],
         "edges": [
           [
             "n3",
-            "n6"
+            "n30"
           ],
           [
-            "n5",
-            "n3"
+            "n3",
+            "n46"
+          ],
+          [
+            "n3",
+            "n15"
+          ],
+          [
+            "n32",
+            "n30"
           ]
         ],
         "node_labels": {
-          "n3": "childhood obesity",
-          "n5": "studio affordability",
-          "n6": "family health"
+          "n46": "Larger shifts",
+          "n3": "Increasing housing density",
+          "n15": "Housing value",
+          "n32": "Time-dependent outcomes",
+          "n30": "Negative economic effects"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n46": 0.8,
+            "n3": 0.825,
+            "n15": 0.7,
+            "n32": 0.85,
+            "n30": 0.75
+          },
+          "importance": {
+            "n46": 0.6,
+            "n3": 0.8030303030303032,
+            "n15": 0.7000000000000001,
+            "n32": 0.8,
+            "n30": 0.7600000000000001
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_14": [
+      {
+        "nodes": [
+          "n7",
+          "n3",
+          "n15",
+          "n32",
+          "n30"
+        ],
+        "edges": [
+          [
+            "n7",
+            "n3"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n15"
+          ],
+          [
+            "n32",
+            "n30"
+          ]
+        ],
+        "node_labels": {
+          "n7": "Upzoning policies",
+          "n3": "Increasing housing density",
+          "n15": "Housing value",
+          "n32": "Time-dependent outcomes",
+          "n30": "Negative economic effects"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n7": 0.7,
+            "n3": 0.825,
+            "n15": 0.7,
+            "n32": 0.85,
+            "n30": 0.75
+          },
+          "importance": {
+            "n7": 0.8,
+            "n3": 0.8030303030303032,
+            "n15": 0.7000000000000001,
+            "n32": 0.8,
+            "n30": 0.7600000000000001
+          }
         }
       },
       {
         "nodes": [
+          "n46",
+          "n7",
           "n3",
-          "n5",
-          "n6"
+          "n32",
+          "n30"
         ],
         "edges": [
           [
-            "n3",
-            "n6"
+            "n7",
+            "n3"
           ],
           [
-            "n5",
-            "n3"
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n46"
+          ],
+          [
+            "n32",
+            "n30"
           ]
         ],
         "node_labels": {
-          "n3": "community diversity",
-          "n5": "studio affordability",
-          "n6": "upzoning stance"
+          "n46": "Larger shifts",
+          "n7": "Upzoning policies",
+          "n3": "Increasing housing density",
+          "n32": "Time-dependent outcomes",
+          "n30": "Negative economic effects"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n46": 0.8,
+            "n7": 0.7,
+            "n3": 0.825,
+            "n32": 0.85,
+            "n30": 0.75
+          },
+          "importance": {
+            "n46": 0.6,
+            "n7": 0.8,
+            "n3": 0.8030303030303032,
+            "n32": 0.8,
+            "n30": 0.7600000000000001
+          }
+        }
+      }
+    ],
+    "660cd7b61a24eeff3eac6e93_15": [
+      {
+        "nodes": [
+          "n46",
+          "n7",
+          "n3",
+          "n15",
+          "n30"
+        ],
+        "edges": [
+          [
+            "n7",
+            "n3"
+          ],
+          [
+            "n3",
+            "n30"
+          ],
+          [
+            "n3",
+            "n46"
+          ],
+          [
+            "n3",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n46": "Larger shifts",
+          "n7": "Upzoning policies",
+          "n3": "Increasing housing density",
+          "n15": "Housing value",
+          "n30": "Negative economic effects"
+        },
+        "metadata": {
+          "motif_type": "Unknown",
+          "motif_description": "Unknown Type",
+          "demographics": [
+            {
+              "agent_id": "660cd7b61a24eeff3eac6e93",
+              "demographic": {
+                "age": 27,
+                "Geo Mobility": "Different house in United States 1 year ago",
+                "householder type": "Renter",
+                "Gross rent": "35.0 to 39.9 percent",
+                "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+                "income": "$60,000-$74,999",
+                "occupation": "Service occupations",
+                "marital status": "Never Married",
+                "has children under 18": true,
+                "children age range": "No Children",
+                "ZIP code": 94111,
+                "approximate address": "460 Davis Ct, San Francisco, CA"
+              }
+            }
+          ],
+          "confidence": {
+            "n46": 0.8,
+            "n7": 0.7,
+            "n3": 0.825,
+            "n15": 0.7,
+            "n30": 0.75
+          },
+          "importance": {
+            "n46": 0.6,
+            "n7": 0.8,
+            "n3": 0.8030303030303032,
+            "n15": 0.7000000000000001,
+            "n30": 0.7600000000000001
+          }
         }
       }
     ]

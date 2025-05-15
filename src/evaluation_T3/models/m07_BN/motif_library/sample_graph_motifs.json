@@ -1,0 +1,2341 @@
+{
+  "660cd7b61a24eeff3eac6e93": [
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.1",
+        "motif_description": "Basic Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.1",
+        "motif_description": "Basic Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.1",
+        "motif_description": "Basic Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M2.1",
+        "motif_description": "Basic Fork"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M2.1",
+        "motif_description": "Basic Fork"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.1",
+        "motif_description": "Basic Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M2.1",
+        "motif_description": "Basic Fork"
+      }
+    },
+    {
+      "nodes": {
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M1",
+        "motif_description": "Chain"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.2",
+        "motif_description": "Extended Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M2.2",
+        "motif_description": "Extended Fork"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "M3.1",
+        "motif_description": "Basic Collider"
+      }
+    },
+    {
+      "nodes": {
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n19": {
+          "label": "increase_in_traffic",
+          "name": "Increase in traffic",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n43": {
+          "label": "affordable_housing",
+          "name": "Affordable Housing",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n23": {
+          "label": "local_government_regulation",
+          "name": "Local government regulation",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n39": {
+          "label": "compact_development",
+          "name": "Compact development",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n1": {
+          "label": "support_for_upzoning",
+          "name": "Support for Upzoning",
+          "confidence": 0.8357142857142856,
+          "importance": 0.8076923076923077,
+          "is_stance": true,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n43",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n23",
+          "target": "n1",
+          "modifier": 1,
+          "confidence": 1,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n39",
+          "target": "n1",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n1",
+          "target": "n19",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n15": {
+          "label": "housing_value",
+          "name": "Housing value",
+          "confidence": 0.7,
+          "importance": 0.7000000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n15",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    },
+    {
+      "nodes": {
+        "n32": {
+          "label": "time-dependent_outcomes",
+          "name": "Time-dependent outcomes",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n3": {
+          "label": "increasing_housing_density",
+          "name": "Increasing housing density",
+          "confidence": 0.825,
+          "importance": 0.8030303030303032,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n46": {
+          "label": "larger_shifts",
+          "name": "Larger shifts",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n30": {
+          "label": "negative_economic_effects",
+          "name": "Negative economic effects",
+          "confidence": 0.75,
+          "importance": 0.7600000000000001,
+          "is_stance": false,
+          "status": "anchor"
+        },
+        "n7": {
+          "label": "upzoning_policies",
+          "name": "Upzoning policies",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "is_stance": false,
+          "status": "anchor"
+        }
+      },
+      "edges": [
+        {
+          "source": "n32",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n30",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n3",
+          "target": "n46",
+          "modifier": 1.0125,
+          "confidence": 0.8,
+          "direction": "positive",
+          "strength": 0
+        },
+        {
+          "source": "n7",
+          "target": "n3",
+          "modifier": 0.9714285714285714,
+          "confidence": 0.7,
+          "direction": "positive",
+          "strength": 0
+        }
+      ],
+      "metadata": {
+        "demographics": [
+          {
+            "agent_id": "660cd7b61a24eeff3eac6e93",
+            "demographic": {
+              "age": 27,
+              "Geo Mobility": "Different house in United States 1 year ago",
+              "householder type": "Renter",
+              "Gross rent": "35.0 to 39.9 percent",
+              "means of transportation": "Car / Truck / Van, Taxi / cab, Walk",
+              "income": "$60,000-$74,999",
+              "occupation": "Service occupations",
+              "marital status": "Never Married",
+              "has children under 18": true,
+              "children age range": "No Children",
+              "ZIP code": 94111,
+              "approximate address": "460 Davis Ct, San Francisco, CA"
+            }
+          }
+        ],
+        "motif_type": "Unknown",
+        "motif_description": "Unknown Type"
+      }
+    }
+  ]
+}
