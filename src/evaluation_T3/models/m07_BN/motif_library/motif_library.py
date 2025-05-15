@@ -18,8 +18,10 @@ from collections import defaultdict
 import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from semantic_similarity import SemanticSimilarityEngine
 from typing import Dict
+
+
+from .semantic_similarity import SemanticSimilarityEngine
 
 
 def ensure_evaluation_prefix(path: str) -> str:

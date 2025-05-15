@@ -5,6 +5,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dashscope
 from typing import Dict, Optional, Tuple, List
+import aiohttp
+import asyncio
 
 # Configure logging
 logging.basicConfig(
@@ -34,11 +36,11 @@ class QwenExtractor:
 
         self.model = model
 
-    def extract_intervention(
+    async def extract_intervention(
         self, graph_info: Dict, question: str
-    ) -> Optional[Tuple[str, float, str]]:
+    ) -> Optional[Tuple[str, float, str, List[str]]]:
         """
-        Extract intervention from question based on causal graph structure
+        Extract intervention from question based on causal graph structure (async version)
 
         Args:
             graph_info: Dictionary containing:
@@ -48,7 +50,7 @@ class QwenExtractor:
             question: Question text to analyze
 
         Returns:
-            Tuple of (node_id, intervention_value, explanation) or None
+            Tuple of (node_id, intervention_value, explanation, expected_effects) or None
         """
         causal_graph = graph_info["dag"]
         node_labels = graph_info["node_labels"]
@@ -108,12 +110,8 @@ Return JSON:
 """
 
         try:
-            print("------------- PROMPT -------------")
-            GREEN = "\033[92m"
-            END = "\033[0m"
-            print(f"{GREEN}{prompt}{END}")
-            print("------------- PROMPT -------------")
-            response = dashscope.Generation.call(
+            response = await asyncio.to_thread(
+                dashscope.Generation.call,
                 api_key=self.api_key,
                 model=self.model,
                 messages=[
@@ -127,35 +125,49 @@ Return JSON:
                 temperature=0.1,
             )
 
-            print("------------- RESPONSE -------------")
-            YELLOW = "\033[93m"
+            # 获取并解析 JSON 内容
+            content = response["output"]["choices"][0]["message"]["content"]
+            # print(f"\n=== Raw API Response ===\n{content}\n===================")
+            GREEN = "\033[92m"
             END = "\033[0m"
-            print(f"{YELLOW}{response.output.choices[0].message.content}{END}")
-            print("------------- RESPONSE -------------")
+            print(f"{GREEN}A call to the API has been made{END}")
 
-            if response.status_code == 200:
-                content = response.output.choices[0].message.content
-                result = json.loads(self._clean_json_string(content))
+            try:
+                # 清理并解析 JSON 字符串
+                json_str = self._clean_json_string(content)
+                # print(f"\n=== Cleaned JSON String ===\n{json_str}\n===================")
+
+                result = json.loads(json_str)
+                # print(f"\n=== Parsed JSON Result ===\n{result}\n===================")
 
                 if result.get("intervention_node"):
                     node = result["intervention_node"]
-                    value = result.get("intervention_value", 0.5)
+                    value = float(result.get("intervention_value", 0.5))
                     explanation = result.get("explanation", "")
                     expected_effects = result.get("expected_effects", [])
 
-                    # Validate node exists
-                    if node in nodes_with_labels:
+                    # 验证节点存在
+                    if node in graph_info["node_labels"]:
                         logger.info(f"Found intervention: do({node}) = {value}")
                         logger.info(f"Explanation: {explanation}")
                         logger.info(
                             f"Expected effects on: {', '.join(expected_effects)}"
                         )
                         return node, value, explanation, expected_effects
+                    else:
+                        logger.error(f"Node {node} not found in graph")
+                        return None
 
-            return None
+            except json.JSONDecodeError as e:
+                logger.error(f"JSON parse error at position {e.pos}: {e.msg}")
+                logger.error(f"Problem line: {e.doc.splitlines()[e.lineno-1]}")
+                return None
+            except Exception as e:
+                logger.error(f"Error processing API response: {str(e)}")
+                return None
 
         except Exception as e:
-            logger.error(f"Error extracting intervention: {e}")
+            logger.error(f"Error calling API: {str(e)}")
             return None
 
     def _format_key_relationships(self, edges: List[Dict]) -> str:
@@ -169,13 +181,35 @@ Return JSON:
             )
         return "\n".join(relationships) + "\n"
 
-    def _clean_json_string(self, json_str):
-        """Clean JSON string"""
-        start = json_str.find("{")
-        end = json_str.rfind("}") + 1
-        if start >= 0 and end > start:
-            return json_str[start:end]
-        return json_str
+    def _clean_json_string(self, json_str: str) -> str:
+        """Clean JSON string by removing markdown code blocks and finding the JSON object"""
+        # Remove markdown code block markers and any text after the JSON object
+        lines = json_str.split("\n")
+        json_lines = []
+        in_json = False
+
+        for line in lines:
+            # Skip comment lines
+            if "//" in line:
+                line = line.split("//")[0].rstrip()
+
+            if line.strip() == "```json":
+                in_json = True
+                continue
+            elif line.strip() == "```":
+                break
+            elif line.strip().startswith("{") or in_json:
+                in_json = True
+                if line.strip():  # 只添加非空行
+                    json_lines.append(line)
+
+        if not json_lines:  # If no code block found, try to find JSON directly
+            start = json_str.find("{")
+            end = json_str.rfind("}") + 1
+            if start >= 0 and end > start:
+                return json_str[start:end]
+
+        return "\n".join(json_lines)
 
 
 def main():
@@ -197,9 +231,10 @@ def main():
         print(f"\nQuestion: {question}")
         result = extractor.extract_intervention(causal_graph, question)
         if result:
-            node, value, explanation = result
+            node, value, explanation, expected_effects = result
             print(f"Intervention: do({node}) = {value}")
             print(f"Explanation: {explanation}")
+            print(f"Expected effects on: {', '.join(expected_effects)}")
         else:
             print("No clear intervention identified")
 

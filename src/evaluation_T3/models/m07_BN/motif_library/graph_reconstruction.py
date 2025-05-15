@@ -10,13 +10,15 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 from typing import Dict, Set, List, Tuple, Optional, Union
-from motif_library import MotifLibrary, get_demographic_statistics
-from semantic_similarity import SemanticSimilarityEngine
 import os
 from matplotlib.patches import Patch
 from matplotlib.lines import Line2D
 import argparse
 import json
+
+
+from .motif_library import MotifLibrary, get_demographic_statistics
+from .semantic_similarity import SemanticSimilarityEngine
 
 
 class MotifBasedReconstructor:

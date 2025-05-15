@@ -9,6 +9,8 @@ import os
 import networkx as nx
 from .motif_library.graph_reconstruction import MotifBasedReconstructor
 from .motif_library.motif_library import get_demographic_statistics, MotifLibrary
+import asyncio
+import time
 
 
 def ensure_evaluation_prefix(path: str) -> str:
@@ -27,37 +29,36 @@ class BayesianNetwork(Census):
         self.label_to_id = None
         self.id_to_label = None
 
-        # Get paths from config
-        self.graph_path = ensure_evaluation_prefix(
-            getattr(self.config, "graph_path", "data/samples/sample_1.json")
+        # Fix the motif library path
+        default_motif_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "motif_library",
+            "motif_library.json",
         )
-        self.motif_library_name = ensure_evaluation_prefix(
-            getattr(
-                self.config,
-                "motif_library_name",
-                os.path.join(
-                    os.path.dirname(os.path.abspath(__file__)),
-                    "motif_library",
-                    "motif_library.json",
-                ),
+
+        motif_library_path = getattr(
+            self.config, "motif_library_name", default_motif_path
+        )
+        if isinstance(motif_library_path, dict):
+            motif_library_path = default_motif_path
+        self.motif_library_name = ensure_evaluation_prefix(motif_library_path)
+
+        # Make sure the motif library file exists
+        if not os.path.exists(self.motif_library_name):
+            raise FileNotFoundError(
+                f"Motif library not found at {self.motif_library_name}"
             )
-        )
+
         self.output_dir = ensure_evaluation_prefix(
-            getattr(
-                self.config,
-                "output_dir",
-                os.path.join(
-                    os.path.dirname(os.path.abspath(__file__)), "graph_reconstruction"
-                ),
-            ),
+            getattr(self.config, "output_dir", "graph_reconstruction")
         )
 
         # Get reconstruction parameters from config
         self.seed_node = getattr(self.config, "seed_node", "upzoning_stance")
         self.max_iterations = getattr(self.config, "max_iterations", 20)
-        self.target_demographic = getattr(self.config, "target_demographic", None)
         self.demographic_weight = getattr(self.config, "demographic_weight", 0.3)
 
+        # Load agent data
         agent_data_path = ensure_evaluation_prefix(
             getattr(
                 self.config,
@@ -339,51 +340,265 @@ class BayesianNetwork(Census):
 
         return normalized_contributions
 
-    def reconstruct_graph(self) -> Dict:
-        """Reconstruct the graph from motif library."""
+    async def process_single_agent(
+        self, agent_data: Dict, proposal: Dict
+    ) -> Tuple[str, Optional[Dict]]:
+        """Process a single agent with semaphore control."""
+        agent_id = agent_data["id"]
+        print(f"\n[DEBUG] Processing agent {agent_id}")
+        start_time = time.time()
+
+        async with self.semaphore:
+            try:
+                # Get agent's demographic information
+                agent_profile = agent_data.get("agent", {})
+                if not agent_profile:
+                    print(
+                        f"[INFO] Skipping agent {agent_id}: No demographic information"
+                    )
+                    return agent_id, None
+
+                print(
+                    f"[DEBUG] Agent {agent_id} profile: {json.dumps(agent_profile, indent=2)}"
+                )
+
+                # Reconstruct graph based on agent's demographics
+                try:
+                    print(
+                        f"\n[DEBUG] Starting graph reconstruction for agent {agent_id}"
+                    )
+                    print(
+                        f"[DEBUG] Agent demographic: {json.dumps(agent_profile, indent=2)}"
+                    )
+
+                    # Get the graph in dictionary format using agent's specific demographics
+                    dag, node_labels = self.reconstruct_graph(
+                        agent_profile
+                    )  # Pass agent_profile here
+
+                    # Verify we have valid data
+                    if not dag or not node_labels:
+                        print(f"[ERROR] Empty graph generated for agent {agent_id}")
+                        return agent_id, None
+
+                    print(
+                        f"[DEBUG] Graph reconstruction completed for agent {agent_id}"
+                    )
+                    print(f"[DEBUG] Graph nodes: {list(dag.keys())}")
+                    print(f"[DEBUG] Node labels: {node_labels}")
+
+                except Exception as e:
+                    print(f"[ERROR] Graph reconstruction failed for agent {agent_id}")
+                    print(f"[ERROR] Error details: {str(e)}")
+                    print(f"[ERROR] Error type: {type(e)}")
+                    import traceback
+
+                    print(f"[ERROR] Full traceback: {traceback.format_exc()}")
+                    return agent_id, None
+
+                # Extract intervention with retries
+                max_retries = 3
+                retry_delay = 1
+                extract_result = None
+
+                for retry in range(max_retries):
+                    try:
+                        # 使用 asyncio.create_task 来创建异步任务
+                        extract_task = asyncio.create_task(
+                            self.extractor.extract_intervention(
+                                {"dag": dag, "node_labels": node_labels},
+                                self._create_proposal_description(proposal),
+                            )
+                        )
+
+                        # 设置超时
+                        extract_result = await asyncio.wait_for(
+                            extract_task, timeout=30
+                        )
+
+                        if extract_result is not None:
+                            break
+
+                        if retry < max_retries - 1:
+                            print(f"Retry {retry + 1} for agent {agent_id}")
+                            await asyncio.sleep(retry_delay)
+
+                    except asyncio.TimeoutError:
+                        print(f"Timeout on try {retry + 1} for agent {agent_id}")
+                        if retry < max_retries - 1:
+                            await asyncio.sleep(retry_delay)
+                    except Exception as e:
+                        print(f"Error on try {retry + 1} for agent {agent_id}: {e}")
+                        if retry < max_retries - 1:
+                            await asyncio.sleep(retry_delay)
+
+                end_time = time.time()
+                print(
+                    f"[DEBUG] Agent {agent_id} processing took {end_time - start_time:.2f}s"
+                )
+
+                if extract_result is None:
+                    print(f"Failed to extract intervention for agent {agent_id}")
+                    return agent_id, None
+
+                node_label, intervention_prob, explanation, expected_effects = (
+                    extract_result
+                )
+
+                # Run simulations with the reconstructed graph
+                try:
+                    base_results = self.simulate_intervention(
+                        dag=dag, node_labels=node_labels
+                    )
+                    if not base_results:
+                        print(f"Base simulation failed for agent {agent_id}")
+                        return agent_id, None
+
+                    intervention_results = self.simulate_intervention(
+                        dag=dag,
+                        node_labels=node_labels,
+                        intervention_node=node_label,
+                        intervention_prob=intervention_prob,
+                    )
+                    if not intervention_results:
+                        print(f"Intervention simulation failed for agent {agent_id}")
+                        return agent_id, None
+
+                except Exception as e:
+                    print(f"Error in simulation for agent {agent_id}: {e}")
+                    return agent_id, None
+
+                # Get stance node from reconstructed graph
+                try:
+                    stance_nodes = [
+                        node
+                        for node, label in node_labels.items()
+                        if "stance" in label.lower()
+                    ]
+                    stance_node = stance_nodes[0] if stance_nodes else None
+
+                    if not stance_node:
+                        print(
+                            f"No stance node found in reconstructed graph for agent {agent_id}"
+                        )
+                        return agent_id, None
+
+                except Exception as e:
+                    print(f"Error finding stance node for agent {agent_id}: {e}")
+                    return agent_id, None
+
+                # Compute contributions
+                try:
+                    contributions = self.compute_node_contributions(
+                        dag=dag,
+                        node_labels=node_labels,
+                        base_results=base_results,
+                        intervention_results=intervention_results,
+                        stance_node=stance_node,
+                    )
+                    opinion_score = round(
+                        intervention_results[stance_node]["mean"] * 10
+                    )
+
+                    graph_json = self._graph_to_json(dag, node_labels)
+                    proposal_id = proposal.get("proposal_id", "proposal_000")
+                    scenario_id = SCENARIO_MAPPING.get(proposal_id, "1.1")
+
+                    return agent_id, {
+                        "opinions": {scenario_id: opinion_score},
+                        "reasons": {
+                            scenario_id: {
+                                node_labels[node]: round(contrib_score * 4 + 1)
+                                for node, contrib_score in contributions
+                            }
+                        },
+                        "graph": graph_json,
+                        "demographic": agent_profile,
+                        "demographic_stats": agent_profile,  # Include demographic statistics
+                    }
+
+                except Exception as e:
+                    print(f"Error in final calculations for agent {agent_id}: {e}")
+                    return agent_id, None
+
+            except Exception as e:
+                print(f"Error processing agent {agent_id}: {e}")
+                return agent_id, None
+
+    def reconstruct_graph(self, agent_demographic: Dict) -> Dict:
+        """Reconstruct the graph from motif library using agent's demographic information."""
         try:
-            # Load motif library with better error handling
+            print(f"\n[DEBUG] Starting graph reconstruction")
+            print(
+                f"[DEBUG] Agent demographic: {json.dumps(agent_demographic, indent=2)}"
+            )
+            print(f"[DEBUG] Motif library path: {self.motif_library_name}")
+
+            # Load motif library
             try:
                 library = MotifLibrary.load_library(self.motif_library_name)
-                if library is None:
-                    print(
-                        f"Warning: Could not load motif library from {self.motif_library_name}"
-                    )
-                    print("Creating empty motif library with default settings")
-                    library = MotifLibrary()
+                print(f"[DEBUG] Motif library loaded successfully")
+                print(f"[DEBUG] Number of motif groups: {len(library.semantic_motifs)}")
             except Exception as e:
-                print(f"Error loading motif library: {str(e)}")
-                print("Creating empty motif library with default settings")
-                library = MotifLibrary()
+                print(f"[ERROR] Failed to load motif library: {str(e)}")
+                raise
 
-            # Create reconstructor without demographic information
+            # Create reconstructor with agent's specific demographic
             reconstructor = MotifBasedReconstructor(
                 library,
-                similarity_threshold=getattr(self.config, "similarity_threshold", 0.3),
-                node_merge_threshold=getattr(self.config, "node_merge_threshold", 0.8),
-                target_demographic=self.target_demographic,
+                similarity_threshold=0.3,
+                node_merge_threshold=0.8,
+                target_demographic=agent_demographic,  # Use agent's specific demographic
                 demographic_weight=self.demographic_weight,
             )
 
             # Reconstruct graph
+            print(
+                f"[DEBUG] Starting graph reconstruction with seed node: {self.seed_node}"
+            )
             reconstructed_graph = reconstructor.reconstruct_graph(
                 self.seed_node, max_iterations=self.max_iterations, min_score=0.3
             )
 
-            print(f"\nReconstructed graph has {len(reconstructed_graph.nodes())} nodes")
-            print(f"Reconstructed graph has {len(reconstructed_graph.edges())} edges")
+            # Convert NetworkX graph to dictionary format
+            dag = {}
+            node_labels = {}
+
+            for node in reconstructed_graph.nodes():
+                node_labels[node] = reconstructed_graph.nodes[node].get(
+                    "label", str(node)
+                )
+                dag[node] = {"parents": [], "children": []}
+
+            for u, v, data in reconstructed_graph.edges(data=True):
+                modifier = data.get("modifier", 1.0)
+                dag[u]["children"].append((v, modifier))
+                dag[v]["parents"].append((u, modifier))
+
+            print(f"[DEBUG] Graph reconstruction completed")
+            print(f"[DEBUG] Number of nodes: {len(dag)}")
             print(
-                "-------------------------- Graph Reconstruction Complete --------------------------"
+                f"[DEBUG] Number of edges: {sum(len(data['children']) for data in dag.values())}"
+            )
+            print(f"[DEBUG] Node list: {list(node_labels.values())}")
+            print(
+                f"[DEBUG] Edge list: {[(u, v) for u in dag for v, _ in dag[u]['children']]}"
             )
 
-            return reconstructed_graph
+            return dag, node_labels
 
         except Exception as e:
-            print(f"Error during graph reconstruction: {str(e)}")
-            print("Creating minimal default graph")
-            G = nx.DiGraph()
-            G.add_node(self.seed_node, label=self.seed_node)
-            return G
+            print(f"[ERROR] Critical error in graph reconstruction")
+            print(f"[ERROR] Error details: {str(e)}")
+            print(f"[ERROR] Error type: {type(e)}")
+            import traceback
+
+            print(f"[ERROR] Full traceback: {traceback.format_exc()}")
+
+            # Return minimal graph in dictionary format
+            return {self.seed_node: {"parents": [], "children": []}}, {
+                self.seed_node: self.seed_node
+            }
 
     def _graph_to_json(self, dag: Dict, node_labels: Dict) -> Dict[str, Any]:
         """Convert DAG to JSON format.
@@ -427,22 +642,10 @@ class BayesianNetwork(Census):
     async def simulate_opinions(
         self, region: str, proposal: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """Simulate opinions using Bayesian Network for all agents.
-
-        Args:
-            region: The target region name
-            proposal: A dictionary containing the rezoning proposal details
-
-        Returns:
-            A dictionary with all agents' IDs as keys, containing opinions, reasons, and graph
-        """
-        # Get proposal ID and convert to scenario ID
+        """Simulate opinions using Bayesian Network for all agents."""
         proposal_id = proposal.get("proposal_id", "proposal_000")
-        scenario_id = SCENARIO_MAPPING.get(
-            proposal_id, "1.1"  # Default to "1.1" if not found
-        )
+        scenario_id = SCENARIO_MAPPING.get(proposal_id, "1.1")
 
-        # Load all agents' data
         try:
             with open(self.agent_data_file, "r") as f:
                 agents_data = json.load(f)
@@ -451,80 +654,38 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # # TODO: for debug, only use the first 5 agents
-        # for agent_data in agents_data[:5]:
+        # Create semaphore to limit concurrent tasks
+        self.semaphore = asyncio.Semaphore(10)
 
-        # Process each agent
-        for agent_data in agents_data:
+        # Create tasks for all agents
+        print(
+            f"\n[{time.strftime('%H:%M:%S')}] Starting simulation with {len(agents_data)} agents"
+        )
+        start_time = time.time()
 
-            agent_id = agent_data["id"]
-            try:
-                # Set agent's demographic profile as target
-                agent_profile = agent_data.get("agent", {})
-                # Use all fields in agent profile as demographic information
+        tasks = [
+            self.process_single_agent(agent_data, proposal)
+            for agent_data in agents_data[:3]
+        ]
 
-                self.target_demographic = json.dumps(agent_profile, sort_keys=True)
+        # Execute all tasks concurrently
+        completed_results = await asyncio.gather(*tasks)
 
-                # Reconstruct graph for this specific agent
-                graph = self.reconstruct_graph()
+        # Process results
+        for agent_id, opinion_data in completed_results:
+            if opinion_data is not None:
+                results[agent_id] = opinion_data
+            else:
+                print(f"Skipping agent {agent_id} due to processing error")
 
-                dag, node_labels = self.load_graph(graph=graph)
-                graph_json = self._graph_to_json(dag, node_labels)
+        end_time = time.time()
+        total_duration = end_time - start_time
 
-                # Extract intervention from proposal
-                node_label, intervention_prob, explanation, expected_effects = (
-                    self.extractor.extract_intervention(
-                        {"dag": dag, "node_labels": node_labels},
-                        self._create_proposal_description(proposal),
-                    )
-                )
-
-                # Run simulations
-                # baseline
-                base_results = self.simulate_intervention(
-                    dag=dag, node_labels=node_labels
-                )
-                # intervention
-                intervention_results = self.simulate_intervention(
-                    dag=dag,
-                    node_labels=node_labels,
-                    intervention_node=node_label,
-                    intervention_prob=intervention_prob,
-                )
-
-                # Get stance node
-                stance_nodes = [
-                    node
-                    for node, label in node_labels.items()
-                    if "stance" in label.lower()
-                ]
-                stance_node = stance_nodes[0] if stance_nodes else None
-                # Compute node contributions
-                contributions = self.compute_node_contributions(
-                    dag=dag,
-                    node_labels=node_labels,
-                    base_results=base_results,
-                    intervention_results=intervention_results,
-                    stance_node=stance_node,
-                )
-                # Calculate opinion score
-                opinion_score = round(intervention_results[stance_node]["mean"] * 10)
-
-                # Store results for this agent
-                results[agent_id] = {
-                    "opinions": {scenario_id: opinion_score},
-                    "reasons": {
-                        scenario_id: {
-                            node_labels[node]: round(contrib_score * 4 + 1)
-                            for node, contrib_score in contributions
-                        }
-                    },
-                    "graph": graph_json,
-                    "demographic": agent_profile,  # save the complete demographic information
-                }
-
-            except Exception as e:
-                print(f"Error processing agent {agent_id}: {str(e)}")
-                continue
+        print(
+            f"\n[{time.strftime('%H:%M:%S')}] Successfully processed {len(results)} out of {len(agents_data)} agents in {total_duration:.2f}s"
+        )
+        print(
+            f"Average time per successful agent: {total_duration/len(results) if results else 0:.2f}s"
+        )
 
         return results
