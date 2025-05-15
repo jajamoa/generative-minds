@@ -1,10 +1,10 @@
-# **Causal Graph Data Schema**
+# **Causal Belief Network (CBN) Data Schema**
 
-This schema defines a minimal format for capturing causal relationships extracted from question-answer (QA) interactions. It includes:
+This schema defines the format for capturing causal belief networks extracted from question-answer (QA) interactions. It includes:
 
-- **Nodes**: Concepts (e.g., concerns, effects, motivations)  
-- **Edges**: Causal links between nodes, with polarity and confidence  
-- **QA History**: Source QA pairs that support node and edge generation  
+- **Nodes**: Concepts with evidence-based confidence and importance scores
+- **Edges**: Causal links between nodes, with direction, confidence and evidence
+- **QA History**: Source QA pairs that support node and edge generation
 
 Each element is keyed by a unique ID.
 
@@ -15,45 +15,93 @@ Each element is keyed by a unique ID.
 ### 1. Nodes
 
 ```json
-"node_id": {
-  "label": "string",               // Concept name (e.g. "housing_supply")
-  "confidence": float,             // 0.0–1.0, model's certainty about the node's existence
-  "source_qa": ["qa_id"],          // Supporting QA IDs
-  "incoming_edges": ["edge_id"],
-  "outgoing_edges": ["edge_id"]
+"n1": {
+  "label": "string",                // Concept name (e.g. "Climate Change")
+  "aggregate_confidence": float,    // 0.0–1.0, weighted confidence across all evidence
+  "evidence": [                     // List of supporting evidence
+    { 
+      "qa_id": "qa1",              // ID of supporting QA pair
+      "confidence": float,         // 0.0–1.0, confidence from this specific QA
+      "importance": float          // 0.0–1.0, importance from this specific QA
+    }
+  ],
+  "incoming_edges": ["e1"],         // List of incoming edge IDs
+  "outgoing_edges": ["e2"],         // List of outgoing edge IDs
+  "importance": float              // 0.0–1.0, overall node importance
 }
 ```
 
 ### 2. Edges
 
 ```json
-"edge_id": {
-  "source": "node_id",             // From-node
-  "target": "node_id",             // To-node
-  "aggregate_confidence": float,  // 0.0–1.0, strength of causal link based on all evidence
-  "evidence": [
-    { "qa_id": "qa_id", "confidence": float }  // Individual evidence confidence (0.0–1.0)
+"e1": {
+  "source": "n1",                  // From-node
+  "target": "n2",                  // To-node
+  "aggregate_confidence": float,   // 0.0–1.0, aggregate confidence across all evidence
+  "evidence": [                    // List of supporting evidence
+    { 
+      "qa_id": "qa1",             // ID of supporting QA pair
+      "confidence": float,        // 0.0–1.0, confidence from this specific QA
+      "original_modifier": float  // -1.0 or 1.0, indicates negative or positive relationship
+    }
   ],
-  "modifier": float                // Causal direction and strength: 
+  "modifier": float,              // Causal direction and strength: 
                                   // range [-1.0, 1.0]
                                   // positive: supports/causes
                                   // negative: opposes/prevents
+  "source_label": "string",       // Cached label of source node
+  "target_label": "string"        // Cached label of target node
 }
 ```
 
 ### 3. QA History
 
 ```json
-"qa_id": {
+"qa1": {
   "question": "string",
   "answer": "string",
-  "extracted_pairs": [
+  "extracted_pairs": [            // Causal relationships extracted from this QA
     {
-      "source": "node_id",
-      "target": "node_id",
-      "confidence": float        // 0.0–1.0, model’s confidence in extracting this relation
+      "edge_id": "e1",            // ID of the created/updated edge
+      "source": "n1",             // Source node ID
+      "target": "n2",             // Target node ID
+      "source_label": "string",   // Label of source node
+      "target_label": "string",   // Label of target node
+      "confidence": float,        // 0.0–1.0, confidence in this causal relation
+      "modifier": float          // Direction and strength (-1.0 to 1.0)
+    }
+  ],
+  "extracted_nodes": [            // Nodes extracted from this QA
+    {
+      "node_id": "n1",            // ID of the node
+      "label": "string",          // Label of the node
+      "confidence": float,        // 0.0–1.0, confidence in this node
+      "importance": float         // 0.0–1.0, importance of this node
     }
   ]
+}
+```
+
+### 4. Full CBN Structure
+
+```json
+{
+  "agent_id": "string",           // ID of the agent/user
+  "nodes": {                      // Dictionary of nodes
+    "n1": { /* node object */ },
+    "n2": { /* node object */ },
+    // ... more nodes
+  },
+  "edges": {                      // Dictionary of edges
+    "e1": { /* edge object */ },
+    "e2": { /* edge object */ },
+    // ... more edges
+  },
+  "qa_history": {                 // Dictionary of QA pairs
+    "qa1": { /* qa object */ },
+    "qa2": { /* qa object */ },
+    // ... more QA pairs
+  }
 }
 ```
 
@@ -61,101 +109,161 @@ Each element is keyed by a unique ID.
 
 ## Notes
 
-- **Confidence**: A probability-like score (0–1) indicating how certain the system is about the existence of a node or link.
-- **Modifier**: Represents the causal *valence* and *strength*.
-  - `+1.0`: Strong positive cause (e.g., “X leads to Y”)
-  - `-1.0`: Strong negative effect (e.g., “X prevents Y”)
-  - Values near `0`: Weak or ambiguous influence
+- **Evidence Structure**: Both nodes and edges use a unified evidence structure that tracks which QA pairs contributed to their creation/update.
+- **Aggregate Confidence**: A weighted average of confidence scores across all evidence.
+- **Importance**: A score (0–1) indicating the node's relevance to the user's belief system.
+- **Modifier**: 
+  - For edges, represents the causal *valence* and *strength*.
+  - `+1.0`: Strong positive cause (e.g., "X leads to Y")
+  - `-1.0`: Strong negative effect (e.g., "X prevents Y")
+  - Values between are scaled by confidence
 
 ---
 
-## Example 1: Daily Life
+## Example: Climate Change Beliefs
 
 ```json
-nodes = {
-  "n1": { "label": "exercise", "confidence": 1.0, "source_qa": ["qa_001"], "incoming_edges": [], "outgoing_edges": ["e1", "e2"] },
-  "n2": { "label": "stress", "confidence": 0.9, "source_qa": ["qa_002"], "incoming_edges": [], "outgoing_edges": ["e3"] },
-  "n3": { "label": "better_sleep", "confidence": 0.95, "source_qa": ["qa_001", "qa_002"], "incoming_edges": ["e1", "e3"], "outgoing_edges": ["e4"] },
-  "n4": { "label": "daily_energy", "confidence": 0.9, "source_qa": ["qa_001"], "incoming_edges": ["e2", "e4"], "outgoing_edges": [] }
-}
-
-edges = {
-  "e1": {
-    "source": "n1",
-    "target": "n3",
-    "aggregate_confidence": 0.95,
-    "evidence": [{ "qa_id": "qa_001", "confidence": 0.95 }],
-    "modifier": 1.0
+{
+  "agent_id": "user123",
+  "nodes": {
+    "n1": {
+      "label": "Climate Change",
+      "aggregate_confidence": 0.85,
+      "evidence": [
+        {
+          "qa_id": "qa1",
+          "confidence": 0.8,
+          "importance": 0.9
+        },
+        {
+          "qa_id": "qa2",
+          "confidence": 0.9,
+          "importance": 0.85
+        }
+      ],
+      "incoming_edges": ["e2"],
+      "outgoing_edges": ["e1"],
+      "importance": 0.9
+    },
+    "n2": {
+      "label": "Carbon Emissions",
+      "aggregate_confidence": 0.8,
+      "evidence": [
+        {
+          "qa_id": "qa1",
+          "confidence": 0.8,
+          "importance": 0.7
+        }
+      ],
+      "incoming_edges": [],
+      "outgoing_edges": ["e2"],
+      "importance": 0.7
+    },
+    "n3": {
+      "label": "Sea Level Rise",
+      "aggregate_confidence": 0.75,
+      "evidence": [
+        {
+          "qa_id": "qa2",
+          "confidence": 0.75,
+          "importance": 0.6
+        }
+      ],
+      "incoming_edges": ["e1"],
+      "outgoing_edges": [],
+      "importance": 0.6
+    }
   },
-  "e2": {
-    "source": "n1",
-    "target": "n4",
-    "aggregate_confidence": 0.85,
-    "evidence": [{ "qa_id": "qa_001", "confidence": 0.85 }],
-    "modifier": 1.0
+  "edges": {
+    "e1": {
+      "source": "n1",
+      "target": "n3",
+      "aggregate_confidence": 0.8,
+      "evidence": [
+        {
+          "qa_id": "qa2",
+          "confidence": 0.8,
+          "original_modifier": 1.0
+        }
+      ],
+      "modifier": 0.8,
+      "source_label": "Climate Change",
+      "target_label": "Sea Level Rise"
+    },
+    "e2": {
+      "source": "n2",
+      "target": "n1",
+      "aggregate_confidence": 0.75,
+      "evidence": [
+        {
+          "qa_id": "qa1",
+          "confidence": 0.75,
+          "original_modifier": 1.0
+        }
+      ],
+      "modifier": 0.75,
+      "source_label": "Carbon Emissions",
+      "target_label": "Climate Change"
+    }
   },
-  "e3": {
-    "source": "n2",
-    "target": "n3",
-    "aggregate_confidence": 0.8,
-    "evidence": [{ "qa_id": "qa_002", "confidence": 0.8 }],
-    "modifier": -0.8
-  },
-  "e4": {
-    "source": "n3",
-    "target": "n4",
-    "aggregate_confidence": 0.9,
-    "evidence": [{ "qa_id": "qa_002", "confidence": 0.9 }],
-    "modifier": 1.0
+  "qa_history": {
+    "qa1": {
+      "question": "How do you think carbon emissions affect climate change?",
+      "answer": "I believe carbon emissions are a major factor causing climate change because greenhouse gases lead to global warming.",
+      "extracted_pairs": [
+        {
+          "edge_id": "e2",
+          "source": "n2",
+          "target": "n1",
+          "source_label": "Carbon Emissions",
+          "target_label": "Climate Change",
+          "confidence": 0.75,
+          "modifier": 0.75
+        }
+      ],
+      "extracted_nodes": [
+        {
+          "node_id": "n2",
+          "label": "Carbon Emissions",
+          "confidence": 0.8,
+          "importance": 0.7
+        },
+        {
+          "node_id": "n1",
+          "label": "Climate Change",
+          "confidence": 0.8,
+          "importance": 0.9
+        }
+      ]
+    },
+    "qa2": {
+      "question": "What impact does climate change have on sea levels?",
+      "answer": "Climate change causes polar ice caps to melt, leading to sea level rise which threatens coastal areas.",
+      "extracted_pairs": [
+        {
+          "edge_id": "e1",
+          "source": "n1",
+          "target": "n3",
+          "source_label": "Climate Change",
+          "target_label": "Sea Level Rise",
+          "confidence": 0.8,
+          "modifier": 0.8
+        }
+      ],
+      "extracted_nodes": [
+        {
+          "node_id": "n1",
+          "label": "Climate Change",
+          "confidence": 0.9,
+          "importance": 0.85
+        },
+        {
+          "node_id": "n3",
+          "label": "Sea Level Rise",
+          "confidence": 0.75,
+          "importance": 0.6
+        }
+      ]
+    }
   }
-}
-
-qa_history = {
-  "qa_001": {
-    "question": "What daily habits help you stay healthy?",
-    "answer": "I exercise regularly. It helps me sleep better and gives me more energy during the day.",
-    "extracted_pairs": [
-      { "source": "n1", "target": "n3", "confidence": 0.95 },
-      { "source": "n1", "target": "n4", "confidence": 0.85 }
-    ]
-  },
-  "qa_002": {
-    "question": "What affects your sleep quality?",
-    "answer": "When I feel stressed, I can't sleep well. But if I sleep better, I feel more energetic.",
-    "extracted_pairs": [
-      { "source": "n2", "target": "n3", "confidence": 0.8 },
-      { "source": "n3", "target": "n4", "confidence": 0.9 }
-    ]
-  }
-}
-```
-
----
-
-## Example 2: Upzoning Policy
-
-```json
-nodes = {
-  "n1": { "label": "housing_supply", "confidence": 1.0, "source_qa": ["qa_001"], "incoming_edges": [], "outgoing_edges": ["e1"] },
-  "n2": { "label": "rent_increase", "confidence": 0.85, "source_qa": ["qa_002"], "incoming_edges": [], "outgoing_edges": ["e2"] },
-  "n3": { "label": "policy_support", "confidence": 1.0, "source_qa": ["qa_001", "qa_002"], "incoming_edges": ["e1", "e2"], "outgoing_edges": [] }
-}
-
-edges = {
-  "e1": { "source": "n1", "target": "n3", "aggregate_confidence": 1.0, "evidence": [{ "qa_id": "qa_001", "confidence": 1.0 }], "modifier": 1.0 },
-  "e2": { "source": "n2", "target": "n3", "aggregate_confidence": 0.85, "evidence": [{ "qa_id": "qa_002", "confidence": 0.85 }], "modifier": -0.85 }
-}
-
-qa_history = {
-  "qa_001": {
-    "question": "Do you support or oppose upzoning?",
-    "answer": "I support it because it increases housing supply.",
-    "extracted_pairs": [{ "source": "n1", "target": "n3", "confidence": 1.0 }]
-  },
-  "qa_002": {
-    "question": "What concerns do you have?",
-    "answer": "I’m worried rents will go up.",
-    "extracted_pairs": [{ "source": "n2", "target": "n3", "confidence": 0.85 }]
-  }
-}
-```
+} 

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List, Tuple
 from dataclasses import dataclass
+import asyncio
 
 class ModelConfig:
     """Configuration for a simulation model."""
@@ -47,3 +48,42 @@ class BaseModel(ABC):
             Opinion distribution summary
         """
         pass 
+        
+    async def simulate_opinions_batch(self,
+                                     region: str,
+                                     proposals: List[Dict[str, Any]],
+                                     concurrency_limit: int = 4) -> Dict[str, Dict[str, Any]]:
+        """
+        Simulate opinions for multiple proposals in parallel
+        
+        Args:
+            region: Target region name
+            proposals: List of proposal details
+            concurrency_limit: Maximum number of proposals to process concurrently
+            
+        Returns:
+            Dictionary mapping proposal_ids to opinion results
+        """
+        results = {}
+        
+        # Create semaphore to limit concurrency
+        semaphore = asyncio.Semaphore(concurrency_limit)
+        
+        async def process_with_semaphore(proposal):
+            async with semaphore:
+                proposal_id = proposal.get("proposal_id", "unknown")
+                try:
+                    result = await self.simulate_opinions(region, proposal)
+                    return proposal_id, result
+                except Exception as e:
+                    print(f"Error in batch processing proposal {proposal_id}: {str(e)}")
+                    return proposal_id, {"error": str(e)}
+        
+        # Create tasks for each proposal
+        tasks = [process_with_semaphore(proposal) for proposal in proposals]
+        
+        # Run all tasks concurrently and collect results
+        for proposal_id, result in await asyncio.gather(*tasks):
+            results[proposal_id] = result
+            
+        return results 
