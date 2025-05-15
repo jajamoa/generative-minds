@@ -1,12 +1,13 @@
 import os
 import random
 import json
+import asyncio
 from pathlib import Path
 from typing import Dict, Any, Tuple, List, Optional
 from collections import defaultdict
 
 from ..base import BaseModel, ModelConfig
-from ..m03_census.components.llm import OpenAILLM
+from ..m03_census.components.llm import OpenAILLM, create_llm
 from ..m03_census.model import REASON_MAPPING, SCENARIO_MAPPING
 from ..m03_census.utils.spatial_utils import (
     calculate_distance_to_affected_area,
@@ -23,12 +24,24 @@ class NaiveBaseline(BaseModel):
             config: Model configuration containing settings.
         """
         super().__init__(config)
-        self.llm = OpenAILLM()
         
-        # Get custom OpenAI parameters if provided
+        # Get LLM configuration
+        llm_provider = getattr(self.config, "llm_provider", "openai")
+        llm_model = getattr(self.config, "llm_model", None)
+        
+        # Initialize LLM using factory
+        try:
+            self.llm = create_llm(provider=llm_provider, model=llm_model)
+        except Exception as e:
+            print(f"WARNING: Failed to initialize {llm_provider} LLM: {str(e)}")
+            print("Falling back to OpenAI GPT-3.5")
+            self.llm = create_llm(provider="openai", model="gpt-3.5-turbo")
+        
+        # Get custom LLM parameters if provided
         self.temperature = getattr(self.config, "temperature", 0.7)
         self.max_tokens = getattr(self.config, "max_tokens", 800)
-        
+        self.batch_size = getattr(self.config, "batch_size", 5)  # Number of parallel requests
+        print(f"llm_provider: {llm_provider}, llm_model: {llm_model}, temperature: {self.temperature}, max_tokens: {self.max_tokens}, batch_size: {self.batch_size}")
         # Load agent IDs from the agent data file
         default_agent_file = os.path.join(os.path.dirname(__file__), "..", "m03_census", "census_data", "agents_with_geo.json")
         agent_data_path = getattr(self.config, "agent_data_file", default_agent_file)
@@ -67,7 +80,7 @@ class NaiveBaseline(BaseModel):
     async def simulate_opinions(self,
                               region: str,
                               proposal: Dict[str, Any]) -> Dict[str, Any]:
-        """Simulate opinions using OpenAI based only on proposal information.
+        """Simulate opinions using parallel processing.
         
         Args:
             region: The target region name.
@@ -76,65 +89,101 @@ class NaiveBaseline(BaseModel):
         Returns:
             A dictionary with multiple participants containing opinions and reasons.
         """
-        # Extract proposal ID from metadata if available
+        # Extract proposal ID and get scenario ID
         self.current_proposal_id = proposal.get("proposal_id", None)
+        scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
         print(f"DEBUG simulate_opinions: Processing proposal_id={self.current_proposal_id}")
         
-        # Get scenario ID
-        scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
-        
-        # Prepare readable description of the proposal
+        # Prepare proposal description
         proposal_desc = create_proposal_description(proposal)
         print(f"DEBUG: Generated proposal description: {proposal_desc[:100]}...")
         
         results = {}
         
-        # Generate opinions for each agent ID
-        for participant_id in self.agent_ids:
-            try:
-                # Load agent coordinates from agent data file
-                agent_data = self._load_agent_data(participant_id)
-                agent_coords = agent_data.get("coordinates", {}) if agent_data else {}
-                agent_lat = agent_coords.get("lat")
-                agent_lon = agent_coords.get("lng")
-                
-                distance_km = None
-                if agent_lat is not None and agent_lon is not None:
-                    distance_km = calculate_distance_to_affected_area(
-                        agent_lat, agent_lon, 
-                        proposal.get("cells", {})
-                    )
-                
-                # Build prompt and generate response with different temperature for variety
-                prompt = self._build_prompt(proposal_desc, region, agent_data, distance_km)
-                temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))  # Add some randomness to temperature
-                
-                response = await self.llm.generate(
-                    prompt, 
-                    temperature=temp,
-                    max_tokens=self.max_tokens
+        # Process agents in batches
+        for i in range(0, len(self.agent_ids), self.batch_size):
+            batch = self.agent_ids[i:i + self.batch_size]
+            tasks = []
+            
+            # Create tasks for each agent in the batch
+            for participant_id in batch:
+                task = self._process_single_agent(
+                    participant_id,
+                    proposal,
+                    proposal_desc,
+                    region,
+                    scenario_id
                 )
-                
-                # Parse the response
-                rating, reason_scores = self._parse_response(response)
-                print(f"DEBUG: Generated opinion for {participant_id}: rating={rating}")
-                
-                results[participant_id] = {
-                    "opinions": {
-                        scenario_id: rating
-                    },
-                    "reasons": {
-                        scenario_id: reason_scores
-                    }
-                }
-                
-            except Exception as e:
-                print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
-                # Generate fallback opinion for this participant
-                results[participant_id] = self._generate_fallback_opinion_single(scenario_id)
+                tasks.append(task)
+            
+            # Run batch of tasks concurrently
+            batch_results = await asyncio.gather(*tasks)
+            
+            # Update results with batch results
+            for participant_id, result in zip(batch, batch_results):
+                results[participant_id] = result
         
         return results
-    
+
+    async def _process_single_agent(self,
+                                  participant_id: str,
+                                  proposal: Dict[str, Any],
+                                  proposal_desc: str,
+                                  region: str,
+                                  scenario_id: str) -> Dict[str, Any]:
+        """Process a single agent's opinion generation.
+        
+        Args:
+            participant_id: The ID of the participant.
+            proposal: The proposal dictionary.
+            proposal_desc: The proposal description.
+            region: The target region name.
+            scenario_id: The scenario ID.
+            
+        Returns:
+            A dictionary containing the agent's opinions and reasons.
+        """
+        try:
+            # Load agent coordinates from agent data file
+            agent_data = self._load_agent_data(participant_id)
+            agent_coords = agent_data.get("coordinates", {}) if agent_data else {}
+            agent_lat = agent_coords.get("lat")
+            agent_lon = agent_coords.get("lng")
+            
+            distance_km = None
+            if agent_lat is not None and agent_lon is not None:
+                distance_km = calculate_distance_to_affected_area(
+                    agent_lat, agent_lon, 
+                    proposal.get("cells", {})
+                )
+            
+            # Build prompt and generate response with different temperature for variety
+            prompt = self._build_prompt(proposal_desc, region, agent_data, distance_km)
+            temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))  # Add some randomness to temperature
+            
+            response = await self.llm.generate(
+                prompt, 
+                temperature=temp,
+                max_tokens=self.max_tokens
+            )
+            
+            # Parse the response
+            rating, reason_scores = self._parse_response(response)
+            print(f"DEBUG: Generated opinion for {participant_id}: rating={rating}")
+            
+            return {
+                "opinions": {
+                    scenario_id: rating
+                },
+                "reasons": {
+                    scenario_id: reason_scores
+                }
+            }
+            
+        except Exception as e:
+            print(f"ERROR: Opinion generation failed for participant {participant_id}: {str(e)}")
+            return self._generate_fallback_opinion_single(scenario_id)
+
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
         """Generate a richer, geo-aware description for a rezoning proposal."""
         return create_proposal_description(proposal)
