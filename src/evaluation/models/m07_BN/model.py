@@ -16,6 +16,66 @@ def ensure_evaluation_prefix(path: str) -> str:
     return path
 
 
+responses_file_path = ensure_evaluation_prefix(
+    "experiment/eval/data/sf_prolific_survey/causal_graph_responses_5.11_with_geo.json"
+)
+
+
+def find_agent_graph_data(agent_id: str, responses_file: str) -> Optional[Dict]:
+    """
+    Search for and extract graph data for a specific agent ID from the responses file.
+
+    Args:
+        agent_id (str): The ID of the agent to search for
+        responses_file (str): Path to the responses JSON file
+
+    Returns:
+        Optional[Dict]: The graph data for the agent if found, None otherwise
+    """
+    responses_file = ensure_evaluation_prefix(responses_file)
+
+    try:
+        with open(responses_file, "r") as f:
+            data = json.load(f)
+
+        for entry in data:
+            if entry.get("prolificId") == agent_id:
+                graphs = entry.get("graphs", None)
+                all_time_stamps = [graph.get("timestamp", None) for graph in graphs]
+                if all_time_stamps in [None, []]:
+                    continue
+                latest_timestamp = max(all_time_stamps)
+                latest_graph = next(
+                    (
+                        graph
+                        for graph in graphs
+                        if graph.get("timestamp") == latest_timestamp
+                    ),
+                    None,
+                )
+                if latest_graph is not None:
+                    json_data = latest_graph.get("graphData", None)
+                    assert isinstance(json_data, dict) or isinstance(
+                        json_data, None
+                    ), f"Graph data is not a dict: {json_data}"
+                    if json_data is None:
+                        continue
+                    nodes = json_data.get("nodes", None)
+                    assert isinstance(nodes, dict), f"Nodes are not a dict: {nodes}"
+                    stance_nodes = [
+                        node
+                        for node, node_data in nodes.items()
+                        if node_data.get("is_stance", False)
+                    ]
+                    return json_data, stance_nodes
+
+        return None, None
+
+    except Exception as e:
+        print(f"Error reading responses file: {e}")
+        return None, None
+
+
 class BayesianNetwork(Census):
     def __init__(self, config: ModelConfig):
         """Initialize the belief network model."""
@@ -51,9 +111,6 @@ class BayesianNetwork(Census):
         self.agent_data_file = agent_data_path
         self.agent_ids = list(set(self._load_agent_ids(agent_data_path)))
 
-        # TODO: it is just a place holder, the graph should be loaded again for each agent
-        self.dag, self.node_labels = self.load_graph("data/samples/sample_1.json")
-
     def _load_agent_ids(self, agent_data_path: str) -> list:
         """Load only agent IDs from the agent data file.
 
@@ -78,28 +135,26 @@ class BayesianNetwork(Census):
             print(f"ERROR: Failed to load agent IDs: {str(e)}")
             return [f"agent_{i:03d}" for i in range(14)]  # Default to 14 agents
 
-    def load_graph(self, json_file: str) -> tuple[dict, dict]:
+    def load_graph(self, raw_causal_graph: Dict) -> tuple[dict, dict]:
         """
-        Load graph structure from JSON file and build a DAG.
+        Load graph structure from raw causal graph data and build a DAG.
 
         Args:
-            json_file: Path to the JSON file containing the graph structure
+            raw_causal_graph: Dictionary containing the graph structure with nodes and edges
 
         Returns:
             tuple: (dag, node_labels) where
                 - dag: dict with node_id as key and dict of parents/children as value
                 - node_labels: dict mapping node_id to node label
         """
-        # Load JSON file
-        with open(json_file, "r") as f:
-            data = json.load(f)
-
-        nodes = data["nodes"]
-        edges = data["edges"]
+        # Extract nodes and edges from raw graph
+        nodes = raw_causal_graph.get("nodes", {})
+        edges = raw_causal_graph.get("edges", {})
 
         # Create node label mapping
         node_labels = {
-            node_id: node_data["label"] for node_id, node_data in nodes.items()
+            node_id: node_data.get("label", f"node_{node_id}")
+            for node_id, node_data in nodes.items()
         }
 
         # Initialize DAG structure
@@ -112,13 +167,17 @@ class BayesianNetwork(Census):
 
         # Add edge information
         for edge_id, edge_data in edges.items():
-            source = edge_data["source"]
-            target = edge_data["target"]
-            modifier = edge_data["modifier"]
+            source = edge_data.get("source")
+            target = edge_data.get("target")
 
-            # Add parent-child relationships
-            dag[target]["parents"].append((source, modifier))
-            dag[source]["children"].append((target, modifier))
+            # Extract modifier from edge data
+            modifier = max(min(edge_data.get("modifier", 0.0), 1.0), -1.0)
+
+            # Ensure source and target exist
+            if source in dag and target in dag:
+                # Add parent-child relationships with modifier
+                dag[target]["parents"].append((source, modifier))
+                dag[source]["children"].append((target, modifier))
 
         return dag, node_labels
 
@@ -240,7 +299,7 @@ class BayesianNetwork(Census):
         self,
         base_results: Dict[str, Dict],
         intervention_results: Dict[str, Dict],
-        stance_node: str,
+        stance_node: str = None,
     ) -> List[Tuple[str, float]]:
         """
         Compute each node's contribution to the stance change
@@ -253,6 +312,13 @@ class BayesianNetwork(Census):
         Returns:
             List of (node_id, contribution_score, contribution_type) sorted by contribution
         """
+        if stance_node is None:
+            raise ValueError("Stance node cannot be None")
+        if stance_node not in base_results or stance_node not in intervention_results:
+            raise ValueError(
+                f"Stance node {stance_node} not found in simulation results"
+            )
+
         contributions = []
 
         # Get stance probabilities
@@ -310,12 +376,21 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # # TODO: for debug, only use the first 2 agents
-        # for agent_id in self.agent_ids[:2]:
-        
+        # TODO: for debug, only use the first 2 agents
+        # for agent_id in self.agent_ids[:15]:
+
         for agent_id in self.agent_ids:
             # TODO: for each agent, the graph should be loaded again, now just use self.dag as a place holder
-            causal_graph = self.dag
+
+            raw_causal_graph, stance_nodes = find_agent_graph_data(
+                agent_id, responses_file_path
+            )
+
+            if raw_causal_graph is None:
+                print(f"WARNING: No causal graph found for agent {agent_id}")
+                continue
+
+            self.dag, self.node_labels = self.load_graph(raw_causal_graph)
 
             # Extract intervention from proposal
             node_label, intervention_prob, explanation, expected_effects = (
@@ -332,12 +407,6 @@ class BayesianNetwork(Census):
                 intervention_prob=intervention_prob,
             )
 
-            # Get stance node
-            stance_nodes = [
-                node
-                for node, label in self.node_labels.items()
-                if "stance" in label.lower()
-            ]
             stance_node = stance_nodes[0] if stance_nodes else None
 
             # Compute node contributions
