@@ -5,6 +5,7 @@ from typing import Dict, Any, Optional
 
 from ..base import ModelConfig
 from ..m03_census.model import Census, REASON_MAPPING, SCENARIO_MAPPING
+from ..m03_census.utils.spatial_utils import calculate_distance_to_affected_area
 
 class Transcript(Census):
     """A model that generates opinions using OpenAI API and transcript data."""
@@ -66,12 +67,27 @@ class Transcript(Census):
         agent_id = agent.get("id")
         transcript_data = self._load_transcript(agent_id)
         
+        # Calculate distance to affected area
+        agent_coords = agent.get("coordinates", {})
+        agent_lat = agent_coords.get("lat")
+        agent_lon = agent_coords.get("lng")
+        
+        distance_km = None
+        if agent_lat is not None and agent_lon is not None:
+            distance_km = calculate_distance_to_affected_area(
+                agent_lat, agent_lon, 
+                proposal.get("cells", {})
+            )
+            print(f"DEBUG: Agent {agent_id} is {distance_km:.2f}km from affected area")
+        
         if transcript_data:
             # Build prompt using transcript data
             prompt = self._build_opinion_prompt_with_transcript(
                 transcript_data,
                 proposal_desc,
-                region
+                region,
+                agent,
+                distance_km
             )
         else:
             # Fallback to base prompt if no transcript data
@@ -102,13 +118,17 @@ class Transcript(Census):
     def _build_opinion_prompt_with_transcript(self,
                                             transcript: Dict[str, Any],
                                             proposal_desc: str,
-                                            region: str) -> str:
+                                            region: str,
+                                            agent: Dict[str, Any],
+                                            distance_km: Optional[float] = None) -> str:
         """Build a prompt incorporating transcript data.
         
         Args:
             transcript: The transcript data dictionary.
             proposal_desc: Human-readable proposal description.
             region: The target region name.
+            agent: The agent data dictionary containing geo information.
+            distance_km: Optional distance from the affected area in kilometers.
             
         Returns:
             A string containing the complete prompt.
@@ -116,8 +136,17 @@ class Transcript(Census):
         # Extract QA pairs from transcript
         qa_pairs = transcript.get("transcript", [])
         
-        # Build context from transcript responses
-        context = "Based on the interview responses:\n\n"
+        # Build context from transcript responses and location info
+        context = "Based on your interview responses and location:\n\n"
+        
+        # Add distance information if available
+        if distance_km is not None:
+            context += f"You live {distance_km:.2f} kilometers from the affected area.\n\n"
+        
+        # Add neighborhood context if available
+        geo_content = agent.get("geo_content", {})
+        if geo_content.get("narrative"):
+            context += f"Your neighborhood context:\n{geo_content['narrative']}\n\n"
         
         # Add relevant QA pairs to context
         for qa in qa_pairs:
@@ -125,7 +154,7 @@ class Transcript(Census):
             answer = qa.get("answer", "").strip()
             if question and answer:
                 context += f"Q: {question}\nA: {answer}\n\n"
-        
+
         # Combine with base prompt structure
         prompt = f"""As someone who provided the following responses about housing in {region}:
 
@@ -165,7 +194,8 @@ J: [1-5] (Public amenities)
 K: [1-5] (Property values)
 L: [1-5] (Historical preservation)
 
-Consider the provided interview responses when evaluating each aspect.
+Consider your location context and interview responses when evaluating each aspect.
 Format your response EXACTLY as shown above, with one rating (1-10) and twelve reason scores (1-5 each).
 """
+        print(f"DEBUG: Generated prompt: {prompt}")
         return prompt 
