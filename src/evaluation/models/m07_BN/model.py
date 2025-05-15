@@ -386,9 +386,9 @@ class BayesianNetwork(Census):
         print("-------------------------------------------------------")
 
         # TODO: for debug, only use the first 2 agents
-        for agent_id in self.agent_ids[:30]:
+        # for agent_id in self.agent_ids[:30]:
 
-            # for agent_id in self.agent_ids:
+        for agent_id in self.agent_ids:
 
             raw_causal_graph, stance_nodes = find_agent_graph_data(
                 agent_id, responses_file_path
