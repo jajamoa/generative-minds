@@ -2,11 +2,19 @@ import os
 import random
 import json
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Tuple, List, Optional
+from collections import Counter, defaultdict
+import requests
+import googlemaps
+from math import radians, sin, cos, asin, sqrt
 
 from ..base import BaseModel, ModelConfig
 from ..m03_census.components.llm import OpenAILLM
 from ..m03_census.model import REASON_MAPPING, SCENARIO_MAPPING
+from ..m03_census.utils.spatial_utils import (
+    calculate_distance_to_affected_area,
+    create_proposal_description
+)
 
 class NaiveBaseline(BaseModel):
     """A naive baseline using only proposal/grid info, no demographics."""
@@ -59,6 +67,59 @@ class NaiveBaseline(BaseModel):
             print(f"ERROR: Failed to load agent IDs: {str(e)}")
             return [f"agent_{i:03d}" for i in range(14)]  # Default to 14 agents
 
+    def _calculate_haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+        """Calculate the Haversine distance between two points on Earth.
+        
+        Args:
+            lat1: Latitude of first point in degrees
+            lon1: Longitude of first point in degrees
+            lat2: Latitude of second point in degrees
+            lon2: Longitude of second point in degrees
+            
+        Returns:
+            Distance in kilometers
+        """
+        # Convert decimal degrees to radians
+        lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
+        
+        # Haversine formula
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+        c = 2 * asin(sqrt(a))
+        r = 6371  # Radius of Earth in kilometers
+        
+        return c * r
+
+    def _calculate_distance_to_affected_area(self, agent_lat: float, agent_lon: float, cells: Dict[str, Any]) -> float:
+        """Calculate the minimum distance from an agent to any affected cell in the proposal.
+        
+        Args:
+            agent_lat: Agent's latitude
+            agent_lon: Agent's longitude
+            cells: Dictionary of cells from the proposal
+            
+        Returns:
+            Minimum distance in kilometers
+        """
+        min_distance = float('inf')
+        
+        for cell in cells.values():
+            bbox = cell.get('bbox', {})
+            if not bbox:
+                continue
+            
+            # Calculate center of the cell
+            cell_lat = (bbox['north'] + bbox['south']) / 2
+            cell_lon = (bbox['east'] + bbox['west']) / 2
+            
+            # Calculate distance to this cell
+            distance = self._calculate_haversine_distance(agent_lat, agent_lon, cell_lat, cell_lon)
+            min_distance = min(min_distance, distance)
+        
+        print(f"DEBUG: Agent {agent_lat}, {agent_lon} is {min_distance:.2f}km from affected area")
+        return min_distance
+
     async def simulate_opinions(self,
                               region: str,
                               proposal: Dict[str, Any]) -> Dict[str, Any]:
@@ -79,7 +140,7 @@ class NaiveBaseline(BaseModel):
         scenario_id = SCENARIO_MAPPING.get(self.current_proposal_id, "1.1")
         
         # Prepare readable description of the proposal
-        proposal_desc = self._create_proposal_description(proposal)
+        proposal_desc = create_proposal_description(proposal)
         print(f"DEBUG: Generated proposal description: {proposal_desc[:100]}...")
         
         results = {}
@@ -87,8 +148,21 @@ class NaiveBaseline(BaseModel):
         # Generate opinions for each agent ID
         for participant_id in self.agent_ids:
             try:
+                # Load agent coordinates from agent data file
+                agent_data = self._load_agent_data(participant_id)
+                agent_coords = agent_data.get("coordinates", {}) if agent_data else {}
+                agent_lat = agent_coords.get("lat")
+                agent_lon = agent_coords.get("lng")
+                
+                distance_km = None
+                if agent_lat is not None and agent_lon is not None:
+                    distance_km = calculate_distance_to_affected_area(
+                        agent_lat, agent_lon, 
+                        proposal.get("cells", {})
+                    )
+                
                 # Build prompt and generate response with different temperature for variety
-                prompt = self._build_prompt(proposal_desc, region)
+                prompt = self._build_prompt(proposal_desc, region, distance_km)
                 temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))  # Add some randomness to temperature
                 
                 response = await self.llm.generate(
@@ -118,66 +192,26 @@ class NaiveBaseline(BaseModel):
         return results
     
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
-        """Create a human-readable description of a rezoning proposal.
-        
-        Args:
-            proposal: A dictionary containing proposal details.
-            
-        Returns:
-            A string describing the key elements of the proposal.
-        """
-        # Extract basic information
-        height_limits = proposal.get("heightLimits", {})
-        default_height = height_limits.get("default", "varies")
-        grid_config = proposal.get("gridConfig", {})
-        cell_size = grid_config.get("cellSize", 100)
-        
-        # Count zones by category
-        cells = proposal.get("cells", {})
-        zone_counts = {}
-        
-        try:
-            for cell_id, cell in cells.items():
-                category = cell.get("category", "unknown")
-                height = cell.get("heightLimit", default_height)
-                
-                key = f"{category}_{height}"
-                zone_counts[key] = zone_counts.get(key, 0) + 1
-        except Exception as e:
-            print(f"ERROR: Failed to count zones: {str(e)}")
-            return f"Rezoning proposal with {cell_size}m cells. Default height limit: {default_height} feet."
-        
-        # Create description
-        desc = f"Rezoning proposal with {cell_size}m cells and {len(cells)} modified zones. "
-        desc += f"Default height limit: {default_height} feet. "
-        
-        # Add zone category information if available
-        if zone_counts:
-            desc += "Zones include: "
-            zone_info = []
-            for key, count in zone_counts.items():
-                try:
-                    category, height = key.split("_")
-                    zone_info.append(f"{count} {category} zones (height: {height}ft)")
-                except:
-                    zone_info.append(f"{count} zones of type {key}")
-            desc += ", ".join(zone_info[:3])  # Limit to 3 zone types to keep it concise
-            if len(zone_info) > 3:
-                desc += f", and {len(zone_info) - 3} more zone types"
-        
-        return desc
-    
-    def _build_prompt(self, proposal_desc: str, region: str) -> str:
+        """Generate a richer, geo-aware description for a rezoning proposal."""
+        return create_proposal_description(proposal)
+
+    def _build_prompt(self, proposal_desc: str, region: str, distance_km: float = None) -> str:
         """Build a prompt for generating opinions on a housing policy proposal.
         
         Args:
             proposal_desc: A human-readable description of the proposal.
             region: The target region name.
+            distance_km: Distance from agent to affected area in kilometers.
             
         Returns:
             A string containing the prompt for the LLM.
         """
-        prompt = f"""As an impartial evaluator, assess this housing policy proposal for {region}.
+        context = f"""As an impartial evaluator, assess this housing policy proposal for {region}."""
+        
+        if distance_km is not None:
+            context += f"\nDistance from affected area: {distance_km:.2f} kilometers"
+        
+        prompt = f"""{context}
 
 Proposed Housing Policy Changes:
 {proposal_desc}
@@ -294,4 +328,31 @@ Format your response EXACTLY as shown above, with one rating (1-10) and twelve r
             "reasons": {
                 scenario_id: reason_scores
             }
-        } 
+        }
+
+    def _load_agent_data(self, agent_id: str) -> Dict[str, Any]:
+        """Load full agent data for a specific agent ID.
+        
+        Args:
+            agent_id: The ID of the agent to load data for.
+            
+        Returns:
+            Dictionary containing agent data or None if not found.
+        """
+        try:
+            default_agent_file = os.path.join(os.path.dirname(__file__), "..", "m03_census", "census_data", "agents_with_geo.json")
+            agent_data_path = getattr(self.config, "agent_data_file", default_agent_file)
+            
+            if not os.path.isabs(agent_data_path):
+                evaluation_dir = Path(__file__).parent.parent.parent
+                agent_data_path = os.path.join(evaluation_dir, agent_data_path)
+                
+            if os.path.exists(agent_data_path):
+                with open(agent_data_path, 'r', encoding='utf-8') as f:
+                    agents = json.load(f)
+                    for agent in agents:
+                        if agent.get("id") == agent_id:
+                            return agent
+        except Exception as e:
+            print(f"ERROR: Failed to load agent data: {str(e)}")
+        return None 
