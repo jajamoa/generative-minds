@@ -4,6 +4,10 @@ import random
 import asyncio
 from pathlib import Path
 from typing import Dict, Any, Tuple, List, Optional
+from collections import Counter, defaultdict
+import requests
+import googlemaps
+from math import sqrt
 
 from ..base import BaseModel, ModelConfig
 from .components.llm import OpenAILLM
@@ -166,55 +170,168 @@ class Census(BaseModel):
         return results
     
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
-        """Create a human-readable description of a rezoning proposal.
+        """Generate a richer, geo-aware description for a rezoning proposal."""
         
-        Args:
-            proposal: A dictionary containing proposal details.
-            
-        Returns:
-            A string describing the key elements of the proposal.
-        """
-        # Extract basic information
+        # Extract basic proposal information
         height_limits = proposal.get("heightLimits", {})
-        default_height = height_limits.get("default", "varies")
+        default_height = height_limits.get("default", 0)
         grid_config = proposal.get("gridConfig", {})
         cell_size = grid_config.get("cellSize", 100)
-        
-        # Count zones by category
         cells = proposal.get("cells", {})
-        zone_counts = {}
         
-        try:
-            for cell_id, cell in cells.items():
-                category = cell.get("category", "unknown")
-                height = cell.get("heightLimit", default_height)
+        # Create a dictionary to group cells by their characteristics
+        zone_info = defaultdict(lambda: {
+            'cells': [],
+            'coordinates': [],
+            'count': 0
+        })
+        
+        # Process each cell and group by category and height
+        for cell_id, cell in cells.items():
+            category = cell.get("category", "unknown")
+            height = cell.get("heightLimit", default_height)
+            
+            # Create a unique identifier for this zone type
+            zone_type = (category, height)  # Use tuple instead of string
+            
+            try:
+                bbox = cell.get("bbox", {})
+                if bbox:
+                    lat_center = (bbox["north"] + bbox["south"]) / 2
+                    lon_center = (bbox["east"] + bbox["west"]) / 2
+                    
+                    zone_info[zone_type]['cells'].append(cell)
+                    zone_info[zone_type]['coordinates'].append((lat_center, lon_center))
+                    zone_info[zone_type]['count'] += 1
+            except (KeyError, TypeError) as e:
+                print(f"Warning: Could not process cell {cell_id}: {str(e)}")
+                continue
+        
+        # Start with overview
+        total_blocks = len(cells)
+        desc = f"This rezoning proposal affects {total_blocks} city blocks in San Francisco"
+        if total_blocks > 0:
+            desc += f", each approximately {cell_size} meters square"
+        desc += ". "
+        
+        # Describe zones by type
+        zone_descriptions = []
+        for (category, height), info in zone_info.items():
+            try:
+                num_blocks = info['count']
+                if num_blocks == 0:
+                    continue
                 
-                key = f"{category}_{height}"
-                zone_counts[key] = zone_counts.get(key, 0) + 1
+                # Calculate approximate area
+                area_sqm = num_blocks * (cell_size * cell_size)
+                area_acres = area_sqm * 0.000247105  # Convert to acres
+                
+                # Get central coordinates for this zone
+                coords = info['coordinates']
+                if coords:
+                    central_lat = sum(c[0] for c in coords) / len(coords)
+                    central_lon = sum(c[1] for c in coords) / len(coords)
+                    
+                    # Try to get neighborhood name for this zone
+                    neighborhood = self._get_neighborhood_name(central_lat, central_lon)
+                    
+                    zone_desc = (
+                        f"{num_blocks} blocks ({area_acres:.1f} acres) "
+                        f"zoned for {category.replace('_', ' ')} "
+                        f"with a height limit of {height} feet"
+                    )
+                    if neighborhood:
+                        zone_desc += f" in the {neighborhood} area"
+                    zone_descriptions.append(zone_desc)
+            except Exception as e:
+                print(f"Warning: Could not process zone {category}_{height}: {str(e)}")
+                continue
+        
+        if zone_descriptions:
+            desc += "The proposal includes: " + "; ".join(zone_descriptions[:3])
+            if len(zone_descriptions) > 3:
+                desc += f"; and {len(zone_descriptions) - 3} additional zoning changes"
+            desc += ". "
+        
+        # Add impact summary
+        desc += (
+            "This rezoning would affect local housing capacity, neighborhood character, "
+            "and urban development patterns. "
+            "The height limits are designed to balance housing needs with neighborhood context. "
+        )
+        
+        # Add transit context if available
+        transit_info = self._get_nearby_transit({f"{cat}_{h}": coords 
+                                               for (cat, h), info in zone_info.items() 
+                                               for coords in [info['coordinates']] if coords})
+        if transit_info:
+            desc += transit_info
+        
+        # Print final description for debugging
+        print(f"DEBUG: Final proposal description:\n{desc.strip()}")
+        return desc.strip()
+
+    def _get_neighborhood_name(self, lat: float, lon: float) -> Optional[str]:
+        """Get neighborhood name from coordinates using Google Maps API."""
+        try:
+            api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+            if not api_key:
+                return None
+            
+            params = {
+                'latlng': f'{lat},{lon}',
+                'result_type': 'neighborhood',
+                'key': api_key
+            }
+            
+            response = requests.get(
+                "https://maps.googleapis.com/maps/api/geocode/json",
+                params=params
+            ).json()
+            
+            for result in response.get('results', []):
+                for component in result.get('address_components', []):
+                    if 'neighborhood' in component.get('types', []):
+                        return component['long_name']
+            return None
         except Exception as e:
-            print(f"ERROR: Failed to count zones: {str(e)}")
-            # Return a simplified description if zone counting fails
-            return f"Rezoning proposal with {cell_size}m cells. Default height limit: {default_height} feet."
-        
-        # Create description
-        desc = f"Rezoning proposal with {cell_size}m cells and {len(cells)} modified zones. "
-        desc += f"Default height limit: {default_height} feet. "
-        
-        # Add zone category information if available
-        if zone_counts:
-            desc += "Zones include: "
-            zone_info = []
-            for key, count in zone_counts.items():
-                try:
-                    category, height = key.split("_")
-                    zone_info.append(f"{count} {category} zones (height: {height}ft)")
-                except:
-                    zone_info.append(f"{count} zones of type {key}")
-            desc += ", ".join(zone_info[:3])  # Limit to 3 zone types to keep it concise
-            if len(zone_info) > 3:
-                desc += f", and {len(zone_info) - 3} more zone types"
-        
-        return desc
+            print(f"Warning: Failed to get neighborhood name: {str(e)}")
+            return None
+
+    def _get_nearby_transit(self, coordinates_by_zone: Dict[str, List[Tuple[float, float]]]) -> Optional[str]:
+        """Get nearby transit information using Google Places API."""
+        try:
+            api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+            if not api_key:
+                return None
+            
+            # Get central point of all coordinates
+            all_coords = [coord for coords in coordinates_by_zone.values() for coord in coords]
+            if not all_coords:
+                return None
+            
+            central_lat = sum(c[0] for c in all_coords) / len(all_coords)
+            central_lon = sum(c[1] for c in all_coords) / len(all_coords)
+            
+            params = {
+                'location': f'{central_lat},{central_lon}',
+                'radius': 800,  # 800 meters ~ 0.5 miles
+                'type': 'transit_station',
+                'key': api_key
+            }
+            
+            response = requests.get(
+                "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+                params=params
+            ).json()
+            
+            stations = [place['name'] for place in response.get('results', [])[:3]]
+            if stations:
+                return f"The area is served by public transit including {', '.join(stations)}. "
+            return None
+        except Exception as e:
+            print(f"Warning: Failed to get transit information: {str(e)}")
+            return None
     
     async def _process_agents_parallel(self, 
                                     raw_agents: List[Dict[str, Any]], 

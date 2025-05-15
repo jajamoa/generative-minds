@@ -1,0 +1,1740 @@
+{
+  "min_motif_size": 3,
+  "max_motif_size": 5,
+  "min_semantic_similarity": 0.4,
+  "stats": {
+    "total_topological_motifs": 12,
+    "total_semantic_groups": 9,
+    "total_augmented_motifs": 50
+  },
+  "motif_metadata": {
+    "M3.3_size_3_1": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    "M3.3_size_3_2": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    "M3.3_size_3_3": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    "M1_size_3_1": {
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 4
+    },
+    "M1_size_3_1_augmented": {
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    "M2.3_size_4_bootstrapped": {
+      "augmented": true,
+      "parent_group": "M2.3_size_4",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    "M2.3_size_3_bootstrapped": {
+      "augmented": true,
+      "parent_group": "M2.3_size_3",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    "M2.3_size_5_bootstrapped": {
+      "augmented": true,
+      "parent_group": "M2.3_size_5",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    "M3.3_size_4_bootstrapped": {
+      "augmented": true,
+      "parent_group": "M3.3_size_4",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    "M3.3_size_3_1_bootstrapped": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    "M3.3_size_3_2_bootstrapped": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_2",
+      "augmentation_method": "bootstrapping"
+    },
+    "M3.3_size_3_3_bootstrapped": {
+      "motif_type": "M3.3",
+      "description": "Large Collider",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M3.3_size_3_3",
+      "augmentation_method": "bootstrapping"
+    },
+    "M3.3_size_5_bootstrapped": {
+      "augmented": true,
+      "parent_group": "M3.3_size_5",
+      "augmentation_method": "bootstrapping",
+      "instances": 5
+    },
+    "M1_size_3_1_bootstrapped": {
+      "motif_type": "M1",
+      "description": "Chain",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "M1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    }
+  },
+  "semantic_motifs": {
+    "M2.3_size_4": [
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n4": "outdoor play space",
+          "n2": "traffic density",
+          "n7": "daycare options"
+        }
+      }
+    ],
+    "M2.3_size_3": [
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n2": "neighborhood character",
+          "n4": "traffic congestion"
+        }
+      }
+    ],
+    "M2.3_size_5": [
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "community diversity",
+          "n4": "aesthetic inspiration",
+          "n3": "gallery spaces",
+          "n2": "studio affordability",
+          "n1": "building height increase"
+        }
+      }
+    ],
+    "M3.3_size_4": [
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "neighborhood character",
+          "n3": "property value",
+          "n4": "traffic congestion",
+          "n5": "new residents"
+        }
+      }
+    ],
+    "M3.3_size_3_1": [
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "commute time",
+          "n6": "parental stress",
+          "n7": "daycare options"
+        }
+      }
+    ],
+    "M3.3_size_3_2": [
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "outdoor play space",
+          "n3": "school accessibility",
+          "n10": "peer socialization"
+        }
+      }
+    ],
+    "M3.3_size_3_3": [
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "parental stress",
+          "n9": "childhood obesity",
+          "n13": "family health"
+        }
+      }
+    ],
+    "M3.3_size_5": [
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "future opportunity",
+          "n15": "quality of life",
+          "n13": "family health",
+          "n12": "community belonging",
+          "n14": "child development"
+        }
+      }
+    ],
+    "M1_size_3_1": [
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n5": "new residents",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n4",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n4",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n4": "traffic congestion",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n3",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n2": "neighborhood character",
+          "n3": "property value",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n3",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n3": "property value",
+          "n6": "upzoning stance"
+        }
+      }
+    ],
+    "M1_size_3_1_augmented": [
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n5": "new residents",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n3",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n3",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n3": "property value",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n4",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n4",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n4": "traffic congestion",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "value property",
+          "n5": "new residents",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n4",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n4",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n4": "traffic congestion",
+          "n6": "upzoning stance"
+        }
+      }
+    ],
+    "M2.3_size_4_bootstrapped": [
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "traffic density",
+          "n4": "quality of life",
+          "n2": "child development",
+          "n7": "childhood obesity"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n4": "building height increase",
+          "n2": "future opportunity",
+          "n7": "peer socialization"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n4": "upzoning stance",
+          "n2": "traffic density",
+          "n7": "peer socialization"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "neighborhood character",
+          "n4": "commute time",
+          "n2": "traffic density",
+          "n7": "value property"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n4",
+          "n2",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n7"
+          ]
+        ],
+        "node_labels": {
+          "n1": "traffic density",
+          "n4": "quality of life",
+          "n2": "peer socialization",
+          "n7": "daycare options"
+        }
+      }
+    ],
+    "M2.3_size_3_bootstrapped": [
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "quality of life",
+          "n2": "value property",
+          "n4": "family health"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "commute time",
+          "n2": "child development",
+          "n4": "traffic congestion"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "future opportunity",
+          "n2": "quality of life",
+          "n4": "childhood obesity"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "building height increase",
+          "n2": "building height increase",
+          "n4": "traffic congestion"
+        }
+      },
+      {
+        "nodes": [
+          "n1",
+          "n2",
+          "n4"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n4"
+          ]
+        ],
+        "node_labels": {
+          "n1": "commute time",
+          "n2": "outdoor play space",
+          "n4": "property value"
+        }
+      }
+    ],
+    "M2.3_size_5_bootstrapped": [
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "value property",
+          "n4": "aesthetic inspiration",
+          "n3": "commute time",
+          "n2": "commute time",
+          "n1": "building height increase"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "school accessibility",
+          "n4": "traffic density",
+          "n3": "gallery spaces",
+          "n2": "studio affordability",
+          "n1": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "upzoning stance",
+          "n4": "childhood obesity",
+          "n3": "gallery spaces",
+          "n2": "peer socialization",
+          "n1": "value property"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "value property",
+          "n4": "aesthetic inspiration",
+          "n3": "childhood obesity",
+          "n2": "community belonging",
+          "n1": "building height increase"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n4",
+          "n3",
+          "n2",
+          "n1"
+        ],
+        "edges": [
+          [
+            "n1",
+            "n2"
+          ],
+          [
+            "n1",
+            "n3"
+          ],
+          [
+            "n1",
+            "n4"
+          ],
+          [
+            "n1",
+            "n5"
+          ]
+        ],
+        "node_labels": {
+          "n5": "traffic congestion",
+          "n4": "future opportunity",
+          "n3": "gallery spaces",
+          "n2": "studio affordability",
+          "n1": "child development"
+        }
+      }
+    ],
+    "M3.3_size_4_bootstrapped": [
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "neighborhood character",
+          "n3": "parental stress",
+          "n4": "upzoning stance",
+          "n5": "studio affordability"
+        }
+      },
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "traffic congestion",
+          "n3": "property value",
+          "n4": "childhood obesity",
+          "n5": "traffic density"
+        }
+      },
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "neighborhood character",
+          "n3": "daycare options",
+          "n4": "family health",
+          "n5": "neighborhood character"
+        }
+      },
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "school accessibility",
+          "n3": "gallery spaces",
+          "n4": "outdoor play space",
+          "n5": "community belonging"
+        }
+      },
+      {
+        "nodes": [
+          "n2",
+          "n3",
+          "n4",
+          "n5"
+        ],
+        "edges": [
+          [
+            "n2",
+            "n3"
+          ],
+          [
+            "n4",
+            "n3"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n2": "neighborhood character",
+          "n3": "value property",
+          "n4": "property value",
+          "n5": "building height increase"
+        }
+      }
+    ],
+    "M3.3_size_3_1_bootstrapped": [
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "future opportunity",
+          "n6": "parental stress",
+          "n7": "building height increase"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "commute time",
+          "n6": "value property",
+          "n7": "daycare options"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "commute time",
+          "n6": "community belonging",
+          "n7": "aesthetic inspiration"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "daycare options",
+          "n6": "value property",
+          "n7": "school accessibility"
+        }
+      },
+      {
+        "nodes": [
+          "n5",
+          "n6",
+          "n7"
+        ],
+        "edges": [
+          [
+            "n5",
+            "n6"
+          ],
+          [
+            "n7",
+            "n6"
+          ]
+        ],
+        "node_labels": {
+          "n5": "community diversity",
+          "n6": "studio affordability",
+          "n7": "childhood obesity"
+        }
+      }
+    ],
+    "M3.3_size_3_2_bootstrapped": [
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "outdoor play space",
+          "n3": "daycare options",
+          "n10": "child development"
+        }
+      },
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "child development",
+          "n3": "school accessibility",
+          "n10": "traffic congestion"
+        }
+      },
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "outdoor play space",
+          "n3": "commute time",
+          "n10": "property value"
+        }
+      },
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "community belonging",
+          "n3": "school accessibility",
+          "n10": "peer socialization"
+        }
+      },
+      {
+        "nodes": [
+          "n4",
+          "n3",
+          "n10"
+        ],
+        "edges": [
+          [
+            "n4",
+            "n10"
+          ],
+          [
+            "n3",
+            "n10"
+          ]
+        ],
+        "node_labels": {
+          "n4": "parental stress",
+          "n3": "aesthetic inspiration",
+          "n10": "peer socialization"
+        }
+      }
+    ],
+    "M3.3_size_3_3_bootstrapped": [
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "new residents",
+          "n9": "studio affordability",
+          "n13": "future opportunity"
+        }
+      },
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "value property",
+          "n9": "value property",
+          "n13": "family health"
+        }
+      },
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "building height increase",
+          "n9": "traffic congestion",
+          "n13": "neighborhood character"
+        }
+      },
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "parental stress",
+          "n9": "childhood obesity",
+          "n13": "quality of life"
+        }
+      },
+      {
+        "nodes": [
+          "n6",
+          "n9",
+          "n13"
+        ],
+        "edges": [
+          [
+            "n6",
+            "n13"
+          ],
+          [
+            "n9",
+            "n13"
+          ]
+        ],
+        "node_labels": {
+          "n6": "child development",
+          "n9": "studio affordability",
+          "n13": "peer socialization"
+        }
+      }
+    ],
+    "M3.3_size_5_bootstrapped": [
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "traffic congestion",
+          "n15": "studio affordability",
+          "n13": "community diversity",
+          "n12": "upzoning stance",
+          "n14": "child development"
+        }
+      },
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "traffic density",
+          "n15": "quality of life",
+          "n13": "daycare options",
+          "n12": "child development",
+          "n14": "child development"
+        }
+      },
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "future opportunity",
+          "n15": "quality of life",
+          "n13": "neighborhood character",
+          "n12": "community belonging",
+          "n14": "gallery spaces"
+        }
+      },
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "community belonging",
+          "n15": "daycare options",
+          "n13": "new residents",
+          "n12": "childhood obesity",
+          "n14": "new residents"
+        }
+      },
+      {
+        "nodes": [
+          "n11",
+          "n15",
+          "n13",
+          "n12",
+          "n14"
+        ],
+        "edges": [
+          [
+            "n11",
+            "n15"
+          ],
+          [
+            "n13",
+            "n15"
+          ],
+          [
+            "n12",
+            "n15"
+          ],
+          [
+            "n14",
+            "n15"
+          ]
+        ],
+        "node_labels": {
+          "n11": "child development",
+          "n15": "upzoning stance",
+          "n13": "childhood obesity",
+          "n12": "future opportunity",
+          "n14": "peer socialization"
+        }
+      }
+    ],
+    "M1_size_3_1_bootstrapped": [
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "outdoor play space",
+          "n5": "quality of life",
+          "n6": "upzoning stance"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "childhood obesity",
+          "n5": "child development",
+          "n6": "quality of life"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "property value",
+          "n5": "traffic congestion",
+          "n6": "studio affordability"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "family health",
+          "n5": "school accessibility",
+          "n6": "new residents"
+        }
+      },
+      {
+        "nodes": [
+          "n3",
+          "n5",
+          "n6"
+        ],
+        "edges": [
+          [
+            "n3",
+            "n6"
+          ],
+          [
+            "n5",
+            "n3"
+          ]
+        ],
+        "node_labels": {
+          "n3": "peer socialization",
+          "n5": "new residents",
+          "n6": "new residents"
+        }
+      }
+    ]
+  }
+}

@@ -444,7 +444,8 @@ def main():
                 print(f"Opinion Correlation: {metrics.get('correlation', 'N/A'):.4f}")
                 print(f"Opinion Wasserstein Similarity: {metrics.get('wasserstein_similarity', 'N/A'):.4f}")
             elif evaluator_name == "reason_match":
-                print(f"Reason Match Similarity: {metrics.get('jaccard_similarity', 'N/A'):.4f}")
+                # print(f"Reason Match Similarity: {metrics.get('jaccard_similarity', 'N/A'):.4f}")
+                print(f"Reason Match Wasserstein: {metrics.get('wasserstein_similarity', 'N/A'):.4f}")
         
         # Determine save path
         save_path = Path(args.save) if args.save else None

@@ -17,6 +17,7 @@ from matplotlib.patches import Patch
 from matplotlib.lines import Line2D
 import argparse
 import json
+from motif_library import MotifLibrary, get_demographic_statistics
 
 
 class MotifBasedReconstructor:
@@ -25,6 +26,8 @@ class MotifBasedReconstructor:
         motif_library: MotifLibrary,
         similarity_threshold: float = 0.4,
         node_merge_threshold: float = 0.8,
+        target_demographic: str = None,
+        demographic_weight: float = 0.3,
     ):
         """
         Initialize the reconstructor.
@@ -38,6 +41,64 @@ class MotifBasedReconstructor:
         self.similarity_threshold = similarity_threshold
         self.node_merge_threshold = node_merge_threshold
         self.similarity_engine = SemanticSimilarityEngine(use_wordnet=True)
+        self.target_demographic = target_demographic
+        self.demographic_weight = demographic_weight
+        self.demographic_scores = self._calculate_demographic_scores()
+
+    def _calculate_demographic_scores(self):
+        """Calculate demographic similarity scores for all demographics."""
+        scores = {}
+
+        # Get demographic distribution
+        total_samples = sum(self.motif_library.demographic_distribution.values())
+        if total_samples == 0:
+            return scores
+
+        # Calculate score for each demographic
+        for demo, count in self.motif_library.demographic_distribution.items():
+            # Base score: inverse weight based on frequency (rare demographics score higher)
+            rarity_score = 1.0 - (count / total_samples)
+
+            # Similarity score: similarity to target demographic
+            if self.target_demographic:
+                similarity = self._demographic_similarity(demo, self.target_demographic)
+            else:
+                similarity = 0.5  # If no target demographic, assign medium score
+
+            scores[demo] = 0.3 * rarity_score + 0.7 * similarity
+
+        return scores
+
+    def _demographic_similarity(self, demo_of_motif: str, demo_of_target: str) -> float:
+        """Calculate similarity between two demographics."""
+        NONSENSE_DEMOGRAPHICS = ["unknown", "other", "", " ", "none", None]
+        if (
+            demo_of_target in NONSENSE_DEMOGRAPHICS
+            or demo_of_motif in NONSENSE_DEMOGRAPHICS
+        ):
+            return 0.0
+
+        if demo_of_motif == demo_of_target:
+            return 1.0
+
+        # Simple similarity calculation, can be customized based on actual demographic categories
+        # For example, adjacent age groups have higher similarity
+        demographic_map = {
+            "young": ["middle_aged"],
+            "middle_aged": ["young", "elderly"],
+            "elderly": ["middle_aged"],
+            "urban": ["suburban"],
+            "suburban": ["urban", "rural"],
+            "rural": ["suburban"],
+        }
+
+        if (
+            demo_of_motif in demographic_map
+            and demo_of_target in demographic_map[demo_of_motif]
+        ):
+            return 0.6
+
+        return 0.2  # Default low similarity
 
     def find_motif_candidates(
         self, frontier_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
@@ -172,6 +233,7 @@ class MotifBasedReconstructor:
     ) -> nx.DiGraph:
         """
         Reconstruct causal graph with improved diversity and node merging.
+        Also tracks demographic diversity.
         """
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
@@ -180,23 +242,29 @@ class MotifBasedReconstructor:
         frontier = {target_node}
         used_motif_types = set()
 
+        # Initialize demographic tracking
+        self.used_demographics = set()
+
         iteration = 0
         while frontier and iteration < max_iterations:
             iteration += 1
             new_frontier = set()
 
             for f_node in frontier:
-                # Now candidates returns (motif, score, motif_node, group_key)
+                # Now candidates returns (motif, score, motif_node, group_key, demographic)
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
 
-                # Updated unpacking to include group_key
-                for motif, score, motif_node, group_key in candidates:
+                # Updated unpacking to include demographic - 这里是修复的地方
+                for motif, score, motif_node, group_key, demographic in candidates:
                     if score >= min_score:
                         motif_type = group_key.split("_")[0]
+
+                        # Consider both motif type and demographic diversity
                         if (
                             motif_type not in used_motif_types
+                            or demographic not in self.used_demographics
                             or len(used_motif_types) >= 3
                         ):
                             self._integrate_motif_reverse(
@@ -208,20 +276,26 @@ class MotifBasedReconstructor:
                             new_nodes = set(G.nodes()) - covered_nodes
                             new_frontier.update(new_nodes)
 
-            frontier = new_frontier
+                            # Only break inner loop if we added a motif
+                            break
 
-            # Early stopping if graph becomes too large
-            if len(G.nodes()) > 50:
-                break
+                frontier = new_frontier
+
+                # Early stopping if graph becomes too large
+                if len(G.nodes()) > 50:
+                    break
 
         return G
 
     def find_motif_candidates_reverse(
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
-    ) -> List[Tuple[nx.DiGraph, float, str, str]]:
+    ) -> List[Tuple[nx.DiGraph, float, str, str, str]]:
         """
-        Find candidate motifs where target node is the outcome.
+        Find candidate motifs where target node is the outcome, with demographic scoring.
         Enhanced to promote motif diversity and better coverage.
+
+        Returns:
+            List of tuples: (motif, score, motif_node, group_key, demographic)
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
@@ -257,16 +331,40 @@ class MotifBasedReconstructor:
                                 0.2 if motif_type not in used_motif_types else 0
                             )
 
-                            # Weighted combination of scores
-                            final_score = (
+                            # Get motif's demographic information
+                            motif_demographic = motif.graph.get(
+                                "demographic", "unknown"
+                            )
+
+                            # Calculate demographic score
+                            demo_score = self.demographic_scores.get(
+                                motif_demographic, 0.5
+                            )
+
+                            # Add demographic diversity bonus
+                            demo_diversity_bonus = 0.0
+                            if hasattr(self, "used_demographics"):
+                                if motif_demographic not in self.used_demographics:
+                                    demo_diversity_bonus = 0.1
+
+                            # Weighted combination of scores with demographic consideration
+                            final_score = (1 - self.demographic_weight) * (
                                 0.4 * semantic_sim
                                 + 0.2 * structural_score
                                 + 0.2 * coverage_score
                                 + 0.2 * diversity_bonus
+                            ) + self.demographic_weight * (
+                                0.8 * demo_score + 0.2 * demo_diversity_bonus
                             )
 
                             candidates.append(
-                                (motif, final_score, motif_node, group_key)
+                                (
+                                    motif,
+                                    final_score,
+                                    motif_node,
+                                    group_key,
+                                    motif_demographic,
+                                )
                             )
                             used_motif_types.add(motif_type)
 
@@ -276,14 +374,27 @@ class MotifBasedReconstructor:
         # Filter to ensure diverse motif types in top results
         diverse_candidates = []
         seen_types = set()
+        seen_demographics = set()
 
         for candidate in candidates:
             motif_type = candidate[3].split("_")[0]
-            if motif_type not in seen_types:
+            demographic = candidate[4]
+
+            # Prioritize diversity in both motif type and demographic
+            if motif_type not in seen_types or demographic not in seen_demographics:
                 diverse_candidates.append(candidate)
                 seen_types.add(motif_type)
+                seen_demographics.add(demographic)
                 if len(diverse_candidates) >= 5:  # Limit to top 5 diverse motifs
                     break
+
+        # If we don't have enough diverse candidates, add the highest scoring ones
+        if len(diverse_candidates) < 5:
+            for candidate in candidates:
+                if candidate not in diverse_candidates:
+                    diverse_candidates.append(candidate)
+                    if len(diverse_candidates) >= 5:
+                        break
 
         return diverse_candidates
 
@@ -391,175 +502,6 @@ class MotifBasedReconstructor:
                 frontier.update(predecessors - covered_nodes)
 
         return frontier
-
-    def visualize_reconstruction(
-        self,
-        G: nx.DiGraph,
-        output_dir: str = "output/reconstruction",
-        filename: str = "reconstructed_graph.png",
-        show_labels: bool = True,
-    ) -> str:
-        """
-        Visualize the reconstructed graph with enhanced styling.
-
-        Args:
-            G: Reconstructed NetworkX DiGraph
-            output_dir: Directory to save visualization
-            filename: Output filename
-            show_labels: Whether to show node labels
-
-        Returns:
-            Path to saved visualization file
-        """
-        # Create output directory if it doesn't exist
-        os.makedirs(output_dir, exist_ok=True)
-
-        # Set up the figure
-        plt.figure(figsize=(15, 10))
-
-        # Calculate node positions using a spring layout
-        # Increase k for more spacing between nodes
-        pos = nx.spring_layout(G, k=1.5, iterations=50)
-
-        # Calculate node properties for visualization
-        node_sizes = []
-        node_colors = []
-
-        for node in G.nodes():
-            # Size based on degree centrality
-            degree = G.in_degree(node) + G.out_degree(node)
-            node_sizes.append(2000 + (degree * 500))
-
-            # Color based on node type
-            if node == "upzoning_stance":
-                node_colors.append("lightcoral")  # Seed node
-            elif G.in_degree(node) == 0:
-                node_colors.append("lightblue")  # Source nodes
-            elif G.out_degree(node) == 0:
-                node_colors.append("lightgreen")  # Sink nodes
-            else:
-                node_colors.append("lightyellow")  # Intermediate nodes
-
-        # Draw nodes
-        nx.draw_networkx_nodes(
-            G,
-            pos,
-            node_size=node_sizes,
-            node_color=node_colors,
-            edgecolors="gray",
-            linewidths=2,
-            alpha=0.8,
-        )
-
-        # Draw edges with arrows
-        nx.draw_networkx_edges(
-            G, pos, edge_color="gray", arrows=True, arrowsize=20, width=2, alpha=0.6
-        )
-
-        # Add labels if requested
-        if show_labels:
-            # Create custom labels with line breaks
-            labels = {}
-            for node in G.nodes():
-                label = G.nodes[node].get("label", str(node))
-                # Break long labels
-                if len(label) > 20:
-                    words = label.split()
-                    new_label = ""
-                    line = ""
-                    for word in words:
-                        if len(line + " " + word) > 20:
-                            new_label += line + "\n"
-                            line = word
-                        else:
-                            line += " " + word if line else word
-                    new_label += line
-                    labels[node] = new_label
-                else:
-                    labels[node] = label
-
-            nx.draw_networkx_labels(
-                G, pos, labels=labels, font_size=8, font_weight="bold"
-            )
-
-        # Add legend
-        legend_elements = [
-            Patch(facecolor="lightcoral", edgecolor="gray", label="Seed Node"),
-            Patch(facecolor="lightblue", edgecolor="gray", label="Source Nodes"),
-            Patch(facecolor="lightgreen", edgecolor="gray", label="Sink Nodes"),
-            Patch(
-                facecolor="lightyellow", edgecolor="gray", label="Intermediate Nodes"
-            ),
-            Line2D([0], [0], color="gray", lw=2, label="Causal Link"),
-        ]
-        plt.legend(handles=legend_elements, loc="upper left", bbox_to_anchor=(1, 1))
-
-        # Set title and adjust layout
-        plt.title("Reconstructed Causal Graph", pad=20, size=16)
-        plt.axis("off")
-        plt.tight_layout()
-
-        # Save the visualization
-        output_path = os.path.join(output_dir, filename)
-        plt.savefig(output_path, bbox_inches="tight", dpi=300)
-        plt.close()
-
-        return output_path
-
-    def visualize_reconstruction_process(
-        self,
-        seed_node: str,
-        max_iterations: int = 100,
-        output_dir: str = "output/reconstruction_process",
-    ) -> List[str]:
-        """
-        Visualize the step-by-step reconstruction process.
-
-        Args:
-            seed_node: Starting node
-            max_iterations: Maximum number of iterations
-            output_dir: Directory to save visualizations
-
-        Returns:
-            List of paths to saved visualization files
-        """
-        # Create output directory
-        os.makedirs(output_dir, exist_ok=True)
-
-        # Initialize graph
-        G = nx.DiGraph()
-        G.add_node(seed_node, label=seed_node)
-
-        covered_nodes = {seed_node}
-        frontier = {seed_node}
-        visualization_files = []
-
-        iteration = 0
-        while frontier and iteration < max_iterations:
-            iteration += 1
-
-            # Find and add best motif (same as before)
-            best_motif = None
-            best_score = -1
-            best_frontier_node = None
-
-            for f_node in frontier:
-                candidates = self.find_motif_candidates(f_node, covered_nodes, G)
-                if candidates and candidates[0][1] > best_score:
-                    best_motif = candidates[0][0]
-                    best_score = candidates[0][1]
-                    best_frontier_node = f_node
-
-            if best_motif is None:
-                break
-
-            # Integrate motif
-            self._integrate_motif(G, best_motif, best_frontier_node, covered_nodes)
-
-            # Update frontier
-            frontier = self.update_frontier(G, covered_nodes)
-
-        return visualization_files
 
     def save_as_json(
         self, G: nx.DiGraph, output_dir: str, filename: str = "reconstructed_graph.json"
@@ -679,13 +621,48 @@ def main(args):
     Example usage of the improved motif-based reconstruction.
     """
     # Load motif library
-    library = MotifLibrary.load_library(args.motif_library)
+    # library = MotifLibrary.load_library(args.motif_library)
 
     # Create reconstructor with adjusted parameters
+    # reconstructor = MotifBasedReconstructor(
+    #     library,
+    #     similarity_threshold=0.3,  # Lower threshold to find more matches
+    #     node_merge_threshold=0.8,  # High threshold for merging to avoid false positives
+    # )
+
+    """Use demographic-aware motif reconstruction."""
+    # First analyze demographic distribution
+    samples_dir = os.path.dirname(args.motif_library).replace("output", "")
+    demo_stats = get_demographic_statistics(samples_dir)
+
+    print("Demographic Distribution:")
+    print("-" * 40)
+    for demo, info in demo_stats["distribution"].items():
+        print(f"{demo}: {info['count']} samples ({info['percentage']:.1f}%)")
+    print()
+
+    # Load motif library
+    library = MotifLibrary.load_library(args.motif_library)
+
+    # Select target demographic (can be obtained from command line arguments)
+    if hasattr(args, "target_demographic"):
+        target_demographic = args.target_demographic
+    else:
+        # Default to using the most common demographic
+        most_common = max(
+            demo_stats["distribution"].items(), key=lambda x: x[1]["count"]
+        )[0]
+        target_demographic = most_common
+
+    print(f"Target demographic: {target_demographic}")
+
+    # Create demographic-aware reconstructor
     reconstructor = MotifBasedReconstructor(
         library,
-        similarity_threshold=0.3,  # Lower threshold to find more matches
-        node_merge_threshold=0.8,  # High threshold for merging to avoid false positives
+        similarity_threshold=0.3,
+        node_merge_threshold=0.8,
+        target_demographic=target_demographic,
+        demographic_weight=0.3,  # 30% weight for demographic scoring
     )
 
     # Reconstruct graph from seed
@@ -701,28 +678,6 @@ def main(args):
 
     # Create visualizations
     print("\nGenerating visualizations...")
-
-    # Single visualization of final graph
-    final_viz_path = reconstructor.visualize_reconstruction(
-        reconstructed_graph,
-        output_dir=args.output_dir,
-        filename="final_reconstruction.png",
-    )
-    print(f"Final visualization saved to: {final_viz_path}")
-
-    # Step-by-step visualization of the process
-    process_viz_paths = reconstructor.visualize_reconstruction_process(
-        args.seed_node,
-        max_iterations=args.max_iterations,
-        output_dir=args.output_dir,
-    )
-
-    if len(process_viz_paths) > 0:
-        print(
-            f"Process visualization steps saved to: {os.path.dirname(process_viz_paths[0])}"
-        )
-    else:
-        print("No step-by-step visualizations generated")
 
     # Save graph as JSON
     json_path = reconstructor.save_as_json(reconstructed_graph, args.output_dir)
@@ -742,6 +697,15 @@ if __name__ == "__main__":
     )
     args.add_argument(
         "--motif_library", type=str, default="data/samples/output/motif_library.json"
+    )
+    args.add_argument(
+        "--target_demographic", type=str, help="Target demographic for reconstruction"
+    )
+    args.add_argument(
+        "--demographic_weight",
+        type=float,
+        default=0.3,
+        help="Weight for demographic scoring (0-1)",
     )
     args = args.parse_args()
     main(args)
