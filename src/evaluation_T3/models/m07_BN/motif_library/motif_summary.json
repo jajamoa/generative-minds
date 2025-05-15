@@ -1,130 +1,609 @@
 {
   "stats": {
-    "total_topological_motifs": 12,
-    "total_semantic_groups": 9,
-    "total_augmented_motifs": 50
+    "total_topological_motifs": 0,
+    "total_semantic_groups": 23,
+    "total_augmented_motifs": 195
   },
   "motif_groups": [
     {
-      "group_key": "M3.3_size_3_1",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+      "group_key": "demo_668340555d67e9d1df712a45_M2.3_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 2
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M2.1_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 2
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_5_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_4_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_4_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.1_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 1
     },
     {
-      "group_key": "M3.3_size_3_2",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_2",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_3",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 1
     },
     {
-      "group_key": "M3.3_size_3_3",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_4",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 1
     },
     {
-      "group_key": "M1_size_3_1",
-      "motif_type": "M1",
-      "description": "Chain",
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_5",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
-      "instances": 4
+      "instances": 1
     },
     {
-      "group_key": "M1_size_3_1_augmented",
-      "motif_type": "M1",
-      "description": "Chain",
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_5_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_4_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_4_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.1_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 30
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_1",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 6
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_2",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_3",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 1
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M2.3_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 5,
       "augmented": true,
-      "parent_group": "M1_size_3_1",
+      "parent_group": "demo_668340555d67e9d1df712a45_M2.3_size_3_1",
       "augmentation_method": "nearest_neighbor"
     },
     {
-      "group_key": "M2.3_size_4_bootstrapped",
-      "augmented": true,
-      "parent_group": "M2.3_size_4",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
-    },
-    {
-      "group_key": "M2.3_size_3_bootstrapped",
-      "augmented": true,
-      "parent_group": "M2.3_size_3",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
-    },
-    {
-      "group_key": "M2.3_size_5_bootstrapped",
-      "augmented": true,
-      "parent_group": "M2.3_size_5",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
-    },
-    {
-      "group_key": "M3.3_size_4_bootstrapped",
-      "augmented": true,
-      "parent_group": "M3.3_size_4",
-      "augmentation_method": "bootstrapping",
-      "instances": 5
-    },
-    {
-      "group_key": "M3.3_size_3_1_bootstrapped",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
+      "group_key": "demo_668340555d67e9d1df712a45_M2.1_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 5,
       "augmented": true,
-      "parent_group": "M3.3_size_3_1",
+      "parent_group": "demo_668340555d67e9d1df712a45_M2.1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_5_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_5_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_4_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_4_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_4_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.2_size_4_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.2_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.1_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_2_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_2",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_5_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_5_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_4_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_4_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_4_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.2_size_4_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.2_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.1_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_1_augmented",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M1_size_3_1",
+      "augmentation_method": "nearest_neighbor"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M2.3_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M2.3_size_3_1",
       "augmentation_method": "bootstrapping"
     },
     {
-      "group_key": "M3.3_size_3_2_bootstrapped",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
+      "group_key": "demo_668340555d67e9d1df712a45_M2.1_size_4_bootstrapped",
       "augmented": true,
-      "parent_group": "M3.3_size_3_2",
-      "augmentation_method": "bootstrapping"
-    },
-    {
-      "group_key": "M3.3_size_3_3_bootstrapped",
-      "motif_type": "M3.3",
-      "description": "Large Collider",
-      "size": 3,
-      "edges": 2,
-      "instances": 5,
-      "augmented": true,
-      "parent_group": "M3.3_size_3_3",
-      "augmentation_method": "bootstrapping"
-    },
-    {
-      "group_key": "M3.3_size_5_bootstrapped",
-      "augmented": true,
-      "parent_group": "M3.3_size_5",
+      "parent_group": "demo_668340555d67e9d1df712a45_M2.1_size_4",
       "augmentation_method": "bootstrapping",
       "instances": 5
     },
     {
-      "group_key": "M1_size_3_1_bootstrapped",
-      "motif_type": "M1",
-      "description": "Chain",
+      "group_key": "demo_668340555d67e9d1df712a45_M2.1_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
       "size": 3,
       "edges": 2,
       "instances": 5,
       "augmented": true,
-      "parent_group": "M1_size_3_1",
+      "parent_group": "demo_668340555d67e9d1df712a45_M2.1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_5_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_5_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_4_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_4_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.3_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.3_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_4_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.2_size_4_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.2_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.2_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M3.1_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M3.1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_2_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_2",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_3_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_3",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_4_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_4",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_668340555d67e9d1df712a45_M1_size_3_5_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_668340555d67e9d1df712a45_M1_size_3_5",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_5_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 5,
+      "edges": 4,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_5_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_4_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_4_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.3_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.3_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_4_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.2_size_4_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.2_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 4,
+      "edges": 3,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.2_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M3.1_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M3.1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_1_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M1_size_3_1",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_2_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M1_size_3_2",
+      "augmentation_method": "bootstrapping"
+    },
+    {
+      "group_key": "demo_6656b41a68bc810ea64c442c_M1_size_3_3_bootstrapped",
+      "motif_type": "demo",
+      "description": "Unknown Type",
+      "size": 3,
+      "edges": 2,
+      "instances": 5,
+      "augmented": true,
+      "parent_group": "demo_6656b41a68bc810ea64c442c_M1_size_3_3",
       "augmentation_method": "bootstrapping"
     }
   ]

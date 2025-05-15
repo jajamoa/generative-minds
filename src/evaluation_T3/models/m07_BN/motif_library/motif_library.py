@@ -18,7 +18,21 @@ from collections import defaultdict
 import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from .semantic_similarity import SemanticSimilarityEngine
+from semantic_similarity import SemanticSimilarityEngine
+from typing import Dict
+
+
+def ensure_evaluation_prefix(path: str) -> str:
+    """Ensure path has src/evaluation prefix if not already present."""
+    prefix = "src/evaluation_T3"
+    if not path.startswith(prefix) and not path.startswith("/"):
+        return os.path.join(prefix, path)
+    return path
+
+
+responses_file_path = ensure_evaluation_prefix(
+    "experiment/eval/data/sf_prolific_survey/causal_graph_responses_5.11_with_geo.json"
+)
 
 
 class MotifLibrary:
@@ -177,174 +191,81 @@ class MotifLibrary:
             "unique_demographics": list(demographic_stats.keys()),
         }
 
-    def extract_topological_motifs(self, G, motif_types=None, sample_id=None):
+    def extract_topological_motifs(
+        self, G, sample_id=None, demographic_info=None, motif_types=None
+    ):
         """
         Extract motifs from a graph using topology-based analysis with demographic tracking.
 
         Args:
             G: NetworkX DiGraph to analyze
+            sample_id: Identifier for the sample
+            demographic_info: Dictionary containing demographic information for the agent
             motif_types: List of motif types to search for (default: all)
-            sample_id: Identifier for the sample (for demographic tracking)
 
         Returns:
             Dictionary of found motifs grouped by type and size
         """
+        # Initialize motif_types if not provided
         if motif_types is None:
             motif_types = list(self.motif_types.keys())
 
         topological_motifs = defaultdict(list)
 
-        demographic = G.graph.get("metadata", {}).get("perspective", "unknown")
+        # Add demographic info and agent ID as graph attributes
+        G.graph["agent_id"] = sample_id
+        G.graph["demographics"] = demographic_info if demographic_info else {}
 
-        if demographic not in self.demographic_distribution:
-            self.demographic_distribution[demographic] = 0
-        self.demographic_distribution[demographic] += 1
-
-        # Step 1: Track central nodes of each motif type
-        # We only track center nodes, not all nodes in motifs
-        fork_centers = set()  # Track centers of fork patterns (M2.x)
-        collider_centers = set()  # Track centers of collider patterns (M3.x)
-
-        # Process motif types in order of complexity (larger motifs first)
+        # Process motif types in order of complexity
         ordered_motif_types = [
-            # Larger fork patterns first
-            "M2.3",
-            "M2.2",
-            "M2.1",
-            # Larger collider patterns first
-            "M3.3",
-            "M3.2",
-            "M3.1",
-            # Chain patterns last
-            "M1",
+            "M2.3", "M2.2", "M2.1",  # Fork patterns
+            "M3.3", "M3.2", "M3.1",  # Collider patterns
+            "M1",  # Chain patterns
         ]
 
         # Filter out motif types not requested
         ordered_motif_types = [mt for mt in ordered_motif_types if mt in motif_types]
 
-        # For each motif type and size (in descending order of size)
+        # For each motif type and size
         for motif_type in ordered_motif_types:
             print(f"Searching for {motif_type} motifs...")
 
-            # Process sizes from large to small
-            # For M1 (chain), only process size 3
-            if motif_type == "M1":
-                sizes = [3]  # Only size 3 for chains
-            else:
-                sizes = range(self.max_motif_size, self.min_motif_size - 1, -1)
+            sizes = [3] if motif_type == "M1" else range(self.max_motif_size, self.min_motif_size - 1, -1)
 
             for size in sizes:
-                # Create template for this motif type and size
                 template = self.create_motif_template(motif_type, size)
-
-                # Use VF2 algorithm to find all subgraph matches
                 matcher = nx.algorithms.isomorphism.DiGraphMatcher(G, template)
 
-                # Find all subgraph isomorphisms (limited to prevent excessive matches)
-                max_matches = 30  # Limit to prevent too many matches
-                match_count = 0
-
-                # Collect subgraph instances
                 subgraphs = []
+                match_count = 0
+                max_matches = 30
 
                 for mapping in matcher.subgraph_isomorphisms_iter():
-                    # Mapping is from G to template, we need the reverse
-                    # Create a reverse mapping from template to G
                     reverse_mapping = {v: k for k, v in mapping.items()}
-
-                    # Extract the subgraph nodes
                     nodes = [reverse_mapping[n] for n in template.nodes()]
 
-                    # Handle different motif types differently
-                    if motif_type.startswith("M2"):  # Fork patterns
-                        # For fork patterns, the first node is the central node
-                        central_node = nodes[0]
+                    subgraph = G.subgraph(nodes).copy()
+                    
+                    # Store demographic info directly in the subgraph as a dictionary
+                    subgraph.graph["motif_metadata"] = {
+                        "agent_id": sample_id,
+                        "demographics": demographic_info if demographic_info else {},
+                        "motif_type": motif_type,
+                        "size": size,
+                        "node_count": len(subgraph.nodes()),
+                        "edge_count": len(subgraph.edges()),
+                    }
 
-                        # Skip if this center node is already part of a larger fork
-                        if central_node in fork_centers:
-                            continue
-
-                        # Extract the subgraph
-                        subgraph = G.subgraph(nodes).copy()
-
-                        # Add demographic information to the subgraph
-                        subgraph.graph["demographic"] = demographic
-                        subgraph.graph["sample_id"] = sample_id
-
-                        subgraphs.append(subgraph)
-
-                        # Mark central node as processed for future fork patterns
-                        fork_centers.add(central_node)
-
-                    elif motif_type.startswith("M3"):  # Collider patterns
-                        # For collider patterns, find the node with highest in-degree
-                        in_degrees = {n: G.in_degree(n) for n in nodes}
-                        central_node = max(in_degrees, key=in_degrees.get)
-
-                        # Skip if this center node is already part of a larger collider
-                        if central_node in collider_centers:
-                            continue
-
-                        # Extract the subgraph
-                        subgraph = G.subgraph(nodes).copy()
-
-                        # Add demographic information to the subgraph
-                        subgraph.graph["demographic"] = demographic
-                        subgraph.graph["sample_id"] = sample_id
-
-                        subgraphs.append(subgraph)
-
-                        # Mark central node as processed for future collider patterns
-                        collider_centers.add(central_node)
-
-                    else:  # Chain patterns (M1) and others
-                        # For chains, we only accept size 3
-                        if len(nodes) == 3:
-                            subgraph = G.subgraph(nodes).copy()
-
-                            # Add demographic information to the subgraph
-                            subgraph.graph["demographic"] = demographic
-                            subgraph.graph["sample_id"] = sample_id
-
-                            subgraphs.append(subgraph)
+                    subgraphs.append(subgraph)
 
                     match_count += 1
                     if match_count >= max_matches:
-                        print(
-                            f"  Reached limit of {max_matches} matches for {motif_type}_size_{size}"
-                        )
                         break
 
-                # Add the found subgraphs to the result dictionary
                 if subgraphs:
                     key = f"{motif_type}_size_{size}"
                     topological_motifs[key] = subgraphs
                     print(f"  Found {len(subgraphs)} instances of {key}")
-
-                    # 记录每个motif的demographic信息
-                    full_key = f"{sample_id}_{key}" if sample_id else key
-                    if full_key not in self.motif_demographics:
-                        self.motif_demographics[full_key] = []
-
-                    # 为每个subgraph记录demographic
-                    for subgraph in subgraphs:
-                        self.motif_demographics[full_key].append(
-                            {
-                                "demographic": demographic,
-                                "sample_id": sample_id,
-                                "motif_type": motif_type,
-                                "size": size,
-                            }
-                        )
-
-        # Remove empty entries
-        topological_motifs = {k: v for k, v in topological_motifs.items() if v}
-
-        # Update library
-        self.topological_motifs.update(topological_motifs)
-        self.stats["total_topological_motifs"] = sum(
-            len(motifs) for motifs in self.topological_motifs.values()
-        )
 
         return topological_motifs
 
@@ -921,7 +842,7 @@ class MotifLibrary:
                 "min_semantic_similarity": self.min_semantic_similarity,
                 "stats": self.stats,
                 "motif_metadata": self.motif_metadata,
-                # Convert NetworkX graphs to serializable format
+                # Convert NetworkX graphs to serializable format with demographics
                 "semantic_motifs": {
                     group_key: [
                         {
@@ -931,6 +852,7 @@ class MotifLibrary:
                                 str(n): m.nodes[n].get("label", str(n))
                                 for n in m.nodes()
                             },
+                            "metadata": m.graph.get("motif_metadata", {})  # Include the metadata dictionary
                         }
                         for m in motifs
                     ]
@@ -979,12 +901,26 @@ class MotifLibrary:
                         if len(edge) >= 2:
                             G.add_edge(edge[0], edge[1])
 
+                    # Add metadata including demographics
+                    G.graph["motif_metadata"] = motif_data.get("metadata", {})
+                    
                     library.semantic_motifs[group_key].append(G)
 
             print(
                 f"Loaded {len(library.semantic_motifs)} motif groups with "
                 f"{sum(len(motifs) for motifs in library.semantic_motifs.values())} total motifs"
             )
+
+            # Print example of demographic data to verify
+            for group_key, motifs in library.semantic_motifs.items():
+                if motifs:
+                    example_motif = motifs[0]
+                    metadata = example_motif.graph.get("motif_metadata", {})
+                    if metadata.get("demographics"):
+                        print("\nExample motif metadata:")
+                        print(f"Group: {group_key}")
+                        print(f"Metadata: {metadata}")
+                    break
 
         except Exception as e:
             print(f"Error loading motif library: {str(e)}")
@@ -1027,141 +963,338 @@ class MotifLibrary:
             return False
 
 
-def load_graph_from_json(file_path):
+def load_graph_from_json(
+    graph_data: Dict, agent_id: str = None, demographic_data: Dict = None
+) -> nx.DiGraph:
     """
-    Load a causal graph from JSON file and convert to NetworkX
+    Load a causal graph from the new graph structure format and convert to NetworkX
 
     Args:
-        file_path: Path to JSON file
+        graph_data: Dictionary containing graph data
+        agent_id: ID of the agent who created the graph
+        demographic_data: Dictionary containing demographic information for the agent
 
     Returns:
         NetworkX DiGraph object
     """
-    with open(file_path, "r") as f:
-        data = json.load(f)
-
     G = nx.DiGraph()
 
-    # Handle different JSON formats
-    if "nodes" in data and isinstance(data["nodes"], dict):
-        # Format with nodes and edges as dictionaries
-        for node_id, node_data in data["nodes"].items():
-            # Normalize the label by lowercasing and removing special characters
+    try:
+        # Add nodes
+        nodes = graph_data.get("nodes", {})
+        for node_id, node_data in nodes.items():
+            # Normalize the label
             raw_label = node_data.get("label", str(node_id))
             normalized_label = raw_label.lower().replace("_", " ").strip()
-            G.add_node(node_id, label=normalized_label, original_label=raw_label)
+            is_stance = node_data.get("is_stance", False)
 
-        # Add edges with metadata
-        for edge_id, edge_data in data["edges"].items():
-            G.add_edge(
-                edge_data["source"],
-                edge_data["target"],
-                id=edge_id,
-                modifier=edge_data.get("modifier", 0),
-                confidence=edge_data.get("aggregate_confidence", 0),
+            G.add_node(
+                node_id,
+                label=normalized_label,
+                original_label=raw_label,
+                is_stance=is_stance,
             )
-    elif "nodes" in data and isinstance(data["nodes"], list):
-        # Format with nodes and edges as arrays
-        for node_data in data["nodes"]:
-            node_id = node_data.get("id", str(len(G.nodes())))
-            label = node_data.get("label", str(node_id))
-            normalized_label = label.lower().replace("_", " ").strip()
-            G.add_node(node_id, label=normalized_label, original_label=label)
 
-        # Add edges
-        for edge_data in data.get("edges", []):
-            source = edge_data.get("source")
-            target = edge_data.get("target")
-            if source and target:
+        # Add edges with metadata - handle different possible edge formats
+        edges = graph_data.get("edges", {})
+        for edge_id, edge_data in edges.items():
+            # Handle different possible source/target key names
+            source = (
+                edge_data.get("source")
+                or edge_data.get("from")
+                or edge_data.get("source_id")
+            )
+            target = (
+                edge_data.get("target")
+                or edge_data.get("to")
+                or edge_data.get("target_id")
+            )
+
+            if source is None or target is None:
+                print(
+                    f"Warning: Skipping edge {edge_id} due to missing source/target: {edge_data}"
+                )
+                continue
+
+            try:
                 G.add_edge(
                     source,
                     target,
-                    id=edge_data.get("id", f"e{len(G.edges())}"),
-                    modifier=edge_data.get("modifier", 0),
-                    confidence=edge_data.get("confidence", 0),
+                    id=edge_id,
+                    modifier=float(edge_data.get("modifier", 0)),
                 )
+            except Exception as e:
+                print(f"Warning: Failed to add edge {edge_id}: {e}")
+                continue
 
-    # Add metadata
-    G.graph["metadata"] = data.get("metadata", {})
+        # Add metadata
+        G.graph["metadata"] = {
+            "agent_id": agent_id,
+            "demographic": demographic_data.get(agent_id) if demographic_data else None,
+        }
 
-    return G
+        return G
+
+    except Exception as e:
+        print(f"Error processing graph for agent {agent_id}: {e}")
+        return G  # Return empty graph instead of None to avoid crashes
 
 
-def process_sample_graphs(samples_dir, output_dir=None, min_semantic_similarity=0.4):
+def find_agent_graph_data(responses_file: str):
     """
-    Process all sample graphs to extract and analyze motifs
+    Search for and extract graph data for a specific agent ID from the responses file.
 
     Args:
-        samples_dir: Directory containing sample graph JSON files
-        output_dir: Directory to save output files (default: samples_dir/output)
-        min_semantic_similarity: Minimum semantic similarity for grouping
+        agent_id (str): The ID of the agent to search for
+        responses_file (str): Path to the responses JSON file
 
     Returns:
-        MotifLibrary instance with extracted motifs
+        Optional[Dict]: The graph data for the agent if found, None otherwise
     """
-    # Default output directory
-    if output_dir is None:
-        output_dir = os.path.join(samples_dir, "output")
+    responses_file = ensure_evaluation_prefix(responses_file)
 
-    # Create output directory
+    try:
+        with open(responses_file, "r") as f:
+            data = json.load(f)
+
+        dict_data = {}
+
+        for entry in data:
+            graphs = entry.get("graphs", None)
+            all_time_stamps = [graph.get("timestamp", None) for graph in graphs]
+            if all_time_stamps in [None, []]:
+                continue
+            latest_timestamp = max(all_time_stamps)
+            latest_graph = next(
+                (
+                    graph
+                    for graph in graphs
+                    if graph.get("timestamp") == latest_timestamp
+                ),
+                None,
+            )
+            if latest_graph is not None:
+                json_data = latest_graph.get("graphData", None)
+                assert isinstance(json_data, dict) or isinstance(
+                    json_data, None
+                ), f"Graph data is not a dict: {json_data}"
+                if json_data is None:
+                    continue
+                nodes = json_data.get("nodes", None)
+                assert isinstance(nodes, dict), f"Nodes are not a dict: {nodes}"
+                stance_nodes = [
+                    node
+                    for node, node_data in nodes.items()
+                    if node_data.get("is_stance", False)
+                ]
+                json_data.pop("agent_id", None)
+                dict_data[entry.get("prolificId")] = {
+                    "graph": json_data,
+                    "stance_nodes": stance_nodes,
+                }
+        dir_path = os.path.dirname(responses_file).replace(
+            "/causal_graph_responses_5.11_with_geo.json", ""
+        )
+        with open(os.path.join(dir_path, f"causal_graph_clean.json"), "w") as f:
+            json.dump(dict_data, f, indent=2)
+
+        return dict_data
+
+    except Exception as e:
+        print(f"Error reading responses file: {e}")
+        return None, None
+
+
+def load_demographic_data(responses_file: str) -> Dict[str, Dict]:
+    """
+    Load demographic data from the responses file.
+
+    Args:
+        responses_file: Path to the responses JSON file
+
+    Returns:
+        Dictionary mapping agent IDs to their demographic information
+    """
+    responses_file = ensure_evaluation_prefix(responses_file)
+    demographics = {}
+
+    try:
+        with open(responses_file, "r") as f:
+            data = json.load(f)
+
+        # First create a mapping of all possible ID formats to agent data
+        id_to_agent = {}
+        for entry in data:
+            # Get the ID - in the responses file it's under "id"
+            agent_id = entry.get("id")  # Changed from "prolificId" to "id"
+            agent_data = entry.get("agent", {})
+
+            if agent_id and agent_data:
+                id_to_agent[agent_id] = agent_data
+
+        # Now process each entry and store demographic data
+        for agent_id in id_to_agent:
+            agent_data = id_to_agent[agent_id]
+            if agent_data:
+                demographics[agent_id] = {
+                    "age": agent_data.get("age"),
+                    "income": agent_data.get("income"),
+                    "occupation": agent_data.get("occupation"),
+                    "marital_status": agent_data.get("marital status"),
+                    "has_children": agent_data.get("has children under 18"),
+                    "householder_type": agent_data.get("householder type"),
+                    "transportation": agent_data.get("means of transportation"),
+                    "geo_mobility": agent_data.get("Geo Mobility"),  # Added new field
+                    "has_demographics": True,
+                }
+
+        print(f"Loaded demographic data for {len(demographics)} agents")
+        # Print some example data to verify
+        if demographics:
+            example_id = next(iter(demographics))
+            print(f"Example demographic data for agent {example_id}:")
+            print(demographics[example_id])
+
+        return demographics
+
+    except Exception as e:
+        print(f"Error loading demographic data: {e}")
+        import traceback
+
+        traceback.print_exc()
+        return {}
+
+
+def process_causal_graphs(
+    clean_graphs_file: str,
+    responses_file: str,
+    output_dir: str = None,
+    min_semantic_similarity: float = 0.4,
+):
+    """Process all causal graphs to extract and analyze motifs"""
+    if output_dir is None:
+        output_dir = os.path.dirname(clean_graphs_file)
     os.makedirs(output_dir, exist_ok=True)
+
+    # Load responses data to get demographic information
+    demographic_mapping = load_demographic_data(responses_file)
 
     # Create motif library
     library = MotifLibrary(min_semantic_similarity=min_semantic_similarity)
 
-    # Load all graphs
-    graphs = {}
-    for filename in os.listdir(samples_dir):
-        if filename.endswith(".json"):
-            file_path = os.path.join(samples_dir, filename)
-            sample_id = filename.replace(".json", "")
-            try:
-                graphs[sample_id] = load_graph_from_json(file_path)
-                print(
-                    f"Loaded graph {sample_id}: {len(graphs[sample_id].nodes())} nodes, {len(graphs[sample_id].edges())} edges"
+    # Load and process all graphs
+    try:
+        with open(clean_graphs_file, "r") as f:
+            all_data = json.load(f)
+
+        # TODO: HACK
+        all_graphs_data = {
+            "668340555d67e9d1df712a45": all_data["668340555d67e9d1df712a45"],
+            "6656b41a68bc810ea64c442c": all_data["6656b41a68bc810ea64c442c"],
+            # "67e6b4c78b8b457f3bc6a866": all_data["67e6b4c78b8b457f3bc6a866"],
+        }
+
+        # Process each graph
+        all_topological_motifs = {}
+        agents_with_demographics = 0
+        agents_without_demographics = 0
+
+        for agent_id, data in tqdm(all_graphs_data.items(), desc="Processing graphs"):
+            graph_data = data.get("graph")
+            stance_nodes = data.get("stance_nodes", [])
+
+            if not graph_data or not stance_nodes:
+                print(f"Skipping agent {agent_id}: Invalid graph data")
+                continue
+
+            # Get demographic info for this agent using the agent_id
+            demographic_info = demographic_mapping.get(
+                agent_id, {"has_demographics": False}
+            )
+            has_demographics = demographic_info.get("has_demographics", False)
+
+            if has_demographics:
+                agents_with_demographics += 1
+            else:
+                agents_without_demographics += 1
+                print(f"Note: No demographic data found for agent {agent_id}")
+
+            # Convert to NetworkX graph
+            G = load_graph_from_json(
+                graph_data, agent_id=agent_id, demographic_data=demographic_info
+            )
+
+            print(f"\nProcessing graph for agent {agent_id}...")
+            print(f"Nodes: {len(G.nodes())}, Edges: {len(G.edges())}")
+            print(f"Stance nodes: {stance_nodes}")
+            if has_demographics:
+                print(f"Demographics: {demographic_info}")
+            else:
+                print("Demographics: Not available")
+
+            # Extract topological motifs with demographic info
+            topo_motifs = library.extract_topological_motifs(
+                G,
+                sample_id=agent_id,
+                demographic_info=demographic_info if has_demographics else None,
+            )
+
+            # Store with agent ID prefix and demographic status
+            for key, motifs in topo_motifs.items():
+                group_key = (
+                    f"{'demo' if has_demographics else 'no_demo'}_{agent_id}_{key}"
                 )
-            except Exception as e:
-                print(f"Error loading graph {filename}: {e}")
+                all_topological_motifs[group_key] = motifs
 
-    # Process each graph
-    all_topological_motifs = {}
+        print(f"\nProcessed {agents_with_demographics} agents with demographics")
+        print(f"Processed {agents_without_demographics} agents without demographics")
 
-    for sample_id, G in graphs.items():
-        print(f"\nProcessing graph {sample_id}...")
-        # Extract topological motifs
-        topo_motifs = library.extract_topological_motifs(G)
+        # Continue with semantic filtering and augmentation
+        if all_topological_motifs:
+            library.topological_motifs = all_topological_motifs
+            library.apply_semantic_filtering()
+            if agents_with_demographics > 0:
+                library.augment_by_nearest_neighbor(num_samples=5)
+                library.augment_by_bootstrapping(num_samples=5)
 
-        # Prefix keys with sample_id for uniqueness
-        for key, motifs in topo_motifs.items():
-            all_topological_motifs[f"{sample_id}_{key}"] = motifs
+            # Save results
+            library.save_library(os.path.join(output_dir, "motif_library.json"))
+            library.export_to_json(os.path.join(output_dir, "motif_summary.json"))
 
-    # Apply semantic filtering to all motifs
-    library.apply_semantic_filtering()
+            # Add demographic analysis to the summary
+            summary = library.get_motif_summary()
+            if agents_with_demographics > 0:
+                demographic_analysis = analyze_demographics(library)
+                print("\nDemographic distribution of motifs:")
+                for demo_category, stats in demographic_analysis.items():
+                    print(f"\n{demo_category}:")
+                    for value, count in stats.items():
+                        print(f"  {value}: {count} motifs")
+        else:
+            print("No motifs were extracted from the graphs")
 
-    # Augment the library
-    library.augment_by_nearest_neighbor(num_samples=5)
-    library.augment_by_bootstrapping(num_samples=5)
+        return library
 
-    # Save the library
-    library.save_library(os.path.join(output_dir, "motif_library.json"))
-    library.export_to_json(os.path.join(output_dir, "motif_summary.json"))
+    except Exception as e:
+        print(f"Error processing graphs: {e}")
+        import traceback
 
-    # Visualize representative motifs
-    library.visualize_all_groups(output_dir=os.path.join(output_dir, "motif_groups"))
+        traceback.print_exc()
+        return None
 
-    # Print summary
-    summary = library.get_motif_summary()
-    print("\nMotif library summary:")
-    print(f"Total topological motifs: {summary['stats']['total_topological_motifs']}")
-    print(f"Total semantic groups: {summary['semantic_groups']}")
-    print(f"Total augmented groups: {summary['augmented_groups']}")
-    print(f"Total motifs: {summary['total_motifs']}")
 
-    for motif_type, info in summary["motif_types"].items():
-        if info["count"] > 0:
-            print(f"  {motif_type} ({info['description']}): {info['count']} instances")
+def analyze_demographics(library):
+    """Analyze demographic distribution of motifs"""
+    demographic_stats = defaultdict(lambda: defaultdict(int))
 
-    return library
+    for group_key, motifs in library.semantic_motifs.items():
+        for motif in motifs:
+            demo_info = motif.graph.get("demographics", {})
+            for category, value in demo_info.items():
+                if value is not None:
+                    demographic_stats[category][value] += 1
+
+    return dict(demographic_stats)
 
 
 def get_demographic_statistics(samples_dir: str) -> dict:
@@ -1211,7 +1344,12 @@ def main():
 
     parser = argparse.ArgumentParser(description="Motif Library Builder")
     parser.add_argument(
-        "--input", "-i", required=True, help="Input directory with graph JSON files"
+        "--clean-graphs", required=True, help="Path to clean graphs JSON file"
+    )
+    parser.add_argument(
+        "--responses",
+        required=True,
+        help="Path to responses file with demographic data",
     )
     parser.add_argument("--output", "-o", help="Output directory for results")
     parser.add_argument(
@@ -1221,25 +1359,16 @@ def main():
         default=0.4,
         help="Minimum semantic similarity (0-1)",
     )
-    parser.add_argument(
-        "--visualize", "-v", action="store_true", help="Visualize motif groups"
-    )
 
     args = parser.parse_args()
 
-    # Process sample graphs
-    library = process_sample_graphs(
-        args.input, args.output, min_semantic_similarity=args.similarity
+    # Process all causal graphs
+    library = process_causal_graphs(
+        args.clean_graphs,
+        args.responses,
+        args.output,
+        min_semantic_similarity=args.similarity,
     )
-
-    # Visualize if requested
-    if args.visualize and library:
-        output_dir = args.output or os.path.join(args.input, "output")
-        library.visualize_all_groups(
-            output_dir=os.path.join(output_dir, "motif_groups")
-        )
-
-    print("Motif library processing complete!")
 
 
 if __name__ == "__main__":

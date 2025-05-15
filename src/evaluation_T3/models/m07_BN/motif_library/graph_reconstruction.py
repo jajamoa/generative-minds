@@ -10,8 +10,8 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 from typing import Dict, Set, List, Tuple, Optional, Union
-from .motif_library import MotifLibrary, get_demographic_statistics
-from .semantic_similarity import SemanticSimilarityEngine
+from motif_library import MotifLibrary, get_demographic_statistics
+from semantic_similarity import SemanticSimilarityEngine
 import os
 from matplotlib.patches import Patch
 from matplotlib.lines import Line2D
@@ -79,87 +79,77 @@ class MotifBasedReconstructor:
 
         return scores
 
-    def _demographic_similarity(
-        self, demo_of_motif: str, target_demo: Union[str, Dict, List]
-    ) -> float:
-        """Calculate similarity between motif's demographic and target demographic(s).
-
-        Args:
-            demo_of_motif: Demographic of the motif
-            target_demo: Target demographic(s) - can be string, dict, or list
-
-        Returns:
-            float: Similarity score between 0 and 1
+    def _demographic_similarity(self, motif: nx.DiGraph, target_demo: Dict) -> float:
         """
-        NONSENSE_DEMOGRAPHICS = ["unknown", "other", "", " ", "none", None]
-
-        if demo_of_motif in NONSENSE_DEMOGRAPHICS:
+        Calculate demographic similarity with stricter matching
+        """
+        if not target_demo:
             return 0.0
 
-        # if target_demo is a dict (full agent profile)
-        if isinstance(target_demo, dict):
-            # extract key demographic features
+        motif_demo = motif.graph.get("motif_metadata", {}).get("demographics", {})
+        if not motif_demo:
+            return 0.0
+
+        # 定义关键特征及其权重
             key_features = {
-                "householder type": target_demo.get("householder type", "Unknown"),
-                "Geo Mobility": target_demo.get("Geo Mobility", "Unknown"),
-                "income": target_demo.get("income", "Unknown"),
-                "age": target_demo.get("age", 0),
-            }
+            "householder type": 0.25,  # 增加房主/租户状态的权重
+            "means of transportation": 0.2,
+            "income": 0.2,
+            "has children under 18": 0.15,
+            "Geo Mobility": 0.2,
+        }
 
-            # calculate similarity for each feature
-            similarities = []
-            for feature, value in key_features.items():
-                if (
-                    feature in demo_of_motif
-                ):  # if motif's demographic contains this feature
-                    if feature == "age":
-                        # age difference calculation
-                        try:
-                            age_diff = abs(
-                                int(value) - int(demo_of_motif.split("_")[1])
-                            )
-                            similarities.append(
-                                max(0, 1 - age_diff / 50)
-                            )  # 50 years difference considered completely different
-                        except:
-                            similarities.append(
-                                0.5
-                            )  # if cannot compare, give medium score
-                    else:
-                        # exact match for other features
-                        similarities.append(1.0 if str(value) in demo_of_motif else 0.0)
+        total_score = 0
+        total_weight = 0
 
-            return sum(similarities) / len(similarities) if similarities else 0.0
+        for feature, weight in key_features.items():
+            target_value = str(target_demo.get(feature, "")).lower()
+            motif_value = str(motif_demo.get(feature, "")).lower()
 
-        # if target_demo is a list (multiple demographic features)
-        elif isinstance(target_demo, list):
-            # Calculate similarity with each target demographic, take max
-            similarities = [
-                self._demographic_similarity(demo_of_motif, single_demo)
-                for single_demo in target_demo
-                if single_demo not in NONSENSE_DEMOGRAPHICS
-            ]
-            return max(similarities) if similarities else 0.0
-
-        # if target_demo is a string (single demographic feature)
+            if feature == "income":
+                # 收入匹配使用范围比较
+                score = self._compare_income_ranges(target_value, motif_value)
+            elif feature == "has children under 18":
+                # 布尔值精确匹配
+                score = 1.0 if target_value == motif_value else 0.0
         else:
-            if target_demo in NONSENSE_DEMOGRAPHICS:
-                return 0.0
+                # 其他特征使用字符串相似度
+                score = 1.0 if target_value == motif_value else 0.0
+                if score == 0.0 and (
+                    target_value in motif_value or motif_value in target_value
+                ):
+                    score = 0.5
 
-            if demo_of_motif == target_demo:
-                return 1.0
+        total_score += score * weight
+        total_weight += weight
 
-            demo_features = demo_of_motif.split("_")
-            target_features = str(target_demo).split("_")
+        return total_score / total_weight if total_weight > 0 else 0.0
 
-            matching_features = sum(
-                1
-                for f1 in demo_features
-                for f2 in target_features
-                if f1.lower() == f2.lower()
+    def _compare_income_ranges(self, target_income: str, motif_income: str) -> float:
+        """
+        Compare income ranges and return similarity score
+        """
+        income_levels = [
+            "0-$24,999",
+            "$25,000-$49,999",
+            "$50,000-$74,999",
+            "$75,000-$99,999",
+            "$100,000-$124,999",
+            "$125,000-$149,999",
+            "$150,000-$199,999",
+            ">$200,000",
+        ]
+
+        try:
+            target_idx = next(
+                i for i, level in enumerate(income_levels) if level in target_income
             )
-
-            return matching_features / max(len(demo_features), len(target_features))
+            motif_idx = next(
+                i for i, level in enumerate(income_levels) if level in motif_income
+            )
+            return 1.0 - abs(target_idx - motif_idx) / len(income_levels)
+        except:
+            return 0.0
 
     def find_motif_candidates(
         self, frontier_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
@@ -293,211 +283,260 @@ class MotifBasedReconstructor:
         self, target_node: str, max_iterations: int = 100, min_score: float = 0.3
     ) -> nx.DiGraph:
         """
-        Two-phase reconstruction starting from upzoning_stance.
+        Reconstruct graph based on motifs with demographic consideration
         """
         print("Starting graph reconstruction...")
         G = nx.DiGraph()
         G.add_node(target_node, label=target_node)
         covered_nodes = {target_node}
+        frontier = {target_node}
 
-        # Phase 1: Initial growth from target_node
-        print("Phase 1: Growing from target node...")
-        candidates = self.find_motif_candidates_reverse(target_node, covered_nodes, G)
-
-        # Sort by score and take top candidates
-        candidates.sort(key=lambda x: x[1], reverse=True)
-        initial_motifs = candidates[:3]
-
-        print(f"Found {len(initial_motifs)} initial motifs to add")
-        for motif, score, motif_node, _, _ in initial_motifs:
-            self._integrate_motif_reverse(
-                G, motif, target_node, motif_node, covered_nodes
-            )
-
-        print(f"After Phase 1: {len(G.nodes())} nodes, {len(G.edges())} edges")
-
-        # Phase 2: Grow from other nodes
-        print("Phase 2: Growing from other nodes...")
-        frontier = set(G.nodes()) - {target_node}
+        # 跟踪已使用的 motif 类型
         used_motif_types = set()
-        max_nodes = 15
 
-        iteration = 0
-        while frontier and iteration < max_iterations and len(G.nodes()) < max_nodes:
-            iteration += 1
-            print(f"Iteration {iteration}, Current frontier size: {len(frontier)}")
+        for iteration in range(max_iterations):
+            if not frontier:
+                break
+
+            print(f"Iteration {iteration}, Frontier size: {len(frontier)}")
             new_frontier = set()
 
-            for f_node in list(frontier):
-                candidates = self.find_motif_candidates_reverse(
-                    f_node, covered_nodes, G
-                )
+            for node in frontier:
+                if node not in G:
+                    continue
 
-                # Take best candidates
-                for motif, score, motif_node, group_key, _ in sorted(
-                    candidates, key=lambda x: x[1], reverse=True
-                )[:2]:
+                candidates = self.find_motif_candidates_reverse(node, covered_nodes, G)
+
+                # 按照 demographic similarity 对候选进行分组
+                demo_groups = {}
+                for motif, score, motif_node, motif_type, demo_sim in candidates:
+                    if demo_sim > 0.6:  # 只考虑 demographic similarity 较高的候选
+                        if motif_type not in demo_groups:
+                            demo_groups[motif_type] = []
+                        demo_groups[motif_type].append(
+                            (motif, score, motif_node, demo_sim)
+                        )
+
+                # 优先选择未使用的 motif 类型
+                selected_candidates = []
+                for motif_type, group_candidates in demo_groups.items():
+                    if (
+                        motif_type not in used_motif_types
+                        and len(selected_candidates) < 2
+                    ):
+                        # 从该类型中选择最高分的候选
+                        best_candidate = max(group_candidates, key=lambda x: x[1])
+                        selected_candidates.append(best_candidate)
+                        used_motif_types.add(motif_type)
+
+                # 如果还需要更多候选，从所有高分候选中选择
+                if len(selected_candidates) < 2:
+                    remaining_candidates = [
+                        c
+                        for type_candidates in demo_groups.values()
+                        for c in type_candidates
+                        if c not in selected_candidates
+                    ]
+                    remaining_candidates.sort(key=lambda x: x[1], reverse=True)
+                    selected_candidates.extend(
+                        remaining_candidates[: 2 - len(selected_candidates)]
+                    )
+
+                # 集成选中的候选
+                for motif, score, motif_node, _ in selected_candidates:
                     if score >= min_score:
-                        # Check size limit
-                        new_nodes_count = len(set(motif.nodes()) - covered_nodes)
-                        if len(G.nodes()) + new_nodes_count > max_nodes:
-                            continue
-
-                        # Integrate motif
-                        old_nodes = set(G.nodes())
-                        self._integrate_motif_reverse(
-                            G, motif, f_node, motif_node, covered_nodes
+                        node_mapping = self._integrate_motif_reverse(
+                            G, motif, node, motif_node, covered_nodes
                         )
 
-                        # Update frontier
-                        new_nodes = set(G.nodes()) - old_nodes
-                        new_frontier.update(
-                            node
-                            for node in new_nodes
-                            if node != target_node
-                            and G.in_degree(node)
-                            == 0  # Only add nodes that could accept incoming edges
-                        )
-                        break
+                        # 更新 frontier
+                        for original_node in motif.nodes():
+                            if original_node != motif_node:
+                                mapped_node = node_mapping.get(original_node)
+                                if mapped_node and mapped_node not in covered_nodes:
+                                    new_frontier.add(mapped_node)
 
             frontier = new_frontier
-            print(
-                f"After iteration {iteration}: {len(G.nodes())} nodes, {len(G.edges())} edges"
-            )
+            print(f"Graph size: {len(G.nodes())} nodes, {len(G.edges())} edges")
 
-        print("Cleaning up graph...")
-        # 1. Convert all labels to use underscores
-        for node in G.nodes():
-            old_label = G.nodes[node].get("label", "")
-            new_label = old_label.replace(" ", "_").lower()
-            G.nodes[node]["label"] = new_label
+        # 最终清理
+        self._clean_up_graph(G, target_node)
+        return G
 
-        # 2. Merge all upzoning stance nodes
-        nodes_to_merge = []
-        for node in G.nodes():
-            label = G.nodes[node].get("label", "").lower()
-            if "upzoning_stance" in label or "upzoning stance" in label:
-                if node != target_node:  # Don't include the target node itself
-                    nodes_to_merge.append(node)
+    def _clean_up_graph(self, G: nx.DiGraph, target_node: str) -> None:
+        """
+        Clean up the final graph
+        """
+        # 1. 移除 target_node 的出边
+        outgoing = list(G.out_edges(target_node))
+        for u, v in outgoing:
+            G.remove_edge(u, v)
 
-        if nodes_to_merge:
-            print(f"Merging {len(nodes_to_merge)} additional upzoning stance nodes")
-            for node in nodes_to_merge:
-                # Get all incoming edges
-                incoming = list(G.in_edges(node))
-                # Add these edges to target_node
-                for source, _ in incoming:
-                    if not G.has_edge(source, target_node):
-                        G.add_edge(source, target_node, modifier=1.0)
-                # Remove the duplicate node
-                G.remove_node(node)
-
-        # 3. Remove any outgoing edges from stance node
-        outgoing_edges = list(G.out_edges(target_node))
-        if outgoing_edges:
-            print(
-                f"Removing {len(outgoing_edges)} invalid outgoing edges from {target_node}"
-            )
-            for source, target in outgoing_edges:
-                G.remove_edge(source, target)
-                # Try to reverse the edge direction if it makes sense
-                if not nx.has_path(G, target, target_node):
-                    G.add_edge(target, source, modifier=1.0)
-
-        # 4. Final connectivity check
+        # 2. 确保所有节点都有到 target_node 的路径
         for node in G.nodes():
             if node != target_node and not nx.has_path(G, node, target_node):
                 G.add_edge(node, target_node, modifier=1.0)
 
-        print(f"Final graph: {len(G.nodes())} nodes, {len(G.edges())} edges")
-        print(f"Stance node ({target_node}) out degree: {G.out_degree(target_node)}")
-        return G
+        # 3. 移除重复的边
+        edges_to_remove = []
+        for u, v in G.edges():
+            if G.has_edge(v, u):
+                # 保留修饰符值较大的边
+                uv_modifier = abs(G.edges[u, v].get("modifier", 1.0))
+                vu_modifier = abs(G.edges[v, u].get("modifier", 1.0))
+                if uv_modifier < vu_modifier:
+                    edges_to_remove.append((u, v))
+                else:
+                    edges_to_remove.append((v, u))
+
+        for edge in edges_to_remove:
+            if G.has_edge(*edge):
+                G.remove_edge(*edge)
 
     def find_motif_candidates_reverse(
         self, target_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
-    ) -> List[Tuple[nx.DiGraph, float, str, str, str]]:
+    ) -> List[Tuple[nx.DiGraph, float, str, str, float]]:
         """
         Find candidate motifs where target node is the outcome.
+        Now prioritizes motifs based on demographic matching.
         """
         candidates = []
         target_label = current_graph.nodes[target_node].get("label", target_node)
 
-        # Debug print
         print(f"Finding candidates for target node: {target_label}")
 
-        for group_key, motifs in self.motif_library.semantic_motifs.items():
-            for motif in motifs:
-                # For each node in the motif
-                for motif_node in motif.nodes():
-                    motif_label = motif.nodes[motif_node].get("label", "")
+        if not hasattr(self.motif_library, "motifs") or not self.motif_library.motifs:
+            print("Warning: Motif library is empty!")
+            return candidates
 
-                    # Calculate semantic similarity
-                    semantic_sim = self.similarity_engine.node_similarity(
-                        motif_label, target_label
+        # 根据 target demographic 确定优先级
+        priority_types = self._get_priority_motif_types()
+        print(f"Priority motif types for current demographics: {priority_types}")
+
+        # 遍历 motifs
+        for motif in self.motif_library.motifs:
+            try:
+                motif_type = motif["metadata"]["motif_type"]
+                # 计算 motif type 的优先级权重
+                type_weight = self._calculate_type_weight(motif_type, priority_types)
+                
+                # 构建 motif 图
+                motif_graph = nx.DiGraph()
+                for node in motif["nodes"]:
+                    motif_graph.add_node(node, label=motif["node_labels"][node])
+                for edge in motif["edges"]:
+                    if len(edge) >= 3:
+                        motif_graph.add_edge(edge[0], edge[1], **edge[2])
+                    else:
+                        motif_graph.add_edge(edge[0], edge[1], modifier=1.0)
+
+                motif_graph.graph["motif_metadata"] = motif["metadata"]
+
+                # 找到 motif 中连接到 stance 的节点
+                stance_nodes = []
+                for node in motif_graph.nodes():
+                    if motif_graph.nodes[node].get("label", "") == target_label:
+                        stance_nodes.append(node)
+
+                if stance_nodes:
+                    # 计算 demographic similarity
+                    demo_sim = self._demographic_similarity(motif_graph, self.target_demographic)
+
+                    # 计算整体分数，加入 type_weight
+                    semantic_sim = self._calculate_semantic_similarity(motif_graph, current_graph)
+                    structural_score = self._calculate_motif_structural_fit(motif_graph, current_graph)
+                    coverage_score = self._calculate_coverage_score(motif_graph, covered_nodes)
+
+                    final_score = (
+                        0.2 * semantic_sim +
+                        0.2 * structural_score +
+                        0.2 * coverage_score +
+                        0.2 * demo_sim +
+                        0.2 * type_weight  # 加入 type_weight
                     )
 
-                    if semantic_sim >= self.similarity_threshold:
-                        # If this is upzoning_stance, ensure it has no out-degree
-                        if "upzoning_stance" in motif_label.lower():
-                            if motif.out_degree(motif_node) > 0:
-                                continue
-
-                        # Calculate scores
-                        structural_score = self._calculate_structural_fit(
-                            motif, motif_node, current_graph, target_node
-                        )
-                        coverage_score = self._calculate_coverage_score(
-                            motif, covered_nodes
-                        )
-
-                        # Calculate final score
-                        final_score = (
-                            0.4 * semantic_sim
-                            + 0.3 * structural_score
-                            + 0.3 * coverage_score
-                        )
-
-                        # Get demographic info
-                        motif_demographic = (
-                            motif.graph.get("demographic", "unknown")
-                            if hasattr(motif, "graph")
-                            else "unknown"
-                        )
-
+                    for stance_node in stance_nodes:
                         candidates.append(
-                            (
-                                motif,
-                                final_score,
-                                motif_node,
-                                group_key,
-                                motif_demographic,
-                            )
+                            (motif_graph, final_score, stance_node, motif_type, demo_sim)
                         )
 
-        # Debug print
-        print(f"Found {len(candidates)} candidates")
+            except Exception as e:
+                print(f"Error processing motif: {e}")
+                continue
+
+        # 按照分数和类型进行排序
+        candidates.sort(key=lambda x: (x[1], priority_types.get(x[3], 0)), reverse=True)
+        
+        print(f"\nTop candidates by type:")
+        for motif_type in set(c[3] for c in candidates):
+            type_candidates = [c for c in candidates if c[3] == motif_type]
+            if type_candidates:
+                print(f"{motif_type}: Score = {type_candidates[0][1]:.3f}")
+
         return candidates
 
-    def _calculate_structural_fit(
-        self,
-        motif: nx.DiGraph,
-        motif_node: str,
-        current_graph: nx.DiGraph,
-        target_node: str,
+    def _get_priority_motif_types(self) -> Dict[str, float]:
+        """
+        Based on target demographics, determine which motif types should be prioritized
+        """
+        priorities = {}
+        
+        if not self.target_demographic:
+            return priorities
+
+        # 根据人口统计特征设置优先级
+        if self.target_demographic.get("householder type") == "Owner-occupied":
+            priorities["Economic_Owner"] = 1.0
+            priorities["Family"] = 0.8
+            priorities["Transportation_Car"] = 0.7
+        elif self.target_demographic.get("householder type") == "Renter":
+            priorities["Economic_Renter"] = 1.0
+            priorities["Career"] = 0.8
+            priorities["Transportation_Transit"] = 0.7
+
+        if self.target_demographic.get("has children under 18"):
+            priorities["Family"] = max(priorities.get("Family", 0), 0.9)
+
+        if self.target_demographic.get("means of transportation") == "Public Transportation":
+            priorities["Transportation_Transit"] = max(priorities.get("Transportation_Transit", 0), 0.9)
+        elif self.target_demographic.get("means of transportation") == "Car / Truck / Van":
+            priorities["Transportation_Car"] = max(priorities.get("Transportation_Car", 0), 0.9)
+
+        # 收入相关优先级
+        income = self.target_demographic.get("income", "")
+        if any(high in income for high in [">$200,000", "$150,000"]):
+            priorities["Economic_Owner"] = max(priorities.get("Economic_Owner", 0), 0.9)
+        elif any(low in income for low in ["$50,000", "$75,000"]):
+            priorities["Economic_Renter"] = max(priorities.get("Economic_Renter", 0), 0.9)
+
+        return priorities
+
+    def _calculate_type_weight(self, motif_type: str, priority_types: Dict[str, float]) -> float:
+        """
+        Calculate weight for a motif type based on demographic priorities
+        """
+        return priority_types.get(motif_type, 0.1)
+
+    def _calculate_motif_structural_fit(
+        self, motif: nx.DiGraph, current_graph: nx.DiGraph
     ) -> float:
         """
-        Calculate structural fit score for reverse building.
+        Calculate how well the entire motif structure fits with the current graph
         """
-        # Count incoming edges that could be added
-        motif_in = motif.in_degree(motif_node)
-        current_in = current_graph.in_degree(target_node)
+        # 计算节点重叠
+        motif_nodes = set(motif.nodes())
+        graph_nodes = set(current_graph.nodes())
+        overlap_ratio = len(motif_nodes & graph_nodes) / len(motif_nodes)
 
-        # Score based on potential new incoming connections
-        potential_new_edges = max(0, motif_in - current_in)
+        # 计算边模式相似度
+        motif_edge_count = motif.number_of_edges()
+        graph_edge_count = current_graph.number_of_edges()
+        edge_ratio = abs(motif_edge_count - graph_edge_count) / max(
+            motif_edge_count, graph_edge_count
+        )
 
-        # Normalize score
-        max_possible = motif.number_of_edges()
-        return potential_new_edges / max_possible if max_possible > 0 else 0
+        # 综合分数
+        return 0.7 * (1 - overlap_ratio) + 0.3 * (1 - edge_ratio)
 
     def _calculate_coverage_score(
         self,
@@ -522,77 +561,30 @@ class MotifBasedReconstructor:
         target_node: str,
         motif_node: str,
         covered_nodes: Set[str],
-    ) -> None:
+    ) -> Dict[str, str]:
         """
         Integrate a motif into the graph while ensuring path connectivity to target node.
-        The target_node (upzoning_stance) should never have outgoing edges.
-
-        Args:
-            G: The growing graph
-            motif: The motif to integrate
-            target_node: The target node (usually upzoning_stance)
-            motif_node: The node in the motif that matches the target_node
-            covered_nodes: Set of already covered nodes
+        Returns the node mapping dictionary for frontier updates.
         """
-        # Create a copy of the motif to modify
-        motif_copy = motif.copy()
-
-        # Remove any edges in the motif where motif_node is the source
-        # This ensures we don't copy any outgoing edges from the target node
-        outgoing_edges = list(motif_copy.out_edges(motif_node))
-        for u, v in outgoing_edges:
-            motif_copy.remove_edge(u, v)
-
+        # 创建节点映射
         node_mapping = {}
-        node_mapping[target_node] = target_node
+        node_mapping[motif_node] = target_node
 
-        # Step 1: First map the target node and its direct predecessors
-        target_predecessors = list(motif_copy.predecessors(motif_node))
-        for pred in target_predecessors:
-            new_label = (
-                motif_copy.nodes[pred].get("label", "").replace(" ", "_").lower()
-            )
+        # 第一步：映射所有节点
+        for node in motif.nodes():
+            if node in node_mapping:
+                    continue
 
-            # Try to find mergeable node that has a path to target
+            new_label = motif.nodes[node].get("label", "").replace(" ", "_").lower()
+
+            # 尝试找到可合并的节点
             mergeable = None
             max_similarity = 0
 
             for existing_node in G.nodes():
-                if existing_node == target_node:  # Skip comparing with target node
+                if existing_node == target_node:
                     continue
                 existing_label = G.nodes[existing_node].get("label", "").lower()
-                similarity = self.similarity_engine.node_similarity(
-                    new_label, existing_label
-                )
-
-                if (
-                    similarity > max_similarity
-                    and similarity >= self.node_merge_threshold
-                ):
-                    max_similarity = similarity
-                    mergeable = existing_node
-
-            if mergeable:
-                node_mapping[pred] = mergeable
-            else:
-                new_node = f"n{len(G.nodes()) + 1}"
-                G.add_node(new_node, label=new_label)
-                node_mapping[pred] = new_node
-                G.add_edge(new_node, target_node, modifier=1.0)
-
-        # Step 2: Map remaining nodes
-        remaining_nodes = [n for n in motif_copy.nodes() if n not in node_mapping]
-        for node in remaining_nodes:
-            new_label = motif_copy.nodes[node].get("label", "")
-
-            # Try to find mergeable node
-            mergeable = None
-            max_similarity = 0
-
-            for existing_node in G.nodes():
-                if existing_node == target_node:  # Skip comparing with target node
-                    continue
-                existing_label = G.nodes[existing_node].get("label", "")
                 similarity = self.similarity_engine.node_similarity(
                     new_label, existing_label
                 )
@@ -611,55 +603,27 @@ class MotifBasedReconstructor:
                 G.add_node(new_node, label=new_label)
                 node_mapping[node] = new_node
 
-        # Step 3: Add edges
-        for u, v in motif_copy.edges():
+        # 第二步：添加边（保持修饰符）
+        for u, v, data in motif.edges(data=True):
             mapped_u = node_mapping[u]
             mapped_v = node_mapping[v]
 
-            # Double check to never add edges where upzoning_stance is the source
+            # 跳过如果是从 target_node 出发的边
             if mapped_u == target_node:
                 continue
 
-            if not G.has_edge(mapped_u, mapped_v):
-                # Check if adding this edge would create a cycle
-                if not nx.has_path(G, mapped_v, mapped_u):
-                    # Get edge attributes
-                    edge_attrs = motif_copy.edges[u, v]
-                    if "modifier" not in edge_attrs:
-                        edge_attrs["modifier"] = 1.0
+            # 检查是否已存在相反的边
+            if G.has_edge(mapped_v, mapped_u):
+                continue
 
-                    # Add the edge
-                    G.add_edge(mapped_u, mapped_v, **edge_attrs)
+            # 添加边及其修饰符
+            modifier = data.get("modifier", 1.0)
+            G.add_edge(mapped_u, mapped_v, modifier=modifier)
 
-        # Step 4: Ensure all nodes have a path to target
-        for node in G.nodes():
-            if node != target_node and not nx.has_path(G, node, target_node):
-                # Find the closest node that has a path to target
-                best_intermediate = None
-                best_similarity = -1
-
-                for intermediate in G.nodes():
-                    if (
-                        intermediate != node
-                        and intermediate != target_node
-                        and nx.has_path(G, intermediate, target_node)
-                    ):
-                        similarity = self.similarity_engine.node_similarity(
-                            G.nodes[node].get("label", ""),
-                            G.nodes[intermediate].get("label", ""),
-                        )
-                        if similarity > best_similarity:
-                            best_similarity = similarity
-                            best_intermediate = intermediate
-
-                if best_intermediate:
-                    G.add_edge(node, best_intermediate, modifier=1.0)
-                else:
-                    # If no good intermediate found, connect directly to target
-                    G.add_edge(node, target_node, modifier=1.0)
-
-        # Update covered nodes
+        # 更新覆盖的节点
         covered_nodes.update(node_mapping.values())
+
+        return node_mapping
 
     def update_frontier(self, G: nx.DiGraph, covered_nodes: Set[str]) -> Set[str]:
         """
@@ -798,97 +762,146 @@ def main(args):
     """
     Example usage of the improved motif-based reconstruction.
     """
-    # Load motif library
-    # library = MotifLibrary.load_library(args.motif_library)
+    print("\nInitializing reconstruction process...")
+    print(f"Using motif library from: {args.motif_library}")
 
-    # Create reconstructor with adjusted parameters
-    # reconstructor = MotifBasedReconstructor(
-    #     library,
-    #     similarity_threshold=0.3,  # Lower threshold to find more matches
-    #     node_merge_threshold=0.8,  # High threshold for merging to avoid false positives
-    # )
+    # 检查文件是否存在
+    if not os.path.exists(args.motif_library):
+        print(f"Error: Motif library file not found at {args.motif_library}")
+        return
 
-    """Use demographic-aware motif reconstruction."""
-    # First analyze demographic distribution
-    samples_dir = os.path.dirname(args.motif_library).replace("output", "")
-    demo_stats = get_demographic_statistics(samples_dir)
+    # 直接加载 JSON 文件
+    try:
+        with open(args.motif_library, "r") as f:
+            library_data = json.load(f)
+            print(
+                f"Successfully loaded motif library with {len(library_data.get('motifs', []))} motifs"
+            )
+    except Exception as e:
+        print(f"Error loading motif library: {e}")
+        return
 
-    print("Demographic Distribution:")
-    print("-" * 40)
-    for demo, info in demo_stats["distribution"].items():
-        print(f"{demo}: {info['count']} samples ({info['percentage']:.1f}%)")
-    print()
+    # 创建 MotifLibrary 实例
+    library = MotifLibrary(
+        min_motif_size=library_data.get("min_motif_size", 3),
+        max_motif_size=library_data.get("max_motif_size", 5),
+        min_semantic_similarity=library_data.get("min_semantic_similarity", 0.4),
+    )
 
-    # Load motif library
-    library = MotifLibrary.load_library(args.motif_library)
+    # 直接设置 motifs
+    library.motifs = library_data.get("motifs", [])
 
-    # Select target demographic (can be obtained from command line arguments)
-    if hasattr(args, "target_demographic"):
-        target_demographic = args.target_demographic
-    else:
-        # Default to using the most common demographic
-        most_common = max(
-            demo_stats["distribution"].items(), key=lambda x: x[1]["count"]
-        )[0]
-        target_demographic = most_common
+    print(f"\nMotif Library Statistics:")
+    print(f"- Number of motifs: {len(library.motifs)}")
+    print(f"- Min motif size: {library.min_motif_size}")
+    print(f"- Max motif size: {library.max_motif_size}")
+    print(f"- Semantic similarity threshold: {library.min_semantic_similarity}")
 
-    print(f"Target demographic: {target_demographic}")
+    # 设置 target demographic
+    print("\nTarget Demographic Information:")
+    for key, value in args.target_demographic.items():
+        print(f"- {key}: {value}")
 
-    # Create demographic-aware reconstructor
+    # 创建 reconstructor
     reconstructor = MotifBasedReconstructor(
         library,
         similarity_threshold=0.3,
         node_merge_threshold=0.8,
-        target_demographic=target_demographic,
-        demographic_weight=0.3,  # 30% weight for demographic scoring
+        target_demographic=args.target_demographic,
+        demographic_weight=0.3,
     )
 
-    # Reconstruct graph from seed
+    print("\nStarting graph reconstruction...")
+    # 重建图
     reconstructed_graph = reconstructor.reconstruct_graph(
-        args.seed_node,
-        max_iterations=args.max_iterations,
-        min_score=0.3,  # Lower score threshold to accept more candidates
+        args.seed_node, max_iterations=args.max_iterations, min_score=0.3
     )
 
-    # Analyze results
-    print(f"Reconstructed graph has {len(reconstructed_graph.nodes())} nodes")
-    print(f"Reconstructed graph has {len(reconstructed_graph.edges())} edges")
+    # 分析结果
+    print("\nReconstruction Results:")
+    print(f"- Total nodes: {len(reconstructed_graph.nodes())}")
+    print(f"- Total edges: {len(reconstructed_graph.edges())}")
 
-    # Create visualizations
+    # 输出节点信息
+    print("\nNode Information:")
+    for node in reconstructed_graph.nodes():
+        label = reconstructed_graph.nodes[node].get("label", "")
+        in_degree = reconstructed_graph.in_degree(node)
+        out_degree = reconstructed_graph.out_degree(node)
+        print(f"- {node}: {label} (in: {in_degree}, out: {out_degree})")
+
+    # 创建可视化
     print("\nGenerating visualizations...")
 
-    # Save graph as JSON
-    json_path = reconstructor.save_as_json(reconstructed_graph, args.output_dir)
-    print(f"Reconstructed graph saved as JSON to: {json_path}")
+    # 保存为 JSON
+    json_path = reconstructor.save_as_json(
+        reconstructed_graph, args.output_dir, "reconstructed_graph.json"
+    )
+    print(f"- JSON saved to: {json_path}")
 
-    # Save graph as MMD
-    mmd_path = reconstructor.save_as_mmd(reconstructed_graph, args.output_dir)
-    print(f"Reconstructed graph saved as MMD to: {mmd_path}")
+    # 保存为 MMD
+    mmd_path = reconstructor.save_as_mmd(
+        reconstructed_graph, args.output_dir, "reconstructed_graph.mmd"
+    )
+    print(f"- MMD saved to: {mmd_path}")
 
 
 if __name__ == "__main__":
     CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-    args = argparse.ArgumentParser()
-    args.add_argument("--seed_node", type=str, default="upzoning_stance")
-    args.add_argument("--max_iterations", type=int, default=20)
-    args.add_argument(
+    parser = argparse.ArgumentParser(description="Motif-based graph reconstruction")
+
+    # 添加参数
+    parser.add_argument(
+        "--seed_node",
+        type=str,
+        default="support_for_upzoning",
+        help="Starting node for reconstruction",
+    )
+    parser.add_argument(
+        "--max_iterations", type=int, default=10, help="Maximum number of iterations"
+    )
+    parser.add_argument(
         "--output_dir",
         type=str,
         default=os.path.join(CURRENT_DIR, "graph_reconstruction"),
+        help="Output directory for visualizations",
     )
-    args.add_argument(
+    parser.add_argument(
         "--motif_library",
         type=str,
         default=os.path.join(CURRENT_DIR, "motif_library.json"),
+        help="Path to motif library JSON file",
     )
-    args.add_argument(
-        "--target_demographic", type=str, help="Target demographic for reconstruction"
-    )
-    args.add_argument(
-        "--demographic_weight",
-        type=float,
-        default=0.3,
-        help="Weight for demographic scoring (0-1)",
-    )
-    args = args.parse_args()
+
+    args = parser.parse_args()
+
+    # 设置示例 target demographic
+    # args.target_demographic = {
+    #     "age": 28,
+    #     "Geo Mobility": "Different house in United States 1 year ago",
+    #     "householder type": "Renter",
+    #     "Gross rent": "25.0 to 29.9 percent",
+    #     "means of transportation": "Public Transportation",
+    #     "income": "$50,000-$74,999",
+    #     "occupation": "Management, business, science, and arts occupations",
+    #     "marital status": "Never Married",
+    #     "has children under 18": False,
+    #     "children age range": "No Children",
+    #     "ZIP code": 94105,
+    # }
+
+    args.target_demographic = {
+        "age": 45,
+        "Geo Mobility": "Same house 1 year ago",
+        "householder type": "Owner-occupied",
+        "Gross rent": "Not computed",
+        "means of transportation": "Car / Truck / Van",
+        "income": ">$200,000",
+        "occupation": "Sales and office occupations",
+        "marital status": "Now Married",
+        "has children under 18": True,
+        "children age range": "6 to 17 years old",
+        "ZIP code": 92103,
+    }
+
     main(args)
