@@ -6,6 +6,8 @@ from models.base import ModelConfig
 from ..m03_census.model import Census, REASON_MAPPING, SCENARIO_MAPPING
 from scipy.stats import entropy
 import os
+import asyncio
+import time
 
 
 def ensure_evaluation_prefix(path: str) -> str:
@@ -16,6 +18,7 @@ def ensure_evaluation_prefix(path: str) -> str:
     return path
 
 
+# TODO: HACK the path here
 responses_file_path = ensure_evaluation_prefix(
     "experiment/eval/data/sf_prolific_survey/causal_graph_responses_5.11_with_geo.json"
 )
@@ -190,7 +193,7 @@ class BayesianNetwork(Census):
             impact = -centered_prob * abs(modifier)
         return impact
 
-    def _get_topological_order(self) -> List[str]:
+    def _get_topological_order(self, dag: Dict) -> List[str]:
         """Get topological ordering of nodes."""
         visited = set()
         topo_order = []
@@ -199,86 +202,113 @@ class BayesianNetwork(Census):
             if node in visited:
                 return
             visited.add(node)
-            for parent, _ in self.dag[node]["parents"]:
+            for parent, _ in dag[node]["parents"]:
                 if parent not in visited:
                     dfs(parent)
             topo_order.append(node)
 
-        for node in self.dag:
+        for node in dag:
             if node not in visited:
                 dfs(node)
         return topo_order
 
     def simulate_intervention(
         self,
+        dag: Dict,
         intervention_node: Optional[str] = None,
         intervention_prob: Optional[float] = None,
         num_samples: int = 1000,
     ) -> Dict[str, Dict]:
         """Simulate the belief network with optional intervention."""
-        node_samples = {node: [] for node in self.dag}
-        topo_order = self._get_topological_order()
+        if not dag:
+            print("Error: DAG is empty")
+            return {}
+
+        print(
+            f"Starting simulation with intervention_node={intervention_node}, intervention_prob={intervention_prob}"
+        )
+        print(f"DAG contains {len(dag)} nodes")
+
+        node_samples = {node: [] for node in dag}
+
+        topo_order = self._get_topological_order(dag)
+        print(f"Topological order contains {len(topo_order)} nodes")
 
         try:
-            for _ in range(num_samples):
+            for sample_idx in range(num_samples):
                 prob_values = {}
 
                 for node in topo_order:
-                    if not self.dag[node]["parents"]:  # Root node
-                        if node == intervention_node:
-                            prob_values[node] = intervention_prob
+                    try:
+                        if not dag[node]["parents"]:  # Root node
+                            if node == intervention_node:
+                                prob_values[node] = intervention_prob
+                            else:
+                                prob_values[node] = 0.5  # Base probability
                         else:
-                            prob_values[node] = 0.5  # Base probability
-                    else:
-                        parent_impacts = []
-                        total_modifier = 0
+                            parent_impacts = []
+                            total_modifier = 0
 
-                        for parent_id, modifier in self.dag[node]["parents"]:
-                            parent_prob = prob_values[parent_id]
-                            impact = self._calculate_impact(parent_prob, modifier)
-                            parent_impacts.append(impact)
-                            total_modifier += abs(modifier)
+                            for parent_id, modifier in dag[node]["parents"]:
+                                if parent_id not in prob_values:
+                                    print(
+                                        f"Error: Parent node {parent_id} not found in prob_values for node {node}"
+                                    )
+                                    return {}
+                                parent_prob = prob_values[parent_id]
+                                impact = self._calculate_impact(parent_prob, modifier)
+                                parent_impacts.append(impact)
+                                total_modifier += abs(modifier)
 
-                        if len(parent_impacts) > 1:
-                            weights = [
-                                abs(m) / total_modifier
-                                for _, m in self.dag[node]["parents"]
-                            ]
-                            combined_impact = sum(
-                                i * w for i, w in zip(parent_impacts, weights)
-                            )
-                            sensitivity = 10.0
-                            prob = 1 / (1 + np.exp(-sensitivity * combined_impact))
+                            if not parent_impacts:
+                                print(
+                                    f"Error: No parent impacts calculated for node {node}"
+                                )
+                                return {}
+
+                            if len(parent_impacts) > 1:
+                                weights = [
+                                    abs(m) / total_modifier
+                                    for _, m in dag[node]["parents"]
+                                ]
+                                combined_impact = sum(
+                                    i * w for i, w in zip(parent_impacts, weights)
+                                )
+                                sensitivity = 10.0
+                                prob = 1 / (1 + np.exp(-sensitivity * combined_impact))
+                            else:
+                                impact = parent_impacts[0]
+                                prob = 1 / (1 + np.exp(-2.0 * impact))
+
+                            prob_values[node] = min(0.95, max(0.05, prob))
+
+                        # Only sample leaf nodes
+                        if not dag[node]["children"]:
+                            sample = np.random.binomial(n=1, p=prob_values[node])
                         else:
-                            impact = parent_impacts[0]
-                            prob = 1 / (1 + np.exp(-2.0 * impact))
+                            sample = prob_values[node]
+                        node_samples[node].append(sample)
 
-                        prob_values[node] = min(0.95, max(0.05, prob))
-
-                    # Only sample leaf nodes
-                    if not self.dag[node]["children"]:
-                        sample = np.random.binomial(n=1, p=prob_values[node])
-                    else:
-                        sample = prob_values[node]
-                    node_samples[node].append(sample)
+                    except Exception as e:
+                        print(f"Error processing node {node}: {str(e)}")
+                        return {}
 
             # Calculate statistics
             results = {}
-            for node in self.dag:
+            for node in dag:
                 samples = node_samples[node]
                 results[node] = {
                     "mean": np.mean(samples),
                     "std": np.std(samples),
                     "samples": samples,
                 }
+
+            print(f"Successfully completed simulation with {len(results)} nodes")
+            return results
+
         except Exception as e:
             print(f"Error simulating intervention: {e}")
-            import pdb
-
-            pdb.set_trace()
             return {}
-
-        return results
 
     def _compute_kl_divergence(self, p: float, q: float) -> float:
         """
@@ -307,20 +337,15 @@ class BayesianNetwork(Census):
         base_results: Dict[str, Dict],
         intervention_results: Dict[str, Dict],
         stance_node: str = None,
+        dag: Dict = None,
     ) -> List[Tuple[str, float]]:
         """
         Compute each node's contribution to the stance change
-
-        Args:
-            base_results: Base simulation results
-            intervention_results: Results after intervention
-            stance_node: ID of the stance node
-
-        Returns:
-            List of (node_id, contribution_score, contribution_type) sorted by contribution
         """
         if stance_node is None:
             raise ValueError("Stance node cannot be None")
+        if dag is None:
+            raise ValueError("DAG cannot be None")
         if stance_node not in base_results or stance_node not in intervention_results:
             raise ValueError(
                 f"Stance node {stance_node} not found in simulation results"
@@ -332,7 +357,7 @@ class BayesianNetwork(Census):
         base_stance = base_results[stance_node]["mean"]
         intervention_stance = intervention_results[stance_node]["mean"]
 
-        for node in self.dag:
+        for node in dag:
             if node == stance_node:
                 continue
 
@@ -346,11 +371,11 @@ class BayesianNetwork(Census):
             # Compute KL divergence contribution
             kl_div = self._compute_kl_divergence(intervention_prob, base_prob)
 
-            # Combined score (weighted sum of probability shift and KL divergence)
+            # Combined score
             contribution_score = 0.7 * prob_shift + 0.3 * kl_div
             contributions.append((node, contribution_score))
 
-        # Sort by contribution score in descending order
+        # Sort by contribution score
         contributions.sort(key=lambda x: x[1], reverse=True)
 
         max_score = max(score for _, score in contributions) if contributions else 1.0
@@ -365,103 +390,174 @@ class BayesianNetwork(Census):
     async def simulate_opinions(
         self, region: str, proposal: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """Simulate opinions using Bayesian Network based on proposal details.
-
-        Args:
-            region: The target region name
-            proposal: A dictionary containing the rezoning proposal details
-
-        Returns:
-            A dictionary with participant IDs as keys, containing opinions and reasons
-        """
-
-        # Get proposal ID and convert to scenario ID
+        """Simulate opinions using Bayesian Network based on proposal details."""
         proposal_id = proposal.get("proposal_id", "proposal_000")
-        scenario_id = SCENARIO_MAPPING.get(
-            proposal_id, "1.1"
-        )  # Default to "1.1" if not found
+        scenario_id = SCENARIO_MAPPING.get(proposal_id, "1.1")
 
         results = {}
-
         print("-------------------------------------------------------")
 
-        # TODO: for debug, only use the first 2 agents
-        # for agent_id in self.agent_ids[:30]:
-
+        # First filter out agents without causal graphs
+        valid_agents = []
         for agent_id in self.agent_ids:
-
             raw_causal_graph, stance_nodes = find_agent_graph_data(
                 agent_id, responses_file_path
             )
+            if raw_causal_graph is not None and stance_nodes:
+                valid_agents.append((agent_id, raw_causal_graph, stance_nodes))
+        print(f"Found {len(valid_agents)} valid agents")
 
-            if raw_causal_graph is None:
-                print(f"WARNING: No causal graph found for agent {agent_id}")
-                continue
+        # Create a semaphore to limit concurrent tasks
+        semaphore = asyncio.Semaphore(10)
 
-            self.dag, self.node_labels = self.load_graph(raw_causal_graph)
-
-            # remove the out degree of stance node
-            # NOTE: this is a hack to make the stance node not affect the other nodes
-            for node in stance_nodes:
-                children_to_process = self.dag[node]["children"]
-
-                # handle each child node
-                for child_id, _ in children_to_process:
-                    # remove the stance node from the child node's parents
-                    self.dag[child_id]["parents"] = [
-                        (parent_id, modifier)
-                        for parent_id, modifier in self.dag[child_id]["parents"]
-                        if parent_id != node
-                    ]
-
-                # clear the children of the stance node
-                self.dag[node]["children"] = []
-
-            retried = 0
-            while retried < 5:
+        async def process_single_agent(
+            agent_data: Tuple[str, Dict, List],
+        ) -> Tuple[str, Optional[Dict]]:
+            """Process a single agent with semaphore control and retry logic."""
+            agent_id, raw_causal_graph, stance_nodes = agent_data
+            async with semaphore:
                 try:
-                    node_label, intervention_prob, explanation, expected_effects = (
-                        self.extractor.extract_intervention(
-                            {"dag": self.dag, "node_labels": self.node_labels},
-                            self._create_proposal_description(proposal),
-                        )
-                    )
-                    break
+                    # Load graph for this agent
+                    dag, node_labels = self.load_graph(raw_causal_graph)
+
+                    # Remove the out degree of stance node
+                    for node in stance_nodes:
+                        children_to_process = dag[node]["children"]
+                        for child_id, _ in children_to_process:
+                            dag[child_id]["parents"] = [
+                                (parent_id, modifier)
+                                for parent_id, modifier in dag[child_id]["parents"]
+                                if parent_id != node
+                            ]
+                            dag[node]["children"] = []
+
+                    # Try extraction with retries
+                    max_retries = 3
+                    retry_delay = 1  # seconds
+
+                    for retry in range(max_retries):
+                        try:
+                            extract_result = await self.extractor.extract_intervention(
+                                {"dag": dag, "node_labels": node_labels},
+                                self._create_proposal_description(proposal),
+                            )
+
+                            if extract_result is None:
+                                print(f"Extraction returned None for agent {agent_id}")
+                                if retry < max_retries - 1:
+                                    await asyncio.sleep(retry_delay)
+                                    continue
+                                return agent_id, None
+
+                            # Unpack the result
+                            (
+                                node_label,
+                                intervention_prob,
+                                explanation,
+                                expected_effects,
+                            ) = extract_result
+
+                            # Run simulations with error checking
+                            base_results = self.simulate_intervention(dag=dag)
+                            if not base_results:
+                                print(f"Base simulation failed for agent {agent_id}")
+                                return agent_id, None
+
+                            intervention_results = self.simulate_intervention(
+                                dag=dag,
+                                intervention_node=node_label,
+                                intervention_prob=intervention_prob,
+                            )
+                            if not intervention_results:
+                                print(
+                                    f"Intervention simulation failed for agent {agent_id}"
+                                )
+                                return agent_id, None
+
+                            # Verify stance node exists in results
+                            stance_node = stance_nodes[0] if stance_nodes else None
+                            if (
+                                not stance_node
+                                or stance_node not in base_results
+                                or stance_node not in intervention_results
+                            ):
+                                print(
+                                    f"Invalid stance node {stance_node} for agent {agent_id}"
+                                )
+                                return agent_id, None
+
+                            # Calculate contributions
+                            try:
+                                contributions = self.compute_node_contributions(
+                                    base_results,
+                                    intervention_results,
+                                    stance_node,
+                                    dag=dag,
+                                )
+                                opinion_score = round(
+                                    intervention_results[stance_node]["mean"] * 10
+                                )
+
+                                return agent_id, {
+                                    "opinions": {scenario_id: opinion_score},
+                                    "reasons": {
+                                        scenario_id: {
+                                            node_labels[node]: round(
+                                                contrib_score * 4 + 1
+                                            )
+                                            for node, contrib_score in contributions
+                                        }
+                                    },
+                                }
+                            except Exception as e:
+                                print(
+                                    f"Error in final calculations for agent {agent_id}: {str(e)}"
+                                )
+                                return agent_id, None
+
+                        except Exception as e:
+                            if retry < max_retries - 1:
+                                print(
+                                    f"Retry {retry + 1} for agent {agent_id} due to: {str(e)}"
+                                )
+                                await asyncio.sleep(retry_delay)
+                            else:
+                                print(
+                                    f"All retries failed for agent {agent_id}: {str(e)}"
+                                )
+                                return agent_id, None
+
                 except Exception as e:
-                    retried += 1
-                    print(f"Error extracting intervention: {e}")
-                    continue
+                    print(f"Error in process_single_agent for {agent_id}: {str(e)}")
+                    return agent_id, None
 
-            # Run simulations
-            base_results = self.simulate_intervention()
-            intervention_results = self.simulate_intervention(
-                intervention_node=node_label,
-                intervention_prob=intervention_prob,
-            )
+        print(
+            f"\n[{time.strftime('%H:%M:%S')}] Starting simulation with {len(valid_agents)} valid agents"
+        )
+        start_total = time.time()
 
-            stance_node = stance_nodes[0] if stance_nodes else None
+        # Create tasks only for valid agents
+        tasks = [process_single_agent(agent_data) for agent_data in valid_agents]
 
-            # Compute node contributions
-            contributions = self.compute_node_contributions(
-                base_results, intervention_results, stance_node
-            )
+        # Execute all tasks concurrently and gather results
+        completed_results = await asyncio.gather(*tasks)
 
-            opinion_score = round(intervention_results[stance_node]["mean"] * 10)
+        end_total = time.time()
+        total_duration = end_total - start_total
 
-            # Create a single agent response with filtered reasons
-            results[agent_id] = {
-                "opinions": {
-                    # NOTE: it is actually a Bernoulli distribution
-                    scenario_id: opinion_score
-                    # scenario_id: 1
-                },
-                "reasons": {
-                    scenario_id: {
-                        self.node_labels[node]: round(contrib_score * 4 + 1)
-                        for node, contrib_score in contributions
-                    }
-                },
-            }
+        # Process results
+        for agent_id, opinion_data in completed_results:
+            if opinion_data is not None:
+                results[agent_id] = opinion_data
+            else:
+                print(f"Skipping agent {agent_id} due to processing error")
+
+        print(
+            f"\n[{time.strftime('%H:%M:%S')}] Successfully processed {len(results)} out of {len(valid_agents)} agents in {total_duration:.2f}s"
+        )
+        print(
+            f"Average time per successful agent: {total_duration/len(results) if results else 0:.2f}s"
+        )
 
         return results
 
@@ -495,9 +591,11 @@ class BayesianNetwork(Census):
         intervention_node = self.label_to_id[node_label]
 
         # Run simulations
-        base_results = self.simulate_intervention()
+        base_results = self.simulate_intervention(self.dag)
         intervention_results = self.simulate_intervention(
-            intervention_node=intervention_node, intervention_prob=prob
+            self.dag,
+            intervention_node=intervention_node,
+            intervention_prob=prob,
         )
 
         # Calculate changes
