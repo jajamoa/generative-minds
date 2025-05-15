@@ -9,6 +9,7 @@ from typing import Dict, Any, List, Tuple, Optional
 from ..base import BaseModel, ModelConfig
 from ..m03_census.components.llm import OpenAILLM
 from ..m03_census.model import REASON_MAPPING, SCENARIO_MAPPING
+from ..m03_census.utils.spatial_utils import calculate_distance_to_affected_area, create_proposal_description
 
 class CoT(BaseModel):
     """A CoT model using only proposal/grid info, no demographics."""
@@ -86,11 +87,36 @@ class CoT(BaseModel):
         
         results = {}
         
+        # Load full agent data for location information
+        agent_data_path = os.path.join(os.path.dirname(__file__), "..", "m03_census", "census_data", "agents_with_geo.json")
+        try:
+            with open(agent_data_path, 'r', encoding='utf-8') as f:
+                agent_data = json.load(f)
+                agent_dict = {agent["id"]: agent for agent in agent_data}
+        except Exception as e:
+            print(f"WARNING: Failed to load agent data: {str(e)}")
+            agent_dict = {}
+        
         # Generate opinions for each agent ID
         for participant_id in self.agent_ids:
             try:
+                # Get agent data and calculate distance if available
+                agent = agent_dict.get(participant_id)
+                distance_km = None
+                
+                if agent:
+                    coords = agent.get("coordinates", {})
+                    lat = coords.get("lat")
+                    lon = coords.get("lng")
+                    if lat is not None and lon is not None:
+                        distance_km = calculate_distance_to_affected_area(
+                            lat, lon,
+                            proposal.get("cells", {})
+                        )
+                        print(f"DEBUG: Agent {participant_id} is {distance_km:.2f}km from affected area")
+                
                 # Build prompt and generate response with different temperature for variety
-                prompt = self._build_prompt(proposal_desc, region)
+                prompt = self._build_prompt(proposal_desc, region, agent=agent, distance_km=distance_km)
                 temp = min(0.9, self.temperature + random.uniform(-0.2, 0.2))  # Add some randomness to temperature
                 
                 response = await self.llm.generate(
@@ -120,173 +146,24 @@ class CoT(BaseModel):
         return results
     
     def _create_proposal_description(self, proposal: Dict[str, Any]) -> str:
-        """Generate a richer, geo-aware description for a rezoning proposal."""
-        
-        # Extract basic proposal information
-        height_limits = proposal.get("heightLimits", {})
-        default_height = height_limits.get("default", 0)
-        grid_config = proposal.get("gridConfig", {})
-        cell_size = grid_config.get("cellSize", 100)
-        cells = proposal.get("cells", {})
-        
-        # Create a dictionary to group cells by their characteristics
-        zone_info = defaultdict(lambda: {
-            'cells': [],
-            'coordinates': [],
-            'count': 0
-        })
-        
-        # Process each cell and group by category and height
-        for cell_id, cell in cells.items():
-            category = cell.get("category", "unknown")
-            height = cell.get("heightLimit", default_height)
-            
-            # Create a unique identifier for this zone type
-            zone_type = (category, height)  # Use tuple instead of string
-            
-            try:
-                bbox = cell.get("bbox", {})
-                if bbox:
-                    lat_center = (bbox["north"] + bbox["south"]) / 2
-                    lon_center = (bbox["east"] + bbox["west"]) / 2
-                    
-                    zone_info[zone_type]['cells'].append(cell)
-                    zone_info[zone_type]['coordinates'].append((lat_center, lon_center))
-                    zone_info[zone_type]['count'] += 1
-            except (KeyError, TypeError) as e:
-                print(f"Warning: Could not process cell {cell_id}: {str(e)}")
-                continue
-        
-        # Start with overview
-        total_blocks = len(cells)
-        desc = f"This rezoning proposal affects {total_blocks} city blocks in San Francisco"
-        if total_blocks > 0:
-            desc += f", each approximately {cell_size} meters square"
-        desc += ". "
-        
-        # Describe zones by type
-        zone_descriptions = []
-        for (category, height), info in zone_info.items():
-            try:
-                num_blocks = info['count']
-                if num_blocks == 0:
-                    continue
-                
-                # Calculate approximate area
-                area_sqm = num_blocks * (cell_size * cell_size)
-                area_acres = area_sqm * 0.000247105  # Convert to acres
-                
-                # Get central coordinates for this zone
-                coords = info['coordinates']
-                if coords:
-                    central_lat = sum(c[0] for c in coords) / len(coords)
-                    central_lon = sum(c[1] for c in coords) / len(coords)
-                    
-                    # Try to get neighborhood name for this zone
-                    neighborhood = self._get_neighborhood_name(central_lat, central_lon)
-                    
-                    zone_desc = (
-                        f"{num_blocks} blocks ({area_acres:.1f} acres) "
-                        f"zoned for {category.replace('_', ' ')} "
-                        f"with a height limit of {height} feet"
-                    )
-                    if neighborhood:
-                        zone_desc += f" in the {neighborhood} area"
-                    zone_descriptions.append(zone_desc)
-            except Exception as e:
-                print(f"Warning: Could not process zone {category}_{height}: {str(e)}")
-                continue
-        
-        if zone_descriptions:
-            desc += "The proposal includes: " + "; ".join(zone_descriptions[:3])
-            if len(zone_descriptions) > 3:
-                desc += f"; and {len(zone_descriptions) - 3} additional zoning changes"
-            desc += ". "
-        
-        # Add impact summary
-        desc += (
-            "This rezoning would affect local housing capacity, neighborhood character, "
-            "and urban development patterns. "
-            "The height limits are designed to balance housing needs with neighborhood context. "
-        )
-        
-        # Add transit context if available
-        transit_info = self._get_nearby_transit({f"{cat}_{h}": coords 
-                                               for (cat, h), info in zone_info.items() 
-                                               for coords in [info['coordinates']] if coords})
-        if transit_info:
-            desc += transit_info
-        
-        # Print final description for debugging
-        print(f"DEBUG: Final proposal description:\n{desc.strip()}")
-        return desc.strip()
-
-    def _get_neighborhood_name(self, lat: float, lon: float) -> Optional[str]:
-        """Get neighborhood name from coordinates using Google Maps API."""
-        try:
-            api_key = os.getenv("GOOGLE_MAPS_API_KEY")
-            if not api_key:
-                return None
-            
-            params = {
-                'latlng': f'{lat},{lon}',
-                'result_type': 'neighborhood',
-                'key': api_key
-            }
-            
-            response = requests.get(
-                "https://maps.googleapis.com/maps/api/geocode/json",
-                params=params
-            ).json()
-            
-            for result in response.get('results', []):
-                for component in result.get('address_components', []):
-                    if 'neighborhood' in component.get('types', []):
-                        return component['long_name']
-            return None
-        except Exception as e:
-            print(f"Warning: Failed to get neighborhood name: {str(e)}")
-            return None
-
-    def _get_nearby_transit(self, coordinates_by_zone: Dict[str, List[Tuple[float, float]]]) -> Optional[str]:
-        """Get nearby transit information using Google Places API."""
-        try:
-            api_key = os.getenv("GOOGLE_MAPS_API_KEY")
-            if not api_key:
-                return None
-            
-            # Get central point of all coordinates
-            all_coords = [coord for coords in coordinates_by_zone.values() for coord in coords]
-            if not all_coords:
-                return None
-            
-            central_lat = sum(c[0] for c in all_coords) / len(all_coords)
-            central_lon = sum(c[1] for c in all_coords) / len(all_coords)
-            
-            params = {
-                'location': f'{central_lat},{central_lon}',
-                'radius': 800,  # 800 meters ~ 0.5 miles
-                'type': 'transit_station',
-                'key': api_key
-            }
-            
-            response = requests.get(
-                "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
-                params=params
-            ).json()
-            
-            stations = [place['name'] for place in response.get('results', [])[:3]]
-            if stations:
-                return f"The area is served by public transit including {', '.join(stations)}. "
-            return None
-        except Exception as e:
-            print(f"Warning: Failed to get transit information: {str(e)}")
-            return None
+        """Create a readable description of the proposal using spatial utils."""
+        return create_proposal_description(proposal)
     
-    def _build_prompt(self, proposal_desc: str, region: str) -> str:
-        """Build a CoT-enabled prompt using only proposal and region (no demographics)."""
+    def _build_prompt(self, proposal_desc: str, region: str, agent: Dict[str, Any] = None, distance_km: Optional[float] = None) -> str:
+        """Build a CoT-enabled prompt using proposal, region, and location info."""
+        
+        # Add location context if available
+        location_context = ""
+        if agent and distance_km is not None:
+            location_context = f"\nYour Location Context:\n"
+            location_context += f"- You are {distance_km:.2f} kilometers from the affected area\n"
+            
+            # Add neighborhood context if available
+            geo_content = agent.get("geo_content", {})
+            if geo_content.get("narrative"):
+                location_context += f"- Your neighborhood context: {geo_content['narrative']}\n"
 
-        prompt = f"""You are an independent evaluator assigned to assess the following housing policy proposal in {region}.
+        prompt = f"""You are an independent evaluator assigned to assess the following housing policy proposal in {region}.{location_context}
 
     Proposal Description:
     {proposal_desc}
@@ -362,7 +239,7 @@ class CoT(BaseModel):
 
 Format your response EXACTLY as shown above, with one rating (1-10) and twelve reason scores (1-5 each).
     """
-
+        print(f"DEBUG: Generated prompt: {prompt}")
         return prompt
 
     
