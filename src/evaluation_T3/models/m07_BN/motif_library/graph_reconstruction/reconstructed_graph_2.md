@@ -4,14 +4,14 @@ flowchart TD
 %% Nodes: 5
 %% Edges: 4
     support_for_upzoning[support_for_upzoning]
-    n2[affordable_housing]
-    n3[social_equity]
-    n4[upzoning_popularity]
-    n5[nimbyism]
-    n2 --> support_for_upzoning
-    n3 --x n2
-    n4 --> support_for_upzoning
-    n5 --x n4
+    n2[upzoning]
+    n3[housing_density]
+    n4[effective_communication]
+    n5[infrastructure_investment]
+    n2 --> n3
+    n3 --x support_for_upzoning
+    n4 --> n5
+    n5 --x support_for_upzoning
     linkStyle 0 stroke:#00AA00,stroke-width:2px
     linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
     linkStyle 2 stroke:#00AA00,stroke-width:2px

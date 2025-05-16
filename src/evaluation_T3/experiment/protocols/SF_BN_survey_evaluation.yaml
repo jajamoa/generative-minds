@@ -33,7 +33,7 @@ model_config:
 
   #################### BN-specific parameters ####################
   # Graph reconstruction parameters
-  seed_node: "upzoning_stance"
+  seed_node: "support_for_upzoning"
   max_iterations: 20
   target_demographic: null # Will use most common demographic from data
   demographic_weight: 0.6

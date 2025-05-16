@@ -1,5 +1,17 @@
 flowchart TD
 %% Reconstructed Causal Graph
-%% Nodes: 1
-%% Edges: 0
+%% Nodes: 5
+%% Edges: 4
     support_for_upzoning[support_for_upzoning]
+    n2[affordable_housing]
+    n3[social_equity]
+    n4[upzoning_popularity]
+    n5[nimbyism]
+    n2 --> support_for_upzoning
+    n3 --x n2
+    n4 --> support_for_upzoning
+    n5 --x n4
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px

@@ -6,11 +6,11 @@
 
 # python src/evaluation/experiment/run_experiment.py --protocol src/evaluation/experiment/protocols/SF_BN_survey_evaluation.yaml
 
-python src/evaluation_T3/models/m07_BN/motif_library/motif_library.py --clean-graphs src/evaluation_T3/experiment/eval/data/sf_prolific_survey/causal_graph_clean.json --responses src/evaluation_T3/experiment/eval/data/sf_prolific_survey/responses_5.11_with_geo.json --output src/evaluation_T3/models/m07_BN/motif_library/
+# python src/evaluation_T3/models/m07_BN/motif_library/motif_library.py --clean-graphs src/evaluation_T3/experiment/eval/data/sf_prolific_survey/causal_graph_clean.json --responses src/evaluation_T3/experiment/eval/data/sf_prolific_survey/responses_5.11_with_geo.json --output src/evaluation_T3/models/m07_BN/motif_library/
 
 # python src/evaluation_T3/models/m07_BN/motif_library/graph_reconstruction.py --seed_node support_for_upzoning --output_dir src/evaluation_T3/models/m07_BN/motif_library/graph_reconstruction
 
-# python src/evaluation_T3/experiment/run_experiment.py --protocol src/evaluation_T3/experiment/protocols/SF_BN_survey_evaluation.yaml
+python src/evaluation_T3/experiment/run_experiment.py --protocol src/evaluation_T3/experiment/protocols/SF_BN_survey_evaluation.yaml
 
 
 # python src/phase2_motif/motif_library.py --input data/samples --output data/samples/output
