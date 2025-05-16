@@ -672,11 +672,29 @@ class BayesianNetwork(Census):
         return graph_data
 
     async def simulate_opinions(
-        self, region: str, proposal: Dict[str, Any]
+        self, region: str, proposal: Dict[str, Any], motif_library_path: str = None, causal_graph_path: str = None
     ) -> Dict[str, Any]:
         """Simulate opinions using Bayesian Network for all agents."""
         proposal_id = proposal.get("proposal_id", "proposal_000")
         scenario_id = SCENARIO_MAPPING.get(proposal_id, "1.1")
+
+        if not motif_library_path:
+            assert causal_graph_path, "must provide either motif_library_path or causal_graph_path"
+
+        if causal_graph_path:
+            with open(ensure_evaluation_prefix(causal_graph_path), "r") as f:
+                causal_graphs = json.load(f)
+            
+            # convert causal graph to motif library
+            motif_library = self._convert_causal_graph_to_motif_library(causal_graphs)
+
+        if motif_library_path:
+            with open(motif_library_path, "r") as f:
+                motif_library = json.load(f)
+
+        import pdb
+
+        pdb.set_trace()
 
         try:
             with open(self.agent_data_file, "r") as f:
@@ -778,3 +796,5 @@ class BayesianNetwork(Census):
         return f"""Proposal: {proposal.get('title', 'Unknown')}
 Description: {proposal.get('description', 'No description available')}
 Impact: {proposal.get('impact', 'Unknown impact')}"""
+
+

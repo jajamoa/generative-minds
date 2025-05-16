@@ -72,13 +72,13 @@ def parse_args():
     parser.add_argument(
         "--batch-mode",
         action="store_true",
-        help="Use batch processing mode for proposals"
+        help="Use batch processing mode for proposals",
     )
     parser.add_argument(
         "--concurrency",
         type=int,
         default=4,
-        help="Maximum number of concurrent tasks (default: 4)"
+        help="Maximum number of concurrent tasks (default: 4)",
     )
     return parser.parse_args()
 
@@ -90,8 +90,13 @@ def load_protocol(protocol_path: str) -> dict:
     return protocol
 
 
-async def run_experiment(protocol: dict, eval_only: bool = False, experiment_dir: str = None, 
-                        batch_mode: bool = False, concurrency: int = 4):
+async def run_experiment(
+    protocol: dict,
+    eval_only: bool = False,
+    experiment_dir: str = None,
+    batch_mode: bool = False,
+    concurrency: int = 4,
+):
     """Run experiment based on protocol."""
     # Get project root
     project_root = get_project_root()
@@ -129,25 +134,28 @@ async def run_experiment(protocol: dict, eval_only: bool = False, experiment_dir
 
         start_time = datetime.now()
 
-        for i, proposal_file in enumerate(protocol["input"]["proposals"]):
+        # We only have one proposal file for now
+        proposal_files = protocol["input"]["proposals"][0]
+        proposal_files = proposal_files["topics"]
+
+        map_proposal_file_to_topic = {
+            "healthcare": "universal_healthcare",
+            "surveillance": "surveillance_camera",
+            "housing": "upzoning",
+        }
+
+        extracted_proposals = map_proposal_file_to_topic[protocol["name"]]["questions"]
+
+        for i, proposal_file in enumerate(extracted_proposals):
             proposal_id = f"proposal_{i:03d}"
             print(f"\nProcessing {proposal_id} ({proposal_file})...")
 
             try:
-                # Load proposal
-                input_file = data_manager.data_dir / proposal_file
-                print(f"DEBUG: Looking for proposal file at: {input_file}")
-
-                if not input_file.exists():
-                    print(f"ERROR: Proposal file not found: {input_file}")
-                    raise FileNotFoundError(f"Proposal file not found: {input_file}")
-
-                with open(input_file) as f:
-                    data = json.load(f)
-                    proposal = create_zoning_proposal(data)
-
                 # Add proposal_id to the proposal for reference in the model
-                proposal["proposal_id"] = proposal_id
+                proposal = {
+                    "proposal_id": proposal_id,
+                    "text": proposal_file["text"],
+                }
 
                 print(
                     f"DEBUG: Running simulation with proposal: {proposal_id}, region: {protocol.get('region', 'san_francisco')}"
@@ -155,7 +163,8 @@ async def run_experiment(protocol: dict, eval_only: bool = False, experiment_dir
 
                 # Run simulation
                 result = await model.simulate_opinions(
-                    region=protocol.get("region", "san_francisco"), proposal=proposal
+                    region=protocol.get("region", "san_francisco"),
+                    proposal=proposal["text"],
                 )
 
                 print(
@@ -205,7 +214,6 @@ async def run_experiment(protocol: dict, eval_only: bool = False, experiment_dir
                 print(f"Error processing {proposal_id}: {str(e)}")
                 print(f"DEBUG: {traceback.format_exc()}")
 
-
         # Save experiment metadata
         end_time = datetime.now()
         metadata = protocol.copy()
@@ -225,16 +233,15 @@ async def run_experiment(protocol: dict, eval_only: bool = False, experiment_dir
         run_evaluation(exp_dir, protocol)
 
 
-
 async def process_proposals_parallel(
-    protocol: dict, 
-    model: BaseModel, 
-    data_manager: DataManager, 
+    protocol: dict,
+    model: BaseModel,
+    data_manager: DataManager,
     exp_dir: Path,
-    concurrency: int = 4
+    concurrency: int = 4,
 ) -> None:
     """Process multiple proposals in parallel.
-    
+
     Args:
         protocol: The experiment protocol.
         model: The initialized model.
@@ -244,31 +251,27 @@ async def process_proposals_parallel(
     """
     # Create tasks for each proposal
     tasks = []
-    
+
     for i, proposal_file in enumerate(protocol["input"]["proposals"]):
         proposal_id = f"proposal_{i:03d}"
         tasks.append(
             process_single_proposal(
-                proposal_id,
-                proposal_file,
-                protocol,
-                model,
-                data_manager,
-                exp_dir
+                proposal_id, proposal_file, protocol, model, data_manager, exp_dir
             )
         )
-    
+
     # Limit concurrency to avoid overwhelming resources
     semaphore = asyncio.Semaphore(concurrency)
-    
+
     async def bounded_process(task):
         async with semaphore:
             return await task
-    
+
     bounded_tasks = [bounded_process(task) for task in tasks]
-    
+
     # Wait for all tasks to complete
     await asyncio.gather(*bounded_tasks)
+
 
 async def process_single_proposal(
     proposal_id: str,
@@ -276,10 +279,10 @@ async def process_single_proposal(
     protocol: dict,
     model: BaseModel,
     data_manager: DataManager,
-    exp_dir: Path
+    exp_dir: Path,
 ) -> None:
     """Process a single proposal.
-    
+
     Args:
         proposal_id: The ID of the proposal.
         proposal_file: Path to the proposal file.
@@ -289,33 +292,36 @@ async def process_single_proposal(
         exp_dir: The experiment directory.
     """
     print(f"\nProcessing {proposal_id} ({proposal_file})...")
-    
+
     try:
         # Load proposal
         input_file = data_manager.data_dir / proposal_file
         print(f"DEBUG: Looking for proposal file at: {input_file}")
-        
+
         if not input_file.exists():
             print(f"ERROR: Proposal file not found: {input_file}")
             raise FileNotFoundError(f"Proposal file not found: {input_file}")
-        
+
         with open(input_file) as f:
             data = json.load(f)
             proposal = create_zoning_proposal(data)
-        
+
         # Add proposal_id to the proposal for reference in the model
         proposal["proposal_id"] = proposal_id
-        
-        print(f"DEBUG: Running simulation with proposal: {proposal_id}, region: {protocol.get('region', 'san_francisco')}")
-        
+
+        print(
+            f"DEBUG: Running simulation with proposal: {proposal_id}, region: {protocol.get('region', 'san_francisco')}"
+        )
+
         # Run simulation
         result = await model.simulate_opinions(
-            region=protocol.get("region", "san_francisco"),
-            proposal=proposal
+            region=protocol.get("region", "san_francisco"), proposal=proposal
         )
-        
-        print(f"DEBUG: Simulation completed. Result keys: {result.keys() if isinstance(result, dict) else 'Not a dict'}")
-        
+
+        print(
+            f"DEBUG: Simulation completed. Result keys: {result.keys() if isinstance(result, dict) else 'Not a dict'}"
+        )
+
         # Copy ground truth files if provided in protocol
         if "evaluation" in protocol and "ground_truth" in protocol["evaluation"]:
             gt_file = protocol["evaluation"]["ground_truth"]
@@ -325,7 +331,7 @@ async def process_single_proposal(
                     print(f"Copied ground truth to {gt_dest}")
                 else:
                     print(f"Warning: Ground truth file not found: {gt_file}")
-        
+
         # Save results
         print(f"DEBUG: Saving results for {proposal_id}")
         try:
@@ -334,9 +340,9 @@ async def process_single_proposal(
                 proposal=proposal,
                 result=result,
                 proposal_id=proposal_id,
-                model_name=protocol["model"]
+                model_name=protocol["model"],
             )
-            
+
             # Handle different return types from save_experiment_result
             if isinstance(result_paths, tuple) and len(result_paths) == 2:
                 input_path, output_path = result_paths
@@ -349,7 +355,7 @@ async def process_single_proposal(
         except Exception as save_error:
             print(f"Error saving results: {str(save_error)}")
             print(f"DEBUG: {traceback.format_exc()}")
-        
+
     except Exception as e:
         print(f"Error processing {proposal_id}: {str(e)}")
         print(f"DEBUG: {traceback.format_exc()}")
@@ -379,17 +385,11 @@ def run_evaluation(exp_dir: Path, protocol: dict):
         print(f"DEBUG: {traceback.format_exc()}")
 
 
-
-
 async def main():
     args = parse_args()
     protocol = load_protocol(args.protocol)
     await run_experiment(
-        protocol, 
-        args.eval_only, 
-        args.experiment_dir,
-        args.batch_mode,
-        args.concurrency
+        protocol, args.eval_only, args.experiment_dir, args.batch_mode, args.concurrency
     )
 
 

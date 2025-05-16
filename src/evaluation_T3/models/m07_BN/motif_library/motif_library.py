@@ -33,9 +33,28 @@ def ensure_evaluation_prefix(path: str) -> str:
     return path
 
 
-responses_file_path = ensure_evaluation_prefix(
-    "experiment/eval/data/sf_prolific_survey/causal_graph_responses_5.11_with_geo.json"
-)
+def convert_raw_data_to_clean_version(raw_data_path: str, clean_data_path: str, agent_demographic_path: str):
+    with open(raw_data_path, "r") as f:
+        raw_data = json.load(f)
+    
+    with open(agent_demographic_path, "r") as f:
+        agent_demographic = json.load(f)
+
+    agent_ids =  [agent["id"] for agent in agent_demographic]
+
+    clean_data = {}
+    for user_data in raw_data:
+        if user_data["prolificId"] not in agent_ids:
+            continue
+        clean_data[user_data["prolificId"]] = {
+            "graph": user_data["graphs"][0]["graphData"],
+            "stance_nodes": [user_data["graphs"][0]["graphData"]["stance_node_id"]],
+        }
+
+        clean_data[user_data["prolificId"]].pop("agent_id")
+
+    with open(clean_data_path, "w") as f:
+        json.dump(clean_data, f)
 
 
 class MotifLibrary:
@@ -1924,17 +1943,16 @@ def convert_dict_to_graph(data):
 
 
 def process_causal_graphs(
+    raw_graphs_file: str,
     clean_graphs_file: str,
+    agent_demographic_path: str,
     responses_file: str,
-    output_dir: str = None,
+    output_path: str = None,
     min_semantic_similarity: float = 0.4,
 ):
     """Process all causal graphs to extract and analyze motifs"""
     all_topological_motifs = {}
 
-    if output_dir is None:
-        output_dir = os.path.dirname(clean_graphs_file)
-    os.makedirs(output_dir, exist_ok=True)
 
     # Load responses data to get demographic information
     demographic_mapping = load_demographic_data(responses_file)
@@ -1944,6 +1962,8 @@ def process_causal_graphs(
 
     # Load and process all graphs
     try:
+        clean_graphs = convert_raw_data_to_clean_version(raw_graphs_file, clean_graphs_file, agent_demographic_path)
+
         with open(clean_graphs_file, "r") as f:
             all_data = json.load(f)
             print(f"Loaded graph data with keys: {list(all_data.keys())[:5]}")
@@ -1951,13 +1971,13 @@ def process_causal_graphs(
                 f"Example data structure: {list(all_data.values())[0].keys() if all_data else 'Empty'}"
             )
 
-        # HACK: test on one person only
-        all_data = {
-            "660cd7b61a24eeff3eac6e93": all_data["660cd7b61a24eeff3eac6e93"],
-            "664662d0e586193a0ca4267e": all_data["664662d0e586193a0ca4267e"],
-            "5ae5b7e26735bd0001d7dfe3": all_data["5ae5b7e26735bd0001d7dfe3"],
-            "67e6b4c78b8b457f3bc6a866": all_data["67e6b4c78b8b457f3bc6a866"],
-        }
+        # # HACK: test on one person only
+        # all_data = {
+        #     "660cd7b61a24eeff3eac6e93": all_data["660cd7b61a24eeff3eac6e93"],
+        #     "664662d0e586193a0ca4267e": all_data["664662d0e586193a0ca4267e"],
+        #     "5ae5b7e26735bd0001d7dfe3": all_data["5ae5b7e26735bd0001d7dfe3"],
+        #     "67e6b4c78b8b457f3bc6a866": all_data["67e6b4c78b8b457f3bc6a866"],
+        # }
 
         current_dir = os.path.dirname(os.path.abspath(__file__))
         if os.path.exists(os.path.join(current_dir, "sample_graph_motifs.json")):
@@ -2038,7 +2058,7 @@ def process_causal_graphs(
         library.apply_semantic_filtering(converted_motifs)
 
         # Save final results
-        library.save_library(os.path.join(output_dir, "motif_library.json"))
+        library.save_library(output_path)
         return library
 
     except Exception as e:
@@ -2070,15 +2090,24 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Motif Library Builder")
+
+    parser.add_argument(
+        "--raw-graphs",
+        required=True,
+        help="Path to raw graphs JSON file",
+    )
     parser.add_argument(
         "--clean-graphs", required=True, help="Path to clean graphs JSON file"
+    )
+    parser.add_argument(
+        "--agent-demographic", required=True, help="Path to agent demographic JSON file"
     )
     parser.add_argument(
         "--responses",
         required=True,
         help="Path to responses file with demographic data",
     )
-    parser.add_argument("--output", "-o", help="Output directory for results")
+    parser.add_argument("--output_path", "-o", help="Output path for results")
     parser.add_argument(
         "--similarity",
         "-s",
@@ -2091,9 +2120,11 @@ def main():
 
     # Process all causal graphs
     library = process_causal_graphs(
+        args.raw_graphs,
         args.clean_graphs,
+        args.agent_demographic,
         args.responses,
-        args.output,
+        args.output_path,
         min_semantic_similarity=args.similarity,
     )
 

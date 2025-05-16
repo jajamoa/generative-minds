@@ -1,0 +1,28 @@
+name: housing
+model: BN
+population: 103 # Match the number of transcript copies we created
+region: san_francisco
+
+# Input configuration - Using the same proposal file for all 9 scenarios
+# Path must be relative to src/experiment/eval/data
+input:
+  proposals:
+    - surveys_100ppl/surveys.json
+
+# Evaluation configuration - Using mapped reactions for ground truth comparison
+evaluation:
+  ground_truth: "surveys_100ppl/survey_20ppl_housing_reactions.json"
+  evaluators: # list of evaluators to run
+    - "opinion_score"
+    - "reason_match"
+
+# Model-specific configuration
+model_config:
+  agent_data_file: "experiment/eval/data/surveys_100ppl/agent_20ppl.json" # Path relative to src/evaluation_T3
+  motif_library: "motif_library/housing_motif_library.json"
+  causal_graph: "experiment/eval/data/surveys_100ppl/housing_causal_graph.json"
+  temperature: 0.7
+  max_tokens: 800
+
+  # Additional transcript-specific configurations
+  transcript_dir: models/m06_transcript/data/processed_transcript # Directory containing transcript files

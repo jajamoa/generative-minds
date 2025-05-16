@@ -10,7 +10,7 @@ import argparse
 from datetime import datetime
 import yaml
 import traceback
-
+import os
 import sys
 
 sys.path.append(str(Path(__file__).parent.parent))
@@ -21,6 +21,7 @@ from models.m02_stupid.model import StupidAgentModel
 from models.m03_census.model import Census
 from models.m04_census_twolayer.model import CensusTwoLayer
 from models.m05_naive.model import NaiveBaseline
+
 # from models.m06_transcript.model import Transcript
 from models.m07_BN.model import BayesianNetwork
 from experiment.eval.utils.data_utils import DataManager, create_zoning_proposal
@@ -83,7 +84,9 @@ async def run_experiment(
     project_root = get_project_root()
 
     # Initialize data manager
-    data_manager = DataManager(base_dir=str(project_root / "src/evaluation_T3/experiment"))
+    data_manager = DataManager(
+        base_dir=str(project_root / "src/evaluation_T3/experiment")
+    )
 
     if eval_only and experiment_dir:
         # Use existing experiment directory
@@ -115,25 +118,38 @@ async def run_experiment(
 
         start_time = datetime.now()
 
-        for i, proposal_file in enumerate(protocol["input"]["proposals"]):
+        # We only have one proposal file for now
+        assert isinstance(protocol, dict), "must be dictionary"
+        assert isinstance(protocol["input"]["proposals"], list), "must be list"
+        proposal_files = protocol["input"]["proposals"][0]
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        proposal_files = os.path.join(current_dir, "eval/data/", proposal_files)
+        with open(proposal_files, "r") as f:
+            proposal_files = json.load(f)
+
+        map_proposal_file_to_topic = {
+            "healthcare": "universal_healthcare",
+            "surveillance": "surveillance_camera",
+            "housing": "upzoning",
+        }
+
+        motif_library_path = protocol.get("model_config", {}).get("motif_library", None)
+        causal_graph_path = protocol.get("model_config", {}).get("causal_graph", None)
+
+        extracted_proposals = proposal_files["topics"][
+            map_proposal_file_to_topic[protocol["name"]]
+        ]["questions"]
+
+        for i, proposal_file in enumerate(extracted_proposals):
             proposal_id = f"proposal_{i:03d}"
             print(f"\nProcessing {proposal_id} ({proposal_file})...")
 
             try:
-                # Load proposal
-                input_file = data_manager.data_dir / proposal_file
-                print(f"DEBUG: Looking for proposal file at: {input_file}")
-
-                if not input_file.exists():
-                    print(f"ERROR: Proposal file not found: {input_file}")
-                    raise FileNotFoundError(f"Proposal file not found: {input_file}")
-
-                with open(input_file) as f:
-                    data = json.load(f)
-                    proposal = create_zoning_proposal(data)
-
                 # Add proposal_id to the proposal for reference in the model
-                proposal["proposal_id"] = proposal_id
+                proposal = {
+                    "proposal_id": proposal_id,
+                    "text": proposal_file["text"],
+                }
 
                 print(
                     f"DEBUG: Running simulation with proposal: {proposal_id}, region: {protocol.get('region', 'san_francisco')}"
@@ -141,7 +157,10 @@ async def run_experiment(
 
                 # Run simulation
                 result = await model.simulate_opinions(
-                    region=protocol.get("region", "san_francisco"), proposal=proposal
+                    region=protocol.get("region", "san_francisco"),
+                    proposal=proposal,
+                    motif_library_path=motif_library_path,
+                    causal_graph_path=causal_graph_path,
                 )
 
                 print(
