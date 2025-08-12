@@ -1,0 +1,1714 @@
+{
+  "user_id": "u_7336180473059282970",
+  "username": "Dittoheadforever",
+  "comment_count": 50,
+  "topic_count": 50,
+  "account_created_utc": 1661598379,
+  "account_created_iso": "2022-08-27T11:06:19Z",
+  "user_karma": 598455,
+  "avg_comment_length": 327.3,
+  "comment_frequency_monthly": 50.0,
+  "subreddits_commented": [
+    "AmItheAsshole"
+  ],
+  "time_range": {
+    "first_comment_utc": 1750727338,
+    "first_comment_iso": "2025-06-24T01:08:58Z",
+    "last_comment_utc": 1752631202,
+    "last_comment_iso": "2025-07-16T02:00:02Z"
+  },
+  "topics": [
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1liua1b",
+      "post_title": "AITA for having fun at a beach while my friends waited in a Wendy's for 3 hours?",
+      "scenario_description": "Context: Me and 6 other friends went on a beach trip. The plan was to spend 2 days. We had booked a hotel for one night($1222) for which our friend said we could pay him back later. I paid for a rental van which we took there($571) which I also said everyone could pay us back later. \n\nThe first day everyone went to the beach and was satisfied. The second day, 4 people in the group were not trying to go on the sand. Instead, they wanted to walk around the city around the beach. (For context this is Virginia Beach). Me, and 2 other people in the group wanted to go in the water. We brought the keys to the rental van with us since we were the only ones with licenses. We had planned to leave the beach by 7pm so 2 people in the non-beach going group could go to work the next day, while allowing us to fulfill our rental van dropoff for 2:30AM\n\nWhile me and my 2 friends were in the water, the non-beach going group called us 5 times claiming that they wanted to leave early.(It was 4:57) and we didn't see the calls until we got out at 5:43. They said they were so exhausted that they sat and waited in a Wendy's for 3 hours. Me and the beach-going friends still wanted to get food. So we got the food and then we went to pick them up and go back home(This was 7 on the dot). My friend is giving me the silent treatment. Am I the asshole?",
+      "post_created_utc": 1750717145,
+      "post_created_iso": "2025-06-23T22:19:05Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mzfmfzq",
+      "comment_text": "You're NTA \n\n\n>They said they were so exhausted that they sat and waited in a Wendy's for 3 hours\n\n\nWhat are they, 95 years old? ",
+      "comment_created_utc": 1750727338,
+      "comment_time_iso": "2025-06-24T01:08:58Z",
+      "comment_length": 129,
+      "comment_score": 62,
+      "comment_permalink": "/r/AmItheAsshole/comments/1liua1b/aita_for_having_fun_at_a_beach_while_my_friends/mzfmfzq/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The non-beach going group was justified in waiting for 3 hours at Wendy's.",
+            "B": "The non-beach going group's behavior of waiting for 3 hours at Wendy's is unreasonable.",
+            "C": "The beach-going friends should have left the beach earlier to accommodate the non-beach going group.",
+            "D": "The non-beach going group was too old to handle the situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the non-beach going group's behavior of waiting for 3 hours at Wendy's is unreasonable, as indicated by the rhetorical question 'What are they, 95 years old?'",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their position?",
+          "options": {
+            "A": "The non-beach going group's decision to wait at Wendy's for 3 hours.",
+            "B": "The beach-going friends' desire to stay at the beach until 7 PM.",
+            "C": "The fact that the non-beach going group missed work the next day.",
+            "D": "The rental van drop-off time of 2:30 AM."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter uses the non-beach going group's decision to wait at Wendy's for 3 hours as evidence to support their claim that this behavior is unreasonable.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The non-beach going group's age and physical condition justify their decision to wait at Wendy's.",
+            "B": "Waiting for 3 hours at Wendy's is an extreme and unnecessary action, implying the non-beach going group is overreacting.",
+            "C": "The beach-going friends' enjoyment of the beach justifies their decision to stay longer.",
+            "D": "The rental van drop-off time required the beach-going friends to stay at the beach until 7 PM."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the logic that waiting for 3 hours at Wendy's is an extreme and unnecessary action, implying the non-beach going group is overreacting, to connect the evidence to their conclusion.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathy for the non-beach going group's exhaustion.",
+            "B": "Sarcasm and disbelief at the non-beach going group's actions.",
+            "C": "Understanding and support for the beach-going friends' decision.",
+            "D": "Indifference to the situation and its outcome."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a tone of sarcasm and disbelief, as seen in the rhetorical question 'What are they, 95 years old?' which implies that the non-beach going group's actions are unreasonable.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lj65yi",
+      "post_title": "AITA for not making something else for my picky eater daughter",
+      "scenario_description": "Me (34f) and my husband (37m) have 2 kids (10f,6m), the girl has always been a picky eater, 6 out of 10 times she will reject the food i made even though i'm an expert cook and i have cooked for so many people and i always got compliments for it, despite that my daughter has a habit of rejecting my cooking and asking for red pasta as her go to meal when she doesn't like what i made, i tried to fix this habit but she is extremly stubborn and would never eat a meal she initialy rejected even if that meant staying hungry. \n\nLast night  my husband bought fresh fish and shrimp for dinner, i took my time preparing it, i made multiple salads and sauces, everyone liked it exept her, she just ate a small peace and said \"i don't like it i want red pasta\", i told her to look in the refrigerator to see if there is any (i make it for her often so most of the time there is some leftovers), she didn't find any leftovers so i told her \" i just spent an hour cooking i'm not going to cook again, why don't you eat the dinner i made it is delicious everybody liked it\" and she refused, my husband tried to convinced her and even her little brother tried to convince her but she didn't budge and ate cereal as her dinner. \n\nAITA? ",
+      "post_created_utc": 1750755683,
+      "post_created_iso": "2025-06-24T09:01:23Z",
+      "post_flair": null,
+      "comment_id": "mzhprir",
+      "comment_text": "You're NTA for not making her something different. But you honestly sound like you think way too much of your \"expert\" cooking skills.\n\n\nPeople have different tastes that may not make sense to you. I prefer a 5 Guys Fries to expensive truffle oil fries, for example. But it's no insult to you and yet you seem to be taking it very personally.\n\n\nIt's time to teach your daughter how to cook some basic meals for herself. ",
+      "comment_created_utc": 1750763117,
+      "comment_time_iso": "2025-06-24T11:05:17Z",
+      "comment_length": 420,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lj65yi/aita_for_not_making_something_else_for_my_picky/mzhprir/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The daughter should always eat what her mother cooks.",
+            "B": "The mother should not make a different meal for her picky eater daughter.",
+            "C": "The mother's cooking skills are overrated.",
+            "D": "The daughter should be taught to cook basic meals for herself."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the mother is not at fault for not making a different meal for her daughter.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their position?",
+          "options": {
+            "A": "The mother is an expert cook and has received many compliments.",
+            "B": "The daughter prefers red pasta over other meals.",
+            "C": "The commenter prefers 5 Guys Fries to expensive truffle oil fries.",
+            "D": "The daughter ate cereal instead of the dinner prepared."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter uses the example of their own preference for 5 Guys Fries to illustrate that personal taste can differ, even in the face of expertly prepared food.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "Since the mother is an expert cook, the daughter should like all the meals she prepares.",
+            "B": "Because the daughter is stubborn, the mother should give in and make a different meal.",
+            "C": "Personal taste in food is subjective, and the daughter's rejection of the meal is not a reflection on the mother's cooking skills.",
+            "D": "The daughter should be punished for not eating the meal prepared."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter argues that the daughter's rejection of the meal is not a reflection on the mother's cooking skills because personal taste is subjective.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Anger towards the daughter for being a picky eater.",
+            "B": "Sympathy for the mother and frustration with her taking it personally.",
+            "C": "Indifference to the situation.",
+            "D": "Excitement about the mother's cooking skills."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses sympathy for the mother but also a sense of frustration that the mother is taking the daughter's rejection of the meal too personally.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What additional belief is suggested by the commenter?",
+          "options": {
+            "A": "The daughter should be more appreciative of the mother's cooking.",
+            "B": "The mother should not take the daughter's rejection of the meal personally.",
+            "C": "The mother should make a different meal every time the daughter rejects one.",
+            "D": "The father should take more responsibility in cooking for the family."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the mother should not take the daughter's rejection of the meal personally, as personal taste in food is subjective.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0uysi",
+      "post_title": "AITA for suggesting everyone clean up their own mess?",
+      "scenario_description": "Okay, so I recently talked to my mom about feeling like I shouldn’t have to clean the house every day, and that my family should be able to clean some things up on their own. This made her surprisingly upset— surprisingly because this conversation was me trying to problem solve how we could make our house less of a daily problem, things like throwing away your own trash, washing your dish off once you use it, putting your towels in the laundry basket, etc... SIMPLE things that everyone should do as I don't really think it's fair I'm spending my entire summer cleaning up other people's messes. \nBoth of my parents work from 7am-4pm EST, so my mom asks me to clean while they’re gone. This isn’t a problem considering I don’t have a job right now, and I live under their roof. Doing laundry, sweeping, mopping, vacuuming, even painting the kitchen walls, I'll do it. I think my problem is that I get tired of people creating a mess for me to clean every day when I'd like to have some of the summer to myself, as well. Leaving food around on plates, dirty towels on the bathroom floor, piss on the toilet seat, crumbs on the stove— things I really, really think should be easy to handle quickly and easily instead of having me make my rounds. I know these things are small, but I get yelled at and called lazy when I don't clean these things up. \n\nSo... AITA??? I really don't know.\n\nFAQ??: \nTook me awhile to figure out how to edit this, but important details I've been asked.\n1.) I'm 17, and going into my senior year.\n2.) My brother is 12, my only sibling, and doesn't help as my parents don't discipline him for these things. \n3.) I take care of everything in the house while my parents work, including reminding my brother to take care of himself, cooking, and making sure our dogs are good during the day. \n4.) I am actively trying to get a summer job, but live in a small town where most things are locally owned, out of my way, or aren't willing to hire more people because they're locally owned. My options are pretty slim. I've been trying to sell some things like old clothes online to have some money in my pocket, which is as close as I am currently to being employed. ",
+      "post_created_utc": 1752616331,
+      "post_created_iso": "2025-07-15T21:52:11Z",
+      "post_flair": null,
+      "comment_id": "n3cjfub",
+      "comment_text": "You're NTA. \n\n\nChores like vacuuming, mopping, etc. are reasonable.\n\n\n>Leaving food around on plates, dirty towels on the bathroom floor, piss on the toilet seat, crumbs on the stove—\n\n\nDemanding that you clean up after slobs is not reasonable. ",
+      "comment_created_utc": 1752619611,
+      "comment_time_iso": "2025-07-15T22:46:51Z",
+      "comment_length": 245,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0uysi/aita_for_suggesting_everyone_clean_up_their_own/n3cjfub/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that the original poster (OP) is at fault for not cleaning up after others.",
+            "B": "The commenter believes that the OP is not at fault for suggesting that family members clean up their own messes.",
+            "C": "The commenter believes that the OP should continue to clean up after everyone without complaint.",
+            "D": "The commenter believes that the OP's parents are justified in demanding that the OP clean up after others."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the OP is not at fault (NTA) for suggesting that family members clean up their own messes.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific details does the commenter use to support their belief?",
+          "options": {
+            "A": "The commenter mentions that the OP is 17 and going into their senior year.",
+            "B": "The commenter lists examples of messes, such as food on plates, dirty towels, and crumbs on the stove, to illustrate the unreasonable demands placed on the OP.",
+            "C": "The commenter states that the OP’s parents work from 7am-4pm and asks the OP to clean while they’re gone.",
+            "D": "The commenter notes that the OP is actively trying to get a summer job but has limited options."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses specific examples of messes to highlight the unreasonable demands placed on the OP.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The commenter argues that since the OP is 17, they should be responsible for all household chores.",
+            "B": "The commenter suggests that because the OP’s parents work long hours, it is reasonable for the OP to clean up after everyone.",
+            "C": "The commenter reasons that demanding the OP clean up after slobs is unreasonable, given the nature of the messes described.",
+            "D": "The commenter believes that since the OP is not employed, they should have no problem cleaning up after others."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter reasons that demanding the OP clean up after slobs is unreasonable, given the nature of the messes described.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "The commenter expresses sympathy and understanding for the OP's situation.",
+            "B": "The commenter is indifferent to the OP's situation and offers a neutral opinion.",
+            "C": "The commenter is critical of the OP for complaining about the household chores.",
+            "D": "The commenter is angry at the OP's parents for not helping with the cleaning."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter expresses sympathy and understanding for the OP's situation, supporting the OP's position.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1ls2dbr",
+      "post_title": "AITA for not appolising when I (accidentally) offended a friend and he made similar remark to me later on so as to make tit for tat.",
+      "scenario_description": "So I met my friend in my family function and asked him why his elder brother didn't come. He said he is at his friend's home. So I asked whether they would like some food to be packed for him and they for some reason got offended with it. The same friend invited me in his family function(2 days later) which I could not attend as i had to attend another family function and asked me in an offending tone whether I am hungry and need some food. So is it over or do I need to appologise as i started the insult loop?",
+      "post_created_utc": 1751693135,
+      "post_created_iso": "2025-07-05T05:25:35Z",
+      "post_flair": "Everyone Sucks",
+      "comment_id": "n1ge7fa",
+      "comment_text": "You're NTA but this is the tamest post I've ever seen marked NSFW.\n\n\nLooks like your friend inferred an insult where none was intended then childishly tried to return it. \n\n\nIs he often one of those types who assume you're implying something deeper when you say something?",
+      "comment_created_utc": 1751715254,
+      "comment_time_iso": "2025-07-05T11:34:14Z",
+      "comment_length": 272,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1ls2dbr/aita_for_not_appolising_when_i_accidentally/n1ge7fa/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The friend's reaction was justified.",
+            "B": "The friend misinterpreted the original comment and retaliated childishly.",
+            "C": "The original poster should apologize for starting the insult loop.",
+            "D": "The situation is too trivial to be considered."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the friend misinterpreted the original comment and retaliated in a childish manner.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The friend invited the original poster to his family function.",
+            "B": "The friend made an offensive remark about food, mirroring the original poster's offer.",
+            "C": "The original poster could not attend the friend's family function.",
+            "D": "The original poster offered to pack food for the friend's brother."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter points out that the friend made an offensive remark about food, which mirrors the original poster's offer, indicating a pattern of retaliation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion?",
+          "options": {
+            "A": "The friend's behavior is consistent with someone who often assumes deeper implications in simple statements.",
+            "B": "The friend's behavior shows a lack of understanding of social norms.",
+            "C": "The friend's behavior is a result of personal issues unrelated to the original poster.",
+            "D": "The friend's behavior is a one-time incident and not reflective of their usual character."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter suggests that the friend's behavior is consistent with someone who often assumes deeper implications in simple statements, leading to the conclusion that the friend misinterpreted the original comment.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Sympathetic towards the friend's misunderstanding.",
+            "B": "Dismissive of the situation as being overly dramatic.",
+            "C": "Critical of the friend's behavior and supportive of the original poster.",
+            "D": "Neutral and focused on the facts of the situation."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter is critical of the friend's behavior and supportive of the original poster, suggesting that the friend's reaction was childish and unjustified.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter suggest about the friend's typical behavior?",
+          "options": {
+            "A": "The friend is usually very understanding and forgiving.",
+            "B": "The friend often assumes deeper implications in simple statements.",
+            "C": "The friend is generally calm and rational in social situations.",
+            "D": "The friend rarely takes offense at what others say."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter implies that the friend often assumes deeper implications in simple statements, which led to the misunderstanding and retaliation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lnezwb",
+      "post_title": "AITA for listening to others advice and questioning my specialist?",
+      "scenario_description": "throwaway account because i don’t want to clog up my main.\n\nanyway, backstory is that i have idiopathic intracranial hypertension (iih). optometrist found my optic nerves swollen, we ruled out brain tumours and stuff, so i was sent just to see a opthalmologist for treatment. it’s been about a year so far.\n\nso far, nothing has really happened. i haven’t had any serious symptoms (no vision loss or debilitating pain) so my ophthalmologist has just said “come back in 6 months, lose a bit more weight, and we’ll decide what to do next time”. i’ve had one other appointment with him last year and my next appointment in august is coming up on the one year anniversary of this whole mess. i’ve been fairly content with this so far - he’s the expert, it hasn’t affected my vision so far, what do i know.\n\nrecently i found a community for people with iih and i got to talking with them. and the response was mostly disbelief that nothing has been done. his next step (if my pressure hasn’t gone down) is to send me for a lumbar puncture. but the general consensus has been “why hasn’t he sent you to an opthal-neurologist? or at least a regular neurologist? how come he hasn’t discussed medication with you while the symptoms haven’t been present?”\n\nit made me think and i always thought it was odd that i was never given medication (both my optometrist who sent me to the sydney eye hospital when he found my pressure was bad AND the hospital staff all told me that medication would probably be prescribed to me) but again, i figured that he’s the specialist and i don’t know what i’m talking about\n\ni was just bringing this up with my dad the other day, and he got mad. i don’t know why he got mad, but he did. he told me not to ask. he told me that i don’t know ANYTHING about healthcare so there’s no point in bringing it up, because hasn’t the specialist told you that the next step is a lp? \n\ni’ve never been one to question doctors. i know the obvious answer is to do what i want and if im not happy with my care then it’s well within my right to ask for another opinion. but my dad has really gotten to me. \n\nam i wrong to follow the advice of people online and ask my doctor for another referral to a neuro or medication or is my dad right by saying that the specialist knows what he’s doing and just to trust him?",
+      "post_created_utc": 1751204555,
+      "post_created_iso": "2025-06-29T13:42:35Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n0eoukg",
+      "comment_text": "You're NTA. Anyone who has a serious medical condition should do all the research they can and learn as much about it as possible. \n\n\nSurely you want the most successful treatment you can get, and one of the best ways to achieve that is through learning about your condition and talking to others who have it.\n\n\nI would have thought that is common sense.",
+      "comment_created_utc": 1751205211,
+      "comment_time_iso": "2025-06-29T13:53:31Z",
+      "comment_length": 354,
+      "comment_score": 7,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lnezwb/aita_for_listening_to_others_advice_and/n0eoukg/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "It is disrespectful to question a specialist's advice.",
+            "B": "People with serious medical conditions should do thorough research and learn about their condition.",
+            "C": "The specialist's approach is always the best and should be trusted without question.",
+            "D": "Online communities are not reliable sources of medical advice."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that patients should be proactive in learning about their condition and seeking the best treatment.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The commenter mentions the specialist's years of experience.",
+            "B": "The commenter references the importance of successful treatment.",
+            "C": "The commenter cites the lack of symptoms as a reason for trust.",
+            "D": "The commenter notes the father's anger as a reason to avoid questioning the specialist."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter supports their belief by stating that one of the best ways to achieve successful treatment is through learning about the condition and talking to others who have it.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect their evidence to their conclusion?",
+          "options": {
+            "A": "The commenter suggests that because the specialist has not prescribed medication, they must know what is best.",
+            "B": "The commenter argues that learning about the condition and seeking second opinions can lead to better treatment outcomes.",
+            "C": "The commenter believes that the absence of symptoms means no further action is necessary.",
+            "D": "The commenter implies that the father's anger is a valid reason to avoid questioning the specialist."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter connects the need for research and learning to the goal of achieving the most successful treatment, suggesting that this is a logical and beneficial approach.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's message?",
+          "options": {
+            "A": "Frustration with the patient's reluctance to question the specialist.",
+            "B": "Empathy for the patient's desire to seek the best possible care.",
+            "C": "Anger towards the father for discouraging the patient from asking questions.",
+            "D": "Disappointment in the online community for providing conflicting advice."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is supportive and empathetic, encouraging the patient to take an active role in their healthcare to ensure the best possible outcome.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lys7q6",
+      "post_title": "AITA for not bonding with my father?",
+      "scenario_description": "I’ll make this short. I, (15F) was invited to my father to hangout with him to a firing range. I’m okay with firing ranges, since dad always wanted me to become a police. (Which is not what I aspire to be), but today—I declined his offer. Dad said it costs 2000 php (which is 35 USD) for the bullets and gun which is offered by the place and it’s pretty legit—so he said we can use MY money because he’ll repay me soon anyways. Sure, it might be fun if I did want to go. But for some reason, I didn’t want to bond. I don’t know and I feel guilty for declining him. I just answered: “I don’t want to”, or “no.” When they (both my parents) said “Come on, dress up. Let’s go.” I feel like I’m being selfish and a killjoy. I couldn’t even reason why I didn’t want to go—I just didn’t feel like it. I felt overwhelmed having to explain why. **Why?** I don’t know. I can’t explain. I feel like I’m obligated to go. Because after all that talk and our small argument, my dad said: “From now on, I don’t want you saying no. It’s just bonding.” And my mom sided with him and said “yeah, it’s just bonding.” It didn’t help my case. Now, maybe I’m just genuinely lacking explanation why I was behaving like that. But, I genuinely did NOT want to go. You know that feeling when your friends want to hangout but for some reason you don’t want to? That’s how I felt. I had no reason or argument why. But I felt like I’m disappointing my parents with their daughter lacking cooperation and understanding that they just want to bond. \n\nSide note: ((Sorry for bad english and bad grammar. I just need to get this out.))",
+      "post_created_utc": 1752411547,
+      "post_created_iso": "2025-07-13T12:59:07Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2w8yos",
+      "comment_text": "You're NTA. Sorry, but it doesn't sound like your dad wants to \"bond with\" you, it sounds like he wants you to pay for him to enjoy his hobby. \n\n\nIf he wanted to bond and hangout, he would ask what you want to do.",
+      "comment_created_utc": 1752413639,
+      "comment_time_iso": "2025-07-13T13:33:59Z",
+      "comment_length": 213,
+      "comment_score": 36,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lys7q6/aita_for_not_bonding_with_my_father/n2w8yos/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The father genuinely wants to bond with his daughter.",
+            "B": "The father wants the daughter to pay for his hobby.",
+            "C": "The daughter should feel guilty for not going to the firing range.",
+            "D": "The mother and father are right to insist on bonding."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the father's intention seems to be more about having the daughter pay for his hobby rather than genuine bonding.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their claim?",
+          "options": {
+            "A": "The father's insistence on using the daughter's money for the activity.",
+            "B": "The daughter's feeling of guilt for declining the offer.",
+            "C": "The parents' argument that it is just bonding.",
+            "D": "The daughter's lack of a clear reason for not wanting to go."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter points out that the father wants to use the daughter's money, which supports the claim that he is more interested in the activity than in bonding.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "If the father truly wanted to bond, he would not ask the daughter to pay.",
+            "B": "The father's interest in the firing range shows he values the activity over bonding.",
+            "C": "The daughter's feelings of guilt indicate that the father's intentions are sincere.",
+            "D": "The parents' insistence on bonding proves that they have the daughter's best interests at heart."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter argues that if the father's primary goal was bonding, he would not expect the daughter to cover the costs, which connects the evidence to the claim.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathy for the daughter's feelings of guilt.",
+            "B": "Disapproval of the father's actions and motives.",
+            "C": "Understanding of the parents' desire to bond with their daughter.",
+            "D": "Indifference to the situation and the daughter's feelings."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses disapproval of the father's actions, suggesting that his motives are not genuine and that he is taking advantage of the daughter.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter suggest about the father's true intentions?",
+          "options": {
+            "A": "The father is genuinely interested in spending time with his daughter.",
+            "B": "The father is more interested in the activity than in bonding.",
+            "C": "The father is trying to encourage his daughter to become a police officer.",
+            "D": "The father is concerned about the financial burden of the activity."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the father's true intention is to enjoy his hobby rather than to bond with his daughter.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lqmbtv",
+      "post_title": "AITA for not adequately cleaning up after my dogs? (according to a neighbor)",
+      "scenario_description": "So I, 30 f, have 2 dogs. A 1 year old Husky and a 3 year old Bully mix. I live in an apartment complex. Im on the ground floor and right off my porch is a sidewalk and then on the other side of the side walk is a large area of grass. Usually 3 times a day I take the husky outside, they take 5-10 minutes depending on how distracted they get, to go potty and i bag up the waste. I tie up the baggy and put that baggy inside a grocery bag and tie that off as well. Then i leave the bag a few feet away from the side walk (in the grass) right outside my door and swap the husky for the bully mix. They usually take 2-3 minutes to do their business then i bag up the waste, put that baggy in the same grocery bag, and put the dog in the apartment before shuffling across the complex to throw the grocery bag away in the closest dumpster. (its all the way across the complex so it takes me like 2 minutes there and 2 minutes back)\n\nNow, i used to walk each bag over to the dumpster with the dog coming with me, but due to issues with chronic pain, dizzy spells, extreme fatigue, and fainting spells all becoming really severe over the last 4 months, all movement is really agonizing. its central to my hips and back so I've cut it to just 1 trip because it honestly is draining to make the short walk to the dumpster.\n\nI dont usually take the dogs out together because the Husky goes into play mode and will NOT go potty because they are busy jumping all over my bully. Its just chaos.\n\nA neighbor recently got after me for not immediately walking the waste to the dumpster after she watched me take my dogs out from a few buildings down. No one else has ever had an issue with how i handle things and honestly i think this neighbor just hates me over a separate issue (i refused to give her my empty aluminum cans) but she complained to the office. The leasing office spoke to me and after i explained, they said it was fine.\n\nBefore anyone worries for my babies: My friend and his brother take my dogs on their run with them 4 times a week in the morning to help me out since i cant do it right now. The other 3 days a week i take them to daycare for about 5 hours in the morning so they can run around and play in the pool there. Every day in the evening I take them to an off leash dog park and we play fetch for an hour-hour and a half. I may be in constant pain but they are my priority and i will always make sure they have the exercise and mental stimulation they need.\n\nPart of me thinks im not in the wrong here but I'm an anxious introvert who hates upsetting people so i feel guilty that maybe others might see me bagging poo and be grossed out that im leaving it there, even if its just for a few minutes. Plus im already super frustrated with my limited mobility so Ive been getting really angry at myself for not being able to do small things, so it might just be that talking. The opinions of a stranger or 2 would be nice.\n\nSo, AITA here?",
+      "post_created_utc": 1751539139,
+      "post_created_iso": "2025-07-03T10:38:59Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n147zsh",
+      "comment_text": "You're NTA and Mrs. Kravitz needs to get a life. \n\n\nMy neighbors leave their dog poop bags by the side of road then pick them up 10-15 minutes later as they're returning home. Big deal. It's not hurting anyone.",
+      "comment_created_utc": 1751546382,
+      "comment_time_iso": "2025-07-03T12:39:42Z",
+      "comment_length": 210,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lqmbtv/aita_for_not_adequately_cleaning_up_after_my_dogs/n147zsh/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that leaving dog poop bags for a short time is a significant issue.",
+            "B": "The commenter believes that leaving dog poop bags for a short time is not a big deal and does not harm anyone.",
+            "C": "The commenter believes that the neighbor's complaint is justified and should be taken seriously.",
+            "D": "The commenter believes that the original poster should immediately dispose of the dog waste in the dumpster."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that leaving dog poop bags for a short time is not a big deal and does not harm anyone, which is the core belief expressed by the commenter.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The commenter mentions that the original poster has chronic pain and mobility issues.",
+            "B": "The commenter mentions that their own neighbors leave dog poop bags by the side of the road and pick them up 10-15 minutes later.",
+            "C": "The commenter mentions that the original poster takes their dogs to daycare and the dog park regularly.",
+            "D": "The commenter mentions that the original poster uses multiple bags to contain the dog waste."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the example of their own neighbors leaving dog poop bags by the side of the road and picking them up 10-15 minutes later to support their belief that it is not a big deal.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The commenter argues that since other people do it, it must be acceptable.",
+            "B": "The commenter argues that if no one is being harmed, then the action is not a problem.",
+            "C": "The commenter argues that the original poster's health issues justify the behavior.",
+            "D": "The commenter argues that the neighbor's personal dislike of the original poster is the real issue."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter connects the evidence (neighbors leaving dog poop bags) to the conclusion (it's not a big deal) by arguing that if no one is being harmed, then the action is not a problem.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "The commenter expresses sympathy for the original poster's situation.",
+            "B": "The commenter expresses frustration with the neighbor who complained.",
+            "C": "The commenter expresses indifference to the entire situation.",
+            "D": "The commenter expresses concern about the cleanliness of the apartment complex."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a tone of frustration with the neighbor who complained, as evidenced by the dismissive reference to the neighbor needing to 'get a life.'",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lyh0k9",
+      "post_title": "AITA for not helping my pregnant sister clean up kitty litter?",
+      "scenario_description": "For added context, I (36F) don't have any pets because I don't want them and the added responsibility of having them - going for walks, medical needs or general trips to vet, grooming them, and cleaning up after their business, plus I am also away for work often. She (34F) knows this. She recently got pregnant, and as you know pregnant women should limit their intereaction with litter. We get along fairly well I would say. She and her bf (lives 40mins away) lightheartedly said that \"It's your (my) responsibility to clean the kitty litter now\". We live a block away from each other and I am excited about the baby and want to help and provide support as best as I can, just not with that. I feel like a shitty sister, but I also don't want to do it. AITA?\n\nUpdate -\nWow! I did not expect this many responses. Thank you everyone. To answer similar questions in the thread:\n1. This is a fairly new relationship (between sis and her bf). Despite that they did plan to get pregnant. I don't ask many questions regarding that - to each their own. \n2. I do not know their plans to cohabitate, for now, as far as I know, they will continue to live 40 mins apart. Though this question isn't about them.\n3. My sister moved a block away from me a year ago to be closer to me, and likes the area, which I've lived in for 5 years.\n4. The BF is not a terrible guy, he is very much involved and an intentional participant in this whole process, which makes their comment of me taking care of the kitty litter even more confusing. With his work schedule, he visits/stays over 1-3 per week, that I know of. \n5. Yes, their comment was light-hearted, in the way that you add an \"lol\" to a rather risky thing to say. \n6. The cat has been hers for 2 years, and is an indoor cat. ",
+      "post_created_utc": 1752371330,
+      "post_created_iso": "2025-07-13T01:48:50Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2tv8ci",
+      "comment_text": "You're NTA. Instead of voluntelling you that you're doing it, they should be coming up with a solution that has them covering their responsibilities. \n\n\nIf they don't intend to move in together, she can get one of those self cleaning boxes that would only require **him** to come over and change the litter once a week.",
+      "comment_created_utc": 1752371951,
+      "comment_time_iso": "2025-07-13T01:59:11Z",
+      "comment_length": 319,
+      "comment_score": 59,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lyh0k9/aita_for_not_helping_my_pregnant_sister_clean_up/n2tv8ci/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lxrsfq",
+      "post_title": "AITA for asking my sister to not make jokes about kissing my fiancé",
+      "scenario_description": "me (23F) and my fiancé (27M) have been together for around 3 years and recently he proposed! he has always been a family friend and was best friends with my sister(27F) for a while before we got together. my sister is the way we met and i will always be grateful for that! however recently i was back home to visit my parents and my sister came as-well. (we all like to get together for the fourth of July) when the party died down i was with my fiancé, sister and another close friend from home in my parents basement.  my sister sat in between me and my fiancé which i   didn’t mind because they are very close friends, however she made a joke saying “ what if i made out with your fiancé right now!” i was shocked but didn’t want to speak up right then and cause a fight in front of our freind. so i just said “oh. that would be so crazy… please don’t”. later i approached my sister about it and asked why she would say that and its a bit weird to talk about kissing my fiancé. she said that i was overreacting and it was all jokes going on about how i need to understand that’s just how she jokes with him. i understand that they have been friends for a long time but it made me very uncomfortable when she made that ‘joke’. i talked to my fiancé and he said that he also thought it was weird of her to say that.  but now i am fighting with my sister about this almost every day. \n\nam i the asshole for starting a fight with her about it?",
+      "post_created_utc": 1752295287,
+      "post_created_iso": "2025-07-12T04:41:27Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2ofn42",
+      "comment_text": "You're NTA \n\n\n>she said that i was overreacting and it was all jokes going on a\n\n\nTypical response of people who step over the line. *it's not my fault for being an asshole, it's your fault for reacting to me being an asshole.*\n\n\nJokes are supposed to be funny. There's nothing funny in saying what she said. ",
+      "comment_created_utc": 1752295807,
+      "comment_time_iso": "2025-07-12T04:50:07Z",
+      "comment_length": 309,
+      "comment_score": 131,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lxrsfq/aita_for_asking_my_sister_to_not_make_jokes_about/n2ofn42/",
+      "stance_label": "NTA",
+      "post_label": "Romance",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The sister's joke was in good taste and should be accepted as such.",
+            "B": "The sister's joke was inappropriate and not funny.",
+            "C": "The sister has a right to make jokes about the fiancé because they are close friends.",
+            "D": "The original poster is overreacting to the situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the joke was not funny and was inappropriate, which aligns with the belief that the sister's behavior was out of line.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The sister and the fiancé have been friends for a long time.",
+            "B": "The original poster and her fiancé were together for three years.",
+            "C": "The sister made a joke about kissing the fiancé, which was not funny.",
+            "D": "The original poster talked to her fiancé, who also thought it was weird."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter uses the fact that the sister made a joke about kissing the fiancé, which was not funny, to support the belief that the joke was inappropriate.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "Because the sister and the fiancé are close friends, the joke is acceptable.",
+            "B": "Since the joke was not funny, it must have been inappropriate.",
+            "C": "The original poster's reaction to the joke is what makes it inappropriate.",
+            "D": "The sister's defense that it was just a joke justifies the behavior."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that since the joke was not funny, it must have been inappropriate, connecting the lack of humor to the inappropriateness of the joke.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference, suggesting the joke is not a big deal.",
+            "B": "Anger, indicating frustration with the sister's behavior.",
+            "C": "Support, showing empathy for the original poster's discomfort.",
+            "D": "Skepticism, questioning the original poster's reaction."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter's response is shaped by a supportive and empathetic tone, showing understanding and agreement with the original poster's discomfort.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter assert about the sister's defense of her joke?",
+          "options": {
+            "A": "The sister's defense is valid and should be accepted.",
+            "B": "The sister's defense is a typical response from someone who has crossed a line.",
+            "C": "The sister's defense is a sign of her strong friendship with the fiancé.",
+            "D": "The sister's defense is a reasonable explanation for her behavior."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter asserts that the sister's defense is a typical response from someone who has crossed a line, indicating that the defense is not valid.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lw0nsb",
+      "post_title": "AITA for lashing out at my parents for not taking me seriously?",
+      "scenario_description": "My last post about my mom, this is an alternate story involving my father and step mother. not a continuation, but simply another story. \n\nI 20M and my finace 19F just recently got engaged this past May. Since we have announced that we are getting married, it has caused problems with my family. \n\nThis took place on the 4th of July of this year. Me and my fiance were at my dads and step-moms house to celebrate. We were all talking over dinner where my dad brought up the fact that me and my fiance were moving too fast and need to wait to get married. I stated that we plan to get married in the summer of next year, which my step mom butted in saying that it would be wise for me to take the ring from my fiance and re-propse when **they** feel the time is right. I said it wasnt their decision to tell us when to get married. My step mom said that there were so many other people that I havent experinced yet. That made me so mad that I started shaking. I told them that we have benn together for years and I knew what I wanted. \n\nThe next night, my fiance brought up us breaking off the engagement, she thought it was her fault that my parents are acting so crazy over this. \"I would have asked to you wait if I knew this was the way your family was going to be.\" I told her that it wasnt their decsion regardless of how much they think it is. \n\nAITA for lashing out at my parents for not taking me seriously ",
+      "post_created_utc": 1752112160,
+      "post_created_iso": "2025-07-10T01:49:20Z",
+      "post_flair": "Not enough info",
+      "comment_id": "n2c43qn",
+      "comment_text": "You're NTA. I understand your parents concerns, but they're not expressing them in a mature, constructive manner. Didn't I read on your other post that your mom accused your fiance of \"stealing\" her son?\n\n\nAnd based on your response to another question:\n\n\n>we've been together for 4 years. we are both working full time. we have our own place together and share the bills equally. the wedding is being funded by us.\n\n\n- You are pretty young, but there are people out there a decade older who don't have their shit together nearly as much as you do. \n\n\n- You're waiting a year, not running to the altar just because you can. That's a wise decision. ",
+      "comment_created_utc": 1752141265,
+      "comment_time_iso": "2025-07-10T09:54:25Z",
+      "comment_length": 648,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lw0nsb/aita_for_lashing_out_at_my_parents_for_not_taking/n2c43qn/",
+      "stance_label": "NTA",
+      "post_label": "Romance",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The parents are justified in their concerns about the engagement.",
+            "B": "The parents are not expressing their concerns in a mature, constructive manner.",
+            "C": "The couple should wait longer before getting married.",
+            "D": "The fiancée is at fault for the family's reaction."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the parents' way of expressing their concerns is not mature or constructive.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief about the couple's maturity?",
+          "options": {
+            "A": "The couple has been together for 4 years.",
+            "B": "The couple is working full-time and sharing bills equally.",
+            "C": "The wedding is being funded by the couple themselves.",
+            "D": "The couple is waiting a year before getting married."
+          },
+          "ground_truth": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "explanation": "The commenter uses all these facts to support the belief that the couple is mature and responsible.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion that the couple is mature and ready for marriage?",
+          "options": {
+            "A": "The couple's long-term relationship shows they are committed.",
+            "B": "Their financial independence indicates they can handle responsibilities.",
+            "C": "Waiting a year before the wedding shows they are not rushing into it.",
+            "D": "The parents' disapproval is a sign of the couple's immaturity."
+          },
+          "ground_truth": [
+            "A",
+            "B",
+            "C"
+          ],
+          "explanation": "The commenter uses the couple's long-term relationship, financial independence, and the fact that they are waiting a year to show that they are mature and ready for marriage.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone does the commenter use when discussing the parents' behavior?",
+          "options": {
+            "A": "Understanding and empathetic towards the parents' concerns.",
+            "B": "Critical and disapproving of the parents' approach.",
+            "C": "Supportive and encouraging of the couple's decision.",
+            "D": "Indifferent and neutral towards the situation."
+          },
+          "ground_truth": [
+            "B",
+            "C"
+          ],
+          "explanation": "The commenter is critical of the parents' approach but supportive of the couple's decision, showing a mix of disapproval and encouragement.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter have about the couple's decision to get married?",
+          "options": {
+            "A": "The couple is too young to get married.",
+            "B": "The couple is making a wise decision by waiting a year.",
+            "C": "The couple should listen to their parents' advice.",
+            "D": "The couple should break off the engagement."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter believes that the couple is making a wise decision by waiting a year before getting married.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lvd5uz",
+      "post_title": "AITA for refusing to host my cousin's bachelorette party at my house, even though I have the biggest space?",
+      "scenario_description": "So my cousin Jenna (29F) is getting married and her maid of honor Chloe wanted to throw her bachelorette party. I’ve got the biggest house and backyard in the fam, so Chloe kinda assumed I’d host it here. She said, “Your place is perfect, and it’s the biggest!”\n\nI said no. I told them I love Jenna and wanna celebrate but I’m just not comfy hosting a wild party with a bunch of ppl I don’t really know, drinking late and all that. I’m worried about noise, mess, and just the whole vibe at my personal space. But I did offer to help with decorations, food, or chip in for another venue.\n\nChloe got all huffy and told Jenna I’m “selfish” and “unsupportive” bc I won’t share my space. Jenna then called me upset, saying I’m “letting her down” and being a bad family member since it’d be so convenient.\n\nSo, AITA for saying no to hosting even though I have the space, just cuz I don’t wanna deal with that kinda party?",
+      "post_created_utc": 1752048373,
+      "post_created_iso": "2025-07-09T08:06:13Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n25889z",
+      "comment_text": "You're NTA and the fact that you're getting such rude, hissy fitty feedback is strong evidence that your cousin and her friends would not respect any rules you laid down if you were to host.",
+      "comment_created_utc": 1752053355,
+      "comment_time_iso": "2025-07-09T09:29:15Z",
+      "comment_length": 190,
+      "comment_score": 3,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lvd5uz/aita_for_refusing_to_host_my_cousins_bachelorette/n25889z/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The cousin and her friends would be respectful if the party were hosted.",
+            "B": "The cousin and her friends would not respect any rules if the party were hosted.",
+            "C": "The cousin and her friends are justified in their expectations.",
+            "D": "The cousin and her friends are being reasonable in their feedback."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the rude, hissy fit feedback is strong evidence that the cousin and her friends would not respect any rules if the party were hosted.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The cousin's maid of honor's assumption about the space.",
+            "B": "The rude, hissy fit feedback from the cousin and her friends.",
+            "C": "The offer to help with decorations, food, or another venue.",
+            "D": "The concern about noise, mess, and the vibe at the personal space."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the rude, hissy fit feedback as evidence that the cousin and her friends would not respect any rules if the party were hosted.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The cousin and her friends' positive feedback indicates they would be respectful.",
+            "B": "The cousin and her friends' rude feedback indicates they would not respect any rules.",
+            "C": "The cousin and her friends' assumptions about the space indicate they would be respectful.",
+            "D": "The cousin and her friends' willingness to pay for another venue indicates they would be respectful."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter connects the rude, hissy fit feedback to the conclusion that the cousin and her friends would not respect any rules if the party were hosted.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathetic towards the cousin and her friends.",
+            "B": "Critical of the cousin and her friends' behavior.",
+            "C": "Neutral and objective about the situation.",
+            "D": "Supportive of the cousin and her friends' expectations."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a critical tone towards the cousin and her friends, emphasizing their rude, hissy fit feedback.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lu1lg6",
+      "post_title": "AITA my partner threw away my food",
+      "scenario_description": "My partner had been away with our son for the weekend. She got home about an hour or so before I got home from work, we were chatting about what we got up to, she said she hopes I didn't live off takeaway. I said no I made a spicy curry on one night and I put another couple of portions in the freezer, she burst out laughing and saying \"oh no is that what that was, I threw it away\" I thought she was joking at first but from the way she carried on laughing I started to think she meant it, I checked the freezer and it was gone. \n\nI got really angry I called her a b*tch and a c*nt (context, here in the UK that word is thrown around a lot more casually than the US) I kept throwing snide remarks at her over the following hours. She kept saying I should have told her that was mine. Even though I'd told her before she left I was planning on making a spicy curry as she can't handle spicy food and that was my opportunity to have it. And she'd just got home not long before me and found time to do that. I left her really upset and she refused to eat dinner and has been giving me the silent treatment since.",
+      "post_created_utc": 1751912129,
+      "post_created_iso": "2025-07-07T18:15:29Z",
+      "post_flair": "Asshole",
+      "comment_id": "n1uovsx",
+      "comment_text": "ESH. Obviously she shouldn't throw away food without even asking you what it was. \n\n\nBut spewing profane names and then continuing with the snide remarks afterwards was an immature overreaction. \n\n\n>She kept saying I should have told her that was mine.\n\n\nWtH did she think it was? An unwanted gift from the food elves?",
+      "comment_created_utc": 1751913553,
+      "comment_time_iso": "2025-07-07T18:39:13Z",
+      "comment_length": 318,
+      "comment_score": 59,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lu1lg6/aita_my_partner_threw_away_my_food/n1uovsx/",
+      "stance_label": "ESH",
+      "post_label": "Romance",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "D"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The partner should have asked before throwing away the food.",
+            "B": "The use of profanity and snide remarks was an immature overreaction.",
+            "C": "The partner should have known the food belonged to the commenter.",
+            "D": "The partner's actions were completely justified."
+          },
+          "ground_truth": [
+            "A",
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the partner should not have thrown away the food without asking and that the commenter's reaction was an immature overreaction.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their claim about the partner's action?",
+          "options": {
+            "A": "The partner had been away for the weekend.",
+            "B": "The partner threw away the food without asking what it was.",
+            "C": "The partner laughed when the commenter mentioned the curry.",
+            "D": "The partner refused to eat dinner and gave the silent treatment."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment uses the fact that the partner threw away the food without asking as evidence to support the claim that this was a wrong action.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to the conclusion about the partner's action?",
+          "options": {
+            "A": "The partner should have known the food was important because it was in the freezer.",
+            "B": "Throwing away food without asking is disrespectful and shows a lack of consideration.",
+            "C": "The partner's laughter indicates she did not care about the food.",
+            "D": "The partner's actions were justified because the commenter should have labeled the food."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter reasons that throwing away food without asking is disrespectful and shows a lack of consideration, which supports the claim that the partner's action was wrong.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response to the situation?",
+          "options": {
+            "A": "Anger and frustration towards the partner's actions.",
+            "B": "Disappointment and disapproval of both the partner and the commenter's reactions.",
+            "C": "Sympathy for the partner's misunderstanding.",
+            "D": "Amusement at the situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses disappointment and disapproval of both the partner's actions and the commenter's overreaction, indicating a balanced but critical perspective.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What belief does the commenter express about the commenter's own behavior?",
+          "options": {
+            "A": "The commenter's use of profanity was justified.",
+            "B": "The commenter's continued snide remarks were an immature overreaction.",
+            "C": "The commenter should have labeled the food more clearly.",
+            "D": "The commenter's anger was understandable given the situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment explicitly states that the commenter's use of profanity and continued snide remarks were an immature overreaction.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0vlcj",
+      "post_title": "WIBTA for telling my dad he’s the reason I don’t want to go back to school?",
+      "scenario_description": "Throwaway because I don’t use Reddit often and I don’t want him to find this. \n\nI (24F) graduated from college about two years ago and haven’t been able to find a good paying job. There are a few reasons for this but the biggest one rn is that there aren’t a lot of openings for people with my degree right now. \n\nWith all this in mind, my parents suggested I go back to school to study something else. But as I’m sitting here signing up for classes, the only thing running through my head is my dad’s words from both times I graduated, “I’m not proud of you because it was expected.”\n\nNow I don’t need my parent’s approval for anything. But I’m working myself up I think way more than I need to over this. My dad also has some mental health issues and generational trauma that he’s working through so I’m not sure what he meant when he said that or how he would respond to me telling him how I’m feeling? My mother doesn’t even let me talk to him when I’m upset anymore. \n\nSo WIBTA if I told him how this is making me feel? ",
+      "post_created_utc": 1752617917,
+      "post_created_iso": "2025-07-15T22:18:37Z",
+      "post_flair": null,
+      "comment_id": "n3ckw8w",
+      "comment_text": "YWNBTA if you tell him how you feel. \n\n\n>My dad also has some mental health issues and generational trauma that he’s working through \n\n\nThat's not a free pass to make thoughtless remarks.",
+      "comment_created_utc": 1752620086,
+      "comment_time_iso": "2025-07-15T22:54:46Z",
+      "comment_length": 187,
+      "comment_score": 16,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0vlcj/wibta_for_telling_my_dad_hes_the_reason_i_dont/n3ckw8w/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The father's mental health issues and generational trauma are a valid excuse for his behavior.",
+            "B": "The father's mental health issues and generational trauma do not justify making thoughtless remarks.",
+            "C": "The daughter should not tell her father how she feels.",
+            "D": "The father's words have no impact on the daughter's decisions."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that having mental health issues and generational trauma does not give the father a free pass to make hurtful comments.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their position?",
+          "options": {
+            "A": "The father's mental health issues and generational trauma.",
+            "B": "The daughter's difficulty in finding a good-paying job.",
+            "C": "The father's words from both graduations: 'I’m not proud of you because it was expected.'",
+            "D": "The mother's restriction on talking to the father when the daughter is upset."
+          },
+          "ground_truth": [
+            "A",
+            "C"
+          ],
+          "explanation": "The commenter references the father's mental health issues and generational trauma, as well as his specific words at the graduations, to support the argument that these issues do not justify his behavior.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "The father's mental health issues and generational trauma are more important than the daughter's feelings.",
+            "B": "Mental health issues and generational trauma do not negate the responsibility for one's actions and words.",
+            "C": "The father's words are a direct result of his mental health issues and generational trauma.",
+            "D": "The daughter's decision to go back to school is influenced by her father's words."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that even though the father has mental health issues and generational trauma, this does not mean he can make thoughtless remarks without accountability.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathetic towards the father's struggles.",
+            "B": "Indifferent to the situation.",
+            "C": "Critical of the father's behavior despite his issues.",
+            "D": "Supportive of the daughter's decision to go back to school."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter's tone is critical of the father's behavior, emphasizing that his issues do not justify his thoughtless remarks.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter express about the daughter telling her father how she feels?",
+          "options": {
+            "A": "The daughter should not tell her father how she feels.",
+            "B": "The daughter would not be the bad guy if she told her father how she feels.",
+            "C": "The father's reaction is unpredictable and should be avoided.",
+            "D": "The daughter's feelings are not important in this situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the daughter would not be in the wrong if she were to tell her father how his words made her feel.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lydool",
+      "post_title": "AITA for the water leak.",
+      "scenario_description": "So like usual I go to take a shower, I turn the shower on and the curtain was slightly open, like usual. I didn’t think nothing of it as I went to go grab a piece of clothing. While the water heated up. When I come back the shower head was out of place for some odd reason. And got water all over the floor. I clean up and soak up all the water and fix the shower head. My parents knock on the door upset saying it caused a water leak. This is the first time I ever got water outside of the shower. My mother yelled at me saying it was my fault for not always checking if the shower hesd was turned to the bath and not the floor. My father blamed me and said that now Hes gonna have to change the entire flooring of the bathroom. I know I’m not the most knowledgeable of how water leaks are caused but AITA for the water leak, even tho it was the first time water ever got out the shower?",
+      "post_created_utc": 1752361419,
+      "post_created_iso": "2025-07-12T23:03:39Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2tfdz2",
+      "comment_text": "You're NTA \n\n\n>My mother yelled at me saying it was my fault for not always checking if the shower hesd was turned to the bath and not the floor.\n\n\nWhy the hell would anyone leave the showerhead pointing outwards jn the first place?\n\n\n>My father blamed me and said that now Hes gonna have to change the entire flooring of the bathroom\n\n\nThe floor has never been wet before?\n\n\nYour parents sound a bit dramatic. You cleaned up the mess. Shit happens and I doubt it's as bad as they're making it sound. ",
+      "comment_created_utc": 1752365992,
+      "comment_time_iso": "2025-07-13T00:19:52Z",
+      "comment_length": 501,
+      "comment_score": 6,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lydool/aita_for_the_water_leak/n2tfdz2/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes they are at fault for the water leak.",
+            "B": "The commenter believes they are not at fault for the water leak.",
+            "C": "The commenter believes the showerhead should always be checked.",
+            "D": "The commenter believes the floor needs to be completely replaced."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the commenter is not at fault (NTA) and that the situation was an accident.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief that they are not at fault?",
+          "options": {
+            "A": "The commenter has never had water outside the shower before.",
+            "B": "The commenter's parents are being dramatic.",
+            "C": "The commenter fixed the shower head and cleaned up the water.",
+            "D": "The commenter does not know how water leaks are caused."
+          },
+          "ground_truth": [
+            "A",
+            "C"
+          ],
+          "explanation": "The commenter mentions that this is the first time water got out of the shower and that they cleaned up the mess, which supports their belief that they are not at fault.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to argue that they are not at fault?",
+          "options": {
+            "A": "The commenter argues that the showerhead was left pointing outwards, which is unusual.",
+            "B": "The commenter argues that the floor has never been wet before, so it is not a recurring issue.",
+            "C": "The commenter argues that they cleaned up the mess, showing responsibility.",
+            "D": "The commenter argues that their parents are overreacting and making the situation sound worse than it is."
+          },
+          "ground_truth": [
+            "A",
+            "B",
+            "D"
+          ],
+          "explanation": "The commenter uses the unusual position of the showerhead and the fact that the floor has never been wet before, along with the idea that their parents are overreacting, to argue that they are not at fault.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective is evident in the commenter's response?",
+          "options": {
+            "A": "Frustration with the parents' reaction.",
+            "B": "Relief that the problem was resolved.",
+            "C": "Guilt for causing the water leak.",
+            "D": "Indifference to the situation."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter expresses frustration with their parents' dramatic reaction and the blame placed on them, indicating a sense of unfairness.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter have about the severity of the water leak?",
+          "options": {
+            "A": "The commenter believes the leak is a major issue that requires immediate attention.",
+            "B": "The commenter believes the leak is a minor issue that can be easily fixed.",
+            "C": "The commenter believes the leak is a sign of a larger, underlying problem.",
+            "D": "The commenter believes the leak is as bad as their parents are making it sound."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the leak is not as bad as their parents are making it sound, implying that it is a minor issue.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1ln3obi",
+      "post_title": "AITA for not congratulating my friends for becoming engaged?",
+      "scenario_description": "After my entire life fell apart from completely unrelated reasons to this story I moved to a new city about a year and a half ago. I've since gotten back on my feet with a new job, lifestyle, and even found a group of friends that I used to hang out regularly with. We would cook dinners together, go to concerts, go out to bars, celebrate promotions, birthdays, and have fun together. I am an outsider to the group of friends, they all went to a local college in the city together, which I did not. But I felt like we all clicked. \n\nAt New Years James had told me he would propose to Sarah, both in the friend group, at the end of the year before Christmas, and had asked me to be on stand by for photos since I used to do photography as a side hustle and have a decent camera. I was excited for both of them and said absolutely. \n\nFast forward some time and since March the group chat the friend group had went pretty much inactive. Plans to hangout together started falling through, and I wouldn't see any of the friends at the gym anymore. I figured they were all busy with work, I mean I was too, so I didn't think much of it. I'd occasionally text some of the friends individually but that was it. \n\nA few days ago I get a text from one friend in the group, we will call Daniel, saying I'm being childish for not congratulating James and Sarah for getting engaged. Confused, I open instagram (for the first time in months, I don't use social media anymore really) and I see they are engaged. But, I see from their posts that they had a great party and celebration with everyone in the friend group, but me. Also, all the times I thought everyone was busy with work, I could see on their highlights they were out hiking, sailing, and doing other activities without me.\n\nFast forward to today and I get multiple texts from other people in the group describing me in a load of creative language that I'm essentially being a d\\*\\*\\* for not congratulating James and Sarah and also not giving them an engagement gift. \n\nIt seems to me I was removed unknowingly from this friend group a long time ago but am just finding out. I also feel like they're using this as an excuse to justify removing me from the group. I see no reason to be congratulating two people for becoming engaged when they clearly do not want anything to do with me. Am I happy for them? Yeah, but that's not my business anymore. AITA?",
+      "post_created_utc": 1751163436,
+      "post_created_iso": "2025-06-29T02:17:16Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n0ee3e2",
+      "comment_text": "So they excluded you from the group chat and activities and now they're criticizing you for being out of the loop?\n\n\nAre your friends in middle school? If they want you out of the group, why are they reaching out to pester you? That makes zero sense.\n\n\nYou're NTA ",
+      "comment_created_utc": 1751201138,
+      "comment_time_iso": "2025-06-29T12:45:38Z",
+      "comment_length": 264,
+      "comment_score": 8,
+      "comment_permalink": "/r/AmItheAsshole/comments/1ln3obi/aita_for_not_congratulating_my_friends_for/n0ee3e2/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The friends are justified in their criticism of the original poster.",
+            "B": "The friends' behavior is immature and illogical.",
+            "C": "The original poster should have congratulated the engaged couple.",
+            "D": "The friends are acting in a way that is typical for adults."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the friends' behavior is immature and does not make sense, as they excluded the original poster but then criticized them for being out of the loop.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The friends had a great party and celebration without the original poster.",
+            "B": "The friends were busy with work and other activities.",
+            "C": "The friends excluded the original poster from the group chat and activities but then criticized them for being out of the loop.",
+            "D": "The original poster used to do photography as a side hustle."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter points out the inconsistency in the friends' actions, where they excluded the original poster but then criticized them for not being informed about the engagement.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "If the friends are busy, it is understandable that they did not include the original poster in their activities.",
+            "B": "If the friends exclude someone and then criticize them for not being aware of their personal events, it shows a lack of logical consistency.",
+            "C": "If the friends are having a good time, it is natural that they would not think about including the original poster.",
+            "D": "If the friends are close, it is expected that they would want to share their joy with the original poster."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the friends' actions are illogical because they excluded the original poster but then criticized them for not being informed, which shows a lack of consistency.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference, as the commenter does not seem to care about the situation.",
+            "B": "Skepticism, as the commenter questions the maturity and logic of the friends' actions.",
+            "C": "Anger, as the commenter is visibly upset with the friends' behavior.",
+            "D": "Sadness, as the commenter feels sorry for the original poster."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses skepticism about the friends' behavior, questioning why they would exclude the original poster and then criticize them, which indicates a skeptical and critical tone.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "saved_at": "2025-07-16T03:05:49.558167",
+    "crawler_version": "1.0"
+  },
+  "mcqs_metadata": {
+    "generation_info": {
+      "model": "qwen-max",
+      "temperature": 0.5,
+      "processed_topics": "50/50",
+      "timestamp": "2025-07-28 07:37:18"
+    },
+    "mcq_statistics": {
+      "questions": 224,
+      "single_choice": 210,
+      "multi_choice": 14,
+      "tags": {
+        "claim": 77,
+        "evidence": 49,
+        "reasoning": 49,
+        "emotion": 49
+      }
+    }
+  }
+}

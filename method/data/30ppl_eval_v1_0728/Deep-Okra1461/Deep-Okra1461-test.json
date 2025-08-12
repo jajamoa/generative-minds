@@ -1,0 +1,1639 @@
+{
+  "user_id": "u_617134794123487803",
+  "username": "Deep-Okra1461",
+  "comment_count": 50,
+  "topic_count": 50,
+  "account_created_utc": 1729137541,
+  "account_created_iso": "2024-10-17T03:59:01Z",
+  "user_karma": 4523,
+  "avg_comment_length": 392.9,
+  "comment_frequency_monthly": 50.0,
+  "subreddits_commented": [
+    "AmItheAsshole"
+  ],
+  "time_range": {
+    "first_comment_utc": 1752356108,
+    "first_comment_iso": "2025-07-12T21:35:08Z",
+    "last_comment_utc": 1752632052,
+    "last_comment_iso": "2025-07-16T02:14:12Z"
+  },
+  "topics": [
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1ly0e7a",
+      "post_title": "AITA for refusing to help my sister with her baby every day after work?",
+      "scenario_description": "AITA for refusing to help my sister with her baby every day after work?\n\nI (21F) work full-time, every day except Sundays. My sister (36F) recently had a baby, who is now five months old. I love my nephew and visit them whenever I can after work, but it’s usually a long trip and I get home around 9 p.m. when I go there.\n\nI live with my mom, and she doesn’t like me taking showers after 9 p.m. because of the noise. Even though I pay the water and electric bills, I try to avoid fights and respect that.\n\nMy sister just returned from maternity leave and asked me to come help with the baby every day after work so she can shower and get things done. I told her that it’s difficult for me because of how late I get home and the problems it causes at home. I also mentioned that I’m usually exhausted after work and that going there daily would be too much.\n\nShe said it was fine, but then got really upset and started yelling at me. She brought up personal things, saying I can’t keep a job and making me feel like I’m unreliable. I was just trying to explain my situation, but she seemed to take it as an attack.\n\nNow I don’t feel comfortable going to her house anymore, even though I care about her and the baby. She has a husband and in-laws who could help her too, so I don’t feel like it’s fair for her to expect this much from me.\n\nStill, I worry that my family will think I’m being selfish or uncaring.\nAITA?\n",
+      "post_created_utc": 1752326662,
+      "post_created_iso": "2025-07-12T13:24:22Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2sn64g",
+      "comment_text": "NTA It's a mistake to try to explain your reasons when you have decided the answer is 'no'. Since you have decided the answer is no, there is nothing more to discuss and that means there is no point in going over your reasons. If any family says anything then you tell them that they can go help your sister. Start standing up for yourself. Once people see that you won't take any s\\*\\*t they will stop trying to bother you.",
+      "comment_created_utc": 1752356108,
+      "comment_time_iso": "2025-07-12T21:35:08Z",
+      "comment_length": 424,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1ly0e7a/aita_for_refusing_to_help_my_sister_with_her_baby/n2sn64g/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that the OP should help her sister every day after work.",
+            "B": "The commenter believes that the OP has the right to refuse and should not feel obligated to explain further.",
+            "C": "The commenter believes that the OP's family should be more understanding of her situation.",
+            "D": "The commenter believes that the OP's sister should rely on her husband and in-laws for help."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that once the OP has decided 'no,' there is no need to explain further and she should stand up for herself.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief?",
+          "options": {
+            "A": "The OP's sister has a husband and in-laws who can help.",
+            "B": "The OP is usually exhausted after work and gets home late.",
+            "C": "The OP's mother doesn't like her taking showers after 9 p.m.",
+            "D": "The OP has already explained her reasons to her sister."
+          },
+          "ground_truth": [
+            "D"
+          ],
+          "explanation": "The commenter points out that since the OP has already decided 'no,' there is no point in going over her reasons again.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "Since the OP's sister has other family members, it is unfair to expect daily help from the OP.",
+            "B": "Because the OP is already exhausted and gets home late, she should not be expected to help.",
+            "C": "Once the OP has decided 'no,' explaining further is unnecessary and will not change the outcome.",
+            "D": "The OP's mother's rules about shower times are a valid reason for not helping."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter argues that since the OP has made her decision, further explanation is pointless and will not change the situation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's advice?",
+          "options": {
+            "A": "Empathy for the OP's exhaustion and difficult situation.",
+            "B": "Frustration with the OP's sister for being unreasonable.",
+            "C": "Encouragement for the OP to stand up for herself and set boundaries.",
+            "D": "Disappointment in the OP's family for not supporting her."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter's tone is one of encouragement, urging the OP to stand up for herself and set boundaries.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lxv5mr",
+      "post_title": "AITA For not paying for sons car accident?",
+      "scenario_description": "After my son(17) graduated HS he wanted to come spend a week with me. His mom is the custodial parent. He has a Jeep that she bought him and he wanted to drive that to my house 190 miles away. His mom said he shouldn't drive it because it will break down and was recently out of the repair shop. I said I have AAA and can have it towed up to 200 miles and I would ride with him and my wife would follow us. Jeep made it fine. \n The next day we went for a ride and he was in an accident. No damage to the jeep but other persons car was damaged. We called the police and we can't find updated insurance and registration. We call his mom and find out she canceled the insurance and didn't renew the tags because it wasn't running. Now they are of course being sued by both the other parties insurance 9k for repairs and by the other driver for injuries etc. She claims I should pay for everything because he was in my care. I told her I am not paying a dime because she caused the problem by canceling the insurance and not telling anyone. I definitely would not have let him drive if I had known. ",
+      "post_created_utc": 1752307644,
+      "post_created_iso": "2025-07-12T08:07:24Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2sq2zf",
+      "comment_text": "NTA Holy crap! She knowingly let him drive while uninsured and unregistered? I can understand canceling that stuff if it's not running, but the moment it's running again she needs to either pay for the tags and insurance OR forbid him from driving it until that paperwork is sorted out. If she was deliberately trying to screw your son over she couldn't have done a better job. There is no way you should pay to clean up her mess.",
+      "comment_created_utc": 1752357076,
+      "comment_time_iso": "2025-07-12T21:51:16Z",
+      "comment_length": 430,
+      "comment_score": 3,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lxv5mr/aita_for_not_paying_for_sons_car_accident/n2sq2zf/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The mother should not be held responsible for the accident.",
+            "B": "The mother should have ensured the car was properly insured and registered before allowing her son to drive it.",
+            "C": "The son should have been more careful while driving.",
+            "D": "The father should pay for the damages caused by the accident."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the mother should have taken responsibility for ensuring the car was properly insured and registered before allowing her son to drive it.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief about the mother's responsibility?",
+          "options": {
+            "A": "The son was driving the car when the accident occurred.",
+            "B": "The mother canceled the insurance and did not renew the tags because the car was not running.",
+            "C": "The father had AAA and could have the car towed up to 200 miles.",
+            "D": "The other driver is suing for injuries and damages."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter points out that the mother canceled the insurance and did not renew the tags, which directly supports the claim that she should have ensured the car was properly insured and registered.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "If the car was not running, it should not have been driven at all.",
+            "B": "If the car was running, it needed to be properly insured and registered to be legally driven.",
+            "C": "If the son was in the father's care, the father should be responsible for any accidents.",
+            "D": "If the other driver is suing, the mother must be at fault."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that if the car was running, it needed to be properly insured and registered to be legally driven, which connects the evidence of the canceled insurance and unregistered tags to the conclusion that the mother should have taken responsibility.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Indifference towards the situation.",
+            "B": "Anger and frustration towards the mother's actions.",
+            "C": "Sympathy for the son who was in the accident.",
+            "D": "Concern for the financial implications of the lawsuit."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment expresses anger and frustration towards the mother's actions, as seen in the strong language used, such as 'Holy crap!' and 'There is no way you should pay to clean up her mess.'",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter assert about the father's responsibility in this situation?",
+          "options": {
+            "A": "The father should pay for the damages because he allowed his son to drive the car.",
+            "B": "The father should not pay for the damages because the mother caused the problem by canceling the insurance and not telling anyone.",
+            "C": "The father should share the responsibility with the mother since the son was in his care.",
+            "D": "The father should have checked the car's insurance and registration before allowing his son to drive it."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment clearly states that the father should not pay for the damages because the mother caused the problem by canceling the insurance and not informing anyone.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0hybm",
+      "post_title": "AITA for telling my coworker it's her fault she's broke",
+      "scenario_description": "me (21f) and my coworker (29f) have a lot of overlapping shifts together (service desk at the grocery store.) in the 7ish months i've worked there i can not even begin to tell you the amount of shifts i've covered for her, came in early or stayed late, or anything in between because she loves to call out. every time i ask why she does it (i'm talking like weekly basis) she always just says how much she hates the job and every customer and the work and blah blah.\n\nshe refuses to cover anyones shifts but will just straight up not show up if she doesn't want to work, leaves early randomly cause of \"how much she hates it here\" and is extremely unreliable. she's always complaining about her car and how it needs a lot of money put into it and how the job doesn't pay her enough. i have to hear this like on a daily basis at least. usually multiple times a day.\n\nwe worked together last friday and was pissed off cause the cooling something in her car went and now her ac is funky and she doesn't have money to fix it. i can't take the bitching anymore so i just told her maybe she'd have money if she wasn't a shitty employee and actually worked her shifts. she got pissed at me obviously and said she's the best employee the company has.\n\nour boss called me in yesterday and said he gets why i'm annoyed with her but there's a better way to say things like that. most of our coworkers are in the same boat ; she pisses everyone off but they're basically like you could've been a little nicer. none of them work with her as much as i do and have had to put up with it the way i have. i really don't care if she hates me now i just can't fucking take how lazy she is. am i the asshole for this?",
+      "post_created_utc": 1752586539,
+      "post_created_iso": "2025-07-15T13:35:39Z",
+      "post_flair": null,
+      "comment_id": "n3czm5d",
+      "comment_text": "NTA The approach that works for me is when I have a slacker coworker I don't make friends with them, I don't help them, and I don't do favors for them. I let management deal with them. I focus on my own work. It's like road rage. The best approach is to not interact with the other driver. At work it's best to not interact with the slacker other than the bare minimum necessary.",
+      "comment_created_utc": 1752625000,
+      "comment_time_iso": "2025-07-16T00:16:40Z",
+      "comment_length": 379,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0hybm/aita_for_telling_my_coworker_its_her_fault_shes/n3czm5d/",
+      "stance_label": "NTA",
+      "post_label": "Work",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "It's important to befriend and help all coworkers, regardless of their work ethic.",
+            "B": "Slacker coworkers should not be befriended or helped, and management should handle them.",
+            "C": "The best way to deal with a slacker coworker is to confront them directly.",
+            "D": "Slacker coworkers are generally good people who just need more support."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the best approach is to avoid interacting with and helping slacker coworkers, and to let management handle them.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter provide to support their position?",
+          "options": {
+            "A": "The commenter mentions that they have had positive experiences with slackers in the past.",
+            "B": "The commenter states that they do not make friends with, help, or do favors for slacker coworkers.",
+            "C": "The commenter provides an example of a time when they successfully reformed a slacker coworker.",
+            "D": "The commenter references a study on workplace productivity and slacker behavior."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter explicitly states that they do not make friends with, help, or do favors for slacker coworkers, which supports their overall position.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect their evidence to their conclusion?",
+          "options": {
+            "A": "The commenter argues that being friendly and helpful to slackers will improve their work performance.",
+            "B": "The commenter suggests that avoiding interaction with slackers and letting management handle them is the most effective strategy, similar to how one avoids road rage.",
+            "C": "The commenter believes that direct confrontation with slackers is the best way to change their behavior.",
+            "D": "The commenter claims that providing more support and understanding to slackers will make them more reliable."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses an analogy to road rage, suggesting that the best approach is to avoid interaction and let management handle the situation, rather than engaging directly.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective is evident in the commenter's statement?",
+          "options": {
+            "A": "The commenter expresses a sense of frustration and a desire to distance themselves from the slacker coworker.",
+            "B": "The commenter shows empathy and a willingness to understand the slacker coworker's situation.",
+            "C": "The commenter feels optimistic about the potential for the slacker coworker to change.",
+            "D": "The commenter is indifferent and does not care about the slacker coworker's behavior."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter's tone reflects frustration and a desire to minimize interaction with the slacker coworker, similar to how one might avoid a road rage situation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lz3113",
+      "post_title": "AITA for not telling a woman she was about to sit in poop?",
+      "scenario_description": "I (26M) was at a crowded park recently where there were food trucks set up and people sitting around eating. Seating was pretty limited, and most people were sitting on this low concrete wall that runs along the edge of a parking lot. On the other side of the wall is a grassy area that's level with the top of the wall, so people sit with their backs toward the grass and legs facing the lot.\n\nI had just gotten my food when I noticed the only free spot left. At the same time, I saw a girl, well dressed for the park also walking toward it. She saw it first and was headed that way, but I was closer and got there before her despite her running when she saw me approaching it.\n\nAs I got to it, I looked down at the grass behind the wall and saw a big pile of dog poop right where someone’s lower back or clothes would land if they leaned or sat back. It was pretty gross, and I decided not to sit.\n\nRight then, she walked up and looked annoyed, saying, “Seriously? I was going to sit there.” I didn’t want to make a thing of it, so I just stepped aside and said, “Go ahead, you can have it.”\n\nShe immediately sat down without checking behind her and just a second later jumped up with a disgusted look on her face. The poop was stuck to the back of her skirt. She turned to me and snapped, “Why didn’t you say anything?”\n\nI told her, “I saw it, yeah, but I didn’t know how you were planning to sit. For all I knew you were just going to perch on the edge or sit upright. It’s a park — people walk their dogs here. You’ve got to check before sitting down.”\n\nShe kept insisting I should’ve warned her, but I told her I wasn’t trying to be petty, I genuinely didn’t know how far back she was going to lean or sit, and it wasn’t really my responsibility to check the ground for her. She could have sat only on the wall and not on the grass and would have been fine.\n\nShe eventually walked off frustrated, but now I’m wondering if I should’ve just said something anyway. But I feel like especially since she was so confrontational about the spot it wasn't really necessary.\n\nAITA?",
+      "post_created_utc": 1752438641,
+      "post_created_iso": "2025-07-13T20:30:41Z",
+      "post_flair": "Asshole",
+      "comment_id": "n30mhkk",
+      "comment_text": "NTA She should have known, by the fact that you decided not to sit there, that there was a problem with that spot. She wouldn't have known what the problem was until she looked around but there had to be a problem. If she wants to spend her life depending on the kindness of strangers then she has to accept that sometimes the strangers won't be so kind.",
+      "comment_created_utc": 1752464616,
+      "comment_time_iso": "2025-07-14T03:43:36Z",
+      "comment_length": 354,
+      "comment_score": 3,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lz3113/aita_for_not_telling_a_woman_she_was_about_to_sit/n30mhkk/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that the woman should have been more observant and checked the area before sitting.",
+            "B": "The commenter believes that the woman was justified in expecting a warning from the man.",
+            "C": "The commenter believes that the man should have warned the woman about the dog poop.",
+            "D": "The commenter believes that the man was being petty by not warning the woman."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The comment emphasizes that the woman should have known there was a problem with the spot since the man decided not to sit there, and she should not depend on the kindness of strangers.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The man saw the dog poop and decided not to sit there.",
+            "B": "The woman was well-dressed for the park.",
+            "C": "The woman was running to get to the spot first.",
+            "D": "The man told the woman he saw the dog poop but didn't warn her."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The comment uses the fact that the man decided not to sit there as evidence that the woman should have known there was a problem with the spot.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The man's decision not to sit there indicates that the spot was undesirable, and the woman should have noticed this.",
+            "B": "The woman's well-dressed appearance suggests she should have been more careful.",
+            "C": "The man's proximity to the spot means he had a better view and should have warned her.",
+            "D": "The man's lack of warning was a sign of his pettiness."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter reasons that the man's decision not to sit there should have alerted the woman to a problem, and she should have checked the area herself.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's argument?",
+          "options": {
+            "A": "Sympathy for the woman who sat in the dog poop.",
+            "B": "Indignation at the woman's expectation of help from the man.",
+            "C": "Frustration with the man for not warning the woman.",
+            "D": "Disappointment in the woman's lack of gratitude."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment has an indignant tone, suggesting that the woman's expectation of help from the man is unreasonable and that she should not depend on the kindness of strangers.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter suggest about the woman's behavior?",
+          "options": {
+            "A": "The woman was being overly confrontational.",
+            "B": "The woman was not observant enough and should have checked the area.",
+            "C": "The woman was justified in her anger towards the man.",
+            "D": "The woman was right to expect the man to warn her."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment suggests that the woman should have been more observant and checked the area before sitting, rather than depending on the man to warn her.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lyrp8d",
+      "post_title": "AITA for Adjusting my In-Laws Thermostat while Dog Sitting?",
+      "scenario_description": "Never thought I would be posting here, but I need some help on how much I should dig in here…\n\nMy in-laws, who live about a 30 minute drive away, left for a 3 week vacation and asked us to watch their 2 dogs (one of which is older and needs special diet/meds/attention). My wife and I have 3 dogs of our own and a smaller house and yard, so the wife and their parents decided on house sitting while they were gone and just relocating to the in-laws place as the better choice for all logistics.\n\nWe moved a ton of stuff over, my wife is 6 months pregnant and we have a 2-year-old, so staying for a few weeks involved more than just a small bag as you can imagine. I even decided to breakdown my home office and move equipment so I would be here for the remote work hours with the dogs. Been going well, lots of furries running round the yard, getting all the pets and treats they could want.\n\nThe conflict. They (father-in-law) has a smart thermostat for the HVAC/AirCon. It is set with a predetermined automatic schedule. During the day he has it programmed set at 77F/25C. We are a little warmer than preferred during the day, we have popped it down a few times to 74F/23C to take the edge off, but have left it alone.\n\nAt night, the program on the thermostat is set to 80F/26C!!! Thermometer in the bedrooms shows actual temperatures to be about 78F/25.5C.\n\nAfter laying down on the first night for a bit and both myself and my pregnant wife uncomfortable and having trouble falling asleep with it being warmer than how we sleep at our house, I did a manual adjustment down to 74F/23C. I continued and made a manual adjustment down to this temperature each night. I have adjusted it now for a week  down to this lower temperature just so my family could be more comfortable and get a better nights sleep.\n\nFather-in-Law texted this morning upset. Saying to leave it alone, he received an energy and usage report that there has been an increase in the last week, and that we can sleep in the basement at night (no bed in basement and 6-month pregnant wife).\n\nI responded that they should call us later today and we could discuss further, but the plan was to reimburse them the energy cost difference for while we were staying here. I didn’t tell him this, but I plugged in house size, current energy prices, and HVAC unit into ChatGPT to estimate energy cost difference and AI said maybe a $30 - $40 cost difference for the little lower temperature at night for the three weeks. I don’t know how accurate this estimate is, but I would gladly pay $100+ if it meant my wife could sleep in a bed at a reasonable temperature and have no more argument on the subject.\n\nJudge me Reddit, be brutal, any feedback to help me decide how much push-back to give. AITA for adjusting my father-in-laws thermostat?\n\nEdit for detail: The in-laws 3 week vacation is a river cruise in Europe, so trying to just handle most things rather than bug them with too many texts while they are abroad.\n\nEdit 2: Just heard back from them after I offered to pay. He said “it’s potential damage to the hvac system with multiple temperature changes daily.  Energy cost is secondary.”  Lowering the HVAC temperature once at bedtime to 74 degrees, does that really run a risk of damage? (US Central Air, Lennox Compressor from 2022)\n\nEdit 3: They ended up calling as I asked, though begrudgingly as he said he didn’t know what needed to be talked about when I kept asking we all talk. One of my texts in the back-and-forth was that the unnecessary conflict was stressing out the pregnant wife and that realigned them a bit. I was in the shower with the call timing sadly, but he is going to remotely reprogram it to schedule night temps down to 75. In hindsight, how in the world did this devolve into conflict!?! I appreciate all the genuine feedback and responses so I had an understanding how firm I need to be with the situation.",
+      "post_created_utc": 1752410022,
+      "post_created_iso": "2025-07-13T12:33:42Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2ygn5f",
+      "comment_text": "NTA I'd tell him point blank that we will adjust the temps as needed for OUR comfort. If he's concerned about the system then he can explain how to change them to our preferred settings. After they return, they can change the settings back and present the electricity bills from the six months before we went there and the bill for the time we were there. That way we can figure out the difference between their average bill and the bill from when we were there. We can then reimburse them that amount. The one thing I would not allow is for him to think he can demand that we leave the system alone and just deal with the heat.",
+      "comment_created_utc": 1752437810,
+      "comment_time_iso": "2025-07-13T20:16:50Z",
+      "comment_length": 628,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lyrp8d/aita_for_adjusting_my_inlaws_thermostat_while_dog/n2ygn5f/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The in-laws should have no say in the thermostat settings while they are away.",
+            "B": "The commenter and their family have the right to adjust the thermostat for their comfort.",
+            "C": "The in-laws' concerns about the HVAC system are valid and should be followed.",
+            "D": "The commenter should not offer to reimburse the in-laws for any additional energy costs."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the commenter and their family should be able to adjust the thermostat for their comfort, even if it means changing the in-laws' settings.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their position?",
+          "options": {
+            "A": "The in-laws are on a river cruise in Europe and should not be bothered with such details.",
+            "B": "The commenter's wife is 6 months pregnant and needs to be comfortable.",
+            "C": "The in-laws' thermostat is set to an uncomfortable temperature at night.",
+            "D": "The commenter has already moved a lot of personal items to the in-laws' house."
+          },
+          "ground_truth": [
+            "B",
+            "C"
+          ],
+          "explanation": "The commenter mentions that the wife is 6 months pregnant and needs to be comfortable, and that the in-laws' thermostat is set to an uncomfortable temperature at night, which supports their need to adjust the thermostat.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "The in-laws' absence justifies the commenter's actions without further discussion.",
+            "B": "The discomfort of the pregnant wife and the high nighttime temperature justify adjusting the thermostat.",
+            "C": "The in-laws' concern about the HVAC system is more important than the commenter's comfort.",
+            "D": "The commenter's willingness to pay for the energy difference is the primary reason for adjusting the thermostat."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the discomfort of the pregnant wife and the high nighttime temperature make it necessary to adjust the thermostat, connecting the evidence to the conclusion.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference to the in-laws' preferences and rules.",
+            "B": "Frustration and determination to ensure the comfort of the commenter's family.",
+            "C": "Respect and understanding for the in-laws' concerns about the HVAC system.",
+            "D": "Willingness to compromise and avoid conflict."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses frustration and a strong determination to ensure the comfort of their family, particularly the pregnant wife, despite the in-laws' objections.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What stance does the commenter take regarding the in-laws' concerns about the HVAC system?",
+          "options": {
+            "A": "The in-laws' concerns are valid and should be strictly followed.",
+            "B": "The in-laws' concerns are secondary to the comfort of the commenter's family.",
+            "C": "The in-laws' concerns are irrelevant and should be ignored.",
+            "D": "The in-laws' concerns should be addressed by reprogramming the thermostat to a middle ground."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter acknowledges the in-laws' concerns but prioritizes the comfort of their own family, indicating that the in-laws' concerns are secondary.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0mo57",
+      "post_title": "AITA for not covering my neighbor’s grocery bill after they repeatedly borrowed my stuff without returning it?",
+      "scenario_description": "I (24F) live in an apartment building and have a neighbor, Kyah (27F), who’s friendly but a bit careless. Over the past six months, Kyah’s borrowed several things from me tools, a ladder, even my Wi-Fi password when her internet was down. I didn’t mind at first, but she’s terrible about returning stuff. My screwdriver set is still missing, she kept my ladder for weeks until I asked for it back, and she used my Wi-Fi for a month without offering to chip in for the bill. Each time, I’ve been polite and let it slide, thinking she’d get better about it. Last weekend, I ran into Kyah at the grocery store. She was at the checkout with a cart full of stuff but realized she’d forgotten her wallet. She asked if I could cover her $85 bill, promising to pay me back that evening. I hesitated because of her track record with my stuff and because I’m on a tight budget myself. I told her I could spot her $20 for essentials but couldn’t cover the whole bill, especially since it included things like expensive snacks and beer. She got frustrated, saying I was unneighborly and that she’d have done the same for me. She ended up leaving most of her items behind and only buying what she could with the cash she found in her pocket. Since then, Kyah’s been giving me the cold shoulder, and another neighbor said Kyah called me stingy. I feel bad because I know forgetting a wallet is stressful, and maybe I could’ve helped more since we’re neighbors. But I also feel like her pattern of borrowing without reciprocating made me wary. \n\nAITA for not covering her full grocery bill?",
+      "post_created_utc": 1752597494,
+      "post_created_iso": "2025-07-15T16:38:14Z",
+      "post_flair": null,
+      "comment_id": "n3chryz",
+      "comment_text": "NTA I'm going to credit you with not being that dumb. \"thinking she’d get better about it\" let me ask you this, if she behaves this way now why do you think she'd 'get better about it'? You really think that the people who use you like a doormat will change their behavior just because? No, they won't. You shouldn't give her anything, loan her anything, or help her in any other way. Pretend she's invisible. She's a user, she'll use you for anything and everything she can get from you. If you had a leech attached to your body would you encourage it to take more of your blood?",
+      "comment_created_utc": 1752619068,
+      "comment_time_iso": "2025-07-15T22:37:48Z",
+      "comment_length": 580,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0mo57/aita_for_not_covering_my_neighbors_grocery_bill/n3chryz/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The neighbor will eventually change her behavior and become more responsible.",
+            "B": "The neighbor is a user who will continue to take advantage of the situation.",
+            "C": "The neighbor deserves to be helped because they are in a difficult situation.",
+            "D": "The neighbor's behavior is justified given the circumstances."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the neighbor is a user who will not change her behavior and will continue to take advantage of the situation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief about the neighbor's behavior?",
+          "options": {
+            "A": "The neighbor has a history of borrowing items and not returning them.",
+            "B": "The neighbor has shown gratitude for the help she received.",
+            "C": "The neighbor has offered to pay back the money borrowed.",
+            "D": "The neighbor has been consistently reliable in the past."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter points out that the neighbor has a history of borrowing items and not returning them, which supports the belief that the neighbor is a user.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The neighbor's past behavior indicates a pattern of irresponsibility, suggesting she will not change.",
+            "B": "The neighbor's past behavior shows that she is trustworthy and will improve over time.",
+            "C": "The neighbor's past behavior is irrelevant to her current request for help.",
+            "D": "The neighbor's past behavior is a one-time mistake and should be forgiven."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter uses the logic that the neighbor's past behavior of borrowing and not returning items indicates a pattern of irresponsibility, suggesting she will not change.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Empathy and understanding for the neighbor's situation.",
+            "B": "Frustration and a sense of being taken advantage of.",
+            "C": "Indifference and a lack of concern for the neighbor's behavior.",
+            "D": "Excitement and enthusiasm for helping the neighbor."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a sense of frustration and feeling taken advantage of, as evidenced by the strong language and the analogy to a leech.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What advice does the commenter give to the original poster (OP) regarding the neighbor?",
+          "options": {
+            "A": "Continue to lend items and help the neighbor, hoping she will change.",
+            "B": "Stop lending items and avoid helping the neighbor in any way.",
+            "C": "Offer to help the neighbor with smaller, less significant things.",
+            "D": "Confront the neighbor about her behavior and demand changes."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter advises the OP to stop lending items and avoid helping the neighbor in any way, as the neighbor is seen as a user who will not change.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lyuke8",
+      "post_title": "AITA for refusing to go home and feed my mum’s dogs",
+      "scenario_description": "I (23F) live at home with my twin sister (23F) and our mum (52F), who is currently away for two weeks. Our mum has two small dogs, one of whom is unwell and needs to eat regularly, or she gets sick.\n\nFor context, I’m at university and also have a part-time job. My sister starts uni in a couple of months and works a temp job here and there. She’s very organised and she has a calendar on the fridge where we note down any plans. I had written that I’d be working from 10 AM to 6 PM on Saturday and 12 PM to 6 PM on Sunday and also noted that I’d be watching the football with friends on Sunday evening at the pub (I invited her and her boyfriend too).\n\nOn Saturday, she was out all day, and the dogs were alone—it happens sometimes and isn’t usually a huge deal. On Sunday, I walked the dogs before leaving for work. My sister and her boyfriend had already left to go to a local market. Around 2:30 PM, I texted her asking when she’d be home. She replied, saying she wasn’t going home at all.\n\nI reminded her I was working until 6 PM and heading straight to the pub after, so I wouldn’t be home to feed the dogs. She suddenly panicked, saying I never told her I wouldn’t be stopping at home first and that the dogs would be left alone and unfed for 12+ hours.\n\nI told her that my schedule was on the fridge, and it’s not reasonable to expect I’d go all the way home for 10 minutes just to turn around and head back into the city where the pub is—especially since I was already at work in the city. To me, it seemed obvious that I’d go straight from work. She said I was being rude and unhelpful and told me to figure something out.\n\nI told her there was nothing for me to figure out. She had no set plans that day and could’ve easily been home. She asked me to leave work, go home, sit with the dogs for 10 minutes, then head back out. I refused, and she claimed it was my fault for not explicitly telling her I wouldn't be coming home between work and the football. I told her to stop blaming me and to take responsibility, especially since she knew both my work and football plans.\n\nShe called me an asshole (along with a string of other things) and told me I had a bad attitude and that she wouldn’t be engaging with me any more. My mum is now involved and seems to be blaming me too.\n\nSo now, I have to miss the start of the football match with my friends and feed the dogs, and I’m really frustrated. I honestly don’t see how I’m at fault here—but my sister insists I am.\n\nAITA?",
+      "post_created_utc": 1752417977,
+      "post_created_iso": "2025-07-13T14:46:17Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2ynzlf",
+      "comment_text": "NTA You shared your schedule. No one will respect you if every time you're challenged you back down. \"She called me an asshole (along with a string of other things) and told me I had a bad attitude and that she wouldn’t be engaging with me any more\" I'd shrug and say \"So what? I'm still not going back to deal with the dogs\".",
+      "comment_created_utc": 1752439977,
+      "comment_time_iso": "2025-07-13T20:52:57Z",
+      "comment_length": 326,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lyuke8/aita_for_refusing_to_go_home_and_feed_my_mums_dogs/n2ynzlf/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The original poster (OP) should always be flexible and adjust their plans to help others.",
+            "B": "The OP should stand firm on their plans and not back down when challenged.",
+            "C": "The OP's sister should have been more organized and responsible for the dogs.",
+            "D": "The OP's mother should intervene and resolve the conflict."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the OP should not back down and should stand firm on their plans, as no one will respect them if they do otherwise.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The OP shared their schedule with their sister.",
+            "B": "The OP's sister called the OP an asshole and other names.",
+            "C": "The OP's sister had no set plans for the day.",
+            "D": "The OP's mother is now involved in the conflict."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter notes that the OP shared their schedule, which supports the idea that the OP was clear about their plans and should not be expected to change them.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "If the OP changes their plans every time they are challenged, they will lose respect.",
+            "B": "Since the OP's sister had no set plans, she should have been more responsible.",
+            "C": "The OP's mother should mediate the situation to ensure fairness.",
+            "D": "The OP's sister's emotional outburst justifies the need for the OP to be more flexible."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter argues that if the OP backs down every time they are challenged, they will not be respected, which connects the evidence of the shared schedule to the conclusion that the OP should stand firm.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Empathy for the OP's frustration and support for their stance.",
+            "B": "Disappointment in the OP's sister for not being more responsible.",
+            "C": "Frustration with the OP's mother for getting involved in the conflict.",
+            "D": "Indifference to the situation, suggesting it is not a big deal."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter shows empathy for the OP's frustration and supports their stance, indicating a supportive and understanding emotional tone.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0kx7p",
+      "post_title": "AITA for not footing the bill for a birthday dinner after my friend ordered enough sushi for a small country?",
+      "scenario_description": "Throwaway also, English isn’t my first language, so sorry if anything sounds off. I just need an outside opinion.\n\nMy friend Beth recently turned 18 and had a birthday dinner at a fancy restaurant. There were about 15 or 20 of us. She is really close with two girls, Lia and Kat. They have been best friends for years and have this very intense, no-boundaries type of friendship. They go through each other’s phones, eat off each other’s plates, that kind of thing.\n\nI met them last year when uni started. I am not used to that. Even with friends I have known forever, I ask before I touch their stuff or try their food. \nThe trio teases me for this habit & they say I am too formal.\n\nAt dinner, Lia, told everyone to order whatever they wanted and that it was all covered. I asked if she was sure and she said, “Me saying it is the same as Beth saying it.” It felt a bit off, but I let it go.\n\nI just ordered a Coke and shared some of what was on the table. I asked Lia if I could get a beer and she gave me a weird look and said, “Idk” So I asked Beth, and she said I could but that her parents do not like alcohol, so I would need to pay for it myself. I said that was not a problem but still was getting dirty looks from Lia (maybe she wanted a beer too but didn’t want to pay idk) so ended up not ordering it to avoid more awkwardness.\n\nMeanwhile, Lia and Kat kept ordering a lot of sushi. I love sushi too, but for a group that size, it did not seem practical. I just ate whatever was already there.\n\nLater, I saw Beth sitting with my friend Millie and she looked really upset. Her mom had called and was angry because the bill was much higher than expected. Beth said Lia went overboard with the ordering and now she had to deal with it. I felt really bad said maybe next time she could plan a set menu or do the ordering herself. We stayed with her, comforted her, and tried to help her feel better. Lia was across the room laughing acting like nothing happened.\n\nThe bill got paid and we all left. Millie and I just gave each other that look like, “That was wild,” and moved on.\n\nA few days later, Lia sent me angry texts. She said Millie and I were stirring up drama and trying to come between her and Beth and ruined her rep infront of Beth’s parents. She also said that if we felt so bad for Beth, we should send her mom the money.\n\nI was honestly shocked. We did not say anything bad about Lia. We just tried to be kind when Beth was upset.\n\nI told her no. Respectfully, we are broke uni students & we were not the ones telling people to order freely.\n\nNow everything is awkward and tense and I hate it. I want to sort it out, but I do not think I should be blamed for all of it right? Sorry if this all sounds like petty high school drama.\n\nShould I have just paid to keep the peace?\n\nTL;DR: Friend’s birthday dinner got out of hand. I barely ordered anything, comforted her when she got upset, and now another friend says I caused drama and should help pay. I said no. AITA?",
+      "post_created_utc": 1752593571,
+      "post_created_iso": "2025-07-15T15:32:51Z",
+      "post_flair": null,
+      "comment_id": "n3bltfx",
+      "comment_text": "NTA Everyone saw who was ordering the most. I think Lia is angry because she was hoping that she could get away with ordering all that sushi and no one would notice. Of course the person who is paying WILL notice, that shows you how dumb Lia is. Beth is the one having the birthday celebration but Lia is indulging in all that sushi? Lia is the one who should be paying the mom back, not you.",
+      "comment_created_utc": 1752609567,
+      "comment_time_iso": "2025-07-15T19:59:27Z",
+      "comment_length": 392,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0kx7p/aita_for_not_footing_the_bill_for_a_birthday/n3bltfx/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "Lia should be the one to pay back Beth's mom for the excessive sushi order.",
+            "B": "The commenter and Millie caused drama by comforting Beth.",
+            "C": "Beth should have planned a set menu to avoid the high bill.",
+            "D": "Lia was justified in ordering a lot of sushi since it was Beth's birthday."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The comment emphasizes that Lia should be the one to pay back Beth's mom because she ordered the most sushi.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "Lia and Kat are best friends with Beth and have no boundaries.",
+            "B": "Lia and Kat kept ordering a lot of sushi, which made the bill much higher than expected.",
+            "C": "The commenter and Millie comforted Beth when she was upset.",
+            "D": "Lia sent angry texts to the commenter and Millie, accusing them of stirring up drama."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment uses the fact that Lia and Kat kept ordering a lot of sushi, which made the bill much higher than expected, to support the belief that Lia should pay back Beth's mom.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "Because Lia and Kat are close friends with Beth, they should be allowed to order as much as they want.",
+            "B": "Since the commenter and Millie comforted Beth, they are responsible for the high bill.",
+            "C": "Lia's excessive ordering led to a high bill, and therefore, she should be the one to pay it back.",
+            "D": "The commenter and Millie should pay back the bill because they did not stop Lia from ordering too much sushi."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The logic is that Lia's excessive ordering led to a high bill, and therefore, she should be the one to pay it back.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's argument?",
+          "options": {
+            "A": "Indifference towards the situation and the people involved.",
+            "B": "Anger and frustration towards Lia for her actions and accusations.",
+            "C": "Sympathy for Beth and her parents for having to deal with the high bill.",
+            "D": "Disappointment in the commenter and Millie for not stopping Lia from ordering too much sushi."
+          },
+          "ground_truth": [
+            "B",
+            "C"
+          ],
+          "explanation": "The comment expresses anger and frustration towards Lia for her actions and accusations, and sympathy for Beth and her parents for having to deal with the high bill.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m02rxj",
+      "post_title": "AITA for letting my boyfriend tell a friend to find her own ride home from the beach?",
+      "scenario_description": "Took a friend to the beach after she’d been begging to go. She brought no money, ate our food, drank my alcohol, then disappeared to make out with two random guys. We stopped our day to look for her, made eye contact, and got ignored.\n\nShe has a pattern of flaking, mooching, and crossing boundaries like commenting on my looks, smacking my butt, and getting upset when I didn’t want her sleeping in my bed. My boyfriend’s always been uncomfortable with how clingy she is with me.\n\nWhen she finally showed back up, he told her she could ride with the guys she was with since she clearly wasn’t with us. She started crying, and he still told her she could ride back with us, but it’s not fair for her to disappear and treat us like a free ride. She chose to leave and turned her location off. Now she’s acting like we abandoned her.\n\nAITA? (Or we rather) \n",
+      "post_created_utc": 1752537460,
+      "post_created_iso": "2025-07-14T23:57:40Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n372jpw",
+      "comment_text": "ESH \"She has a pattern of flaking, mooching, and crossing boundaries\" so you knew something like this was going to happen and you took her along anyway?",
+      "comment_created_utc": 1752548294,
+      "comment_time_iso": "2025-07-15T02:58:14Z",
+      "comment_length": 152,
+      "comment_score": -13,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m02rxj/aita_for_letting_my_boyfriend_tell_a_friend_to/n372jpw/",
+      "stance_label": "ESH",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "D"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The friend's behavior at the beach was unexpected and out of character.",
+            "B": "The friend's behavior at the beach was predictable based on her past actions.",
+            "C": "The boyfriend was entirely in the wrong for telling the friend to find her own ride.",
+            "D": "The friend's behavior was justified given the circumstances."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the friend's behavior was predictable due to her established pattern of flaking, mooching, and crossing boundaries.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific facts or details does the commenter use to support their belief?",
+          "options": {
+            "A": "The friend brought no money, ate their food, and drank their alcohol.",
+            "B": "The friend has a history of flaking, mooching, and crossing boundaries.",
+            "C": "The friend made out with two random guys and ignored them when they tried to find her.",
+            "D": "The friend turned off her location and acted like they abandoned her."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter specifically mentions the friend's pattern of flaking, mooching, and crossing boundaries as evidence for their belief.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "The friend's behavior at the beach was a one-time incident and not related to her past actions.",
+            "B": "The friend's past behavior indicates a consistent pattern, making her actions at the beach predictable.",
+            "C": "The friend's behavior at the beach was a result of the environment and not her character.",
+            "D": "The friend's behavior at the beach was an isolated incident and not indicative of her true nature."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the friend's past behavior to argue that her actions at the beach were predictable and part of a consistent pattern.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathetic towards the friend and understanding of her behavior.",
+            "B": "Critical of the friend and frustrated with her repeated actions.",
+            "C": "Indifferent to the situation and offering a neutral perspective.",
+            "D": "Supportive of the friend and critical of the original poster and her boyfriend."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is critical and frustrated, emphasizing the friend's negative pattern of behavior and the predictability of the situation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter imply about the original poster's decision to take the friend to the beach?",
+          "options": {
+            "A": "It was a wise decision because the friend deserved a chance to behave differently.",
+            "B": "It was a poor decision given the friend's history of problematic behavior.",
+            "C": "It was a neutral decision with no significant implications.",
+            "D": "It was a good decision because it allowed the friend to have a fun day out."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter implies that taking the friend to the beach was a poor decision, given her known pattern of problematic behavior.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lztp31",
+      "post_title": "AITA for refusing to travel an hour to feed my friend’s cat?",
+      "scenario_description": "I, 27F, recently agreed to take care of my friend’s cat while she was away traveling for a few days.\n\nWe’re not really close friends, but she asked me because her apartment is close to my work, and I live an hour away from my office.\n\nFrom last Wednesday to Saturday morning, I stayed at her place for cat sitting, and I was happy to help because it was reduced commute for me and it’s not much work to take care of a cat.\n\nShe was supposed to be back Saturday night, and I left enough food for the day for the cat as I was leaving around noon.\n\nAround 6PM as I was having dinner with friends at a restaurant back in my city, my friend called me to tell me that her flight had been cancelled, and they rebooked her flight so she will arrive Sunday noon instead of Saturday night.\n\nShe asked me if I could come back to her apartment to feed the cat, as I am the only one with the spare key to her apartment.\n\nI told her I am in the middle of dinner and we are going to a party afterwards, nothing bad will happen to the cat if she skips a meal or two until tomorrow noon, so I can’t drop everything now and travel 2 hours (back and forth) to feed the cat.\nI did offer, if for whatever reason her flight is further delayed, then I will come on Sunday to feed the cat.\n\nThen she told me she can’t believe I would let a poor innocent animal starve and suffer, just to be able to party and enjoy myself. \nShe said this is animal abuse and she will have to report me.\n\nShe hung up on me, and then she sent me a series of text that switches from begging for me to go to her apartment to cursing me that I am a cruel animal abuser.\n\nI ignored all her messages and today I gave her key to a common friend so she can get the key back, as I don’t feel comfortable talking to her anymore unless she reaches out with an apology.\n\nA part of me does feel bad about what happened tho, maybe she was just paranoid about her cat suffering?\n\n\nSo what do you think…. AITA for refusing to travel an hour to feed her cat in this situation??\n\n\n\n",
+      "post_created_utc": 1752516292,
+      "post_created_iso": "2025-07-14T18:04:52Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n364mvd",
+      "comment_text": "INFO I'm not clear on the agreement. Usually the way these things work is you BOTH know what is expected if the pet owner doesn't arrive on time. You left at noon when she was supposed to be home later that night. How long were you supposed to stay there on Saturday, and why would she call you at 6pm if she knew you would be leaving earlier? And did neither of you consider what would happen if her flight was delayed?",
+      "comment_created_utc": 1752536457,
+      "comment_time_iso": "2025-07-14T23:40:57Z",
+      "comment_length": 420,
+      "comment_score": -6,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lztp31/aita_for_refusing_to_travel_an_hour_to_feed_my/n364mvd/",
+      "stance_label": "INFO",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "E"
+          ]
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lztcql",
+      "post_title": "AITA for preventing my pregnant sister access to my food?",
+      "scenario_description": "My sister (31F) is staying with me temporarily after leaving her husband. I (30M) have a small apartment but I let her move in because she had nowhere else to go and she’s six months pregnant. I wasn't very pleased about this situation but she is my sis afterall.\n\nThe main issue has been food. I’m pretty disciplined about what I eat because I am in bulk stage and hitting the gym regularly. I portion things, label them and plan for the entire week. But every other day something’s gone. Makes me crazy.\n\nShe’ll drink all my expensive shakes, polish off meals I’ve prepped for work, eat snacks I’ve saved for post run, and even finish leftovers I was planning to turn into new meals. When I bring it up, she shrugs and says things like “Cravings hit hard” or “Hormones” or \"You are being mean\".\n\nI asked her to replace things she finishes or at least ask before taking something. Or hell, manage her own food for god's sake. She refuses to do anything about it.\n\nSo last week I ordered a small mini fridge and set it up in my bedroom. It’s just big enough for my meal prep, snacks and drinks. I didn’t make a scene about it. I just quietly started putting all my stuff there.\n\nShe noticed two days later and got pissed. She said I was being “childish,” “dramatic” and “treating her like a thief.” I calmly told her I was tired of my groceries disappearing and that this was the easiest way to avoid fights.\n\nNow she’s sulking and has told our parents after her failed marriage, her brother is also alienating her. And she is just a burden for everyone. My mom called and said I should “pregnancy isn’t easy” and especially for her situation.\n\nI don’t think I’m being cruel. I’m still letting her live here rent-free, and I’ve even offered to order food or cook together, but I just want my food to be left alone. A part of me understands she is going through trouble. But, at my expense?\n\nAITA?",
+      "post_created_utc": 1752515563,
+      "post_created_iso": "2025-07-14T17:52:43Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n35kemc",
+      "comment_text": "NTA Start thinking long term. Are you prepared to support her and her child? If not, what's the plan? What if she refuses to cooperate?",
+      "comment_created_utc": 1752530001,
+      "comment_time_iso": "2025-07-14T21:53:21Z",
+      "comment_length": 135,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lztcql/aita_for_preventing_my_pregnant_sister_access_to/n35kemc/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The brother should unconditionally support his sister and her child.",
+            "B": "The brother is not the a**hole in this situation.",
+            "C": "The sister should be more considerate of her brother's needs.",
+            "D": "The brother should move out to avoid further conflict."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment explicitly states 'NTA' (Not The A**hole), indicating that the commenter believes the brother is not at fault.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The brother is still letting her live there rent-free.",
+            "B": "The sister is going through a difficult time due to her pregnancy and separation.",
+            "C": "The brother has offered to order food or cook together.",
+            "D": "The brother has set up a mini fridge in his bedroom to protect his food."
+          },
+          "ground_truth": [
+            "A",
+            "C"
+          ],
+          "explanation": "The commenter mentions that the brother is still providing a place for his sister to stay rent-free and has offered to order food or cook together, which supports the claim that the brother is not being unreasonable.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "The brother is justified because he is still providing significant support.",
+            "B": "The sister's behavior is excused due to her pregnancy and emotional state.",
+            "C": "The brother should be more understanding of his sister's situation.",
+            "D": "The sister should be responsible for her own food and respect her brother's boundaries."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter suggests that the brother is not in the wrong because he is already providing substantial support, such as letting her live there rent-free and offering to cook together, despite the sister's behavior.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Empathy for the sister's difficult situation.",
+            "B": "Frustration with the sister's lack of consideration.",
+            "C": "Support for the brother's actions and decisions.",
+            "D": "Concern about the long-term implications of the situation."
+          },
+          "ground_truth": [
+            "C",
+            "D"
+          ],
+          "explanation": "The commenter expresses support for the brother's actions and also raises concerns about the long-term implications of the situation, suggesting a balanced but supportive perspective.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lzlmfz",
+      "post_title": "AITA for telling my mom to get a job?",
+      "scenario_description": "Obligatory: this is a throwaway, I’m on mobile, my formatting is probably shit, and I’m furious right now and also feeling a bit guilty so I apologize if this is a bit all over the place.  I’m gonna do my best. \n\nAdditionally, I was very wordy in my first post and accidentally went over 3k characters. (sorry mods 😭) I will provide additional context if requested.\n\n\nI (33F) go up to visit my brother (14m) about twice a year. He and I are really close, and I’m sad that he lives far away because he’s entering high school this year. I just went up for the weekend, and got back home last night. This trip, she found out that my husband and I bought a second vehicle so my husband and I didn’t have to share a single vehicle with conflicting work schedules (public transport isn’t reliable here).\n\nShe messages me as I’m getting ready to walk into work this morning and says that we need to have a conversation about “my student loans.” She can’t pay her $65/mo parent plus loan and that’s going to affect my brother.  I told her to apply for another forbearance, to call DepEd, to call a senator.  She immediately replied that she has been denied a forbearance extension, DepEd wouldn’t help her, and Senator couldn’t give any advice. (I’m not sure I believe she actually did any of these things.)\n\nI told her that the reason we have these things is that both adults in my household are working despite both of us being disabled (me with MS & my husband is a veteran), and then sent her a link to indeed. I then told her I had to go to work and to have a nice day.  She responded that she had to go to a food line to be able to feed my brother and to have a nice day.\n\nMy brother is old enough that he doesn’t need childcare. He can stay home alone if she and his dad are both at work. She would lose her Medicaid benefits and EBT if she got a job, but… if she got a job she wouldn’t need it?  Losing state-funded health insurance is the only con I can see to her getting her job, but with the recent news of Medicaid cuts, she might lose them anyway.\n\nSo… AITA for essentially telling her to get a fucking job???\n\nEdited to add: \n\nThis is quickly devolving into “JUST PAY THEM GOD YOU’RE SUCH AN AWFUL DAUGHTER. YOU SHOULD BE GRATEFUL.”  If I needed someone to tell me what an awful daughter I was, I would’ve just asked my mom.  I’m not grateful. I wish I would’ve taken out Sallie Mae loans instead of giving her yet another thing to hold over me and demand of me. \n\nMy question was if I was an asshole for telling her to get a job.  Because I did truly feel bad about it, and the way I went about telling her to get a job. \n\nI don’t care if I’m TA for not paying a loan she took out in her name to “save me” from Sallie Mae. That was her choice. I cared if I took it too far by implying “well if you’ve done all these things, I guess getting a job is your only other option.” ",
+      "post_created_utc": 1752497634,
+      "post_created_iso": "2025-07-14T12:53:54Z",
+      "post_flair": "Asshole",
+      "comment_id": "n35gted",
+      "comment_text": "NTA She only asked for the payment AFTER she heard about your second car. This means she doesn't really need you to make the payments. She heard about the car and got the idea that you must have extra money...and she wants some of that money.",
+      "comment_created_utc": 1752528936,
+      "comment_time_iso": "2025-07-14T21:35:36Z",
+      "comment_length": 242,
+      "comment_score": 0,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lzlmfz/aita_for_telling_my_mom_to_get_a_job/n35gted/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The mother genuinely needs help with her student loans.",
+            "B": "The mother only asked for payment after hearing about the second car, indicating she doesn't really need the money.",
+            "C": "The mother should get a job to support herself and her son.",
+            "D": "The daughter is an asshole for telling her mother to get a job."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the mother's request for payment was motivated by the knowledge of the daughter's new car, suggesting the mother does not truly need the money.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their claim?",
+          "options": {
+            "A": "The mother has been denied a forbearance extension.",
+            "B": "The mother heard about the second car and then asked for payment.",
+            "C": "The mother needs to go to a food line to feed her son.",
+            "D": "The mother would lose Medicaid benefits if she got a job."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter points out that the mother's request for payment came right after she learned about the daughter's second car, which is used as evidence to support the claim.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to the conclusion?",
+          "options": {
+            "A": "The mother's request for payment is a sign of genuine financial need.",
+            "B": "The timing of the mother's request suggests it is not based on real need but on the perception of the daughter's financial situation.",
+            "C": "The mother's actions are justified because she needs to support her son.",
+            "D": "The mother's loss of Medicaid benefits is a valid reason for not getting a job."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the timing of the mother's request (after learning about the second car) to infer that the request is not based on genuine need but on the perception of the daughter's financial situation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Sympathy for the mother's financial struggles.",
+            "B": "Frustration with the mother's perceived manipulation.",
+            "C": "Guilt over not helping the mother with the loan payments.",
+            "D": "Indifference to the daughter's situation."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by frustration with the mother's perceived manipulation, as evidenced by the timing of the request for payment.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter express about the daughter's actions?",
+          "options": {
+            "A": "The daughter is an asshole for telling her mother to get a job.",
+            "B": "The daughter is not the asshole in this situation.",
+            "C": "The daughter should be more grateful to her mother.",
+            "D": "The daughter should have paid the mother's student loans."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter explicitly states that the daughter is not the asshole (NTA), supporting the idea that the daughter's actions are justified given the circumstances.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0kzfr",
+      "post_title": "AITA for skipping my husband’s cousin’s wedding and refuse to gift them anything?",
+      "scenario_description": "Some context first: let’s call them “Team Priorities.”\n\nSince the beginning of our relationship, I learned my husband is the go-to person for family when it comes to money. Once we got serious and started a family of our own, we agreed to stop the handouts. We’re not wealthy by any means, but when we’re in a tight spot, we hustle and make it work without asking others for help.\n\nBut every now and then, “Team Priorities” sneaks back in and asks my husband to help cover a bill or some urgent expense. The frustrating part is the timing—shortly after asking for money, the fiancée is often posting about new outfits, day trips, or looking for tattoo artists. It’s hard not to feel taken advantage of.\n\nTheir latest visit really frustrated me. They said they wanted to come see us so the kids could spend time together (they’re close in age). We agreed and let them stay with us, thinking it was for quality family time. Wrong. They treated our house like a free Airbnb. We saw them one full day and briefly in the evenings—otherwise, they were off doing their own thing. Our daughter was really disappointed, which left me annoyed and honestly, a little sour.\n\nThen came the kicker.\n\nA week after they left, my husband got an alert that his credit score dropped 30 points. Turns out his cousin (the groom) missed a car payment. My husband co-signed that loan before we ever met. So they came to stay with us knowing they were in default—and didn’t say a word. Meanwhile, that missed payment affected our financial standing.\n\nI was livid. I wanted to message the fiancée and tell her to get their act together because it’s beyond disrespectful. My husband and I argued about it. He said I shouldn’t get involved and that the fiancée has nothing to do with the loan. But we’ve tried to get him removed from the loan and can’t—his cousin’s credit is too low. I even asked why the fiancée (soon to be wife!) couldn’t take over the loan, but my husband brushed it off, saying there’s only a year left.\n\nAfter sitting with it, I decided I’m not attending their wedding. My husband is still going—he’s the best man. But our daughter is starting kindergarten that same week, and I don’t want her missing those first days. Plus, she’s attending private school, so every penny counts, and I made it clear there will be no gift from us and he won’t be footing the entire bill for the bachelor trip either.\n\nIf it weren’t for the kids, I’d have stepped back from this relationship a long time ago. The fiancée gives off strong narcissistic/toxic vibes—but that’s another post.\n\nSo, AITA for skipping the wedding and refuse to gift them anything?",
+      "post_created_utc": 1752593719,
+      "post_created_iso": "2025-07-15T15:35:19Z",
+      "post_flair": null,
+      "comment_id": "n3d5v8y",
+      "comment_text": "NTA Your husband is the problem. He should have told you that he has cosigned for other people's loans. That information should in turn have been all the warning you needed that your husband gets used by his family and he is okay with it. That's why he 'brushed it off'. YOU are the only one who has a problem with it. Somehow, someway, you need to get your husband on the same page with you. Otherwise his family will be draining money during your entire marriage. If you knew all this and still married him, that's on you isn't it?",
+      "comment_created_utc": 1752627183,
+      "comment_time_iso": "2025-07-16T00:53:03Z",
+      "comment_length": 533,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0kzfr/aita_for_skipping_my_husbands_cousins_wedding_and/n3d5v8y/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The husband should have disclosed his cosigned loans to the wife.",
+            "B": "The wife is not at fault for skipping the wedding and refusing to gift anything.",
+            "C": "The fiancée is the main problem in this situation.",
+            "D": "The family's behavior is acceptable and should be tolerated."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the wife (NTA) is not at fault for her decision to skip the wedding and refuse to give a gift, given the circumstances.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief about the husband's role?",
+          "options": {
+            "A": "The husband co-signed a loan for his cousin without informing the wife.",
+            "B": "The husband is the best man at the wedding.",
+            "C": "The husband's credit score dropped due to a missed car payment.",
+            "D": "The husband's cousin and fiancée are posting about new outfits and day trips."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter points out that the husband should have told the wife about cosigning the loan, which is the key evidence supporting the claim that he is the problem.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion about the husband's behavior?",
+          "options": {
+            "A": "The husband's behavior shows he is okay with being used by his family.",
+            "B": "The husband's behavior indicates he is unaware of the financial implications.",
+            "C": "The husband's behavior suggests he values his family's needs over his own.",
+            "D": "The husband's behavior demonstrates he is trying to protect his family from financial stress."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter argues that the husband's failure to disclose the loan and his brushing off of the issue show that he is okay with being used by his family, which connects the evidence to the conclusion.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's view of the situation?",
+          "options": {
+            "A": "Sympathy for the husband's difficult position.",
+            "B": "Frustration with the wife's decision to skip the wedding.",
+            "C": "Concern for the long-term financial stability of the marriage.",
+            "D": "Anger towards the fiancée for her perceived narcissistic behavior."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter expresses concern about the long-term financial stability of the marriage, emphasizing the need for the wife and husband to get on the same page to prevent future financial issues.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter suggest is the primary issue in the relationship?",
+          "options": {
+            "A": "The husband's willingness to be used by his family.",
+            "B": "The wife's decision to skip the wedding and refuse to give a gift.",
+            "C": "The fiancée's toxic behavior.",
+            "D": "The financial strain caused by the missed car payment."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter believes the primary issue is the husband's willingness to be used by his family, as evidenced by his actions and lack of transparency.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0fz3l",
+      "post_title": "AITA for kicking my wife’s family out after they kept extending their stay?",
+      "scenario_description": "AITA for wanting to kick my wifes family out?\n\nWe just bought a house 2 weeks ago. We're not even fully unpacked, when my wife's parents said \"hey next month can we come stay 3 nights over the weekend?\" It would be her mom, dad and the two youngest siblings. The week they asked they changed their mind, packed the car and just drove here. They got here on a Sunday and said we're only staying 3 nights. Then 2 nights into it said we want to stay 1 more night. \nNow her sister wants to come up here and spend the weekend. This whole week there's a few people staying over. I WANT EVERYONE GONE. I'm working late to not come home. My routine is gone. I need to mow and do other house chores. They keep our toddler up late and just sit at the table drinking beer. Yeah sure they bought us some great house gifts and I feel twisted. \nI do care about them and want my wife's family and want her to see them. \nAm I the asshole for telling my wife never to do this again and asking them to leave early? Also never allow people to stay here during the week when I have to go to work? ",
+      "post_created_utc": 1752581056,
+      "post_created_iso": "2025-07-15T12:04:16Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n3bk0k7",
+      "comment_text": "NTA Your home is going to become their gathering place, for whenever they feel like staying there, unless you make it clear that's not acceptable. You should talk to your wife. It's her family so she is the one in position to explain it to them. It's not that you won't have them over. It's that you and your wife should be the ones who do the inviting. Right now her family thinks they can invite themselves over. You also need to talk to your wife to make sure that she is agreement with you. Don't make the mistake of thinking because she said something like \"yeah, you're right\" that she agrees with you. People sometimes say things like that just to avoid an argument, not because they agree with you. You need to dig deeper to see how she really feels about it. And definitely make sure you wife knows what days are completely unacceptable to you, such as during the work week. None of them knows how you feel about this unless you say something.",
+      "comment_created_utc": 1752609060,
+      "comment_time_iso": "2025-07-15T19:51:00Z",
+      "comment_length": 952,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0fz3l/aita_for_kicking_my_wifes_family_out_after_they/n3bk0k7/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lynnsd",
+      "post_title": "AITA for not going to my TWIN'S Wedding???",
+      "scenario_description": "I (24M) have an identical twin. We're not close, but I thought we had basic mutual respect. That belief was tested.\n\nI grew up in a traditional Southern town & only began coming out in college, about five years ago. It's been slow, especially with family. But since moving to DC in '23 for school/work, I've felt more comfortable living authentically.\n\nAfter moving, I met my boyfriend (26M), & we've been together 2yrs. Over time, I've introduced him to friends and family when I felt safe.\n\nCut to Nov. '24: I was home for the holidays & told my twin & his fianceé about my bf. They seemed happy for me. While staying with them, wedding details arose, & they asked if I'd be bringing a date. I said yes, my bf. My twin had gone to bed, but his fianceé said, \"While there are pros and cons, it's up to you if you want to bring him.\" That felt like a green light. My twin constantly deferred to her on decisions, so I didn't think I needed to double-check.\n\n5 months passed, my bf & I had spent $1,300 on travel (flights, hotel, etc.). 3 weeks before the wedding, I mentioned on a call with my brother that we were all set. His tone shifted: \"Oh, is BF actually coming?\"\n\nI reminded him of the convo with his fianceé. He said she never gave me permission & accused me of making it up. Then said, \"We can't allow your bf to come. We worry how Dad's side will react.\"\n\nI offered to call Dad on the spot. He dodged, saying he'd check with his fianceé (despite just saying it was his decision.) An hour later, no change. I was still invited-ALONE, still expected to buy a groomsman-match suiting (even though I wasn't in the party), & show up smiling.\n\nThat's when I snapped. I asked, \"If I didn't invite your fianceé to my wedding, would you still come?\" He couldn't answer & ended the call after some harsh words. \n\nTrying to make things right, I came out to my dad (which I feared for years) to explain the situation. He was surprisingly indifferent & even said uninviting my bf was extreme. He offered to talk to extended family. I thought I was removing the main obstacle. \n\nWeeks later, my twin called again. He now claimed our friends would be \"weirded out\" (So the excuse shifted) I said, \"If my bf's not invited, I'm not coming.\" He didn't budge.\n\nHere's the kicker: days later, my dad told me the fianceé admitted she did give me permission but changed her mind when she remembered \"who would be there.\" She denied this to my twin. Also, one of her bridesmaids is openly gay and brought her gf, but, according to the fianceé, \"she's not part of the family,\" so it's different.\n\nSo I didn't go. I'm still wondering if I made the wrong call. My absence was noticed. I got texts asking where I was. My mom had to explain it repeatedly. So instead of avoiding attention, my absence became the story. My relationship with my twin is dead, & some family ties now feel fragile.\n\nPart of me wonders, should I have sucked it up & gone solo, just to preserve bonds that shaped my early life?\n\nSo, AITA for skipping the wedding?",
+      "post_created_utc": 1752394710,
+      "post_created_iso": "2025-07-13T08:18:30Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2y5wag",
+      "comment_text": "NTA What bonds? It's pretty clear that many bonds you have with family members are conditional. IF you live the life they want you to live, you can feel a bond. If you are true to yourself, suddenly those fake bonds are gone. I think you did gain ground with your dad. He didn't turn on you and actually seemed supportive. A lot of parents go out of their way to make sure that everything goes the way the wedding couple wants. Your dad didn't do that, he thought about what was right.",
+      "comment_created_utc": 1752434612,
+      "comment_time_iso": "2025-07-13T19:23:32Z",
+      "comment_length": 485,
+      "comment_score": 1,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lynnsd/aita_for_not_going_to_my_twins_wedding/n2y5wag/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The family bonds are strong and unconditional.",
+            "B": "Many family bonds are conditional and depend on living the life they want you to live.",
+            "C": "The family will always support the commenter's choices.",
+            "D": "The commenter should have attended the wedding alone to preserve family ties."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the family bonds are conditional and only exist if the commenter lives the life the family wants them to live.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their claim about conditional family bonds?",
+          "options": {
+            "A": "The commenter's twin and his fiancée were initially happy for him.",
+            "B": "The commenter's dad was indifferent and offered to talk to extended family.",
+            "C": "The commenter's twin and his fiancée uninvited the commenter's boyfriend after initially giving permission.",
+            "D": "The commenter's mom had to explain his absence repeatedly."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter provides evidence that the twin and his fiancée uninvited the boyfriend after initially giving permission, showing the conditional nature of the family's acceptance.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to the conclusion about family bonds?",
+          "options": {
+            "A": "If the family truly cared, they would not have uninvited the commenter's boyfriend.",
+            "B": "The family's support is based on the condition that the commenter lives the way they expect.",
+            "C": "The family's actions show a lack of understanding and empathy.",
+            "D": "The family's behavior is consistent with traditional values."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter reasons that the family's support is conditional, as they only accept the commenter if he lives according to their expectations.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference and detachment from the situation.",
+            "B": "Anger and frustration at the family's conditional support.",
+            "C": "Happiness and relief that the commenter made the right decision.",
+            "D": "Sadness and regret over the loss of family ties."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a sense of anger and frustration at the family's conditional support, which they view as fake and insincere.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What does the commenter suggest about the commenter's relationship with his dad?",
+          "options": {
+            "A": "The dad is unsupportive and aligns with the rest of the family.",
+            "B": "The dad is indifferent but still supportive of the commenter's decision.",
+            "C": "The dad is fully supportive and advocates for the commenter's rights.",
+            "D": "The dad is disappointed in the commenter's decision to skip the wedding."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the dad, while indifferent, is still supportive of the commenter's decision and even offered to talk to the extended family.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "saved_at": "2025-07-16T02:08:26.812004",
+    "crawler_version": "1.0"
+  },
+  "mcqs_metadata": {
+    "generation_info": {
+      "model": "qwen-max",
+      "temperature": 0.5,
+      "processed_topics": "50/50",
+      "timestamp": "2025-07-28 06:32:07"
+    },
+    "mcq_statistics": {
+      "questions": 219,
+      "single_choice": 211,
+      "multi_choice": 8,
+      "tags": {
+        "claim": 75,
+        "evidence": 48,
+        "reasoning": 48,
+        "emotion": 48
+      }
+    }
+  }
+}

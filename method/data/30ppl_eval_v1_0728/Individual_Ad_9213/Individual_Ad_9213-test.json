@@ -1,0 +1,1755 @@
+{
+  "user_id": "u_8662841081665852294",
+  "username": "Individual_Ad_9213",
+  "comment_count": 50,
+  "topic_count": 50,
+  "account_created_utc": 1610303199,
+  "account_created_iso": "2021-01-10T18:26:39Z",
+  "user_karma": 461395,
+  "avg_comment_length": 372.5,
+  "comment_frequency_monthly": 26.7,
+  "subreddits_commented": [
+    "AmItheAsshole"
+  ],
+  "time_range": {
+    "first_comment_utc": 1747685070,
+    "first_comment_iso": "2025-05-19T20:04:30Z",
+    "last_comment_utc": 1752635040,
+    "last_comment_iso": "2025-07-16T03:04:00Z"
+  },
+  "topics": [
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1kqkgoy",
+      "post_title": "WIBTA for not sharing my referral bonus with a new hire?",
+      "scenario_description": "Hi! I (29F) recently referred an ex-coworker to the company I currently work for, and I’d appreciate a second opinion on something that’s been bothering me.\n\nFor context: I used to work remotely with Mike at a previous company. We were in the same department, got along well, and were both consistently praised for our work, but we weren’t close—just friendly colleagues. I left that job 8 months ago due to poor management, and thanks to a referral from another coworker, I landed at my current company, which I really like.\n\nFour months ago, I saw an opening that Mike would be a great fit for, so I referred him. He got the job. Two months in, he messaged me asking about a referral bonus, which I honestly didn’t even know existed. He mentioned someone from HR told him I’d be getting one and suggested maybe I should share it with him.\n\nThat felt a bit off to me for a few reasons:\n\n1. Why is HR discussing my bonus with someone else?\n2. If the company wanted to reward both of us, they could’ve split it upfront.\n3. The person who referred me didn’t share their bonus with me, and I didn’t expect them to.\n\nI kind of brushed off the comment with a joke and moved on. But today, Mike messaged me again, saying the same HR person suggested I should take him to dinner with the bonus. For the record, I still haven’t even received the bonus yet.\n\nThe truth is, I don’t want to share it. I have home repairs and other personal expenses, and honestly, I find it a bit inappropriate that HR is making suggestions like this, and that Mike keeps bringing it up. I’m planning to make another joke and move on, but it’s been bothering me.\n\nWould I be an asshole for not sharing the bonus?",
+      "post_created_utc": 1747682279,
+      "post_created_iso": "2025-05-19T19:17:59Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mt6h1d9",
+      "comment_text": "NTA. If anyone owes someone a dinner, it's Mike who got his new job because of you. Call HR and ask them why someone is sharing information about a mythical bonus that you have not received with a new hire.",
+      "comment_created_utc": 1747685070,
+      "comment_time_iso": "2025-05-19T20:04:30Z",
+      "comment_length": 206,
+      "comment_score": 386,
+      "comment_permalink": "/r/AmItheAsshole/comments/1kqkgoy/wibta_for_not_sharing_my_referral_bonus_with_a/mt6h1d9/",
+      "stance_label": "NTA",
+      "post_label": "Work",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The HR department should not be discussing bonuses with new hires.",
+            "B": "The original poster (OP) is not obligated to share the referral bonus with Mike.",
+            "C": "Mike should take the original poster (OP) to dinner as a thank you for the referral.",
+            "D": "The referral bonus should be split between the original poster (OP) and Mike."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the original poster (OP) is not the asshole for not sharing the bonus, implying they are not obligated to do so.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The person who referred the original poster (OP) did not share their bonus with them.",
+            "B": "The original poster (OP) has home repairs and other personal expenses.",
+            "C": "HR is making suggestions about the bonus to Mike.",
+            "D": "Mike has been consistently bringing up the bonus."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter uses the fact that the person who referred the original poster (OP) did not share their bonus with them as evidence to support the claim that the OP is not obligated to share the bonus with Mike.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "If the company wanted to reward both the referrer and the new hire, they would have split the bonus upfront.",
+            "B": "Since the person who referred the original poster (OP) did not share their bonus, the OP is not required to share theirs.",
+            "C": "The original poster (OP) should not share the bonus because they have personal expenses.",
+            "D": "HR's suggestion to take Mike to dinner is inappropriate and should be ignored."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter reasons that since the person who referred the original poster (OP) did not share their bonus, the OP is not required to share theirs, connecting the evidence to the conclusion.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference towards the situation.",
+            "B": "Frustration with HR's involvement and Mike's persistence.",
+            "C": "Sympathy for the original poster (OP)'s financial situation.",
+            "D": "Anger at Mike for expecting a share of the bonus."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by frustration with HR's involvement and Mike's persistence in bringing up the bonus, indicating a sense of annoyance and disapproval.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What additional belief is implied by the commenter's suggestion to call HR?",
+          "options": {
+            "A": "The original poster (OP) should confront Mike directly about the bonus.",
+            "B": "HR should not be sharing information about the bonus with new hires.",
+            "C": "The original poster (OP) should share the bonus with Mike to avoid conflict.",
+            "D": "The original poster (OP) should report Mike's behavior to HR."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests calling HR to ask why they are sharing information about the bonus with a new hire, implying that HR should not be doing this.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1kr8f65",
+      "post_title": "AITA for refusing to volunteer at an event my boss was attending?",
+      "scenario_description": "This all started during a Zoom meeting with my boss. We had just wrapped up the actual work we were scheduled to discuss when, out of nowhere, he asked me to volunteer to do the flowers for an event he’s on the board of directors for.\n\nI had already been invited to the event and was planning to attend out of respect for him, even though it wasn’t really my scene. But doing the flowers would’ve meant another three hours of unpaid labor. I live two hours away, so altogether it would’ve been an 8-hour day, and I wouldn’t have gotten home until around 11:30 p.m. On top of that, he expected me to get ready at his house, which I wasn’t comfortable with.\n\nI told him I couldn’t commit to it—that my time is worth something and I wasn’t in a position to volunteer. He pushed back, asking, “What else are you going to do to make money during that time?” I tried to shift the conversation, but he kept pressing. When I held firm, he slammed his laptop shut and ended the Zoom call.\n\nLater, he messaged me saying he was “extremely disappointed,” that I didn’t “deserve to be at the event,” and that it was for people who “help others without being paid.” He told me not to come, to finish my current work and send it to someone else, and that he was giving something he had planned for me to “someone who would appreciate it.” He also brought up that he had given me a work laptop and iPad—as if that meant I owed him free labor.\n\nNow I think I am fired even though I am a critical part of wrapping up a project. He hasn’t said it outright, but it feels like that’s where this is headed.\n\nHe’s on the verge of retirement, and after nearly four years of working with him, I had hoped to leave on good terms and use him as a reference.\n\nHere’s the kicker: I was supposed to take on a new project that I was really excited about—something I was going to lead under his supervision. That project aligned perfectly with my style and was honestly the only reason I was still committed to working with him. But he emailed the clients late last night and backed out, saying he’s ready to retire.\n\nSo now I’m left wondering if I’m the jerk for setting boundaries, or if I just got caught in someone else’s burnout spiral. AITA?\n\nUpdate: This morning “a couple of days later” my boss sent me a text asking if I could send him the invite list for the event he is throwing. Not acknowledging the argument. It is on a google spreadsheet that I have sent him multiple times before so I am not going to respond. ",
+      "post_created_utc": 1747756567,
+      "post_created_iso": "2025-05-20T15:56:07Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mtbitix",
+      "comment_text": "NTA. He's telling you to trade free labor in return for him doing his job. It's time to freshen up your resume and move on. \n\nThe part about you changing at his place is, quite frankly, inappropriate.",
+      "comment_created_utc": 1747758430,
+      "comment_time_iso": "2025-05-20T16:27:10Z",
+      "comment_length": 200,
+      "comment_score": 76,
+      "comment_permalink": "/r/AmItheAsshole/comments/1kr8f65/aita_for_refusing_to_volunteer_at_an_event_my/mtbitix/",
+      "stance_label": "NTA",
+      "post_label": "Work",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes the boss is justified in asking for free labor.",
+            "B": "The commenter believes the employee is not the jerk and should not provide free labor.",
+            "C": "The commenter believes the employee should have agreed to the boss's request.",
+            "D": "The commenter believes the boss is handling the situation appropriately."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the employee is not the jerk (NTA) and should not be expected to provide free labor.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The boss gave the employee a work laptop and iPad.",
+            "B": "The boss asked the employee to change at his place, which is inappropriate.",
+            "C": "The employee was planning to attend the event out of respect for the boss.",
+            "D": "The boss is on the verge of retirement."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter specifically mentions that the boss asking the employee to change at his place is inappropriate, supporting their belief that the employee is not the jerk.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "The boss’s request for free labor is seen as a fair trade for the work laptop and iPad.",
+            "B": "The boss’s inappropriate request for the employee to change at his place indicates an overstepping of boundaries, justifying the employee's refusal.",
+            "C": "The employee’s willingness to attend the event shows they are already doing enough.",
+            "D": "The boss’s impending retirement means he can no longer make such requests."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the boss’s inappropriate request for the employee to change at his place indicates an overstepping of boundaries, which justifies the employee's refusal to provide free labor.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference towards the situation.",
+            "B": "Support and empathy for the employee.",
+            "C": "Disappointment in the employee's decision.",
+            "D": "Frustration with the boss's retirement plans."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses support and empathy for the employee, emphasizing that the employee is not the jerk and should not be expected to provide free labor.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What advice does the commenter give to the employee based on their belief?",
+          "options": {
+            "A": "The employee should comply with the boss's request to avoid conflict.",
+            "B": "The employee should freshen up their resume and move on from the job.",
+            "C": "The employee should apologize to the boss and offer to do the flowers.",
+            "D": "The employee should continue working with the boss despite the disagreement."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter advises the employee to freshen up their resume and move on from the job, based on their belief that the employee is not the jerk and should not provide free labor.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0jzp5",
+      "post_title": "AITA for telling my mother to stop sharing my private life with the family?",
+      "scenario_description": "I’m 31F and my mom (Brenda, 55F) and I are honestly pretty close. But there’s this one thing she does that’s been getting under my skin for years. Basically, if I tell her anything about my life, she’ll go and talk about it with the whole extended family. Like... everyone. Aunts, uncles, cousins, even random relatives I barely know or haven’t seen in forever. Nothing’s too small—she’ll mention stuff about who I’m seeing, stuff with my job, health stuff, money stuff... just everything.\n\nI’ve told her to stop doing that so many times. Like I’ll say “hey, I don’t want anyone else knowing about this,” and she’ll nod like she gets it—but then later I hear she’s been talking. And when I call her out, she always says something like, “Oh, come on, it’s just family!” or “I wasn’t gossiping, I was just chatting.” Like??? That doesn’t really make it better.\n\nAnyway, not long ago I had this minor medical thing done—nothing serious, but definitely personal. I told her ahead of time, super clearly, that I didn’t want anyone else knowing. Just wanted to keep it to myself.\n\nThen like three days later, I start getting these “how are you feeling??” texts from a bunch of my aunts. And yep—turns out my mom told them. Again.\n\nI was honestly so frustrated. I called her and told her straight up that I felt like she didn’t respect my privacy, and that I was hurt she went and told people again after I asked her not to. I told her I need her to stop sharing my life like that—it’s not just casual chatting when it’s stuff I asked her to keep private.\n\nShe got really upset. Said I was attacking her, said I was overreacting and being cold, and now she won’t talk to me. My dad says I should’ve handled it “more gently” and that I made her feel bad. So now I’m sitting here wondering if I went too far.\n\nWas I the asshole for putting my foot down?",
+      "post_created_utc": 1752591469,
+      "post_created_iso": "2025-07-15T14:57:49Z",
+      "post_flair": null,
+      "comment_id": "n3a3ig4",
+      "comment_text": "NTA. If \"*now she won’t talk to*\" you, it seems like the problem of her oversharing has taken care of itself. As long as you and she don't talk, she can't learn stuff to gossip about.\n\nWhen/if you reconnect, just remember than she can't/won't keep any secrets. So the best way to \"use\" this knowledge is to tell her things that you actually want to spread without the hassles of being the one to share the news.  As the saying goes: \"There's three ways of sharing information within my extended family: telephone, telegraph, and tell mom.\"",
+      "comment_created_utc": 1752594555,
+      "comment_time_iso": "2025-07-15T15:49:15Z",
+      "comment_length": 539,
+      "comment_score": 5,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0jzp5/aita_for_telling_my_mother_to_stop_sharing_my/n3a3ig4/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The mother's behavior is acceptable and should be tolerated.",
+            "B": "The mother's oversharing is a problem that needs to be addressed.",
+            "C": "The daughter should not have confronted her mother about the issue.",
+            "D": "The mother's feelings are more important than the daughter's privacy."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the mother's oversharing is a significant issue that has caused the daughter frustration and hurt, and it needs to be addressed.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their belief about the mother's behavior?",
+          "options": {
+            "A": "The mother shares personal information with only close family members.",
+            "B": "The mother continues to share the daughter's private information despite being asked not to.",
+            "C": "The mother respects the daughter's wishes and keeps her secrets.",
+            "D": "The mother only shares positive news about the daughter."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment provides evidence that the mother continues to share the daughter's private information even after being explicitly asked not to, which supports the belief that the mother's behavior is problematic.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to justify their advice on how to handle the situation with the mother?",
+          "options": {
+            "A": "The daughter should avoid sharing any information with the mother to prevent further issues.",
+            "B": "The daughter should only share information with the mother that she wants to be spread around the family.",
+            "C": "The daughter should confront the mother more aggressively to make her understand the severity of the issue.",
+            "D": "The daughter should apologize to the mother and accept her behavior as normal."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the daughter should only share information with the mother that she wants to be spread around the family, as a way to use the mother's tendency to overshare to her advantage.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective is evident in the commenter's response?",
+          "options": {
+            "A": "Sympathy for the mother and her feelings.",
+            "B": "Frustration with the mother's behavior and support for the daughter's actions.",
+            "C": "Indifference to the situation and its impact on the daughter.",
+            "D": "Disappointment in the daughter for not handling the situation more gently."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment expresses frustration with the mother's behavior and supports the daughter's actions, indicating a sympathetic and supportive tone towards the daughter.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1l8uwvz",
+      "post_title": "AITA for refusing to argue with my cousin?",
+      "scenario_description": "A few times per year, my extended family gets together for a dinner; this includes my father's siblings and their children, my cousins. It's usually a good time and something I look forward to.\n\nLast time, I (31M) was sat in front of my cousin (32F), whom I'll call Nohemi. The conversation rolled around to marriages in the modern age, and how people our age get married either later or not at all. Nohemi opined that our generation's men were simply afraid of responsibility, and I said I disagreed. I argued that the whole institution was in a state of decline because of the modern, secularised concept of relationships, and I tried bringing up a paper I had read about the subject when Nohemi cut me off, saying in a somewhat condescending manner that \"not all of us have the time to sit around reading such papers all day.\" Ironic, because she's pursuing an academic career while I'm just a regular employee. \n\nIn response, I said \"Ok Nohemi, it takes two to tango, and I'm not dancing,\" basically shutting down the debate. Nohemi got upset and tried renewing it, making snide remarks I can't fully recall, but I only responded with \"Nohemi, you've *lost* me in this one.\" She then began complaining about how I discounted her 'lived experience' and how it wasn't fair that I wasn't willing to acknowledge her perspective.\n\nLater in the evening my father, who's always been the peacekeeper, suggested quietly that I go up to Nohemi and give her a conciliatory hug. I said she'd be more than welcome to approach me herself but that I wouldn't. ",
+      "post_created_utc": 1749654018,
+      "post_created_iso": "2025-06-11T15:00:18Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mx7z0ce",
+      "comment_text": "NTA. It sounds like your cousin has issues around her relationships with men, including her arguing that their unwillingness to marry is due to lack of responsibility rather than due to larger social forces that are out of their control. Unfortunately, she's over-generalizing to all men, based on her personal issues. That's her problem to deal with,",
+      "comment_created_utc": 1749657950,
+      "comment_time_iso": "2025-06-11T16:05:50Z",
+      "comment_length": 351,
+      "comment_score": 3,
+      "comment_permalink": "/r/AmItheAsshole/comments/1l8uwvz/aita_for_refusing_to_argue_with_my_cousin/mx7z0ce/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The cousin's argument about men's responsibility is valid.",
+            "B": "The cousin's views on men and marriage are influenced by her personal issues.",
+            "C": "The cousin has a well-founded perspective based on broader social trends.",
+            "D": "The cousin's academic background makes her more knowledgeable about relationships."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the cousin's views are shaped by her personal issues rather than broader social forces.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their claim about the cousin's perspective?",
+          "options": {
+            "A": "The cousin's condescending remark about reading papers.",
+            "B": "The cousin's academic career and research on relationships.",
+            "C": "The cousin's over-generalization of all men being irresponsible.",
+            "D": "The cousin's complaint about the OP not acknowledging her perspective."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter points out that the cousin is over-generalizing to all men, which is seen as evidence of her personal issues influencing her views.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logical connection does the commenter make between the cousin's behavior and her perspective?",
+          "options": {
+            "A": "The cousin's condescending tone indicates she is well-versed in the subject.",
+            "B": "The cousin's over-generalization suggests her views are based on personal experiences rather than broader social trends.",
+            "C": "The cousin's academic background justifies her strong opinions about men and marriage.",
+            "D": "The cousin's snide remarks show she is open to different viewpoints."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the cousin's over-generalization to all men is a sign that her views are rooted in her personal experiences rather than a broader understanding of social forces.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Empathy for the cousin's personal struggles.",
+            "B": "Disapproval of the cousin's over-generalization and condescending attitude.",
+            "C": "Indifference to the conflict between the OP and the cousin.",
+            "D": "Support for the cousin's academic expertise."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is critical of the cousin's over-generalization and condescending attitude, indicating disapproval.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1l43og9",
+      "post_title": "AITA for hanging out with my best friend’s old friend?",
+      "scenario_description": "I've been hanging out with a certain group of friends for multiple years now. We're very close and for the most part have had little to no drama. If there's one thing that's a little awkward it's the fact that I've been hanging out with my good friend (who I'll call S)'s old friend (who I'll call D) who no one in the group really likes for a couple of months now. We're very close and I've been having a really fun time with her. S and D had conflict in the past as S playfully insults her close friends (nothing too serious, just things like rat or pigeon) and it eventually started to make D quite insecure. They didn't really talk it out and haven't talked much since. Because of how S doesn't really like D, most of our group excluding me don't like her either, especially someone I'll call A, who at this point despises her more than S does. I was fairly close with D before starting to really get to know our group but we've been hanging out more and more lately. She doesn't seem very malicious towards my group or S, just quite remorseful. Recently A started to become more distant with me. It went on for a while\nbefore I confronted her about it. She told me that someone told her I said nasty things about her, but she was being very weird about it. I told her I would never and supposedly that was it until someone told me that she was lying, and she was actually mad that I had been hanging out with D. I asked her about it the next morning and she seemed relatively honest and brought it up. She didn't deny that someone had 'whispered rumours into her ear' though. We sorted it out to an extent, I told her they were always my first priority but that I wasn't going to stop talking to a friend I have been close to for many years at this point. She said fine and that it would just half to be a little awkward, but I was later told she was planning on telling me to 'choose' between them or D. However recently another girl in the group who I'm close to has started being distant with me as well. I talked to S, who I trust the most and am very good friends with, and she said that yes, she was mad at me. I thought it would just be a small thing, but it's been a while and she still seems pissed at me. I talked to S again and she told me that at the moment she wasn't entirely sure, but on earlier occasions she had been mad at me due to my interactions with D. It seems a lot of the girls in the group are mad at me for the same reason. I really love D and don't want to stop talking to her, but also really value this current friend group I have, especially S given that she's always been honest with me and is very sweet to me. Am I the asshole?",
+      "post_created_utc": 1749141048,
+      "post_created_iso": "2025-06-05T16:30:48Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mw5uomf",
+      "comment_text": "NTA. As long as you're not taking sides nor doing/saying anything that is hurtful to anyone in the group, your friendships are strictly your decision to make.",
+      "comment_created_utc": 1749141772,
+      "comment_time_iso": "2025-06-05T16:42:52Z",
+      "comment_length": 158,
+      "comment_score": 2,
+      "comment_permalink": "/r/AmItheAsshole/comments/1l43og9/aita_for_hanging_out_with_my_best_friends_old/mw5uomf/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The person should stop hanging out with D to maintain harmony in the group.",
+            "B": "The person has the right to choose their own friendships as long as they are not hurtful.",
+            "C": "The person should take sides and support D over the group.",
+            "D": "The person should confront S and A about their behavior."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the person's friendships are their own decision, as long as they are not being hurtful to anyone in the group.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their claim?",
+          "options": {
+            "A": "The person has been friends with D for many years.",
+            "B": "The person is not taking sides nor doing/saying anything hurtful to anyone in the group.",
+            "C": "The person values their current friend group, especially S.",
+            "D": "The person has been having a fun time with D."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter supports their claim by stating that the person is not taking sides nor doing/saying anything hurtful to anyone in the group.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "If the person is not being hurtful, then it is acceptable to continue the friendship with D.",
+            "B": "Since the person has known D for many years, it is important to maintain that friendship.",
+            "C": "Because the person is having a fun time with D, it justifies continuing the friendship.",
+            "D": "The person's value of the current friend group means they should prioritize those relationships."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter's reasoning is that as long as the person is not being hurtful, it is acceptable for them to continue the friendship with D.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's statement?",
+          "options": {
+            "A": "Anger towards the group for their behavior.",
+            "B": "Supportive and understanding of the person's situation.",
+            "C": "Disappointment in the person for causing conflict.",
+            "D": "Indifference towards the person's choices."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is supportive and understanding, acknowledging the person's right to make their own decisions about friendships.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lzerow",
+      "post_title": "WIBTA if I kick out My Tia and Tio",
+      "scenario_description": "I 22m have been living with my Tia and cousin 20m for about 2 years now, it started as just me and cousin living at our grandmas house to pay bills and help her get to doctors appointments and stuff like that. But after my cousin moved in my grandma went to live with my dad and me my cousin stayed at her house. After about a year My Tia and Tio were getting a divorce things got messy and cops were called and my Tia wasn’t allowed home. For some context my cousin has never liked his dad and has never wanted anything to do with him. So following the divorce my Tia ended up living with me and my cousin. Fast forward to now after a huge ordeal she decided to get back with him even through she was almost done with the devoice. My cousin who had been there for her and had her back was very upset. Now at this point my grandma made it very clear regardless my Tio was not allowed at the house for any reason and my Tia went behind our back and snuck him over at 3:00am and the next day told me he was going to “just do laundry” and he ended up spending the night. So I told her that was not ok and was very disrespectful to me, my cousin, and my Grandma and reminded her he is not allowed here period. She sent a long winded message about not meaning to disrespect anyone and she talked to him and he understood he wasn’t allowed here after that. Then today when I get off work I see his truck here and she tells me he’s just signing paperwork so she can go back to her house and is also waiting for the water to get turned back on since he hasn’t paid the water bill. She wants him to stay till Monday when it gets turned back on and wants to keep it a secret so things can go smoothly. I talked to my cousin he says he’s ok with waiting till Monday but after that to kick them out and now I’m at a crossroads on what to do.",
+      "post_created_utc": 1752472993,
+      "post_created_iso": "2025-07-14T06:03:13Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n31dnc4",
+      "comment_text": "Your grandmother, who owns the house, has made it very clear that she does not want your tio living (or staying) there. NTA",
+      "comment_created_utc": 1752478264,
+      "comment_time_iso": "2025-07-14T07:31:04Z",
+      "comment_length": 123,
+      "comment_score": 4,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lzerow/wibta_if_i_kick_out_my_tia_and_tio/n31dnc4/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The grandmother's wishes should be respected.",
+            "B": "The tio should be allowed to stay in the house.",
+            "C": "The cousin's feelings are the most important.",
+            "D": "The tia and tio should reconcile."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The comment emphasizes that the grandmother's wishes, who owns the house, should be respected.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their position?",
+          "options": {
+            "A": "The tia and tio are getting a divorce.",
+            "B": "The tio has not paid the water bill.",
+            "C": "The grandmother made it very clear that the tio is not allowed at the house.",
+            "D": "The cousin has never liked his dad."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The comment uses the fact that the grandmother made it very clear that the tio is not allowed at the house to support the claim.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logical connection does the commenter make to support their conclusion?",
+          "options": {
+            "A": "The tio's presence is causing emotional distress to the family.",
+            "B": "The tio's presence is a violation of the grandmother's explicit instructions.",
+            "C": "The tia and tio need time to reconcile their differences.",
+            "D": "The tio needs to pay the water bill before he can stay."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter connects the tio's presence to a violation of the grandmother's explicit instructions, which supports the conclusion that the tio should not be there.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Empathy for the tia and tio's situation.",
+            "B": "Anger towards the tio for not paying the water bill.",
+            "C": "Respect for the grandmother's authority and decisions.",
+            "D": "Concern for the cousin's well-being."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The comment reflects a tone of respect for the grandmother's authority and decisions, emphasizing that her wishes should be followed.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1l45pmc",
+      "post_title": "AITAH For bringing up the topic of my grandfather’s mother being black?",
+      "scenario_description": "My paternal side of the family has always been very secretive about their grandmother, my grandfather’s mother. And by secretive, I mean no one even has a photo of her, and no one seems to know her name or what she looked like. I only found out about her through my mom a couple of years ago.\n\nWe had always assumed that our grandfather was an orphan, which is why we never asked much about her. Plus, we were just kids at the time, so it never really came up. In addition to that, they are also pretty racist towards Black people or anyone that isn’t from our country, so I never felt comfortable asking or talking about it (I tried many times to get them to understand that this is wrong, but they never stopped looking at black people in a disgusting way and they’re pretty old so any kind of discussion turns to a screaming match)\n\nAnyway, yesterday I was talking to my aunt, and I casually mentioned that my grandfather was half Black, which I probably shouldn’t have said since I only heard that from my mom (They didn’t tell any of us grandchildren anything about her, so maybe bringing it up was wrong). She immediately got defensive and insisted he was “brown” or “almost white.” Mind you, my dad and uncles had full afros, and my dad’s grandfather was a white man. When I pointed out that my grandfather was as dark as a ripe date and that my dad clearly had an afro, she got even more defensive and just said, “That’s normal. It’s just hair.”\n\nThis whole discussion started because she was disappointed that we had a Black cat. I wanted to show her the kitten because I thought she’d find her cute. Her exact words were, “Why did you take a Black cat? Disgusting.” So I responded by saying, “Well, your father was half Black. Was he disgusting too?” And that’s when she got defensive.\n\nNote: My paternal side has always had this attitude towards dark skin (some of them bleach their skin, others claim they were born white with green eyes and the rest never spoke of any topic that is related to being black). ",
+      "post_created_utc": 1749145788,
+      "post_created_iso": "2025-06-05T17:49:48Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mw6bbkh",
+      "comment_text": "NTA. I'd suggest running an ancestry test, but then your DNA would become part of a larger library of genetic material.  However, you certainly have evidence that somewhere in your family lineage is someone of African origins.",
+      "comment_created_utc": 1749146379,
+      "comment_time_iso": "2025-06-05T17:59:39Z",
+      "comment_length": 226,
+      "comment_score": 42,
+      "comment_permalink": "/r/AmItheAsshole/comments/1l45pmc/aitah_for_bringing_up_the_topic_of_my/mw6bbkh/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The family should be more open about their heritage.",
+            "B": "There is evidence of African origins in the family lineage.",
+            "C": "An ancestry test is the best way to resolve the family dispute.",
+            "D": "The family's attitude towards dark skin is justified."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that there is clear evidence of African origins in the family lineage, based on physical characteristics and the information provided.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their claim?",
+          "options": {
+            "A": "The family's secretive behavior about the grandmother.",
+            "B": "The physical features of the family members, such as afros and dark skin.",
+            "C": "The family's racist attitudes towards Black people.",
+            "D": "The family's preference for light skin and green eyes."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the physical features of the family members, such as afros and dark skin, as evidence to support the claim that there are African origins in the family lineage.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to the conclusion?",
+          "options": {
+            "A": "The family's secretive behavior implies a hidden truth.",
+            "B": "Physical features like afros and dark skin suggest African ancestry.",
+            "C": "The family's racist attitudes indicate a desire to hide their true heritage.",
+            "D": "The family's preference for light skin and green eyes suggests a denial of their true heritage."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter reasons that the physical features, such as afros and dark skin, logically suggest that there are African origins in the family lineage.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Anger at the family's racist attitudes.",
+            "B": "Frustration with the family's secrecy.",
+            "C": "Concern about the implications of an ancestry test.",
+            "D": "Matter-of-fact acknowledgment of the evidence."
+          },
+          "ground_truth": [
+            "D"
+          ],
+          "explanation": "The commenter's tone is matter-of-fact, focusing on the evidence of African origins in the family lineage without expressing strong emotions.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What position does the commenter take regarding the use of an ancestry test?",
+          "options": {
+            "A": "Strongly recommends running an ancestry test.",
+            "B": "Suggests running an ancestry test but with reservations.",
+            "C": "Does not recommend running an ancestry test.",
+            "D": "Is indifferent about running an ancestry test."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests running an ancestry test but expresses reservations about the potential privacy concerns, indicating a cautious recommendation.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lz70h1",
+      "post_title": "AITA for telling my friend she isn't my greatest priority right now?",
+      "scenario_description": "So, I've known my best friend since we started uni. I'm 23 and she's 24. We've been really close since our final year and she's just awesome, I love her so much. \n\nAnyway, recently I got married. I come from a family that encourages arranged marriages. And no, I don't mean forced. Arranged marriages in this context is basically being set up by family members. Both parties have to agree before an engagement occurs. My marriage was arranged. My husband and I are still getting used to this whole being married thing and still getting to know each other.\n\nBut my friend can be very needy. She constantly needs my advice or even just to rant to me about things. And most of the time this is totally fine. Especially before I was married. But now, I feel like this new step in my life has become a slightly greater priority. I don't have time in my day to be at her beck and call. I can't just stay out with her for five hours at a time just to hear out her problems like I used to. Don't get me wrong, it's not like I don't want to hear her out. It's just that it feels disrespectful to my husband to just spend so much time away from him when we've only been married for a short amount of time.\n\nAnd I feel so guilty we can't hang out as much as we used to but I thought it would be understood that we wouldn't be able to see each other as often. We met up for brunch earlier and I informed her I had to go straight home after our brunch as my husbands relatives were coming over to congratulate us on our wedding. She got quite upset about this. She said if I wasn't going to give my full attention to her problems, then we might as well just go home now. I told her that it's fine, we can still talk about what's going on but I just can't stay for the entire day like we're used to doing. Normally, we would have our meal and talk, then go in one of our cars and drive around talking for even longer. Today, that just wasn't feasible for me. I had guests coming at 5pm and I knew our brunch would probably finish at about 2/3pm. \n\nThe rest of the brunch was just awkward. It was obvious she was holding a bit of a grudge over what I'd said earlier. I made the mistake of asking her about it. She got mad and said I was choosing my husband over her. I told her that wasn't completely untrue, she's still my best friend but I have a husband and he's also a priority for me now. She didn't like that answer and asked if he was a greater priority. I told her that at this moment in time, he is. But that will change as we get to know each other and then we can go back to our long drives. She just got up and left after that. I've been wracked with guilt since. My husband said that maybe it was a bit harsh to say it like I did. He agrees that he has made me a greater priority since marriage too and it probably would be hard for someone who has depended on me for so long to hear that they aren't prioritised as much as someone who just entered my life. \n\nAita?",
+      "post_created_utc": 1752448951,
+      "post_created_iso": "2025-07-13T23:22:31Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2zji9o",
+      "comment_text": "\"*I was choosing my husband over her*.\"  That's what husbands and wives do; they choose one another over anyone else.  NTA",
+      "comment_created_utc": 1752450225,
+      "comment_time_iso": "2025-07-13T23:43:45Z",
+      "comment_length": 122,
+      "comment_score": 49,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lz70h1/aita_for_telling_my_friend_she_isnt_my_greatest/n2zji9o/",
+      "stance_label": "NTA",
+      "post_label": "Romance",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The friend should understand that the commenter's priorities have changed.",
+            "B": "Husbands and wives should choose one another over anyone else.",
+            "C": "The commenter should feel guilty for prioritizing her husband.",
+            "D": "The friend's reaction is justified given the circumstances."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that husbands and wives should prioritize each other, which is the core belief expressed.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The friend's neediness and constant demand for attention.",
+            "B": "The commenter's recent marriage and the need to spend time with her husband.",
+            "C": "The awkwardness of the brunch after the conversation.",
+            "D": "The friend's reaction of leaving the brunch in anger."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter uses the fact that the commenter recently got married and needs to spend time with her husband as evidence to support the belief that spouses should prioritize each other.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter's argument?",
+          "options": {
+            "A": "Because the friend is upset, it justifies the commenter's decision to prioritize her husband.",
+            "B": "Since the commenter is newly married, it is natural and expected that she would prioritize her husband.",
+            "C": "The commenter's guilt shows that she is torn between her friend and her husband.",
+            "D": "The friend's neediness is a reason to prioritize the commenter's husband."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The logic is that since the commenter is newly married, it is natural and expected that she would prioritize her husband, connecting the evidence of the recent marriage to the conclusion that spouses should prioritize each other.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Empathy for the friend's feelings of being left out.",
+            "B": "Firmness in the belief that spouses should prioritize each other.",
+            "C": "Guilt for not being able to spend as much time with the friend.",
+            "D": "Regret for having the conversation at all."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by a firm and resolute tone, emphasizing the importance of prioritizing one's spouse over others.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What opinion does the commenter assert about the situation?",
+          "options": {
+            "A": "The friend is justified in feeling upset.",
+            "B": "The commenter is not at fault for prioritizing her husband.",
+            "C": "The commenter should apologize to her friend.",
+            "D": "The commenter should balance her time equally between her friend and her husband."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter asserts that the commenter is not at fault (NTA) for prioritizing her husband, which is the main opinion expressed.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1ly6q5c",
+      "post_title": "AITA for not eating cake at my gf birthday?",
+      "scenario_description": "So me (26M) and my girlfriend (25F) were making her cake for her birthday party tomorrow and I said that's too much sugar its disgusting I cant eat that (I was even disgusted to touch it). She almost cried telling me that's not nice her sister was in front and said the same too.\n\nFor context she nows I workout and I dont eat sugar and avoid procesed foods and carbs apart from sometimes fruit and honey in general while she eats everything.\n\nI had told her I would eat a small slice for her but after seeing the amount of sugar she put I rather eat my sole shoe than that and its not about the calories but the whole idea of putting that food in my mouth disgusts me. I guess she should have made a cake I could eat with fruit honey and almond floor for example.\n\n-edit: so I wanted to make update.\nIm never critical of my girlfriend eating \"unhealthy\" even i usually get her a desert she has one almost every day. I will occasionally when I feel she needs it try to encourage her to eat healthier but not with a negative attitude like it happened here. And I apologize and thanks for pointing it out and I hope you do better than me in similar circumstances. I will definitely won't repeat this again.\n\nAbout the comments telling me I have orthorexia I think you are right although it doesnt sound bad to me I'm just different? Recently I made some changes to my diet I primarily eat raw animal organs like brain liver heart eyes etc. Now even cooked meat somehow disgusts me and upsets and bloats my stomach when I eat it it even tastes tasteless. So I can say very few foods I feel nice when I eat them and raw organs are one of those.",
+      "post_created_utc": 1752343054,
+      "post_created_iso": "2025-07-12T17:57:34Z",
+      "post_flair": "Asshole",
+      "comment_id": "n2rli2x",
+      "comment_text": "YTA; calling something that you are trying to avoid (e.g., sugary birthday cake) disgusting and ranting the way that you did is simply unkind.  You could have easily said that you're trying to avoid eating anything with sugar and let it go at that.",
+      "comment_created_utc": 1752343957,
+      "comment_time_iso": "2025-07-12T18:12:37Z",
+      "comment_length": 248,
+      "comment_score": 116,
+      "comment_permalink": "/r/AmItheAsshole/comments/1ly6q5c/aita_for_not_eating_cake_at_my_gf_birthday/n2rli2x/",
+      "stance_label": "YTA",
+      "post_label": "Romance",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "B"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The original poster should have eaten the cake to make his girlfriend happy.",
+            "B": "Calling the cake disgusting and ranting about it was unkind.",
+            "C": "The original poster has a valid reason for not eating the cake.",
+            "D": "The original poster should have made a healthier cake himself."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that calling the cake disgusting and ranting about it was unkind, which is the main belief expressed.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their claim?",
+          "options": {
+            "A": "The original poster's girlfriend almost cried when he said the cake was disgusting.",
+            "B": "The original poster avoids sugar and processed foods.",
+            "C": "The original poster's girlfriend's sister also said the cake was too sugary.",
+            "D": "The original poster had told his girlfriend he would eat a small slice of the cake."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter uses the fact that the original poster's girlfriend almost cried as evidence to support the claim that his behavior was unkind.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The original poster's diet preferences justify his reaction to the cake.",
+            "B": "The emotional impact on the girlfriend makes the original poster's behavior unkind.",
+            "C": "The presence of the girlfriend's sister made the situation more awkward.",
+            "D": "The original poster's prior commitment to eat a small slice of the cake should have been honored."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the emotional impact on the girlfriend (almost crying) makes the original poster's behavior unkind, connecting the evidence to the conclusion.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Indifference towards the original poster's dietary choices.",
+            "B": "Empathy for the girlfriend's feelings and the impact of the original poster's words.",
+            "C": "Anger at the original poster for being inconsiderate.",
+            "D": "Frustration with the original poster's dietary restrictions."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's response is shaped by empathy for the girlfriend's feelings and the negative impact of the original poster's words, indicating an empathetic perspective.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lsaja9",
+      "post_title": "AITA I told my friend that I can't stand her whining anymore",
+      "scenario_description": "Me and one of my best friends are both late 30s. We've known each other for about 15 years now and ever since then she's struggled to keep a partner, because she was too self conscious and couldn't open up. \n\nI told her that I think she needs professional help, because she was downright paralyzed when she met someone she liked. She agreed, but never got help. \n\nSo the problem got worse and worse, she started to get more lethargic, stopped going out more and more, didn't go to the doctor although she had different health issues, stopped going to the gym and the latest problem is that she hates her job. \n\nSo for the last 4 years she's been telling me she wants to leave, she's looking for a job now, she can't stay there anymore ( the company really sucks and I absolutely agree, I wouldn't work there either). In those 4 years she's wrote one (1) application. \n\nShe constantly talks about wanting to do something different to what she does now as a job, but she doesn't know what exactly. But she also doesn't do anything about it. \n\nSo to sum it up: still no partner, because she is too shy and can't open up, even if she really really likes someone.( She was on tinder for like 4 years and didn't swipe right once, because she was too scared, she liked a lot of the men there but she just never did anything)\n\n Still no new job or even an idea of what she wants to do exactly. \n\nNo treatment for her health issues ( we have universal healthcare so money is not the issue) \n\nNo sports or gym for the last 4-5 years. \n\nHer apartment is always messy. \n\nShe complains about all these things almost daily, she's not happy like that but she just doesn't do anything about it. I told her, I think she is depressed, maybe she has an anxiety disorder. She agrees, she says she knows she has an issue and then: you guessed it- doesn't do fuck all about it. \n\nNow at that job it gets worse and worse so she complains more and more and in the last two days I came to end of my patience and I told her that I absolutely can't watch her destroy her own life anymore. I got really angry and I was brutally honest, that she needs to get fn help now, she's almost 40, she's just whining and complaining for like 10 years now and just NEVER DOES ANYTHING. that her behavior is pathological and that I absolutely cannot carry that emotional burden anymore. \n\nNow I feel bad about it but it is so incredibly exhausting. So AITA? should I have been more patient? \n\nEDIT: I told her many times that I think she has anxiety and depression, I even looked for therapists for her, I sent her countless articles or videos about being paralyzed in daily tasks, and she always says: yes I find myself in these diagnoses. But she never calls the therapists and I obviously can't do that for her. She still goes to work and she still meets with friends or goes out from time to time, so she's not heavily depressed. I think she has Dysthymia.. but if she doesn't get help for that, what can I do",
+      "post_created_utc": 1751724011,
+      "post_created_iso": "2025-07-05T14:00:11Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n1h1hqo",
+      "comment_text": "NTA. It sounds like your friend might be suffering from depression. But that's beyond your skill set to help her with.",
+      "comment_created_utc": 1751724978,
+      "comment_time_iso": "2025-07-05T14:16:18Z",
+      "comment_length": 118,
+      "comment_score": 55,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lsaja9/aita_i_told_my_friend_that_i_cant_stand_her/n1h1hqo/",
+      "stance_label": "NTA",
+      "post_label": "Friendship",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The friend should have gotten professional help a long time ago.",
+            "B": "The commenter is not at fault for expressing their frustration.",
+            "C": "The friend's behavior is entirely within her control.",
+            "D": "The commenter should have been more patient with the friend."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the commenter is not the asshole (NTA) and justifies their actions as a response to the friend's inaction and the emotional burden it places on them.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter provide to support their belief?",
+          "options": {
+            "A": "The friend has been complaining for 10 years without taking action.",
+            "B": "The friend has a messy apartment.",
+            "C": "The friend stopped going to the gym.",
+            "D": "The friend has universal healthcare."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter mentions that the friend has been complaining and not doing anything about her issues for 10 years, which supports the claim that the commenter is justified in their frustration.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the commenter's conclusion?",
+          "options": {
+            "A": "The friend's lack of action over a long period justifies the commenter's frustration.",
+            "B": "The friend's depression is beyond the commenter's ability to help.",
+            "C": "The friend's health issues are a result of her inaction.",
+            "D": "The friend's job situation is the primary cause of her problems."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter argues that the friend's prolonged inaction and constant complaining justify the commenter's frustration and the need to express it.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Sympathy for the friend's struggles.",
+            "B": "Frustration and exasperation with the friend's inaction.",
+            "C": "Anger at the friend's company for being a bad work environment.",
+            "D": "Regret for not being more patient with the friend."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter expresses frustration and exasperation with the friend's inaction and constant complaining, leading to the outburst of anger and the need to set boundaries.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What position does the commenter take regarding the friend's condition?",
+          "options": {
+            "A": "The friend is fully responsible for her own mental health.",
+            "B": "The friend might be suffering from depression, but the commenter cannot help with it.",
+            "C": "The friend's behavior is a sign of laziness.",
+            "D": "The friend should have taken the commenter's advice earlier."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter acknowledges that the friend might be suffering from depression, but also states that this is beyond their skill set to help with, indicating a recognition of the limits of their support.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1letyfj",
+      "post_title": "WIBTA if I kicked my dad's girlfriend out of our home?",
+      "scenario_description": "I really need outside opinions because I don’t know if I am being super unreasonable.\n\nMy mum died when I was a teenager. In her will, she left the house to me but gave my dad a right to live in it until he dies. She inherited our family home from her parents so it was always just in her name.\n\nHonestly I never thought of it as “my house.” Even though legally it is. I moved away for uni but after I got a good job back in our hometown, I moved back in. I have been living here again for a few years now. \n\nI guess I knew deep down that my dad must have dated over the years but he never talked about it and never introduced me to anyone and honestly I kind of liked it that way. I didn't want to know that he moved on. It was just us- him and me against the world.\n\nHis new girlfriend kind of appeared out of nowhere. I met her a couple of times and suddenly she moved in without any prior discussion. \n\nI was stunned but I tried to be happy for him. I really, really did. I tried my best to be polite and keep my resentment to myself. But it’s getting harder every single day. Every time I see them giggling in the kitchen or cuddled up on the sofa my mum picked out, I want to scream. My mum who died too young, who loved my dad, who was only ever with my dad, who never got a chance to move on. And now I have to watch him do it, every single day, in her house, in her childhood home. I didn't know I just feels like this is so disrespectful to my mum's memory.\n\nShe is redecorating. She has moved furniture. She changed the curtains and wallpapers my mum and I picked together and reorganised the kitchen cupboards.\n\nAnd worse she has been making comments like, “Have you ever thought about living independently now that you are settled in your career?” Or telling my dad they will need to turn my room into nursery eventually when they have kids as the third room is his home office.\n\nLike. What?? The absolute audacity.\n\nI’m not a tenant or a guest. I own the goddamn house. My dad just has a right to live here but I don't think that right gives him the right to just move in a partner and act like it’s their shared marital home especially when I live here too. If he wants to build a life with her he should at least move out and not do it in my mum's home.\n\nFrom what i understand she has no legal right to live here. She is not a tenant as she pays no rent. I think I can legally kick her out anytime i want to without a court order. At best she is an \"excluded occupier\" and can be evicted with reasonable notice which is classed as one rental period. And I don't think even that is applicable here.\n\nI havent confronted him yet but I am this close to sitting my dad down and saying all this. And if he refuses, I am considering speaking to a solicitor and making it happen formally. I know it would cause a huge rift but i am so tired of feeling like a stranger in my own home. I feel like my mum is being erased. But I really love my dad and don't want to hurt him or lose him",
+      "post_created_utc": 1750284097,
+      "post_created_iso": "2025-06-18T22:01:37Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "myj3g3g",
+      "comment_text": "NTA. Put a stop to whatever changes you do not like that they are making. Also, inform your father's girlfriend that the house is yours - not theirs - and that, at best, your father (and she) are tenants.\n\nAs long as your father has the right to live there, I do not think that you can deny or otherwise restrict his guests. What you need to determine -now - is what his rights are as regards making changes in the house. I'd think that they are comparable to the rights of any tenants which, truth be known, depends on the rental agreement; in this case, that would be the will.\n\nDon't wait, talk to a lawyer who will explain your rights to you. Once you understand those rights, calmly discuss things with your father. If that cannot happen, bring your lawyer into the picture and/or go to court.",
+      "comment_created_utc": 1750285025,
+      "comment_time_iso": "2025-06-18T22:17:05Z",
+      "comment_length": 798,
+      "comment_score": 39,
+      "comment_permalink": "/r/AmItheAsshole/comments/1letyfj/wibta_if_i_kicked_my_dads_girlfriend_out_of_our/myj3g3g/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The father's girlfriend has the right to live in the house and make changes.",
+            "B": "The house belongs to the original poster, and the father and his girlfriend are at best tenants.",
+            "C": "The original poster should not confront the father about the situation.",
+            "D": "The father's girlfriend should be allowed to make any changes she wants."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the house belongs to the original poster and that the father and his girlfriend are at best tenants.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their belief?",
+          "options": {
+            "A": "The father's girlfriend has been living in the house for a long time.",
+            "B": "The original poster inherited the house from their mother, and the father only has the right to live there.",
+            "C": "The father's girlfriend is paying rent to live in the house.",
+            "D": "The father's girlfriend has a legal claim to the house."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment uses the fact that the original poster inherited the house from their mother and the father only has the right to live there as evidence to support their belief.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "Since the father's girlfriend is making the house more comfortable, she should be allowed to stay.",
+            "B": "Because the original poster owns the house, they have the authority to decide who can live there and what changes can be made.",
+            "C": "The father's girlfriend has a right to live in the house because she is in a relationship with the father.",
+            "D": "The father's girlfriend should be allowed to make changes because she is part of the family now."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter reasons that since the original poster owns the house, they have the authority to decide who can live there and what changes can be made.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's advice?",
+          "options": {
+            "A": "Sympathetic and understanding of the father's girlfriend's position.",
+            "B": "Supportive of the original poster's feelings and rights, but also pragmatic.",
+            "C": "Indifferent to the situation and the feelings involved.",
+            "D": "Angry and resentful towards the father and his girlfriend."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's advice is supportive of the original poster's feelings and rights, but also pragmatic, suggesting a calm and reasoned approach.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What action does the commenter suggest the original poster should take first?",
+          "options": {
+            "A": "Immediately kick the father's girlfriend out of the house.",
+            "B": "Talk to a lawyer to understand their legal rights.",
+            "C": "Confront the father and demand that he and his girlfriend leave.",
+            "D": "Ignore the situation and hope it resolves itself."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter suggests that the original poster should first talk to a lawyer to understand their legal rights.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1ldkr6c",
+      "post_title": "AITAH For blasting my phone on full volume because my roommate and cousin decides to do the tango in the next room over?",
+      "scenario_description": "So, my roommate and cousin made the decision to wake me up at five in the god damn morning with their little “devil’s tango” session in the next room over for the millionth time. They somehow manage to disturb my sleep EVERY SINGLE TIME I try to finally get some rest. The walls in this place are ridiculously thin—like “you can hear a phone conversation word-for-word from the next room” thin.\n\nAnd yes, I know I irritate them when I blast my phone at full volume, especially right after they're done with their “business.” But honestly, I’m not trying to listen to them go at it every single night for two and a half hours straight, especially when I have things to do in the next few hours. It’s absolutely absurd at this point.\n\nSo tell me am I really the asshole for blasting music and turning up my phone just to drown them out? They seem annoyed, but I have every right to do this and ruin their \"vibe\" \n\nYes adults can do adult things in their own apartments, but I also pay the bills here as well, and I would rather have my peace and quiet. \n",
+      "post_created_utc": 1750160012,
+      "post_created_iso": "2025-06-17T11:33:32Z",
+      "post_flair": "Not enough info",
+      "comment_id": "my8x728",
+      "comment_text": "ESH; While I can see your reasons for blasting music to drown out their porn-making sounds, this dynamic shows an amazing lack of consideration on both your parts. Simply put, it is not sustainable. If they can't/won't tone things down, you'd be well advised to find a new roommate and either (a) move out ASAP or (b) tell your roommate to move out - depending on whose name(s) is/are on the lease..",
+      "comment_created_utc": 1750160950,
+      "comment_time_iso": "2025-06-17T11:49:10Z",
+      "comment_length": 399,
+      "comment_score": 6,
+      "comment_permalink": "/r/AmItheAsshole/comments/1ldkr6c/aitah_for_blasting_my_phone_on_full_volume/my8x728/",
+      "stance_label": "ESH",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "D"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The roommate and cousin should be allowed to continue their behavior without interruption.",
+            "B": "Both the original poster and the roommate/cousin are showing a lack of consideration for each other.",
+            "C": "The original poster has no right to blast music to drown out the noise.",
+            "D": "The original poster should move out immediately."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that both parties are being inconsiderate, making it unsustainable.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their position?",
+          "options": {
+            "A": "The thin walls of the apartment.",
+            "B": "The frequency and duration of the roommate and cousin's activities.",
+            "C": "The original poster's need for peace and quiet.",
+            "D": "The legal implications of the lease agreement."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter mentions the frequency and duration of the roommate and cousin's activities as a key issue.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logical connection does the commenter make between the evidence and the conclusion?",
+          "options": {
+            "A": "The thin walls justify the original poster's actions.",
+            "B": "The frequency and duration of the activities show a lack of consideration, leading to an unsustainable living situation.",
+            "C": "The original poster's need for peace and quiet justifies the blasting of music.",
+            "D": "The legal implications of the lease agreement determine who should move out."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that the frequent and long-lasting disturbances indicate a lack of consideration, making the situation unsustainable.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "Anger towards the roommate and cousin.",
+            "B": "Sympathy for the original poster's frustration.",
+            "C": "Frustration with the overall situation and both parties' behavior.",
+            "D": "Indifference to the problem."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter expresses frustration with the situation and both parties' inconsiderate behavior.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q6",
+          "tag": "claim",
+          "question": "What solution does the commenter suggest for the situation?",
+          "options": {
+            "A": "The original poster should continue to blast music to drown out the noise.",
+            "B": "The roommate and cousin should stop their activities entirely.",
+            "C": "One of the parties should move out to resolve the issue.",
+            "D": "The original poster should file a formal complaint with the landlord."
+          },
+          "ground_truth": [
+            "C"
+          ],
+          "explanation": "The commenter suggests that one of the parties should move out to resolve the issue.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1m0mo57",
+      "post_title": "AITA for not covering my neighbor’s grocery bill after they repeatedly borrowed my stuff without returning it?",
+      "scenario_description": "I (24F) live in an apartment building and have a neighbor, Kyah (27F), who’s friendly but a bit careless. Over the past six months, Kyah’s borrowed several things from me tools, a ladder, even my Wi-Fi password when her internet was down. I didn’t mind at first, but she’s terrible about returning stuff. My screwdriver set is still missing, she kept my ladder for weeks until I asked for it back, and she used my Wi-Fi for a month without offering to chip in for the bill. Each time, I’ve been polite and let it slide, thinking she’d get better about it. Last weekend, I ran into Kyah at the grocery store. She was at the checkout with a cart full of stuff but realized she’d forgotten her wallet. She asked if I could cover her $85 bill, promising to pay me back that evening. I hesitated because of her track record with my stuff and because I’m on a tight budget myself. I told her I could spot her $20 for essentials but couldn’t cover the whole bill, especially since it included things like expensive snacks and beer. She got frustrated, saying I was unneighborly and that she’d have done the same for me. She ended up leaving most of her items behind and only buying what she could with the cash she found in her pocket. Since then, Kyah’s been giving me the cold shoulder, and another neighbor said Kyah called me stingy. I feel bad because I know forgetting a wallet is stressful, and maybe I could’ve helped more since we’re neighbors. But I also feel like her pattern of borrowing without reciprocating made me wary. \n\nAITA for not covering her full grocery bill?",
+      "post_created_utc": 1752597494,
+      "post_created_iso": "2025-07-15T16:38:14Z",
+      "post_flair": null,
+      "comment_id": "n3akoqq",
+      "comment_text": "NTA. You weren't being stingy, your were being frugal and smart. She's already shown herself to be a bad credit risk. So unless you have the money to lose, it's unwise to \"loan\" he anything.",
+      "comment_created_utc": 1752599261,
+      "comment_time_iso": "2025-07-15T17:07:41Z",
+      "comment_length": 190,
+      "comment_score": 21,
+      "comment_permalink": "/r/AmItheAsshole/comments/1m0mo57/aita_for_not_covering_my_neighbors_grocery_bill/n3akoqq/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The neighbor should have covered the full grocery bill.",
+            "B": "The neighbor was not being stingy, but rather being frugal and smart.",
+            "C": "The neighbor should always help others, regardless of past behavior.",
+            "D": "The neighbor's actions were unneighborly and unforgivable."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the neighbor was not being stingy, but rather being frugal and smart.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact does the commenter use to support their claim?",
+          "options": {
+            "A": "The neighbor has a history of borrowing items and not returning them.",
+            "B": "The neighbor is on a tight budget and cannot afford to lose money.",
+            "C": "The neighbor offered to cover the full grocery bill but changed her mind.",
+            "D": "The neighbor has a good track record of repaying debts."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter uses the fact that the neighbor has a history of borrowing items and not returning them to support the claim that the neighbor was being smart and frugal.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic connects the evidence to the conclusion in the commenter’s argument?",
+          "options": {
+            "A": "Since the neighbor has a history of not returning borrowed items, it is wise to be cautious with lending money.",
+            "B": "Since the neighbor is on a tight budget, she should not be expected to lend money.",
+            "C": "Since the neighbor offered to cover the full grocery bill, she should be trusted with more money.",
+            "D": "Since the neighbor has a good track record of repaying debts, she should be given more credit."
+          },
+          "ground_truth": [
+            "A"
+          ],
+          "explanation": "The commenter argues that because the neighbor has a history of not returning borrowed items, it is wise to be cautious with lending money.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "Anger and frustration towards the neighbor for not returning items.",
+            "B": "Empathy and understanding of the neighbor’s situation, but also caution.",
+            "C": "Indifference towards the neighbor’s behavior and financial situation.",
+            "D": "Disappointment and resentment towards the neighbor for being unneighborly."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment shows empathy and understanding of the neighbor’s situation, but also a cautious and practical approach based on past behavior.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1lyq3sq",
+      "post_title": "AITA for standing too close at a concert?",
+      "scenario_description": "37M.\n\nThis week I went to see Coldplay and had floor tickets. I got there a few hours early so I could get close to the front, although it got pretty packed pretty quickly (50,000 people).\n\nAround me were two young girls (mid twenties). I’m 37, a person of color, and about 215 lbs. I don’t always love being this packed in, but this is all I could get.\n\nAt one point one girl steps away and I hear her tell her friend “I’m want to get away from that guy (me)” her friend was like “was he being creepy?” And she said “no, but he’s standing really close to me”. I apologized and she snapped at me saying “you’re standing like an inch away” and I’m like “it’s just really crowded”. \n\nThere was never any physical contact in any way.\n\nAs time went on it got even more packed and there were some people crowding me too, I just held my tongue as I feel that’s the reality at a concert like this when you want to get close to the band.\n\nWhen I looked over midway through the show I noticed these two girls had left the area completely.\n\nEveryone else around me seemed chatty and excited to see the show.\n\nAITA for standing too close to this one young girl?",
+      "post_created_utc": 1752404567,
+      "post_created_iso": "2025-07-13T11:02:47Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "n2vuelb",
+      "comment_text": "NTA. You got there early when, presumably, there was lots of space around each person who was standing. They're the ones who crowded into your personal space. It's not your fault that they couldn't respect your physical boundaries.\n\nFor the record, if you're planning on going to an SRO event where the performers are as popular as Coldplay, you should be prepared to be jostled from all sides. I've always considered someone \"*standing like an inch away*\" from me to be a luxury since that means that they weren't pressed up against me.",
+      "comment_created_utc": 1752407795,
+      "comment_time_iso": "2025-07-13T11:56:35Z",
+      "comment_length": 537,
+      "comment_score": 7,
+      "comment_permalink": "/r/AmItheAsshole/comments/1lyq3sq/aita_for_standing_too_close_at_a_concert/n2vuelb/",
+      "stance_label": "NTA",
+      "post_label": "Society",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that the original poster (OP) was at fault for standing too close.",
+            "B": "The commenter believes that the OP is not at fault and that the girls should have been more prepared for the crowded conditions.",
+            "C": "The commenter believes that the OP should have moved to a less crowded area.",
+            "D": "The commenter believes that the girls were justified in their discomfort and should have been given more space."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the OP is not at fault and that the girls should have been more prepared for the crowded conditions.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific fact or detail does the commenter use to support their position?",
+          "options": {
+            "A": "The OP got there early and had initially more space around them.",
+            "B": "The concert was for a popular band, and it was expected to be very crowded.",
+            "C": "The girls left the area completely during the show.",
+            "D": "There was no physical contact between the OP and the girls."
+          },
+          "ground_truth": [
+            "A",
+            "B"
+          ],
+          "explanation": "The commenter uses the fact that the OP got there early when there was lots of space and that the girls crowded into the OP's personal space. They also mention that at a popular concert, one should expect to be jostled from all sides.",
+          "source": "qwen-max",
+          "question_type": "Multiple-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "The commenter argues that since the OP arrived early, they had a right to the space they occupied.",
+            "B": "The commenter suggests that the girls should have anticipated the crowded conditions and adjusted their expectations accordingly.",
+            "C": "The commenter believes that the OP should have moved to a less crowded area to avoid the conflict.",
+            "D": "The commenter states that the lack of physical contact means the OP did nothing wrong."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's reasoning is that the girls should have been more prepared for the crowded conditions and adjusted their expectations, rather than expecting the OP to move.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the commenter's response?",
+          "options": {
+            "A": "The commenter is sympathetic to the girls' discomfort and suggests the OP should have moved.",
+            "B": "The commenter is dismissive of the girls' complaints and supports the OP's right to stay in their spot.",
+            "C": "The commenter is neutral and simply states the facts without any emotional bias.",
+            "D": "The commenter is angry at the girls for being unprepared and causing a scene."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is dismissive of the girls' complaints and supportive of the OP's right to stay in their spot, suggesting that the girls should have been more prepared for the crowded conditions.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    },
+    {
+      "subreddit": "AmItheAsshole",
+      "post_id": "t3_1l39cyd",
+      "post_title": "AITA for not allowing my little cousin to use my expensive gaming PC?",
+      "scenario_description": "I recently invested a significant amount of my savings into building a high performing PC for gaming and my studies, as I do graphic design, and need something powerful for this, as well as obviously playing games and such. I spent months researching parts which I needed to build it, and even longer saving up for it, as I only have a part time job, because I am young. I built the PC, bought all the peripherals and everything I needed and was super proud of myself.\n\n  \nRecently, when we were having a family gathering at my house, my 9 year old cousin, (We'll call him Leo,) saw my PC, as he must've got into my room while we were talking, asked to play on my 'cool computer,' since he mainly plays on an iPad. Don't get me wrong, I'm fond of the guy, but I didn't want him using my computer for multiple reasons, like if he breaks something, I can't be replacing it, as like I said, it was very expensive, and he might've misunderstood the fragility of the PC, I also worried that he might accidentally alter or delete my coursework, getting me in a load of trouble. \n\n  \nI would also have had to supervise him while he was playing because of his age, which I didn't want to do, as it was a family gathering, and I wanted to spend the time with the family I don't see very often. \n\n  \nSo I told him no, and he was pretty disappointed, which he made VERY clear to his parents and mine. His parents understood my perspective, but they obviously took Leo's side. They said that I could have let him play for a few minutes, and that I should have been more flexible. They also said it's 'Just a computer,' and that 'family should share.' The 'just a computer' part really annoyed me, as that is months of work for me, lots of consideration and care into buying and making it.\n\n  \nI offered to let Leo play games on my console if he wanted to play anywhere, but he was stubborn and said no, just to prove a point. So now Leo's parents aren't happy with me, and mine told me to just let it go and go to my room, I received a text from my aunt saying that I was being annoying, stubborn and unkind, and this hurt me. AITA?",
+      "post_created_utc": 1749052927,
+      "post_created_iso": "2025-06-04T16:02:07Z",
+      "post_flair": "Not the A-hole",
+      "comment_id": "mvz4quq",
+      "comment_text": "NTA.  You have made an expensive investment that is important for you to complete your coursework. It should not be shared casually. Only if you are comfortable allowing someone else to use it, should you do so.\n\nIf anyone insists on your sharing your system, recommend that they set your cousin up with a similar rig because, \"*it's 'Just a computer.*'\"",
+      "comment_created_utc": 1749054045,
+      "comment_time_iso": "2025-06-04T16:20:45Z",
+      "comment_length": 354,
+      "comment_score": 17,
+      "comment_permalink": "/r/AmItheAsshole/comments/1l39cyd/aita_for_not_allowing_my_little_cousin_to_use_my/mvz4quq/",
+      "stance_label": "NTA",
+      "post_label": "Family",
+      "mcqs": [
+        {
+          "question": "Q1: What is the commenter's stance regarding the situation described in the original post?",
+          "tag": "stance",
+          "option": [
+            "A. NTA  Not The A-hole The author is NOT to blame and the other party described is to blame.",
+            "B. YTA  You're The A-hole The author is at fault in their situation.",
+            "C. NAH  No A-holes Here Neither party is to blame. All parties' actions are justified.",
+            "D. ESH  Everyone Sucks Here Both parties involved in the scenario are to blame.",
+            "E. INFO Not Enough Info The OP never clarifies details that would determine the true judgment."
+          ],
+          "source": "manual",
+          "explanation": "stance test",
+          "question_type": "Single-choice question",
+          "question_id": "q1",
+          "ground_truth": [
+            "A"
+          ]
+        },
+        {
+          "question_id": "q2",
+          "tag": "claim",
+          "question": "What belief is most clearly expressed by the commenter?",
+          "options": {
+            "A": "The commenter believes that family should always share their possessions.",
+            "B": "The commenter believes that the OP's expensive PC should not be shared casually.",
+            "C": "The commenter believes that the cousin should have been allowed to use the PC for a few minutes.",
+            "D": "The commenter believes that the OP was being unkind and stubborn."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment emphasizes that the OP's PC is an important and expensive investment, and it should not be shared casually.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q3",
+          "tag": "evidence",
+          "question": "What specific detail does the commenter use to support their belief?",
+          "options": {
+            "A": "The cousin's parents were understanding of the OP's perspective.",
+            "B": "The OP's PC is an expensive investment important for coursework.",
+            "C": "The cousin was disappointed and made it clear to his parents.",
+            "D": "The OP offered to let the cousin play on their console instead."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The comment highlights that the PC is an expensive investment and is important for the OP's coursework, which supports the belief that it should not be shared casually.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q4",
+          "tag": "reasoning",
+          "question": "What logic does the commenter use to connect the evidence to their conclusion?",
+          "options": {
+            "A": "Since the cousin is young, he should be allowed to play on the PC to learn about technology.",
+            "B": "Because the PC is an expensive and important investment, it should only be used if the OP is comfortable with it.",
+            "C": "Since the cousin's parents understood the OP's perspective, the OP should have been more flexible.",
+            "D": "Because the cousin was disappointed, the OP should have let him use the PC to avoid family conflict."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter argues that because the PC is an expensive and important investment, it should only be used if the OP is comfortable with it, connecting the importance of the PC to the decision not to share it.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        },
+        {
+          "question_id": "q5",
+          "tag": "emotion",
+          "question": "What emotional tone or perspective shapes the comment?",
+          "options": {
+            "A": "The commenter is frustrated with the OP for not sharing the PC.",
+            "B": "The commenter is supportive and understanding of the OP's decision.",
+            "C": "The commenter is sympathetic towards the cousin's disappointment.",
+            "D": "The commenter is annoyed with the cousin's parents for insisting on sharing the PC."
+          },
+          "ground_truth": [
+            "B"
+          ],
+          "explanation": "The commenter's tone is supportive and understanding of the OP's decision, emphasizing the importance of the PC and the OP's right to decide who uses it.",
+          "source": "qwen-max",
+          "question_type": "Single-choice question"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "saved_at": "2025-07-16T02:43:51.921564",
+    "crawler_version": "1.0"
+  },
+  "mcqs_metadata": {
+    "generation_info": {
+      "model": "qwen-max",
+      "temperature": 0.5,
+      "processed_topics": "50/50",
+      "timestamp": "2025-07-28 06:00:54"
+    },
+    "mcq_statistics": {
+      "questions": 223,
+      "single_choice": 222,
+      "multi_choice": 1,
+      "tags": {
+        "claim": 76,
+        "evidence": 49,
+        "reasoning": 49,
+        "emotion": 49
+      }
+    }
+  }
+}
