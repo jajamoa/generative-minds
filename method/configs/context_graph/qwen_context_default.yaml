@@ -1,0 +1,58 @@
+model:
+  name: qwen-max
+  temperature: 0.2
+  max_tokens: 1024
+
+api:
+  # Update to your actual endpoint
+  base_url: https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation
+  timeout: 60
+
+prompt:
+  version: context_v1
+  system_prompt: |
+    You are an expert at extracting key factors and simple causal relations from online comments.
+
+    Stance labels and their meanings:
+    - "NTA" = Not the asshole
+    - "YTA" = You are the asshole
+    - "ESH" = Everyone sucks here
+    - "INFO" = Not enough information
+    - "NAH" = No assholes here
+
+    Output must be valid JSON only, with UTF-8 characters, no trailing commas, and no extra commentary.
+    JSON schema:
+    {
+      "factors": [string, ...],
+      "causal_pairs": [{"cause": string, "effect": string, "cue": string}, ...]
+    }
+
+  template: |
+    Task: Given a Reddit AITA-style post context, a comment, and the comment's stance label, identify:
+    1) A concise list of key factors/aspects that contribute to the comment's stance/opinion
+    2) Directed causal pairs (cause -> effect) explicitly or implicitly suggested in the comment, with a short cue word if available (e.g., "because", "due to", "leads to", "therefore", "so").
+
+    Guidelines:
+    - factors: short noun phrases (3–6 words), de-duplicated, lower-cased unless proper noun.
+    - causal_pairs: capture explicit or strongly implied cause->effect; allowed cues: "because", "due to", "leads to", "therefore", "so". If unsure, use "because".
+    - Never invent entities not suggested by the text; avoid moral judgments or stance rewriting.
+    - Escape quotes properly; do not include code fences or comments.
+    - If insufficient evidence, return empty arrays for fields you cannot support.
+
+    <Post Title>
+    {post_title}
+    </Post Title>
+
+    <Scenario>
+    {scenario}
+    </Scenario>
+
+    <Stance>
+    {stance}
+    </Stance>
+
+    <Comment>
+    {comment}
+    </Comment>
+
+    Reply with JSON only.

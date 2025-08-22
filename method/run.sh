@@ -1,0 +1,2 @@
+#!/bin/bash
+python motif_library/context_graph_builder.py --dataset data/30ppl_eval_v1_0728 --out intermediate_data/30ppl_eval_v1_0728 --participant 1962Michael --llm_cfg context_graph/qwen_context_default.yaml
