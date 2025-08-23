@@ -139,7 +139,7 @@ class BaseContextLLM(ABC):
     def generate_context(
         self, post_title: str, scenario: str, comment: str, stance: str
     ) -> Dict[str, Any]:
-        """Return {factors: List[str], causal_pairs: [{cause,effect,cue?}], _raw?: str}."""
+        """Return {factors: List[str|{name,evidence}], edges?: [{from,to,relation,cue?}], causal_pairs?: [{cause,effect,cue?}], _raw?: str, _prompt?: str}."""
         raise NotImplementedError
 
 
@@ -239,12 +239,16 @@ class QwenMaxContextLLM(BaseContextLLM):
             factors = parsed.get("factors") or parsed.get("aspects") or []
             if not isinstance(factors, list):
                 factors = []
+            edges = parsed.get("edges") or []
+            if not isinstance(edges, list):
+                edges = []
             causal_pairs = parsed.get("causal_pairs") or parsed.get("links") or []
             if not isinstance(causal_pairs, list):
                 causal_pairs = []
 
             return {
                 "factors": factors,
+                "edges": edges,
                 "causal_pairs": causal_pairs,
                 "_raw": raw,
                 "_prompt": prompt,

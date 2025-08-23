@@ -1,6 +1,6 @@
 model:
   name: qwen-max
-  temperature: 0.2
+  temperature: 0.1
   max_tokens: 1024
 
 api:
@@ -18,33 +18,43 @@ prompt:
     - "NTA" = Not the asshole; "YTA" = You are the asshole; "ESH" = Everyone sucks here; "INFO" = Not enough information; "NAH" = No assholes here.
 
     Output must be valid JSON only (UTF-8, no comments, no code fences, no trailing commas).
-    JSON schema:
+    JSON schema (provide ALL edges that should appear in the final graph):
     {
       "factors": [
         {"name": string, "evidence": string}
       ],
-      "causal_pairs": [
+      "edges": [ // enumerate ALL edges in the final graph
+        {"from": string, "to": string, "relation": string, "cue": string (optional)}
+      ],
+      "causal_pairs": [  // optional backward-compatibility; if present, builder may use it when edges are missing
         {"cause": string, "effect": string, "cue": string}
       ]
     }
     Requirements:
     - factors.name: short, abstract noun phrase (3–6 words), normalized and generalizable (e.g., "boundary-setting in relationships", "respect for personal autonomy").
     - factors.evidence: brief quote copied verbatim from the comment that supports the factor (no ellipses if possible).
-    - causal_pairs: capture explicit or strong implied cause->effect; cue ∈ {"because","due to","leads to","therefore","so"}. If unsure, use "because".
+    - edges: enumerate ALL edges for the graph. Use:
+      - relation="contributes" only for factor -> stance (stance id: "stance::{STANCE_LABEL}") and only from sink factors (factors with no outgoing causal edges).
+      - relation="causal" only for factor -> factor (add a SHORT cue keyword): choose from {"because", "because of", "due to", "owing to", "as a result of", "leads to", "results in", "causes", "so", "so that", "therefore", "thus", "hence", "consequently", "if_then"}.
+      - Do NOT invent other relation types; avoid fully connecting unrelated factors.
+    - causal_pairs: optional; if you include it, it should be a subset of edges with relation="causal" and is used only as a fallback.
     - Do NOT include moral judgments or restate the stance. If insufficient evidence, return empty arrays.
-    - Graph constraint: Relationships must ONLY be between factors. Never include the stance in any causal pair. Think carefully and avoid any non-factors involved in the graph.
+    - Graph constraint: Relationships must ONLY involve factors and the stance node. Stance may only appear with relation="contributes". Factor-to-factor edges must not include the stance.
+    - Contributes edges should be provided for sink factors (no outgoing causal edges) pointing to the stance node explicitly.
 
   template: |
     Task: Given the post context and a comment with a stance label, produce:
     1) Abstract factors: a list where each item has {"name": <abstract factor>, "evidence": <exact quote from the comment>}.
-    2) Causal pairs: cause->effect links present or strongly implied in the comment, with a cue.
+    2) Edges: list EVERY edge that should be rendered in the graph using objects {"from","to","relation", "cue"?}:
+       - factor -> stance edge with relation="contributes" (stance id: "stance::{stance}") and only from sink factors (no outgoing causal edges)
+       - factor -> factor edges with relation="causal" (add a SHORT cue keyword chosen from: because, because of, due to, owing to, as a result of, leads to, results in, causes, so, so that, therefore, thus, hence, consequently, if_then). Avoid adding edges for unrelated factors.
 
     Guidance:
-    - Make factors abstract and reusable across comments (e.g., "fairness in agreements", "communication breakdown", "concern for safety").
+    - Make factors abstract and generalizable (e.g., "fairness in agreements", "communication breakdown", "concern for safety").
     - For evidence, copy a short verbatim span from the comment that supports the factor.
     - Use consistent casing; avoid duplicates; keep names concise.
-    - Do not include the full original comment text in factor names or causal pairs.
-    - Graph constraint: causal_pairs MUST reference only factor names. Do NOT reference the stance in causal_pairs. All relationships are factor-to-factor only. Think carefully.
+    - Do not include the full original comment text in factor names or edges.
+    - Graph constraint: edges MUST reference only factors and the stance node. Include ALL contributes edges explicitly.
 
     <Post Title>
     {post_title}
@@ -62,4 +72,4 @@ prompt:
     {comment}
     </Comment>
 
-    Reply with JSON only.
+    Reply with JSON only. Ensure all edges are in "edges"; optionally include "causal_pairs" mirroring relation="causal" edges.

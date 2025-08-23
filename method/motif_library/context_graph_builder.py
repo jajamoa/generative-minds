@@ -149,50 +149,100 @@ def _extract_causal_pairs(sentence: str) -> List[Tuple[str, str, str]]:
 
     # Pattern: effect because cause
     if " because " in s_norm:
-        m = re.search(r"(.+?)\bbecause\b(.+)", sentence, flags=re.IGNORECASE)
+        m = re.search(r"(.+?)\bbecause\b\s+of\s+(.+)", sentence, flags=re.IGNORECASE)
         if m:
             effect = _clean_phrase(m.group(1))
             cause = _clean_phrase(m.group(2))
             if effect and cause:
-                pairs.append((cause, effect, "because"))
+                pairs.append((cause, effect, "because of"))
+        else:
+            m = re.search(r"(.+?)\bbecause\b(.+)", sentence, flags=re.IGNORECASE)
+            if m:
+                effect = _clean_phrase(m.group(1))
+                cause = _clean_phrase(m.group(2))
+                if effect and cause:
+                    pairs.append((cause, effect, "because"))
 
-    # Pattern: effect due to cause
-    if " due to " in s_norm:
-        m = re.search(r"(.+?)\bdue to\b(.+)", sentence, flags=re.IGNORECASE)
+    # Pattern: effect due to cause / owing to / as a result of
+    if " due to " in s_norm or " owing to " in s_norm or " as a result of " in s_norm:
+        m = re.search(
+            r"(.+?)\b(due to|owing to|as a result of)\b(.+)",
+            sentence,
+            flags=re.IGNORECASE,
+        )
         if m:
             effect = _clean_phrase(m.group(1))
-            cause = _clean_phrase(m.group(2))
+            cause = _clean_phrase(m.group(3))
+            cue = m.group(2).lower()
             if effect and cause:
-                pairs.append((cause, effect, "due to"))
+                pairs.append((cause, effect, cue))
 
-    # Pattern: cause leads to effect
-    if " leads to " in s_norm:
-        m = re.search(r"(.+?)\bleads to\b(.+)", sentence, flags=re.IGNORECASE)
+    # Pattern: cause leads to/effect results in/causes effect
+    if (
+        " leads to " in s_norm
+        or " results in " in s_norm
+        or re.search(r"\bcauses?\b", s_norm) is not None
+    ):
+        m = re.search(
+            r"(.+?)\b(leads to|results in|causes?)\b(.+)", sentence, flags=re.IGNORECASE
+        )
         if m:
             cause = _clean_phrase(m.group(1))
-            effect = _clean_phrase(m.group(2))
+            effect = _clean_phrase(m.group(3))
+            cue = m.group(2).lower()
             if effect and cause:
-                pairs.append((cause, effect, "leads to"))
+                pairs.append((cause, effect, cue))
 
-    # Pattern: cause so effect
-    if re.search(r"\bso\b", s_norm):
-        m = re.search(r"(.+?)\bso\b(.+)", sentence, flags=re.IGNORECASE)
+    # Pattern: cause so (that)? effect
+    if re.search(r"\bso( that)?\b", s_norm):
+        m = re.search(r"(.+?)\bso(?: that)?\b(.+)", sentence, flags=re.IGNORECASE)
         if m:
             cause = _clean_phrase(m.group(1))
             effect = _clean_phrase(m.group(2))
             if effect and cause:
                 pairs.append((cause, effect, "so"))
 
-    # Pattern: cause therefore effect
-    if " therefore " in s_norm:
-        m = re.search(r"(.+?)\btherefore\b(.+)", sentence, flags=re.IGNORECASE)
+    # Pattern: cause therefore/thus/hence/consequently effect
+    if (
+        " therefore " in s_norm
+        or " thus " in s_norm
+        or " hence " in s_norm
+        or " consequently " in s_norm
+    ):
+        m = re.search(
+            r"(.+?)\b(therefore|thus|hence|consequently)\b(.+)",
+            sentence,
+            flags=re.IGNORECASE,
+        )
+        if m:
+            cause = _clean_phrase(m.group(1))
+            effect = _clean_phrase(m.group(3))
+            cue = m.group(2).lower()
+            if effect and cause:
+                pairs.append((cause, effect, cue))
+
+    # Pattern: if cause, (then)? effect
+    if re.search(r"\bif\b", s_norm):
+        m = re.search(
+            r"\bif\b\s*(.+?)[,;]\s*(?:then\b\s*)?(.+)", sentence, flags=re.IGNORECASE
+        )
         if m:
             cause = _clean_phrase(m.group(1))
             effect = _clean_phrase(m.group(2))
             if effect and cause:
-                pairs.append((cause, effect, "therefore"))
+                pairs.append((cause, effect, "if_then"))
 
-    return pairs
+    # Deduplicate while preserving order
+    seen: set = set()
+    unique_pairs: List[Tuple[str, str, str]] = []
+    for c, e, q in pairs:
+        key = (c.lower(), e.lower(), q.lower())
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_pairs.append((c, e, q))
+
+    return unique_pairs
 
 
 def _extract_keyword_factors(text: str, max_keywords: int = 8) -> List[str]:
@@ -207,6 +257,38 @@ def _extract_keyword_factors(text: str, max_keywords: int = 8) -> List[str]:
     sorted_words = sorted(freq.items(), key=lambda kv: (-kv[1], kv[0]))
     keywords = [kw for kw, _ in sorted_words[:max_keywords]]
     return keywords
+
+
+def _validate_and_filter_explicit_edges(
+    edges: List[Tuple[str, str, str, str]], stance_label: str
+) -> List[Tuple[str, str, str, str]]:
+    """Filter explicit edges to enforce constraints:
+    - Only relations in {"contributes", "causal"}
+    - "contributes": factor -> stance only (dst must be stance::<label>)
+    - "causal": factor -> factor only (no stance nodes)
+    - Deduplicate edges (case-insensitive)
+    """
+    stance_node = f"stance::{stance_label}"
+    filtered: List[Tuple[str, str, str, str]] = []
+    seen: set = set()
+    for src, dst, rel, cue in edges:
+        rel_l = rel.strip().lower()
+        if rel_l not in {"contributes", "causal"}:
+            continue
+        if rel_l == "contributes":
+            if dst != stance_node:
+                continue
+            if src.startswith("stance::"):
+                continue
+        else:  # causal
+            if src.startswith("stance::") or dst.startswith("stance::"):
+                continue
+        key = (src.lower(), dst.lower(), rel_l, (cue or "").lower())
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered.append((src, dst, rel_l, cue))
+    return filtered
 
 
 class ContextGraphBuilder:
@@ -239,6 +321,8 @@ class ContextGraphBuilder:
         all_factors: List[str]
         causal_pairs: List[Tuple[str, str, str]]
 
+        explicit_edges: List[Tuple[str, str, str, str]] = []
+
         # Prefer LLM extraction when available
         if self.llm is not None:
             try:
@@ -249,7 +333,8 @@ class ContextGraphBuilder:
                     stance=stance_label or "",
                 )
                 # Expected keys: factors can be List[str] or List[{name,evidence}],
-                # causal_pairs: [{cause,effect,cue?}], optional _raw/_prompt for debug
+                # edges: [{from,to,relation,cue?}] (preferred),
+                # causal_pairs: [{cause,effect,cue?}] (optional fallback), optional _raw/_prompt for debug
                 factors_raw = ctx.get("factors", [])
                 factor_names: List[str] = []
                 factor_evidence_map: Dict[str, str] = {}
@@ -266,22 +351,48 @@ class ContextGraphBuilder:
                             name = _clean_phrase(str(f))
                             if name:
                                 factor_names.append(name)
-                pairs_in = ctx.get("causal_pairs", [])
-                causal_pairs = []
-                for p in pairs_in:
-                    cause = _clean_phrase(str(p.get("cause", "")))
-                    effect = _clean_phrase(str(p.get("effect", "")))
-                    cue = (
-                        _clean_phrase(str(p.get("cue", "")))
-                        if p.get("cue")
-                        else "causal"
+                # Prefer explicit edges if provided by LLM
+                if isinstance(ctx.get("edges"), list):
+                    for e in ctx["edges"]:
+                        src = _clean_phrase(str(e.get("from", "")))
+                        dst = _clean_phrase(str(e.get("to", "")))
+                        rel = str(e.get("relation", "")).strip()
+                        cue = (
+                            _clean_phrase(str(e.get("cue", ""))) if e.get("cue") else ""
+                        )
+                        # Only allow explicit contributes and causal edges
+                        if src and dst and rel in {"contributes", "causal"}:
+                            explicit_edges.append((src, dst, rel, cue))
+                # Enforce constraints on explicit edges
+                if explicit_edges:
+                    explicit_edges = _validate_and_filter_explicit_edges(
+                        explicit_edges, stance_label
                     )
-                    if cause and effect:
-                        causal_pairs.append((cause, effect, cue))
-                # Merge factors from pairs too
-                factors_from_pairs = [c for c, _, _ in causal_pairs] + [
-                    e for _, e, _ in causal_pairs
-                ]
+                # Fallback to causal_pairs when edges missing
+                causal_pairs = []
+                if not explicit_edges:
+                    pairs_in = ctx.get("causal_pairs", [])
+                    for p in pairs_in:
+                        cause = _clean_phrase(str(p.get("cause", "")))
+                        effect = _clean_phrase(str(p.get("effect", "")))
+                        cue = (
+                            _clean_phrase(str(p.get("cue", "")))
+                            if p.get("cue")
+                            else "causal"
+                        )
+                        if cause and effect:
+                            causal_pairs.append((cause, effect, cue))
+                # Merge factors from pairs/edges too
+                factors_from_pairs: List[str] = []
+                if explicit_edges:
+                    for src, dst, rel, _cue in explicit_edges:
+                        if src.startswith("stance::") or dst.startswith("stance::"):
+                            continue
+                        factors_from_pairs.extend([src, dst])
+                else:
+                    factors_from_pairs = [c for c, _, _ in causal_pairs] + [
+                        e for _, e, _ in causal_pairs
+                    ]
                 keyword_factors = factor_names
                 combined = factors_from_pairs + keyword_factors
                 all_factors = []
@@ -348,25 +459,90 @@ class ContextGraphBuilder:
                     G.nodes[factor]["evidence"] = factor_evidence_map[factor]
             except Exception:
                 pass
-            # Connect factor to stance as contributing
-            G.add_edge(
-                factor,
-                stance_node,
-                relation="contributes",
-            )
+            # Only add automatic contributes edges in fallback mode (no explicit edges)
+            # and only for sink factors (no outgoing causal edges)
+            if not explicit_edges:
+                # Compute sinks from causal_pairs
+                try:
+                    causes = {c for c, _e, _q in causal_pairs}
+                    effects = {e for _c, e, _q in causal_pairs}
+                    # A sink has no outgoing edges (not present as a cause)
+                    is_sink = factor in effects and factor not in causes
+                except Exception:
+                    is_sink = True
+                if is_sink:
+                    G.add_edge(
+                        factor,
+                        stance_node,
+                        relation="contributes",
+                    )
 
-        # Add causal edges among factors
-        for cause, effect, cue in causal_pairs:
-            cause_n = _clean_phrase(cause)
-            effect_n = _clean_phrase(effect)
-            if not cause_n or not effect_n:
-                continue
-            # Ensure nodes exist
-            if not G.has_node(cause_n):
-                G.add_node(cause_n, type="factor")
-            if not G.has_node(effect_n):
-                G.add_node(effect_n, type="factor")
-            G.add_edge(cause_n, effect_n, relation="causal", cue=cue)
+        # Add edges
+        if explicit_edges:
+            for src, dst, rel, cue in explicit_edges:
+                # Ensure nodes exist
+                if not G.has_node(src):
+                    G.add_node(
+                        src,
+                        type="factor" if not src.startswith("stance::") else "stance",
+                    )
+                if not G.has_node(dst):
+                    G.add_node(
+                        dst,
+                        type="factor" if not dst.startswith("stance::") else "stance",
+                    )
+                attrs = {"relation": rel}
+                if rel == "causal" and cue:
+                    attrs["cue"] = cue
+                G.add_edge(src, dst, **attrs)
+            # Ensure stance is reachable: connect sink factors to stance if not already connected
+            try:
+                stance_nodes = [
+                    n for n, data in G.nodes(data=True) if data.get("type") == "stance"
+                ]
+                if not stance_nodes:
+                    stance_nodes = [stance_node]
+                stance_n = stance_nodes[0]
+                # Build sets
+                causes = {
+                    u
+                    for u, v, d in G.edges(data=True)
+                    if d.get("relation") == "causal"
+                    and not u.startswith("stance::")
+                    and not v.startswith("stance::")
+                }
+                effects = {
+                    v
+                    for u, v, d in G.edges(data=True)
+                    if d.get("relation") == "causal"
+                    and not u.startswith("stance::")
+                    and not v.startswith("stance::")
+                }
+                sinks = {
+                    f
+                    for f in G.nodes()
+                    if G.nodes[f].get("type") == "factor"
+                    and f in effects
+                    and f not in causes
+                }
+                # Add contributes only for sinks that currently have no contributes edge
+                for f in sinks:
+                    if not G.has_edge(f, stance_n):
+                        G.add_edge(f, stance_n, relation="contributes")
+            except Exception:
+                pass
+        else:
+            # Fallback: only causal pairs among factors
+            for cause, effect, cue in causal_pairs:
+                cause_n = _clean_phrase(cause)
+                effect_n = _clean_phrase(effect)
+                if not cause_n or not effect_n:
+                    continue
+                if not G.has_node(cause_n):
+                    G.add_node(cause_n, type="factor")
+                if not G.has_node(effect_n):
+                    G.add_node(effect_n, type="factor")
+                G.add_edge(cause_n, effect_n, relation="causal", cue=cue)
 
         return G
 
@@ -505,7 +681,7 @@ class ContextGraphBuilder:
                         print_colored(
                             "=== LLM Response (sample) ===", "blue", bold=True
                         )
-                        print_colored(raw_str[:1000], "blue")
+                        print_colored(raw_str, "blue")
                     except Exception:
                         pass
 
@@ -526,6 +702,8 @@ class ContextGraphBuilder:
                     "comment_id": comment_id,
                     "post_id": topic.get("post_id"),
                     "post_label": topic.get("post_label"),
+                    "post_title": topic.get("post_title"),
+                    "scenario_description": topic.get("scenario_description"),
                     "comment_text": comment_text,
                     "stance_label": stance_label,
                 }
