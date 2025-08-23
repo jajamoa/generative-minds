@@ -591,10 +591,29 @@ class ContextGraphBuilder:
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(graph_data, f, indent=2, ensure_ascii=False)
 
-    def _merge_into_aggregated(self, base: nx.DiGraph, addition: nx.DiGraph) -> None:
+    def _merge_into_aggregated(self, base: nx.DiGraph, addition: nx.DiGraph, source_id: Optional[str] = None) -> None:
         for node, attrs in addition.nodes(data=True):
             if not base.has_node(node):
                 base.add_node(node, **attrs)
+                # initialize per-node aggregation counters and sources
+                base.nodes[node]["count"] = 1
+                if source_id is not None:
+                    base.nodes[node]["sources"] = [source_id]
+                else:
+                    base.nodes[node]["sources"] = []
+            else:
+                # increment count and append source if new
+                try:
+                    base.nodes[node]["count"] = base.nodes[node].get("count", 0) + 1
+                except Exception:
+                    base.nodes[node]["count"] = 1
+                if source_id is not None:
+                    srcs = base.nodes[node].get("sources")
+                    if not isinstance(srcs, list):
+                        srcs = []
+                    if source_id not in srcs:
+                        srcs.append(source_id)
+                    base.nodes[node]["sources"] = srcs
         for u, v, attrs in addition.edges(data=True):
             if base.has_edge(u, v):
                 # Maintain a simple count for aggregated edges
@@ -710,8 +729,8 @@ class ContextGraphBuilder:
                 with open(cdir / "metadata.json", "w", encoding="utf-8") as mf:
                     json.dump(per_comment_meta, mf, indent=2, ensure_ascii=False)
 
-                # Merge into aggregated
-                self._merge_into_aggregated(aggregated, G)
+                # Merge into aggregated (track source comment_id)
+                self._merge_into_aggregated(aggregated, G, source_id=str(comment_id))
                 built += 1
 
             # Save aggregated outputs
