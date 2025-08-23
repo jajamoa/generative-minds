@@ -35,7 +35,7 @@ prompt:
     - factors.evidence: brief quote copied verbatim from the comment that supports the factor (no ellipses if possible).
     - edges: enumerate ALL edges for the graph. Use:
       - relation="contributes" only for factor -> stance (stance id: "stance::{STANCE_LABEL}") and only from sink factors (factors with no outgoing causal edges).
-      - relation="causal" only for factor -> factor (add a SHORT cue keyword): choose from {"because", "because of", "due to", "owing to", "as a result of", "leads to", "results in", "causes", "so", "so that", "therefore", "thus", "hence", "consequently", "if_then"}.
+      - relation="causal" only for factor -> factor (add a SHORT cue keyword): choose from {"because", "because of", "due to", "owing to", "as a result of", "leads to", "results in", "causes", "so", "so that", "therefore", "thus", "hence", "consequently", "if_then", or other clear and appropriate cue}.
       - Do NOT invent other relation types; avoid fully connecting unrelated factors.
     - causal_pairs: optional; if you include it, it should be a subset of edges with relation="causal" and is used only as a fallback.
     - Do NOT include moral judgments or restate the stance. If insufficient evidence, return empty arrays.
