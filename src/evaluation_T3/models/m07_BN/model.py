@@ -38,6 +38,7 @@ class BayesianNetwork(Census):
                 os.path.join(
                     os.path.dirname(os.path.abspath(__file__)),
                     "motif_library",
+                    "motif_library_output",
                     "motif_library.json",
                 ),
             )
@@ -146,10 +147,11 @@ class BayesianNetwork(Census):
 
         else:
             # Load from NetworkX DiGraph
-            # Create node label mapping
-            node_labels = nx.get_node_attributes(graph, "label")
-            if not node_labels:
-                node_labels = {node: str(node) for node in graph.nodes()}
+            # Create node label mapping for all nodes (fallback to node id)
+            node_labels = {}
+            for node in graph.nodes():
+                label = graph.nodes[node].get("label")
+                node_labels[node] = label if label is not None else str(node)
 
             # Initialize DAG structure
             dag = {
@@ -178,7 +180,21 @@ class BayesianNetwork(Census):
         return impact
 
     def _get_topological_order(self, dag: Dict) -> List[str]:
-        """Get topological ordering of nodes."""
+        """Get topological ordering of nodes. Fallback to DFS ordering on cycles."""
+        try:
+            import networkx as nx
+
+            G = nx.DiGraph()
+            for node, data in dag.items():
+                G.add_node(node)
+                for parent, _ in data.get("parents", []):
+                    G.add_edge(parent, node)
+            order = list(nx.topological_sort(G))
+            if len(order) == len(dag):
+                return order
+        except Exception as e:
+            print(f"[WARN] Topological sort failed; using DFS fallback: {e}")
+
         visited = set()
         topo_order = []
 
@@ -186,7 +202,7 @@ class BayesianNetwork(Census):
             if node in visited:
                 return
             visited.add(node)
-            for parent, _ in dag[node]["parents"]:
+            for parent, _ in dag.get(node, {}).get("parents", []):
                 if parent not in visited:
                     dfs(parent)
             topo_order.append(node)
@@ -194,6 +210,10 @@ class BayesianNetwork(Census):
         for node in dag:
             if node not in visited:
                 dfs(node)
+        # ensure all nodes appear
+        for node in dag:
+            if node not in topo_order:
+                topo_order.append(node)
         return topo_order
 
     def simulate_intervention(
@@ -209,6 +229,9 @@ class BayesianNetwork(Census):
         node_samples = {node: [] for node in dag}
         topo_order = self._get_topological_order(dag)
 
+        # Throttle repeated missing-parent warnings
+        warned_missing = set()
+
         for _ in range(num_samples):
             prob_values = {}
 
@@ -223,7 +246,17 @@ class BayesianNetwork(Census):
                     total_modifier = 0
 
                     for parent_id, modifier in dag[node]["parents"]:
-                        parent_prob = prob_values[parent_id]
+                        if parent_id not in prob_values:
+                            # Parent not computed yet (due to cycle/order). Use base_prob fallback.
+                            key = (parent_id, node)
+                            if key not in warned_missing:
+                                print(
+                                    f"[WARN] Missing parent prob for {parent_id} -> {node}. Using base_prob={base_prob}."
+                                )
+                                warned_missing.add(key)
+                            parent_prob = base_prob
+                        else:
+                            parent_prob = prob_values[parent_id]
                         impact = self._calculate_impact(parent_prob, modifier)
                         parent_impacts.append(impact)
                         total_modifier += abs(modifier)
@@ -463,7 +496,8 @@ class BayesianNetwork(Census):
                 agent_profile = agent_data.get("agent", {})
                 # Use all fields in agent profile as demographic information
 
-                self.target_demographic = json.dumps(agent_profile, sort_keys=True)
+                # Pass full demographic dict so reconstruction can compare keys/values meaningfully
+                self.target_demographic = agent_profile
 
                 # Reconstruct graph for this specific agent
                 graph = self.reconstruct_graph()
@@ -471,13 +505,30 @@ class BayesianNetwork(Census):
                 dag, node_labels = self.load_graph(graph=graph)
                 graph_json = self._graph_to_json(dag, node_labels)
 
-                # Extract intervention from proposal
-                node_label, intervention_prob, explanation, expected_effects = (
-                    self.extractor.extract_intervention(
-                        {"dag": dag, "node_labels": node_labels},
-                        self._create_proposal_description(proposal),
-                    )
+                # Extract intervention from proposal (safe unpacking)
+                extracted = self.extractor.extract_intervention(
+                    {"dag": dag, "node_labels": node_labels},
+                    self._create_proposal_description(proposal),
                 )
+                if not extracted:
+                    # Fallback: use stance node with a neutral increase
+                    stance_nodes = [
+                        node
+                        for node, label in node_labels.items()
+                        if "stance" in label.lower()
+                    ]
+                    node_label = (
+                        stance_nodes[0]
+                        if stance_nodes
+                        else next(iter(node_labels.keys()))
+                    )
+                    intervention_prob = 0.6
+                    explanation = "Fallback: extractor returned no intervention; using stance node with moderate increase."
+                    expected_effects = []
+                else:
+                    node_label, intervention_prob, explanation, expected_effects = (
+                        extracted
+                    )
 
                 # Run simulations
                 # baseline
@@ -492,23 +543,43 @@ class BayesianNetwork(Census):
                     intervention_prob=intervention_prob,
                 )
 
-                # Get stance node
+                # Get stance node (standardized to 'upzoning_stance')
                 stance_nodes = [
                     node
                     for node, label in node_labels.items()
-                    if "stance" in label.lower()
+                    if isinstance(label, str) and "upzoning_stance" in label.lower()
                 ]
                 stance_node = stance_nodes[0] if stance_nodes else None
-                # Compute node contributions
-                contributions = self.compute_node_contributions(
-                    dag=dag,
-                    node_labels=node_labels,
-                    base_results=base_results,
-                    intervention_results=intervention_results,
-                    stance_node=stance_node,
-                )
+                # Compute node contributions (only if stance node detected)
+                if stance_node:
+                    contributions = self.compute_node_contributions(
+                        dag=dag,
+                        node_labels=node_labels,
+                        base_results=base_results,
+                        intervention_results=intervention_results,
+                        stance_node=stance_node,
+                    )
+                else:
+                    print(
+                        "[WARN] No stance node detected in labels; skipping contributions."
+                    )
+                    contributions = []
                 # Calculate opinion score
-                opinion_score = round(intervention_results[stance_node]["mean"] * 10)
+                if stance_node and stance_node in intervention_results:
+                    opinion_score = round(
+                        intervention_results[stance_node]["mean"] * 10
+                    )
+                else:
+                    # Fallback: use a node labeled with upzoning if present
+                    seed = None
+                    for nid, label in node_labels.items():
+                        if isinstance(label, str) and "upzoning" in label.lower():
+                            seed = nid
+                            break
+                    if seed and seed in intervention_results:
+                        opinion_score = round(intervention_results[seed]["mean"] * 10)
+                    else:
+                        opinion_score = 5
 
                 # Store results for this agent
                 results[agent_id] = {
@@ -524,7 +595,18 @@ class BayesianNetwork(Census):
                 }
 
             except Exception as e:
+                import traceback
+
+                tb = traceback.format_exc()
                 print(f"Error processing agent {agent_id}: {str(e)}")
+                print(f"Traceback for agent {agent_id}:\n{tb}")
+                # Provide quick context dump
+                try:
+                    print(
+                        f"Context: stance_nodes={[node for node, label in node_labels.items() if isinstance(label, str) and 'stance' in label.lower()]}\nNodes={list(dag.keys())[:10]}... EdgesCount={sum(len(v['children']) for v in dag.values())}"
+                    )
+                except Exception:
+                    pass
                 continue
 
         return results

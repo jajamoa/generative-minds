@@ -156,6 +156,114 @@ class MotifBasedReconstructor:
 
             return matching_features / max(len(demo_features), len(target_features))
 
+    def _similarity_between_demographics(
+        self, motif_demo: Optional[Dict], target_demo: Optional[Union[Dict, List, str]]
+    ) -> float:
+        if not motif_demo or not target_demo:
+            return 0.0
+
+        if isinstance(target_demo, list):
+            sims = [
+                self._similarity_between_demographics(motif_demo, td)
+                for td in target_demo
+            ]
+            return max(sims) if sims else 0.0
+
+        if isinstance(target_demo, str):
+            try:
+                for v in motif_demo.values():
+                    if isinstance(v, (list, set, tuple)):
+                        if any(str(target_demo).lower() in str(x).lower() for x in v):
+                            return 1.0
+                    else:
+                        if str(target_demo).lower() in str(v).lower():
+                            return 1.0
+            except Exception:
+                return 0.0
+            return 0.0
+
+        if isinstance(target_demo, dict):
+            similarities: List[float] = []
+            for key, tval in target_demo.items():
+                mval = motif_demo.get(key)
+                if mval is None:
+                    continue
+                if key.lower() == "age":
+                    try:
+                        age_t = float(tval)
+                        age_m = float(mval)
+                        diff = abs(age_t - age_m)
+                        similarities.append(max(0.0, 1.0 - diff / 50.0))
+                    except Exception:
+                        similarities.append(1.0 if str(tval) == str(mval) else 0.0)
+                else:
+                    if isinstance(tval, (list, set, tuple)):
+                        tset = {str(x).lower() for x in tval}
+                        if isinstance(mval, (list, set, tuple)):
+                            mset = {str(x).lower() for x in mval}
+                        else:
+                            mset = {str(mval).lower()}
+                        inter = tset & mset
+                        denom = len(tset | mset) or 1
+                        similarities.append(len(inter) / denom)
+                    else:
+                        similarities.append(
+                            1.0 if str(tval).lower() == str(mval).lower() else 0.0
+                        )
+
+            return sum(similarities) / len(similarities) if similarities else 0.0
+
+        return 0.0
+
+    def _compute_motif_demographic_similarity(
+        self, motif: nx.DiGraph, group_key: Optional[str]
+    ) -> float:
+        motif_demo = None
+        try:
+            motif_demo = getattr(motif, "graph", {}).get("demographics", {})
+        except Exception:
+            motif_demo = {}
+
+        if motif_demo:
+            sim = self._similarity_between_demographics(
+                motif_demo, self.target_demographic
+            )
+            return sim
+
+        if group_key and group_key in self.motif_library.motif_metadata:
+            demos_list = self.motif_library.motif_metadata[group_key].get(
+                "demographics_list", []
+            )
+            if isinstance(demos_list, list) and demos_list:
+                sims = [
+                    self._similarity_between_demographics(d, self.target_demographic)
+                    for d in demos_list
+                    if isinstance(d, dict)
+                ]
+                return max(sims) if sims else 0.0
+
+        return 0.0
+
+    def _debug_motif(
+        self,
+        motif: nx.DiGraph,
+        group_key: Optional[str],
+        reason: str,
+        target_label: str,
+        semantic_sim: float,
+        structural_score: Optional[float] = None,
+        coverage_score: Optional[float] = None,
+        demo_sim: Optional[float] = None,
+    ):
+        try:
+            nodes = list(motif.nodes())
+            labels = {n: motif.nodes[n].get("label", str(n)) for n in nodes}
+            print(
+                f"[DEBUG] {reason}: group={group_key}, nodes={nodes}, labels={labels}, target='{target_label}', semSim={semantic_sim:.3f}, struct={structural_score}, cover={coverage_score}, demoSim={demo_sim}"
+            )
+        except Exception:
+            pass
+
     def find_motif_candidates(
         self, frontier_node: str, covered_nodes: Set[str], current_graph: nx.DiGraph
     ) -> List[Tuple[nx.DiGraph, float, str]]:
@@ -168,8 +276,17 @@ class MotifBasedReconstructor:
         # Get frontier node label
         frontier_label = current_graph.nodes[frontier_node].get("label", frontier_node)
 
-        # Search through all motif groups in library
-        for group_key, motifs in self.motif_library.semantic_motifs.items():
+        # Prefer higher-quality groups (more instances, broader demographics)
+        sorted_groups = sorted(
+            self.motif_library.motif_metadata.items(),
+            key=lambda kv: (
+                -kv[1].get("instances", 0),
+                -len(kv[1].get("demographics_list", [])),
+            ),
+        )
+
+        for group_key, meta in sorted_groups:
+            motifs = self.motif_library.semantic_motifs.get(group_key, [])
             for motif in motifs:
                 # Try matching each node in the motif to the frontier node
                 for motif_node in motif.nodes():
@@ -186,8 +303,27 @@ class MotifBasedReconstructor:
                             motif, motif_node, current_graph, frontier_node
                         )
 
-                        # Combined score with higher weight on semantic similarity
-                        score = 0.6 * similarity + 0.4 * extendability
+                        # Include demographic similarity (per-motif only here)
+                        demographic_sim = self._compute_motif_demographic_similarity(
+                            motif, None
+                        )
+                        base_score = 0.6 * similarity + 0.4 * extendability
+                        demo_w = max(
+                            0.0, min(1.0, getattr(self, "demographic_weight", 0.3))
+                        )
+                        score = (1.0 - demo_w) * base_score + demo_w * demographic_sim
+                        if score < self.similarity_threshold:  # very weak overall
+                            # self._debug_motif(
+                            #     motif,
+                            #     None,
+                            #     "Skip-low-score",
+                            #     frontier_label,
+                            #     similarity,
+                            #     extendability,
+                            #     None,
+                            #     demographic_sim,
+                            # )
+                            continue
                         candidates.append((motif, score, motif_node))
 
         # Sort by score descending
@@ -285,28 +421,51 @@ class MotifBasedReconstructor:
         covered_nodes.update(node_mapping.values())
 
     def reconstruct_graph(
-        self, target_node: str, max_iterations: int = 100, min_score: float = 0.3
+        self,
+        target_node: str,
+        max_iterations: int = 100,
+        min_score: float = 0.3,
+        k: int = 3,
     ) -> nx.DiGraph:
         """
         Two-phase reconstruction starting from upzoning_stance.
         """
         print("Starting graph reconstruction...")
         G = nx.DiGraph()
-        G.add_node(target_node, label=target_node)
+        # Canonicalize stance label to improve matching with library
+        seed_label = (
+            "support for upzoning" if "upzoning" in target_node.lower() else target_node
+        )
+        G.add_node(target_node, label=seed_label)
         covered_nodes = {target_node}
 
         # Phase 1: Initial growth from target_node
         print("Phase 1: Growing from target node...")
         candidates = self.find_motif_candidates_reverse(target_node, covered_nodes, G)
+        if not candidates:
+            # Fallback to forward candidates if reverse search finds none
+            print("No reverse candidates found; trying forward candidates from stance…")
+            forward = self.find_motif_candidates(target_node, covered_nodes, G)
+            # Adapt forward tuple (motif, score, motif_node) to reverse format: add None group_key, demo
+            candidates = [(m, s, n, None, "unknown") for (m, s, n) in forward]
+        print(
+            f"Reverse candidates: {len(candidates)} (top5 scores: "
+            f"{[round(c[1],3) for c in sorted(candidates, key=lambda x: x[1], reverse=True)[:5]]})"
+        )
 
-        # Sort by score and take top candidates
+        # Sort by score and take top-k candidates
         candidates.sort(key=lambda x: x[1], reverse=True)
-        initial_motifs = candidates[:3]
+        initial_motifs = candidates[:k]
 
         print(f"Found {len(initial_motifs)} initial motifs to add")
         for motif, score, motif_node, _, _ in initial_motifs:
             self._integrate_motif_reverse(
-                G, motif, target_node, motif_node, covered_nodes
+                G,
+                motif,
+                target_node,
+                motif_node,
+                covered_nodes,
+                block_outgoing_from_target=True,
             )
 
         print(f"After Phase 1: {len(G.nodes())} nodes, {len(G.edges())} edges")
@@ -331,7 +490,7 @@ class MotifBasedReconstructor:
                 # Take best candidates
                 for motif, score, motif_node, group_key, _ in sorted(
                     candidates, key=lambda x: x[1], reverse=True
-                )[:2]:
+                )[:k]:
                     if score >= min_score:
                         # Check size limit
                         new_nodes_count = len(set(motif.nodes()) - covered_nodes)
@@ -341,8 +500,17 @@ class MotifBasedReconstructor:
                         # Integrate motif
                         old_nodes = set(G.nodes())
                         self._integrate_motif_reverse(
-                            G, motif, f_node, motif_node, covered_nodes
+                            G,
+                            motif,
+                            f_node,
+                            motif_node,
+                            covered_nodes,
+                            block_outgoing_from_target=False,
                         )
+
+                        # Early exit if we actually added something; otherwise try next candidate
+                        if set(G.nodes()) == old_nodes:
+                            continue
 
                         # Update frontier
                         new_nodes = set(G.nodes()) - old_nodes
@@ -367,13 +535,18 @@ class MotifBasedReconstructor:
             new_label = old_label.replace(" ", "_").lower()
             G.nodes[node]["label"] = new_label
 
-        # 2. Merge all upzoning stance nodes
+        # Standardize target label to ensure consistent stance identification
+        G.nodes[target_node]["label"] = "upzoning_stance"
+
+        # 2. Merge all upzoning stance nodes (support/stance synonyms)
         nodes_to_merge = []
         for node in G.nodes():
             label = G.nodes[node].get("label", "").lower()
-            if "upzoning_stance" in label or "upzoning stance" in label:
-                if node != target_node:  # Don't include the target node itself
-                    nodes_to_merge.append(node)
+            is_stance_like = ("upzoning" in label) and (
+                "stance" in label or "support" in label
+            )
+            if is_stance_like and node != target_node:
+                nodes_to_merge.append(node)
 
         if nodes_to_merge:
             print(f"Merging {len(nodes_to_merge)} additional upzoning stance nodes")
@@ -387,7 +560,7 @@ class MotifBasedReconstructor:
                 # Remove the duplicate node
                 G.remove_node(node)
 
-        # 3. Remove any outgoing edges from stance node
+        # 3. Remove any outgoing edges from stance node (only for the original seed)
         outgoing_edges = list(G.out_edges(target_node))
         if outgoing_edges:
             print(
@@ -395,9 +568,6 @@ class MotifBasedReconstructor:
             )
             for source, target in outgoing_edges:
                 G.remove_edge(source, target)
-                # Try to reverse the edge direction if it makes sense
-                if not nx.has_path(G, target, target_node):
-                    G.add_edge(target, source, modifier=1.0)
 
         # 4. Final connectivity check
         for node in G.nodes():
@@ -420,16 +590,30 @@ class MotifBasedReconstructor:
         # Debug print
         print(f"Finding candidates for target node: {target_label}")
 
-        for group_key, motifs in self.motif_library.semantic_motifs.items():
+        sorted_groups = sorted(
+            self.motif_library.motif_metadata.items(),
+            key=lambda kv: (
+                -kv[1].get("instances", 0),
+                -len(kv[1].get("demographics_list", [])),
+            ),
+        )
+
+        for group_key, meta in sorted_groups:
+            motifs = self.motif_library.semantic_motifs.get(group_key, [])
             for motif in motifs:
                 # For each node in the motif
                 for motif_node in motif.nodes():
                     motif_label = motif.nodes[motif_node].get("label", "")
 
-                    # Calculate semantic similarity
+                    # Calculate semantic similarity with an upzoning keyword boost
                     semantic_sim = self.similarity_engine.node_similarity(
                         motif_label, target_label
                     )
+                    if (
+                        "upzoning" in motif_label.lower()
+                        and "upzoning" in target_label.lower()
+                    ):
+                        semantic_sim = max(semantic_sim, 0.5)
 
                     if semantic_sim >= self.similarity_threshold:
                         # If this is upzoning_stance, ensure it has no out-degree
@@ -445,12 +629,42 @@ class MotifBasedReconstructor:
                             motif, covered_nodes
                         )
 
-                        # Calculate final score
-                        final_score = (
+                        # Demographic similarity
+                        demographic_sim = self._compute_motif_demographic_similarity(
+                            motif, group_key
+                        )
+                        # # Debug demographics insight
+                        # try:
+                        #     demos_list = motif.graph.get("demographics_list", [])
+                        #     srcs = motif.graph.get("sources", [])
+                        #     if demos_list:
+                        #         print(
+                        #             f"[DEBUG] motif group={group_key} has {len(demos_list)} demographics sources={len(srcs)} demoSim={demographic_sim:.3f}"
+                        #         )
+                        # except Exception:
+                        #     pass
+
+                        # Calculate final score (blend base and demographics)
+                        base_score = (
                             0.4 * semantic_sim
                             + 0.3 * structural_score
                             + 0.3 * coverage_score
                         )
+                        demo_w = max(
+                            0.0, min(1.0, getattr(self, "demographic_weight", 0.3))
+                        )
+                        final_score = (
+                            1.0 - demo_w
+                        ) * base_score + demo_w * demographic_sim
+
+                        # Require demographic support if target contains a demographic profile
+                        # If there is a non-empty dict target_demographic, enforce a minimum demographic_sim
+                        if (
+                            isinstance(self.target_demographic, dict)
+                            and self.target_demographic
+                        ):
+                            if demographic_sim < 0.2:
+                                continue
 
                         # Get demographic info
                         motif_demographic = (
@@ -517,6 +731,7 @@ class MotifBasedReconstructor:
         target_node: str,
         motif_node: str,
         covered_nodes: Set[str],
+        block_outgoing_from_target: bool = True,
     ) -> None:
         """
         Integrate a motif into the graph while ensuring path connectivity to target node.
@@ -532,11 +747,11 @@ class MotifBasedReconstructor:
         # Create a copy of the motif to modify
         motif_copy = motif.copy()
 
-        # Remove any edges in the motif where motif_node is the source
-        # This ensures we don't copy any outgoing edges from the target node
-        outgoing_edges = list(motif_copy.out_edges(motif_node))
-        for u, v in outgoing_edges:
-            motif_copy.remove_edge(u, v)
+        # Optionally remove edges where motif_node is source (only for stance seed)
+        if block_outgoing_from_target:
+            outgoing_edges = list(motif_copy.out_edges(motif_node))
+            for u, v in outgoing_edges:
+                motif_copy.remove_edge(u, v)
 
         node_mapping = {}
         node_mapping[target_node] = target_node
@@ -611,8 +826,8 @@ class MotifBasedReconstructor:
             mapped_u = node_mapping[u]
             mapped_v = node_mapping[v]
 
-            # Double check to never add edges where upzoning_stance is the source
-            if mapped_u == target_node:
+            # Never add edges where the current target is the source only if blocking is enabled
+            if block_outgoing_from_target and mapped_u == target_node:
                 continue
 
             if not G.has_edge(mapped_u, mapped_v):
@@ -874,7 +1089,7 @@ if __name__ == "__main__":
     args.add_argument(
         "--motif_library",
         type=str,
-        default=os.path.join(CURRENT_DIR, "motif_library.json"),
+        default=os.path.join(CURRENT_DIR, "motif_library_output", "motif_library.json"),
     )
     args.add_argument(
         "--target_demographic", type=str, help="Target demographic for reconstruction"

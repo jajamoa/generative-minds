@@ -36,7 +36,7 @@ class QwenExtractor:
 
     def extract_intervention(
         self, graph_info: Dict, question: str
-    ) -> Optional[Tuple[str, float, str]]:
+    ) -> Optional[Tuple[str, float, str, List[str]]]:
         """
         Extract intervention from question based on causal graph structure
 
@@ -138,19 +138,25 @@ Return JSON:
                 result = json.loads(self._clean_json_string(content))
 
                 if result.get("intervention_node"):
-                    node = result["intervention_node"]
-                    value = result.get("intervention_value", 0.5)
+                    node_field = result["intervention_node"]
+                    try:
+                        value = float(result.get("intervention_value", 0.5))
+                    except Exception:
+                        value = 0.5
                     explanation = result.get("explanation", "")
                     expected_effects = result.get("expected_effects", [])
 
-                    # Validate node exists
-                    if node in nodes_with_labels:
-                        logger.info(f"Found intervention: do({node}) = {value}")
+                    # Resolve node to a valid node id
+                    resolved_node = self._resolve_node_id(node_field, nodes_with_labels)
+                    if resolved_node is not None:
+                        logger.info(
+                            f"Found intervention: do({resolved_node}) = {value}"
+                        )
                         logger.info(f"Explanation: {explanation}")
                         logger.info(
                             f"Expected effects on: {', '.join(expected_effects)}"
                         )
-                        return node, value, explanation, expected_effects
+                        return resolved_node, value, explanation, expected_effects
 
             return None
 
@@ -176,6 +182,42 @@ Return JSON:
         if start >= 0 and end > start:
             return json_str[start:end]
         return json_str
+
+    def _resolve_node_id(
+        self, node_field: str, nodes_with_labels: Dict[str, str]
+    ) -> Optional[str]:
+        """Resolve a node identifier from various formats to a valid node id.
+
+        Supports:
+        - direct id (e.g., "n8")
+        - label (e.g., "upzoning_popularity")
+        - combined form (e.g., "n8 (upzoning_popularity)")
+        """
+        if not node_field:
+            return None
+
+        # Direct id
+        if node_field in nodes_with_labels:
+            return node_field
+
+        # Combined form: id (label)
+        if "(" in node_field and ")" in node_field:
+            candidate_id = node_field.split("(", 1)[0].strip()
+            if candidate_id in nodes_with_labels:
+                return candidate_id
+
+        # Match by exact label
+        for node_id, label in nodes_with_labels.items():
+            if node_field.strip().lower() == str(label).strip().lower():
+                return node_id
+
+        # Loose contains match on label
+        lowered = node_field.strip().lower()
+        for node_id, label in nodes_with_labels.items():
+            if lowered in str(label).strip().lower():
+                return node_id
+
+        return None
 
 
 def main():
