@@ -18,7 +18,7 @@ class QwenExtractor:
     Extract intervention operations from questions about causal Bayesian networks
     """
 
-    def __init__(self, api_key=None, model="qwen-plus"):
+    def __init__(self, api_key=None, model="qwen-max"):
         # Try to load API key from environment
         parent_env_path = Path(__file__).parent.parent.parent / ".env"
         parent_env_local_path = Path(__file__).parent.parent.parent / ".env.local"

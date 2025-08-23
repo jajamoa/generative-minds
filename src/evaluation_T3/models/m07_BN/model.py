@@ -356,7 +356,7 @@ class BayesianNetwork(Census):
                 print("Creating empty motif library with default settings")
                 library = MotifLibrary()
 
-            # Create reconstructor without demographic information
+            # Create reconstructor with demographic information
             reconstructor = MotifBasedReconstructor(
                 library,
                 similarity_threshold=getattr(self.config, "similarity_threshold", 0.3),

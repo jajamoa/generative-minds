@@ -8,14 +8,14 @@ region: san_francisco
 input:
   proposals:
     - sf_prolific_survey/processed/mock_proposals/1.1.json
-    - sf_prolific_survey/processed/mock_proposals/1.2.json
-    - sf_prolific_survey/processed/mock_proposals/1.3.json
-    - sf_prolific_survey/processed/mock_proposals/2.1.json
-    - sf_prolific_survey/processed/mock_proposals/2.2.json
-    - sf_prolific_survey/processed/mock_proposals/2.3.json
-    - sf_prolific_survey/processed/mock_proposals/3.1.json
-    - sf_prolific_survey/processed/mock_proposals/3.2.json
-    - sf_prolific_survey/processed/mock_proposals/3.3.json
+    # - sf_prolific_survey/processed/mock_proposals/1.2.json
+    # - sf_prolific_survey/processed/mock_proposals/1.3.json
+    # - sf_prolific_survey/processed/mock_proposals/2.1.json
+    # - sf_prolific_survey/processed/mock_proposals/2.2.json
+    # - sf_prolific_survey/processed/mock_proposals/2.3.json
+    # - sf_prolific_survey/processed/mock_proposals/3.1.json
+    # - sf_prolific_survey/processed/mock_proposals/3.2.json
+    # - sf_prolific_survey/processed/mock_proposals/3.3.json
 
 # Evaluation configuration - Using mapped reactions for ground truth comparison
 evaluation:
