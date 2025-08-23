@@ -18,7 +18,11 @@ from collections import defaultdict
 import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from .semantic_similarity import SemanticSimilarityEngine
+
+try:
+    from .semantic_similarity import SemanticSimilarityEngine
+except ImportError:
+    from semantic_similarity import SemanticSimilarityEngine
 
 
 class MotifLibrary:
@@ -1054,8 +1058,8 @@ def load_graph_from_json(file_path):
         # Add edges with metadata
         for edge_id, edge_data in data["edges"].items():
             G.add_edge(
-                edge_data["source"],
-                edge_data["target"],
+                edge_data.get("source", edge_data.get("from")),
+                edge_data.get("target", edge_data.get("to")),
                 id=edge_id,
                 modifier=edge_data.get("modifier", 0),
                 confidence=edge_data.get("aggregate_confidence", 0),
@@ -1070,8 +1074,8 @@ def load_graph_from_json(file_path):
 
         # Add edges
         for edge_data in data.get("edges", []):
-            source = edge_data.get("source")
-            target = edge_data.get("target")
+            source = edge_data.get("source", edge_data.get("from"))
+            target = edge_data.get("target", edge_data.get("to"))
             if source and target:
                 G.add_edge(
                     source,
@@ -1082,7 +1086,7 @@ def load_graph_from_json(file_path):
                 )
 
     # Add metadata
-    G.graph["metadata"] = data.get("metadata", {})
+    G.graph["metadata"] = data.get("metadata", {}) if isinstance(data, dict) else {}
 
     return G
 

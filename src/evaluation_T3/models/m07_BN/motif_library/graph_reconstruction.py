@@ -99,12 +99,7 @@ class MotifBasedReconstructor:
         # if target_demo is a dict (full agent profile)
         if isinstance(target_demo, dict):
             # extract key demographic features
-            key_features = {
-                "householder type": target_demo.get("householder type", "Unknown"),
-                "Geo Mobility": target_demo.get("Geo Mobility", "Unknown"),
-                "income": target_demo.get("income", "Unknown"),
-                "age": target_demo.get("age", 0),
-            }
+            key_features = target_demo
 
             # calculate similarity for each feature
             similarities = []
