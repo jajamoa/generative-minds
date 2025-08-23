@@ -1003,6 +1003,63 @@ class MotifBasedReconstructor:
 
         return output_path
 
+    def save_as_png(
+        self, G: nx.DiGraph, output_dir: str, filename: str = "reconstructed_graph.png"
+    ) -> str:
+        """
+        Save the reconstructed graph as a PNG image using NetworkX + Matplotlib.
+
+        Nodes are labeled; stance node is highlighted. Positive edges are solid; negative dashed.
+        """
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, filename)
+
+        plt.figure(figsize=(10, 8))
+        pos = nx.spring_layout(G, seed=42)
+
+        # Node colors: stance node highlighted
+        node_colors = []
+        for node in G.nodes():
+            label = G.nodes[node].get("label", "")
+            if isinstance(label, str) and "upzoning_stance" in label.lower():
+                node_colors.append("#FFD166")  # amber
+            else:
+                node_colors.append("#8ECAE6")  # light blue
+
+        nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=900, alpha=0.9)
+
+        # Edges: style by modifier
+        solid_edges = []
+        dashed_edges = []
+        for u, v, data in G.edges(data=True):
+            if data.get("modifier", 1.0) >= 0:
+                solid_edges.append((u, v))
+            else:
+                dashed_edges.append((u, v))
+
+        if solid_edges:
+            nx.draw_networkx_edges(
+                G, pos, edgelist=solid_edges, width=2.0, edge_color="#2A9D8F"
+            )
+        if dashed_edges:
+            nx.draw_networkx_edges(
+                G,
+                pos,
+                edgelist=dashed_edges,
+                width=2.0,
+                edge_color="#E76F51",
+                style="dashed",
+            )
+
+        labels = {n: G.nodes[n].get("label", str(n)) for n in G.nodes()}
+        nx.draw_networkx_labels(G, pos, labels=labels, font_size=9)
+
+        plt.axis("off")
+        plt.tight_layout()
+        plt.savefig(output_path, dpi=200)
+        plt.close()
+        return output_path
+
 
 def main(args):
     """

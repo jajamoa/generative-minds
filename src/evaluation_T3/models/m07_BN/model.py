@@ -409,6 +409,25 @@ class BayesianNetwork(Census):
                 "-------------------------- Graph Reconstruction Complete --------------------------"
             )
 
+            # Persist visual artifacts in graph_reconstruction/ alongside model.py
+            try:
+                out_dir = self.output_dir
+                os.makedirs(out_dir, exist_ok=True)
+                # Name files by agent id if present in context
+                agent_suffix = getattr(self, "_current_agent_id", None)
+                if not agent_suffix:
+                    agent_suffix = "global"
+                json_name = f"reconstructed_graph_{agent_suffix}.json"
+                mmd_name = f"reconstructed_graph_{agent_suffix}.mmd"
+                reconstructor.save_as_json(
+                    reconstructed_graph, out_dir, filename=json_name
+                )
+                reconstructor.save_as_mmd(
+                    reconstructed_graph, out_dir, filename=mmd_name
+                )
+            except Exception as e:
+                print(f"[WARN] Failed to save reconstruction artifacts: {e}")
+
             return reconstructed_graph
 
         except Exception as e:
@@ -492,6 +511,8 @@ class BayesianNetwork(Census):
 
             agent_id = agent_data["id"]
             try:
+                # set current agent id for file naming
+                self._current_agent_id = agent_id
                 # Set agent's demographic profile as target
                 agent_profile = agent_data.get("agent", {})
                 # Use all fields in agent profile as demographic information
