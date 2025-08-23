@@ -248,8 +248,24 @@ class ContextGraphBuilder:
                     comment=text,
                     stance=stance_label or "",
                 )
-                # Expected keys: {"factors": List[str], "causal_pairs": [{cause,effect,cue?}], "_raw"?: str}
-                factors = ctx.get("factors", [])
+                # Expected keys: factors can be List[str] or List[{name,evidence}],
+                # causal_pairs: [{cause,effect,cue?}], optional _raw/_prompt for debug
+                factors_raw = ctx.get("factors", [])
+                factor_names: List[str] = []
+                factor_evidence_map: Dict[str, str] = {}
+                if isinstance(factors_raw, list):
+                    for f in factors_raw:
+                        if isinstance(f, dict):
+                            name = _clean_phrase(str(f.get("name", "")))
+                            evidence = str(f.get("evidence", "")).strip()
+                            if name:
+                                factor_names.append(name)
+                                if evidence:
+                                    factor_evidence_map[name] = evidence
+                        else:
+                            name = _clean_phrase(str(f))
+                            if name:
+                                factor_names.append(name)
                 pairs_in = ctx.get("causal_pairs", [])
                 causal_pairs = []
                 for p in pairs_in:
@@ -266,7 +282,7 @@ class ContextGraphBuilder:
                 factors_from_pairs = [c for c, _, _ in causal_pairs] + [
                     e for _, e, _ in causal_pairs
                 ]
-                keyword_factors = [str(f) for f in factors]
+                keyword_factors = factor_names
                 combined = factors_from_pairs + keyword_factors
                 all_factors = []
                 seen = set()
@@ -326,6 +342,12 @@ class ContextGraphBuilder:
 
         for factor in all_factors:
             G.add_node(factor, type="factor")
+            # Attach evidence if available from LLM output
+            try:
+                if "factor_evidence_map" in locals() and factor in factor_evidence_map:
+                    G.nodes[factor]["evidence"] = factor_evidence_map[factor]
+            except Exception:
+                pass
             # Connect factor to stance as contributing
             G.add_edge(
                 factor,
@@ -499,6 +521,16 @@ class ContextGraphBuilder:
                     mf.write("```mermaid\n")
                     mf.write(mermaid)
                     mf.write("\n```")
+                # Per-comment metadata
+                per_comment_meta = {
+                    "comment_id": comment_id,
+                    "post_id": topic.get("post_id"),
+                    "post_label": topic.get("post_label"),
+                    "comment_text": comment_text,
+                    "stance_label": stance_label,
+                }
+                with open(cdir / "metadata.json", "w", encoding="utf-8") as mf:
+                    json.dump(per_comment_meta, mf, indent=2, ensure_ascii=False)
 
                 # Merge into aggregated
                 self._merge_into_aggregated(aggregated, G)

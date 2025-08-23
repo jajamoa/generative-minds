@@ -11,33 +11,40 @@ api:
 prompt:
   version: context_v1
   system_prompt: |
-    You are an expert at extracting key factors and simple causal relations from online comments.
+    You are an expert annotator extracting abstract factors and simple causal relations from online comments.
+    Goal: produce generalizable, higher-level factors that characterize the commenter's perspective, and cite an exact snippet from the original comment as evidence for each factor.
 
-    Stance labels and their meanings:
-    - "NTA" = Not the asshole
-    - "YTA" = You are the asshole
-    - "ESH" = Everyone sucks here
-    - "INFO" = Not enough information
-    - "NAH" = No assholes here
+    Stance labels:
+    - "NTA" = Not the asshole; "YTA" = You are the asshole; "ESH" = Everyone sucks here; "INFO" = Not enough information; "NAH" = No assholes here.
 
-    Output must be valid JSON only, with UTF-8 characters, no trailing commas, and no extra commentary.
+    Output must be valid JSON only (UTF-8, no comments, no code fences, no trailing commas).
     JSON schema:
     {
-      "factors": [string, ...],
-      "causal_pairs": [{"cause": string, "effect": string, "cue": string}, ...]
+      "factors": [
+        {"name": string, "evidence": string}
+      ],
+      "causal_pairs": [
+        {"cause": string, "effect": string, "cue": string}
+      ]
     }
+    Requirements:
+    - factors.name: short, abstract noun phrase (3–6 words), normalized and generalizable (e.g., "boundary-setting in relationships", "respect for personal autonomy").
+    - factors.evidence: brief quote copied verbatim from the comment that supports the factor (no ellipses if possible).
+    - causal_pairs: capture explicit or strong implied cause->effect; cue ∈ {"because","due to","leads to","therefore","so"}. If unsure, use "because".
+    - Do NOT include moral judgments or restate the stance. If insufficient evidence, return empty arrays.
+    - Graph constraint: Relationships must ONLY be between factors. Never include the stance in any causal pair. Think carefully and avoid any non-factors involved in the graph.
 
   template: |
-    Task: Given a Reddit AITA-style post context, a comment, and the comment's stance label, identify:
-    1) A concise list of key factors/aspects that contribute to the comment's stance/opinion
-    2) Directed causal pairs (cause -> effect) explicitly or implicitly suggested in the comment, with a short cue word if available (e.g., "because", "due to", "leads to", "therefore", "so").
+    Task: Given the post context and a comment with a stance label, produce:
+    1) Abstract factors: a list where each item has {"name": <abstract factor>, "evidence": <exact quote from the comment>}.
+    2) Causal pairs: cause->effect links present or strongly implied in the comment, with a cue.
 
-    Guidelines:
-    - factors: short noun phrases (3–6 words), de-duplicated, lower-cased unless proper noun.
-    - causal_pairs: capture explicit or strongly implied cause->effect; allowed cues: "because", "due to", "leads to", "therefore", "so". If unsure, use "because".
-    - Never invent entities not suggested by the text; avoid moral judgments or stance rewriting.
-    - Escape quotes properly; do not include code fences or comments.
-    - If insufficient evidence, return empty arrays for fields you cannot support.
+    Guidance:
+    - Make factors abstract and reusable across comments (e.g., "fairness in agreements", "communication breakdown", "concern for safety").
+    - For evidence, copy a short verbatim span from the comment that supports the factor.
+    - Use consistent casing; avoid duplicates; keep names concise.
+    - Do not include the full original comment text in factor names or causal pairs.
+    - Graph constraint: causal_pairs MUST reference only factor names. Do NOT reference the stance in causal_pairs. All relationships are factor-to-factor only. Think carefully.
 
     <Post Title>
     {post_title}
