@@ -494,6 +494,11 @@ class ContextGraphBuilder:
                 )
                 with open(cdir / "context_graph.mmd", "w", encoding="utf-8") as mf:
                     mf.write(mermaid)
+                # Markdown preview for Mermaid
+                with open(cdir / "context_graph.md", "w", encoding="utf-8") as mf:
+                    mf.write("```mermaid\n")
+                    mf.write(mermaid)
+                    mf.write("\n```")
 
                 # Merge into aggregated
                 self._merge_into_aggregated(aggregated, G)
@@ -511,6 +516,13 @@ class ContextGraphBuilder:
                     out_dir / "participant_context_graph.mmd", "w", encoding="utf-8"
                 ) as mf:
                     mf.write(mermaid_agg)
+                # Markdown preview for aggregated Mermaid
+                with open(
+                    out_dir / "participant_context_graph.md", "w", encoding="utf-8"
+                ) as mf:
+                    mf.write("```mermaid\n")
+                    mf.write(mermaid_agg)
+                    mf.write("\n```")
 
             metadata = {
                 "participant": participant,
