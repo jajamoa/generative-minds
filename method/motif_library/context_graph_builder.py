@@ -375,13 +375,13 @@ class ContextGraphBuilder:
                 mermaid.append(f"    {u_id} --> {v_id};")
 
         mermaid.append(
-            "    classDef stanceNode fill:#f9f,stroke:#333,stroke-width:2px;"
+            "    classDef stanceNode fill:#FDE2E8,stroke:#000,stroke-width:2px,color:#000;"
         )
         mermaid.append(
-            "    classDef factorNode fill:#bbf,stroke:#333,stroke-width:1px;"
+            "    classDef factorNode fill:#E3F2FD,stroke:#000,stroke-width:1.5px,color:#000;"
         )
         mermaid.append(f'    title["{title}"]:::title;')
-        mermaid.append("    classDef title fill:none,stroke:none;")
+        mermaid.append("    classDef title fill:none,stroke:none,color:#000;")
         return "\n".join(mermaid)
 
     def _save_graph_as_json(self, G: nx.DiGraph, file_path: Path) -> None:
