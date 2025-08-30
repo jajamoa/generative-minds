@@ -4,92 +4,80 @@
       "id": "upzoning_stance",
       "label": "upzoning_stance",
       "type": "concept",
-      "in_degree": 11,
-      "out_degree": 0
+      "in_degree": 6,
+      "out_degree": 0,
+      "provenance": {}
     },
     "n2": {
       "id": "n2",
       "label": "low_supply",
       "type": "concept",
-      "in_degree": 4,
-      "out_degree": 1
+      "in_degree": 2,
+      "out_degree": 1,
+      "provenance": {
+        "low_supply": 1
+      }
     },
     "n3": {
       "id": "n3",
       "label": "socioeconomic_diversity",
       "type": "concept",
-      "in_degree": 1,
-      "out_degree": 1
-    },
-    "n5": {
-      "id": "n5",
-      "label": "socioeconomic_diversity",
-      "type": "concept",
       "in_degree": 0,
-      "out_degree": 1
+      "out_degree": 2,
+      "provenance": {
+        "socioeconomic_diversity": 3
+      }
     },
     "n6": {
       "id": "n6",
       "label": "local_government_role",
       "type": "concept",
       "in_degree": 0,
-      "out_degree": 1
-    },
-    "n7": {
-      "id": "n7",
-      "label": "socioeconomic_diversity",
-      "type": "concept",
-      "in_degree": 0,
-      "out_degree": 1
-    },
-    "n8": {
-      "id": "n8",
-      "label": "housing_crisis",
-      "type": "concept",
-      "in_degree": 0,
-      "out_degree": 1
+      "out_degree": 1,
+      "provenance": {
+        "local_government_role": 1
+      }
     },
     "n9": {
       "id": "n9",
-      "label": "low_supply",
+      "label": "housing_crisis",
       "type": "concept",
-      "in_degree": 0,
-      "out_degree": 2
-    },
-    "n10": {
-      "id": "n10",
-      "label": "local_government_role",
-      "type": "concept",
-      "in_degree": 0,
-      "out_degree": 2
+      "in_degree": 1,
+      "out_degree": 2,
+      "provenance": {
+        "housing_crisis": 2,
+        "housing crisis": 1
+      }
     },
     "n11": {
       "id": "n11",
-      "label": "neighborhood_character",
+      "label": "improved_business_districts",
       "type": "concept",
-      "in_degree": 0,
-      "out_degree": 2
+      "in_degree": 1,
+      "out_degree": 1,
+      "provenance": {
+        "improved_business_districts": 1
+      }
     },
     "n12": {
       "id": "n12",
-      "label": "socioeconomic_diversity",
+      "label": "increased_clientele",
       "type": "concept",
       "in_degree": 0,
-      "out_degree": 2
-    },
-    "n13": {
-      "id": "n13",
-      "label": "social_equity",
-      "type": "concept",
-      "in_degree": 0,
-      "out_degree": 2
+      "out_degree": 1,
+      "provenance": {
+        "increased clientele": 1
+      }
     },
     "n14": {
       "id": "n14",
-      "label": "socioeconomic_diversity",
+      "label": "public_services",
       "type": "concept",
-      "in_degree": 1,
-      "out_degree": 1
+      "in_degree": 0,
+      "out_degree": 2,
+      "provenance": {
+        "public_services": 1
+      }
     }
   },
   "edges": {
@@ -98,124 +86,115 @@
       "source": "n2",
       "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e1": {
       "id": "e1",
       "source": "n3",
-      "target": "upzoning_stance",
+      "target": "n2",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e2": {
       "id": "e2",
-      "source": "n5",
+      "source": "n3",
       "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.8,
+      "p_positive": 0.8,
+      "sign": "+",
+      "confidence": 0.6400000000000001
     },
     "e3": {
       "id": "e3",
       "source": "n6",
       "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e4": {
       "id": "e4",
-      "source": "n7",
-      "target": "upzoning_stance",
+      "source": "n9",
+      "target": "n2",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.75,
+      "p_positive": 0.75,
+      "sign": "+",
+      "confidence": 0.5625
     },
     "e5": {
       "id": "e5",
-      "source": "n8",
+      "source": "n9",
       "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e6": {
       "id": "e6",
-      "source": "n9",
-      "target": "n2",
+      "source": "n11",
+      "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e7": {
       "id": "e7",
-      "source": "n9",
-      "target": "upzoning_stance",
+      "source": "n12",
+      "target": "n11",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     },
     "e8": {
       "id": "e8",
-      "source": "n10",
-      "target": "n2",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e9": {
-      "id": "e9",
-      "source": "n10",
-      "target": "upzoning_stance",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e10": {
-      "id": "e10",
-      "source": "n11",
-      "target": "n2",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e11": {
-      "id": "e11",
-      "source": "n11",
-      "target": "upzoning_stance",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e12": {
-      "id": "e12",
-      "source": "n12",
-      "target": "n2",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e13": {
-      "id": "e13",
-      "source": "n12",
-      "target": "upzoning_stance",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e14": {
-      "id": "e14",
-      "source": "n13",
-      "target": "n3",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e15": {
-      "id": "e15",
-      "source": "n13",
-      "target": "n14",
-      "type": "causal",
-      "modifier": 1.0
-    },
-    "e16": {
-      "id": "e16",
       "source": "n14",
       "target": "upzoning_stance",
       "type": "causal",
-      "modifier": 1.0
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
+    },
+    "e9": {
+      "id": "e9",
+      "source": "n14",
+      "target": "n9",
+      "type": "causal",
+      "modifier": 1.0,
+      "p_exist": 0.6666666666666666,
+      "p_positive": 0.6666666666666666,
+      "sign": "+",
+      "confidence": 0.4444444444444444
     }
   },
   "metadata": {
     "description": "Reconstructed causal graph from motifs",
-    "node_count": 13,
-    "edge_count": 17
+    "node_count": 8,
+    "edge_count": 10
   }
 }

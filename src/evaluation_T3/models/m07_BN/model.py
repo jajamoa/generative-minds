@@ -9,6 +9,8 @@ import os
 import networkx as nx
 from .motif_library.graph_reconstruction import MotifBasedReconstructor
 from .motif_library.motif_library import get_demographic_statistics, MotifLibrary
+from pathlib import Path
+import shutil
 
 
 def ensure_evaluation_prefix(path: str) -> str:
@@ -68,6 +70,14 @@ class BayesianNetwork(Census):
         )
         self.agent_data_file = agent_data_path
         self.agent_ids = list(set(self._load_agent_ids(agent_data_path)))
+
+        # Before reconstructing graph, remove previously generated graph
+        self.agents_saved_graph_path = os.path.join(
+            Path(__file__).parent, "graph_reconstruction"
+        )
+        if os.path.exists(self.agents_saved_graph_path):
+            shutil.rmtree(self.agents_saved_graph_path, ignore_errors=True)
+            os.makedirs(self.agents_saved_graph_path)
 
     def _load_agent_ids(self, agent_data_path: str) -> list:
         """Load only agent IDs from the agent data file.
@@ -503,11 +513,11 @@ class BayesianNetwork(Census):
 
         results = {}
 
-        # # TODO: for debug, only use the first 5 agents
-        # for agent_data in agents_data[:5]:
+        # # Process each agent
+        # for agent_data in agents_data:
 
-        # Process each agent
-        for agent_data in agents_data:
+        # HACK & TODO: for debug, only use the first 1 agent !!!!!!!!!
+        for agent_data in agents_data[:1]:
 
             agent_id = agent_data["id"]
             try:
@@ -521,9 +531,19 @@ class BayesianNetwork(Census):
                 self.target_demographic = agent_profile
 
                 # Reconstruct graph for this specific agent
-                graph = self.reconstruct_graph()
+                current_graph_path = os.path.join(
+                    self.agents_saved_graph_path, f"reconstructed_graph_{agent_id}.json"
+                )
+                if os.path.exists(current_graph_path):
+                    dag, node_labels = self.load_graph(json_file=current_graph_path)
+                else:
+                    graph = self.reconstruct_graph()
+                    dag, node_labels = self.load_graph(graph=graph)
 
-                dag, node_labels = self.load_graph(graph=graph)
+                if dag is None or node_labels is None:
+                    print(f"WARNING: No DAG found or generated for agent {agent_id}")
+                    continue
+
                 graph_json = self._graph_to_json(dag, node_labels)
 
                 # Extract intervention from proposal (safe unpacking)
