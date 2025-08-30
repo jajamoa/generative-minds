@@ -35,7 +35,7 @@ class QwenExtractor:
         self.model = model
 
     def extract_intervention(
-        self, graph_info: Dict, question: str
+        self, target_node: str, graph_info: Dict, question: str
     ) -> Optional[Tuple[str, float, str, List[str]]]:
         """
         Extract intervention from question based on causal graph structure
@@ -72,14 +72,18 @@ class QwenExtractor:
                     }
                 )
 
+        # remove stance node from displaying
+        display_nodes = {
+            node_id: node_labels.get(node_id, node_id)
+            for node_id in causal_graph.keys()
+            if node_id != target_node
+        }
+
         prompt = f"""
 Given a causal Bayesian network about urban development impacts with these nodes:
 
 Nodes:
-{', '.join(f"{node_id} ({label})" for node_id, label in nodes_with_labels.items())}
-
-Relationships:
-{self._format_key_relationships(edges)}
+{', '.join(f"{node_id} ({label})" for node_id, label in display_nodes.items())}
 
 For this question:
 {question}
@@ -103,7 +107,6 @@ Return JSON:
     "intervention_node": "exact node id",
     "intervention_value": "some value between 0 and 1",
     "explanation": "why this intervention makes sense",
-    "expected_effects": ["list of likely affected downstream nodes"]
 }}
 """
 

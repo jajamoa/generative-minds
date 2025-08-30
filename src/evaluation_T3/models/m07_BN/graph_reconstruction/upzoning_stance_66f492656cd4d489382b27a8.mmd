@@ -1,0 +1,38 @@
+flowchart TD
+%% Reconstructed Causal Graph
+%% Nodes: 10
+%% Edges: 12
+    upzoning_stance[upzoning_stance]
+    n2[low_supply]
+    n3[socioeconomic_diversity]
+    n6[local_government_role]
+    n8[housing_crisis]
+    n9[social_equity]
+    n13[quality_of_life]
+    n14[positive_connection]
+    n15[supply_interests]
+    n16[housing_affordability]
+    n2 --> upzoning_stance
+    n3 --x upzoning_stance
+    n6 --> upzoning_stance
+    n8 --x upzoning_stance
+    n9 --> n3
+    n13 --x n8
+    n13 --> n16
+    n14 --x n8
+    n14 --> n16
+    n15 --x n8
+    n15 --> n16
+    n16 --x n2
+    linkStyle 0 stroke:#00AA00,stroke-width:2px
+    linkStyle 1 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 2 stroke:#00AA00,stroke-width:2px
+    linkStyle 3 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 4 stroke:#00AA00,stroke-width:2px
+    linkStyle 5 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 6 stroke:#00AA00,stroke-width:2px
+    linkStyle 7 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 8 stroke:#00AA00,stroke-width:2px
+    linkStyle 9 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px
+    linkStyle 10 stroke:#00AA00,stroke-width:2px
+    linkStyle 11 stroke:#FF0000,stroke-dasharray:3,stroke-width:2px

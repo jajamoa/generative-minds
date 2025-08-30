@@ -73,11 +73,14 @@ class BayesianNetwork(Census):
 
         # Before reconstructing graph, remove previously generated graph
         self.agents_saved_graph_path = os.path.join(
-            Path(__file__).parent, "graph_reconstruction"
+            Path(__file__).parent, "graph_reconstructions"
         )
         if os.path.exists(self.agents_saved_graph_path):
-            shutil.rmtree(self.agents_saved_graph_path, ignore_errors=True)
-            os.makedirs(self.agents_saved_graph_path)
+            for file in os.listdir(self.agents_saved_graph_path):
+                if file.startswith(self.seed_node) and (
+                    file.endswith(".json") or file.endswith(".mmd")
+                ):
+                    os.remove(os.path.join(self.agents_saved_graph_path, file))
 
     def _load_agent_ids(self, agent_data_path: str) -> list:
         """Load only agent IDs from the agent data file.
@@ -427,8 +430,10 @@ class BayesianNetwork(Census):
                 agent_suffix = getattr(self, "_current_agent_id", None)
                 if not agent_suffix:
                     agent_suffix = "global"
-                json_name = f"reconstructed_graph_{agent_suffix}.json"
-                mmd_name = f"reconstructed_graph_{agent_suffix}.mmd"
+
+                # name after stance node
+                json_name = f"{self.seed_node}_{agent_suffix}.json"
+                mmd_name = f"{self.seed_node}_{agent_suffix}.mmd"
                 reconstructor.save_as_json(
                     reconstructed_graph, out_dir, filename=json_name
                 )
@@ -548,8 +553,9 @@ class BayesianNetwork(Census):
 
                 # Extract intervention from proposal (safe unpacking)
                 extracted = self.extractor.extract_intervention(
-                    {"dag": dag, "node_labels": node_labels},
-                    self._create_proposal_description(proposal),
+                    target_node=self.seed_node,
+                    graph_info={"dag": dag, "node_labels": node_labels},
+                    question=self._create_proposal_description(proposal),
                 )
                 if not extracted:
                     # Fallback: use stance node with a neutral increase

@@ -19,6 +19,14 @@ import argparse
 import json
 
 
+# Utils for label handling and constants
+from .graph_reconstruction_utils import (
+    sanitize_label,
+    canonicalize_seed_label,
+    is_stance_like_label,
+)
+
+
 class MotifBasedReconstructor:
     def __init__(
         self,
@@ -420,43 +428,39 @@ class MotifBasedReconstructor:
         # Update covered nodes
         covered_nodes.update(node_mapping.values())
 
-    def reconstruct_graph(
+    # =============================
+    # GROW PHASE: find and integrate motifs
+    # =============================
+    def _grow_graph(
         self,
         target_node: str,
-        max_iterations: int = 100,
-        min_score: float = 0.3,
-        k: int = 3,
+        max_iterations: int,
+        min_score: float,
+        k: int,
     ) -> nx.DiGraph:
         """
-        Two-phase reconstruction starting from upzoning_stance.
+        GROW: Build an initial graph by iteratively adding best-matching motifs starting
+        from the seed node.
         """
-        print("Starting graph reconstruction...")
         G = nx.DiGraph()
-        # Canonicalize stance label to improve matching with library
-        seed_label = (
-            "support for upzoning" if "upzoning" in target_node.lower() else target_node
-        )
+        seed_label = canonicalize_seed_label(target_node)
         G.add_node(target_node, label=seed_label)
         covered_nodes = {target_node}
 
         # Phase 1: Initial growth from target_node
-        print("Phase 1: Growing from target node...")
+        print("Phase 1: Growing from target node…")
         candidates = self.find_motif_candidates_reverse(target_node, covered_nodes, G)
         if not candidates:
-            # Fallback to forward candidates if reverse search finds none
             print("No reverse candidates found; trying forward candidates from stance…")
             forward = self.find_motif_candidates(target_node, covered_nodes, G)
-            # Adapt forward tuple (motif, score, motif_node) to reverse format: add None group_key, demo
             candidates = [(m, s, n, None, "unknown") for (m, s, n) in forward]
         print(
             f"Reverse candidates: {len(candidates)} (top5 scores: "
             f"{[round(c[1],3) for c in sorted(candidates, key=lambda x: x[1], reverse=True)[:5]]})"
         )
 
-        # Sort by score and take top-k candidates
         candidates.sort(key=lambda x: x[1], reverse=True)
         initial_motifs = candidates[:k]
-
         print(f"Found {len(initial_motifs)} initial motifs to add")
         for motif, score, motif_node, _, _ in initial_motifs:
             self._integrate_motif_reverse(
@@ -467,113 +471,174 @@ class MotifBasedReconstructor:
                 covered_nodes,
                 block_outgoing_from_target=True,
             )
-
         print(f"After Phase 1: {len(G.nodes())} nodes, {len(G.edges())} edges")
 
-        # Phase 2: Grow from other nodes
-        print("Phase 2: Growing from other nodes...")
+        # Phase 2: Expand from other nodes
+        print("Phase 2: Growing from other nodes…")
         frontier = set(G.nodes()) - {target_node}
-        used_motif_types = set()
         max_nodes = 15
-
         iteration = 0
         while frontier and iteration < max_iterations and len(G.nodes()) < max_nodes:
             iteration += 1
             print(f"Iteration {iteration}, Current frontier size: {len(frontier)}")
             new_frontier = set()
-
             for f_node in list(frontier):
                 candidates = self.find_motif_candidates_reverse(
                     f_node, covered_nodes, G
                 )
-
-                # Take best candidates
                 for motif, score, motif_node, group_key, _ in sorted(
                     candidates, key=lambda x: x[1], reverse=True
                 )[:k]:
-                    if score >= min_score:
-                        # Check size limit
-                        new_nodes_count = len(set(motif.nodes()) - covered_nodes)
-                        if len(G.nodes()) + new_nodes_count > max_nodes:
-                            continue
+                    if score < min_score:
+                        continue
 
-                        # Integrate motif
-                        old_nodes = set(G.nodes())
-                        self._integrate_motif_reverse(
-                            G,
-                            motif,
-                            f_node,
-                            motif_node,
-                            covered_nodes,
-                            block_outgoing_from_target=False,
-                        )
+                    new_nodes_count = len(set(motif.nodes()) - covered_nodes)
+                    if len(G.nodes()) + new_nodes_count > max_nodes:
+                        continue
 
-                        # Early exit if we actually added something; otherwise try next candidate
-                        if set(G.nodes()) == old_nodes:
-                            continue
+                    old_nodes = set(G.nodes())
+                    self._integrate_motif_reverse(
+                        G,
+                        motif,
+                        f_node,
+                        motif_node,
+                        covered_nodes,
+                        block_outgoing_from_target=False,
+                    )
 
-                        # Update frontier
-                        new_nodes = set(G.nodes()) - old_nodes
-                        new_frontier.update(
-                            node
-                            for node in new_nodes
-                            if node != target_node
-                            and G.in_degree(node)
-                            == 0  # Only add nodes that could accept incoming edges
-                        )
-                        break
+                    if set(G.nodes()) == old_nodes:
+                        continue
+
+                    added_nodes = set(G.nodes()) - old_nodes
+                    new_frontier.update(
+                        node
+                        for node in added_nodes
+                        if node != target_node and G.in_degree(node) == 0
+                    )
+                    break
 
             frontier = new_frontier
             print(
                 f"After iteration {iteration}: {len(G.nodes())} nodes, {len(G.edges())} edges"
             )
 
-        print("Cleaning up graph...")
-        # 1. Convert all labels to use underscores
+        return G
+
+    # =============================
+    # PRUNING PHASE: reduce duplicates and sanitize
+    # =============================
+    def _merge_duplicate_label_nodes(self, G: nx.DiGraph, target_node: str) -> None:
+        """
+        Merge nodes that share the exact same sanitized label. Prefer keeping
+        the target_node as representative for stance-like labels.
+        """
+        label_to_nodes: Dict[str, List[str]] = {}
+        for node in list(G.nodes()):
+            label = G.nodes[node].get("label", "")
+            label_to_nodes.setdefault(label, []).append(node)
+
+        for label, nodes in label_to_nodes.items():
+            if len(nodes) <= 1:
+                continue
+
+            # Choose representative
+            rep = None
+            if label == self.target_node and target_node in nodes:
+                rep = target_node
+            else:
+                rep = nodes[0]
+
+            for dup in nodes:
+                if dup == rep:
+                    continue
+
+                # Move incoming edges to representative
+                for src, _ in list(G.in_edges(dup)):
+                    if src != rep and not G.has_edge(src, rep):
+                        data = G.get_edge_data(src, dup) or {}
+                        modifier = data.get("modifier", 1.0)
+                        G.add_edge(src, rep, modifier=modifier)
+
+                # Move outgoing edges to representative
+                for _, dst in list(G.out_edges(dup)):
+                    if dst != rep and not G.has_edge(rep, dst):
+                        data = G.get_edge_data(dup, dst) or {}
+                        modifier = data.get("modifier", 1.0)
+                        G.add_edge(rep, dst, modifier=modifier)
+
+                # Finally remove duplicate node
+                if dup in G:
+                    G.remove_node(dup)
+
+    def _prune_graph(self, G: nx.DiGraph, target_node: str) -> nx.DiGraph:
+        """
+        PRUNING: Sanitize labels, coalesce stance-like duplicates, remove
+        invalid edges, and enforce connectivity to the stance node.
+        """
+        print("Cleaning up (PRUNING)…")
+
+        # 1) Sanitize all labels
         for node in G.nodes():
             old_label = G.nodes[node].get("label", "")
-            new_label = old_label.replace(" ", "_").lower()
-            G.nodes[node]["label"] = new_label
+            G.nodes[node]["label"] = sanitize_label(old_label)
 
-        # Standardize target label to ensure consistent stance identification
-        G.nodes[target_node]["label"] = "upzoning_stance"
+        # Standardize target label
+        G.nodes[target_node]["label"] = self.target_node
 
-        # 2. Merge all upzoning stance nodes (support/stance synonyms)
+        # 2) Merge stance-like nodes into the stance target
         nodes_to_merge = []
         for node in G.nodes():
-            label = G.nodes[node].get("label", "").lower()
-            is_stance_like = ("upzoning" in label) and (
-                "stance" in label or "support" in label
-            )
-            if is_stance_like and node != target_node:
+            if node == target_node:
+                continue
+            label = G.nodes[node].get("label", "")
+            if is_stance_like_label(label):
                 nodes_to_merge.append(node)
 
         if nodes_to_merge:
             print(f"Merging {len(nodes_to_merge)} additional upzoning stance nodes")
             for node in nodes_to_merge:
-                # Get all incoming edges
                 incoming = list(G.in_edges(node))
-                # Add these edges to target_node
-                for source, _ in incoming:
-                    if not G.has_edge(source, target_node):
-                        G.add_edge(source, target_node, modifier=1.0)
-                # Remove the duplicate node
-                G.remove_node(node)
+                for src, _ in incoming:
+                    if not G.has_edge(src, target_node):
+                        G.add_edge(src, target_node, modifier=1.0)
+                if node in G:
+                    G.remove_node(node)
 
-        # 3. Remove any outgoing edges from stance node (only for the original seed)
+        # 3) Remove any outgoing edges from stance node
         outgoing_edges = list(G.out_edges(target_node))
         if outgoing_edges:
             print(
                 f"Removing {len(outgoing_edges)} invalid outgoing edges from {target_node}"
             )
-            for source, target in outgoing_edges:
-                G.remove_edge(source, target)
+            for src, dst in outgoing_edges:
+                if G.has_edge(src, dst):
+                    G.remove_edge(src, dst)
 
-        # 4. Final connectivity check
-        for node in G.nodes():
+        # 4) Merge nodes with identical labels (conservative)
+        self._merge_duplicate_label_nodes(G, target_node)
+
+        # 5) Final connectivity check
+        for node in list(G.nodes()):
             if node != target_node and not nx.has_path(G, node, target_node):
                 G.add_edge(node, target_node, modifier=1.0)
 
+        return G
+
+    def reconstruct_graph(
+        self,
+        target_node: str,
+        max_iterations: int = 100,
+        min_score: float = 0.3,
+        k: int = 3,
+    ) -> nx.DiGraph:
+        """
+        Entry point: orchestrates GROW (motif discovery/integration) and PRUNING
+        (deduplication and sanitation) to produce the final graph.
+        """
+        self.target_node = target_node
+        print("Starting graph reconstruction…")
+        G = self._grow_graph(target_node, max_iterations, min_score, k)
+        G = self._prune_graph(G, target_node)
         print(f"Final graph: {len(G.nodes())} nodes, {len(G.edges())} edges")
         print(f"Stance node ({target_node}) out degree: {G.out_degree(target_node)}")
         return G
