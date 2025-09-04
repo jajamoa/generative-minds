@@ -11,7 +11,7 @@ def find_project_root(start_path: Path) -> Path:
     current = start_path
     while current != current.parent:
         # Check for common project root markers
-        markers = ['.git', 'requirements.txt', 'README.md', '.gitignore']
+        markers = ['.git', 'requirements.txt', '.gitignore']
         if any((current / marker).exists() for marker in markers):
             return current
         current = current.parent
@@ -30,7 +30,6 @@ def load_env_files(current_file_path: Path):
         load_dotenv(dotenv_path=root_env_local_path)
     elif root_env_path.exists():
         load_dotenv(dotenv_path=root_env_path)
-import dashscope
 from google import genai
 from openai import OpenAI
 from typing import Optional, Dict, Any
