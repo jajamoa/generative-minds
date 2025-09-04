@@ -144,7 +144,7 @@ def create_swap_mapping(dataset):
     
     return swap_mapping
 
-def evaluate_belief_inference(benchmark_path, cbn_path="sample_cbn.json", model="qwen-plus", temperature=0, include_demographics=True, include_context=True, max_workers=3, debug=False, swap_experiment=False):
+def evaluate_belief_inference(benchmark_path, cbn_path="sample_cbn.json", model="qwen-plus", temperature=0, include_demographics=True, include_context=True, max_workers=3, debug=False, swap_experiment=False, limit=None):
     """
     Evaluate Theory of Mind belief inference questions using CBN agent
     """
@@ -174,6 +174,11 @@ def evaluate_belief_inference(benchmark_path, cbn_path="sample_cbn.json", model=
                     continue
         
         vqa_dataset = json_objects
+    
+    # Apply limit if specified
+    if limit is not None and limit > 0:
+        vqa_dataset = vqa_dataset[:limit]
+        print(f"Limiting evaluation to first {limit} questions")
     
     # Separate data by task type and difficulty
     task_types = set()
@@ -402,6 +407,8 @@ def main():
                        help="Enable debug mode: sequential processing with full prompt/response display")
     parser.add_argument("--swap-experiment", action="store_true",
                        help="Use next participant's demographics/context for prediction (extreme test)")
+    parser.add_argument("--limit", type=int, default=5,
+                       help="Only test the first N questions (default: 5)")
     
     args = parser.parse_args()
     
@@ -415,7 +422,8 @@ def main():
             include_context=not args.no_context,
             max_workers=args.max_workers,
             debug=args.debug,
-            swap_experiment=args.swap_experiment
+            swap_experiment=args.swap_experiment,
+            limit=args.limit
         )
         
         # Save results to results directory
