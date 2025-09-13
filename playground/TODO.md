@@ -4,7 +4,6 @@
   - [ ] Import chatbot code as reference
   - [ ] Build individual CBN
 
-
 - [ ] Evaluate individual CBN with dataset: T2
   - [ ] Over two types of tasks (separately)?
     - [ ] opinion
