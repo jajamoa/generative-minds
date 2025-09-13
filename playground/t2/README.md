@@ -31,3 +31,19 @@ python evaluate_cbn.py --benchmark ../../data/sample_belief_update_zoning.jsonl 
 2. Increase limit gradually for larger tests
 3. Remove `--debug` for production runs
 4. Check CBN structure in `sample_cbn.json` (nodes/edges format)
+
+
+
+# Motif Extraction from Transcripts
+
+## Usage
+
+```bash
+python extract_motif_from_transcript.py
+```
+
+## Arguments
+
+- `--input` - Path to input JSONL file (usually leave as default)
+- `--output_dir` - Path to output directory (usually leave as default)
+- `--max_records` - Maximum number of records to process, to faster test the script

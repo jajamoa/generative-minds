@@ -1,13 +1,16 @@
 # TODOs
 
 - [ ] Reconstruct CBN from transcript
-  - [ ] Import chatbot code as reference
+  - [ ] Extract Motifs from Transcripts
+    - [x] An initial version, only works for 3-node motifs for simplicity
+    - [ ] Refine the output, what counts for better motifs?
   - [ ] Build individual CBN
+
 
 - [ ] Evaluate individual CBN with dataset: T2
   - [ ] Over two types of tasks (separately)?
     - [ ] opinion
-    - [ ] reaason_evaluation
+    - [ ] reason_evaluation
 
 
 - [ ] Build Motif Library from those individual CBNs
