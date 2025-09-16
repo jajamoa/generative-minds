@@ -34,6 +34,7 @@ def load_env_files(current_file_path: Path):
         load_dotenv(dotenv_path=root_env_path)
 
 
+import dashscope
 from google import genai
 from openai import OpenAI
 from typing import Optional, Dict, Any
