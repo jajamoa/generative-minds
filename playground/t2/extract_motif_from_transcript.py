@@ -8,6 +8,7 @@ import os
 import re
 from typing import Dict, List, Optional, Tuple, Iterable
 from pathlib import Path
+from tqdm import tqdm
 
 ROOT_DIR = Path(__file__).parent.parent.parent
 
@@ -396,22 +397,33 @@ def main() -> None:
     # support_label = f"Support for {topic}"
     # print(f"Support label: {support_label}")
 
+    # Count total records first
+    print("Counting total records...")
+    total_records = sum(1 for _ in read_jsonl(str(ROOT_DIR / args.input), args.max_records))
+    
     written = 0
     seen_ids = set()
-    for record in read_jsonl(str(ROOT_DIR / args.input)):
-        prolific_id = str(record.get("prolific_id", "unknown"))
+    
+    with tqdm(total=total_records, desc="Processing", position=0, leave=True) as pbar:
+        for record in read_jsonl(str(ROOT_DIR / args.input)):
+            prolific_id = str(record.get("prolific_id", "unknown"))
 
-        if prolific_id in seen_ids:
-            continue
-        _, out_data = extract_motifs_from_record(record)
-        seen_ids.add(prolific_id)
-        paths = write_per_prolific(
-            str(ROOT_DIR / args.output_dir), prolific_id, out_data
-        )
+            if prolific_id in seen_ids:
+                pbar.update(1)
+                continue
+            
+            pbar.set_postfix({"ID": prolific_id[:8]})
+            _, out_data = extract_motifs_from_record(record)
+            seen_ids.add(prolific_id)
+            paths = write_per_prolific(
+                str(ROOT_DIR / args.output_dir), prolific_id, out_data
+            )
 
-        written += 1
-        if args.max_records is not None and written >= args.max_records:
-            break
+            written += 1
+            pbar.update(1)
+            
+            if args.max_records is not None and written >= args.max_records:
+                break
 
     print(f"Wrote {written} participant folders to {str(ROOT_DIR / args.output_dir)}")
 
