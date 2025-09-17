@@ -18,6 +18,20 @@ def process_single_question(cbn_agent, vqa, include_demographics, include_contex
             demographics = vqa.get("demographics", {})
             context_qas = vqa.get("context_qas", [])
         
+        # Check CBN matching status for display
+        prolific_id = vqa.get("prolific_id")
+        if hasattr(cbn_agent, 'cbns_by_id') and prolific_id:
+            found_match = prolific_id in cbn_agent.cbns_by_id
+            if found_match:
+                cbn_status = Colors.format(f"✓ Using specific CBN for {prolific_id}", Colors.GREEN)
+            else:
+                cbn_status = Colors.format(f"⚠ Using default CBN (no match for {prolific_id})", Colors.RED)
+        else:
+            cbn_status = Colors.format("⚠ Using default CBN (no prolific_id)", Colors.RED)
+        
+        if not debug:  # Show CBN status in non-debug mode
+            print(f"CBN: {cbn_status}")
+        
         # Determine task type
         task_type = vqa.get("task_type", "belief_attribution")
         

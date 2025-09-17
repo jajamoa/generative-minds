@@ -7,9 +7,9 @@
   - [x] Build individual CBN
 
 
-- [ ] Evaluate individual CBN with dataset: T2
-  - [ ] Over two types of tasks (separately)?
-    - [ ] opinion
+- [x] Evaluate individual CBN with dataset: T2
+  - [x] Over two types of tasks (separately)?
+    - [x] opinion
     - [ ] ~~reason_evaluation~~ (might not be our targeted task)
 
 

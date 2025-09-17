@@ -41,20 +41,20 @@ class CBNAgent:
             self.default_cbn = cbn_data
             self.cbns_by_id["default"] = cbn_data
             
-    def select_cbn(self, prolific_id: Optional[str] = None) -> Dict[str, Any]:
+    def select_cbn(self, prolific_id: Optional[str] = None) -> Tuple[Dict[str, Any], bool]:
         """Select CBN based on prolific_id
         
         Args:
             prolific_id: Participant's prolific ID to find specific CBN
             
         Returns:
-            CBN graphData for the specified participant, or default if not found
+            Tuple of (CBN graphData, found_match: bool)
         """
         if prolific_id and prolific_id in self.cbns_by_id:
-            return self.cbns_by_id[prolific_id]
+            return self.cbns_by_id[prolific_id], True
         
         # Fallback to default CBN
-        return self.default_cbn
+        return self.default_cbn, False
     
     def translate_to_do_operation(
         self,
@@ -82,10 +82,17 @@ class CBNAgent:
         context = " | ".join(context_parts)
         
         # Get the appropriate CBN for this participant
-        current_cbn = self.select_cbn(prolific_id)
+        current_cbn, _ = self.select_cbn(prolific_id)
         
-        # Get CBN variables
-        cbn_variables = list(current_cbn.get('nodes', {}).keys())
+        # Get CBN variables with labels
+        nodes = current_cbn.get('nodes', {})
+        cbn_variables = []
+        node_id_to_label = {}
+        
+        for node_id, node_data in nodes.items():
+            label = node_data.get('label', node_id)
+            cbn_variables.append(label)
+            node_id_to_label[label] = node_id
         
         prompt = f"""Context: {context}
 Question: {question}
@@ -109,7 +116,16 @@ Format: {{"variable": "variable_name", "value": 0.8}}"""
         if debug:
             print(f"Do operation: {response}")
         
-        return response or {"variable": cbn_variables[0] if cbn_variables else "unknown", "value": 0.5}
+        # Convert label back to node_id if response contains a label
+        if response and "variable" in response:
+            variable_name = response["variable"]
+            # If it's a label, convert to node_id
+            if variable_name in node_id_to_label:
+                response["variable"] = node_id_to_label[variable_name]
+        
+        # Fallback with proper node_id
+        fallback_variable = node_id_to_label.get(cbn_variables[0]) if cbn_variables else "unknown"
+        return response or {"variable": fallback_variable, "value": 0.5}
     
     def run_cbn_inference(
         self,
@@ -120,7 +136,7 @@ Format: {{"variable": "variable_name", "value": 0.8}}"""
         """Run CBN inference with do() operation"""
         
         # Get the appropriate CBN for this participant
-        current_cbn = self.select_cbn(prolific_id)
+        current_cbn, _ = self.select_cbn(prolific_id)
         
         # Initialize beliefs
         beliefs = {}
@@ -277,10 +293,29 @@ Return only the letter (A, B, C, etc.)."""
         prolific_id = vqa.get("prolific_id")
         
         # Step 1: Select CBN based on prolific_id
-        selected_cbn = self.select_cbn(prolific_id)
+        selected_cbn, found_match = self.select_cbn(prolific_id)
+        
+        # Import Colors for colored output
+        try:
+            from llm_utils import Colors
+        except ImportError:
+            # Fallback if Colors not available
+            class Colors:
+                RED = '\033[91m'
+                GREEN = '\033[92m'
+                RESET = '\033[0m'
+                @staticmethod
+                def format(text, color):
+                    return f"{color}{text}{Colors.RESET}"
+        
         if debug:
             print(f"\n=== Step 1: CBN Selected ===")
             print(f"Prolific ID: {prolific_id}")
+            if found_match:
+                match_status = Colors.format("✓ Found specific CBN", Colors.GREEN)
+            else:
+                match_status = Colors.format("⚠ Using default CBN (fallback)", Colors.RED)
+            print(f"CBN Match: {match_status}")
             print(f"CBN nodes: {len(selected_cbn.get('nodes', {}))}")
             print(f"CBN edges: {len(selected_cbn.get('edges', {}))}")
         
