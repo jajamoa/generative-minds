@@ -12,6 +12,14 @@ import argparse
 from collections import defaultdict
 import hashlib
 
+# Import our node similarity module
+from node_similarity import (
+    get_consistent_node_id, 
+    is_stance_node, 
+    find_similar_node,
+    compute_node_similarity
+)
+
 def get_node_id(label: str) -> str:
     """Generate a consistent node ID from a label."""
     # Use first 8 chars of hash to ensure uniqueness while keeping IDs short
@@ -26,7 +34,7 @@ def get_edge_id(source_id: str, target_id: str) -> str:
 
 def merge_motifs_to_graph(motifs: List[Dict]) -> Tuple[Dict[str, Dict], Dict[str, Dict]]:
     """
-    Merge multiple 3-node motifs into a unified graph.
+    Merge multiple 3-node motifs into a unified graph using semantic similarity.
     Returns nodes and edges dictionaries in CBN format.
     """
     # Track all unique nodes and edges
@@ -42,12 +50,17 @@ def merge_motifs_to_graph(motifs: List[Dict]) -> Tuple[Dict[str, Dict], Dict[str
         motif_edges = motif.get("edges", [])
         sources = motif.get("sources", [])
         
-        # Map local node IDs (n1, n2, n3) to global labels
-        local_to_global = {}
+        # Map local node IDs (n1, n2, n3) to global node IDs using similarity
+        local_to_global_id = {}
+        local_to_label = {}
+        
         for local_id, label in node_labels.items():
             if label:  # Skip empty labels
-                local_to_global[local_id] = label
-                node_id = get_node_id(label)
+                local_to_label[local_id] = label
+                
+                # Find similar existing node or create new one
+                node_id = get_consistent_node_id(label, nodes, similarity_threshold=0.8)
+                local_to_global_id[local_id] = node_id
                 
                 # Add node if not exists
                 if node_id not in nodes:
@@ -56,12 +69,17 @@ def merge_motifs_to_graph(motifs: List[Dict]) -> Tuple[Dict[str, Dict], Dict[str
                         "aggregate_confidence": 0.8,  # Default confidence
                         "importance": 0.7,  # Default importance
                         "frequency": 0,
-                        "is_stance": False,
+                        "is_stance": is_stance_node(label),  # Use semantic detection
                         "incoming_edges": [],
                         "outgoing_edges": [],
                         "evidence": [],
                         "status": "anchor"
                     }
+                else:
+                    # Update label to the most representative one if this one is better
+                    if is_stance_node(label) and not is_stance_node(nodes[node_id]["label"]):
+                        nodes[node_id]["label"] = label
+                        nodes[node_id]["is_stance"] = True
                 
                 # Update frequency
                 nodes[node_id]["frequency"] += 1
@@ -77,15 +95,15 @@ def merge_motifs_to_graph(motifs: List[Dict]) -> Tuple[Dict[str, Dict], Dict[str
                     if evidence_entry not in nodes[node_id]["evidence"]:
                         nodes[node_id]["evidence"].append(evidence_entry)
         
-        # Process edges
+        # Process edges using the mapped global node IDs
         for edge in motif_edges:
             if len(edge) == 2:
                 src_local, tgt_local = edge
-                if src_local in local_to_global and tgt_local in local_to_global:
-                    src_label = local_to_global[src_local]
-                    tgt_label = local_to_global[tgt_local]
-                    src_id = get_node_id(src_label)
-                    tgt_id = get_node_id(tgt_label)
+                if src_local in local_to_global_id and tgt_local in local_to_global_id:
+                    src_id = local_to_global_id[src_local]
+                    tgt_id = local_to_global_id[tgt_local]
+                    src_label = local_to_label[src_local]
+                    tgt_label = local_to_label[tgt_local]
                     edge_id = get_edge_id(src_id, tgt_id)
                     
                     # Add edge if not exists
@@ -93,14 +111,14 @@ def merge_motifs_to_graph(motifs: List[Dict]) -> Tuple[Dict[str, Dict], Dict[str
                         edges[edge_id] = {
                             "source": src_id,
                             "target": tgt_id,
-                            "source_label": src_label,
-                            "target_label": tgt_label,
+                            "source_label": nodes[src_id]["label"],  # Use the canonical label
+                            "target_label": nodes[tgt_id]["label"],  # Use the canonical label
                             "direction": "positive",  # Default to positive
                             "strength": 0.7,  # Default strength
                             "modifier": 1.0,
                             "aggregate_confidence": 0.8,
                             "evidence": [],
-                            "explanation": f"{src_label} influences {tgt_label}"
+                            "explanation": f"{nodes[src_id]['label']} influences {nodes[tgt_id]['label']}"
                         }
                         
                         # Update node edge lists
@@ -226,18 +244,52 @@ def build_cbn_for_participant(participant_dir: Path, prolific_id: str) -> Tuple[
     # Merge motifs into a graph
     nodes, edges = merge_motifs_to_graph(motifs)
     
-    # Find stance nodes (nodes with no outgoing edges and high importance)
-    # These represent final beliefs or outcomes
-    stance_candidates = []
-    for node_id, node_data in nodes.items():
-        if len(node_data["outgoing_edges"]) == 0 and node_data["importance"] >= 0.8:
-            stance_candidates.append((node_id, node_data))
+    # Enhanced stance node identification
+    # Priority 1: Nodes already identified as stance through semantic analysis
+    # Priority 2: Leaf nodes (no outgoing edges) that represent final outcomes
+    # Priority 3: Nodes with "support for" patterns
     
-    # Mark top stance candidates
-    stance_candidates.sort(key=lambda x: x[1]["importance"], reverse=True)
-    for i, (node_id, node_data) in enumerate(stance_candidates[:3]):  # Top 3 as stances
-        nodes[node_id]["is_stance"] = True
-        nodes[node_id]["status"] = "stance"
+    stance_candidates = []
+    
+    for node_id, node_data in nodes.items():
+        label = node_data["label"]
+        stance_score = 0.0
+        
+        # High priority: semantically identified stance nodes
+        if node_data.get("is_stance", False):
+            stance_score += 10.0
+            
+        # Medium priority: leaf nodes that could be outcomes
+        if len(node_data["outgoing_edges"]) == 0:
+            stance_score += 5.0
+            
+        # Boost for specific patterns indicating final beliefs
+        if any(pattern in label.lower() for pattern in ['support for', 'support', 'belief', 'opinion']):
+            stance_score += 3.0
+            
+        # Boost for high connectivity (importance)
+        stance_score += node_data["importance"] * 2.0
+        
+        # Boost for frequency (how often mentioned)
+        stance_score += min(node_data["frequency"] * 0.5, 2.0)
+        
+        if stance_score >= 5.0:  # Threshold for stance consideration
+            stance_candidates.append((node_id, node_data, stance_score))
+    
+    # Sort by stance score and mark top candidates
+    stance_candidates.sort(key=lambda x: x[2], reverse=True)
+    
+    # Mark stance nodes, ensuring we have at least one
+    stance_count = 0
+    for node_id, node_data, score in stance_candidates:
+        if stance_count < 3 and (score >= 8.0 or stance_count == 0):  # At least one stance node
+            nodes[node_id]["is_stance"] = True
+            nodes[node_id]["status"] = "stance"
+            stance_count += 1
+        else:
+            # Ensure semantic stance detection is preserved
+            if node_data.get("is_stance", False):
+                nodes[node_id]["status"] = "stance"
     
     # Generate Mermaid diagram
     mermaid_diagram = generate_mermaid_graph(nodes, edges)
