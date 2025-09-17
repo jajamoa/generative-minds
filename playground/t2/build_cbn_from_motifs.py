@@ -11,6 +11,8 @@ from typing import Dict, List, Set, Tuple, Optional
 import argparse
 from collections import defaultdict
 import hashlib
+from concurrent.futures import ProcessPoolExecutor, as_completed
+from tqdm import tqdm
 
 # Import our node similarity module
 from node_similarity import (
@@ -327,6 +329,66 @@ def build_cbn_for_participant(participant_dir: Path, prolific_id: str) -> Tuple[
     
     return cbn, mermaid_diagram
 
+def process_single_participant(participant_info: Tuple[Path, str, Path]) -> Optional[Dict]:
+    """
+    Process a single participant for parallel execution.
+    Returns processed data or None if failed.
+    """
+    participant_dir, prolific_id, output_dir = participant_info
+    
+    try:
+        # Build CBN for this participant
+        cbn, mermaid_diagram = build_cbn_for_participant(participant_dir, prolific_id)
+        
+        if cbn:
+            # Create participant output directory
+            participant_output_dir = output_dir / prolific_id
+            participant_output_dir.mkdir(exist_ok=True)
+            
+            # Save CBN JSON
+            cbn_file = participant_output_dir / f"{prolific_id}_cbn.json"
+            with open(cbn_file, 'w') as f:
+                json.dump([cbn], f, indent=2)  # Wrap in array like sample_cbn.json
+            
+            # Save Mermaid diagram (.mmd file)
+            mmd_file = participant_output_dir / f"{prolific_id}_cbn.mmd"
+            with open(mmd_file, 'w') as f:
+                f.write(mermaid_diagram)
+            
+            # Save Markdown file with embedded Mermaid
+            md_file = participant_output_dir / f"{prolific_id}_cbn.md"
+            with open(md_file, 'w') as f:
+                f.write(f"# Cognitive Belief Network for Participant {prolific_id}\n\n")
+                f.write(f"**Topic**: {cbn['graphs'][0]['graphData']['metadata']['topic']}\n")
+                f.write(f"**Total Motifs**: {cbn['graphs'][0]['graphData']['metadata']['total_motifs']}\n")
+                f.write(f"**Unique Nodes**: {cbn['graphs'][0]['graphData']['metadata']['unique_nodes']}\n")
+                f.write(f"**Unique Edges**: {cbn['graphs'][0]['graphData']['metadata']['unique_edges']}\n\n")
+                f.write("## Graph Visualization\n\n")
+                f.write("```mermaid\n")
+                f.write(mermaid_diagram)
+                f.write("\n```\n\n")
+                f.write("## Node Types\n\n")
+                f.write("- **Root Nodes** (Blue): Starting points with no incoming edges\n")
+                f.write("- **Intermediate Nodes** (White): Nodes with both incoming and outgoing edges\n")
+                f.write("- **Leaf Nodes** (Green): Endpoints with no outgoing edges\n")
+                f.write("- **Stance Nodes** (Red): High-importance belief endpoints\n\n")
+                f.write("## Edge Strength\n\n")
+                f.write("- Solid thick arrow (==>): Strong connection (≥0.9)\n")
+                f.write("- Solid arrow (-->): Medium connection (≥0.7)\n")
+                f.write("- Dashed arrow (-.->): Weak connection (<0.7)\n")
+            
+            return {
+                'prolific_id': prolific_id,
+                'nodes': len(cbn['graphs'][0]['graphData']['nodes']),
+                'edges': len(cbn['graphs'][0]['graphData']['edges']),
+                'success': True
+            }
+        else:
+            return {'prolific_id': prolific_id, 'success': False, 'error': 'No motifs found'}
+            
+    except Exception as e:
+        return {'prolific_id': prolific_id, 'success': False, 'error': str(e)}
+
 def main():
     parser = argparse.ArgumentParser(description="Build CBN from participant motifs")
     parser.add_argument(
@@ -344,6 +406,17 @@ def main():
         type=int,
         default=None,
         help="Limit number of participants to process"
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=4,
+        help="Number of parallel workers (default: 4)"
+    )
+    parser.add_argument(
+        "--no-parallel",
+        action="store_true",
+        help="Disable parallel processing"
     )
     
     args = parser.parse_args()
@@ -363,68 +436,49 @@ def main():
         participant_dirs = participant_dirs[:args.limit]
     
     print(f"Processing {len(participant_dirs)} participants...")
+    print(f"Using {'serial' if args.no_parallel else 'parallel'} processing with {args.workers if not args.no_parallel else 1} worker(s)")
     
     successful = 0
     failed = 0
     
-    for participant_dir in participant_dirs:
-        prolific_id = participant_dir.name
-        print(f"\nProcessing participant: {prolific_id}")
-        
-        try:
-            # Build CBN for this participant
-            cbn, mermaid_diagram = build_cbn_for_participant(participant_dir, prolific_id)
-            
-            if cbn:
-                # Create participant output directory
-                participant_output_dir = output_dir / prolific_id
-                participant_output_dir.mkdir(exist_ok=True)
-                
-                # Save CBN JSON
-                cbn_file = participant_output_dir / f"{prolific_id}_cbn.json"
-                with open(cbn_file, 'w') as f:
-                    json.dump([cbn], f, indent=2)  # Wrap in array like sample_cbn.json
-                
-                # Save Mermaid diagram (.mmd file)
-                mmd_file = participant_output_dir / f"{prolific_id}_cbn.mmd"
-                with open(mmd_file, 'w') as f:
-                    f.write(mermaid_diagram)
-                
-                # Save Markdown file with embedded Mermaid
-                md_file = participant_output_dir / f"{prolific_id}_cbn.md"
-                with open(md_file, 'w') as f:
-                    f.write(f"# Cognitive Belief Network for Participant {prolific_id}\n\n")
-                    f.write(f"**Topic**: {cbn['graphs'][0]['graphData']['metadata']['topic']}\n")
-                    f.write(f"**Total Motifs**: {cbn['graphs'][0]['graphData']['metadata']['total_motifs']}\n")
-                    f.write(f"**Unique Nodes**: {cbn['graphs'][0]['graphData']['metadata']['unique_nodes']}\n")
-                    f.write(f"**Unique Edges**: {cbn['graphs'][0]['graphData']['metadata']['unique_edges']}\n\n")
-                    f.write("## Graph Visualization\n\n")
-                    f.write("```mermaid\n")
-                    f.write(mermaid_diagram)
-                    f.write("\n```\n\n")
-                    f.write("## Node Types\n\n")
-                    f.write("- **Root Nodes** (Blue): Starting points with no incoming edges\n")
-                    f.write("- **Intermediate Nodes** (White): Nodes with both incoming and outgoing edges\n")
-                    f.write("- **Leaf Nodes** (Green): Endpoints with no outgoing edges\n")
-                    f.write("- **Stance Nodes** (Red): High-importance belief endpoints\n\n")
-                    f.write("## Edge Strength\n\n")
-                    f.write("- Solid thick arrow (==>): Strong connection (≥0.9)\n")
-                    f.write("- Solid arrow (-->): Medium connection (≥0.7)\n")
-                    f.write("- Dashed arrow (-.->): Weak connection (<0.7)\n")
-                
-                print(f"  ✓ Created CBN with {len(cbn['graphs'][0]['graphData']['nodes'])} nodes and {len(cbn['graphs'][0]['graphData']['edges'])} edges")
-                print(f"  ✓ Saved files:")
-                print(f"    - JSON: {cbn_file.relative_to(root_dir)}")
-                print(f"    - Mermaid: {mmd_file.relative_to(root_dir)}")
-                print(f"    - Markdown: {md_file.relative_to(root_dir)}")
+    # Prepare participant info for processing
+    participant_infos = [(participant_dir, participant_dir.name, output_dir) for participant_dir in participant_dirs]
+    
+    if args.no_parallel:
+        # Serial processing with progress bar
+        for participant_info in tqdm(participant_infos, desc="Processing participants"):
+            result = process_single_participant(participant_info)
+            if result and result['success']:
                 successful += 1
+                print(f"✓ {result['prolific_id']}: {result['nodes']} nodes, {result['edges']} edges")
             else:
-                print(f"  ✗ No motifs found")
                 failed += 1
-                
-        except Exception as e:
-            print(f"  ✗ Error: {str(e)}")
-            failed += 1
+                error_msg = result['error'] if result else "Unknown error"
+                print(f"✗ {participant_info[1]}: {error_msg}")
+    else:
+        # Parallel processing with progress bar
+        with ProcessPoolExecutor(max_workers=args.workers) as executor:
+            # Submit all tasks
+            future_to_info = {
+                executor.submit(process_single_participant, info): info[1] 
+                for info in participant_infos
+            }
+            
+            # Process completed tasks with progress bar
+            for future in tqdm(as_completed(future_to_info), total=len(participant_infos), desc="Processing participants"):
+                prolific_id = future_to_info[future]
+                try:
+                    result = future.result()
+                    if result and result['success']:
+                        successful += 1
+                        tqdm.write(f"✓ {result['prolific_id']}: {result['nodes']} nodes, {result['edges']} edges")
+                    else:
+                        failed += 1
+                        error_msg = result['error'] if result else "Unknown error"
+                        tqdm.write(f"✗ {prolific_id}: {error_msg}")
+                except Exception as e:
+                    failed += 1
+                    tqdm.write(f"✗ {prolific_id}: {str(e)}")
     
     print(f"\n{'='*60}")
     print(f"Summary:")
