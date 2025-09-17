@@ -17,25 +17,44 @@ class CBNAgent:
         self.llm = QwenLLM(model=model)
         with open(cbn_path) as f:
             cbn_data = json.load(f)
-            # Extract the first CBN from the nested structure
-            if isinstance(cbn_data, list) and len(cbn_data) > 0:
-                first_session = cbn_data[0]
-                if "graphs" in first_session and len(first_session["graphs"]) > 0:
-                    first_graph = first_session["graphs"][0]
-                    if "graphData" in first_graph:
-                        self.cbn = first_graph["graphData"]
-                    else:
-                        raise ValueError("No graphData found in first graph")
-                else:
-                    raise ValueError("No graphs found in first session")
-            else:
-                # Fallback: assume it's already in the correct format
-                self.cbn = cbn_data
             
-    def select_cbn(self) -> Dict[str, Any]:
-        """Select CBN - currently fixed to first one"""
-        # Return the loaded CBN graphData which contains nodes and edges
-        return self.cbn
+        # Store all CBNs indexed by prolific_id
+        self.cbns_by_id = {}
+        self.default_cbn = None
+        
+        if isinstance(cbn_data, list) and len(cbn_data) > 0:
+            for session in cbn_data:
+                if "graphs" in session and len(session["graphs"]) > 0:
+                    prolific_id = session.get("prolificId", "unknown")
+                    first_graph = session["graphs"][0]
+                    if "graphData" in first_graph:
+                        graph_data = first_graph["graphData"]
+                        self.cbns_by_id[prolific_id] = graph_data
+                        # Set first valid CBN as default
+                        if self.default_cbn is None:
+                            self.default_cbn = graph_data
+            
+            if self.default_cbn is None:
+                raise ValueError("No valid CBN found in data")
+        else:
+            # Fallback: assume it's already in the correct format
+            self.default_cbn = cbn_data
+            self.cbns_by_id["default"] = cbn_data
+            
+    def select_cbn(self, prolific_id: Optional[str] = None) -> Dict[str, Any]:
+        """Select CBN based on prolific_id
+        
+        Args:
+            prolific_id: Participant's prolific ID to find specific CBN
+            
+        Returns:
+            CBN graphData for the specified participant, or default if not found
+        """
+        if prolific_id and prolific_id in self.cbns_by_id:
+            return self.cbns_by_id[prolific_id]
+        
+        # Fallback to default CBN
+        return self.default_cbn
     
     def translate_to_do_operation(
         self,
@@ -45,7 +64,8 @@ class CBNAgent:
         include_demographics: bool,
         include_context: bool,
         temperature: float = 0.1,
-        debug: bool = False
+        debug: bool = False,
+        prolific_id: Optional[str] = None
     ) -> Dict[str, Any]:
         """Translate question to do() operation based on CBN variables"""
         
@@ -61,8 +81,11 @@ class CBNAgent:
         
         context = " | ".join(context_parts)
         
+        # Get the appropriate CBN for this participant
+        current_cbn = self.select_cbn(prolific_id)
+        
         # Get CBN variables
-        cbn_variables = list(self.cbn.get('nodes', {}).keys())
+        cbn_variables = list(current_cbn.get('nodes', {}).keys())
         
         prompt = f"""Context: {context}
 Question: {question}
@@ -91,14 +114,18 @@ Format: {{"variable": "variable_name", "value": 0.8}}"""
     def run_cbn_inference(
         self,
         do_operation: Dict[str, Any],
-        debug: bool = False
+        debug: bool = False,
+        prolific_id: Optional[str] = None
     ) -> Dict[str, float]:
         """Run CBN inference with do() operation"""
         
+        # Get the appropriate CBN for this participant
+        current_cbn = self.select_cbn(prolific_id)
+        
         # Initialize beliefs
         beliefs = {}
-        nodes = self.cbn.get('nodes', {})
-        edges = self.cbn.get('edges', {})
+        nodes = current_cbn.get('nodes', {})
+        edges = current_cbn.get('edges', {})
         
         # Set all nodes to default values first
         for node in nodes:
@@ -246,10 +273,14 @@ Return only the letter (A, B, C, etc.)."""
             print(f"Question: {vqa.get('task_question', '')}")
             print(f"{'='*80}")
         
-        # Step 1: Select CBN (fixed to first one for now)
-        selected_cbn = self.select_cbn()
+        # Get prolific_id from vqa data for CBN selection
+        prolific_id = vqa.get("prolific_id")
+        
+        # Step 1: Select CBN based on prolific_id
+        selected_cbn = self.select_cbn(prolific_id)
         if debug:
             print(f"\n=== Step 1: CBN Selected ===")
+            print(f"Prolific ID: {prolific_id}")
             print(f"CBN nodes: {len(selected_cbn.get('nodes', {}))}")
             print(f"CBN edges: {len(selected_cbn.get('edges', {}))}")
         
@@ -257,11 +288,11 @@ Return only the letter (A, B, C, etc.)."""
         task_question = vqa.get("task_question", "")
         do_operation = self.translate_to_do_operation(
             task_question, demographics, context_qas, 
-            include_demographics, include_context, temperature, debug
+            include_demographics, include_context, temperature, debug, prolific_id
         )
         
         # Step 3: Run CBN inference with do() operation
-        cbn_state = self.run_cbn_inference(do_operation, debug)
+        cbn_state = self.run_cbn_inference(do_operation, debug, prolific_id)
         
         # Step 4: Select answer based on CBN state
         response = self.select_answer(vqa, cbn_state, temperature, debug)

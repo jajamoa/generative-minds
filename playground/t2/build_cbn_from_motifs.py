@@ -499,11 +499,20 @@ def main():
                         cbns = json.load(f)
                         all_cbns.extend(cbns)
         
+        # Save to both output directory and main results directory
         combined_file = output_dir / "all_participants_cbn.json"
         with open(combined_file, 'w') as f:
             json.dump(all_cbns, f, indent=2)
         
+        # Also save to main results directory for easy access
+        main_results_dir = root_dir / "playground" / "t2" / "results"
+        main_results_dir.mkdir(exist_ok=True)
+        main_cbn_file = main_results_dir / "motif_based_cbn.json"
+        with open(main_cbn_file, 'w') as f:
+            json.dump(all_cbns, f, indent=2)
+        
         print(f"  ✓ Created combined CBN file: {combined_file.relative_to(root_dir)}")
+        print(f"  ✓ Created main CBN file: {main_cbn_file.relative_to(root_dir)}")
         print(f"  ✓ Total participants in combined file: {len(all_cbns)}")
 
 if __name__ == "__main__":
