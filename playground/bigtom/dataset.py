@@ -53,6 +53,30 @@ def split_csv(
     return len(train_lines), len(test_lines)
 
 
+def peek_csv(input_path: Path, max_data_rows: int = 1) -> None:
+    """Print header candidate and first data row(s) with indexed columns."""
+    with open(input_path, "r", encoding="utf-8") as f:
+        lines = [ln.rstrip("\n") for ln in f.readlines() if ln.strip()]
+
+    if not lines:
+        print(f"[peek] File is empty: {input_path}")
+        return
+
+    def show_row(tag: str, row_text: str) -> None:
+        cols = row_text.split(";")
+        print(f"[{tag}] columns={len(cols)}")
+        for idx, col in enumerate(cols):
+            print(f"  [{idx:02d}] {col}")
+
+    # Header candidate: first non-empty line
+    show_row("header", lines[0])
+
+    # First data rows (if available)
+    data_rows = lines[1 : 1 + max(1, int(max_data_rows))]
+    for i, row in enumerate(data_rows, start=1):
+        show_row(f"data#{i}", row)
+
+
 def pairwise_split_see_no(
     input_path: Path, output_dir: Path, seed: int = 42
 ) -> tuple[int, int]:
@@ -156,6 +180,12 @@ def main() -> None:
         help="Output directory for train/test CSVs (relative to script dir)",
     )
     parser.add_argument(
+        "--peek",
+        type=int,
+        default=0,
+        help="Print header and first N data rows, then exit (no splitting)",
+    )
+    parser.add_argument(
         "--pairwise",
         action="store_true",
         help="Pairwise split per row: randomly put see/no into different sets",
@@ -180,6 +210,10 @@ def main() -> None:
 
     if not input_path.exists():
         raise FileNotFoundError(f"Input CSV not found: {input_path}")
+
+    if args.peek and args.peek > 0:
+        peek_csv(input_path, args.peek)
+        return
 
     if args.pairwise:
         train_n, test_n = pairwise_split_see_no(input_path, output_dir, args.seed)

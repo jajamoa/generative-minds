@@ -9,6 +9,21 @@ from llm_utils import Colors
 from cbn_agent import CBNAgent
 from build_cbn_from_motifs import generate_mermaid_graph
 import csv
+import re
+from difflib import SequenceMatcher
+
+try:
+    # Optional: semantic matching using local embeddings
+    from node_similarity import compute_node_similarity
+except Exception:  # pragma: no cover
+    compute_node_similarity = None
+import sys
+
+ROOT_DIR = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+import dotenv
+
+dotenv.load_dotenv(ROOT_DIR / ".env")
 
 
 def process_single_question(
@@ -256,9 +271,45 @@ def evaluate_belief_inference(
     if benchmark_path.lower().endswith(".csv"):
         with open(benchmark_path, "r", encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
+
+            def is_probably_header(row: list[str]) -> bool:
+                vals = [(c or "").strip().lower() for c in row]
+                header_tokens = {
+                    "story",
+                    "see",
+                    "no",
+                    "opt a",
+                    "opt b",
+                    "opt_a",
+                    "opt_b",
+                    "option a",
+                    "option b",
+                    "question",
+                    "q_action",
+                    "will_see",
+                    "will_no",
+                }
+                # direct token match or contains common header words
+                if any(v in header_tokens for v in vals):
+                    return True
+                joined = " ".join(vals)
+                return (
+                    any(
+                        tok in joined
+                        for tok in ["option", "will_see", "will_no", "q_action"]
+                    )
+                    and "what will" not in joined
+                )
+
+            header_checked = False
             for row_idx, cols in enumerate(reader, start=1):
                 if not cols or not any((c or "").strip() for c in cols):
                     continue
+                if not header_checked:
+                    header_checked = True
+                    if is_probably_header(cols):
+                        # Skip header row
+                        continue
 
                 def safe(i: int) -> str:
                     return (
@@ -274,16 +325,86 @@ def evaluate_belief_inference(
                 a_will_see = safe(10)
                 a_will_no = safe(13)
 
+                # Fallbacks if option columns look empty but will columns encode letters
+                if not (opt_a or opt_b):
+                    # try to parse like "A) ...; B) ..." from a nearby column if exists
+                    combined = safe(6)
+                    if combined:
+                        try:
+                            parts = combined.split("|")
+                            if len(parts) >= 2:
+                                opt_a = opt_a or parts[0].strip()
+                                opt_b = opt_b or parts[1].strip()
+                        except Exception:
+                            pass
+
                 if not story:
                     continue
 
                 # Helper to compute correct letter by matching will-answer against options
-                def match_correct_letter(will_answer: str) -> str | None:
-                    if will_answer and opt_a and will_answer == opt_a:
-                        return "A"
-                    if will_answer and opt_b and will_answer == opt_b:
-                        return "B"
-                    return None
+                def match_correct_letter(will_answer: str) -> tuple[str | None, dict]:
+                    """
+                    Return (letter, meta).
+                    - letter: "A" | "B" | None
+                    - meta: { method: "coded|exact|semantic|none", scores: {A: float, B: float} }
+                    """
+                    meta = {"method": "none", "scores": {}}
+                    if not will_answer:
+                        return None, meta
+
+                    # 1) Accept coded letters directly
+                    wa_upper = will_answer.strip().upper()
+                    if wa_upper in ("A", "B"):
+                        meta["method"] = "coded"
+                        return wa_upper, meta
+
+                    # 2) Normalize textual answers and compare exact
+                    def normalize(text: str) -> str:
+                        t = (text or "").strip().lower()
+                        # remove common prefixes like "option a:", "a)", "(a)", "a."
+                        t = re.sub(
+                            r"^\(?\s*(option\s*)?[ab][\)\.:\-]\s*", "", t, flags=re.I
+                        )
+                        # strip quotes and trailing punctuation/spaces
+                        t = t.strip(" \t\n\r'\".,;:!?")
+                        t = re.sub(r"\s+", " ", t)
+                        return t
+
+                    na = normalize(opt_a)
+                    nb = normalize(opt_b)
+                    nw = normalize(will_answer)
+
+                    if nw and na and nw == na:
+                        meta["method"] = "exact"
+                        return "A", meta
+                    if nw and nb and nw == nb:
+                        meta["method"] = "exact"
+                        return "B", meta
+
+                    # 3) Semantic fallback using embeddings (if available), else difflib
+                    def text_similarity(x: str, y: str) -> float:
+                        if compute_node_similarity is not None:
+                            try:
+                                return float(compute_node_similarity(x, y))
+                            except Exception:
+                                pass
+                        # fallback: character-level ratio
+                        return SequenceMatcher(None, x, y).ratio()
+
+                    sim_a = text_similarity(will_answer, opt_a or "") if opt_a else 0.0
+                    sim_b = text_similarity(will_answer, opt_b or "") if opt_b else 0.0
+                    meta["scores"] = {"A": sim_a, "B": sim_b}
+
+                    threshold = 0.6
+                    margin = 0.05
+                    if sim_a >= threshold and (sim_a - sim_b) >= margin:
+                        meta["method"] = "semantic"
+                        return "A", meta
+                    if sim_b >= threshold and (sim_b - sim_a) >= margin:
+                        meta["method"] = "semantic"
+                        return "B", meta
+
+                    return None, meta
 
                 # SEE scenario
                 if see_cond:
@@ -293,7 +414,14 @@ def evaluate_belief_inference(
                             "task_type": "belief_attribution",
                             "task_question": q_action,
                             "answer_options": {"A": opt_a or "", "B": opt_b or ""},
-                            "answer": match_correct_letter(a_will_see),
+                            **(
+                                lambda _m: {
+                                    "answer": _m[0],
+                                    "gt_match_method": _m[1]["method"],
+                                    "gt_match_scores": _m[1].get("scores", {}),
+                                }
+                            )(match_correct_letter(a_will_see)),
+                            "gt_will_text": a_will_see,
                             "demographics": {},
                             "context_qas": [
                                 {"question": "Story context", "answer": story},
@@ -313,7 +441,14 @@ def evaluate_belief_inference(
                             "task_type": "belief_attribution",
                             "task_question": q_action,
                             "answer_options": {"A": opt_a or "", "B": opt_b or ""},
-                            "answer": match_correct_letter(a_will_no),
+                            **(
+                                lambda _m: {
+                                    "answer": _m[0],
+                                    "gt_match_method": _m[1]["method"],
+                                    "gt_match_scores": _m[1].get("scores", {}),
+                                }
+                            )(match_correct_letter(a_will_no)),
+                            "gt_will_text": a_will_no,
                             "demographics": {},
                             "context_qas": [
                                 {"question": "Story context", "answer": story},
@@ -490,8 +625,7 @@ def evaluate_belief_inference(
 
             total += 1
 
-            # Print details for verbose mode (only if not in debug mode)
-            if not debug:
+            if debug:
                 group_label = (
                     difficulty.upper()
                     if difficulty != "all"

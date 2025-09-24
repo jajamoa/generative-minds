@@ -227,6 +227,7 @@ class CBNAgent:
 
         # Get CBN variables with labels
         nodes = current_cbn.get("nodes", {})
+        edges = current_cbn.get("edges", {})
         cbn_variables = []
         node_id_to_label = {}
 
@@ -258,11 +259,64 @@ class CBNAgent:
             if variable_name in node_id_to_label:
                 response["variable"] = node_id_to_label[variable_name]
 
-        # Fallback with proper node_id
-        fallback_variable = (
-            node_id_to_label.get(cbn_variables[0]) if cbn_variables else "unknown"
-        )
-        return response or {"variable": fallback_variable, "value": 0.5}
+        # Helper: pick a causal driver (node with outgoing edges) matching observation/question
+        def pick_driver_from_text(text: str) -> Optional[str]:
+            try:
+                from node_similarity import compute_node_similarity  # local embedding
+            except Exception:
+                compute_node_similarity = None  # type: ignore
+
+            candidates = []
+            for nid, ndata in nodes.items():
+                outdeg = len(ndata.get("outgoing_edges", []))
+                if outdeg <= 0:
+                    continue
+                label = ndata.get("label", nid)
+                sim = 0.0
+                try:
+                    if text and compute_node_similarity:
+                        sim = float(compute_node_similarity(str(text), str(label)))
+                except Exception:
+                    sim = 0.0
+                # combine similarity and out-degree as a simple heuristic
+                score = sim + 0.05 * outdeg
+                candidates.append((score, nid))
+            if not candidates:
+                return None
+            candidates.sort(key=lambda x: x[0], reverse=True)
+            return candidates[0][1]
+
+        # Ensure we always target a driver node; if LLM chose a leaf or unknown, fallback
+        chosen_var = None
+        if response and isinstance(response, dict):
+            chosen_var = response.get("variable")
+
+        # Determine text to match (prefer observation for causal driver)
+        match_text = observation_text or question
+
+        if (
+            not chosen_var
+            or chosen_var not in nodes
+            or len(nodes.get(chosen_var, {}).get("outgoing_edges", [])) == 0
+        ):
+            fallback_driver = pick_driver_from_text(match_text)
+            if not response:
+                response = {}
+            if fallback_driver:
+                response["variable"] = fallback_driver
+                # Default to a strong presence if we don't have an explicit value
+                response.setdefault("value", 0.9)
+            else:
+                # absolute fallback: first node id if any
+                any_nid = next(iter(nodes.keys()), "unknown")
+                response["variable"] = any_nid
+                response.setdefault("value", 0.9)
+
+        # Final sanity for return shape
+        return response or {
+            "variable": next(iter(nodes.keys()), "unknown"),
+            "value": 0.9,
+        }
 
     def run_cbn_inference(
         self,
@@ -318,13 +372,14 @@ class CBNAgent:
             beliefs[intervention_var] = intervention_value
 
         # Forward propagation through the network
-        # Simple approach: iterate through edges and update beliefs
-        for _ in range(3):  # Multiple passes for convergence
+        # Use edge strength (if available) and iterate a few times for convergence
+        for _ in range(5):  # Multiple passes for convergence
             updated = False
             for edge_id, edge in edges.items():
                 source = edge.get("source")
                 target = edge.get("target")
-                modifier = edge.get("modifier", 1.0)
+                # Prefer learned/aggregated strength; fallback to modifier then 1.0
+                modifier = edge.get("strength", edge.get("modifier", 1.0))
 
                 # Skip if target is the intervention variable (it's fixed)
                 if target == intervention_var:
@@ -333,9 +388,9 @@ class CBNAgent:
                 if source in beliefs and target in beliefs:
                     # Calculate influence
                     source_prob = beliefs[source]
-                    # Simple causal influence: target influenced by source
-                    influence = source_prob * modifier
-                    new_value = min(0.95, max(0.05, 0.5 + (influence - 0.5) * 0.7))
+                    # Simple causal influence: shift target by signed influence around 0.5
+                    influence = (source_prob - 0.5) * modifier
+                    new_value = min(0.95, max(0.05, beliefs[target] + influence * 0.8))
 
                     if abs(new_value - beliefs[target]) > 0.01:
                         beliefs[target] = new_value
@@ -408,19 +463,40 @@ Return only the number."""
             # Handle multiple choice for belief_attribution without LLM: build from opinion backward
             answer_options = vqa.get("answer_options", {})
 
-            def score_option_backward(option_text: str, k: int = 8) -> float:
-                # Use node-label similarity as weights and aggregate current beliefs
+            def score_option_backward(option_text: str, k: int = 12) -> float:
+                """Score option by aligning it to opinion-like nodes and aggregating beliefs.
+
+                Heuristics for opinion-like nodes:
+                - stance nodes marked in node metadata (e.g., is_stance True)
+                - leaf nodes (no outgoing edges)
+                - high-importance nodes
+                """
                 current_cbn = (
                     self.last_built_cbn_graph
                     if self.last_built_cbn_graph
-                    else {"nodes": {}}
+                    else {"nodes": {}, "edges": {}}
                 )
-                node_id_to_label = {}
-                for nid, ndata in (current_cbn.get("nodes") or {}).items():
-                    node_id_to_label[nid] = ndata.get("label", nid)
+                nodes = current_cbn.get("nodes") or {}
 
-                sims: List[Tuple[str, float]] = []  # (node_id, sim)
-                for nid, label in node_id_to_label.items():
+                # Build candidate set = stance or leaf or high-importance
+                candidate_labels: List[Tuple[str, str]] = []  # (node_id, label)
+                for nid, ndata in nodes.items():
+                    label = ndata.get("label", nid)
+                    is_stance = bool(ndata.get("is_stance"))
+                    outdeg = len(ndata.get("outgoing_edges", []))
+                    importance = float(ndata.get("importance", 0.0))
+                    if is_stance or outdeg == 0 or importance >= 0.85:
+                        candidate_labels.append((nid, label))
+
+                if not candidate_labels:
+                    # Fallback to all nodes if no candidates
+                    candidate_labels = [
+                        (nid, n.get("label", nid)) for nid, n in nodes.items()
+                    ]
+
+                # Similarity to option text
+                sims: List[Tuple[str, float]] = []
+                for nid, label in candidate_labels:
                     try:
                         s = compute_node_similarity(str(option_text), str(label))
                         sims.append((nid, max(0.0, s)))
@@ -432,15 +508,13 @@ Return only the number."""
 
                 sims.sort(key=lambda x: x[1], reverse=True)
                 top = sims[:k]
-                # Normalize weights
                 total_w = sum(w for _, w in top) or 1.0
                 norm = [(nid, w / total_w) for nid, w in top]
-                # Aggregate belief: baseline 0.5, shift by weighted deviations
+
                 value = 0.5
                 for nid, w in norm:
                     b = float(cbn_state.get(nid, 0.5))
                     value += (b - 0.5) * w
-                # Clamp
                 return max(0.05, min(0.95, value))
 
             if answer_options:
@@ -453,8 +527,8 @@ Return only the number."""
                     print(f"Option scores (backward build): {option_scores}")
                 return best_key
 
-            # Fallback: if no options provided, default to 'A'
-            return "A"
+            # Fallback: if no options provided, return None
+            return None
 
     def process_query(
         self,
