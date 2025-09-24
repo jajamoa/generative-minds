@@ -278,12 +278,12 @@ def evaluate_belief_inference(
                     continue
 
                 # Helper to compute correct letter by matching will-answer against options
-                def match_correct_letter(will_answer: str) -> str:
+                def match_correct_letter(will_answer: str) -> str | None:
                     if will_answer and opt_a and will_answer == opt_a:
                         return "A"
                     if will_answer and opt_b and will_answer == opt_b:
                         return "B"
-                    return "A"
+                    return None
 
                 # SEE scenario
                 if see_cond:
